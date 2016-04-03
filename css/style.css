@@ -120,7 +120,7 @@ a img {
 body {
   background: #ddd;
 /*background-image url('/img/scene.jpg')  主题背景色*/
-  font-family: "Helvetica Neue", "Helvetica", "Microsoft YaHei", "WenQuanYi Micro Hei", Arial, sans-serif;
+  font-family: "Microsoft YaHei", "Helvetica Neue", "Helvetica", "WenQuanYi Micro Hei", Arial, sans-serif;
   font-size: 100%;
   color: #817c7c;
   line-height: 1.5;
@@ -453,8 +453,8 @@ body >header a {
   margin-left: 0.5em;
 }
 #textlogo h1.site-name {
-  width: 86%;
-  font-family: "covered_by_your_graceregular";
+  width: 56%;
+  font-family: Cursive, serif;
   font-size: 200%;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
@@ -462,12 +462,12 @@ body >header a {
 }
 @media only screen and (min-width: 768px) {
   #textlogo h1.site-name {
-    font-size: 240%;
+    font-size: 220%;
   }
 }
 @media only screen and (min-width: 1024px) {
   #textlogo h1.site-name {
-    font-size: 280%;
+    font-size: 220%;
   }
 }
 #textlogo h2.blog-motto {
@@ -1080,7 +1080,7 @@ article .article-content strong code,
 article .article-content em code,
 article .article-content table th>code,
 article .article-content table td>code {
-  font-family: Monaco, Menlo, Consolas, Courier New, monospace;
+  font-family: Courier New, Monaco, Menlo, Consolas, monospace;
   background: #eee;
   color: #d14;
   border: 1px solid #d6d6d6;
@@ -1956,7 +1956,7 @@ footer {
   width: 6.875em;
   height: 6.875em;
   margin: 0 auto;
-  background: no-repeat url("../img/author.jpg") left top;
+  background: no-repeat url("../img/author.png") left top;
   -webkit-background-size: 6.875em 6.875em;
   -moz-background-size: 6.875em 6.875em;
   background-size: 6.875em 6.875em;
@@ -2085,7 +2085,7 @@ footer {
 .copyright {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-family: "covered_by_your_graceregular";
+  font-family: Cursive, serif;
   width: 100%;
   color: #fff;
   text-align: center;
@@ -2155,7 +2155,7 @@ footer {
   }
 }
 .article-content pre {
-  font-family: Monaco, Menlo, Consolas, Courier New, monospace;
+  font-family: Courier New, Monaco, Menlo, Consolas, monospace;
 }
 .article-content .highlight {
   overflow: auto;
@@ -2216,7 +2216,7 @@ footer {
 }
 .article-content .gist .gist-file {
   border: none;
-  font-family: Monaco, Menlo, Consolas, Courier New, monospace;
+  font-family: Courier New, Monaco, Menlo, Consolas, monospace;
   margin: 0;
 }
 .article-content .gist .gist-file .gist-data {
@@ -2240,7 +2240,7 @@ footer {
 .article-content .gist .gist-file .gist-meta {
   background: #eee;
   color: #8e908c;
-  font: 0.85em "Georgia", serif;
+  font: 0.85em "Courier New", "Georgia", serif;
   text-shadow: 0 0;
   padding: 0;
   margin-top: 1em;
