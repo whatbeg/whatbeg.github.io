@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://whatbeg.com/"/>
-  <updated>2016-04-04T14:59:22.051Z</updated>
+  <updated>2016-04-04T16:07:01.334Z</updated>
   <id>http://whatbeg.com/</id>
   
   <author>
@@ -14,6 +14,62 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>毕业设计(阶段二)</title>
+    <link href="http://whatbeg.com/2016-04-05/graduatedesign.html"/>
+    <id>http://whatbeg.com/2016-04-05/graduatedesign.html</id>
+    <published>2016-04-04T16:05:00.000Z</published>
+    <updated>2016-04-04T16:07:01.334Z</updated>
+    
+    <content type="html">&lt;p&gt;毕设已经做到了后续数据分析阶段，中期答辩的日子也临近了，可是下面的问题也随之而来，需要好好想一想或者和老师讨论下了。&lt;/p&gt;
+&lt;p&gt;##毕设第二轮问题&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;中期答辩的进度要求。&lt;ul&gt;
+&lt;li&gt;是要做完实际工作？还是不必？&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;建立文章链接网络的必要性&lt;ul&gt;
+&lt;li&gt;文章链接关系不是没有，但是却不多&lt;/li&gt;
+&lt;li&gt;文章链接网络的建立较用户关注网络的建立复杂太多&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;已知文章的诸多指标如何建立评价模型的问题&lt;ul&gt;
+&lt;li&gt;已知阅读量、评论数、推荐数、作者pagerank值，作者hits值等等，如何尽量客观地建立评价模型&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;创新点的问题及应用场景的问题&lt;ul&gt;
+&lt;li&gt;很难想象毕设做到现在创新点和应用场景仍不明确&lt;/li&gt;
+&lt;li&gt;感觉毕设就是进行了一些数据的爬取，以及建立模型（还未做，不知简单与否）的过程，前期写了很多爬取代码，但是那是必须的么？或是根本就可以利用现成的数据集呢？如果只是按流程走一遍，那么毕设工作的开创性，或者说别人没做过的东西是哪些？或者说优于别人现有工作的是哪些？&lt;/li&gt;
+&lt;li&gt;进行文章影响力的挖掘的应用场景，已知的包括：&lt;ul&gt;
+&lt;li&gt;广告投放&lt;/li&gt;
+&lt;li&gt;猎头&lt;/li&gt;
+&lt;li&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;毕设已经做到了后续数据分析阶段，中期答辩的日子也临近了，可是下面的问题也随之而来，需要好好想一想或者和老师讨论下了。&lt;/p&gt;
+&lt;p&gt;##毕设第二轮问题&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;中期答辩的进度要求。&lt;ul&gt;
+&lt;li&gt;是要做完实际工作？还是不必？&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/l
+    
+    </summary>
+    
+      <category term="数据挖掘&可视化与分析 Python" scheme="http://whatbeg.com/categories/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98-%E5%8F%AF%E8%A7%86%E5%8C%96%E4%B8%8E%E5%88%86%E6%9E%90-Python/"/>
+    
+    
+      <category term="CS" scheme="http://whatbeg.com/tags/CS/"/>
+    
+  </entry>
   
   <entry>
     <title>我的NJU-CS考研路</title>
