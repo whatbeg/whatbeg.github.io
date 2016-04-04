@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-04-04T05:00:49.140Z</updated>
+  <updated>2016-04-04T06:04:43.629Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -16,11 +16,187 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Markdown简明语法手册</title>
+    <link href="http://yoursite.com/2016-04-04/markdown.html"/>
+    <id>http://yoursite.com/2016-04-04/markdown.html</id>
+    <published>2016-04-04T06:02:23.000Z</published>
+    <updated>2016-04-04T06:04:43.629Z</updated>
+    
+    <content type="html">&lt;h1 id=&quot;Cmd-Markdown-简明语法手册&quot;&gt;&lt;a href=&quot;#Cmd-Markdown-简明语法手册&quot; class=&quot;headerlink&quot; title=&quot;Cmd Markdown 简明语法手册&quot;&gt;&lt;/a&gt;Cmd Markdown 简明语法手册&lt;/h1&gt;&lt;p&gt;标签： Cmd-Markdown&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&quot;1-斜体和粗体&quot;&gt;&lt;a href=&quot;#1-斜体和粗体&quot; class=&quot;headerlink&quot; title=&quot;1. 斜体和粗体&quot;&gt;&lt;/a&gt;1. 斜体和粗体&lt;/h3&gt;&lt;p&gt;使用 &lt;em&gt; 和 *&lt;/em&gt; 表示斜体和粗体。&lt;/p&gt;
+&lt;p&gt;示例：&lt;/p&gt;
+&lt;p&gt;这是 &lt;em&gt;斜体&lt;/em&gt;，这是 &lt;strong&gt;粗体&lt;/strong&gt;。&lt;/p&gt;
+&lt;h3 id=&quot;2-分级标题&quot;&gt;&lt;a href=&quot;#2-分级标题&quot; class=&quot;headerlink&quot; title=&quot;2. 分级标题&quot;&gt;&lt;/a&gt;2. 分级标题&lt;/h3&gt;&lt;p&gt;使用 === 表示一级标题，使用 — 表示二级标题。&lt;/p&gt;
+&lt;p&gt;示例：&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;这是一个一级标题&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;============================&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;这是一个二级标题&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;--------------------------------------------------&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;### 这是一个三级标题&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;你也可以选择在行首加井号表示不同级别的标题 (H1-H6)，例如：# H1, ## H2, ### H3，#### H4。&lt;/p&gt;
+&lt;h3 id=&quot;3-外链接&quot;&gt;&lt;a href=&quot;#3-外链接&quot; class=&quot;headerlink&quot; title=&quot;3. 外链接&quot;&gt;&lt;/a&gt;3. 外链接&lt;/h3&gt;&lt;p&gt;使用 [描述](链接地址) 为文字增加外链接。&lt;/p&gt;
+&lt;p&gt;示例：&lt;/p&gt;
+&lt;p&gt;这是去往 &lt;a href=&quot;http://ghosertblog.github.com&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;本人博客&lt;/a&gt; 的链接。&lt;/p&gt;
+&lt;h3 id=&quot;4-无序列表&quot;&gt;&lt;a href=&quot;#4-无序列表&quot; class=&quot;headerlink&quot; title=&quot;4. 无序列表&quot;&gt;&lt;/a&gt;4. 无序列表&lt;/h3&gt;&lt;p&gt;使用 *，+，- 表示无序列表。&lt;/p&gt;
+&lt;p&gt;示例：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;无序列表项 一&lt;/li&gt;
+&lt;li&gt;无序列表项 二&lt;/li&gt;
+&lt;li&gt;无序列表项 三&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;5-有序列表&quot;&gt;&lt;a href=&quot;#5-有序列表&quot; class=&quot;headerlink&quot; title=&quot;5. 有序列表&quot;&gt;&lt;/a&gt;5. 有序列表&lt;/h3&gt;&lt;p&gt;使用数字和点表示有序列表。&lt;/p&gt;
+&lt;p&gt;示例：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;有序列表项 一&lt;/li&gt;
+&lt;li&gt;有序列表项 二&lt;/li&gt;
+&lt;li&gt;有序列表项 三&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&quot;6-文字引用&quot;&gt;&lt;a href=&quot;#6-文字引用&quot; class=&quot;headerlink&quot; title=&quot;6. 文字引用&quot;&gt;&lt;/a&gt;6. 文字引用&lt;/h3&gt;&lt;p&gt;使用 &amp;gt; 表示文字引用。&lt;/p&gt;
+&lt;p&gt;示例：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;野火烧不尽，春风吹又生。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;7-行内代码块&quot;&gt;&lt;a href=&quot;#7-行内代码块&quot; class=&quot;headerlink&quot; title=&quot;7. 行内代码块&quot;&gt;&lt;/a&gt;7. 行内代码块&lt;/h3&gt;&lt;p&gt;使用 `代码` 表示行内代码块。&lt;/p&gt;
+&lt;p&gt;示例：&lt;/p&gt;
+&lt;p&gt;让我们聊聊 &lt;code&gt;html&lt;/code&gt;。&lt;/p&gt;
+&lt;h3 id=&quot;8-代码块&quot;&gt;&lt;a href=&quot;#8-代码块&quot; class=&quot;headerlink&quot; title=&quot;8.  代码块&quot;&gt;&lt;/a&gt;8.  代码块&lt;/h3&gt;&lt;p&gt;使用 四个缩进空格 表示代码块。&lt;/p&gt;
+&lt;p&gt;示例：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;这是一个代码块，此行左侧有四个不可见的空格。
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;9-插入图像&quot;&gt;&lt;a href=&quot;#9-插入图像&quot; class=&quot;headerlink&quot; title=&quot;9.  插入图像&quot;&gt;&lt;/a&gt;9.  插入图像&lt;/h3&gt;&lt;p&gt;使用 ![描述](图片链接地址) 插入图像。&lt;/p&gt;
+&lt;p&gt;示例：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://www.zybuluo.com/static/img/my_head.jpg&quot; alt=&quot;我的头像&quot;&gt;&lt;/p&gt;
+&lt;h1 id=&quot;Cmd-Markdown-高阶语法手册&quot;&gt;&lt;a href=&quot;#Cmd-Markdown-高阶语法手册&quot; class=&quot;headerlink&quot; title=&quot;Cmd Markdown 高阶语法手册&quot;&gt;&lt;/a&gt;Cmd Markdown 高阶语法手册&lt;/h1&gt;&lt;h3 id=&quot;1-内容目录&quot;&gt;&lt;a href=&quot;#1-内容目录&quot; class=&quot;headerlink&quot; title=&quot;1. 内容目录&quot;&gt;&lt;/a&gt;1. 内容目录&lt;/h3&gt;&lt;p&gt;在段落中填写 &lt;code&gt;[TOC]&lt;/code&gt; 以显示全文内容的目录结构。&lt;/p&gt;
+&lt;p&gt;[TOC]&lt;/p&gt;
+&lt;h3 id=&quot;2-标签分类&quot;&gt;&lt;a href=&quot;#2-标签分类&quot; class=&quot;headerlink&quot; title=&quot;2. 标签分类&quot;&gt;&lt;/a&gt;2. 标签分类&lt;/h3&gt;&lt;p&gt;在编辑区任意行的列首位置输入以下代码给文稿标签：&lt;/p&gt;
+&lt;p&gt;标签： 数学 英语 Markdown&lt;/p&gt;
+&lt;p&gt;或者&lt;/p&gt;
+&lt;p&gt;Tags： 数学 英语 Markdown&lt;/p&gt;
+&lt;h3 id=&quot;3-删除线&quot;&gt;&lt;a href=&quot;#3-删除线&quot; class=&quot;headerlink&quot; title=&quot;3. 删除线&quot;&gt;&lt;/a&gt;3. 删除线&lt;/h3&gt;&lt;p&gt;使用 ~~ 表示删除线。&lt;/p&gt;
+&lt;p&gt;&lt;del&gt;这是一段错误的文本。&lt;/del&gt;&lt;/p&gt;
+&lt;h3 id=&quot;4-注脚&quot;&gt;&lt;a href=&quot;#4-注脚&quot; class=&quot;headerlink&quot; title=&quot;4. 注脚&quot;&gt;&lt;/a&gt;4. 注脚&lt;/h3&gt;&lt;p&gt;使用 [^keyword] 表示注脚。&lt;/p&gt;
+&lt;p&gt;这是一个注脚[^footnote]的样例。&lt;/p&gt;
+&lt;p&gt;这是第二个注脚[^footnote2]的样例。&lt;/p&gt;
+&lt;h3 id=&quot;5-LaTeX-公式&quot;&gt;&lt;a href=&quot;#5-LaTeX-公式&quot; class=&quot;headerlink&quot; title=&quot;5. LaTeX 公式&quot;&gt;&lt;/a&gt;5. LaTeX 公式&lt;/h3&gt;&lt;p&gt;$ 表示行内公式： &lt;/p&gt;
+&lt;p&gt;质能守恒方程可以用一个很简洁的方程式 $E=mc^2$ 来表达。&lt;/p&gt;
+&lt;p&gt;$$ 表示整行公式：&lt;/p&gt;
+&lt;p&gt;$$\sum_{i=1}^n a_i=0$$&lt;/p&gt;
+&lt;p&gt;$$f(x_1,x_x,\ldots,x_n) = x_1^2 + x_2^2 + \cdots + x_n^2 $$&lt;/p&gt;
+&lt;p&gt;$$\sum^{j-1}&lt;em&gt;{k=0}{\widehat{\gamma}&lt;/em&gt;{kj} z_k}$$&lt;/p&gt;
+&lt;p&gt;访问 &lt;a href=&quot;http://meta.math.stackexchange.com/questions/5020/mathjax-basic-tutorial-and-quick-reference&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;MathJax&lt;/a&gt; 参考更多使用方法。&lt;/p&gt;
+&lt;h3 id=&quot;6-加强的代码块&quot;&gt;&lt;a href=&quot;#6-加强的代码块&quot; class=&quot;headerlink&quot; title=&quot;6. 加强的代码块&quot;&gt;&lt;/a&gt;6. 加强的代码块&lt;/h3&gt;&lt;p&gt;支持四十一种编程语言的语法高亮的显示，行号显示。&lt;/p&gt;
+&lt;p&gt;非代码示例：&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ sudo apt-get install vim-gnome&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;Python 示例：&lt;/p&gt;
+&lt;figure class=&quot;highlight python&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta&quot;&gt;@requires_authorization&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;somefunc&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(param1=&lt;span class=&quot;string&quot;&gt;&#39;&#39;&lt;/span&gt;, param2=&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;)&lt;/span&gt;:&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;string&quot;&gt;&#39;&#39;&#39;A docstring&#39;&#39;&#39;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; param1 &amp;gt; param2: &lt;span class=&quot;comment&quot;&gt;# interesting&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&#39;Greater&#39;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; (param2 - param1 + &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;) &lt;span class=&quot;keyword&quot;&gt;or&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;None&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;SomeClass&lt;/span&gt;:&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;pass&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta&quot;&gt;&amp;gt;&amp;gt;&amp;gt; &lt;/span&gt;message = &lt;span class=&quot;string&quot;&gt;&#39;&#39;&#39;interpreter&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta&quot;&gt;... &lt;/span&gt;prompt&#39;&#39;&#39;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;JavaScript 示例：&lt;/p&gt;
+&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;/**&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;* nth element in the fibonacci series.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;* @param n &amp;gt;= 0&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;* @return the nth element, &amp;gt;= 0.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;*/&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;fib&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;n&lt;/span&gt;) &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; a = &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;, b = &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; tmp;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;keyword&quot;&gt;while&lt;/span&gt; (--n &amp;gt;= &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    tmp = a;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    a += b;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    b = tmp;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; a;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;document&lt;/span&gt;.write(fib(&lt;span class=&quot;number&quot;&gt;10&lt;/span&gt;));&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h3 id=&quot;7-流程图&quot;&gt;&lt;a href=&quot;#7-流程图&quot; class=&quot;headerlink&quot; title=&quot;7. 流程图&quot;&gt;&lt;/a&gt;7. 流程图&lt;/h3&gt;&lt;h4 id=&quot;示例&quot;&gt;&lt;a href=&quot;#示例&quot; class=&quot;headerlink&quot; title=&quot;示例&quot;&gt;&lt;/a&gt;示例&lt;/h4&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;st=&amp;gt;start: Start:&amp;gt;https://www.zybuluo.com&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;io=&amp;gt;inputoutput: verification&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;op=&amp;gt;operation: Your Operation&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;cond=&amp;gt;condition: Yes or No?&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;sub=&amp;gt;subroutine: Your Subroutine&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;e=&amp;gt;end&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;st-&amp;gt;io-&amp;gt;op-&amp;gt;cond&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;cond(yes)-&amp;gt;e&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;cond(no)-&amp;gt;sub-&amp;gt;io&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h4 id=&quot;更多语法参考：流程图语法参考&quot;&gt;&lt;a href=&quot;#更多语法参考：流程图语法参考&quot; class=&quot;headerlink&quot; title=&quot;更多语法参考：流程图语法参考&quot;&gt;&lt;/a&gt;更多语法参考：&lt;a href=&quot;http://adrai.github.io/flowchart.js/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;流程图语法参考&lt;/a&gt;&lt;/h4&gt;&lt;h3 id=&quot;8-序列图&quot;&gt;&lt;a href=&quot;#8-序列图&quot; class=&quot;headerlink&quot; title=&quot;8. 序列图&quot;&gt;&lt;/a&gt;8. 序列图&lt;/h3&gt;&lt;h4 id=&quot;示例-1&quot;&gt;&lt;a href=&quot;#示例-1&quot; class=&quot;headerlink&quot; title=&quot;示例 1&quot;&gt;&lt;/a&gt;示例 1&lt;/h4&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;Alice-&amp;gt;Bob: Hello Bob, how are you?&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Note right of Bob: Bob thinks&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Bob--&amp;gt;Alice: I am good thanks!&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h4 id=&quot;示例-2&quot;&gt;&lt;a href=&quot;#示例-2&quot; class=&quot;headerlink&quot; title=&quot;示例 2&quot;&gt;&lt;/a&gt;示例 2&lt;/h4&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;Title: Here is a title&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;A-&amp;gt;B: Normal line&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;B--&amp;gt;C: Dashed line&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;C-&amp;gt;&amp;gt;D: Open arrow&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;D--&amp;gt;&amp;gt;A: Dashed open arrow&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h4 id=&quot;更多语法参考：序列图语法参考&quot;&gt;&lt;a href=&quot;#更多语法参考：序列图语法参考&quot; class=&quot;headerlink&quot; title=&quot;更多语法参考：序列图语法参考&quot;&gt;&lt;/a&gt;更多语法参考：&lt;a href=&quot;http://bramp.github.io/js-sequence-diagrams/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;序列图语法参考&lt;/a&gt;&lt;/h4&gt;&lt;h3 id=&quot;9-表格支持&quot;&gt;&lt;a href=&quot;#9-表格支持&quot; class=&quot;headerlink&quot; title=&quot;9. 表格支持&quot;&gt;&lt;/a&gt;9. 表格支持&lt;/h3&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;项目&lt;/th&gt;
+&lt;th style=&quot;text-align:right&quot;&gt;价格&lt;/th&gt;
+&lt;th style=&quot;text-align:center&quot;&gt;数量&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;计算机&lt;/td&gt;
+&lt;td style=&quot;text-align:right&quot;&gt;\$1600&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;5&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;手机&lt;/td&gt;
+&lt;td style=&quot;text-align:right&quot;&gt;\$12&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;12&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;管线&lt;/td&gt;
+&lt;td style=&quot;text-align:right&quot;&gt;\$1&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;234&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id=&quot;10-定义型列表&quot;&gt;&lt;a href=&quot;#10-定义型列表&quot; class=&quot;headerlink&quot; title=&quot;10. 定义型列表&quot;&gt;&lt;/a&gt;10. 定义型列表&lt;/h3&gt;&lt;p&gt;名词 1&lt;br&gt;:   定义 1（左侧有一个可见的冒号和四个不可见的空格）&lt;/p&gt;
+&lt;p&gt;代码块 2&lt;br&gt;:   这是代码块的定义（左侧有一个可见的冒号和四个不可见的空格）&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;代码块（左侧有八个不可见的空格）
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;11-Html-标签&quot;&gt;&lt;a href=&quot;#11-Html-标签&quot; class=&quot;headerlink&quot; title=&quot;11. Html 标签&quot;&gt;&lt;/a&gt;11. Html 标签&lt;/h3&gt;&lt;p&gt;本站支持在 Markdown 语法中嵌套 Html 标签，譬如，你可以用 Html 写一个纵跨两行的表格：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;table&amp;gt;
+    &amp;lt;tr&amp;gt;
+        &amp;lt;th rowspan=&amp;quot;2&amp;quot;&amp;gt;值班人员&amp;lt;/th&amp;gt;
+        &amp;lt;th&amp;gt;星期一&amp;lt;/th&amp;gt;
+        &amp;lt;th&amp;gt;星期二&amp;lt;/th&amp;gt;
+        &amp;lt;th&amp;gt;星期三&amp;lt;/th&amp;gt;
+    &amp;lt;/tr&amp;gt;
+    &amp;lt;tr&amp;gt;
+        &amp;lt;td&amp;gt;李强&amp;lt;/td&amp;gt;
+        &amp;lt;td&amp;gt;张明&amp;lt;/td&amp;gt;
+        &amp;lt;td&amp;gt;王平&amp;lt;/td&amp;gt;
+    &amp;lt;/tr&amp;gt;
+&amp;lt;/table&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;table&gt;&lt;br&gt;    &lt;tr&gt;&lt;br&gt;        &lt;th rowspan=&quot;2&quot;&gt;值班人员&lt;/th&gt;&lt;br&gt;        &lt;th&gt;星期一&lt;/th&gt;&lt;br&gt;        &lt;th&gt;星期二&lt;/th&gt;&lt;br&gt;        &lt;th&gt;星期三&lt;/th&gt;&lt;br&gt;    &lt;/tr&gt;&lt;br&gt;    &lt;tr&gt;&lt;br&gt;        &lt;td&gt;李强&lt;/td&gt;&lt;br&gt;        &lt;td&gt;张明&lt;/td&gt;&lt;br&gt;        &lt;td&gt;王平&lt;/td&gt;&lt;br&gt;    &lt;/tr&gt;&lt;br&gt;&lt;/table&gt;
+
+&lt;h3 id=&quot;12-内嵌图标&quot;&gt;&lt;a href=&quot;#12-内嵌图标&quot; class=&quot;headerlink&quot; title=&quot;12. 内嵌图标&quot;&gt;&lt;/a&gt;12. 内嵌图标&lt;/h3&gt;&lt;p&gt;本站的图标系统对外开放，在文档中输入&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;i class=&amp;quot;icon-weibo&amp;quot;&amp;gt;&amp;lt;/i&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;即显示微博的图标： &lt;i class=&quot;icon-weibo icon-2x&quot;&gt;&lt;/i&gt;&lt;/p&gt;
+&lt;p&gt;替换 上述 &lt;code&gt;i 标签&lt;/code&gt; 内的 &lt;code&gt;icon-weibo&lt;/code&gt; 以显示不同的图标，例如：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;i class=&amp;quot;icon-renren&amp;quot;&amp;gt;&amp;lt;/i&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;即显示人人的图标： &lt;i class=&quot;icon-renren icon-2x&quot;&gt;&lt;/i&gt;&lt;/p&gt;
+&lt;p&gt;更多的图标和玩法可以参看 &lt;a href=&quot;http://fortawesome.github.io/Font-Awesome/3.2.1/icons/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;font-awesome&lt;/a&gt; 官方网站。&lt;/p&gt;
+&lt;h3 id=&quot;13-待办事宜-Todo-列表&quot;&gt;&lt;a href=&quot;#13-待办事宜-Todo-列表&quot; class=&quot;headerlink&quot; title=&quot;13. 待办事宜 Todo 列表&quot;&gt;&lt;/a&gt;13. 待办事宜 Todo 列表&lt;/h3&gt;&lt;p&gt;使用带有 [ ] 或 [x] （未完成或已完成）项的列表语法撰写一个待办事宜列表，并且支持子列表嵌套以及混用Markdown语法，例如：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;- [ ] **Cmd Markdown 开发**
+    - [ ] 改进 Cmd 渲染算法，使用局部渲染技术提高渲染效率
+    - [ ] 支持以 PDF 格式导出文稿
+    - [x] 新增Todo列表功能 [语法参考](https://github.com/blog/1375-task-lists-in-gfm-issues-pulls-comments)
+    - [x] 改进 LaTex 功能
+        - [x] 修复 LaTex 公式渲染问题
+        - [x] 新增 LaTex 公式编号功能 [语法参考](http://docs.mathjax.org/en/latest/tex.html#tex-eq-numbers)
+- [ ] **七月旅行准备**
+    - [ ] 准备邮轮上需要携带的物品
+    - [ ] 浏览日本免税店的物品
+    - [x] 购买蓝宝石公主号七月一日的船票
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;对应显示如下待办事宜 Todo 列表：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;[ ] &lt;strong&gt;Cmd Markdown 开发&lt;/strong&gt;&lt;ul&gt;
+&lt;li&gt;[ ] 改进 Cmd 渲染算法，使用局部渲染技术提高渲染效率&lt;/li&gt;
+&lt;li&gt;[ ] 支持以 PDF 格式导出文稿&lt;/li&gt;
+&lt;li&gt;[x] 新增Todo列表功能 &lt;a href=&quot;https://github.com/blog/1375-task-lists-in-gfm-issues-pulls-comments&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;语法参考&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;[x] 改进 LaTex 功能&lt;ul&gt;
+&lt;li&gt;[x] 修复 LaTex 公式渲染问题&lt;/li&gt;
+&lt;li&gt;[x] 新增 LaTex 公式编号功能 &lt;a href=&quot;http://docs.mathjax.org/en/latest/tex.html#tex-eq-numbers&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;语法参考&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;[ ] &lt;strong&gt;七月旅行准备&lt;/strong&gt;&lt;ul&gt;
+&lt;li&gt;[ ] 准备邮轮上需要携带的物品&lt;/li&gt;
+&lt;li&gt;[ ] 浏览日本免税店的物品&lt;/li&gt;
+&lt;li&gt;[x] 购买蓝宝石公主号七月一日的船票&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;[^footnote]: 这是一个 &lt;em&gt;注脚&lt;/em&gt; 的 &lt;strong&gt;文本&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;[^footnote2]: 这是另一个 &lt;em&gt;注脚&lt;/em&gt; 的 &lt;strong&gt;文本&lt;/strong&gt;。&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;Cmd-Markdown-简明语法手册&quot;&gt;&lt;a href=&quot;#Cmd-Markdown-简明语法手册&quot; class=&quot;headerlink&quot; title=&quot;Cmd Markdown 简明语法手册&quot;&gt;&lt;/a&gt;Cmd Markdown 简明语法手册&lt;/h1&gt;&lt;p&gt;标签
+    
+    </summary>
+    
+      <category term="算法学习笔记" scheme="http://yoursite.com/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="Markdown" scheme="http://yoursite.com/tags/Markdown/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Cmd Markdown 用法</title>
     <link href="http://yoursite.com/2016-04-04/test.html"/>
     <id>http://yoursite.com/2016-04-04/test.html</id>
     <published>2016-04-04T04:58:59.000Z</published>
-    <updated>2016-04-04T05:00:49.140Z</updated>
+    <updated>2016-04-04T06:05:17.443Z</updated>
     
     <content type="html">&lt;h1 id=&quot;欢迎使用-Cmd-Markdown-编辑阅读器&quot;&gt;&lt;a href=&quot;#欢迎使用-Cmd-Markdown-编辑阅读器&quot; class=&quot;headerlink&quot; title=&quot;欢迎使用 Cmd Markdown 编辑阅读器&quot;&gt;&lt;/a&gt;欢迎使用 Cmd Markdown 编辑阅读器&lt;/h1&gt;&lt;hr&gt;
 &lt;p&gt;我们理解您需要更便捷更高效的工具记录思想，整理笔记、知识，并将其中承载的价值传播给他人，&lt;strong&gt;Cmd Markdown&lt;/strong&gt; 是我们给出的答案 —— 我们为记录思想和分享知识提供更专业的工具。 您可以使用 Cmd Markdown：&lt;/p&gt;
@@ -113,6 +289,10 @@
     
     </summary>
     
+      <category term="算法学习笔记" scheme="http://yoursite.com/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="Markdown" scheme="http://yoursite.com/tags/Markdown/"/>
     
   </entry>
   
