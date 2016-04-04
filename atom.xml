@@ -4,9 +4,9 @@
   <subtitle>路漫漫其修远兮，仍将上下而求索</subtitle>
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://yoursite.com/"/>
+  <link href="http://whatbeg.com/"/>
   <updated>2016-04-04T06:04:43.629Z</updated>
-  <id>http://yoursite.com/</id>
+  <id>http://whatbeg.com/</id>
   
   <author>
     <name>Whatbeg</name>
@@ -17,8 +17,8 @@
   
   <entry>
     <title>Markdown简明语法手册</title>
-    <link href="http://yoursite.com/2016-04-04/markdown.html"/>
-    <id>http://yoursite.com/2016-04-04/markdown.html</id>
+    <link href="http://whatbeg.com/2016-04-04/markdown.html"/>
+    <id>http://whatbeg.com/2016-04-04/markdown.html</id>
     <published>2016-04-04T06:02:23.000Z</published>
     <updated>2016-04-04T06:04:43.629Z</updated>
     
@@ -184,17 +184,17 @@
     
     </summary>
     
-      <category term="算法学习笔记" scheme="http://yoursite.com/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+      <category term="算法学习笔记" scheme="http://whatbeg.com/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="Markdown" scheme="http://yoursite.com/tags/Markdown/"/>
+      <category term="Markdown" scheme="http://whatbeg.com/tags/Markdown/"/>
     
   </entry>
   
   <entry>
     <title>Cmd Markdown 用法</title>
-    <link href="http://yoursite.com/2016-04-04/test.html"/>
-    <id>http://yoursite.com/2016-04-04/test.html</id>
+    <link href="http://whatbeg.com/2016-04-04/test.html"/>
+    <id>http://whatbeg.com/2016-04-04/test.html</id>
     <published>2016-04-04T04:58:59.000Z</published>
     <updated>2016-04-04T06:05:17.443Z</updated>
     
@@ -289,17 +289,17 @@
     
     </summary>
     
-      <category term="算法学习笔记" scheme="http://yoursite.com/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+      <category term="算法学习笔记" scheme="http://whatbeg.com/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="Markdown" scheme="http://yoursite.com/tags/Markdown/"/>
+      <category term="Markdown" scheme="http://whatbeg.com/tags/Markdown/"/>
     
   </entry>
   
   <entry>
     <title>写在独立博客开创时</title>
-    <link href="http://yoursite.com/2016-04-04/my-new-post.html"/>
-    <id>http://yoursite.com/2016-04-04/my-new-post.html</id>
+    <link href="http://whatbeg.com/2016-04-04/my-new-post.html"/>
+    <id>http://whatbeg.com/2016-04-04/my-new-post.html</id>
     <published>2016-04-03T17:12:27.000Z</published>
     <updated>2016-04-03T18:03:20.656Z</updated>
     
@@ -341,10 +341,10 @@
     
     </summary>
     
-      <category term="成长之路" scheme="http://yoursite.com/categories/%E6%88%90%E9%95%BF%E4%B9%8B%E8%B7%AF/"/>
+      <category term="成长之路" scheme="http://whatbeg.com/categories/%E6%88%90%E9%95%BF%E4%B9%8B%E8%B7%AF/"/>
     
     
-      <category term="随笔" scheme="http://yoursite.com/tags/%E9%9A%8F%E7%AC%94/"/>
+      <category term="随笔" scheme="http://whatbeg.com/tags/%E9%9A%8F%E7%AC%94/"/>
     
   </entry>
   
