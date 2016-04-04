@@ -301,13 +301,14 @@
     <link href="http://whatbeg.com/2016-04-04/my-new-post.html"/>
     <id>http://whatbeg.com/2016-04-04/my-new-post.html</id>
     <published>2016-04-03T17:12:27.000Z</published>
-    <updated>2016-04-03T18:03:20.656Z</updated>
+    <updated>2016-04-04T11:26:24.082Z</updated>
     
-    <content type="html">&lt;h2 id=&quot;写在前面&quot;&gt;&lt;a href=&quot;#写在前面&quot; class=&quot;headerlink&quot; title=&quot;写在前面&quot;&gt;&lt;/a&gt;写在前面&lt;/h2&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;今天花了差不多一整天，终于把独立博客建立出来了，实现了基本的功能。&lt;/p&gt;&lt;br&gt;为什么搭这么一个博客呢，原因有下面几点：&lt;p&gt;&lt;/p&gt;
+    <content type="html">&lt;h2 id=&quot;写在前面&quot;&gt;&lt;a href=&quot;#写在前面&quot; class=&quot;headerlink&quot; title=&quot;写在前面&quot;&gt;&lt;/a&gt;写在前面&lt;/h2&gt;&lt;p&gt;今天花了差不多一整天，终于把独立博客建立出来了，实现了基本的功能。&lt;br&gt;为什么搭这么一个博客呢，原因有下面几点：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;希望有一个自己独立自主的博客，可以自由设计样式，发布文章，而不用顾忌依托网站的考虑。&lt;/li&gt;
 &lt;li&gt;个人博客是时代潮流，越来越多的人选择搭建自己的博客，‘独立’的才是最自己的。&lt;/li&gt;
-&lt;li&gt;以前是写技术文章一个博客，写生活文章一个博客，这个博客可以把二者统一起来，节省精力。&lt;/li&gt;
+&lt;li&gt;以前是写技术文章一个博客，写生活文章一个博客，这个博客可以把二者统一起来，不用同时维护两个博客，节省精力。&lt;/li&gt;
+&lt;li&gt;Hexo+Github/Coding搭建博客实在挺简单，为什么不试试呢？&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&quot;工具&quot;&gt;&lt;a href=&quot;#工具&quot; class=&quot;headerlink&quot; title=&quot;工具&quot;&gt;&lt;/a&gt;工具&lt;/h2&gt;&lt;p&gt;本次搭建用到了以下工具/软件：&lt;/p&gt;
 &lt;ul&gt;
@@ -315,7 +316,8 @@
 &lt;li&gt;Git 2.8.0 x64&lt;/li&gt;
 &lt;li&gt;Node.js v5.9.0 x64&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&quot;后续工作&quot;&gt;&lt;a href=&quot;#后续工作&quot; class=&quot;headerlink&quot; title=&quot;后续工作&quot;&gt;&lt;/a&gt;后续工作&lt;/h2&gt;&lt;p&gt;下一步还需要做的有：&lt;/p&gt;
+&lt;h2 id=&quot;后续工作&quot;&gt;&lt;a href=&quot;#后续工作&quot; class=&quot;headerlink&quot; title=&quot;后续工作&quot;&gt;&lt;/a&gt;后续工作&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;下一步还需要做的有：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;侧边栏插件&lt;/li&gt;
 &lt;li&gt;分类、标签&lt;/li&gt;
@@ -323,21 +325,24 @@
 &lt;li&gt;统计（可选）&lt;/li&gt;
 &lt;li&gt;独立域名（可选）&lt;/li&gt;
 &lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
 &lt;p&gt;并且可以将网络上没有或者很难找到的具体设置方法写成文章，分享给大家。&lt;/p&gt;
 &lt;h2 id=&quot;结语&quot;&gt;&lt;a href=&quot;#结语&quot; class=&quot;headerlink&quot; title=&quot;结语&quot;&gt;&lt;/a&gt;结语&lt;/h2&gt;&lt;p&gt;这次部署过程中受益于网络上各路大神们的细心总结的，赠人玫瑰，手有余香。感谢！&lt;/p&gt;
 &lt;p&gt;鸣谢：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;wufeng&lt;/li&gt;
 &lt;li&gt;cnfeat&lt;/li&gt;
-&lt;li&gt;tengj&lt;/li&gt;
-&lt;li&gt;chillax&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://opiece.me/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;chillax&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://tengj.top/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;tengj&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;就写到这吧，Markdown也不是很熟悉。总之，终于成功了，好开心！&lt;/p&gt;
 </content>
     
     <summary type="html">
     
-      &lt;h2 id=&quot;写在前面&quot;&gt;&lt;a href=&quot;#写在前面&quot; class=&quot;headerlink&quot; title=&quot;写在前面&quot;&gt;&lt;/a&gt;写在前面&lt;/h2&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;今天花了差不多一整天，终于把独立博客建立出来了，实现了基本的功能。&lt;/p&gt;&lt;br&gt;为什么搭这么一个博客呢，原因
+      &lt;h2 id=&quot;写在前面&quot;&gt;&lt;a href=&quot;#写在前面&quot; class=&quot;headerlink&quot; title=&quot;写在前面&quot;&gt;&lt;/a&gt;写在前面&lt;/h2&gt;&lt;p&gt;今天花了差不多一整天，终于把独立博客建立出来了，实现了基本的功能。&lt;br&gt;为什么搭这么一个博客呢，原因有下面几点：&lt;/p&gt;
+
     
     </summary>
     
