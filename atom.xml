@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://whatbeg.com/"/>
-  <updated>2016-04-05T11:03:11.720Z</updated>
+  <updated>2016-04-06T03:12:04.907Z</updated>
   <id>http://whatbeg.com/</id>
   
   <author>
@@ -14,6 +14,39 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>《HTTP权威指南》书评</title>
+    <link href="http://whatbeg.com/2016-04-06/httpguide.html"/>
+    <id>http://whatbeg.com/2016-04-06/httpguide.html</id>
+    <published>2016-04-06T03:09:46.000Z</published>
+    <updated>2016-04-06T03:12:04.907Z</updated>
+    
+    <content type="html">&lt;p&gt;《HTTP权威指南》是公认比较经典的书了，刚好前段时间在做Web相关方面的工作，而且遇到了难题，所以便拿起了这本书来读，以求能对HTTP协议的原理与机制做更深的了解。&lt;/p&gt;
+&lt;p&gt;读到后面我才知道，原来这本书的英文版是2002年出版的，而中文版到2012年才出版，所以我一直以为它是12年出的，可惜并不是。如此一来导致书中很多内容会出现老旧和不再适用的情况。我选择略去不读这些内容。当然大部分内容还是现在通用的。&lt;/p&gt;
+&lt;p&gt;总体说来这本书是值得一看的，书中非常全面详细地叙述了HTTP的基本知识，资源、报文格式，以及中间结构如网关，代理，隧道等等，并且还涉及认证、安全，编码，Web机器人…基本你能想到的东西他都写了。但是全面必然会牺牲深度，以至于我看到很多内容都是我们计算机网络课上学过的，这本书并没有深入多少，所以有些内容就看的比较快了。而且700多页的书有200多页的附录，当手边的手册使也是极好的。&lt;/p&gt;
+&lt;p&gt;全书主要内容分为5个部分&lt;/p&gt;
+&lt;h4 id=&quot;第一部分&quot;&gt;&lt;a href=&quot;#第一部分&quot; class=&quot;headerlink&quot; title=&quot;第一部分&quot;&gt;&lt;/a&gt;第一部分&lt;/h4&gt;&lt;p&gt;讲述了Web基础和HTTP基础，包括什么是URI(URL+URN)，资源，事务，保温，连接，报文，响应等等等等。几乎是每一个Web相关工作人员都必看的。&lt;/p&gt;
+&lt;h4 id=&quot;第二部分&quot;&gt;&lt;a href=&quot;#第二部分&quot; class=&quot;headerlink&quot; title=&quot;第二部分&quot;&gt;&lt;/a&gt;第二部分&lt;/h4&gt;&lt;p&gt;HTTP结构，讲述了服务器，代理，缓存，网关，隧道，中继等内容，相对前面较深入，也是我觉得最有收获的一章，让我对HTTP的体系结构有更深入的了解。还讲述了Web机器人即网络爬虫的一些机制，第一次知道还有robot.txt这个东西来限制爬虫行为。。&lt;/p&gt;
+&lt;h4 id=&quot;第三部分&quot;&gt;&lt;a href=&quot;#第三部分&quot; class=&quot;headerlink&quot; title=&quot;第三部分&quot;&gt;&lt;/a&gt;第三部分&lt;/h4&gt;&lt;p&gt;识别，认证与安全，识别讲述cookies机制，认证讲述基本认证和摘要认证，安全方面介绍了HTTPS的机制。并且讲述了很多安全隐患以及如何避免的问题。Web安全相关人员必看，而且现在HTTPS正在成为主流，应该看下。&lt;/p&gt;
+&lt;h4 id=&quot;第四部分&quot;&gt;&lt;a href=&quot;#第四部分&quot; class=&quot;headerlink&quot; title=&quot;第四部分&quot;&gt;&lt;/a&gt;第四部分&lt;/h4&gt;&lt;p&gt;实体，编码和国际化，主要讲编码的问题，由于不涉及到这方面的开发类型的工作，就简单扫了一下。&lt;/p&gt;
+&lt;h4 id=&quot;第五部分&quot;&gt;&lt;a href=&quot;#第五部分&quot; class=&quot;headerlink&quot; title=&quot;第五部分&quot;&gt;&lt;/a&gt;第五部分&lt;/h4&gt;&lt;p&gt;Web主机托管和重定向可以看下，其余两章过于老旧，可略过。&lt;/p&gt;
+&lt;p&gt;基本就是这些，总体还是值得一看，看完能够对HTTP的整个运行体系有一个大概的了解，但是如果要达到深入理解的水平，还需要在实践中不断磨练。&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;《HTTP权威指南》是公认比较经典的书了，刚好前段时间在做Web相关方面的工作，而且遇到了难题，所以便拿起了这本书来读，以求能对HTTP协议的原理与机制做更深的了解。&lt;/p&gt;
+&lt;p&gt;读到后面我才知道，原来这本书的英文版是2002年出版的，而中文版到2012年才出版，所以我一
+    
+    </summary>
+    
+      <category term="读书笔记-技术类" scheme="http://whatbeg.com/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E6%8A%80%E6%9C%AF%E7%B1%BB/"/>
+    
+    
+      <category term="Web" scheme="http://whatbeg.com/tags/Web/"/>
+    
+  </entry>
   
   <entry>
     <title>我的NJU-CS考研路</title>
