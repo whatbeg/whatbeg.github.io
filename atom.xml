@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://whatbeg.com/"/>
-  <updated>2016-04-07T01:39:13.136Z</updated>
+  <updated>2016-04-07T15:39:53.897Z</updated>
   <id>http://whatbeg.com/</id>
   
   <author>
@@ -16,11 +16,65 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>快速学会Git基本操作</title>
+    <link href="http://whatbeg.com/2016/04/07/git.html"/>
+    <id>http://whatbeg.com/2016/04/07/git.html</id>
+    <published>2016-04-07T15:35:15.000Z</published>
+    <updated>2016-04-07T15:39:53.897Z</updated>
+    
+    <content type="html">&lt;h3 id=&quot;什么是Git&quot;&gt;&lt;a href=&quot;#什么是Git&quot; class=&quot;headerlink&quot; title=&quot;什么是Git?&quot;&gt;&lt;/a&gt;什么是Git?&lt;/h3&gt;&lt;p&gt;Git应该是现在最受欢迎的版本控制系统了，而且免费开源，可以直接连到github上进行合作开发，分布式的，安全性高。按我的理解，git就是帮你管理代码，你写好了它帮你添加为软件的一部分，你写错了它帮你退回来在写，代码逐渐地添加到软件中去，直到这个软件完成。&lt;/p&gt;
+&lt;h3 id=&quot;为什么要学习Git？&quot;&gt;&lt;a href=&quot;#为什么要学习Git？&quot; class=&quot;headerlink&quot; title=&quot;为什么要学习Git？&quot;&gt;&lt;/a&gt;为什么要学习Git？&lt;/h3&gt;&lt;p&gt;自从学习利用hexo部署静态博客以来，经常需要接触到Git Bash，虽然更新博客时用到的只是hexo g,hexo s,hexo d等指令，但是其中仍是依靠git来完成的。&lt;br&gt;可以说git的使用是一个开发人员必备的技能，因为现在大部分的项目都是以合作形式来开发的，所以学会用工具与他人合作至关重要。&lt;br&gt;所以今天中午去学习了下Git，发现学习基本的git操作其实很简单，尤其是当你有了一些版本库的基本知识之后。&lt;/p&gt;
+&lt;h3 id=&quot;一些收获&quot;&gt;&lt;a href=&quot;#一些收获&quot; class=&quot;headerlink&quot; title=&quot;一些收获&quot;&gt;&lt;/a&gt;一些收获&lt;/h3&gt;&lt;p&gt;下面我就git学习过程写下一些收获，一来总结，二来可以备忘。&lt;/p&gt;
+&lt;p&gt;Git安装就不说了，网上一搜大把。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;创建版本库&lt;/strong&gt;&lt;br&gt;先建立一个目录以便存放版本库以及代码等信息。可以直接新建文件夹或者在git bash中mkdir建立。&lt;br&gt;建立目录以后在文件夹中右键在此位置启动git bash，或者在git bash中用cd命令切换到此目录，输入git init，这样一个版本库就创建好了。&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ mkdir mygit&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$ cd mygit&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$ git init&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;这时目录中会生成一个.git文件夹（默认是隐藏的，Windows下可以修改查看让其显示，Linux下ls指令即可显示），此即所谓的版本库。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;分清几个概念&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;工作区： mygit文件夹（目录）&lt;/li&gt;
+&lt;li&gt;版本库： .git文件夹（目录）&lt;/li&gt;
+&lt;li&gt;暂存区： .git面的index文件&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;git往版本库添加文件是分两步的,暂存区起一个缓冲作用：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;1.git add命令将文件存入暂存区&lt;br&gt;2.git commit命令将暂存区中的&lt;strong&gt;所有&lt;/strong&gt;修改提交到版本库当前分支&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;所以下面就好办了：&lt;br&gt;&lt;strong&gt;添加文件到版本库以及提交到版本库&lt;/strong&gt;&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ git add readme.md            &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$ git commit -m &amp;quot;description&amp;quot;  #description是本次提交的说明&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;常用的git命令&lt;/strong&gt;&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ git status    #查看版本库当前状态，哪些文件改变了&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$ git diff readme.md  #查看readme.md文件的变化&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$ git log       #查看提交历史&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$ git reflog    #查看命令历史&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$ cat readme.md  #查看readme文件内容&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;版本回退&lt;/strong&gt;&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ git reset --hard HEAD^  #退回到上一版本，两个^表示退回到上上个版本&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$ git reset --hard [command-id] #直接退回到某一条命令，命令id可以在reflog中查看&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;管理和撤销修改，删除文件&lt;/strong&gt;&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ git diff HEAD -- readme.md  #查看版本库和工作区中readme.md文件的区别&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$ git checkout -- readme.md  #撤销readme.md文件在工作区（整个文件夹）的修改，即退回到最近一次git add 或 git commit之前的状态&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$ git reset HEAD readme.md  #撤销暂存区的修改，就是最近一次git add失效&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$ git rm readme.md  #删除一个文件，如果误删，只要版本库中有这个文件，那么可以checkout恢复&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;连接Github远程仓库&lt;/strong&gt;&lt;br&gt;如果没有本地与Github的SSH-key，那么需要生成一个，随便在哪打开git bash:&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ ssh-keygen -t rsa -C &amp;quot;youremail@example.com&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;然后一路回车即可，在系统盘找到.ssh文件夹（默认隐藏），复制id_rsa.pub(公钥)文件中的内容，到你的Github网站上的SSH-keys，随便取个名字，复制上去就行了。(id_rsa文件是密钥文件，不要泄露）&lt;br&gt;为了判断连接是否成功，可以输入：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;ssh -T git@github.com&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;如果是下面的反馈：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;The authenticity of host &amp;apos;github.com (207.97.227.239)&amp;apos; can&amp;apos;t be established.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;RSA key fingerprint is 16:27:ac:a5:76:28:2d:36:63:1b:56:4d:eb:df:a6:48.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Are you sure you want to continue connecting (yes/no)?&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;输入yes就好了。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;添加远程库，推送&amp;amp;克隆&lt;/strong&gt;&lt;br&gt;首先在Github上新建一个repository，然后在工作区git bash中输入：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ git remote add origin git@github.com:whatbeg/mygit.git&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;注意替换账户名和Repo名。&lt;br&gt;然后可以推送到远程库或者从远程库克隆：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ git push -u origin master   #第一次加-u，而后则不用加了，-u起到一个关联作用，显然关联一次就可以了&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$ git clone git@github.com:whatbeg/mygit.git&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;由于分支管理，标签管理等暂时还没用到，所以后面在写吧。&lt;/p&gt;
+&lt;p&gt;参考文章：&lt;br&gt;&lt;a href=&quot;http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;廖雪峰Git教程&lt;/a&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;什么是Git&quot;&gt;&lt;a href=&quot;#什么是Git&quot; class=&quot;headerlink&quot; title=&quot;什么是Git?&quot;&gt;&lt;/a&gt;什么是Git?&lt;/h3&gt;&lt;p&gt;Git应该是现在最受欢迎的版本控制系统了，而且免费开源，可以直接连到github上进行合作开发，分布式的
+    
+    </summary>
+    
+      <category term="计算机相关知识" scheme="http://whatbeg.com/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/"/>
+    
+    
+      <category term="CS" scheme="http://whatbeg.com/tags/CS/"/>
+    
+      <category term="Git" scheme="http://whatbeg.com/tags/Git/"/>
+    
+  </entry>
+  
+  <entry>
     <title>hexo+github搭建独立博客遇到的问题及处理几则</title>
     <link href="http://whatbeg.com/2016/04/07/hexofault.html"/>
     <id>http://whatbeg.com/2016/04/07/hexofault.html</id>
     <published>2016-04-07T01:21:30.000Z</published>
-    <updated>2016-04-07T01:39:13.136Z</updated>
+    <updated>2016-04-07T11:12:42.432Z</updated>
     
     <content type="html">&lt;p&gt;用hexo+github搭建个人博客时出现过一些错误，有一些已经忘记了，把记得的两个记录一下，以防以后系统重装后又要搭建时要到处找解决方法。&lt;/p&gt;
 &lt;h3 id=&quot;搭建工具&quot;&gt;&lt;a href=&quot;#搭建工具&quot; class=&quot;headerlink&quot; title=&quot;搭建工具&quot;&gt;&lt;/a&gt;搭建工具&lt;/h3&gt;&lt;ul&gt;
