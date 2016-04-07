@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://whatbeg.com/"/>
-  <updated>2016-04-06T03:18:27.079Z</updated>
+  <updated>2016-04-07T01:39:13.136Z</updated>
   <id>http://whatbeg.com/</id>
   
   <author>
@@ -16,9 +16,41 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>hexo+github搭建独立博客遇到的问题及处理几则</title>
+    <link href="http://whatbeg.com/2016/04/07/hexofault.html"/>
+    <id>http://whatbeg.com/2016/04/07/hexofault.html</id>
+    <published>2016-04-07T01:21:30.000Z</published>
+    <updated>2016-04-07T01:39:13.136Z</updated>
+    
+    <content type="html">&lt;p&gt;用hexo+github搭建个人博客时出现过一些错误，有一些已经忘记了，把记得的两个记录一下，以防以后系统重装后又要搭建时要到处找解决方法。&lt;/p&gt;
+&lt;h3 id=&quot;搭建工具&quot;&gt;&lt;a href=&quot;#搭建工具&quot; class=&quot;headerlink&quot; title=&quot;搭建工具&quot;&gt;&lt;/a&gt;搭建工具&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Windows 8.1 -64bit&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://nodejs.org/en/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;nodejs 5.9.0 -64bit&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://git-scm.com/download/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Git 2.8.0 -64bit&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;错误1-安装hexo时出现-‘operation-not-permitted’&quot;&gt;&lt;a href=&quot;#错误1-安装hexo时出现-‘operation-not-permitted’&quot; class=&quot;headerlink&quot; title=&quot;错误1: 安装hexo时出现 ‘operation not permitted’&quot;&gt;&lt;/a&gt;错误1: 安装hexo时出现 ‘operation not permitted’&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;http://7xsl28.com2.z0.glb.clouddn.com/2.png&quot; alt=&quot;图1&quot;&gt;&lt;br&gt;解决方法：&lt;br&gt;没有权限，可以在开始菜单找到cmd（命令行），右键以管理员身份运行，这时候就有root权限了，然后在cmd中转到你的hexo目录下(如D:\hexo），再运行npm install -g hexo即可&lt;/p&gt;
+&lt;h3 id=&quot;错误2-hexo-init时出现-‘ERROR-Local-hexo-not-found-in-’&quot;&gt;&lt;a href=&quot;#错误2-hexo-init时出现-‘ERROR-Local-hexo-not-found-in-’&quot; class=&quot;headerlink&quot; title=&quot;错误2: hexo init时出现 ‘ERROR Local hexo not found in ..’&quot;&gt;&lt;/a&gt;错误2: hexo init时出现 ‘ERROR Local hexo not found in ..’&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;http://7xsl28.com2.z0.glb.clouddn.com/4.png&quot; alt=&quot;图2&quot;&gt;&lt;br&gt;解决办法：&lt;br&gt;到这一步，其实说明hexo没有安装成功，办法就是再像上个错误那样，进入管理员cmd，再安装一下hexo即可，建议npm install也在cmd中做了。&lt;br&gt;出现的那些WARN 其实不用管它，是有一个包没有安装成功，因为不适合此操作系统，但其实不影响。&lt;/p&gt;
+&lt;p&gt;暂时只记得这么多了，以后再遇到问题再加上来。&lt;br&gt;hexo+github搭建独立博客具体教程参考:&lt;a href=&quot;http://tengj.top&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;tengj&lt;/a&gt;等&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;用hexo+github搭建个人博客时出现过一些错误，有一些已经忘记了，把记得的两个记录一下，以防以后系统重装后又要搭建时要到处找解决方法。&lt;/p&gt;
+&lt;h3 id=&quot;搭建工具&quot;&gt;&lt;a href=&quot;#搭建工具&quot; class=&quot;headerlink&quot; title=&quot;搭建工具&quot;&gt;
+    
+    </summary>
+    
+      <category term="错误解决" scheme="http://whatbeg.com/categories/%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3/"/>
+    
+    
+      <category term="Web" scheme="http://whatbeg.com/tags/Web/"/>
+    
+  </entry>
+  
+  <entry>
     <title>《HTTP权威指南》书评</title>
-    <link href="http://whatbeg.com/2016-04/06/httpguide.html"/>
-    <id>http://whatbeg.com/2016-04/06/httpguide.html</id>
+    <link href="http://whatbeg.com/2016/04/06/httpguide.html"/>
+    <id>http://whatbeg.com/2016/04/06/httpguide.html</id>
     <published>2016-04-06T03:09:46.000Z</published>
     <updated>2016-04-06T03:18:27.079Z</updated>
     
@@ -50,8 +82,8 @@
   
   <entry>
     <title>我的NJU-CS考研路</title>
-    <link href="http://whatbeg.com/2016-04/05/kaoyan.html"/>
-    <id>http://whatbeg.com/2016-04/05/kaoyan.html</id>
+    <link href="http://whatbeg.com/2016/04/05/kaoyan.html"/>
+    <id>http://whatbeg.com/2016/04/05/kaoyan.html</id>
     <published>2016-04-05T10:52:17.000Z</published>
     <updated>2016-04-05T11:03:11.720Z</updated>
     
@@ -90,8 +122,8 @@
   
   <entry>
     <title>毕业设计(阶段二)</title>
-    <link href="http://whatbeg.com/2016-04/05/graduatedesign.html"/>
-    <id>http://whatbeg.com/2016-04/05/graduatedesign.html</id>
+    <link href="http://whatbeg.com/2016/04/05/graduatedesign.html"/>
+    <id>http://whatbeg.com/2016/04/05/graduatedesign.html</id>
     <published>2016-04-05T10:52:00.000Z</published>
     <updated>2016-04-05T11:12:56.288Z</updated>
     
@@ -143,8 +175,8 @@
   
   <entry>
     <title>象牙塔里的2015</title>
-    <link href="http://whatbeg.com/2016-04/05/annualsummary2015.html"/>
-    <id>http://whatbeg.com/2016-04/05/annualsummary2015.html</id>
+    <link href="http://whatbeg.com/2016/04/05/annualsummary2015.html"/>
+    <id>http://whatbeg.com/2016/04/05/annualsummary2015.html</id>
     <published>2016-04-05T10:51:12.000Z</published>
     <updated>2016-04-05T11:11:09.057Z</updated>
     
@@ -221,8 +253,8 @@
   
   <entry>
     <title>我也来写2014年总结</title>
-    <link href="http://whatbeg.com/2016-04/05/annualsummary2014.html"/>
-    <id>http://whatbeg.com/2016-04/05/annualsummary2014.html</id>
+    <link href="http://whatbeg.com/2016/04/05/annualsummary2014.html"/>
+    <id>http://whatbeg.com/2016/04/05/annualsummary2014.html</id>
     <published>2016-04-05T10:50:56.000Z</published>
     <updated>2016-04-05T11:02:43.463Z</updated>
     
@@ -310,8 +342,8 @@ Web直接放弃了，后来就没碰过，现在HTML,CSS,JS都忘了好多。。
   
   <entry>
     <title>我的1314</title>
-    <link href="http://whatbeg.com/2016-04/05/annualsummary2013.html"/>
-    <id>http://whatbeg.com/2016-04/05/annualsummary2013.html</id>
+    <link href="http://whatbeg.com/2016/04/05/annualsummary2013.html"/>
+    <id>http://whatbeg.com/2016/04/05/annualsummary2013.html</id>
     <published>2016-04-05T10:45:27.000Z</published>
     <updated>2016-04-05T10:49:56.581Z</updated>
     
@@ -347,8 +379,8 @@ Web直接放弃了，后来就没碰过，现在HTML,CSS,JS都忘了好多。。
   
   <entry>
     <title>写在独立博客开创时</title>
-    <link href="http://whatbeg.com/2016-04/04/my-new-post.html"/>
-    <id>http://whatbeg.com/2016-04/04/my-new-post.html</id>
+    <link href="http://whatbeg.com/2016/04/04/my-new-post.html"/>
+    <id>http://whatbeg.com/2016/04/04/my-new-post.html</id>
     <published>2016-04-03T17:12:27.000Z</published>
     <updated>2016-04-04T11:26:24.082Z</updated>
     
