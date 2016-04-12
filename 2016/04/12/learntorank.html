@@ -4,29 +4,28 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>我的前大学书单 | Whatbeg&#39;s blog</title>
+    <title>谈谈排序学习 | Whatbeg&#39;s blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="Whatbeg">
     
 
     
-    <meta name="description" content="整理一下大学前两年读过的书单，现在发现书读了这么多，其实作用并不大，而且看看这些书名就知道好多书都是个坑！现在看来，我是浪费了多少时间啊，很多书照现在的我看来，看一眼标题就直接会扔掉的。但是反过来想想，或许是我读过很多烂书，于是现在才学会甄选上等书籍的缘故？总之，接下来读书，只有3种情况：
-
-1.专业领域有口皆碑的上等书籍。2.按需读书，需要了解什么方面的知识技能，就读某方面的高质量书籍。3.闲着">
+    <meta name="description" content="什么是排序学习？排序学习（Learn to Rank）是机器学习应用在排序上的一种方法。在排序学习中，我们的目标是预测出未知样本X的标号。在传统排序中，一般是通过自定义一个排序函数，用这个函数算出每条记录的序值，按序值进行排序。在搜索引擎中，给定一个查询q，搜索引擎返回一系列相关文档（一系列D的集合），而且肯定要按其相关度从大到小展示给用户，才能获得最佳的用户体验，即对(q,D)这样的项进行排序。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="我的前大学书单">
-<meta property="og:url" content="http://whatbeg.com/2016/04/08/booklist1.html">
+<meta property="og:title" content="谈谈排序学习">
+<meta property="og:url" content="http://whatbeg.com/2016/04/12/learntorank.html">
 <meta property="og:site_name" content="Whatbeg's blog">
-<meta property="og:description" content="整理一下大学前两年读过的书单，现在发现书读了这么多，其实作用并不大，而且看看这些书名就知道好多书都是个坑！现在看来，我是浪费了多少时间啊，很多书照现在的我看来，看一眼标题就直接会扔掉的。但是反过来想想，或许是我读过很多烂书，于是现在才学会甄选上等书籍的缘故？总之，接下来读书，只有3种情况：
-
-1.专业领域有口皆碑的上等书籍。2.按需读书，需要了解什么方面的知识技能，就读某方面的高质量书籍。3.闲着">
-<meta property="og:updated_time" content="2016-04-08T13:30:30.678Z">
+<meta property="og:description" content="什么是排序学习？排序学习（Learn to Rank）是机器学习应用在排序上的一种方法。在排序学习中，我们的目标是预测出未知样本X的标号。在传统排序中，一般是通过自定义一个排序函数，用这个函数算出每条记录的序值，按序值进行排序。在搜索引擎中，给定一个查询q，搜索引擎返回一系列相关文档（一系列D的集合），而且肯定要按其相关度从大到小展示给用户，才能获得最佳的用户体验，即对(q,D)这样的项进行排序。">
+<meta property="og:image" content="http://7xsl28.com2.z0.glb.clouddn.com/%E6%8E%92%E5%BA%8F%E5%AD%A6%E4%B9%A0%E5%8E%9F%E7%90%86.jpg">
+<meta property="og:image" content="http://7xsl28.com2.z0.glb.clouddn.com/listwise.jpg">
+<meta property="og:image" content="http://7xsl28.com2.z0.glb.clouddn.com/LTRframework.jpg">
+<meta property="og:image" content="http://7xsl28.com2.z0.glb.clouddn.com/LTRalgorithm.jpg">
+<meta property="og:updated_time" content="2016-04-12T07:56:56.834Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="我的前大学书单">
-<meta name="twitter:description" content="整理一下大学前两年读过的书单，现在发现书读了这么多，其实作用并不大，而且看看这些书名就知道好多书都是个坑！现在看来，我是浪费了多少时间啊，很多书照现在的我看来，看一眼标题就直接会扔掉的。但是反过来想想，或许是我读过很多烂书，于是现在才学会甄选上等书籍的缘故？总之，接下来读书，只有3种情况：
-
-1.专业领域有口皆碑的上等书籍。2.按需读书，需要了解什么方面的知识技能，就读某方面的高质量书籍。3.闲着">
+<meta name="twitter:title" content="谈谈排序学习">
+<meta name="twitter:description" content="什么是排序学习？排序学习（Learn to Rank）是机器学习应用在排序上的一种方法。在排序学习中，我们的目标是预测出未知样本X的标号。在传统排序中，一般是通过自定义一个排序函数，用这个函数算出每条记录的序值，按序值进行排序。在搜索引擎中，给定一个查询q，搜索引擎返回一系列相关文档（一系列D的集合），而且肯定要按其相关度从大到小展示给用户，才能获得最佳的用户体验，即对(q,D)这样的项进行排序。">
+<meta name="twitter:image" content="http://7xsl28.com2.z0.glb.clouddn.com/%E6%8E%92%E5%BA%8F%E5%AD%A6%E4%B9%A0%E5%8E%9F%E7%90%86.jpg">
 
     
     <link rel="alternative" href="/atom.xml" title="Whatbeg&#39;s blog" type="application/atom+xml">
@@ -90,14 +89,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2016/04/08/booklist1.html" title="我的前大学书单" itemprop="url">我的前大学书单</a>
+      <a href="/2016/04/12/learntorank.html" title="谈谈排序学习" itemprop="url">谈谈排序学习</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="Whatbeg" target="_blank" itemprop="author">Whatbeg</a>
 		
   <p class="article-time">
-    <time datetime="2016-04-08T13:20:10.000Z" itemprop="datePublished"> 发表于 2016-04-08</time>
+    <time datetime="2016-04-12T07:55:35.000Z" itemprop="datePublished"> 发表于 2016-04-12</time>
     
   </p>
 </header>
@@ -106,37 +105,23 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#2012年9月-2013年7月"><span class="toc-number">1.</span> <span class="toc-text">2012年9月-2013年7月</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2013年9月-2015年1月"><span class="toc-number">2.</span> <span class="toc-text">2013年9月-2015年1月</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#什么是排序学习？"><span class="toc-number">1.</span> <span class="toc-text">什么是排序学习？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#排序学习的三种方法"><span class="toc-number">2.</span> <span class="toc-text">排序学习的三种方法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Point-Wise-点方式"><span class="toc-number">2.1.</span> <span class="toc-text">Point-Wise　点方式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Pair-Wise-文档对方式"><span class="toc-number">2.2.</span> <span class="toc-text">Pair-Wise　文档对方式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#List-Wise-文档列表方式"><span class="toc-number">2.3.</span> <span class="toc-text">List-Wise 文档列表方式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#排序学习框架与三个方法的算法-（图摘自网络）"><span class="toc-number">2.4.</span> <span class="toc-text">排序学习框架与三个方法的算法 （图摘自网络）</span></a></li></ol></li></ol>
 		
 		</div>
 		
-		<p>整理一下大学前两年读过的书单，现在发现书读了这么多，其实作用并不大，而且看看这些书名就知道好多书都是个坑！现在看来，我是浪费了多少时间啊，很多书照现在的我看来，看一眼标题就直接会扔掉的。但是反过来想想，或许是我读过很多烂书，于是现在才学会甄选上等书籍的缘故？<br>总之，接下来读书，只有3种情况：</p>
-<blockquote>
-<p><strong>1.专业领域有口皆碑的上等书籍。</strong><br><strong>2.按需读书，需要了解什么方面的知识技能，就读某方面的高质量书籍。</strong><br><strong>3.闲着看看的小说或科普书或者经典文学作品。</strong></p>
-</blockquote>
-<p>下面就是2012年9月到2015年1月的书单，后面的就没有记录了，我觉得推荐的就会将其加粗显示。</p>
-<h2 id="2012年9月-2013年7月"><a href="#2012年9月-2013年7月" class="headerlink" title="2012年9月-2013年7月"></a>2012年9月-2013年7月</h2><p>●2012年9月（2）<br>1.《西方哲学心理学史》……车文博<br>2.<strong>《联想风云》…………凌志军</strong></p>
-<p>●2012年10月（3）<br>3.《计算机科学导论》<br>4.<strong>《飞鸟集》…………泰戈尔</strong><br>5.《吉檀迦利》……泰戈尔</p>
-<p>●2012年11月（4）<br>6.《苏格拉底最后的日子》……柏拉图<br>7.<strong>《黄金时代》……………………王小波</strong><br>8.《资本的灵魂》………………赵延忱<br>9.《巴菲特幕后的智囊团》……陈惠仁</p>
-<p>●2012年12月（6）<br>10.《说话的艺术》………………林语堂<br>11.《哈佛决策》……………………张雪松（译）<br>12.《时间管理》……………………肯·齐格勒<br>13.《向卡耐基学习演讲口才的技巧》……曾强<br>14.《即战力》…………………………大前研一<br>15.《把任何东西卖给任何人》……乔·吉纳徳</p>
-<p>●2013年1月（6）<br>16.《草根创业》……………………曹垣亮<br>17.《淘宝网新手开店日记》……小铁柱哥<br>18.《危机管理案例》………………朱瑞博  编<br>19.《一口气读懂经济学》……唐华山，冯怿莎编著<br>20.《搭讪圣经》……………………（台）郑匡宇<br>21.《新月集》…………………………泰戈尔</p>
-<p>●2013年2月（4）<br>22.《行走台湾》……………………伊乐<br>23.《看懂经济迷局》……………尚晓娟<br>24.《直销员口才与沟通训练》……博瑞森营销培训讲师组 编<br>25.《赚钱，从大学开始》…………王光宇（台湾）</p>
-<p>●2013年6月（2）<br>26.《图解心理学》………….（日）深堀元文<br>27.<strong>《致加西亚的信》…………阿尔伯特·哈博德</strong></p>
-<p>●2013年7月（3）<br>28.《爱默生散文精选》…………爱默生<br>29.<strong>《第一本尼采箴言漫画》……尼采</strong><br>30.《暗恋物语》……………………爱东吴</p>
-<h2 id="2013年9月-2015年1月"><a href="#2013年9月-2015年1月" class="headerlink" title="2013年9月-2015年1月"></a>2013年9月-2015年1月</h2><p>●2013年9月（5）<br>31.《偏要和陌生人说话》………..黄志坚（编著）<br>32.《为什么大家都在读超级好玩心理学》…….田浩<br>33.《我就是想要你成为幽默高手》………张源侠<br>34.《塔木德》…………………….西方经典，第二圣经<br>35.《魔鬼搭讪学》………………….魔鬼咨询师</p>
-<p>●2013年10月（8）<br>36.<strong>《沉思录》…………………………马可.奥勒留</strong><br>37.《如何在大学里脱颖而出》………卡尔.纽坡特<br>38.《德国历史》…………………………朱忠武，刘祺宝<br>39.《尼采自述》…………………………尼采<br>40.《乔布斯产品圣经》…………………史蒂夫.乔布斯<br>41.《因为痛，所以叫青春》……………金兰都<br>42.《孙子兵法》…………………………孙武<br>43.《图说天下·法国》…………………图说天下编委会</p>
-<p>●2013年11月（2）<br>44.《图说天下·英国》………………图说天下编委会<br>45.《乔布斯语录》……………………杨旭光编著</p>
-<p>●2013年12月（2）<br>46.《中西哲学小史》 …………冯友兰<br>47.<strong>《卓有成效的管理者》  ………彼得.德鲁克</strong></p>
-<p>●2014年1月 （6）<br>48.《给青年的十二封信》 ………朱光潜<br>49.《文章做法》 …………………夏丐尊<br>50.<strong>《说话的魅力》 ………… 刘墉</strong><br>51.《中国佛教文化常识》 ………商景桂<br>52.《清净的智慧》 ……………证严法师<br>53.《童蒙止观》</p>
-<p>●2014年2月（7）<br>54.<strong>《把话说到心窝里》 ………刘墉</strong><br>55.《大数据时代》 ………维克托.舍恩伯格<br>56.《你不可不知的人性》……刘墉<br>57.《慧律法雨》……………慧律法师<br>58.《心灵处方》 …………星云大师<br>59.《静思语》 ……………证严法师<br>60.《根除烦恼的秘诀》……周老师</p>
-<p>●2014年3月（2）<br>61.《内向所以成功》 ………榎本博明<br>62.《安静-内向性格的竞争力》 …苏珊.凯恩</p>
-<p>●2014年4月（1）<br>63.<strong>《尼采的心灵咒语》 ………尼采</strong></p>
-<p>●2014年6月（1）<br>64.《哈佛校长演讲辞-现实与梦想》 ………洛厄尔</p>
-<p>●2014年7月（6）<br>65.《了凡四训》 ………袁了凡<br>66.《朱子家训解析》<br>67.《颜氏家训名句》<br>68.《我是一只IT小小鸟》 ……胡江堂主编<br>69.《数论及应用》  ………陈宇主编<br>70.<strong>《明朝那些事儿第2部》 ……当年明月</strong> （这个系列都推荐）</p>
-<p>●2014年8月（3）<br>71.《明朝那些事儿第3部》 ……当年明月<br>72.《图说天下·德国》  ………图说天下<br>73.《人生为何不同》  …………叔本华</p>
-<p>●2014年10月（1）<br>74.<strong>《黄帝内经》</strong>  （博大精深）</p>
-<p>●2014年12月（4）<br>75.《数论及其应用》   ……周治国 主编<br>76.《一生要读的50首诗歌》<br>77.《人性需要揭穿》   ……葛拉西安<br>78.《美好的旅行》 </p>
-<p>●2015年1月（1）<br>79.《查拉图斯特拉如是说》     ……尼采</p>
+		<h3 id="什么是排序学习？"><a href="#什么是排序学习？" class="headerlink" title="什么是排序学习？"></a>什么是排序学习？</h3><p>排序学习（Learn to Rank）是机器学习应用在排序上的一种方法。在排序学习中，我们的目标是预测出未知样本X的标号。在传统排序中，一般是通过自定义一个排序函数，用这个函数算出每条记录的序值，按序值进行排序。在搜索引擎中，给定一个查询q，搜索引擎返回一系列相关文档（一系列D的集合），而且肯定要按其相关度从大到小展示给用户，才能获得最佳的用户体验，即对(q,D)这样的项进行排序。影响相关度的一般有TF（词频）,IDF（逆文档频率）等等。传统解决这类问题的方法有向量空间模型，布尔模型等，但是缺点是一旦参数很多，那么按照经验方法调参会非常复杂。于是人们就想到能不能用机器学习的方法来做排序？机器学习的方法主要有两种学习任务，如果我们想要预测的是连续值，那么称为“回归”（Regression）；如果想要预测离散值，那么称为“分类”（Classification）。如果可以把排序问题转化成分类或者回归问题，那么排序问题就可以迎刃而解。<br><img src="http://7xsl28.com2.z0.glb.clouddn.com/%E6%8E%92%E5%BA%8F%E5%AD%A6%E4%B9%A0%E5%8E%9F%E7%90%86.jpg" alt="图1 排序学习原理"></p>
+<h3 id="排序学习的三种方法"><a href="#排序学习的三种方法" class="headerlink" title="排序学习的三种方法"></a>排序学习的三种方法</h3><p>根据训练数据的不同，当前人们提出了三种排序学习的方法：</p>
+<ul>
+<li><strong>Point-Wise</strong></li>
+<li><strong>Pair-Wise</strong></li>
+<li><strong>List-Wise</strong></li>
+</ul>
+<p>下面逐一介绍这三种方法：</p>
+<h4 id="Point-Wise-点方式"><a href="#Point-Wise-点方式" class="headerlink" title="Point-Wise　点方式"></a>Point-Wise　点方式</h4><p>将排序问题转化为多分类问题或者回归问题。考虑单一文档作为训练数据，不考虑文档间的关系。以多分类问题来说，即对于查询q,文档集D={d1,d2,…,dn}，可以形成(q,di)这样的训练样例n个，他们的相关度一般为5级：Perfect（完全相关），Excellent（非常相关），Good（很相关），Fair（一般），Bad（不相关）【在二分类问题就直接分为相关和不相关】，然后训练出分类模型，对未知的样本分类到这5类中的一类。<br>这种模型对相关度进行了绝对假设，即只要(q,di),(q,dj)分类在同一类，那么就无法比较他们谁更加相关了，分类效果较差，且与实际不相符。一般只需预测出标号，而非文档的具体分数。但是其模型简单，训练快。</p>
+<h4 id="Pair-Wise-文档对方式"><a href="#Pair-Wise-文档对方式" class="headerlink" title="Pair-Wise　文档对方式"></a>Pair-Wise　文档对方式</h4><p>对于查询q和查询对应的文档集D={d1,d2,…,dn}，将每两个文档之间的相关度比较关系作为训练数据，最后训练出一个模型，使之能够判断任意两个文档之间相关度的大小关系，比如doc1&gt;doc2,doc2&lt; doc3,doc3&lt; doc1，从而就可以对一组未知序的数据进行排序。<br>有两个问题：<br>1.只考虑文档间相关度大小关系，而没有考虑文档具体排序位置，在搜索引擎中，绝大部分查询用户只会看到第一页或者前面几页就可以了，那么肯定排在前面的文档排错的损失更大。针对这种情况，可以引入代价敏感因素，增加排在前面的文档的相关权重。<br>2.如果不同查询对应的相关文档数量差异很大的话，则不好判断准确率。如查询Q1对应100个文档对，判断正确99个，正确率99%，但另一个查询对应10个，判断正确1个，正确率10%，总共判断正确率=100/110，但是从查询角度，两个查询平均起来只有(10+99)%/2 = 54.5%。</p>
+<h4 id="List-Wise-文档列表方式"><a href="#List-Wise-文档列表方式" class="headerlink" title="List-Wise 文档列表方式"></a>List-Wise 文档列表方式</h4><p><img src="http://7xsl28.com2.z0.glb.clouddn.com/listwise.jpg" alt="图2 List-Wise方式"><br>如图，以三个文档为例，先对给定的文档A,B,C人工打分，然后训练的目的就是使模型的评价结果更加贴近人工打分。对每个文档打分以后就得到3个文档的排列共6中排列的概率（或者分数）。我们给出一系列的人工打分构成训练集，训练评分函数。如何判断哪个更加精确呢？可以通过计算KL距离来计算概率分布之间的距离，当然还有其它方法也可以。最后要训练出一个距离跟我们人工打分最相似的评分函数。<br>经验证明这种方式比上述两种方法都更加准确，但是在实际应用中有很多问题，比如需要人工一个一个标注数据费时费力，因为每个文档都要打一次分，还得打很多组文档。而且复杂度太高，n篇文档的全排列有n!种，要把他们每种情况的概率都算出来需要巨大的计算量。所以这个方法用的还不多</p>
+<h4 id="排序学习框架与三个方法的算法-（图摘自网络）"><a href="#排序学习框架与三个方法的算法-（图摘自网络）" class="headerlink" title="排序学习框架与三个方法的算法 （图摘自网络）"></a>排序学习框架与三个方法的算法 （图摘自网络）</h4><p><img src="http://7xsl28.com2.z0.glb.clouddn.com/LTRframework.jpg" alt="图片3 排序学习框架"></p>
+<p><img src="http://7xsl28.com2.z0.glb.clouddn.com/LTRalgorithm.jpg" alt="图片4 排序学习算法"></p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -144,13 +129,13 @@
 
 <div class="article-categories">
   <span></span>
-  <a class="article-category-link" href="/categories/成长之路/">成长之路</a>
+  <a class="article-category-link" href="/categories/机器学习/">机器学习</a>
 </div>
 
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/读书/">读书</a>
+  <span></span> <a href="/tags/机器学习/">机器学习</a>
   </div>
 
 </div>
@@ -194,19 +179,11 @@
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2016/04/12/learntorank.html" title="谈谈排序学习">
-  <strong>上一篇：</strong><br/>
-  <span>
-  谈谈排序学习</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/2016/04/07/git.html"  title="快速学会Git基本操作">
+<a href="/2016/04/08/booklist1.html"  title="我的前大学书单">
  <strong>下一篇：</strong><br/> 
- <span>快速学会Git基本操作
+ <span>我的前大学书单
 </span>
 </a>
 </div>
@@ -215,7 +192,7 @@
 
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="2016/04/08/booklist1.html" data-title="我的前大学书单" data-url="http://whatbeg.com/2016/04/08/booklist1.html"></div>
+	<div class="ds-thread" data-thread-key="2016/04/12/learntorank.html" data-title="谈谈排序学习" data-url="http://whatbeg.com/2016/04/12/learntorank.html"></div>
 </section>
 
 
@@ -225,7 +202,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#2012年9月-2013年7月"><span class="toc-number">1.</span> <span class="toc-text">2012年9月-2013年7月</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2013年9月-2015年1月"><span class="toc-number">2.</span> <span class="toc-text">2013年9月-2015年1月</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#什么是排序学习？"><span class="toc-number">1.</span> <span class="toc-text">什么是排序学习？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#排序学习的三种方法"><span class="toc-number">2.</span> <span class="toc-text">排序学习的三种方法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Point-Wise-点方式"><span class="toc-number">2.1.</span> <span class="toc-text">Point-Wise　点方式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Pair-Wise-文档对方式"><span class="toc-number">2.2.</span> <span class="toc-text">Pair-Wise　文档对方式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#List-Wise-文档列表方式"><span class="toc-number">2.3.</span> <span class="toc-text">List-Wise 文档列表方式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#排序学习框架与三个方法的算法-（图摘自网络）"><span class="toc-number">2.4.</span> <span class="toc-text">排序学习框架与三个方法的算法 （图摘自网络）</span></a></li></ol></li></ol>
  
   </div>
 
