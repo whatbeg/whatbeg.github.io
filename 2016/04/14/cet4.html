@@ -1,0 +1,596 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>【Python数据分析】四级成绩分布 -matplotlib,xlrd模块使用 | Whatbeg&#39;s blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="Whatbeg">
+    
+
+    
+    <meta name="description" content="最近获得了一些四级成绩数据，大概500多个，于是突发奇想是否能够看看这些成绩数据是否满足所谓的正态分布呢？说干就干，于是有了这篇文章。文章顺带介绍了xlrd模块的一些用法和matplotlib画自定义数据的条形图和随机的条形图的一些方法，并且提供了一些相关链接，可作为学习matplotlib和numpy的资源，希望对读者也有帮助。
+工具
+Python 3.5
+xlrd模块
+numpy模块及一些依赖">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【Python数据分析】四级成绩分布 -matplotlib,xlrd模块使用">
+<meta property="og:url" content="http://whatbeg.com/2016/04/14/cet4.html">
+<meta property="og:site_name" content="Whatbeg's blog">
+<meta property="og:description" content="最近获得了一些四级成绩数据，大概500多个，于是突发奇想是否能够看看这些成绩数据是否满足所谓的正态分布呢？说干就干，于是有了这篇文章。文章顺带介绍了xlrd模块的一些用法和matplotlib画自定义数据的条形图和随机的条形图的一些方法，并且提供了一些相关链接，可作为学习matplotlib和numpy的资源，希望对读者也有帮助。
+工具
+Python 3.5
+xlrd模块
+numpy模块及一些依赖">
+<meta property="og:image" content="http://7xsl28.com2.z0.glb.clouddn.com/cet4-1.png">
+<meta property="og:image" content="http://7xsl28.com2.z0.glb.clouddn.com/cet4-2.png">
+<meta property="og:updated_time" content="2016-04-14T03:23:05.715Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="【Python数据分析】四级成绩分布 -matplotlib,xlrd模块使用">
+<meta name="twitter:description" content="最近获得了一些四级成绩数据，大概500多个，于是突发奇想是否能够看看这些成绩数据是否满足所谓的正态分布呢？说干就干，于是有了这篇文章。文章顺带介绍了xlrd模块的一些用法和matplotlib画自定义数据的条形图和随机的条形图的一些方法，并且提供了一些相关链接，可作为学习matplotlib和numpy的资源，希望对读者也有帮助。
+工具
+Python 3.5
+xlrd模块
+numpy模块及一些依赖">
+<meta name="twitter:image" content="http://7xsl28.com2.z0.glb.clouddn.com/cet4-1.png">
+
+    
+    <link rel="alternative" href="/atom.xml" title="Whatbeg&#39;s blog" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/w.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/scene.jpg" alt="Whatbeg&#39;s blog" title="Whatbeg&#39;s blog"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Whatbeg&#39;s blog">Whatbeg&#39;s blog</a></h1>
+				<h2 class="blog-motto">路漫漫其修远兮，仍将上下而求索</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">首页(Home)</a></li>
+					
+						<li><a href="/archives">归档(Archives)</a></li>
+					
+						<li><a href="/tags">标签(Tags)</a></li>
+					
+						<li><a href="/categories">分类(Categories)</a></li>
+					
+						<li><a href="/about">简介(About)</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:whatbeg.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/04/14/cet4.html" title="【Python数据分析】四级成绩分布 -matplotlib,xlrd模块使用" itemprop="url">【Python数据分析】四级成绩分布 -matplotlib,xlrd模块使用</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Whatbeg" target="_blank" itemprop="author">Whatbeg</a>
+		
+  <p class="article-time">
+    <time datetime="2016-04-14T03:20:49.000Z" itemprop="datePublished"> 发表于 2016-04-14</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#工具"><span class="toc-number">1.</span> <span class="toc-text">工具</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#xlrd基本用法"><span class="toc-number">2.</span> <span class="toc-text">xlrd基本用法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1、导入模块"><span class="toc-number">2.0.1.</span> <span class="toc-text">1、导入模块</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2、打开Excel文件读取数据"><span class="toc-number">2.0.2.</span> <span class="toc-text">2、打开Excel文件读取数据</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3、使用技巧"><span class="toc-number">2.0.3.</span> <span class="toc-text">3、使用技巧</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#画折线图"><span class="toc-number">3.</span> <span class="toc-text">画折线图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#画直方图并与正态分布直方图对比"><span class="toc-number">4.</span> <span class="toc-text">画直方图并与正态分布直方图对比</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#绘制直方图的一些参数解释"><span class="toc-number">5.</span> <span class="toc-text">绘制直方图的一些参数解释</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#一些链接"><span class="toc-number">6.</span> <span class="toc-text">一些链接</span></a></li></ol>
+		
+		</div>
+		
+		<p>最近获得了一些四级成绩数据，大概500多个，于是突发奇想是否能够看看这些成绩数据是否满足所谓的正态分布呢？说干就干，于是有了这篇文章。<br>文章顺带介绍了xlrd模块的一些用法和matplotlib画自定义数据的条形图和随机的条形图的一些方法，并且提供了一些相关链接，可作为学习matplotlib和numpy的资源，希望对读者也有帮助。</p>
+<h2 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h2><ul>
+<li>Python 3.5</li>
+<li>xlrd模块</li>
+<li>numpy模块及一些依赖模块（安装请自行查询方法，绝大部分pip就可搞定）</li>
+<li>matplotlib绘图模块</li>
+</ul>
+<h2 id="xlrd基本用法"><a href="#xlrd基本用法" class="headerlink" title="xlrd基本用法"></a>xlrd基本用法</h2><h4 id="1、导入模块"><a href="#1、导入模块" class="headerlink" title="1、导入模块"></a>1、导入模块</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> xlrd</span><br></pre></td></tr></table></figure>
+<h4 id="2、打开Excel文件读取数据"><a href="#2、打开Excel文件读取数据" class="headerlink" title="2、打开Excel文件读取数据"></a>2、打开Excel文件读取数据</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data = xlrd.open_workbook(<span class="string">'excelFile.xls'</span>)</span><br></pre></td></tr></table></figure>
+<h4 id="3、使用技巧"><a href="#3、使用技巧" class="headerlink" title="3、使用技巧"></a>3、使用技巧</h4><ul>
+<li><p>获取一个工作表</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">table = data.sheets()[<span class="number">0</span>]             <span class="comment">#通过索引顺序获取</span></span><br><span class="line">table = data.sheet_by_index(<span class="number">0</span>)       <span class="comment">#通过索引顺序获取</span></span><br><span class="line">table = data.sheet_by_name(<span class="string">u'Sheet1'</span>)<span class="comment">#通过名称获取</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>获取整行和整列的值（数组）</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">table.row_values(i)</span><br><span class="line">table.col_values(i)</span><br><span class="line">``` </span><br><span class="line">* 获取行数和列数</span><br><span class="line">```python</span><br><span class="line">nrows = table.nrows</span><br><span class="line">ncols = table.ncols</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>循环行列表数据</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(nrows ):</span><br><span class="line">    <span class="keyword">print</span> table.row_values(i)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>单元格</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cell_A1 = table.cell(<span class="number">0</span>,<span class="number">0</span>).value</span><br><span class="line">cell_C4 = table.cell(<span class="number">2</span>,<span class="number">3</span>).value</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用行列索引</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cell_A1 = table.row(<span class="number">0</span>)[<span class="number">0</span>].value</span><br><span class="line">cell_A2 = table.col(<span class="number">1</span>)[<span class="number">0</span>].value</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>简单的写入</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">row = <span class="number">0</span></span><br><span class="line">col = <span class="number">0</span></span><br><span class="line"> <span class="comment">#类型 0 empty,1 string, 2 number, 3 date, 4 boolean, 5 error</span></span><br><span class="line">ctype = <span class="number">1</span> value = <span class="string">'单元格的值'</span></span><br><span class="line">xf = <span class="number">0</span> <span class="comment"># 扩展的格式化</span></span><br><span class="line">table.put_cell(row, col, ctype, value, xf)</span><br><span class="line">table.cell(<span class="number">0</span>,<span class="number">0</span>)  <span class="comment">#单元格的值'</span></span><br><span class="line">table.cell(<span class="number">0</span>,<span class="number">0</span>).value <span class="comment">#单元格的值'</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="画折线图"><a href="#画折线图" class="headerlink" title="画折线图"></a>画折线图</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> xlrd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">data = xlrd.open_workbook(<span class="string">'D:\\Python Workspace\\Data\\cet4.xls'</span>)</span><br><span class="line"></span><br><span class="line">table = data.sheets()[<span class="number">0</span>]   <span class="comment">#sheet 0</span></span><br><span class="line"></span><br><span class="line">col5 = table.col_values(<span class="number">5</span>)[<span class="number">1</span>:]   <span class="comment">#取第5列的成绩，并去掉列属性名称</span></span><br><span class="line"></span><br><span class="line">count = [<span class="number">0</span> <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>,<span class="number">650</span>)]  <span class="comment">#初始化count</span></span><br><span class="line">x = [i <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>,<span class="number">650</span>)]</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> col5:</span><br><span class="line">    num = int(i)</span><br><span class="line">    count[num] += <span class="number">1</span>            <span class="comment">#统计每个人数的人数</span></span><br><span class="line"></span><br><span class="line">plt.xlabel(<span class="string">'Score'</span>)</span><br><span class="line">plt.ylabel(<span class="string">'Number of people'</span>)</span><br><span class="line">plt.title(<span class="string">'Distribution of CET-4 Scores'</span>)</span><br><span class="line">plt.ylim(<span class="number">0</span>,<span class="number">8</span>)</span><br><span class="line">plt.plot([i <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">250</span>,<span class="number">650</span>) <span class="keyword">if</span> count[i] != <span class="number">0</span>],[i <span class="keyword">for</span> i <span class="keyword">in</span> count[<span class="number">250</span>:] <span class="keyword">if</span> i != <span class="number">0</span>],linewidth=<span class="number">1</span>)  <span class="comment">#画出折线图</span></span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p><img src="http://7xsl28.com2.z0.glb.clouddn.com/cet4-1.png" alt="图1"></p>
+<h2 id="画直方图并与正态分布直方图对比"><a href="#画直方图并与正态分布直方图对比" class="headerlink" title="画直方图并与正态分布直方图对比"></a>画直方图并与正态分布直方图对比</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> xlrd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> math <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">import</span> pylab <span class="keyword">as</span> pl</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">data = xlrd.open_workbook(<span class="string">'D:\\Python Workspace\\Data\\cet4.xls'</span>)</span><br><span class="line"></span><br><span class="line">table = data.sheets()[<span class="number">0</span>]   <span class="comment">#sheet 0</span></span><br><span class="line"></span><br><span class="line">col5 = table.col_values(<span class="number">5</span>)[<span class="number">1</span>:]</span><br><span class="line"></span><br><span class="line">ha = [int(i) <span class="keyword">for</span> i <span class="keyword">in</span> col5]     <span class="comment">#成绩数据</span></span><br><span class="line">mu = np.mean(ha)      <span class="comment">#平均值</span></span><br><span class="line">sigma = np.std(ha)    <span class="comment">#标准差</span></span><br><span class="line">data = np.random.normal(mu,sigma,<span class="number">1000</span>)  <span class="comment">#生成正态分布随机数据</span></span><br><span class="line"></span><br><span class="line">x = np.linspace(<span class="number">0</span>,<span class="number">700</span>,<span class="number">1000</span>)</span><br><span class="line">y = (<span class="number">1.</span> / sqrt(<span class="number">2</span> * np.pi) / sigma)*np.exp( -((x-mu)**<span class="number">2</span>/(<span class="number">2</span>*sigma**<span class="number">2</span>)) )</span><br><span class="line"></span><br><span class="line">plt.hist(data,bins=<span class="number">100</span>,facecolor=<span class="string">'g'</span>,alpha=<span class="number">0.44</span>)</span><br><span class="line">plt.hist(ha,bins=<span class="number">70</span>,facecolor=<span class="string">'r'</span>,histtype=<span class="string">'stepfilled'</span>)</span><br><span class="line">plt.plot(x,y,color=<span class="string">'b'</span>)   <span class="comment">#正态分布曲线</span></span><br><span class="line"></span><br><span class="line">plt.xlabel(<span class="string">'Score'</span>)</span><br><span class="line">plt.ylabel(<span class="string">'Number of people'</span>)</span><br><span class="line">plt.title(<span class="string">'Distribution of CET-4 Scores'</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p><img src="http://7xsl28.com2.z0.glb.clouddn.com/cet4-2.png" alt="图2"><br>且可求得数据的均值和标准差分别为：476.743785851和104.816562585<br>由图可见，绿色条形图是$\mu$=476.743785851，$\sigma$=104.816562585的正态分布条形图，而红色是四级成绩数据的分布图，虽然由于数据较少(500多个数据），所以拟合较差，但是可以看出成绩数据还是基本满足正态分布的。<br>不知道为啥，正态曲线没有画出来，单独画正态曲线是可以画出来的，有待研究。</p>
+<h2 id="绘制直方图的一些参数解释"><a href="#绘制直方图的一些参数解释" class="headerlink" title="绘制直方图的一些参数解释"></a>绘制直方图的一些参数解释</h2><p>绘图都可以调用matplotlib.pyplot库来进行，其中的hist函数可以直接绘制直方图。</p>
+<p>调用方式：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">n, bins, patches = plt.hist(arr, bins=10, normed=0, facecolor=&apos;black&apos;, edgecolor=&apos;black&apos;,alpha=1，histtype=&apos;bar&apos;)</span><br></pre></td></tr></table></figure></p>
+<p>hist的参数非常多，但常用的就这六个，只有第一个是必须的，后面四个可选</p>
+<p>arr: 需要计算直方图的一维数组</p>
+<p>bins: 直方图的柱数，可选项，默认为10</p>
+<p>normed: 是否将得到的直方图向量归一化。默认为0</p>
+<p>facecolor: 直方图颜色</p>
+<p>edgecolor: 直方图边框颜色</p>
+<p>alpha: 透明度</p>
+<p>histtype: 直方图类型，‘bar’, ‘barstacked’, ‘step’, ‘stepfilled’</p>
+<p>返回值 ：</p>
+<p>n: 直方图向量，是否归一化由参数normed设定</p>
+<p>bins: 返回各个bin的区间范围</p>
+<p>patches: 返回每个bin里面包含的数据，是一个list</p>
+<p>摘自<a href="http://www.cnblogs.com/denny402/p/5124833.html" target="_blank" rel="external">这里</a> from denny</p>
+<h2 id="一些链接"><a href="#一些链接" class="headerlink" title="一些链接"></a>一些链接</h2><p><a href="http://matplotlib.org/1.5.1/index.html" target="_blank" rel="external">matplotlib</a><br><a href="http://matplotlib.org/gallery.html" target="_blank" rel="external">gallary</a><br><a href="http://old.sebug.net/paper/books/scipydoc/index.html" target="_blank" rel="external">用python做科学计算</a><br><a href="https://secure.simplistix.co.uk/svn/xlrd/trunk/xlrd/doc/xlrd.html?p=4966" target="_blank" rel="external">xlrd文档</a><br><a href="http://m.oschina.net/blog/352125" target="_blank" rel="external">numpy的一些方法</a></p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/Python/">Python</a>►<a class="article-category-link" href="/categories/Python/数据挖掘-可视化与分析/">数据挖掘&可视化与分析</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/Python/">Python</a><a href="/tags/数据分析/">数据分析</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	<div class="share-jiathis">
+	  
+<div class="jiathis_style_24x24">
+	<a class="jiathis_button_tsina"></a>
+	<a class="jiathis_button_weixin"></a>
+	<a class="jiathis_button_tqq"></a>
+	<a class="jiathis_button_qzone"></a>
+	<a class="jiathis_button_douban"></a>
+	<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+    var jiathis_config={
+    data_track_clickback:true,
+    sm:"copy,renren,cqq",
+    pic:"",
+    summary:"",
+     ralateuid:{"tsina":"husuche## e.g. 2176287895 Your weibo id,It will be used in share button."},hideMore:false}
+    
+  </script> 
+<script type="text/javascript" src="//v3.jiathis.com/code/jia.js?uid=2094149
+2094149" charset="utf-8"></script>      
+
+	 </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/2016/04/12/prisonbreak.html"  title="看《越狱》">
+ <strong>下一篇：</strong><br/> 
+ <span>看《越狱》
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section id="comments" class="comment">
+	<div class="ds-thread" data-thread-key="2016/04/14/cet4.html" data-title="【Python数据分析】四级成绩分布 -matplotlib,xlrd模块使用" data-url="http://whatbeg.com/2016/04/14/cet4.html"></div>
+</section>
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#工具"><span class="toc-number">1.</span> <span class="toc-text">工具</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#xlrd基本用法"><span class="toc-number">2.</span> <span class="toc-text">xlrd基本用法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1、导入模块"><span class="toc-number">2.0.1.</span> <span class="toc-text">1、导入模块</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2、打开Excel文件读取数据"><span class="toc-number">2.0.2.</span> <span class="toc-text">2、打开Excel文件读取数据</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3、使用技巧"><span class="toc-number">2.0.3.</span> <span class="toc-text">3、使用技巧</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#画折线图"><span class="toc-number">3.</span> <span class="toc-text">画折线图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#画直方图并与正态分布直方图对比"><span class="toc-number">4.</span> <span class="toc-text">画直方图并与正态分布直方图对比</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#绘制直方图的一些参数解释"><span class="toc-number">5.</span> <span class="toc-text">绘制直方图的一些参数解释</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#一些链接"><span class="toc-number">6.</span> <span class="toc-text">一些链接</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/Python/" title="Python">Python<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/数据挖掘-可视化与分析/Python/" title="Python">Python<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/成长之路/" title="成长之路">成长之路<sup>6</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Python/数据挖掘-可视化与分析/" title="数据挖掘&amp;可视化与分析">数据挖掘&amp;可视化与分析<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/数据挖掘-可视化与分析/" title="数据挖掘&amp;可视化与分析">数据挖掘&amp;可视化与分析<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/机器学习/" title="机器学习">机器学习<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/计算机相关知识/" title="计算机相关知识">计算机相关知识<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/读书笔记-技术类/" title="读书笔记-技术类">读书笔记-技术类<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/错误解决/" title="错误解决">错误解决<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/随笔/" title="随笔">随笔<sup>1</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+  <div class="archiveslist">
+    <p class="asidetitle"><a href="/archives">归档</a></p>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">13</span></li></ul>
+  </div>
+
+
+  
+  <div class="tagcloudlist">
+    <p class="asidetitle">标签云</p>
+    <div class="tagcloudlist clearfix">
+       <a href="/tags/CS/" style="font-size: 20px;">CS</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/Summary/" style="font-size: 20px;">Summary</a> <a href="/tags/Web/" style="font-size: 15px;">Web</a> <a href="/tags/数据分析/" style="font-size: 10px;">数据分析</a> <a href="/tags/机器学习/" style="font-size: 10px;">机器学习</a> <a href="/tags/看剧/" style="font-size: 10px;">看剧</a> <a href="/tags/读书/" style="font-size: 10px;">读书</a> <a href="/tags/随笔/" style="font-size: 15px;">随笔</a>
+    </div>
+  </div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="http://www.cnblogs.com/whatbeg/" target="_blank" title="我的博客园">我的博客园</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.matrix67.com/blog/" target="_blank" title="Matrix67">Matrix67</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.liaoxuefeng.com/" target="_blank" title="廖雪峰">廖雪峰</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://zh.lucida.me/" target="_blank" title="Lucida">Lucida</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+  <div class="weiboshow">
+  <p class="asidetitle">新浪微博</p>
+    <iframe width="220" height="450" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=220&height=450&fansRow=1&ptype=1&speed=0&skin=7&isTitle=1&noborder=1&isWeibo=1&isFans=0&uid=2669063224&verifier=4f45c1f5&dpc=1"></iframe>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello, I am Chiou Hu. <br/>
+			Wish we can improve together!</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/husuche" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		
+		
+		
+		<a href="https://www.facebook.com/whatbeg" target="_blank" class="icon-facebook" title="facebook"></a>
+		
+		
+		
+		
+		
+		
+		<a href="mailto:572241670@qq.com" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2016 
+		
+		<a href="/about" target="_blank" title="Whatbeg">Whatbeg</a>
+		
+		
+		</p>
+</div>
+<span class="post-count">Total words: 23.8k</span></footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    $('#toc.toc-aside').css('display', 'block').addClass('fadeIn');  //侧边栏显示文章目录
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+        getSize();
+        if (myWidth >= 1024) {
+          c.click();
+        }
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"whatbeg"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1258390595'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s95.cnzz.com/z_stat.php%3Fid%3D1258390595%26online%3D1%26show%3Dline' type='text/javascript'%3E%3C/script%3E"));</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    bp.src = '//push.zhanzhang.baidu.com/push.js';
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+  </body>
+</html>
+
+
