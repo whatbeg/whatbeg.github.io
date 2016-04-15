@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://whatbeg.com/"/>
-  <updated>2016-04-14T07:39:35.474Z</updated>
+  <updated>2016-04-15T13:57:11.849Z</updated>
   <id>http://whatbeg.com/</id>
   
   <author>
@@ -16,11 +16,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>【Python数据分析】Python模拟登录(二) 加密与重放方式登录</title>
+    <title>【Python模拟登录】(二) 加密与重放方式登录 -以模拟登录博客园为例</title>
     <link href="http://whatbeg.com/2016/04/14/logincnblogs.html"/>
     <id>http://whatbeg.com/2016/04/14/logincnblogs.html</id>
     <published>2016-04-14T07:37:53.000Z</published>
-    <updated>2016-04-14T07:39:35.474Z</updated>
+    <updated>2016-04-15T13:57:11.849Z</updated>
     
     <content type="html">&lt;p&gt;Python模拟登录第一弹见：&lt;a href=&quot;http://www.cnblogs.com/whatbeg/p/5320666.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;【Python数据分析】Python模拟登录(一) requests.Session应用&lt;/a&gt;&lt;br&gt;上次的登录是最基本的，全部是明文，而且在浏览器中就可以看到POST的数据。接下来我们来个稍微难一点的–模拟登录博客园(&lt;a href=&quot;http://www.cnblogs.com&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.cnblogs.com&lt;/a&gt;)&lt;/p&gt;
 &lt;h4 id=&quot;登录特点&quot;&gt;&lt;a href=&quot;#登录特点&quot; class=&quot;headerlink&quot; title=&quot;登录特点&quot;&gt;&lt;/a&gt;登录特点&lt;/h4&gt;&lt;blockquote&gt;
