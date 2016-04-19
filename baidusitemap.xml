@@ -4,13 +4,15 @@
 
     
   <url>
-    <loc>http://whatbeg.com/2016/04/12/learntorank.html</loc>
-    <lastmod>2016-04-19T13:59:19.417Z</lastmod>
+    <loc>http://whatbeg.com/2016/04/19/knn1.html</loc>
+    <lastmod>2016-04-19T14:02:40.439Z</lastmod>
     <data>
         <display>
-        <title>浅谈排序学习</title>
-        <pubTime>2016-04-12T07:55:35.000Z</pubTime>
+        <title>kNN分类器在西瓜数据集3.0$\alpha$上的结果</title>
+        <pubTime>2016-04-19T12:45:57.000Z</pubTime>
         
+        <tag>Python</tag>
+         
         <tag>机器学习</tag>
          
          
@@ -27,15 +29,13 @@
 
     
   <url>
-    <loc>http://whatbeg.com/2016/04/19/knn1.html</loc>
-    <lastmod>2016-04-19T13:55:05.772Z</lastmod>
+    <loc>http://whatbeg.com/2016/04/12/learntorank.html</loc>
+    <lastmod>2016-04-19T14:02:28.480Z</lastmod>
     <data>
         <display>
-        <title>kNN分类器在西瓜数据集3.0$\alpha$上的结果</title>
-        <pubTime>2016-04-19T12:45:57.000Z</pubTime>
+        <title>浅谈排序学习</title>
+        <pubTime>2016-04-12T07:55:35.000Z</pubTime>
         
-        <tag>Python</tag>
-         
         <tag>机器学习</tag>
          
          
