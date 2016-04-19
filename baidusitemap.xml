@@ -4,28 +4,8 @@
 
     
   <url>
-    <loc>http://whatbeg.com/2016/04/12/learntorank.html</loc>
-    <lastmod>2016-04-19T14:09:59.580Z</lastmod>
-    <data>
-        <display>
-        <title>浅谈排序学习</title>
-        <pubTime>2016-04-12T07:55:35.000Z</pubTime>
-        
-        <tag>机器学习</tag>
-         
-         
-           
-             
-              <breadCrumb title="机器学习" url="http://whatbeg.com/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://whatbeg.com/2016/04/19/knn1.html</loc>
-    <lastmod>2016-04-19T14:02:40.439Z</lastmod>
+    <lastmod>2016-04-19T14:13:44.897Z</lastmod>
     <data>
         <display>
         <title>kNN分类器在西瓜数据集3.0$\alpha$上的结果</title>
@@ -42,6 +22,26 @@
           
              
               <breadCrumb title="机器学习" url="http://whatbeg.com/categories/Python/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://whatbeg.com/2016/04/12/learntorank.html</loc>
+    <lastmod>2016-04-19T14:13:39.067Z</lastmod>
+    <data>
+        <display>
+        <title>浅谈排序学习</title>
+        <pubTime>2016-04-12T07:55:35.000Z</pubTime>
+        
+        <tag>机器学习</tag>
+         
+         
+           
+             
+              <breadCrumb title="机器学习" url="http://whatbeg.com/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
           
         </display>
     </data>
