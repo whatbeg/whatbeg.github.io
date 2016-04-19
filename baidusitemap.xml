@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>http://whatbeg.com/2016/04/12/learntorank.html</loc>
+    <lastmod>2016-04-19T13:34:31.386Z</lastmod>
+    <data>
+        <display>
+        <title>浅谈排序学习</title>
+        <pubTime>2016-04-12T07:55:35.000Z</pubTime>
+        
+        <tag>机器学习</tag>
+         
+         
+           
+             
+              <breadCrumb title="机器学习" url="http://whatbeg.com/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://whatbeg.com/2016/04/19/knn1.html</loc>
     <lastmod>2016-04-19T13:32:48.585Z</lastmod>
     <data>
@@ -22,26 +42,6 @@
           
              
               <breadCrumb title="机器学习" url="http://whatbeg.com/categories/Python/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://whatbeg.com/2016/04/12/learntorank.html</loc>
-    <lastmod>2016-04-19T13:32:47.105Z</lastmod>
-    <data>
-        <display>
-        <title>浅谈排序学习</title>
-        <pubTime>2016-04-12T07:55:35.000Z</pubTime>
-        
-        <tag>机器学习</tag>
-         
-         
-           
-             
-              <breadCrumb title="机器学习" url="http://whatbeg.com/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
           
         </display>
     </data>
