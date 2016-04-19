@@ -54,6 +54,43 @@
   </entry>
   
   <entry>
+    <title>浅谈排序学习</title>
+    <link href="http://whatbeg.com/2016/04/15/learntorank.html"/>
+    <id>http://whatbeg.com/2016/04/15/learntorank.html</id>
+    <published>2016-04-15T07:55:35.000Z</published>
+    <updated>2016-04-19T14:07:28.678Z</updated>
+    
+    <content type="html">&lt;h3 id=&quot;什么是排序学习？&quot;&gt;&lt;a href=&quot;#什么是排序学习？&quot; class=&quot;headerlink&quot; title=&quot;什么是排序学习？&quot;&gt;&lt;/a&gt;什么是排序学习？&lt;/h3&gt;&lt;p&gt;排序学习（Learn to Rank）是机器学习应用在排序上的一种方法。在排序学习中，我们的目标是预测出未知样本X的标号。在传统排序中，一般是通过自定义一个排序函数，用这个函数算出每条记录的序值，按序值进行排序。在搜索引擎中，给定一个查询q，搜索引擎返回一系列相关文档（一系列D的集合），而且肯定要按其相关度从大到小展示给用户，才能获得最佳的用户体验，即对(q,D)这样的项进行排序。影响相关度的一般有TF（词频）,IDF（逆文档频率）等等。传统解决这类问题的方法有向量空间模型，布尔模型等，但是缺点是一旦参数很多，那么按照经验方法调参会非常复杂。于是人们就想到能不能用机器学习的方法来做排序？机器学习的方法主要有两种学习任务，如果我们想要预测的是连续值，那么称为“回归”（Regression）；如果想要预测离散值，那么称为“分类”（Classification）。如果可以把排序问题转化成分类或者回归问题，那么排序问题就可以迎刃而解。&lt;br&gt;&lt;img src=&quot;http://7xsl28.com2.z0.glb.clouddn.com/%E6%8E%92%E5%BA%8F%E5%AD%A6%E4%B9%A0%E5%8E%9F%E7%90%86.jpg&quot; alt=&quot;图1 排序学习原理&quot;&gt;&lt;/p&gt;
+&lt;h3 id=&quot;排序学习的三种方法&quot;&gt;&lt;a href=&quot;#排序学习的三种方法&quot; class=&quot;headerlink&quot; title=&quot;排序学习的三种方法&quot;&gt;&lt;/a&gt;排序学习的三种方法&lt;/h3&gt;&lt;p&gt;根据训练数据的不同，当前人们提出了三种排序学习的方法：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Point-Wise&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Pair-Wise&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;List-Wise&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;下面逐一介绍这三种方法：&lt;/p&gt;
+&lt;h4 id=&quot;Point-Wise-点方式&quot;&gt;&lt;a href=&quot;#Point-Wise-点方式&quot; class=&quot;headerlink&quot; title=&quot;Point-Wise　点方式&quot;&gt;&lt;/a&gt;Point-Wise　点方式&lt;/h4&gt;&lt;p&gt;将排序问题转化为多分类问题或者回归问题。考虑单一文档作为训练数据，不考虑文档间的关系。以多分类问题来说，即对于查询q,文档集D={d1,d2,…,dn}，可以形成(q,di)这样的训练样例n个，他们的相关度一般为5级：Perfect（完全相关），Excellent（非常相关），Good（很相关），Fair（一般），Bad（不相关）【在二分类问题就直接分为相关和不相关】，然后训练出分类模型，对未知的样本分类到这5类中的一类。&lt;br&gt;这种模型对相关度进行了绝对假设，即只要(q,di),(q,dj)分类在同一类，那么就无法比较他们谁更加相关了，分类效果较差，且与实际不相符。一般只需预测出标号，而非文档的具体分数。但是其模型简单，训练快。&lt;/p&gt;
+&lt;h4 id=&quot;Pair-Wise-文档对方式&quot;&gt;&lt;a href=&quot;#Pair-Wise-文档对方式&quot; class=&quot;headerlink&quot; title=&quot;Pair-Wise　文档对方式&quot;&gt;&lt;/a&gt;Pair-Wise　文档对方式&lt;/h4&gt;&lt;p&gt;对于查询q和查询对应的文档集D={d1,d2,…,dn}，将每两个文档之间的相关度比较关系作为训练数据，最后训练出一个模型，使之能够判断任意两个文档之间相关度的大小关系，比如doc1&amp;gt;doc2,doc2&amp;lt; doc3,doc3&amp;lt; doc1，从而就可以对一组未知序的数据进行排序。&lt;br&gt;有两个问题：&lt;br&gt;1.只考虑文档间相关度大小关系，而没有考虑文档具体排序位置，在搜索引擎中，绝大部分查询用户只会看到第一页或者前面几页就可以了，那么肯定排在前面的文档排错的损失更大。针对这种情况，可以引入代价敏感因素，增加排在前面的文档的相关权重。&lt;br&gt;2.如果不同查询对应的相关文档数量差异很大的话，则不好判断准确率。如查询Q1对应100个文档对，判断正确99个，正确率99%，但另一个查询对应10个，判断正确1个，正确率10%，总共判断正确率=100/110，但是从查询角度，两个查询平均起来只有(10+99)%/2 = 54.5%。&lt;/p&gt;
+&lt;h4 id=&quot;List-Wise-文档列表方式&quot;&gt;&lt;a href=&quot;#List-Wise-文档列表方式&quot; class=&quot;headerlink&quot; title=&quot;List-Wise 文档列表方式&quot;&gt;&lt;/a&gt;List-Wise 文档列表方式&lt;/h4&gt;&lt;p&gt;&lt;img src=&quot;http://7xsl28.com2.z0.glb.clouddn.com/listwise.jpg&quot; alt=&quot;图2 List-Wise方式&quot;&gt;&lt;br&gt;如图，以三个文档为例，先对给定的文档A,B,C人工打分，然后训练的目的就是使模型的评价结果更加贴近人工打分。对每个文档打分以后就得到3个文档的排列共6中排列的概率（或者分数）。我们给出一系列的人工打分构成训练集，训练评分函数。如何判断哪个更加精确呢？可以通过计算KL距离来计算概率分布之间的距离，当然还有其它方法也可以。最后要训练出一个距离跟我们人工打分最相似的评分函数。&lt;br&gt;经验证明这种方式比上述两种方法都更加准确，但是在实际应用中有很多问题，比如需要人工一个一个标注数据费时费力，因为每个文档都要打一次分，还得打很多组文档。而且复杂度太高，n篇文档的全排列有n!种，要把他们每种情况的概率都算出来需要巨大的计算量。所以这个方法用的还不多&lt;/p&gt;
+&lt;h4 id=&quot;排序学习框架与三个方法的算法-（图摘自网络）&quot;&gt;&lt;a href=&quot;#排序学习框架与三个方法的算法-（图摘自网络）&quot; class=&quot;headerlink&quot; title=&quot;排序学习框架与三个方法的算法 （图摘自网络）&quot;&gt;&lt;/a&gt;排序学习框架与三个方法的算法 （图摘自网络）&lt;/h4&gt;&lt;p&gt;&lt;img src=&quot;http://7xsl28.com2.z0.glb.clouddn.com/LTRframework.jpg&quot; alt=&quot;图片3 排序学习框架&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xsl28.com2.z0.glb.clouddn.com/LTRalgorithm.jpg&quot; alt=&quot;图片4 排序学习算法&quot;&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;什么是排序学习？&quot;&gt;&lt;a href=&quot;#什么是排序学习？&quot; class=&quot;headerlink&quot; title=&quot;什么是排序学习？&quot;&gt;&lt;/a&gt;什么是排序学习？&lt;/h3&gt;&lt;p&gt;排序学习（Learn to Rank）是机器学习应用在排序上的一种方法。在排序学习中，我们的
+    
+    </summary>
+    
+      <category term="Python" scheme="http://whatbeg.com/categories/Python/"/>
+    
+      <category term="机器学习" scheme="http://whatbeg.com/categories/Python/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+      <category term="机器学习" scheme="http://whatbeg.com/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
     <title>【Python模拟登录】(二) 加密与重放方式登录 -以模拟登录博客园为例</title>
     <link href="http://whatbeg.com/2016/04/14/logincnblogs.html"/>
     <id>http://whatbeg.com/2016/04/14/logincnblogs.html</id>
@@ -203,43 +240,6 @@
       <category term="随笔" scheme="http://whatbeg.com/tags/%E9%9A%8F%E7%AC%94/"/>
     
       <category term="看剧" scheme="http://whatbeg.com/tags/%E7%9C%8B%E5%89%A7/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>浅谈排序学习</title>
-    <link href="http://whatbeg.com/2016/04/12/learntorank.html"/>
-    <id>http://whatbeg.com/2016/04/12/learntorank.html</id>
-    <published>2016-04-12T07:55:35.000Z</published>
-    <updated>2016-04-19T14:02:28.480Z</updated>
-    
-    <content type="html">&lt;h3 id=&quot;什么是排序学习？&quot;&gt;&lt;a href=&quot;#什么是排序学习？&quot; class=&quot;headerlink&quot; title=&quot;什么是排序学习？&quot;&gt;&lt;/a&gt;什么是排序学习？&lt;/h3&gt;&lt;p&gt;排序学习（Learn to Rank）是机器学习应用在排序上的一种方法。在排序学习中，我们的目标是预测出未知样本X的标号。在传统排序中，一般是通过自定义一个排序函数，用这个函数算出每条记录的序值，按序值进行排序。在搜索引擎中，给定一个查询q，搜索引擎返回一系列相关文档（一系列D的集合），而且肯定要按其相关度从大到小展示给用户，才能获得最佳的用户体验，即对(q,D)这样的项进行排序。影响相关度的一般有TF（词频）,IDF（逆文档频率）等等。传统解决这类问题的方法有向量空间模型，布尔模型等，但是缺点是一旦参数很多，那么按照经验方法调参会非常复杂。于是人们就想到能不能用机器学习的方法来做排序？机器学习的方法主要有两种学习任务，如果我们想要预测的是连续值，那么称为“回归”（Regression）；如果想要预测离散值，那么称为“分类”（Classification）。如果可以把排序问题转化成分类或者回归问题，那么排序问题就可以迎刃而解。&lt;br&gt;&lt;img src=&quot;http://7xsl28.com2.z0.glb.clouddn.com/%E6%8E%92%E5%BA%8F%E5%AD%A6%E4%B9%A0%E5%8E%9F%E7%90%86.jpg&quot; alt=&quot;图1 排序学习原理&quot;&gt;&lt;/p&gt;
-&lt;h3 id=&quot;排序学习的三种方法&quot;&gt;&lt;a href=&quot;#排序学习的三种方法&quot; class=&quot;headerlink&quot; title=&quot;排序学习的三种方法&quot;&gt;&lt;/a&gt;排序学习的三种方法&lt;/h3&gt;&lt;p&gt;根据训练数据的不同，当前人们提出了三种排序学习的方法：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Point-Wise&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Pair-Wise&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;List-Wise&lt;/strong&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;下面逐一介绍这三种方法：&lt;/p&gt;
-&lt;h4 id=&quot;Point-Wise-点方式&quot;&gt;&lt;a href=&quot;#Point-Wise-点方式&quot; class=&quot;headerlink&quot; title=&quot;Point-Wise　点方式&quot;&gt;&lt;/a&gt;Point-Wise　点方式&lt;/h4&gt;&lt;p&gt;将排序问题转化为多分类问题或者回归问题。考虑单一文档作为训练数据，不考虑文档间的关系。以多分类问题来说，即对于查询q,文档集D={d1,d2,…,dn}，可以形成(q,di)这样的训练样例n个，他们的相关度一般为5级：Perfect（完全相关），Excellent（非常相关），Good（很相关），Fair（一般），Bad（不相关）【在二分类问题就直接分为相关和不相关】，然后训练出分类模型，对未知的样本分类到这5类中的一类。&lt;br&gt;这种模型对相关度进行了绝对假设，即只要(q,di),(q,dj)分类在同一类，那么就无法比较他们谁更加相关了，分类效果较差，且与实际不相符。一般只需预测出标号，而非文档的具体分数。但是其模型简单，训练快。&lt;/p&gt;
-&lt;h4 id=&quot;Pair-Wise-文档对方式&quot;&gt;&lt;a href=&quot;#Pair-Wise-文档对方式&quot; class=&quot;headerlink&quot; title=&quot;Pair-Wise　文档对方式&quot;&gt;&lt;/a&gt;Pair-Wise　文档对方式&lt;/h4&gt;&lt;p&gt;对于查询q和查询对应的文档集D={d1,d2,…,dn}，将每两个文档之间的相关度比较关系作为训练数据，最后训练出一个模型，使之能够判断任意两个文档之间相关度的大小关系，比如doc1&amp;gt;doc2,doc2&amp;lt; doc3,doc3&amp;lt; doc1，从而就可以对一组未知序的数据进行排序。&lt;br&gt;有两个问题：&lt;br&gt;1.只考虑文档间相关度大小关系，而没有考虑文档具体排序位置，在搜索引擎中，绝大部分查询用户只会看到第一页或者前面几页就可以了，那么肯定排在前面的文档排错的损失更大。针对这种情况，可以引入代价敏感因素，增加排在前面的文档的相关权重。&lt;br&gt;2.如果不同查询对应的相关文档数量差异很大的话，则不好判断准确率。如查询Q1对应100个文档对，判断正确99个，正确率99%，但另一个查询对应10个，判断正确1个，正确率10%，总共判断正确率=100/110，但是从查询角度，两个查询平均起来只有(10+99)%/2 = 54.5%。&lt;/p&gt;
-&lt;h4 id=&quot;List-Wise-文档列表方式&quot;&gt;&lt;a href=&quot;#List-Wise-文档列表方式&quot; class=&quot;headerlink&quot; title=&quot;List-Wise 文档列表方式&quot;&gt;&lt;/a&gt;List-Wise 文档列表方式&lt;/h4&gt;&lt;p&gt;&lt;img src=&quot;http://7xsl28.com2.z0.glb.clouddn.com/listwise.jpg&quot; alt=&quot;图2 List-Wise方式&quot;&gt;&lt;br&gt;如图，以三个文档为例，先对给定的文档A,B,C人工打分，然后训练的目的就是使模型的评价结果更加贴近人工打分。对每个文档打分以后就得到3个文档的排列共6中排列的概率（或者分数）。我们给出一系列的人工打分构成训练集，训练评分函数。如何判断哪个更加精确呢？可以通过计算KL距离来计算概率分布之间的距离，当然还有其它方法也可以。最后要训练出一个距离跟我们人工打分最相似的评分函数。&lt;br&gt;经验证明这种方式比上述两种方法都更加准确，但是在实际应用中有很多问题，比如需要人工一个一个标注数据费时费力，因为每个文档都要打一次分，还得打很多组文档。而且复杂度太高，n篇文档的全排列有n!种，要把他们每种情况的概率都算出来需要巨大的计算量。所以这个方法用的还不多&lt;/p&gt;
-&lt;h4 id=&quot;排序学习框架与三个方法的算法-（图摘自网络）&quot;&gt;&lt;a href=&quot;#排序学习框架与三个方法的算法-（图摘自网络）&quot; class=&quot;headerlink&quot; title=&quot;排序学习框架与三个方法的算法 （图摘自网络）&quot;&gt;&lt;/a&gt;排序学习框架与三个方法的算法 （图摘自网络）&lt;/h4&gt;&lt;p&gt;&lt;img src=&quot;http://7xsl28.com2.z0.glb.clouddn.com/LTRframework.jpg&quot; alt=&quot;图片3 排序学习框架&quot;&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xsl28.com2.z0.glb.clouddn.com/LTRalgorithm.jpg&quot; alt=&quot;图片4 排序学习算法&quot;&gt;&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;什么是排序学习？&quot;&gt;&lt;a href=&quot;#什么是排序学习？&quot; class=&quot;headerlink&quot; title=&quot;什么是排序学习？&quot;&gt;&lt;/a&gt;什么是排序学习？&lt;/h3&gt;&lt;p&gt;排序学习（Learn to Rank）是机器学习应用在排序上的一种方法。在排序学习中，我们的
-    
-    </summary>
-    
-      <category term="Python" scheme="http://whatbeg.com/categories/Python/"/>
-    
-      <category term="机器学习" scheme="http://whatbeg.com/categories/Python/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
-    
-    
-      <category term="机器学习" scheme="http://whatbeg.com/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
     
   </entry>
   

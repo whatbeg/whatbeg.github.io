@@ -4,43 +4,28 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>【Python模拟登录】(二) 加密与重放方式登录 -以模拟登录博客园为例 | Whatbeg&#39;s blog</title>
+    <title>浅谈排序学习 | Whatbeg&#39;s blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="Whatbeg">
     
 
     
-    <meta name="description" content="Python模拟登录第一弹见：【Python数据分析】Python模拟登录(一) requests.Session应用上次的登录是最基本的，全部是明文，而且在浏览器中就可以看到POST的数据。接下来我们来个稍微难一点的–模拟登录博客园(http://www.cnblogs.com)
-登录特点
-用户名密码都进行了RSA加密，且在浏览器中无法看到POST数据
-
-如上图，在post数据中不能显式看到PO">
+    <meta name="description" content="什么是排序学习？排序学习（Learn to Rank）是机器学习应用在排序上的一种方法。在排序学习中，我们的目标是预测出未知样本X的标号。在传统排序中，一般是通过自定义一个排序函数，用这个函数算出每条记录的序值，按序值进行排序。在搜索引擎中，给定一个查询q，搜索引擎返回一系列相关文档（一系列D的集合），而且肯定要按其相关度从大到小展示给用户，才能获得最佳的用户体验，即对(q,D)这样的项进行排序。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="【Python模拟登录】(二) 加密与重放方式登录 -以模拟登录博客园为例">
-<meta property="og:url" content="http://whatbeg.com/2016/04/14/logincnblogs.html">
+<meta property="og:title" content="浅谈排序学习">
+<meta property="og:url" content="http://whatbeg.com/2016/04/15/learntorank.html">
 <meta property="og:site_name" content="Whatbeg's blog">
-<meta property="og:description" content="Python模拟登录第一弹见：【Python数据分析】Python模拟登录(一) requests.Session应用上次的登录是最基本的，全部是明文，而且在浏览器中就可以看到POST的数据。接下来我们来个稍微难一点的–模拟登录博客园(http://www.cnblogs.com)
-登录特点
-用户名密码都进行了RSA加密，且在浏览器中无法看到POST数据
-
-如上图，在post数据中不能显式看到PO">
-<meta property="og:image" content="http://7xsl28.com2.z0.glb.clouddn.com/browsercant.png">
-<meta property="og:image" content="http://7xsl28.com2.z0.glb.clouddn.com/filder.png">
-<meta property="og:image" content="http://7xsl28.com2.z0.glb.clouddn.com/htmlinput1.png">
-<meta property="og:image" content="http://7xsl28.com2.z0.glb.clouddn.com/cookie1.png">
-<meta property="og:image" content="http://7xsl28.com2.z0.glb.clouddn.com/cookie2.png">
-<meta property="og:image" content="http://7xsl28.com2.z0.glb.clouddn.com/alreadysigned.png">
-<meta property="og:image" content="http://7xsl28.com2.z0.glb.clouddn.com/signed.png">
-<meta property="og:updated_time" content="2016-04-19T13:38:21.994Z">
+<meta property="og:description" content="什么是排序学习？排序学习（Learn to Rank）是机器学习应用在排序上的一种方法。在排序学习中，我们的目标是预测出未知样本X的标号。在传统排序中，一般是通过自定义一个排序函数，用这个函数算出每条记录的序值，按序值进行排序。在搜索引擎中，给定一个查询q，搜索引擎返回一系列相关文档（一系列D的集合），而且肯定要按其相关度从大到小展示给用户，才能获得最佳的用户体验，即对(q,D)这样的项进行排序。">
+<meta property="og:image" content="http://7xsl28.com2.z0.glb.clouddn.com/%E6%8E%92%E5%BA%8F%E5%AD%A6%E4%B9%A0%E5%8E%9F%E7%90%86.jpg">
+<meta property="og:image" content="http://7xsl28.com2.z0.glb.clouddn.com/listwise.jpg">
+<meta property="og:image" content="http://7xsl28.com2.z0.glb.clouddn.com/LTRframework.jpg">
+<meta property="og:image" content="http://7xsl28.com2.z0.glb.clouddn.com/LTRalgorithm.jpg">
+<meta property="og:updated_time" content="2016-04-19T14:07:28.678Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="【Python模拟登录】(二) 加密与重放方式登录 -以模拟登录博客园为例">
-<meta name="twitter:description" content="Python模拟登录第一弹见：【Python数据分析】Python模拟登录(一) requests.Session应用上次的登录是最基本的，全部是明文，而且在浏览器中就可以看到POST的数据。接下来我们来个稍微难一点的–模拟登录博客园(http://www.cnblogs.com)
-登录特点
-用户名密码都进行了RSA加密，且在浏览器中无法看到POST数据
-
-如上图，在post数据中不能显式看到PO">
-<meta name="twitter:image" content="http://7xsl28.com2.z0.glb.clouddn.com/browsercant.png">
+<meta name="twitter:title" content="浅谈排序学习">
+<meta name="twitter:description" content="什么是排序学习？排序学习（Learn to Rank）是机器学习应用在排序上的一种方法。在排序学习中，我们的目标是预测出未知样本X的标号。在传统排序中，一般是通过自定义一个排序函数，用这个函数算出每条记录的序值，按序值进行排序。在搜索引擎中，给定一个查询q，搜索引擎返回一系列相关文档（一系列D的集合），而且肯定要按其相关度从大到小展示给用户，才能获得最佳的用户体验，即对(q,D)这样的项进行排序。">
+<meta name="twitter:image" content="http://7xsl28.com2.z0.glb.clouddn.com/%E6%8E%92%E5%BA%8F%E5%AD%A6%E4%B9%A0%E5%8E%9F%E7%90%86.jpg">
 
     
     <link rel="alternative" href="/atom.xml" title="Whatbeg&#39;s blog" type="application/atom+xml">
@@ -104,14 +89,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2016/04/14/logincnblogs.html" title="【Python模拟登录】(二) 加密与重放方式登录 -以模拟登录博客园为例" itemprop="url">【Python模拟登录】(二) 加密与重放方式登录 -以模拟登录博客园为例</a>
+      <a href="/2016/04/15/learntorank.html" title="浅谈排序学习" itemprop="url">浅谈排序学习</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="Whatbeg" target="_blank" itemprop="author">Whatbeg</a>
 		
   <p class="article-time">
-    <time datetime="2016-04-14T07:37:53.000Z" itemprop="datePublished"> 发表于 2016-04-14</time>
+    <time datetime="2016-04-15T07:55:35.000Z" itemprop="datePublished"> 发表于 2016-04-15</time>
     
   </p>
 </header>
@@ -120,18 +105,23 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#登录特点"><span class="toc-number">1.</span> <span class="toc-text">登录特点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#模拟登录步骤"><span class="toc-number">2.</span> <span class="toc-text">模拟登录步骤</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#什么是排序学习？"><span class="toc-number">1.</span> <span class="toc-text">什么是排序学习？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#排序学习的三种方法"><span class="toc-number">2.</span> <span class="toc-text">排序学习的三种方法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Point-Wise-点方式"><span class="toc-number">2.1.</span> <span class="toc-text">Point-Wise　点方式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Pair-Wise-文档对方式"><span class="toc-number">2.2.</span> <span class="toc-text">Pair-Wise　文档对方式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#List-Wise-文档列表方式"><span class="toc-number">2.3.</span> <span class="toc-text">List-Wise 文档列表方式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#排序学习框架与三个方法的算法-（图摘自网络）"><span class="toc-number">2.4.</span> <span class="toc-text">排序学习框架与三个方法的算法 （图摘自网络）</span></a></li></ol></li></ol>
 		
 		</div>
 		
-		<p>Python模拟登录第一弹见：<a href="http://www.cnblogs.com/whatbeg/p/5320666.html" target="_blank" rel="external">【Python数据分析】Python模拟登录(一) requests.Session应用</a><br>上次的登录是最基本的，全部是明文，而且在浏览器中就可以看到POST的数据。接下来我们来个稍微难一点的–模拟登录博客园(<a href="http://www.cnblogs.com" target="_blank" rel="external">http://www.cnblogs.com</a>)</p>
-<h4 id="登录特点"><a href="#登录特点" class="headerlink" title="登录特点"></a>登录特点</h4><blockquote>
-<p>用户名密码都进行了RSA加密，且在浏览器中无法看到POST数据</p>
-</blockquote>
-<p><img src="http://7xsl28.com2.z0.glb.clouddn.com/browsercant.png" alt="图1"><br>如上图，在post数据中不能显式看到POST内容。</p>
-<h4 id="模拟登录步骤"><a href="#模拟登录步骤" class="headerlink" title="模拟登录步骤"></a>模拟登录步骤</h4><p>既然浏览器调试功能无法探测到POST数据，那么采用Fiddler试试看，这是一款网络抓包工具，很好用。登录后看到<br><img src="http://7xsl28.com2.z0.glb.clouddn.com/filder.png" alt="图2"><br>POST的数据是input1,input2和remember，这和分析signin页面的源代码所得结果一致。<br><img src="http://7xsl28.com2.z0.glb.clouddn.com/htmlinput1.png" alt="图3"><br>其中input1是加过密的用户名，input2是加过密的密码，remember表示记住还是不记住用户名。由于RSA的原理，加过密后的内容可以不一样，但是解密后的数据是一样的，那么我们就可以采用重放方式登录，即复制这些内容到我们的POST data中。<br>还要注意一个cookies的问题，cookies一定要选择正确，不要选下面的：<br><img src="http://7xsl28.com2.z0.glb.clouddn.com/cookie1.png" alt="图4"><br>因为这是登录页面的cookies，我们要用下面的cookies：<br><img src="http://7xsl28.com2.z0.glb.clouddn.com/cookie2.png" alt="图5">，即包含.CNBlogCookies的cookie，这也是主页的cookies。<br>为了验证登录是否成功，我们登录后打开followers页面，因为未登录前是无法看到任何用户的粉丝页面的。<br>还是利用requests.Session，写出如下代码：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"></span><br><span class="line">s = requests.Session()</span><br><span class="line"></span><br><span class="line">headers = &#123;</span><br><span class="line">    <span class="string">'Accept'</span>: <span class="string">'application/json, text/javascript, */*; q=0.01'</span>,</span><br><span class="line">    <span class="string">'Referer'</span>: <span class="string">'http://passport.cnblogs.com/user/signin'</span>,</span><br><span class="line">    <span class="string">'User-Agent'</span>: <span class="string">'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36'</span>,</span><br><span class="line">    <span class="string">'Cookie'</span>: <span class="string">'__gads=ID=fc58354935efbd89:T=1458638388:S=ALNI_MYEtsucyem4nWeL9mdxvQmfAZlTgQ; _ga=GA1.2.111229817.1458781632; .CNBlogsCookie=39EB7C846FF5A6CA5D762D210B954E55CE77A24D11C5203F6055DCAC93DFFF8EA7E405568F2D8CC9F00AFE43A859E71DE55AE6E79A030F7E74C231CECF7DA2DD88B734EA2ECA22DFED8C2ECAB85717B45434AABFE1202DA8266C7440562114D99D9C6767'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">login_data = &#123;<span class="string">'input1'</span>: <span class="string">'你的用户名加密后内容'</span>,</span><br><span class="line">              <span class="string">'input2'</span>: <span class="string">'你的密码加密后内容'</span>,</span><br><span class="line">              <span class="string">'remember'</span>: <span class="string">'false'</span></span><br><span class="line">              &#125;</span><br><span class="line"></span><br><span class="line">url = <span class="string">'http://passport.cnblogs.com/user/signin'</span></span><br><span class="line">req = s.post(url, data = login_data, headers=headers)</span><br><span class="line">print(req.status_code)           <span class="comment">#200</span></span><br><span class="line">print(req.content.decode())      <span class="comment">#&#123;"success":false,"message":"您已处于登录状态"&#125;</span></span><br><span class="line"></span><br><span class="line">f = s.get(<span class="string">'http://home.cnblogs.com/u/whatbeg/followers/1'</span>, headers=headers)</span><br><span class="line">print(f.status_code)</span><br><span class="line">print(f.text)</span><br></pre></td></tr></table></figure></p>
-<p>然后运行有：<br><img src="http://7xsl28.com2.z0.glb.clouddn.com/alreadysigned.png" alt="图6"><br><img src="http://7xsl28.com2.z0.glb.clouddn.com/signed.png" alt="图7"><br>显示成功登录。<br>这样，就可以登录这种用RSA加密的用户名密码的非https且不需要验证码的网站了。希望对需要的人有所帮助。</p>
-<p><font size="1">本文工作仅供交流学习用，请勿利用做出任何不遵守网络公德的行为。</font><br>原文地址：<a href="http://whatbeg.com/2016/04/14/logincnblogs.html">http://whatbeg.com/2016/04/14/logincnblogs.html</a></p>
+		<h3 id="什么是排序学习？"><a href="#什么是排序学习？" class="headerlink" title="什么是排序学习？"></a>什么是排序学习？</h3><p>排序学习（Learn to Rank）是机器学习应用在排序上的一种方法。在排序学习中，我们的目标是预测出未知样本X的标号。在传统排序中，一般是通过自定义一个排序函数，用这个函数算出每条记录的序值，按序值进行排序。在搜索引擎中，给定一个查询q，搜索引擎返回一系列相关文档（一系列D的集合），而且肯定要按其相关度从大到小展示给用户，才能获得最佳的用户体验，即对(q,D)这样的项进行排序。影响相关度的一般有TF（词频）,IDF（逆文档频率）等等。传统解决这类问题的方法有向量空间模型，布尔模型等，但是缺点是一旦参数很多，那么按照经验方法调参会非常复杂。于是人们就想到能不能用机器学习的方法来做排序？机器学习的方法主要有两种学习任务，如果我们想要预测的是连续值，那么称为“回归”（Regression）；如果想要预测离散值，那么称为“分类”（Classification）。如果可以把排序问题转化成分类或者回归问题，那么排序问题就可以迎刃而解。<br><img src="http://7xsl28.com2.z0.glb.clouddn.com/%E6%8E%92%E5%BA%8F%E5%AD%A6%E4%B9%A0%E5%8E%9F%E7%90%86.jpg" alt="图1 排序学习原理"></p>
+<h3 id="排序学习的三种方法"><a href="#排序学习的三种方法" class="headerlink" title="排序学习的三种方法"></a>排序学习的三种方法</h3><p>根据训练数据的不同，当前人们提出了三种排序学习的方法：</p>
+<ul>
+<li><strong>Point-Wise</strong></li>
+<li><strong>Pair-Wise</strong></li>
+<li><strong>List-Wise</strong></li>
+</ul>
+<p>下面逐一介绍这三种方法：</p>
+<h4 id="Point-Wise-点方式"><a href="#Point-Wise-点方式" class="headerlink" title="Point-Wise　点方式"></a>Point-Wise　点方式</h4><p>将排序问题转化为多分类问题或者回归问题。考虑单一文档作为训练数据，不考虑文档间的关系。以多分类问题来说，即对于查询q,文档集D={d1,d2,…,dn}，可以形成(q,di)这样的训练样例n个，他们的相关度一般为5级：Perfect（完全相关），Excellent（非常相关），Good（很相关），Fair（一般），Bad（不相关）【在二分类问题就直接分为相关和不相关】，然后训练出分类模型，对未知的样本分类到这5类中的一类。<br>这种模型对相关度进行了绝对假设，即只要(q,di),(q,dj)分类在同一类，那么就无法比较他们谁更加相关了，分类效果较差，且与实际不相符。一般只需预测出标号，而非文档的具体分数。但是其模型简单，训练快。</p>
+<h4 id="Pair-Wise-文档对方式"><a href="#Pair-Wise-文档对方式" class="headerlink" title="Pair-Wise　文档对方式"></a>Pair-Wise　文档对方式</h4><p>对于查询q和查询对应的文档集D={d1,d2,…,dn}，将每两个文档之间的相关度比较关系作为训练数据，最后训练出一个模型，使之能够判断任意两个文档之间相关度的大小关系，比如doc1&gt;doc2,doc2&lt; doc3,doc3&lt; doc1，从而就可以对一组未知序的数据进行排序。<br>有两个问题：<br>1.只考虑文档间相关度大小关系，而没有考虑文档具体排序位置，在搜索引擎中，绝大部分查询用户只会看到第一页或者前面几页就可以了，那么肯定排在前面的文档排错的损失更大。针对这种情况，可以引入代价敏感因素，增加排在前面的文档的相关权重。<br>2.如果不同查询对应的相关文档数量差异很大的话，则不好判断准确率。如查询Q1对应100个文档对，判断正确99个，正确率99%，但另一个查询对应10个，判断正确1个，正确率10%，总共判断正确率=100/110，但是从查询角度，两个查询平均起来只有(10+99)%/2 = 54.5%。</p>
+<h4 id="List-Wise-文档列表方式"><a href="#List-Wise-文档列表方式" class="headerlink" title="List-Wise 文档列表方式"></a>List-Wise 文档列表方式</h4><p><img src="http://7xsl28.com2.z0.glb.clouddn.com/listwise.jpg" alt="图2 List-Wise方式"><br>如图，以三个文档为例，先对给定的文档A,B,C人工打分，然后训练的目的就是使模型的评价结果更加贴近人工打分。对每个文档打分以后就得到3个文档的排列共6中排列的概率（或者分数）。我们给出一系列的人工打分构成训练集，训练评分函数。如何判断哪个更加精确呢？可以通过计算KL距离来计算概率分布之间的距离，当然还有其它方法也可以。最后要训练出一个距离跟我们人工打分最相似的评分函数。<br>经验证明这种方式比上述两种方法都更加准确，但是在实际应用中有很多问题，比如需要人工一个一个标注数据费时费力，因为每个文档都要打一次分，还得打很多组文档。而且复杂度太高，n篇文档的全排列有n!种，要把他们每种情况的概率都算出来需要巨大的计算量。所以这个方法用的还不多</p>
+<h4 id="排序学习框架与三个方法的算法-（图摘自网络）"><a href="#排序学习框架与三个方法的算法-（图摘自网络）" class="headerlink" title="排序学习框架与三个方法的算法 （图摘自网络）"></a>排序学习框架与三个方法的算法 （图摘自网络）</h4><p><img src="http://7xsl28.com2.z0.glb.clouddn.com/LTRframework.jpg" alt="图片3 排序学习框架"></p>
+<p><img src="http://7xsl28.com2.z0.glb.clouddn.com/LTRalgorithm.jpg" alt="图片4 排序学习算法"></p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -139,13 +129,13 @@
 
 <div class="article-categories">
   <span></span>
-  <a class="article-category-link" href="/categories/Python/">Python</a>►<a class="article-category-link" href="/categories/Python/数据挖掘-可视化与分析/">数据挖掘&可视化与分析</a>
+  <a class="article-category-link" href="/categories/Python/">Python</a>►<a class="article-category-link" href="/categories/Python/机器学习/">机器学习</a>
 </div>
 
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/Python/">Python</a><a href="/tags/数据分析/">数据分析</a><a href="/tags/Web/">Web</a>
+  <span></span> <a href="/tags/机器学习/">机器学习</a>
   </div>
 
 </div>
@@ -190,18 +180,18 @@
 <nav class="article-nav clearfix">
  
  <div class="prev" >
- <a href="/2016/04/15/learntorank.html" title="浅谈排序学习">
+ <a href="/2016/04/19/knn1.html" title="kNN分类器在西瓜数据集3.0$\alpha$上的结果">
   <strong>上一篇：</strong><br/>
   <span>
-  浅谈排序学习</span>
+  kNN分类器在西瓜数据集3.0$\alpha$上的结果</span>
 </a>
 </div>
 
 
 <div class="next">
-<a href="/2016/04/14/cet4.html"  title="【Python数据分析】四级成绩分布 -matplotlib,xlrd模块使用">
+<a href="/2016/04/14/logincnblogs.html"  title="【Python模拟登录】(二) 加密与重放方式登录 -以模拟登录博客园为例">
  <strong>下一篇：</strong><br/> 
- <span>【Python数据分析】四级成绩分布 -matplotlib,xlrd模块使用
+ <span>【Python模拟登录】(二) 加密与重放方式登录 -以模拟登录博客园为例
 </span>
 </a>
 </div>
@@ -210,7 +200,7 @@
 
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="2016/04/14/logincnblogs.html" data-title="【Python模拟登录】(二) 加密与重放方式登录 -以模拟登录博客园为例" data-url="http://whatbeg.com/2016/04/14/logincnblogs.html"></div>
+	<div class="ds-thread" data-thread-key="2016/04/15/learntorank.html" data-title="浅谈排序学习" data-url="http://whatbeg.com/2016/04/15/learntorank.html"></div>
 </section>
 
 
@@ -220,7 +210,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#登录特点"><span class="toc-number">1.</span> <span class="toc-text">登录特点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#模拟登录步骤"><span class="toc-number">2.</span> <span class="toc-text">模拟登录步骤</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#什么是排序学习？"><span class="toc-number">1.</span> <span class="toc-text">什么是排序学习？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#排序学习的三种方法"><span class="toc-number">2.</span> <span class="toc-text">排序学习的三种方法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Point-Wise-点方式"><span class="toc-number">2.1.</span> <span class="toc-text">Point-Wise　点方式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Pair-Wise-文档对方式"><span class="toc-number">2.2.</span> <span class="toc-text">Pair-Wise　文档对方式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#List-Wise-文档列表方式"><span class="toc-number">2.3.</span> <span class="toc-text">List-Wise 文档列表方式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#排序学习框架与三个方法的算法-（图摘自网络）"><span class="toc-number">2.4.</span> <span class="toc-text">排序学习框架与三个方法的算法 （图摘自网络）</span></a></li></ol></li></ol>
  
   </div>
 
