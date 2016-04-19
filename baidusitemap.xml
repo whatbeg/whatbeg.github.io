@@ -5,7 +5,7 @@
     
   <url>
     <loc>http://whatbeg.com/2016/04/19/knn1.html</loc>
-    <lastmod>2016-04-19T13:23:30.583Z</lastmod>
+    <lastmod>2016-04-19T13:27:49.003Z</lastmod>
     <data>
         <display>
         <title>kNN分类器在西瓜数据集3.0alpha上的结果</title>
@@ -18,10 +18,7 @@
          
            
              
-              <breadCrumb title="Python" url="http://whatbeg.com/categories/Python/"/>
-          
-             
-              <breadCrumb title="机器学习" url="http://whatbeg.com/categories/Python/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+              <breadCrumb title="机器学习" url="http://whatbeg.com/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
           
         </display>
     </data>
