@@ -1,0 +1,615 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>Hexo博客Jacman主题的一些优化  --本博客4月20日优化 | Whatbeg&#39;s blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="whatbeg">
+    
+
+    
+    <meta name="description" content="1.新增博客访问量统计和文章访问量统计采用 不蒜子 极简计数器在 
+
+themes/你的主题/layout/_partial/footer.ejs
+
+中最后面添加脚本：12&amp;lt;script async src=&quot;https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js&quot;&amp;gt;&amp;lt;/script&amp;gt;
+添加总pv计数和">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo博客Jacman主题的一些优化  --本博客4月20日优化">
+<meta property="og:url" content="http://whatbeg.com/2016/04/20/blogopt420.html">
+<meta property="og:site_name" content="Whatbeg's blog">
+<meta property="og:description" content="1.新增博客访问量统计和文章访问量统计采用 不蒜子 极简计数器在 
+
+themes/你的主题/layout/_partial/footer.ejs
+
+中最后面添加脚本：12&amp;lt;script async src=&quot;https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js&quot;&amp;gt;&amp;lt;/script&amp;gt;
+添加总pv计数和">
+<meta property="og:updated_time" content="2016-04-20T05:44:21.854Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo博客Jacman主题的一些优化  --本博客4月20日优化">
+<meta name="twitter:description" content="1.新增博客访问量统计和文章访问量统计采用 不蒜子 极简计数器在 
+
+themes/你的主题/layout/_partial/footer.ejs
+
+中最后面添加脚本：12&amp;lt;script async src=&quot;https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js&quot;&amp;gt;&amp;lt;/script&amp;gt;
+添加总pv计数和">
+
+    
+    <link rel="alternative" href="/atom.xml" title="Whatbeg&#39;s blog" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/w.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/scene.jpg" alt="Whatbeg&#39;s blog" title="Whatbeg&#39;s blog"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Whatbeg&#39;s blog">Whatbeg&#39;s blog</a></h1>
+				<h2 class="blog-motto">路漫漫其修远兮，仍将上下而求索</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">首页(Home)</a></li>
+					
+						<li><a href="/archives">归档(Archives)</a></li>
+					
+						<li><a href="/tags">标签(Tags)</a></li>
+					
+						<li><a href="/categories">分类(Categories)</a></li>
+					
+						<li><a href="/about">简介(About)</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:whatbeg.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/04/20/blogopt420.html" title="Hexo博客Jacman主题的一些优化  --本博客4月20日优化" itemprop="url">Hexo博客Jacman主题的一些优化  --本博客4月20日优化</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="whatbeg" target="_blank" itemprop="author">whatbeg</a>
+		
+  <p class="article-time">
+    <time datetime="2016-04-20T05:37:17.000Z" itemprop="datePublished"> 发表于 2016-04-20</time>
+    <span id="busuanzi_container_page_pv">
+    总阅读<span id="busuanzi_value_page_pv"></span>次
+    </span>
+  </p>
+
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-新增博客访问量统计和文章访问量统计"><span class="toc-number">1.</span> <span class="toc-text">1.新增博客访问量统计和文章访问量统计</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#采用-不蒜子-极简计数器"><span class="toc-number">1.1.</span> <span class="toc-text">采用 不蒜子 极简计数器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#添加总pv计数和总uv计数"><span class="toc-number">1.2.</span> <span class="toc-text">添加总pv计数和总uv计数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#添加文章访问计数"><span class="toc-number">1.3.</span> <span class="toc-text">添加文章访问计数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-添加“热评文章”侧边栏"><span class="toc-number">2.</span> <span class="toc-text">2.添加“热评文章”侧边栏</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分类优化"><span class="toc-number">3.</span> <span class="toc-text">分类优化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-分类中含有诸如‘-amp-’的特殊字符时，atom-xml文件就会报错，所以分类名尽量不要用此等特殊字符。"><span class="toc-number">3.1.</span> <span class="toc-text">1.分类中含有诸如‘&’的特殊字符时，atom.xml文件就会报错，所以分类名尽量不要用此等特殊字符。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Jacman主题不支持多分类，如果在文章的md文件中想如此将文章加到多个分类中："><span class="toc-number">3.2.</span> <span class="toc-text">2.Jacman主题不支持多分类，如果在文章的md文件中想如此将文章加到多个分类中：</span></a></li></ol></li></ol>
+		
+		</div>
+		
+		<h2 id="1-新增博客访问量统计和文章访问量统计"><a href="#1-新增博客访问量统计和文章访问量统计" class="headerlink" title="1.新增博客访问量统计和文章访问量统计"></a>1.新增博客访问量统计和文章访问量统计</h2><h3 id="采用-不蒜子-极简计数器"><a href="#采用-不蒜子-极简计数器" class="headerlink" title="采用 不蒜子 极简计数器"></a>采用 <a href="http://service.ibruce.info/" target="_blank" rel="external">不蒜子</a> 极简计数器</h3><p>在 </p>
+<blockquote>
+<p>themes/你的主题/layout/_partial/footer.ejs</p>
+</blockquote>
+<p>中最后面添加脚本：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;script <span class="keyword">async</span> src=<span class="string">"https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"</span>&gt;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure></p>
+<h3 id="添加总pv计数和总uv计数"><a href="#添加总pv计数和总uv计数" class="headerlink" title="添加总pv计数和总uv计数"></a>添加总pv计数和总uv计数</h3><p>在上面footer.ejs文件最后添加这两个计数脚本：<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;span id="busuanzi_container_site_pv"&gt;</span><br><span class="line">    &amp;nbsp;&amp;nbsp;Total visits:&amp;nbsp;&lt;span id="busuanzi_value_site_pv"&gt;&lt;/span&gt;</span><br><span class="line">&lt;/span&gt;</span><br><span class="line">&lt;span id="busuanzi_container_site_uv"&gt;</span><br><span class="line">  &amp;nbsp;&amp;nbsp;You are Visiter No.&lt;span id="busuanzi_value_site_uv"&gt;&lt;/span&gt;</span><br><span class="line">&lt;/span&gt;</span><br></pre></td></tr></table></figure></p>
+<h3 id="添加文章访问计数"><a href="#添加文章访问计数" class="headerlink" title="添加文章访问计数"></a>添加文章访问计数</h3><p>这里我添加到标题右下方，正文上面的地方。<br>在</p>
+<blockquote>
+<p>themes\jacman\layout_partial\post\header.ejs</p>
+</blockquote>
+<p>中，<figure class="highlight plain"><figcaption><span>class="article-time">``` 标签里面添加：</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">``` javascript</span><br><span class="line">&lt;span id=&quot;busuanzi_container_page_pv&quot;&gt;</span><br><span class="line">    总阅读&lt;span id=&quot;busuanzi_value_page_pv&quot;&gt;&lt;/span&gt;次</span><br><span class="line">&lt;/span&gt;</span><br></pre></td></tr></table></figure></p>
+<p>即可。</p>
+<h2 id="2-添加“热评文章”侧边栏"><a href="#2-添加“热评文章”侧边栏" class="headerlink" title="2.添加“热评文章”侧边栏"></a>2.添加“热评文章”侧边栏</h2><p>由于hexo没有内置诸如“热评文章”，“最新评论”等的widget，那么只能自定义widget,仿照其他的widget，在themes的_config.yml文件中的widgets下添加自定义widget的名称，如下面我添加了一个hot：<br><figure class="highlight haml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">#### Widgets</span><br><span class="line">widgets: </span><br><span class="line">-<span class="ruby"> github-card</span><br><span class="line"></span>-<span class="ruby"> category</span><br><span class="line"></span>-<span class="ruby"> archive</span><br><span class="line"></span>-<span class="ruby"> tagcloud</span><br><span class="line"></span>-<span class="ruby"> links</span><br><span class="line"></span>-<span class="ruby"> rss</span><br><span class="line"></span>-<span class="ruby"> weibo</span><br><span class="line"></span>-<span class="ruby"> hot</span><br><span class="line"></span>  ## provide eight widgets:github-card,category,tag,rss,archive,tagcloud,links,weibo</span><br></pre></td></tr></table></figure></p>
+<p>然后在</p>
+<blockquote>
+<p>D:\hexo\themes\jacman\layout_widget</p>
+</blockquote>
+<p>目录下新建一个hot.ejs，在多说-&gt;后台管理-&gt;工具-&gt;热评文章中获取代码，写到hot.ejs文件中，然后在其上面写上名字“热评文章”，class=asidetitle。如下：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">"asidetitle"</span>&gt;</span>热评文章<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"ds-top-threads"</span> <span class="attr">data-range</span>=<span class="string">"monthly"</span> <span class="attr">data-num-items</span>=<span class="string">"5"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 多说公共JS代码 start (一个网页只需插入一次) --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="javascript"></span><br><span class="line"><span class="keyword">var</span> duoshuoQuery = &#123;short_name:<span class="string">"whatbeg"</span>&#125;;</span><br><span class="line">	(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">		<span class="keyword">var</span> ds = <span class="built_in">document</span>.createElement(<span class="string">'script'</span>);</span><br><span class="line">		ds.type = <span class="string">'text/javascript'</span>;ds.async = <span class="literal">true</span>;</span><br><span class="line">		ds.src = (<span class="built_in">document</span>.location.protocol == <span class="string">'https:'</span> ? <span class="string">'https:'</span> : <span class="string">'http:'</span>) + <span class="string">'//static.duoshuo.com/embed.js'</span>;</span><br><span class="line">		ds.charset = <span class="string">'UTF-8'</span>;</span><br><span class="line">		(<span class="built_in">document</span>.getElementsByTagName(<span class="string">'head'</span>)[<span class="number">0</span>] </span><br><span class="line">		 || <span class="built_in">document</span>.getElementsByTagName(<span class="string">'body'</span>)[<span class="number">0</span>]).appendChild(ds);</span><br><span class="line">	&#125;)();</span><br><span class="line">	</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 多说公共JS代码 end --&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>即可。</p>
+<h2 id="分类优化"><a href="#分类优化" class="headerlink" title="分类优化"></a>分类优化</h2><h3 id="1-分类中含有诸如‘-amp-’的特殊字符时，atom-xml文件就会报错，所以分类名尽量不要用此等特殊字符。"><a href="#1-分类中含有诸如‘-amp-’的特殊字符时，atom-xml文件就会报错，所以分类名尽量不要用此等特殊字符。" class="headerlink" title="1.分类中含有诸如‘&amp;’的特殊字符时，atom.xml文件就会报错，所以分类名尽量不要用此等特殊字符。"></a>1.分类中含有诸如‘&amp;’的特殊字符时，atom.xml文件就会报错，所以分类名尽量不要用此等特殊字符。</h3><h3 id="2-Jacman主题不支持多分类，如果在文章的md文件中想如此将文章加到多个分类中："><a href="#2-Jacman主题不支持多分类，如果在文章的md文件中想如此将文章加到多个分类中：" class="headerlink" title="2.Jacman主题不支持多分类，如果在文章的md文件中想如此将文章加到多个分类中："></a>2.Jacman主题不支持多分类，如果在文章的md文件中想如此将文章加到多个分类中：</h3><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">title:</span> ...</span><br><span class="line"><span class="attr">date:</span> ...</span><br><span class="line"><span class="attr">categories:</span> [A,B]</span><br><span class="line"><span class="meta">---</span></span><br></pre></td></tr></table></figure>
+<p>那么在categories文件夹中会创建A分类和A\B分类，B分类目录是A分类目录的子目录，所以如果下一篇文章不是上述这样分类但是又有B时，如：<br><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">title:</span> ...</span><br><span class="line"><span class="attr">date:</span> ...</span><br><span class="line"><span class="attr">categories:</span> B</span><br><span class="line"><span class="meta">---</span></span><br></pre></td></tr></table></figure></p>
+<p>这样又会创建一个跟A同目录的B分类文件夹，这里的B不等于上述的A\B，所以在侧边栏显示分类的时候就会显示两个B分类，显然违背了我们这样做的初衷。<br>解决方法有两个：</p>
+<blockquote>
+<p><strong>1.改进此主题</strong><br><strong>2.尽量只将文章分到一个类别</strong></p>
+</blockquote>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  
+  <span></span> <a href="/categories/错误解决或优化/">错误解决或优化</a>
+  </div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/hexo/">hexo</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	<div class="share-jiathis">
+	  
+<div class="jiathis_style_24x24">
+	<a class="jiathis_button_tsina"></a>
+	<a class="jiathis_button_weixin"></a>
+	<a class="jiathis_button_tqq"></a>
+	<a class="jiathis_button_qzone"></a>
+	<a class="jiathis_button_douban"></a>
+	<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+    var jiathis_config={
+    data_track_clickback:true,
+    sm:"copy,renren,cqq",
+    pic:"",
+    summary:"",
+     ralateuid:{"tsina":"husuche## e.g. 2176287895 Your weibo id,It will be used in share button."},hideMore:false}
+    
+  </script> 
+<script type="text/javascript" src="//v3.jiathis.com/code/jia.js?uid=2094149
+2094149" charset="utf-8"></script>      
+
+	 </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/2016/04/19/knn1.html"  title="kNN分类器在西瓜数据集3.0$\alpha$上的结果">
+ <strong>下一篇：</strong><br/> 
+ <span>kNN分类器在西瓜数据集3.0$\alpha$上的结果
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section id="comments" class="comment">
+	<div class="ds-thread" data-thread-key="2016/04/20/blogopt420.html" data-title="Hexo博客Jacman主题的一些优化  --本博客4月20日优化" data-url="http://whatbeg.com/2016/04/20/blogopt420.html"></div>
+</section>
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-新增博客访问量统计和文章访问量统计"><span class="toc-number">1.</span> <span class="toc-text">1.新增博客访问量统计和文章访问量统计</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#采用-不蒜子-极简计数器"><span class="toc-number">1.1.</span> <span class="toc-text">采用 不蒜子 极简计数器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#添加总pv计数和总uv计数"><span class="toc-number">1.2.</span> <span class="toc-text">添加总pv计数和总uv计数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#添加文章访问计数"><span class="toc-number">1.3.</span> <span class="toc-text">添加文章访问计数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-添加“热评文章”侧边栏"><span class="toc-number">2.</span> <span class="toc-text">2.添加“热评文章”侧边栏</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分类优化"><span class="toc-number">3.</span> <span class="toc-text">分类优化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-分类中含有诸如‘-amp-’的特殊字符时，atom-xml文件就会报错，所以分类名尽量不要用此等特殊字符。"><span class="toc-number">3.1.</span> <span class="toc-text">1.分类中含有诸如‘&’的特殊字符时，atom.xml文件就会报错，所以分类名尽量不要用此等特殊字符。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Jacman主题不支持多分类，如果在文章的md文件中想如此将文章加到多个分类中："><span class="toc-number">3.2.</span> <span class="toc-text">2.Jacman主题不支持多分类，如果在文章的md文件中想如此将文章加到多个分类中：</span></a></li></ol></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/成长之路/" title="成长之路">成长之路<sup>6</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/数据挖掘分析与可视化/" title="数据挖掘分析与可视化">数据挖掘分析与可视化<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/机器学习/" title="机器学习">机器学习<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/计算机相关知识/" title="计算机相关知识">计算机相关知识<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/读书笔记-技术类/" title="读书笔记-技术类">读书笔记-技术类<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/错误解决或优化/" title="错误解决或优化">错误解决或优化<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/随笔/" title="随笔">随笔<sup>1</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+  <div class="archiveslist">
+    <p class="asidetitle"><a href="/archives">归档</a></p>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">16</span></li></ul>
+  </div>
+
+
+  
+  <div class="tagcloudlist">
+    <p class="asidetitle">标签云</p>
+    <div class="tagcloudlist clearfix">
+       <a href="/tags/CS/" style="font-size: 20px;">CS</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Python/" style="font-size: 20px;">Python</a> <a href="/tags/Summary/" style="font-size: 20px;">Summary</a> <a href="/tags/Web/" style="font-size: 15px;">Web</a> <a href="/tags/hexo/" style="font-size: 15px;">hexo</a> <a href="/tags/数据分析/" style="font-size: 15px;">数据分析</a> <a href="/tags/机器学习/" style="font-size: 15px;">机器学习</a> <a href="/tags/看剧/" style="font-size: 10px;">看剧</a> <a href="/tags/读书/" style="font-size: 10px;">读书</a> <a href="/tags/随笔/" style="font-size: 15px;">随笔</a>
+    </div>
+  </div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="http://www.cnblogs.com/whatbeg/" target="_blank" title="我的博客园">我的博客园</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.matrix67.com/blog/" target="_blank" title="Matrix67">Matrix67</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.liaoxuefeng.com/" target="_blank" title="廖雪峰">廖雪峰</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://zh.lucida.me/" target="_blank" title="Lucida">Lucida</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+  <div class="weiboshow">
+  <p class="asidetitle">新浪微博</p>
+    <iframe width="220" height="450" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=220&height=450&fansRow=1&ptype=1&speed=0&skin=7&isTitle=1&noborder=1&isWeibo=1&isFans=0&uid=2669063224&verifier=4f45c1f5&dpc=1"></iframe>
+</div>
+
+
+  <p class="asidetitle">热评文章</p>
+
+<div class="ds-top-threads" data-range="monthly" data-num-items="5"></div>
+
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"whatbeg"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello, I am Chiou Hu. <br/>
+			Wish we can improve together!</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/husuche" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		
+		
+		
+		<a href="https://www.facebook.com/whatbeg" target="_blank" class="icon-facebook" title="facebook"></a>
+		
+		
+		
+		
+		
+		
+		<a href="mailto:572241670@qq.com" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2016 
+		
+		<a href="/about" target="_blank" title="whatbeg">whatbeg</a>
+		
+		
+		</p>
+</div>
+<span class="post-count">Total words: 29.7k</span>
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+<span id="busuanzi_container_site_pv">
+    &nbsp;&nbsp;Total visits:&nbsp;<span id="busuanzi_value_site_pv"></span>
+</span>
+<span id="busuanzi_container_site_uv">
+  &nbsp;&nbsp;You are Visiter No.<span id="busuanzi_value_site_uv"></span>
+</span></footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    $('#toc.toc-aside').css('display', 'block').addClass('fadeIn');  //侧边栏显示文章目录
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+        getSize();
+        if (myWidth >= 1024) {
+          c.click();
+        }
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"whatbeg"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1258390595'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s95.cnzz.com/z_stat.php%3Fid%3D1258390595%26online%3D1%26show%3Dline' type='text/javascript'%3E%3C/script%3E"));</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    bp.src = '//push.zhanzhang.baidu.com/push.js';
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+  </body>
+</html>
+
+
