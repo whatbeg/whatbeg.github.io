@@ -4,6 +4,28 @@
 
     
   <url>
+    <loc>http://whatbeg.com/2016/04/23/matplotlib-desiciontree.html</loc>
+    <lastmod>2016-04-23T12:16:15.295Z</lastmod>
+    <data>
+        <display>
+        <title>利用matplotlib画决策树</title>
+        <pubTime>2016-04-23T12:05:51.000Z</pubTime>
+        
+        <tag>机器学习</tag>
+         
+        <tag>Python</tag>
+         
+         
+           
+             
+              <breadCrumb title="机器学习" url="http://whatbeg.com/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://whatbeg.com/2016/04/22/xiguadataset.html</loc>
     <lastmod>2016-04-22T08:48:09.944Z</lastmod>
     <data>
@@ -71,11 +93,11 @@
         <title>【Python模拟登录】(二) 加密与重放方式登录 -以模拟登录博客园为例</title>
         <pubTime>2016-04-14T07:37:53.000Z</pubTime>
         
-        <tag>Web</tag>
-         
         <tag>Python</tag>
          
         <tag>数据分析</tag>
+         
+        <tag>Web</tag>
          
          
            
@@ -137,9 +159,9 @@
         <title>kNN分类器在西瓜数据集3.0$\alpha$上的结果</title>
         <pubTime>2016-04-19T12:45:57.000Z</pubTime>
         
-        <tag>Python</tag>
-         
         <tag>机器学习</tag>
+         
+        <tag>Python</tag>
          
          
            
