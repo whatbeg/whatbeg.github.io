@@ -4,16 +4,16 @@
 
     
   <url>
-    <loc>http://whatbeg.com/2016/04/23/matplotlib-desiciontree.html</loc>
-    <lastmod>2016-04-23T12:39:13.870Z</lastmod>
+    <loc>http://whatbeg.com/2016/04/23/decisiontree.html</loc>
+    <lastmod>2016-04-23T12:47:17.183Z</lastmod>
     <data>
         <display>
-        <title>利用matplotlib画决策树</title>
-        <pubTime>2016-04-23T12:05:51.000Z</pubTime>
+        <title>如何实现并应用决策树算法？</title>
+        <pubTime>2016-04-23T12:35:01.000Z</pubTime>
         
-        <tag>Python</tag>
-         
         <tag>机器学习</tag>
+         
+        <tag>Python</tag>
          
          
            
@@ -26,16 +26,16 @@
 
     
   <url>
-    <loc>http://whatbeg.com/2016/04/23/decisiontree.html</loc>
-    <lastmod>2016-04-23T12:35:55.954Z</lastmod>
+    <loc>http://whatbeg.com/2016/04/23/matplotlib-desiciontree.html</loc>
+    <lastmod>2016-04-23T12:39:13.870Z</lastmod>
     <data>
         <display>
-        <title>如何实现并应用决策树算法？</title>
-        <pubTime>2016-04-23T12:35:01.000Z</pubTime>
+        <title>利用matplotlib画决策树</title>
+        <pubTime>2016-04-23T12:05:51.000Z</pubTime>
         
-        <tag>Python</tag>
-         
         <tag>机器学习</tag>
+         
+        <tag>Python</tag>
          
          
            
@@ -117,9 +117,9 @@
         
         <tag>Python</tag>
          
-        <tag>数据分析</tag>
-         
         <tag>Web</tag>
+         
+        <tag>数据分析</tag>
          
          
            
@@ -181,9 +181,9 @@
         <title>kNN分类器在西瓜数据集3.0$\alpha$上的结果</title>
         <pubTime>2016-04-19T12:45:57.000Z</pubTime>
         
-        <tag>Python</tag>
-         
         <tag>机器学习</tag>
+         
+        <tag>Python</tag>
          
          
            
