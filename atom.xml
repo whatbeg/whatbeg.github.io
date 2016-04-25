@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://whatbeg.com/"/>
-  <updated>2016-04-25T05:28:42.238Z</updated>
+  <updated>2016-04-25T12:39:54.000Z</updated>
   <id>http://whatbeg.com/</id>
   
   <author>
@@ -14,6 +14,93 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Numpy模块的一些方法收集</title>
+    <link href="http://whatbeg.com/2016/04/25/numpy.html"/>
+    <id>http://whatbeg.com/2016/04/25/numpy.html</id>
+    <published>2016-04-25T12:36:55.000Z</published>
+    <updated>2016-04-25T12:39:54.000Z</updated>
+    
+    <content type="html">&lt;p&gt;最近经常需要用到Python矩阵计算处理模块Numpy，有些方法不是很熟悉，这里手机记录一下，备查备忘。&lt;/p&gt;
+&lt;h2 id=&quot;矩阵对象的属性&quot;&gt;&lt;a href=&quot;#矩阵对象的属性&quot; class=&quot;headerlink&quot; title=&quot;矩阵对象的属性&quot;&gt;&lt;/a&gt;矩阵对象的属性&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;matrix.T transpose：返回矩阵的转置矩阵&lt;/li&gt;
+&lt;li&gt;matrix.H hermitian (conjugate) &lt;/li&gt;
+&lt;li&gt;transpose：返回复数矩阵的共轭元素矩阵&lt;/li&gt;
+&lt;li&gt;matrix.I inverse：返回矩阵的逆矩阵&lt;/li&gt;
+&lt;li&gt;matrix.A base array：返回矩阵基于的数组&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;矩阵对象的方法&quot;&gt;&lt;a href=&quot;#矩阵对象的方法&quot; class=&quot;headerlink&quot; title=&quot;矩阵对象的方法&quot;&gt;&lt;/a&gt;矩阵对象的方法&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;all([axis, out]) :沿给定的轴判断矩阵所有元素是否为真(非0即为真)&lt;/li&gt;
+&lt;li&gt;any([axis, out]) :沿给定轴的方向判断矩阵元素是否为真，只要一个元素为真则为真。&lt;/li&gt;
+&lt;li&gt;argmax([axis, out]) :沿给定轴的方向返回最大元素的索引（最大元素的位置）.&lt;/li&gt;
+&lt;li&gt;argmin([axis, out]): 沿给定轴的方向返回最小元素的索引（最小元素的位置）&lt;/li&gt;
+&lt;li&gt;argsort([axis, kind, order]) :返回排序后的索引矩阵&lt;/li&gt;
+&lt;li&gt;astype(dtype[, order, casting, subok, copy]):将该矩阵数据复制，且数据类型为指定的数据类型&lt;/li&gt;
+&lt;li&gt;byteswap(inplace) Swap the bytes of the array elements&lt;/li&gt;
+&lt;li&gt;choose(choices[, out, mode]) :根据给定的索引得到一个新的数据矩阵（索引从choices给定）&lt;/li&gt;
+&lt;li&gt;clip(a_min, a_max[, out]) :返回新的矩阵，比给定元素大的元素为a_max，小的为a_min&lt;/li&gt;
+&lt;li&gt;compress(condition[, axis, out]) :返回满足条件的矩阵&lt;/li&gt;
+&lt;li&gt;conj() :返回复数的共轭复数&lt;/li&gt;
+&lt;li&gt;conjugate() :返回所有复数的共轭复数元素&lt;/li&gt;
+&lt;li&gt;copy([order]) :复制一个矩阵并赋给另外一个对象，b=a.copy()&lt;/li&gt;
+&lt;li&gt;cumprod([axis, dtype, out]) :返回沿指定轴的元素累积矩阵&lt;/li&gt;
+&lt;li&gt;cumsum([axis, dtype, out]) :返回沿指定轴的元素累积和矩阵&lt;/li&gt;
+&lt;li&gt;diagonal([offset, axis1, axis2]) :返回矩阵中对角线的数据&lt;/li&gt;
+&lt;li&gt;dot(b[, out]) :两个矩阵的点乘&lt;/li&gt;
+&lt;li&gt;dump(file) :将矩阵存储为指定文件,可以通过pickle.loads()或者numpy.loads()如:a.dump(‘d:\a.txt’)&lt;/li&gt;
+&lt;li&gt;dumps() :将矩阵的数据转存为字符串.&lt;/li&gt;
+&lt;li&gt;fill(value) :将矩阵中的所有元素填充为指定的value&lt;/li&gt;
+&lt;li&gt;flatten([order]) :将矩阵转化为一个一维的形式，但是还是matrix对象&lt;/li&gt;
+&lt;li&gt;getA() :返回自己，但是作为ndarray返回&lt;/li&gt;
+&lt;li&gt;getA1()：返回一个扁平（一维）的数组（ndarray）&lt;/li&gt;
+&lt;li&gt;getH() :返回自身的共轭复数转置矩阵&lt;/li&gt;
+&lt;li&gt;getI() :返回本身的逆矩阵&lt;/li&gt;
+&lt;li&gt;getT() :返回本身的转置矩阵&lt;/li&gt;
+&lt;li&gt;max([axis, out]) ：返回指定轴的最大值&lt;/li&gt;
+&lt;li&gt;mean([axis, dtype, out]) :沿给定轴方向，返回其均值&lt;/li&gt;
+&lt;li&gt;min([axis, out]) ：返回指定轴的最小值&lt;/li&gt;
+&lt;li&gt;nonzero() :返回非零元素的索引矩阵&lt;/li&gt;
+&lt;li&gt;prod([axis, dtype, out]) :返回指定轴方型上，矩阵元素的乘积.&lt;/li&gt;
+&lt;li&gt;ptp([axis, out]) :返回指定轴方向的最大值减去最小值.&lt;/li&gt;
+&lt;li&gt;put(indices, values[, mode]) :用给定的value替换矩阵本身给定索引（indices）位置的值&lt;/li&gt;
+&lt;li&gt;ravel([order]) :返回一个数组，该数组是一维数组或平数组&lt;/li&gt;
+&lt;li&gt;repeat(repeats[, axis]) :重复矩阵中的元素，可以沿指定轴方向重复矩阵元素，repeats为重复次数&lt;/li&gt;
+&lt;li&gt;reshape(shape[, order]) :改变矩阵的大小,如：reshape([2,3])&lt;/li&gt;
+&lt;li&gt;resize(new_shape[, refcheck]) :改变该数据的尺寸大小&lt;/li&gt;
+&lt;li&gt;round([decimals, out]) :返回指定精度后的矩阵，指定的位数采用四舍五入，若为1，则保留一位小数&lt;/li&gt;
+&lt;li&gt;searchsorted(v[, side, sorter]) :搜索V在矩阵中的索引位置&lt;/li&gt;
+&lt;li&gt;sort([axis, kind, order]) :对矩阵进行排序或者按轴的方向进行排序&lt;/li&gt;
+&lt;li&gt;squeeze([axis]) :移除长度为1的轴&lt;/li&gt;
+&lt;li&gt;std([axis, dtype, out, ddof]) :沿指定轴的方向，返回元素的标准差.&lt;/li&gt;
+&lt;li&gt;sum([axis, dtype, out]) ：沿指定轴的方向，返回其元素的总和&lt;/li&gt;
+&lt;li&gt;swapaxes(axis1, axis2):交换两个轴方向上的数据.&lt;/li&gt;
+&lt;li&gt;take(indices[, axis, out, mode]) :提取指定索引位置的数据,并以一维数组或者矩阵返回(主要取决axis)&lt;/li&gt;
+&lt;li&gt;tofile(fid[, sep, format]) :将矩阵中的数据以二进制写入到文件&lt;/li&gt;
+&lt;li&gt;tolist() :将矩阵转化为列表形式&lt;/li&gt;
+&lt;li&gt;tostring([order]):将矩阵转化为python的字符串.&lt;/li&gt;
+&lt;li&gt;trace([offset, axis1, axis2, dtype, out]):返回对角线元素之和&lt;/li&gt;
+&lt;li&gt;transpose(*axes) :返回矩阵的转置矩阵，不改变原有矩阵&lt;/li&gt;
+&lt;li&gt;var([axis, dtype, out, ddof]) ：沿指定轴方向，返回矩阵元素的方差&lt;/li&gt;
+&lt;li&gt;view([dtype, type]) :生成一个相同数据，但是类型为指定新类型的矩阵。&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;最近经常需要用到Python矩阵计算处理模块Numpy，有些方法不是很熟悉，这里手机记录一下，备查备忘。&lt;/p&gt;
+&lt;h2 id=&quot;矩阵对象的属性&quot;&gt;&lt;a href=&quot;#矩阵对象的属性&quot; class=&quot;headerlink&quot; title=&quot;矩阵对象的属性&quot;&gt;&lt;/a&gt;矩阵对象的
+    
+    </summary>
+    
+      <category term="数据挖掘分析与可视化" scheme="http://whatbeg.com/categories/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98%E5%88%86%E6%9E%90%E4%B8%8E%E5%8F%AF%E8%A7%86%E5%8C%96/"/>
+    
+    
+      <category term="Python" scheme="http://whatbeg.com/tags/Python/"/>
+    
+      <category term="数据分析" scheme="http://whatbeg.com/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/"/>
+    
+  </entry>
   
   <entry>
     <title>Latex/MathJax的一些语法</title>
@@ -277,9 +364,9 @@
     
       <category term="Python" scheme="http://whatbeg.com/tags/Python/"/>
     
-      <category term="数据分析" scheme="http://whatbeg.com/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/"/>
-    
       <category term="Web" scheme="http://whatbeg.com/tags/Web/"/>
+    
+      <category term="数据分析" scheme="http://whatbeg.com/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/"/>
     
   </entry>
   
@@ -893,63 +980,6 @@ Web直接放弃了，后来就没碰过，现在HTML,CSS,JS都忘了好多。。
     
     
       <category term="Summary" scheme="http://whatbeg.com/tags/Summary/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>写在独立博客开创时</title>
-    <link href="http://whatbeg.com/2016/04/04/my-new-post.html"/>
-    <id>http://whatbeg.com/2016/04/04/my-new-post.html</id>
-    <published>2016-04-03T17:12:27.000Z</published>
-    <updated>2016-04-19T13:38:32.471Z</updated>
-    
-    <content type="html">&lt;h2 id=&quot;写在前面&quot;&gt;&lt;a href=&quot;#写在前面&quot; class=&quot;headerlink&quot; title=&quot;写在前面&quot;&gt;&lt;/a&gt;写在前面&lt;/h2&gt;&lt;p&gt;今天花了差不多一整天，终于把独立博客建立出来了，实现了基本的功能。&lt;br&gt;为什么搭这么一个博客呢，原因有下面几点：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;希望有一个自己独立自主的博客，可以自由设计样式，发布文章，而不用顾忌依托网站的考虑。&lt;/li&gt;
-&lt;li&gt;个人博客是时代潮流，越来越多的人选择搭建自己的博客，‘独立’的才是最自己的。&lt;/li&gt;
-&lt;li&gt;以前是写技术文章一个博客，写生活文章一个博客，这个博客可以把二者统一起来，不用同时维护两个博客，节省精力。&lt;/li&gt;
-&lt;li&gt;Hexo+Github/Coding搭建博客实在挺简单，为什么不试试呢？&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&quot;工具&quot;&gt;&lt;a href=&quot;#工具&quot; class=&quot;headerlink&quot; title=&quot;工具&quot;&gt;&lt;/a&gt;工具&lt;/h2&gt;&lt;p&gt;本次搭建用到了以下工具/软件：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Windows 8.1 x64&lt;/li&gt;
-&lt;li&gt;Git 2.8.0 x64&lt;/li&gt;
-&lt;li&gt;Node.js v5.9.0 x64&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&quot;后续工作&quot;&gt;&lt;a href=&quot;#后续工作&quot; class=&quot;headerlink&quot; title=&quot;后续工作&quot;&gt;&lt;/a&gt;后续工作&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;下一步还需要做的有：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;侧边栏插件&lt;/li&gt;
-&lt;li&gt;分类、标签&lt;/li&gt;
-&lt;li&gt;Markdown语法&lt;/li&gt;
-&lt;li&gt;统计（可选）&lt;/li&gt;
-&lt;li&gt;独立域名（可选）&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;并且可以将网络上没有或者很难找到的具体设置方法写成文章，分享给大家。&lt;/p&gt;
-&lt;h2 id=&quot;结语&quot;&gt;&lt;a href=&quot;#结语&quot; class=&quot;headerlink&quot; title=&quot;结语&quot;&gt;&lt;/a&gt;结语&lt;/h2&gt;&lt;p&gt;这次部署过程中受益于网络上各路大神们的细心总结的，赠人玫瑰，手有余香。感谢！&lt;/p&gt;
-&lt;p&gt;鸣谢：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;wufeng&lt;/li&gt;
-&lt;li&gt;cnfeat&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;http://opiece.me/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;chillax&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;http://tengj.top/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;tengj&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;就写到这吧，Markdown也不是很熟悉。总之，终于成功了，好开心！&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;写在前面&quot;&gt;&lt;a href=&quot;#写在前面&quot; class=&quot;headerlink&quot; title=&quot;写在前面&quot;&gt;&lt;/a&gt;写在前面&lt;/h2&gt;&lt;p&gt;今天花了差不多一整天，终于把独立博客建立出来了，实现了基本的功能。&lt;br&gt;为什么搭这么一个博客呢，原因有下面几点：&lt;/p&gt;
-
-    
-    </summary>
-    
-      <category term="成长之路" scheme="http://whatbeg.com/categories/%E6%88%90%E9%95%BF%E4%B9%8B%E8%B7%AF/"/>
-    
-    
-      <category term="随笔" scheme="http://whatbeg.com/tags/%E9%9A%8F%E7%AC%94/"/>
     
   </entry>
   

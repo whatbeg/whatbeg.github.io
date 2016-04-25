@@ -4,96 +4,41 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>Latex/MathJax的一些语法 | Whatbeg&#39;s blog</title>
+    <title>Numpy模块的一些方法收集 | Whatbeg&#39;s blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="whatbeg">
     
 
     
-    <meta name="description" content="Latex的一些公式，列一下方便查阅。图来自《一份不太简短的LATEX2介绍》
-数学模式重音符号(带帽符)
-希腊字母
-二元关系
-二元运算符
-大运算符
-箭头
-定界符
-大定界符
-其他符号
-非数学符号
-AMS定界符
-AMS希腊和希伯来字母
-AMS二元关系
-AMS箭头
-AMS二元否定关系符和箭头
-AMS二元运算符
-AMS其他符号
-数学字母">
+    <meta name="description" content="最近经常需要用到Python矩阵计算处理模块Numpy，有些方法不是很熟悉，这里手机记录一下，备查备忘。
+矩阵对象的属性
+matrix.T transpose：返回矩阵的转置矩阵
+matrix.H hermitian (conjugate) 
+transpose：返回复数矩阵的共轭元素矩阵
+matrix.I inverse：返回矩阵的逆矩阵
+matrix.A base array：返回矩阵基于的数">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Latex/MathJax的一些语法">
-<meta property="og:url" content="http://whatbeg.com/2016/04/25/latexsyntax.html">
+<meta property="og:title" content="Numpy模块的一些方法收集">
+<meta property="og:url" content="http://whatbeg.com/2016/04/25/numpy.html">
 <meta property="og:site_name" content="Whatbeg's blog">
-<meta property="og:description" content="Latex的一些公式，列一下方便查阅。图来自《一份不太简短的LATEX2介绍》
-数学模式重音符号(带帽符)
-希腊字母
-二元关系
-二元运算符
-大运算符
-箭头
-定界符
-大定界符
-其他符号
-非数学符号
-AMS定界符
-AMS希腊和希伯来字母
-AMS二元关系
-AMS箭头
-AMS二元否定关系符和箭头
-AMS二元运算符
-AMS其他符号
-数学字母">
-<meta property="og:image" content="http://7xsl28.com2.z0.glb.clouddn.com/latex1.png-sy">
-<meta property="og:image" content="http://7xsl28.com2.z0.glb.clouddn.com/latex2.png-sy">
-<meta property="og:image" content="http://7xsl28.com2.z0.glb.clouddn.com/latex3.png-sy">
-<meta property="og:image" content="http://7xsl28.com2.z0.glb.clouddn.com/latex4.png-sy">
-<meta property="og:image" content="http://7xsl28.com2.z0.glb.clouddn.com/latex5.png-sy">
-<meta property="og:image" content="http://7xsl28.com2.z0.glb.clouddn.com/latex6.png-sy">
-<meta property="og:image" content="http://7xsl28.com2.z0.glb.clouddn.com/latex7.png-sy">
-<meta property="og:image" content="http://7xsl28.com2.z0.glb.clouddn.com/latex8.png-sy">
-<meta property="og:image" content="http://7xsl28.com2.z0.glb.clouddn.com/latex9.png-sy">
-<meta property="og:image" content="http://7xsl28.com2.z0.glb.clouddn.com/latex10.png-sy">
-<meta property="og:image" content="http://7xsl28.com2.z0.glb.clouddn.com/latex11.png-sy">
-<meta property="og:image" content="http://7xsl28.com2.z0.glb.clouddn.com/latex12.png-sy">
-<meta property="og:image" content="http://7xsl28.com2.z0.glb.clouddn.com/latex13.png-sy">
-<meta property="og:image" content="http://7xsl28.com2.z0.glb.clouddn.com/latex14.png-sy">
-<meta property="og:image" content="http://7xsl28.com2.z0.glb.clouddn.com/latex15.png-sy">
-<meta property="og:image" content="http://7xsl28.com2.z0.glb.clouddn.com/latex16.png-sy">
-<meta property="og:image" content="http://7xsl28.com2.z0.glb.clouddn.com/latex17.png-sy">
-<meta property="og:image" content="http://7xsl28.com2.z0.glb.clouddn.com/latex18.png-sy">
-<meta property="og:updated_time" content="2016-04-25T05:28:42.238Z">
+<meta property="og:description" content="最近经常需要用到Python矩阵计算处理模块Numpy，有些方法不是很熟悉，这里手机记录一下，备查备忘。
+矩阵对象的属性
+matrix.T transpose：返回矩阵的转置矩阵
+matrix.H hermitian (conjugate) 
+transpose：返回复数矩阵的共轭元素矩阵
+matrix.I inverse：返回矩阵的逆矩阵
+matrix.A base array：返回矩阵基于的数">
+<meta property="og:updated_time" content="2016-04-25T12:39:54.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Latex/MathJax的一些语法">
-<meta name="twitter:description" content="Latex的一些公式，列一下方便查阅。图来自《一份不太简短的LATEX2介绍》
-数学模式重音符号(带帽符)
-希腊字母
-二元关系
-二元运算符
-大运算符
-箭头
-定界符
-大定界符
-其他符号
-非数学符号
-AMS定界符
-AMS希腊和希伯来字母
-AMS二元关系
-AMS箭头
-AMS二元否定关系符和箭头
-AMS二元运算符
-AMS其他符号
-数学字母">
-<meta name="twitter:image" content="http://7xsl28.com2.z0.glb.clouddn.com/latex1.png-sy">
+<meta name="twitter:title" content="Numpy模块的一些方法收集">
+<meta name="twitter:description" content="最近经常需要用到Python矩阵计算处理模块Numpy，有些方法不是很熟悉，这里手机记录一下，备查备忘。
+矩阵对象的属性
+matrix.T transpose：返回矩阵的转置矩阵
+matrix.H hermitian (conjugate) 
+transpose：返回复数矩阵的共轭元素矩阵
+matrix.I inverse：返回矩阵的逆矩阵
+matrix.A base array：返回矩阵基于的数">
 
     
     <link rel="alternative" href="/atom.xml" title="Whatbeg&#39;s blog" type="application/atom+xml">
@@ -157,14 +102,14 @@ AMS其他符号
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2016/04/25/latexsyntax.html" title="Latex/MathJax的一些语法" itemprop="url">Latex/MathJax的一些语法</a>
+      <a href="/2016/04/25/numpy.html" title="Numpy模块的一些方法收集" itemprop="url">Numpy模块的一些方法收集</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="whatbeg" target="_blank" itemprop="author">whatbeg</a>
 		
   <p class="article-time">
-    <time datetime="2016-04-25T04:53:28.000Z" itemprop="datePublished"> 发表于 2016-04-25</time>
+    <time datetime="2016-04-25T12:36:55.000Z" itemprop="datePublished"> 发表于 2016-04-25</time>
     <span id="busuanzi_container_page_pv">
     总阅读<span id="busuanzi_value_page_pv"></span>次
     </span>
@@ -176,29 +121,72 @@ AMS其他符号
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#数学模式重音符号-带帽符"><span class="toc-number">1.</span> <span class="toc-text">数学模式重音符号(带帽符)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#希腊字母"><span class="toc-number">2.</span> <span class="toc-text">希腊字母</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二元关系"><span class="toc-number">3.</span> <span class="toc-text">二元关系</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二元运算符"><span class="toc-number">4.</span> <span class="toc-text">二元运算符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#大运算符"><span class="toc-number">5.</span> <span class="toc-text">大运算符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#箭头"><span class="toc-number">6.</span> <span class="toc-text">箭头</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#定界符"><span class="toc-number">7.</span> <span class="toc-text">定界符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#大定界符"><span class="toc-number">8.</span> <span class="toc-text">大定界符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#其他符号"><span class="toc-number">9.</span> <span class="toc-text">其他符号</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#非数学符号"><span class="toc-number">10.</span> <span class="toc-text">非数学符号</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AMS定界符"><span class="toc-number">11.</span> <span class="toc-text">AMS定界符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AMS希腊和希伯来字母"><span class="toc-number">12.</span> <span class="toc-text">AMS希腊和希伯来字母</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AMS二元关系"><span class="toc-number">13.</span> <span class="toc-text">AMS二元关系</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AMS箭头"><span class="toc-number">14.</span> <span class="toc-text">AMS箭头</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AMS二元否定关系符和箭头"><span class="toc-number">15.</span> <span class="toc-text">AMS二元否定关系符和箭头</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AMS二元运算符"><span class="toc-number">16.</span> <span class="toc-text">AMS二元运算符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AMS其他符号"><span class="toc-number">17.</span> <span class="toc-text">AMS其他符号</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数学字母"><span class="toc-number">18.</span> <span class="toc-text">数学字母</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#矩阵对象的属性"><span class="toc-number">1.</span> <span class="toc-text">矩阵对象的属性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#矩阵对象的方法"><span class="toc-number">2.</span> <span class="toc-text">矩阵对象的方法</span></a></li></ol>
 		
 		</div>
 		
-		<p>Latex的一些公式，列一下方便查阅。<br>图来自《一份不太简短的LATEX2介绍》</p>
-<h2 id="数学模式重音符号-带帽符"><a href="#数学模式重音符号-带帽符" class="headerlink" title="数学模式重音符号(带帽符)"></a>数学模式重音符号(带帽符)</h2><p><img src="http://7xsl28.com2.z0.glb.clouddn.com/latex1.png-sy" alt=""></p>
-<h2 id="希腊字母"><a href="#希腊字母" class="headerlink" title="希腊字母"></a>希腊字母</h2><p><img src="http://7xsl28.com2.z0.glb.clouddn.com/latex2.png-sy" alt=""></p>
-<h2 id="二元关系"><a href="#二元关系" class="headerlink" title="二元关系"></a>二元关系</h2><p><img src="http://7xsl28.com2.z0.glb.clouddn.com/latex3.png-sy" alt=""></p>
-<h2 id="二元运算符"><a href="#二元运算符" class="headerlink" title="二元运算符"></a>二元运算符</h2><p><img src="http://7xsl28.com2.z0.glb.clouddn.com/latex4.png-sy" alt=""></p>
-<h2 id="大运算符"><a href="#大运算符" class="headerlink" title="大运算符"></a>大运算符</h2><p><img src="http://7xsl28.com2.z0.glb.clouddn.com/latex5.png-sy" alt=""></p>
-<h2 id="箭头"><a href="#箭头" class="headerlink" title="箭头"></a>箭头</h2><p><img src="http://7xsl28.com2.z0.glb.clouddn.com/latex6.png-sy" alt=""></p>
-<h2 id="定界符"><a href="#定界符" class="headerlink" title="定界符"></a>定界符</h2><p><img src="http://7xsl28.com2.z0.glb.clouddn.com/latex7.png-sy" alt=""></p>
-<h2 id="大定界符"><a href="#大定界符" class="headerlink" title="大定界符"></a>大定界符</h2><p><img src="http://7xsl28.com2.z0.glb.clouddn.com/latex8.png-sy" alt=""></p>
-<h2 id="其他符号"><a href="#其他符号" class="headerlink" title="其他符号"></a>其他符号</h2><p><img src="http://7xsl28.com2.z0.glb.clouddn.com/latex9.png-sy" alt=""></p>
-<h2 id="非数学符号"><a href="#非数学符号" class="headerlink" title="非数学符号"></a>非数学符号</h2><p><img src="http://7xsl28.com2.z0.glb.clouddn.com/latex10.png-sy" alt=""></p>
-<h2 id="AMS定界符"><a href="#AMS定界符" class="headerlink" title="AMS定界符"></a>AMS定界符</h2><p><img src="http://7xsl28.com2.z0.glb.clouddn.com/latex11.png-sy" alt=""></p>
-<h2 id="AMS希腊和希伯来字母"><a href="#AMS希腊和希伯来字母" class="headerlink" title="AMS希腊和希伯来字母"></a>AMS希腊和希伯来字母</h2><p><img src="http://7xsl28.com2.z0.glb.clouddn.com/latex12.png-sy" alt=""></p>
-<h2 id="AMS二元关系"><a href="#AMS二元关系" class="headerlink" title="AMS二元关系"></a>AMS二元关系</h2><p><img src="http://7xsl28.com2.z0.glb.clouddn.com/latex13.png-sy" alt=""></p>
-<h2 id="AMS箭头"><a href="#AMS箭头" class="headerlink" title="AMS箭头"></a>AMS箭头</h2><p><img src="http://7xsl28.com2.z0.glb.clouddn.com/latex14.png-sy" alt=""></p>
-<h2 id="AMS二元否定关系符和箭头"><a href="#AMS二元否定关系符和箭头" class="headerlink" title="AMS二元否定关系符和箭头"></a>AMS二元否定关系符和箭头</h2><p><img src="http://7xsl28.com2.z0.glb.clouddn.com/latex15.png-sy" alt=""></p>
-<h2 id="AMS二元运算符"><a href="#AMS二元运算符" class="headerlink" title="AMS二元运算符"></a>AMS二元运算符</h2><p><img src="http://7xsl28.com2.z0.glb.clouddn.com/latex16.png-sy" alt=""></p>
-<h2 id="AMS其他符号"><a href="#AMS其他符号" class="headerlink" title="AMS其他符号"></a>AMS其他符号</h2><p><img src="http://7xsl28.com2.z0.glb.clouddn.com/latex17.png-sy" alt=""></p>
-<h2 id="数学字母"><a href="#数学字母" class="headerlink" title="数学字母"></a>数学字母</h2><p><img src="http://7xsl28.com2.z0.glb.clouddn.com/latex18.png-sy" alt=""></p>
+		<p>最近经常需要用到Python矩阵计算处理模块Numpy，有些方法不是很熟悉，这里手机记录一下，备查备忘。</p>
+<h2 id="矩阵对象的属性"><a href="#矩阵对象的属性" class="headerlink" title="矩阵对象的属性"></a>矩阵对象的属性</h2><ul>
+<li>matrix.T transpose：返回矩阵的转置矩阵</li>
+<li>matrix.H hermitian (conjugate) </li>
+<li>transpose：返回复数矩阵的共轭元素矩阵</li>
+<li>matrix.I inverse：返回矩阵的逆矩阵</li>
+<li>matrix.A base array：返回矩阵基于的数组</li>
+</ul>
+<h2 id="矩阵对象的方法"><a href="#矩阵对象的方法" class="headerlink" title="矩阵对象的方法"></a>矩阵对象的方法</h2><ul>
+<li>all([axis, out]) :沿给定的轴判断矩阵所有元素是否为真(非0即为真)</li>
+<li>any([axis, out]) :沿给定轴的方向判断矩阵元素是否为真，只要一个元素为真则为真。</li>
+<li>argmax([axis, out]) :沿给定轴的方向返回最大元素的索引（最大元素的位置）.</li>
+<li>argmin([axis, out]): 沿给定轴的方向返回最小元素的索引（最小元素的位置）</li>
+<li>argsort([axis, kind, order]) :返回排序后的索引矩阵</li>
+<li>astype(dtype[, order, casting, subok, copy]):将该矩阵数据复制，且数据类型为指定的数据类型</li>
+<li>byteswap(inplace) Swap the bytes of the array elements</li>
+<li>choose(choices[, out, mode]) :根据给定的索引得到一个新的数据矩阵（索引从choices给定）</li>
+<li>clip(a_min, a_max[, out]) :返回新的矩阵，比给定元素大的元素为a_max，小的为a_min</li>
+<li>compress(condition[, axis, out]) :返回满足条件的矩阵</li>
+<li>conj() :返回复数的共轭复数</li>
+<li>conjugate() :返回所有复数的共轭复数元素</li>
+<li>copy([order]) :复制一个矩阵并赋给另外一个对象，b=a.copy()</li>
+<li>cumprod([axis, dtype, out]) :返回沿指定轴的元素累积矩阵</li>
+<li>cumsum([axis, dtype, out]) :返回沿指定轴的元素累积和矩阵</li>
+<li>diagonal([offset, axis1, axis2]) :返回矩阵中对角线的数据</li>
+<li>dot(b[, out]) :两个矩阵的点乘</li>
+<li>dump(file) :将矩阵存储为指定文件,可以通过pickle.loads()或者numpy.loads()如:a.dump(‘d:\a.txt’)</li>
+<li>dumps() :将矩阵的数据转存为字符串.</li>
+<li>fill(value) :将矩阵中的所有元素填充为指定的value</li>
+<li>flatten([order]) :将矩阵转化为一个一维的形式，但是还是matrix对象</li>
+<li>getA() :返回自己，但是作为ndarray返回</li>
+<li>getA1()：返回一个扁平（一维）的数组（ndarray）</li>
+<li>getH() :返回自身的共轭复数转置矩阵</li>
+<li>getI() :返回本身的逆矩阵</li>
+<li>getT() :返回本身的转置矩阵</li>
+<li>max([axis, out]) ：返回指定轴的最大值</li>
+<li>mean([axis, dtype, out]) :沿给定轴方向，返回其均值</li>
+<li>min([axis, out]) ：返回指定轴的最小值</li>
+<li>nonzero() :返回非零元素的索引矩阵</li>
+<li>prod([axis, dtype, out]) :返回指定轴方型上，矩阵元素的乘积.</li>
+<li>ptp([axis, out]) :返回指定轴方向的最大值减去最小值.</li>
+<li>put(indices, values[, mode]) :用给定的value替换矩阵本身给定索引（indices）位置的值</li>
+<li>ravel([order]) :返回一个数组，该数组是一维数组或平数组</li>
+<li>repeat(repeats[, axis]) :重复矩阵中的元素，可以沿指定轴方向重复矩阵元素，repeats为重复次数</li>
+<li>reshape(shape[, order]) :改变矩阵的大小,如：reshape([2,3])</li>
+<li>resize(new_shape[, refcheck]) :改变该数据的尺寸大小</li>
+<li>round([decimals, out]) :返回指定精度后的矩阵，指定的位数采用四舍五入，若为1，则保留一位小数</li>
+<li>searchsorted(v[, side, sorter]) :搜索V在矩阵中的索引位置</li>
+<li>sort([axis, kind, order]) :对矩阵进行排序或者按轴的方向进行排序</li>
+<li>squeeze([axis]) :移除长度为1的轴</li>
+<li>std([axis, dtype, out, ddof]) :沿指定轴的方向，返回元素的标准差.</li>
+<li>sum([axis, dtype, out]) ：沿指定轴的方向，返回其元素的总和</li>
+<li>swapaxes(axis1, axis2):交换两个轴方向上的数据.</li>
+<li>take(indices[, axis, out, mode]) :提取指定索引位置的数据,并以一维数组或者矩阵返回(主要取决axis)</li>
+<li>tofile(fid[, sep, format]) :将矩阵中的数据以二进制写入到文件</li>
+<li>tolist() :将矩阵转化为列表形式</li>
+<li>tostring([order]):将矩阵转化为python的字符串.</li>
+<li>trace([offset, axis1, axis2, dtype, out]):返回对角线元素之和</li>
+<li>transpose(*axes) :返回矩阵的转置矩阵，不改变原有矩阵</li>
+<li>var([axis, dtype, out, ddof]) ：沿指定轴方向，返回矩阵元素的方差</li>
+<li>view([dtype, type]) :生成一个相同数据，但是类型为指定新类型的矩阵。</li>
+</ul>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -206,13 +194,13 @@ AMS其他符号
 
 <div class="article-categories">
   
-  <span></span> <a href="/categories/计算机相关知识/">计算机相关知识</a>
+  <span></span> <a href="/categories/数据挖掘分析与可视化/">数据挖掘分析与可视化</a>
   </div>
 
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/CS/">CS</a><a href="/tags/Latex/">Latex</a>
+  <span></span> <a href="/tags/Python/">Python</a><a href="/tags/数据分析/">数据分析</a>
   </div>
 
 </div>
@@ -256,19 +244,11 @@ AMS其他符号
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2016/04/25/numpy.html" title="Numpy模块的一些方法收集">
-  <strong>上一篇：</strong><br/>
-  <span>
-  Numpy模块的一些方法收集</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/2016/04/23/decisiontree.html"  title="如何实现并应用决策树算法？">
+<a href="/2016/04/25/latexsyntax.html"  title="Latex/MathJax的一些语法">
  <strong>下一篇：</strong><br/> 
- <span>如何实现并应用决策树算法？
+ <span>Latex/MathJax的一些语法
 </span>
 </a>
 </div>
@@ -277,7 +257,7 @@ AMS其他符号
 
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="2016/04/25/latexsyntax.html" data-title="Latex/MathJax的一些语法" data-url="http://whatbeg.com/2016/04/25/latexsyntax.html"></div>
+	<div class="ds-thread" data-thread-key="2016/04/25/numpy.html" data-title="Numpy模块的一些方法收集" data-url="http://whatbeg.com/2016/04/25/numpy.html"></div>
 </section>
 
 
@@ -287,7 +267,7 @@ AMS其他符号
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#数学模式重音符号-带帽符"><span class="toc-number">1.</span> <span class="toc-text">数学模式重音符号(带帽符)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#希腊字母"><span class="toc-number">2.</span> <span class="toc-text">希腊字母</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二元关系"><span class="toc-number">3.</span> <span class="toc-text">二元关系</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二元运算符"><span class="toc-number">4.</span> <span class="toc-text">二元运算符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#大运算符"><span class="toc-number">5.</span> <span class="toc-text">大运算符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#箭头"><span class="toc-number">6.</span> <span class="toc-text">箭头</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#定界符"><span class="toc-number">7.</span> <span class="toc-text">定界符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#大定界符"><span class="toc-number">8.</span> <span class="toc-text">大定界符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#其他符号"><span class="toc-number">9.</span> <span class="toc-text">其他符号</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#非数学符号"><span class="toc-number">10.</span> <span class="toc-text">非数学符号</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AMS定界符"><span class="toc-number">11.</span> <span class="toc-text">AMS定界符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AMS希腊和希伯来字母"><span class="toc-number">12.</span> <span class="toc-text">AMS希腊和希伯来字母</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AMS二元关系"><span class="toc-number">13.</span> <span class="toc-text">AMS二元关系</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AMS箭头"><span class="toc-number">14.</span> <span class="toc-text">AMS箭头</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AMS二元否定关系符和箭头"><span class="toc-number">15.</span> <span class="toc-text">AMS二元否定关系符和箭头</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AMS二元运算符"><span class="toc-number">16.</span> <span class="toc-text">AMS二元运算符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AMS其他符号"><span class="toc-number">17.</span> <span class="toc-text">AMS其他符号</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数学字母"><span class="toc-number">18.</span> <span class="toc-text">数学字母</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#矩阵对象的属性"><span class="toc-number">1.</span> <span class="toc-text">矩阵对象的属性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#矩阵对象的方法"><span class="toc-number">2.</span> <span class="toc-text">矩阵对象的方法</span></a></li></ol>
  
   </div>
 
