@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://whatbeg.com/about/index.html</loc>
+    
+    <lastmod>2016-04-25T10:44:44.383Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://whatbeg.com/2016/04/25/latexsyntax.html</loc>
     
     <lastmod>2016-04-25T05:28:42.238Z</lastmod>
@@ -110,13 +117,6 @@
     <loc>http://whatbeg.com/2016/04/08/booklist1.html</loc>
     
     <lastmod>2016-04-08T13:30:30.678Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://whatbeg.com/about/index.html</loc>
-    
-    <lastmod>2016-04-08T10:58:03.013Z</lastmod>
     
   </url>
   
