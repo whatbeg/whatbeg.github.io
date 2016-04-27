@@ -5,11 +5,57 @@
     
   <url>
     <loc>http://whatbeg.com/2016/04/26/xuweilrc.html</loc>
-    <lastmod>2016-04-26T13:54:09.957Z</lastmod>
+    <lastmod>2016-04-27T01:41:05.618Z</lastmod>
     <data>
         <display>
-        <title>【Python数据分析】许巍写歌最喜欢用什么词？</title>
+        <title>许巍写歌最喜欢用什么词？</title>
         <pubTime>2016-04-26T11:22:39.000Z</pubTime>
+        
+        <tag>Python</tag>
+         
+        <tag>数据分析</tag>
+         
+         
+           
+             
+              <breadCrumb title="数据挖掘分析与可视化" url="http://whatbeg.com/categories/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98%E5%88%86%E6%9E%90%E4%B8%8E%E5%8F%AF%E8%A7%86%E5%8C%96/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://whatbeg.com/2016/04/14/logincnblogs.html</loc>
+    <lastmod>2016-04-27T01:40:51.163Z</lastmod>
+    <data>
+        <display>
+        <title>【模拟登录】(二) 加密与重放方式登录 -以模拟登录博客园为例</title>
+        <pubTime>2016-04-14T07:37:53.000Z</pubTime>
+        
+        <tag>Python</tag>
+         
+        <tag>数据分析</tag>
+         
+        <tag>Web</tag>
+         
+         
+           
+             
+              <breadCrumb title="数据挖掘分析与可视化" url="http://whatbeg.com/categories/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98%E5%88%86%E6%9E%90%E4%B8%8E%E5%8F%AF%E8%A7%86%E5%8C%96/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://whatbeg.com/2016/04/14/cet4.html</loc>
+    <lastmod>2016-04-27T01:40:45.218Z</lastmod>
+    <data>
+        <display>
+        <title>【数据分析】四级成绩分布 -matplotlib,xlrd模块使用</title>
+        <pubTime>2016-04-14T03:20:49.000Z</pubTime>
         
         <tag>Python</tag>
          
@@ -175,30 +221,6 @@
 
     
   <url>
-    <loc>http://whatbeg.com/2016/04/14/logincnblogs.html</loc>
-    <lastmod>2016-04-20T04:32:17.373Z</lastmod>
-    <data>
-        <display>
-        <title>【Python模拟登录】(二) 加密与重放方式登录 -以模拟登录博客园为例</title>
-        <pubTime>2016-04-14T07:37:53.000Z</pubTime>
-        
-        <tag>Python</tag>
-         
-        <tag>数据分析</tag>
-         
-        <tag>Web</tag>
-         
-         
-           
-             
-              <breadCrumb title="数据挖掘分析与可视化" url="http://whatbeg.com/categories/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98%E5%88%86%E6%9E%90%E4%B8%8E%E5%8F%AF%E8%A7%86%E5%8C%96/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://whatbeg.com/2016/04/05/graduatedesign.html</loc>
     <lastmod>2016-04-20T04:32:02.901Z</lastmod>
     <data>
@@ -207,28 +229,6 @@
         <pubTime>2016-04-05T10:52:00.000Z</pubTime>
         
         <tag>CS</tag>
-         
-         
-           
-             
-              <breadCrumb title="数据挖掘分析与可视化" url="http://whatbeg.com/categories/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98%E5%88%86%E6%9E%90%E4%B8%8E%E5%8F%AF%E8%A7%86%E5%8C%96/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://whatbeg.com/2016/04/14/cet4.html</loc>
-    <lastmod>2016-04-20T04:31:50.780Z</lastmod>
-    <data>
-        <display>
-        <title>【Python数据分析】四级成绩分布 -matplotlib,xlrd模块使用</title>
-        <pubTime>2016-04-14T03:20:49.000Z</pubTime>
-        
-        <tag>Python</tag>
-         
-        <tag>数据分析</tag>
          
          
            

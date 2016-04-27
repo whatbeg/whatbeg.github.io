@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://whatbeg.com/"/>
-  <updated>2016-04-26T13:54:09.957Z</updated>
+  <updated>2016-04-27T01:41:05.618Z</updated>
   <id>http://whatbeg.com/</id>
   
   <author>
@@ -16,11 +16,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>【Python数据分析】许巍写歌最喜欢用什么词？</title>
+    <title>许巍写歌最喜欢用什么词？</title>
     <link href="http://whatbeg.com/2016/04/26/xuweilrc.html"/>
     <id>http://whatbeg.com/2016/04/26/xuweilrc.html</id>
     <published>2016-04-26T11:22:39.000Z</published>
-    <updated>2016-04-26T13:54:09.957Z</updated>
+    <updated>2016-04-27T01:41:05.618Z</updated>
     
     <content type="html">&lt;h2 id=&quot;关键词&quot;&gt;&lt;a href=&quot;#关键词&quot; class=&quot;headerlink&quot; title=&quot;关键词&quot;&gt;&lt;/a&gt;关键词&lt;/h2&gt;&lt;p&gt;结巴分词 中文分词 TF-IDF 词频 逆文档频率&lt;/p&gt;
 &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;自从第一次听到许巍的歌，就深深地迷上了他的歌，感觉每一首都钻到了我的心里，也早已把他的歌听得烂熟了。许巍，我最喜欢的歌手，没有之一！&lt;/p&gt;
@@ -397,11 +397,11 @@
   </entry>
   
   <entry>
-    <title>【Python模拟登录】(二) 加密与重放方式登录 -以模拟登录博客园为例</title>
+    <title>【模拟登录】(二) 加密与重放方式登录 -以模拟登录博客园为例</title>
     <link href="http://whatbeg.com/2016/04/14/logincnblogs.html"/>
     <id>http://whatbeg.com/2016/04/14/logincnblogs.html</id>
     <published>2016-04-14T07:37:53.000Z</published>
-    <updated>2016-04-20T04:32:17.373Z</updated>
+    <updated>2016-04-27T01:40:51.163Z</updated>
     
     <content type="html">&lt;p&gt;Python模拟登录第一弹见：&lt;a href=&quot;http://www.cnblogs.com/whatbeg/p/5320666.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;【Python数据分析】Python模拟登录(一) requests.Session应用&lt;/a&gt;&lt;br&gt;上次的登录是最基本的，全部是明文，而且在浏览器中就可以看到POST的数据。接下来我们来个稍微难一点的–模拟登录博客园(&lt;a href=&quot;http://www.cnblogs.com&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.cnblogs.com&lt;/a&gt;)&lt;/p&gt;
 &lt;h4 id=&quot;登录特点&quot;&gt;&lt;a href=&quot;#登录特点&quot; class=&quot;headerlink&quot; title=&quot;登录特点&quot;&gt;&lt;/a&gt;登录特点&lt;/h4&gt;&lt;blockquote&gt;
@@ -431,11 +431,11 @@
   </entry>
   
   <entry>
-    <title>【Python数据分析】四级成绩分布 -matplotlib,xlrd模块使用</title>
+    <title>【数据分析】四级成绩分布 -matplotlib,xlrd模块使用</title>
     <link href="http://whatbeg.com/2016/04/14/cet4.html"/>
     <id>http://whatbeg.com/2016/04/14/cet4.html</id>
     <published>2016-04-14T03:20:49.000Z</published>
-    <updated>2016-04-20T04:31:50.780Z</updated>
+    <updated>2016-04-27T01:40:45.218Z</updated>
     
     <content type="html">&lt;p&gt;最近获得了一些四级成绩数据，大概500多个，于是突发奇想是否能够看看这些成绩数据是否满足所谓的正态分布呢？说干就干，于是有了这篇文章。&lt;br&gt;文章顺带介绍了xlrd模块的一些用法和matplotlib画自定义数据的条形图和随机的条形图的一些方法，并且提供了一些相关链接，可作为学习matplotlib和numpy的资源，希望对读者也有帮助。&lt;/p&gt;
 &lt;h2 id=&quot;工具&quot;&gt;&lt;a href=&quot;#工具&quot; class=&quot;headerlink&quot; title=&quot;工具&quot;&gt;&lt;/a&gt;工具&lt;/h2&gt;&lt;ul&gt;
