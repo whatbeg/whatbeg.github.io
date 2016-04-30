@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://whatbeg.com/"/>
-  <updated>2016-04-27T02:11:34.565Z</updated>
+  <updated>2016-04-30T14:06:46.618Z</updated>
   <id>http://whatbeg.com/</id>
   
   <author>
@@ -14,6 +14,68 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>【2016读书】4月读书笔记</title>
+    <link href="http://whatbeg.com/2016/04/30/2016read-april.html"/>
+    <id>http://whatbeg.com/2016/04/30/2016read-april.html</id>
+    <published>2016-04-30T14:04:16.000Z</published>
+    <updated>2016-04-30T14:06:46.618Z</updated>
+    
+    <content type="html">&lt;h2 id=&quot;1-《追风筝的人》-卡勒德·胡赛尼&quot;&gt;&lt;a href=&quot;#1-《追风筝的人》-卡勒德·胡赛尼&quot; class=&quot;headerlink&quot; title=&quot;1.《追风筝的人》 卡勒德·胡赛尼&quot;&gt;&lt;/a&gt;1.《追风筝的人》 卡勒德·胡赛尼&lt;/h2&gt;&lt;p&gt;看完《追风筝的人》的感觉远不如正在看的时候感觉强烈，似乎我只是看完了一个故事，一个稍微有点长的故事。看完这本书，给我留下深刻影响的并非是这个故事，而是这个故事发生的国度，对，阿富汗，第一次对阿富汗这个国家了解到这个程度。以前的我对阿富汗的印象包括：战乱，贫穷，干旱，可是现在多了几样：政治，苦难，人性，以及宗教。这是个离我们不远的国度，他们依然有着美丽善良的人们，即使遭受战争，动乱，宗教迫害，种族歧视，仍然有很多可爱热心的人生活在那里。阿米尔和哈桑，他们都是善良的，只是他们在那个充满种族歧视的年代，难免无法做成真正的朋友，哈桑的忠心让我钦佩，阿米尔的悔改让我动容。总之，盖上这本书，回荡在我脑中的，更多的是那个年代阿富汗一幅幅的画面。为这个故事致敬，为作者致敬！&lt;/p&gt;
+&lt;h2 id=&quot;2-《HTTP权威指南》-David等&quot;&gt;&lt;a href=&quot;#2-《HTTP权威指南》-David等&quot; class=&quot;headerlink&quot; title=&quot;2.《HTTP权威指南》 David等&quot;&gt;&lt;/a&gt;2.《HTTP权威指南》 David等&lt;/h2&gt;&lt;p&gt;全面介绍了HTTP协议的各个部分，十多年前的书了，但是至今仍被奉为Web开发者必读经典。我的书评：&lt;a href=&quot;http://whatbeg.com/2016/04/06/httpguide.html&quot;&gt;http://whatbeg.com/2016/04/06/httpguide.html&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;3-《浪潮之巅》-下-吴军&quot;&gt;&lt;a href=&quot;#3-《浪潮之巅》-下-吴军&quot; class=&quot;headerlink&quot; title=&quot;3.《浪潮之巅》(下)  吴军&quot;&gt;&lt;/a&gt;3.《浪潮之巅》(下)  吴军&lt;/h2&gt;&lt;p&gt;此前很多人推荐这本书，拿起一看，迅速地吸引了我，这本书讲述了很多科技公司的历史，有辉煌有没落。这本书只讲商业，无关其他。如果你是一个程序员，那么这本书能把你的视角从具体的技术上升到整个行业，能让你有不同的感受。&lt;br&gt;简单介绍一下这本书，它讲了如下内容：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;一些曾经辉煌一时，但是后来又没落下去的公司&lt;/li&gt;
+&lt;li&gt;解释了什么叫风险投资，以及对风险投资进行剖析，并介绍了一些著名的风投公司。&lt;/li&gt;
+&lt;li&gt;信息产业的规律性&lt;ul&gt;
+&lt;li&gt;70-20-10定律：一个稳定的信息行业老大占市场份额70%，老二占20%左右，而剩下的10%由剩下的小公司划分。&lt;/li&gt;
+&lt;li&gt;诺威格定律：一个公司的市场占有率超过50%，就无法再使占有率翻番了，它的成长会受限于整个行业的成长，所以，它只能寻求新的增长点，才能不断满足华尔街的预期。&lt;/li&gt;
+&lt;li&gt;基因决定定律：一个公司的基因决定了一个公司的命运，一个公司做到一定的程度想要转型是很困难的。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;斯坦福大学的教育模式，是创业的孵化器。&lt;/li&gt;
+&lt;li&gt;介绍了投资银行，金融体系，华尔街的重要作用。&lt;/li&gt;
+&lt;li&gt;介绍了Google公司的历史与其企业文化&lt;/li&gt;
+&lt;li&gt;成功的转基因的例子： 诺基亚，3M，GE&lt;/li&gt;
+&lt;li&gt;探讨了什么是最佳的商业模式，即印钞机一样的自动挣钱的模式，如Google的广告系统，eBay、亚马逊的在线时长，戴尔的虚拟工厂，腾讯的虚拟物品等。&lt;/li&gt;
+&lt;li&gt;探讨互联网2.0，以及成功的互联网2.0公司，虽然极少&lt;/li&gt;
+&lt;li&gt;金融风暴，金融危机是如何产生的，又是如何影响科技公司的。&lt;/li&gt;
+&lt;li&gt;云计算及其泡沫与机会&lt;/li&gt;
+&lt;li&gt;对下一个千亿公司领域等的分析预测。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;精彩书摘：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;1.通过一款产品抓住终端用户，然后通过一些服务从每一个用户身上挣钱。&lt;/li&gt;
+&lt;li&gt;2.中国的问题是，人们似乎不需要靠科技的进步和实业就可以取得财富。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;《爱你就像爱生命》-王小波&quot;&gt;&lt;a href=&quot;#《爱你就像爱生命》-王小波&quot; class=&quot;headerlink&quot; title=&quot;《爱你就像爱生命》  王小波&quot;&gt;&lt;/a&gt;《爱你就像爱生命》  王小波&lt;/h2&gt;&lt;p&gt;王小波的作品语言很优美，有时也很直白，什么话都是可以说的，这也体现了他的真实，不矫饰，读来着实有趣。&lt;br&gt;这本书是他的书信集，大部分是情书吧，不得不说小波叔简直太能撩了，撩得天昏地暗，日月无光，是块冰也被他说化了。。&lt;br&gt;波叔还是一个地道的程序员来的，什么C语言，汇编，FORTRAN，虚拟内存，玩的飞起，各种程序自己写，攒机搞DIY也是一把好手，什么？电脑坏了？换块板子就好了。&lt;br&gt;还有一段描述欧洲各国的话挺精彩，也很准确：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;英国与欧陆截然不同，又古板又整齐，不过穷得很&lt;/strong&gt;&lt;br&gt;&lt;strong&gt;法国人贪大求洋，拼命摆排场，追尖端，就没看见卢浮宫已经被烟熏黑了&lt;/strong&gt;&lt;br&gt;&lt;strong&gt;意大利到处都是古迹和贼&lt;/strong&gt;&lt;br&gt;&lt;strong&gt;奥地利和德国没有不守规矩的人&lt;/strong&gt;&lt;br&gt;&lt;strong&gt;荷兰干净漂亮，比利时又破又烂&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;还有一些现在流行的脏话好像这里也有，不会是他发明的吧。。&lt;br&gt;比如什么“肚皮上割口子，假充二笔(bi)”（这话我一开始都没懂。。），“傻逼”之类的词。&lt;br&gt;这就是王小波，一个有趣的人。&lt;br&gt;经典语录：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;我曾经相信只要不虚度光阴，把命运赐给我的全部智力发挥到顶点，做成一件无愧于人类智慧的事情，就对得起自己，并且也是对未来的贡献。&lt;/li&gt;
+&lt;li&gt;请你不要恨我，我给你唱一支好听的歌吧。&lt;/li&gt;
+&lt;li&gt;人在年轻时，觉得到处都是人，别人的事都是你的事，到了中年以后，才觉得世界上除了家人已经一无所有，自己的事都做不过来。以此类推，到了老年，必定觉得很孤独，还会觉得做什么都力不从心。&lt;/li&gt;
+&lt;li&gt;静下来想你，觉得一切都美好得不可思议。&lt;/li&gt;
+&lt;li&gt;我的勇气和你的勇气加起来，对付这个世界总够了吧？要无忧无虑地去抒情，去歌舞狂欢，去向世界发出我们的声音，我一个人是不敢的，我怕人家说我疯，有了你我就敢。只要有你一个，就不孤独！ &lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;五月读书计划&quot;&gt;&lt;a href=&quot;#五月读书计划&quot; class=&quot;headerlink&quot; title=&quot;五月读书计划&quot;&gt;&lt;/a&gt;五月读书计划&lt;/h3&gt;&lt;p&gt;1.*《机器学习实战》&lt;br&gt;2.《鸟哥的Linux私房菜》&lt;br&gt;3.《浪潮之巅》&lt;br&gt;4.王小波&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;1-《追风筝的人》-卡勒德·胡赛尼&quot;&gt;&lt;a href=&quot;#1-《追风筝的人》-卡勒德·胡赛尼&quot; class=&quot;headerlink&quot; title=&quot;1.《追风筝的人》 卡勒德·胡赛尼&quot;&gt;&lt;/a&gt;1.《追风筝的人》 卡勒德·胡赛尼&lt;/h2&gt;&lt;p&gt;看完《追风筝的人》的
+    
+    </summary>
+    
+      <category term="读书" scheme="http://whatbeg.com/categories/%E8%AF%BB%E4%B9%A6/"/>
+    
+    
+      <category term="读书" scheme="http://whatbeg.com/tags/%E8%AF%BB%E4%B9%A6/"/>
+    
+  </entry>
   
   <entry>
     <title>许巍写歌最喜欢用什么词？</title>
@@ -420,7 +482,7 @@
 &lt;blockquote&gt;
 &lt;p&gt;themes/你的主题/layout/_partial/footer.ejs&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;中最后面添加脚本：&lt;br&gt;&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;script &lt;span class=&quot;keyword&quot;&gt;async&lt;/span&gt; src=&lt;span class=&quot;string&quot;&gt;&quot;https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;xml&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;script&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;中最后面添加脚本：&lt;br&gt;&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;script &lt;span class=&quot;keyword&quot;&gt;async&lt;/span&gt; src=&lt;span class=&quot;string&quot;&gt;&quot;https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
 &lt;h3 id=&quot;添加总pv计数和总uv计数&quot;&gt;&lt;a href=&quot;#添加总pv计数和总uv计数&quot; class=&quot;headerlink&quot; title=&quot;添加总pv计数和总uv计数&quot;&gt;&lt;/a&gt;添加总pv计数和总uv计数&lt;/h3&gt;&lt;p&gt;在上面footer.ejs文件最后添加这两个计数脚本：&lt;br&gt;&lt;figure class=&quot;highlight&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;span id=&quot;busuanzi_container_site_pv&quot;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;amp;nbsp;&amp;amp;nbsp;Total visits:&amp;amp;nbsp;&amp;lt;span id=&quot;busuanzi_value_site_pv&quot;&amp;gt;&amp;lt;/span&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;/span&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;span id=&quot;busuanzi_container_site_uv&quot;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &amp;amp;nbsp;&amp;amp;nbsp;You are Visiter No.&amp;lt;span id=&quot;busuanzi_value_site_uv&quot;&amp;gt;&amp;lt;/span&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;/span&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
 &lt;h3 id=&quot;添加文章访问计数&quot;&gt;&lt;a href=&quot;#添加文章访问计数&quot; class=&quot;headerlink&quot; title=&quot;添加文章访问计数&quot;&gt;&lt;/a&gt;添加文章访问计数&lt;/h3&gt;&lt;p&gt;这里我添加到标题右下方，正文上面的地方。&lt;br&gt;在&lt;/p&gt;
 &lt;blockquote&gt;
@@ -519,9 +581,9 @@
       <category term="数据挖掘分析与可视化" scheme="http://whatbeg.com/categories/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98%E5%88%86%E6%9E%90%E4%B8%8E%E5%8F%AF%E8%A7%86%E5%8C%96/"/>
     
     
-      <category term="Python" scheme="http://whatbeg.com/tags/Python/"/>
-    
       <category term="Web" scheme="http://whatbeg.com/tags/Web/"/>
+    
+      <category term="Python" scheme="http://whatbeg.com/tags/Python/"/>
     
       <category term="数据分析" scheme="http://whatbeg.com/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/"/>
     
@@ -817,7 +879,7 @@
     <link href="http://whatbeg.com/2016/04/06/httpguide.html"/>
     <id>http://whatbeg.com/2016/04/06/httpguide.html</id>
     <published>2016-04-06T03:09:46.000Z</published>
-    <updated>2016-04-19T13:38:05.108Z</updated>
+    <updated>2016-04-30T14:06:37.560Z</updated>
     
     <content type="html">&lt;p&gt;《HTTP权威指南》是公认比较经典的书了，刚好前段时间在做Web相关方面的工作，而且遇到了难题，所以便拿起了这本书来读，以求能对HTTP协议的原理与机制做更深的了解。&lt;/p&gt;
 &lt;p&gt;读到后面我才知道，原来这本书的英文版是2002年出版的，而中文版到2012年才出版，所以我一直以为它是12年出的，可惜并不是。如此一来导致书中很多内容会出现老旧和不再适用的情况。我选择略去不读这些内容。当然大部分内容还是现在通用的。还有一个问题就是这本书的翻译读起来总感觉怪怪的，我觉得如果说有败笔，那么最大的败笔就是翻译了。&lt;/p&gt;
@@ -838,8 +900,10 @@
     
     </summary>
     
-      <category term="读书笔记-技术类" scheme="http://whatbeg.com/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E6%8A%80%E6%9C%AF%E7%B1%BB/"/>
+      <category term="读书" scheme="http://whatbeg.com/categories/%E8%AF%BB%E4%B9%A6/"/>
     
+    
+      <category term="读书" scheme="http://whatbeg.com/tags/%E8%AF%BB%E4%B9%A6/"/>
     
       <category term="Web" scheme="http://whatbeg.com/tags/Web/"/>
     
@@ -1004,95 +1068,6 @@
     <summary type="html">
     
       &lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;&lt;p&gt;2015年又要过去了，刚刚考完研不久，去浪了一圈回来，突然有些许无所适从，也是，快节奏高强度目标坚定的日子一过，总还是有些惯性，在这个时候做
-    
-    </summary>
-    
-      <category term="成长之路" scheme="http://whatbeg.com/categories/%E6%88%90%E9%95%BF%E4%B9%8B%E8%B7%AF/"/>
-    
-    
-      <category term="Summary" scheme="http://whatbeg.com/tags/Summary/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>我也来写2014年总结</title>
-    <link href="http://whatbeg.com/2016/04/05/annualsummary2014.html"/>
-    <id>http://whatbeg.com/2016/04/05/annualsummary2014.html</id>
-    <published>2016-04-05T10:50:56.000Z</published>
-    <updated>2016-04-05T11:02:43.463Z</updated>
-    
-    <content type="html">&lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;&lt;p&gt;转眼间又到了一年的尾声，想起来还真是快，我还依稀记得去年这个时候，刚刚在博客园上写博客，然后发了一篇年终总结，最近又翻出来看了一下，突然发现那个时候我是多么的幼稚，思想是多么的简单，眼光是多么的狭隘，以及是多么的浮躁，列出的计划也有点不切合实际，总之有一种想删了的感觉。。&lt;/p&gt;
-&lt;h3 id=&quot;关于今年&quot;&gt;&lt;a href=&quot;#关于今年&quot; class=&quot;headerlink&quot; title=&quot;关于今年&quot;&gt;&lt;/a&gt;关于今年&lt;/h3&gt;&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;你可能遇到的最大的敌人，就是你自己。&lt;/strong&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;不说了，首先还是记一下今年的流水账吧：&lt;/p&gt;
-&lt;p&gt;1月： 照常学算法，做题，主要做并查集和树状数组。&lt;/p&gt;
-&lt;p&gt;2月： 寒假期间，又像往常的假期一样，带了很多书回家，开始都抱着要读完的心情，其实每次都会令人失望，但是每次都还是会充满自信地继续带那么多，今年寒假希望能学乖一点。&lt;/p&gt;
-&lt;p&gt;3月： 回到学校，开始上课，学习图论和搜索。&lt;/p&gt;
-&lt;p&gt;4月： 没找到合适的队友打校赛，后来和两个基本没搞过这个的同学打，基本是我单挑，结果校赛受挫，决赛都没进。这其实对我打击挺大的，导致我萌生退意，不想搞ACM了，于是开始学Python，准备去搞搞网站。&lt;/p&gt;
-&lt;p&gt;5月： 正当我准备放弃，不再做暑前集训专题的时候，有位朋友的劝告又让我留了下来，他说都坚持了那么久了，何不在坚持一会，工程可以晚点再做的，不要给自己留下遗憾，其实我知道自己心里还是有点放不下，于是又捡了起来，开始做专题，写解题报告，写解题报告是我感觉很快乐的一件事情，既可以帮自己再理一遍思路，又可以给或多或少的人有一些帮助，这也是我坚持下去的一个动力之一。&lt;/p&gt;
-&lt;p&gt;6月： 照常学算法，做专题，6月底考试基本都结束了，开始自己开比赛做。&lt;/p&gt;
-&lt;p&gt;7月： 暑假集训前还参加了一个金融方面的暑期学校，了解到了很多实用的金融方面的知识，也对这个社会很多东西的运行的原理有一定了解，算是开阔了一下眼界吧。然后就是暑假集训。&lt;/p&gt;
-&lt;p&gt;8月： 终于是挤进了集训队，开始组队赛，开始主攻数据结构方面，以及一些代码量大的题或算法如模拟等。&lt;/p&gt;
-&lt;p&gt;9月： 网络赛做的那叫一个惨，前三场做完后排名一度下跌到了最后一名，幸好后面慢慢调整，总算是慢慢涨了起来，直到最后一场，我这个从来没正经推过公式的人竟然推出来一发公式，然后总算是拼出线了。&lt;/p&gt;
-&lt;p&gt;10月：训练的比较少，十一假出去玩了一发，稍微放松一下自己。&lt;/p&gt;
-&lt;p&gt;11月：开始全力为正赛做准备，然后就是区域赛，因为各种可控和非可控的因素，只拿到一块铜牌，不过第一次打，没打铁已经很幸运了，也不能感到太惋惜，只能说自身实力还是不够，比如说自己的智商，越来越觉得这个比赛实际上拼的是智商和努力，我智商不够，还不够努力，所以这么晚才拿牌，并且还只是一块铜牌。其实努力也是可以增进一部分智商的，所以总的来说还是自己自控力不够，自觉性不够，容易被外界分心，不能专注地投入进去。&lt;/p&gt;
-&lt;p&gt;12月：缓了缓做题，期末了，事情也多了。就像我总结里说的，也开始看一些思维和数学，以及CS方面的书，还是想以基础为主，兼顾以工程实践。至于考不考研这件事，我能说还没定么。如果没有什么意外的话，应该是找工作了吧。（以前不知道考研的真正目的，直到有位老师说：读研是为了拥有解决更复杂问题的能力，好像真的应该如此）&lt;/p&gt;
-&lt;p&gt;流水账记完了，想想这一年也真的没做多少事，收获并不是很大，不过还好自己过得很开心，因为做的都是自己喜欢做的事，有失败也有成功，有欢笑但是没有泪水。 &lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;1.读过的一些值得一荐的书：&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;《算法导论》《组合数学》 理由不用说了，经典书籍。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;《明朝那些事儿》  用诙谐幽默的语言述说历史，对历史有点兴趣的人都可以一看，本人暂时只看了两本，因为很难借到。。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;《尼采的心灵咒语》《人性需要揭穿》(葛拉西安)  里面道出了很多人生的智慧，可以当做枕边书，时常翻一翻。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;《黄帝内经》  有点不好懂，我也没怎么看懂，阐述了很多中华医学的精髓和理论。&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;strong&gt;2.学过的一些技术：&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;Python，Android&lt;/p&gt;
-&lt;h3 id=&quot;关于专注&quot;&gt;&lt;a href=&quot;#关于专注&quot; class=&quot;headerlink&quot; title=&quot;关于专注&quot;&gt;&lt;/a&gt;关于专注&lt;/h3&gt;&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;即便是对知识的追求，也要有所节制，才不至于虽然掌握了许多知识却全部是一知半解。&lt;/strong&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;其实纵观我这一年，其实就是稍微多了一点务实的一年，突破了去年的短视与畏惧，开始一个一个地掰扯算法，做专题，做比赛，也真的学到了不少东西，实力终于上了一个小小的台阶，为什么我用“小小的”，因为确实进步算不上很大，至少从表面看来，就拿rating来说，即使比去年高了很多，但是远远达不到我这个阶段应有的水平，其实也难怪，确实是因为自己不够专注，花的时间太少，很多精力花到了可有可无的地方，兴趣也是太多，仿佛一只有着巨大胃口的狮子，想把世界上所有东西都吞下，结果就是每个都嚼不烂，也就只能做着边缘化的那些不重要的事，这已是我多年的积弊了，怎样改都还是没有改掉，析其原因，应该有两点是比较主要的：&lt;/p&gt;
-&lt;p&gt;1.对未来有一种恐惧，害怕未知的未来，所以会逼着自己去尽量多地接触各种知识，各种技术。&lt;/p&gt;
-&lt;p&gt;2.兴趣实在太广泛，而且三分钟热度实在太严重，一会看见觉得数据分析很好玩，就想去学数据分析，一会看见Python简介，又能写爬虫，就去学Python,然后发现学Android写手机游戏也很好玩，又去学Android,Java，永远处在学习中，而且也没学成什么，仅仅入门而已。可能是因为至今都没有找到一个能够激起我强烈兴趣并愿意为之终身奋斗的事情吧，亦或许根本就没有这件事情。&lt;/p&gt;
-&lt;p&gt;也并不是说一定要上来就专注，毕竟还年轻得很，但是学会做一些取舍实在是人生必掌握之技巧，世上的东西不可能全都掌握。虽然过去的一年不是那么地专注，但是我并不怪自己，任何事都有两面性，虽然我没有在某一方面有所精通，但是我却在很多方面入了门并且有所了解了不是吗？或许以后的某一刻要用到这些东西呢，还是积极一点看吧。&lt;/p&gt;
-&lt;h3 id=&quot;关于计划的完成情况&quot;&gt;&lt;a href=&quot;#关于计划的完成情况&quot; class=&quot;headerlink&quot; title=&quot;关于计划的完成情况&quot;&gt;&lt;/a&gt;关于计划的完成情况&lt;/h3&gt;&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;在20岁的时候，我们很在意别人对我们的看法。到了40岁，我们觉悟了：无论别人怎么看，我们都不会介意了。直至60岁，我们最后发现：根本没有人真正在意我们。&lt;/strong&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;其实，人不应该老是活在别人的眼里，有时候需要洒脱一点，敢爱敢恨一点，勇敢一点，反正也不能活着离开这个世界。有些人，有些事，错过了就永远都错过了。      ——- 一点感慨。&lt;/p&gt;
-&lt;p&gt;好吧，总结一下2014年做的一些计划的完成情况：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;2.**算法学习，学完算法竞赛的所有算法，加强自己的数学功底，争取一年后的今天，CF能达到1700~1800，TC能达到1100分以上，成为一个大牛。（嘿嘿）**
-
-这点当时真的是坐井观天了，rating确实是达到了那么多，但是真的，与我此时的年级却是有点不符了，当时以为CF1700，TC1100就很了不起了，其实，人家努力半年就能搞到1900甚至2000，TC更是能黄了，所以说，站的高度不同，看的天空也不同呢，自己还欠缺太多的努力，明年再加油。
-
-3.进一步学习法语。
-
-呵呵哒。
-
-4.每天做一个成长记录，让每一天都过得充实，有进步。
-
-这点前4个月做的还行，每天坚持都写了的，但是刚刚翻了一下，最后一片是4月27的，所以说，也就坚持了1/3多，真的，最难的事情就是坚持，我信了！幸好总起来有100多篇，详细记录了我当时每天的心情，生活以及学习上的进展，以后再看可能又是另外一番感受吧。
-
-5.能自主独立的制作自己的网站，有条件可以自己建立一个网站。
-
-Web直接放弃了，后来就没碰过，现在HTML,CSS,JS都忘了好多。。前几天设置个博客样式都搞半天。。
-&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;关于读书&quot;&gt;&lt;a href=&quot;#关于读书&quot; class=&quot;headerlink&quot; title=&quot;关于读书&quot;&gt;&lt;/a&gt;关于读书&lt;/h3&gt;&lt;p&gt;数了一下今年读书好像读了32本，基本算是满足了去年定的目标 （30本以上），如果说我找不到一个令我想穷尽毕生去坚持的兴趣的话，那么我好想是忘记读书这一项了，这么多年，唯一能够坚持的兴趣就是读书了，小生一直以为，读书真的不仅仅都要有用才去读，更是为了开阔眼界，丰富心灵，增长知识，提升灵魂，启发思想并且完善自己的性格，即使读的书内容根本记不住也没有什么关系，至少读书的那一刻给你带来了美好的享受，不是吗？况且，如果真正留下来的没有忘记的内容，那么你就赚了，因为这将帮助形成你的灵魂。不过，如果真的是好书的话，不妨多读几遍，前几天看的有个博客里写道一句话：“每一本经典著作都是相应领域佼佼者的扛鼎之作，怎么可能让你看一遍就能学会里面所有的知识，弄懂里面所有的理论。一本好书，就像是一个取之不尽、用之不竭的宝藏，每重新读一次就会有之前没有过的收获，值得我们一遍一遍地去探寻。”，我觉得说的很对，经典书籍就应该多读几遍，精读几遍，才能更加深刻地领会书中精要。所以，读书，我会一直坚持下去！&lt;/p&gt;
-&lt;h3 id=&quot;关于计划&quot;&gt;&lt;a href=&quot;#关于计划&quot; class=&quot;headerlink&quot; title=&quot;关于计划&quot;&gt;&lt;/a&gt;关于计划&lt;/h3&gt;&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;真正自由的人总能给人以苗条潇洒的印象，那正是因为他们的精神与内心抛弃了多余的东西。&lt;/strong&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;说说明年的一些计划：&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;1.踏实学算法，刷题，ACM更上一层楼，冲一块金牌。&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;2.业余时间用来写写Android，读些专业内经典书籍，课外的话重点放在哲学，心理学门类上。&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;计划不宜多，明年更加专注一点，在投资一件事情之前，千万冷静一下再做决定。别老是分心，合理地取舍很重要。&lt;br&gt;还有，计划是永远赶不上变化的，所以，最好的办法就是，边执行计划，边调整计划。&lt;/p&gt;
-&lt;h3 id=&quot;总结&quot;&gt;&lt;a href=&quot;#总结&quot; class=&quot;headerlink&quot; title=&quot;总结&quot;&gt;&lt;/a&gt;总结&lt;/h3&gt;&lt;p&gt;2014就要过去了，时间真的过得很快，预计剩下的一年半将会更快，但是不管时间快不快，确保自己在走上坡路就好了，希望自己的脚步能够走得更踏实，更稳健，2015，我来了！&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;&lt;p&gt;转眼间又到了一年的尾声，想起来还真是快，我还依稀记得去年这个时候，刚刚在博客园上写博客，然后发了一篇年终总结，最近又翻出来看了一下，突然发现
     
     </summary>
     
