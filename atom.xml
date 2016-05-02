@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://whatbeg.com/"/>
-  <updated>2016-05-02T12:48:04.166Z</updated>
+  <updated>2016-05-02T15:00:23.568Z</updated>
   <id>http://whatbeg.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://whatbeg.com/2016/05/02/learnpython.html"/>
     <id>http://whatbeg.com/2016/05/02/learnpython.html</id>
     <published>2016-05-02T11:31:11.000Z</published>
-    <updated>2016-05-02T12:48:04.166Z</updated>
+    <updated>2016-05-02T15:00:23.568Z</updated>
     
     <content type="html">&lt;p&gt;本文是本人学完Python后的一遍回顾，加深理解顺便留作手册以备查阅。&lt;/p&gt;
 &lt;p&gt;学习Python的这几天来，觉得Python还是比较简单，容易上手的，就基本语法而言，但是有些高级特性掌握起来还是有些难度，需要时间去消化。Python给我最大的印象就是语法简洁，就像写伪代码一样，很多其他语言要用很多行才能实现的操作Python可能几行就搞定了，这让人摆脱了繁杂的语法而专注于问题本身，这也正是我为什么不太喜欢Java的原因之一，虽然它很强大。&lt;/p&gt;
@@ -100,7 +100,7 @@
 &lt;/ul&gt;
 &lt;p&gt;3.协程&lt;/p&gt;
 &lt;h2 id=&quot;十一、参考读物&quot;&gt;&lt;a href=&quot;#十一、参考读物&quot; class=&quot;headerlink&quot; title=&quot;十一、参考读物&quot;&gt;&lt;/a&gt;十一、参考读物&lt;/h2&gt;&lt;p&gt;1.&lt;a href=&quot;http://www.liaoxuefeng.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;廖雪峰Python教程&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&quot;十二、更多资料&quot;&gt;&lt;a href=&quot;#十二、更多资料&quot; class=&quot;headerlink&quot; title=&quot;十二、更多资料&quot;&gt;&lt;/a&gt;十二、更多资料&lt;/h2&gt;&lt;p&gt;1.&lt;a href=&quot;https://read.douban.com/reader/ebook/284513/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Django入门教程&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;十二、更多资料&quot;&gt;&lt;a href=&quot;#十二、更多资料&quot; class=&quot;headerlink&quot; title=&quot;十二、更多资料&quot;&gt;&lt;/a&gt;十二、更多资料&lt;/h2&gt;&lt;p&gt;1.&lt;a href=&quot;https://read.douban.com/reader/ebook/284513/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Django入门教程&lt;/a&gt;&lt;br&gt;2.&lt;a href=&quot;https://read.douban.com/ebook/16691849/?dcs=book-search&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;《编程小白学Python》&lt;/a&gt;&lt;br&gt;3.&lt;a href=&quot;https://book.douban.com/subject/3117898/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;《Python源码剖析》&lt;/a&gt;&lt;br&gt;4.&lt;a href=&quot;https://book.douban.com/subject/10773324/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;《Python标准库》&lt;/a&gt; Python字典式书籍，大部头&lt;/p&gt;
 &lt;p&gt;（完） 2016.2.4初稿  5.2修改&lt;br&gt;原文地址：&lt;a href=&quot;http://whatbeg.com/2016/05/02/learnpython.html&quot;&gt;http://whatbeg.com/2016/05/02/learnpython.html&lt;/a&gt;&lt;/p&gt;
 </content>
     
