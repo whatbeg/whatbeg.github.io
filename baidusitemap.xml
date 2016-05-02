@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>http://whatbeg.com/2016/04/20/blogopt420.html</loc>
+    <lastmod>2016-05-02T06:00:37.781Z</lastmod>
+    <data>
+        <display>
+        <title>Hexo博客Jacman主题的一些优化  --本博客4月20日优化</title>
+        <pubTime>2016-04-20T05:37:17.000Z</pubTime>
+        
+        <tag>hexo</tag>
+         
+         
+           
+             
+              <breadCrumb title="错误解决或优化" url="http://whatbeg.com/categories/%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3%E6%88%96%E4%BC%98%E5%8C%96/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://whatbeg.com/2016/05/02/talkread.html</loc>
     <lastmod>2016-05-02T02:30:44.465Z</lastmod>
     <data>
@@ -236,26 +256,6 @@
            
              
               <breadCrumb title="机器学习" url="http://whatbeg.com/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://whatbeg.com/2016/04/20/blogopt420.html</loc>
-    <lastmod>2016-04-20T05:47:41.848Z</lastmod>
-    <data>
-        <display>
-        <title>Hexo博客Jacman主题的一些优化  --本博客4月20日优化</title>
-        <pubTime>2016-04-20T05:37:17.000Z</pubTime>
-        
-        <tag>hexo</tag>
-         
-         
-           
-             
-              <breadCrumb title="错误解决或优化" url="http://whatbeg.com/categories/%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3%E6%88%96%E4%BC%98%E5%8C%96/"/>
           
         </display>
     </data>
