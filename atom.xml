@@ -214,7 +214,7 @@
     <link href="http://whatbeg.com/2016/04/26/xuweilrc.html"/>
     <id>http://whatbeg.com/2016/04/26/xuweilrc.html</id>
     <published>2016-04-26T11:22:39.000Z</published>
-    <updated>2016-04-27T02:11:34.565Z</updated>
+    <updated>2016-05-09T15:29:41.044Z</updated>
     
     <content type="html">&lt;h2 id=&quot;关键词&quot;&gt;&lt;a href=&quot;#关键词&quot; class=&quot;headerlink&quot; title=&quot;关键词&quot;&gt;&lt;/a&gt;关键词&lt;/h2&gt;&lt;p&gt;结巴分词 中文分词 TF-IDF 词频 逆文档频率&lt;/p&gt;
 &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;自从第一次听到许巍的歌，就深深地迷上了他的歌，感觉每一首都钻到了我的心里，也早已把他的歌听得烂熟了。许巍，我最喜欢的歌手，没有之一！&lt;/p&gt;
@@ -230,7 +230,7 @@
 &lt;p&gt;考虑词频相同的两个词A和B，都出现n次，如果A只在一篇文章出现，出现n次，而B在n篇文章中出现，每篇都出现1次，那么我们认为B这个词很常见，大家都有，所以并不重要，也不能够很好地区分文档；而词A要出现只出现在一篇文章，出现地点比较少，大家不常见到，且能够很好地区分出那篇文档，那么认为它更加重要。自然想到重要性的体现用某个单词在多少篇文档中出现的次数来衡量（sfd），这就是IDF（逆文档频率 Inverse Document Frequency)。&lt;br&gt;上面两个指标TF和IDF乘起来就得到了著名的TF-IDF算法fd的核心。&lt;br&gt;&lt;a href=&quot;http://baike.baidu.com/view/1228847.htm&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;什么是TF-IDF算法?&lt;/a&gt;&lt;br&gt;下面是计算方法：&lt;br&gt;由于每首歌的长短不同，所以我们将词频归一化，即某个词的词频记为该词在每篇文章中的次数除以该篇文章的总词数的累加和。&lt;/p&gt;
 &lt;p&gt;$$ TF_i = \sum{Freq_i \over Length(D_d)}$$&lt;/p&gt;
 &lt;p&gt;而IDF记为文档总数除以出现该词的文档数，显然，出现某个词的文档数越多，分母越大，则IDF越小，比重越小。&lt;/p&gt;
-&lt;p&gt;$$IDF_i = {|D| \over numDoc_i}$$&lt;/p&gt;
+&lt;p&gt;$$IDF_i = log({|D| \over numDoc_i})$$&lt;/p&gt;
 &lt;p&gt;$$TF-IDF = TF \times IDF$$&lt;/p&gt;
 &lt;h2 id=&quot;获取数据&quot;&gt;&lt;a href=&quot;#获取数据&quot; class=&quot;headerlink&quot; title=&quot;获取数据&quot;&gt;&lt;/a&gt;获取数据&lt;/h2&gt;&lt;p&gt;获取数据细节不说了，就是查看网页源代码，然后制定爬取策略，我没有用框架，但是代码量也不大。如果不熟悉爬取数据的方法，可以看我这几篇文章：&lt;/p&gt;
 &lt;ul&gt;
@@ -544,9 +544,9 @@
       <category term="机器学习" scheme="http://whatbeg.com/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
     
     
-      <category term="Python" scheme="http://whatbeg.com/tags/Python/"/>
-    
       <category term="机器学习" scheme="http://whatbeg.com/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="Python" scheme="http://whatbeg.com/tags/Python/"/>
     
   </entry>
   
@@ -571,9 +571,9 @@
       <category term="机器学习" scheme="http://whatbeg.com/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
     
     
-      <category term="Python" scheme="http://whatbeg.com/tags/Python/"/>
-    
       <category term="机器学习" scheme="http://whatbeg.com/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="Python" scheme="http://whatbeg.com/tags/Python/"/>
     
   </entry>
   
@@ -614,7 +614,7 @@
 &lt;blockquote&gt;
 &lt;p&gt;themes/你的主题/layout/_partial/footer.ejs&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;中最后面添加脚本：&lt;br&gt;&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;script &lt;span class=&quot;keyword&quot;&gt;async&lt;/span&gt; src=&lt;span class=&quot;string&quot;&gt;&quot;https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;中最后面添加脚本：&lt;br&gt;&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;script &lt;span class=&quot;keyword&quot;&gt;async&lt;/span&gt; src=&lt;span class=&quot;string&quot;&gt;&quot;https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;xml&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;script&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
 &lt;h3 id=&quot;添加总pv计数和总uv计数&quot;&gt;&lt;a href=&quot;#添加总pv计数和总uv计数&quot; class=&quot;headerlink&quot; title=&quot;添加总pv计数和总uv计数&quot;&gt;&lt;/a&gt;添加总pv计数和总uv计数&lt;/h3&gt;&lt;p&gt;在上面footer.ejs文件最后添加这两个计数脚本：&lt;br&gt;&lt;figure class=&quot;highlight&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;span id=&quot;busuanzi_container_site_pv&quot;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;amp;nbsp;&amp;amp;nbsp;Total visits:&amp;amp;nbsp;&amp;lt;span id=&quot;busuanzi_value_site_pv&quot;&amp;gt;&amp;lt;/span&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;/span&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;span id=&quot;busuanzi_container_site_uv&quot;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &amp;amp;nbsp;&amp;amp;nbsp;You are Visiter No.&amp;lt;span id=&quot;busuanzi_value_site_uv&quot;&amp;gt;&amp;lt;/span&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;/span&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
 &lt;h3 id=&quot;添加文章访问计数&quot;&gt;&lt;a href=&quot;#添加文章访问计数&quot; class=&quot;headerlink&quot; title=&quot;添加文章访问计数&quot;&gt;&lt;/a&gt;添加文章访问计数&lt;/h3&gt;&lt;p&gt;这里我添加到标题右下方，正文上面的地方。&lt;br&gt;在&lt;/p&gt;
 &lt;blockquote&gt;
@@ -681,9 +681,9 @@
       <category term="机器学习" scheme="http://whatbeg.com/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
     
     
-      <category term="Python" scheme="http://whatbeg.com/tags/Python/"/>
-    
       <category term="机器学习" scheme="http://whatbeg.com/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="Python" scheme="http://whatbeg.com/tags/Python/"/>
     
   </entry>
   

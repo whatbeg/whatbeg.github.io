@@ -29,7 +29,7 @@
 爬取许巍每首歌的歌词，统计他最喜欢用哪些词（即歌词的关键词）
 
 很简单地想到就是直接统计每个词出现的次数（词频TF，词出现的频率，下文同），这样确实可以得到大部分的信息。但是也">
-<meta property="og:updated_time" content="2016-04-27T02:11:34.565Z">
+<meta property="og:updated_time" content="2016-05-09T15:29:41.044Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="许巍写歌最喜欢用什么词？">
 <meta name="twitter:description" content="关键词结巴分词 中文分词 TF-IDF 词频 逆文档频率
@@ -139,7 +139,7 @@
 <p>考虑词频相同的两个词A和B，都出现n次，如果A只在一篇文章出现，出现n次，而B在n篇文章中出现，每篇都出现1次，那么我们认为B这个词很常见，大家都有，所以并不重要，也不能够很好地区分文档；而词A要出现只出现在一篇文章，出现地点比较少，大家不常见到，且能够很好地区分出那篇文档，那么认为它更加重要。自然想到重要性的体现用某个单词在多少篇文档中出现的次数来衡量（sfd），这就是IDF（逆文档频率 Inverse Document Frequency)。<br>上面两个指标TF和IDF乘起来就得到了著名的TF-IDF算法fd的核心。<br><a href="http://baike.baidu.com/view/1228847.htm" target="_blank" rel="external">什么是TF-IDF算法?</a><br>下面是计算方法：<br>由于每首歌的长短不同，所以我们将词频归一化，即某个词的词频记为该词在每篇文章中的次数除以该篇文章的总词数的累加和。</p>
 <p>$$ TF_i = \sum{Freq_i \over Length(D_d)}$$</p>
 <p>而IDF记为文档总数除以出现该词的文档数，显然，出现某个词的文档数越多，分母越大，则IDF越小，比重越小。</p>
-<p>$$IDF_i = {|D| \over numDoc_i}$$</p>
+<p>$$IDF_i = log({|D| \over numDoc_i})$$</p>
 <p>$$TF-IDF = TF \times IDF$$</p>
 <h2 id="获取数据"><a href="#获取数据" class="headerlink" title="获取数据"></a>获取数据</h2><p>获取数据细节不说了，就是查看网页源代码，然后制定爬取策略，我没有用框架，但是代码量也不大。如果不熟悉爬取数据的方法，可以看我这几篇文章：</p>
 <ul>
