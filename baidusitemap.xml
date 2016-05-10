@@ -5,7 +5,7 @@
     
   <url>
     <loc>http://whatbeg.com/2016/05/02/learnpython.html</loc>
-    <lastmod>2016-05-10T02:01:49.007Z</lastmod>
+    <lastmod>2016-05-10T02:09:31.713Z</lastmod>
     <data>
         <display>
         <title>当我学完Python我学了些什么</title>
@@ -135,11 +135,11 @@
         <title>【模拟登录】(二) 加密与重放方式登录 -以模拟登录博客园为例</title>
         <pubTime>2016-04-14T07:37:53.000Z</pubTime>
         
-        <tag>Web</tag>
-         
         <tag>Python</tag>
          
         <tag>数据分析</tag>
+         
+        <tag>Web</tag>
          
          
            
