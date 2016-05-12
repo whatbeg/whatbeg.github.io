@@ -1699,7 +1699,6 @@ section.comment {
   }
 }
 .tagslist ul {
-  font-family: Merriweather, Georgia, Microsoft YaHei;
   padding: 0.5em 0;
 }
 .tagslist ul li {
@@ -1810,6 +1809,9 @@ section.comment {
     margin: 1em 0 0;
   }
 }
+.tagcloudlist .tagcloudlist {
+  font-family: Merriweather, Georgia, Microsoft YaHei;
+}
 .tagcloudlist .tagcloudlist a {
   padding: 0.2em;
   display: block;
@@ -1844,6 +1846,7 @@ section.comment {
   padding: 0.5em 0;
 }
 .linkslist ul a {
+  font-family: Merriweather, Georgia, Microsoft YaHei;
   font-size: 1em;
   line-height: 1.5;
   display: block;
