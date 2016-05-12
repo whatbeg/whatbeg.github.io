@@ -1699,6 +1699,7 @@ section.comment {
   }
 }
 .tagslist ul {
+  font-family: Merriweather, Georgia, Microsoft YaHei;
   padding: 0.5em 0;
 }
 .tagslist ul li {
