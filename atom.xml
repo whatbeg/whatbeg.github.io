@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://whatbeg.com/"/>
-  <updated>2016-05-10T08:15:41.730Z</updated>
+  <updated>2016-05-12T03:05:59.644Z</updated>
   <id>http://whatbeg.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://whatbeg.com/2016/05/10/how2wtpaper.html"/>
     <id>http://whatbeg.com/2016/05/10/how2wtpaper.html</id>
     <published>2016-05-10T07:44:54.000Z</published>
-    <updated>2016-05-10T08:15:41.730Z</updated>
+    <updated>2016-05-12T03:05:59.644Z</updated>
     
     <content type="html">&lt;p&gt;本文译自微软剑桥研究院Simon Peyton Jones的演讲PPT。&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;https://zh.wikipedia.org/wiki/%E8%A5%BF%E8%92%99%C2%B7%E4%BD%A9%E9%A0%93%C2%B7%E7%93%8A%E6%96%AF&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;西蒙·佩顿·琼斯&lt;/a&gt;（Simon Peyton Jones，1958年1月18日－），生于南非，英国计算机科学家，毕业于剑桥大学三一学院，以研究函数编程语言的实作与应用为主，特别是针对惰性函数编程语言（lazy functional languages）。他对Haskell编程语言的发展有很大贡献，为格拉斯哥大学的荣誉教授，也在剑桥大学指导博士生。&lt;/p&gt;
@@ -237,12 +237,12 @@
     
     </summary>
     
-      <category term="译文" scheme="http://whatbeg.com/categories/%E8%AF%91%E6%96%87/"/>
+      <category term="译文 | Translation" scheme="http://whatbeg.com/categories/%E8%AF%91%E6%96%87-Translation/"/>
     
-    
-      <category term="CS" scheme="http://whatbeg.com/tags/CS/"/>
     
       <category term="译文" scheme="http://whatbeg.com/tags/%E8%AF%91%E6%96%87/"/>
+    
+      <category term="CS" scheme="http://whatbeg.com/tags/CS/"/>
     
   </entry>
   
@@ -370,7 +370,7 @@
     <link href="http://whatbeg.com/2016/05/02/talkread.html"/>
     <id>http://whatbeg.com/2016/05/02/talkread.html</id>
     <published>2016-05-02T02:24:35.000Z</published>
-    <updated>2016-05-02T02:30:44.465Z</updated>
+    <updated>2016-05-12T03:13:38.408Z</updated>
     
     <content type="html">&lt;p&gt;我从小就喜欢阅读和写作，小时候爷爷常常倒腾进来各种的书籍，我总能找到很多我想看的书，那时学业不紧，一放暑假就是狂玩，玩腻了就看看书，记得当年三国水浒这两部读得我热血澎湃，里面的仗义豪情，英雄气概让我为之痴迷，并且还不遗余力地收集着那些人物卡片，当然，方便面大部分是别人吃的。上到高中，空余时间就少了很多，充斥在我们周围的大多变成了读者，青年文摘，电脑报，篮球报，游戏报等故事资讯类读物，都是相互传阅，也是蛮有意思的。&lt;/p&gt;
 &lt;p&gt;到大学我经常去图书馆找书来看，可是前几年都是看到一本，略略翻看一下，觉得有点意思就拿来看了，一看可能就坚持看完，不是极烂我一般不会中途丢掉，可是当时的品鉴力是很弱的，不知道什么是好书，什么是不值得拿起来看的书，导致鸡汤读了很多，成功学也读了不少，这两样书我现在是深恶痛绝的，为什么？&lt;/p&gt;
@@ -387,7 +387,7 @@
     
     </summary>
     
-      <category term="随笔" scheme="http://whatbeg.com/categories/%E9%9A%8F%E7%AC%94/"/>
+      <category term="随笔 | Essays" scheme="http://whatbeg.com/categories/%E9%9A%8F%E7%AC%94-Essays/"/>
     
     
       <category term="读书" scheme="http://whatbeg.com/tags/%E8%AF%BB%E4%B9%A6/"/>
@@ -399,7 +399,7 @@
     <link href="http://whatbeg.com/2016/04/30/2016read-april.html"/>
     <id>http://whatbeg.com/2016/04/30/2016read-april.html</id>
     <published>2016-04-30T14:04:16.000Z</published>
-    <updated>2016-04-30T14:08:11.999Z</updated>
+    <updated>2016-05-12T03:14:44.108Z</updated>
     
     <content type="html">&lt;h2 id=&quot;1-《追风筝的人》-卡勒德·胡赛尼&quot;&gt;&lt;a href=&quot;#1-《追风筝的人》-卡勒德·胡赛尼&quot; class=&quot;headerlink&quot; title=&quot;1.《追风筝的人》 卡勒德·胡赛尼&quot;&gt;&lt;/a&gt;1.《追风筝的人》 卡勒德·胡赛尼&lt;/h2&gt;&lt;p&gt;看完《追风筝的人》的感觉远不如正在看的时候感觉强烈，似乎我只是看完了一个故事，一个稍微有点长的故事。看完这本书，给我留下深刻影响的并非是这个故事，而是这个故事发生的国度，对，阿富汗，第一次对阿富汗这个国家了解到这个程度。以前的我对阿富汗的印象包括：战乱，贫穷，干旱，可是现在多了几样：政治，苦难，人性，以及宗教。这是个离我们不远的国度，他们依然有着美丽善良的人们，即使遭受战争，动乱，宗教迫害，种族歧视，仍然有很多可爱热心的人生活在那里。阿米尔和哈桑，他们都是善良的，只是他们在那个充满种族歧视的年代，难免无法做成真正的朋友，哈桑的忠心让我钦佩，阿米尔的悔改让我动容。总之，盖上这本书，回荡在我脑中的，更多的是那个年代阿富汗一幅幅的画面。为这个故事致敬，为作者致敬！&lt;/p&gt;
 &lt;h2 id=&quot;2-《HTTP权威指南》-David等&quot;&gt;&lt;a href=&quot;#2-《HTTP权威指南》-David等&quot; class=&quot;headerlink&quot; title=&quot;2.《HTTP权威指南》 David等&quot;&gt;&lt;/a&gt;2.《HTTP权威指南》 David等&lt;/h2&gt;&lt;p&gt;全面介绍了HTTP协议的各个部分，十多年前的书了，但是至今仍被奉为Web开发者必读经典。我的书评：&lt;a href=&quot;http://whatbeg.com/2016/04/06/httpguide.html&quot;&gt;http://whatbeg.com/2016/04/06/httpguide.html&lt;/a&gt;&lt;/p&gt;
@@ -449,7 +449,7 @@
     
     </summary>
     
-      <category term="读书" scheme="http://whatbeg.com/categories/%E8%AF%BB%E4%B9%A6/"/>
+      <category term="读书 | Reading" scheme="http://whatbeg.com/categories/%E8%AF%BB%E4%B9%A6-Reading/"/>
     
     
       <category term="读书" scheme="http://whatbeg.com/tags/%E8%AF%BB%E4%B9%A6/"/>
@@ -461,7 +461,7 @@
     <link href="http://whatbeg.com/2016/04/26/xuweilrc.html"/>
     <id>http://whatbeg.com/2016/04/26/xuweilrc.html</id>
     <published>2016-04-26T11:22:39.000Z</published>
-    <updated>2016-05-09T15:29:41.044Z</updated>
+    <updated>2016-05-12T03:12:08.742Z</updated>
     
     <content type="html">&lt;h2 id=&quot;关键词&quot;&gt;&lt;a href=&quot;#关键词&quot; class=&quot;headerlink&quot; title=&quot;关键词&quot;&gt;&lt;/a&gt;关键词&lt;/h2&gt;&lt;p&gt;结巴分词 中文分词 TF-IDF 词频 逆文档频率&lt;/p&gt;
 &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;自从第一次听到许巍的歌，就深深地迷上了他的歌，感觉每一首都钻到了我的心里，也早已把他的歌听得烂熟了。许巍，我最喜欢的歌手，没有之一！&lt;/p&gt;
@@ -604,7 +604,7 @@
     
     </summary>
     
-      <category term="数据挖掘分析与可视化" scheme="http://whatbeg.com/categories/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98%E5%88%86%E6%9E%90%E4%B8%8E%E5%8F%AF%E8%A7%86%E5%8C%96/"/>
+      <category term="数据挖掘与分析 | Data.M" scheme="http://whatbeg.com/categories/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98%E4%B8%8E%E5%88%86%E6%9E%90-Data-M/"/>
     
     
       <category term="Python" scheme="http://whatbeg.com/tags/Python/"/>
@@ -618,7 +618,7 @@
     <link href="http://whatbeg.com/2016/04/25/numpy.html"/>
     <id>http://whatbeg.com/2016/04/25/numpy.html</id>
     <published>2016-04-25T12:36:55.000Z</published>
-    <updated>2016-04-25T12:39:54.000Z</updated>
+    <updated>2016-05-12T03:11:28.867Z</updated>
     
     <content type="html">&lt;p&gt;最近经常需要用到Python矩阵计算处理模块Numpy，有些方法不是很熟悉，这里手机记录一下，备查备忘。&lt;/p&gt;
 &lt;h2 id=&quot;矩阵对象的属性&quot;&gt;&lt;a href=&quot;#矩阵对象的属性&quot; class=&quot;headerlink&quot; title=&quot;矩阵对象的属性&quot;&gt;&lt;/a&gt;矩阵对象的属性&lt;/h2&gt;&lt;ul&gt;
@@ -691,7 +691,7 @@
     
     </summary>
     
-      <category term="数据挖掘分析与可视化" scheme="http://whatbeg.com/categories/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98%E5%88%86%E6%9E%90%E4%B8%8E%E5%8F%AF%E8%A7%86%E5%8C%96/"/>
+      <category term="数据挖掘与分析 | Data.M" scheme="http://whatbeg.com/categories/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98%E4%B8%8E%E5%88%86%E6%9E%90-Data-M/"/>
     
     
       <category term="Python" scheme="http://whatbeg.com/tags/Python/"/>
@@ -705,7 +705,7 @@
     <link href="http://whatbeg.com/2016/04/25/latexsyntax.html"/>
     <id>http://whatbeg.com/2016/04/25/latexsyntax.html</id>
     <published>2016-04-25T04:53:28.000Z</published>
-    <updated>2016-04-25T05:28:42.238Z</updated>
+    <updated>2016-05-12T03:09:06.417Z</updated>
     
     <content type="html">&lt;p&gt;Latex的一些公式，列一下方便查阅。&lt;br&gt;图来自《一份不太简短的LATEX2介绍》&lt;/p&gt;
 &lt;h2 id=&quot;数学模式重音符号-带帽符&quot;&gt;&lt;a href=&quot;#数学模式重音符号-带帽符&quot; class=&quot;headerlink&quot; title=&quot;数学模式重音符号(带帽符)&quot;&gt;&lt;/a&gt;数学模式重音符号(带帽符)&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;http://7xsl28.com2.z0.glb.clouddn.com/latex1.png-sy&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
@@ -735,7 +735,7 @@
     
     </summary>
     
-      <category term="计算机相关知识" scheme="http://whatbeg.com/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/"/>
+      <category term="计算机相关 | CS.Related" scheme="http://whatbeg.com/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9B%B8%E5%85%B3-CS-Related/"/>
     
     
       <category term="CS" scheme="http://whatbeg.com/tags/CS/"/>
@@ -749,7 +749,7 @@
     <link href="http://whatbeg.com/2016/04/23/decisiontree.html"/>
     <id>http://whatbeg.com/2016/04/23/decisiontree.html</id>
     <published>2016-04-23T12:35:01.000Z</published>
-    <updated>2016-04-25T05:25:08.210Z</updated>
+    <updated>2016-05-12T03:16:30.061Z</updated>
     
     <content type="html">&lt;p&gt;本文对决策树算法进行简单的总结和梳理，并对著名的决策树算法ID3(Iterative Dichotomiser 迭代二分器)进行实现，实现采用Python语言，一句老梗，“人生苦短，我用Python”，Python确实能够省很多语言方面的事，从而可以让我们专注于问题和解决问题的逻辑。&lt;br&gt;根据不同的数据，我实现了三个版本的ID3算法，复杂度逐步提升：&lt;br&gt;1.纯标称值无缺失数据集&lt;br&gt;2.连续值和标称值混合且无缺失数据集&lt;br&gt;3.连续值和标称值混合，有缺失数据集&lt;br&gt;第一个算法参考了《机器学习实战》的大部分代码，第二、三个算法基于前面的实现进行模块的增加。&lt;/p&gt;
 &lt;h2 id=&quot;决策树简介&quot;&gt;&lt;a href=&quot;#决策树简介&quot; class=&quot;headerlink&quot; title=&quot;决策树简介&quot;&gt;&lt;/a&gt;决策树简介&lt;/h2&gt;&lt;p&gt;决策树算法不用说大家应该都知道，是机器学习的一个著名算法，由澳大利亚著名计算机科学家Rose Quinlan发表。&lt;/p&gt;
@@ -788,12 +788,12 @@
     
     </summary>
     
-      <category term="机器学习" scheme="http://whatbeg.com/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+      <category term="机器学习 | Mac.Learning" scheme="http://whatbeg.com/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-Mac-Learning/"/>
     
-    
-      <category term="机器学习" scheme="http://whatbeg.com/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
     
       <category term="Python" scheme="http://whatbeg.com/tags/Python/"/>
+    
+      <category term="机器学习" scheme="http://whatbeg.com/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
     
   </entry>
   
@@ -802,7 +802,7 @@
     <link href="http://whatbeg.com/2016/04/23/matplotlib-desiciontree.html"/>
     <id>http://whatbeg.com/2016/04/23/matplotlib-desiciontree.html</id>
     <published>2016-04-23T12:05:51.000Z</published>
-    <updated>2016-04-23T12:39:13.870Z</updated>
+    <updated>2016-05-12T03:11:43.923Z</updated>
     
     <content type="html">&lt;p&gt;利用matplotlib进行决策树可视化&lt;br&gt;代码来源于《机器学习实战》，具体讲解可参见这本书。&lt;br&gt;部分代码解释可见&lt;a href=&quot;http://www.cnblogs.com/fantasy01/p/4595902.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;这里&lt;/a&gt;&lt;br&gt;讲的比较清楚。&lt;/p&gt;
 &lt;p&gt;treePlot.py&lt;/p&gt;
@@ -815,12 +815,12 @@
     
     </summary>
     
-      <category term="机器学习" scheme="http://whatbeg.com/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+      <category term="机器学习 | Mac.Learning" scheme="http://whatbeg.com/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-Mac-Learning/"/>
     
-    
-      <category term="机器学习" scheme="http://whatbeg.com/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
     
       <category term="Python" scheme="http://whatbeg.com/tags/Python/"/>
+    
+      <category term="机器学习" scheme="http://whatbeg.com/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
     
   </entry>
   
@@ -829,7 +829,7 @@
     <link href="http://whatbeg.com/2016/04/22/xiguadataset.html"/>
     <id>http://whatbeg.com/2016/04/22/xiguadataset.html</id>
     <published>2016-04-22T08:47:11.000Z</published>
-    <updated>2016-04-22T08:48:09.944Z</updated>
+    <updated>2016-05-12T03:12:25.627Z</updated>
     
     <content type="html">&lt;h2 id=&quot;1-西瓜数据集2-0&quot;&gt;&lt;a href=&quot;#1-西瓜数据集2-0&quot; class=&quot;headerlink&quot; title=&quot;1.西瓜数据集2.0&quot;&gt;&lt;/a&gt;1.&lt;a href=&quot;http://7xt9qk.com2.z0.glb.clouddn.com/%E8%A5%BF%E7%93%9C2.0.txt&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;西瓜数据集2.0&lt;/a&gt;&lt;/h2&gt;&lt;figure class=&quot;highlight&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;编号,色泽,根蒂,敲声,纹理,脐部,触感,好瓜&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;1,青绿,蜷缩,浊响,清晰,凹陷,硬滑,是&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2,乌黑,蜷缩,沉闷,清晰,凹陷,硬滑,是&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3,乌黑,蜷缩,浊响,清晰,凹陷,硬滑,是&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4,青绿,蜷缩,沉闷,清晰,凹陷,硬滑,是&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5,浅白,蜷缩,浊响,清晰,凹陷,硬滑,是&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6,青绿,稍蜷,浊响,清晰,稍凹,软粘,是&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7,乌黑,稍蜷,浊响,稍糊,稍凹,软粘,是&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8,乌黑,稍蜷,浊响,清晰,稍凹,硬滑,是&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9,乌黑,稍蜷,沉闷,稍糊,稍凹,硬滑,否&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10,青绿,硬挺,清脆,清晰,平坦,软粘,否&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11,浅白,硬挺,清脆,模糊,平坦,硬滑,否&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12,浅白,蜷缩,浊响,模糊,平坦,软粘,否&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13,青绿,稍蜷,浊响,稍糊,凹陷,硬滑,否&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14,浅白,稍蜷,沉闷,稍糊,凹陷,硬滑,否&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15,乌黑,稍蜷,浊响,清晰,稍凹,软粘,否&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16,浅白,蜷缩,浊响,模糊,平坦,硬滑,否&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17,青绿,蜷缩,沉闷,稍糊,稍凹,硬滑,否&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;h2 id=&quot;2-西瓜数据集2-0-alpha&quot;&gt;&lt;a href=&quot;#2-西瓜数据集2-0-alpha&quot; class=&quot;headerlink&quot; title=&quot;2.西瓜数据集2.0$\alpha$&quot;&gt;&lt;/a&gt;2.&lt;a href=&quot;http://7xt9qk.com2.z0.glb.clouddn.com/%E8%A5%BF%E7%93%9C2.0alpha.txt&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;西瓜数据集2.0$\alpha$&lt;/a&gt;&lt;/h2&gt;&lt;figure class=&quot;highlight&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;编号,色泽,根蒂,敲声,纹理,脐部,触感,好瓜&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;1,?,蜷缩,浊响,清晰,凹陷,硬滑,是&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2,乌黑,蜷缩,沉闷,清晰,凹陷,?,是&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3,乌黑,蜷缩,?,清晰,凹陷,硬滑,是&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4,青绿,蜷缩,沉闷,清晰,凹陷,硬滑,是&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5,?,蜷缩,浊响,清晰,凹陷,硬滑,是&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6,青绿,稍蜷,浊响,清晰,?,软粘,是&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7,乌黑,稍蜷,浊响,稍糊,稍凹,软粘,是&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8,乌黑,稍蜷,浊响,?,稍凹,硬滑,是&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9,乌黑,?,沉闷,稍糊,稍凹,硬滑,否&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10,青绿,硬挺,清脆,?,平坦,软粘,否&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11,浅白,硬挺,清脆,模糊,平坦,?,否&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12,浅白,蜷缩,?,模糊,平坦,软粘,否&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13,?,稍蜷,浊响,稍糊,凹陷,硬滑,否&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14,浅白,稍蜷,沉闷,稍糊,凹陷,硬滑,否&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15,乌黑,稍蜷,浊响,清晰,?,软粘,否&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16,浅白,蜷缩,浊响,模糊,平坦,硬滑,否&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17,青绿,?,沉闷,稍糊,稍凹,硬滑,否&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
@@ -843,7 +843,7 @@
     
     </summary>
     
-      <category term="机器学习" scheme="http://whatbeg.com/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+      <category term="机器学习 | Mac.Learning" scheme="http://whatbeg.com/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-Mac-Learning/"/>
     
     
       <category term="机器学习" scheme="http://whatbeg.com/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
@@ -855,7 +855,7 @@
     <link href="http://whatbeg.com/2016/04/20/blogopt420.html"/>
     <id>http://whatbeg.com/2016/04/20/blogopt420.html</id>
     <published>2016-04-20T05:37:17.000Z</published>
-    <updated>2016-05-02T06:00:37.781Z</updated>
+    <updated>2016-05-12T03:15:42.032Z</updated>
     
     <content type="html">&lt;h2 id=&quot;1-新增博客访问量统计和文章访问量统计&quot;&gt;&lt;a href=&quot;#1-新增博客访问量统计和文章访问量统计&quot; class=&quot;headerlink&quot; title=&quot;1.新增博客访问量统计和文章访问量统计&quot;&gt;&lt;/a&gt;1.新增博客访问量统计和文章访问量统计&lt;/h2&gt;&lt;h3 id=&quot;采用-不蒜子-极简计数器&quot;&gt;&lt;a href=&quot;#采用-不蒜子-极简计数器&quot; class=&quot;headerlink&quot; title=&quot;采用 不蒜子 极简计数器&quot;&gt;&lt;/a&gt;采用 &lt;a href=&quot;http://service.ibruce.info/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;不蒜子&lt;/a&gt; 极简计数器&lt;/h3&gt;&lt;p&gt;在 &lt;/p&gt;
 &lt;blockquote&gt;
@@ -891,7 +891,7 @@
     
     </summary>
     
-      <category term="错误解决或优化" scheme="http://whatbeg.com/categories/%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3%E6%88%96%E4%BC%98%E5%8C%96/"/>
+      <category term="错误解决或优化 | FaultOpt" scheme="http://whatbeg.com/categories/%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3%E6%88%96%E4%BC%98%E5%8C%96-FaultOpt/"/>
     
     
       <category term="hexo" scheme="http://whatbeg.com/tags/hexo/"/>
@@ -903,7 +903,7 @@
     <link href="http://whatbeg.com/2016/04/19/knn1.html"/>
     <id>http://whatbeg.com/2016/04/19/knn1.html</id>
     <published>2016-04-19T12:45:57.000Z</published>
-    <updated>2016-04-19T15:14:34.510Z</updated>
+    <updated>2016-05-12T03:09:27.889Z</updated>
     
     <content type="html">&lt;h2 id=&quot;kNN分类算法&quot;&gt;&lt;a href=&quot;#kNN分类算法&quot; class=&quot;headerlink&quot; title=&quot;kNN分类算法&quot;&gt;&lt;/a&gt;kNN分类算法&lt;/h2&gt;&lt;p&gt;一种常用的监督学习算法，k-Nearest Neighbor，k-近邻算法。算法思想如下：&lt;/p&gt;
 &lt;blockquote&gt;
@@ -925,12 +925,12 @@
     
     </summary>
     
-      <category term="机器学习" scheme="http://whatbeg.com/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+      <category term="机器学习 | Mac.Learning" scheme="http://whatbeg.com/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-Mac-Learning/"/>
     
-    
-      <category term="机器学习" scheme="http://whatbeg.com/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
     
       <category term="Python" scheme="http://whatbeg.com/tags/Python/"/>
+    
+      <category term="机器学习" scheme="http://whatbeg.com/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
     
   </entry>
   
@@ -939,7 +939,7 @@
     <link href="http://whatbeg.com/2016/04/14/logincnblogs.html"/>
     <id>http://whatbeg.com/2016/04/14/logincnblogs.html</id>
     <published>2016-04-14T07:37:53.000Z</published>
-    <updated>2016-04-27T01:40:51.163Z</updated>
+    <updated>2016-05-12T03:10:25.693Z</updated>
     
     <content type="html">&lt;p&gt;Python模拟登录第一弹见：&lt;a href=&quot;http://www.cnblogs.com/whatbeg/p/5320666.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;【Python数据分析】Python模拟登录(一) requests.Session应用&lt;/a&gt;&lt;br&gt;上次的登录是最基本的，全部是明文，而且在浏览器中就可以看到POST的数据。接下来我们来个稍微难一点的–模拟登录博客园(&lt;a href=&quot;http://www.cnblogs.com&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.cnblogs.com&lt;/a&gt;)&lt;/p&gt;
 &lt;h4 id=&quot;登录特点&quot;&gt;&lt;a href=&quot;#登录特点&quot; class=&quot;headerlink&quot; title=&quot;登录特点&quot;&gt;&lt;/a&gt;登录特点&lt;/h4&gt;&lt;blockquote&gt;
@@ -957,7 +957,7 @@
     
     </summary>
     
-      <category term="数据挖掘分析与可视化" scheme="http://whatbeg.com/categories/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98%E5%88%86%E6%9E%90%E4%B8%8E%E5%8F%AF%E8%A7%86%E5%8C%96/"/>
+      <category term="数据挖掘与分析 | Data.M" scheme="http://whatbeg.com/categories/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98%E4%B8%8E%E5%88%86%E6%9E%90-Data-M/"/>
     
     
       <category term="Python" scheme="http://whatbeg.com/tags/Python/"/>
@@ -973,7 +973,7 @@
     <link href="http://whatbeg.com/2016/04/14/cet4.html"/>
     <id>http://whatbeg.com/2016/04/14/cet4.html</id>
     <published>2016-04-14T03:20:49.000Z</published>
-    <updated>2016-04-27T01:40:45.218Z</updated>
+    <updated>2016-05-12T03:16:00.812Z</updated>
     
     <content type="html">&lt;p&gt;最近获得了一些四级成绩数据，大概500多个，于是突发奇想是否能够看看这些成绩数据是否满足所谓的正态分布呢？说干就干，于是有了这篇文章。&lt;br&gt;文章顺带介绍了xlrd模块的一些用法和matplotlib画自定义数据的条形图和随机的条形图的一些方法，并且提供了一些相关链接，可作为学习matplotlib和numpy的资源，希望对读者也有帮助。&lt;/p&gt;
 &lt;h2 id=&quot;工具&quot;&gt;&lt;a href=&quot;#工具&quot; class=&quot;headerlink&quot; title=&quot;工具&quot;&gt;&lt;/a&gt;工具&lt;/h2&gt;&lt;ul&gt;
@@ -1032,7 +1032,7 @@
     
     </summary>
     
-      <category term="数据挖掘分析与可视化" scheme="http://whatbeg.com/categories/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98%E5%88%86%E6%9E%90%E4%B8%8E%E5%8F%AF%E8%A7%86%E5%8C%96/"/>
+      <category term="数据挖掘与分析 | Data.M" scheme="http://whatbeg.com/categories/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98%E4%B8%8E%E5%88%86%E6%9E%90-Data-M/"/>
     
     
       <category term="Python" scheme="http://whatbeg.com/tags/Python/"/>
@@ -1046,7 +1046,7 @@
     <link href="http://whatbeg.com/2016/04/12/prisonbreak.html"/>
     <id>http://whatbeg.com/2016/04/12/prisonbreak.html</id>
     <published>2016-04-12T11:39:33.000Z</published>
-    <updated>2016-04-19T13:38:40.574Z</updated>
+    <updated>2016-05-12T03:14:00.756Z</updated>
     
     <content type="html">&lt;p&gt;最近在看《越狱》这部美剧，鉴于有几个朋友谈论到这部剧都是一副恨不得看他十遍八遍的表情，并且极力推荐，再加上最近没什么剧看，《太阳的后裔》也还可以，但是更新太慢了，于是就点开了这部剧。到现在已经看到第二季一半了，闲扯几句感受。&lt;/p&gt;
 &lt;h2 id=&quot;人物&quot;&gt;&lt;a href=&quot;#人物&quot; class=&quot;headerlink&quot; title=&quot;人物&quot;&gt;&lt;/a&gt;人物&lt;/h2&gt;&lt;p&gt;我觉得这部剧的亮点就是两个，人物，还有后面的剧情。其中的人物个个都栩栩如生。&lt;/p&gt;
@@ -1074,7 +1074,7 @@
     
     </summary>
     
-      <category term="随笔" scheme="http://whatbeg.com/categories/%E9%9A%8F%E7%AC%94/"/>
+      <category term="随笔 | Essays" scheme="http://whatbeg.com/categories/%E9%9A%8F%E7%AC%94-Essays/"/>
     
     
       <category term="随笔" scheme="http://whatbeg.com/tags/%E9%9A%8F%E7%AC%94/"/>
@@ -1088,7 +1088,7 @@
     <link href="http://whatbeg.com/2016/04/12/learntorank.html"/>
     <id>http://whatbeg.com/2016/04/12/learntorank.html</id>
     <published>2016-04-12T07:55:35.000Z</published>
-    <updated>2016-04-19T15:10:11.434Z</updated>
+    <updated>2016-05-12T03:10:44.488Z</updated>
     
     <content type="html">&lt;h3 id=&quot;什么是排序学习？&quot;&gt;&lt;a href=&quot;#什么是排序学习？&quot; class=&quot;headerlink&quot; title=&quot;什么是排序学习？&quot;&gt;&lt;/a&gt;什么是排序学习？&lt;/h3&gt;&lt;p&gt;排序学习（Learn to Rank）是机器学习应用在排序上的一种方法。在排序学习中，我们的目标是预测出未知样本X的标号。在传统排序中，一般是通过自定义一个排序函数，用这个函数算出每条记录的序值，按序值进行排序。在搜索引擎中，给定一个查询q，搜索引擎返回一系列相关文档（一系列D的集合），而且肯定要按其相关度从大到小展示给用户，才能获得最佳的用户体验，即对(q,D)这样的项进行排序。影响相关度的一般有TF（词频）,IDF（逆文档频率）等等。传统解决这类问题的方法有向量空间模型，布尔模型等，但是缺点是一旦参数很多，那么按照经验方法调参会非常复杂。于是人们就想到能不能用机器学习的方法来做排序？机器学习的方法主要有两种学习任务，如果我们想要预测的是连续值，那么称为“回归”（Regression）；如果想要预测离散值，那么称为“分类”（Classification）。如果可以把排序问题转化成分类或者回归问题，那么排序问题就可以迎刃而解。&lt;br&gt;&lt;img src=&quot;http://7xsl28.com2.z0.glb.clouddn.com/%E6%8E%92%E5%BA%8F%E5%AD%A6%E4%B9%A0%E5%8E%9F%E7%90%86.jpg&quot; alt=&quot;图1 排序学习原理&quot;&gt;&lt;/p&gt;
 &lt;h3 id=&quot;排序学习的三种方法&quot;&gt;&lt;a href=&quot;#排序学习的三种方法&quot; class=&quot;headerlink&quot; title=&quot;排序学习的三种方法&quot;&gt;&lt;/a&gt;排序学习的三种方法&lt;/h3&gt;&lt;p&gt;根据训练数据的不同，当前人们提出了三种排序学习的方法：&lt;/p&gt;
@@ -1111,7 +1111,7 @@
     
     </summary>
     
-      <category term="机器学习" scheme="http://whatbeg.com/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+      <category term="机器学习 | Mac.Learning" scheme="http://whatbeg.com/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-Mac-Learning/"/>
     
     
       <category term="机器学习" scheme="http://whatbeg.com/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
@@ -1123,7 +1123,7 @@
     <link href="http://whatbeg.com/2016/04/08/booklist1.html"/>
     <id>http://whatbeg.com/2016/04/08/booklist1.html</id>
     <published>2016-04-08T13:20:10.000Z</published>
-    <updated>2016-04-08T13:30:30.678Z</updated>
+    <updated>2016-05-12T03:15:24.621Z</updated>
     
     <content type="html">&lt;p&gt;整理一下大学前两年读过的书单，现在发现书读了这么多，其实作用并不大，而且看看这些书名就知道好多书都是个坑！现在看来，我是浪费了多少时间啊，很多书照现在的我看来，看一眼标题就直接会扔掉的。但是反过来想想，或许是我读过很多烂书，于是现在才学会甄选上等书籍的缘故？&lt;br&gt;总之，接下来读书，只有3种情况：&lt;/p&gt;
 &lt;blockquote&gt;
@@ -1160,7 +1160,7 @@
     
     </summary>
     
-      <category term="成长之路" scheme="http://whatbeg.com/categories/%E6%88%90%E9%95%BF%E4%B9%8B%E8%B7%AF/"/>
+      <category term="成长之路 | Biography" scheme="http://whatbeg.com/categories/%E6%88%90%E9%95%BF%E4%B9%8B%E8%B7%AF-Biography/"/>
     
     
       <category term="读书" scheme="http://whatbeg.com/tags/%E8%AF%BB%E4%B9%A6/"/>
@@ -1172,7 +1172,7 @@
     <link href="http://whatbeg.com/2016/04/07/git.html"/>
     <id>http://whatbeg.com/2016/04/07/git.html</id>
     <published>2016-04-07T15:35:15.000Z</published>
-    <updated>2016-04-19T13:37:28.518Z</updated>
+    <updated>2016-05-12T03:16:23.098Z</updated>
     
     <content type="html">&lt;h3 id=&quot;什么是Git&quot;&gt;&lt;a href=&quot;#什么是Git&quot; class=&quot;headerlink&quot; title=&quot;什么是Git?&quot;&gt;&lt;/a&gt;什么是Git?&lt;/h3&gt;&lt;p&gt;Git应该是现在最受欢迎的版本控制系统了，而且免费开源，可以直接连到github上进行合作开发，分布式的，安全性高。按我的理解，git就是帮你管理代码，你写好了它帮你添加为软件的一部分，你写错了它帮你退回来在写，代码逐渐地添加到软件中去，直到这个软件完成。&lt;/p&gt;
 &lt;h3 id=&quot;为什么要学习Git？&quot;&gt;&lt;a href=&quot;#为什么要学习Git？&quot; class=&quot;headerlink&quot; title=&quot;为什么要学习Git？&quot;&gt;&lt;/a&gt;为什么要学习Git？&lt;/h3&gt;&lt;p&gt;自从学习利用hexo部署静态博客以来，经常需要接触到Git Bash，虽然更新博客时用到的只是hexo g,hexo s,hexo d等指令，但是其中仍是依靠git来完成的。&lt;br&gt;可以说git的使用是一个开发人员必备的技能，因为现在大部分的项目都是以合作形式来开发的，所以学会用工具与他人合作至关重要。&lt;br&gt;所以今天中午去学习了下Git，发现学习基本的git操作其实很简单，尤其是当你有了一些版本库的基本知识之后。&lt;/p&gt;
@@ -1212,7 +1212,7 @@
     
     </summary>
     
-      <category term="计算机相关知识" scheme="http://whatbeg.com/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/"/>
+      <category term="计算机相关 | CS.Related" scheme="http://whatbeg.com/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9B%B8%E5%85%B3-CS-Related/"/>
     
     
       <category term="CS" scheme="http://whatbeg.com/tags/CS/"/>
@@ -1226,7 +1226,7 @@
     <link href="http://whatbeg.com/2016/04/07/hexofault.html"/>
     <id>http://whatbeg.com/2016/04/07/hexofault.html</id>
     <published>2016-04-07T01:21:30.000Z</published>
-    <updated>2016-04-20T05:41:13.541Z</updated>
+    <updated>2016-05-12T03:06:27.973Z</updated>
     
     <content type="html">&lt;p&gt;用hexo+github搭建个人博客时出现过一些错误，有一些已经忘记了，把记得的两个记录一下，以防以后系统重装后又要搭建时要到处找解决方法。&lt;/p&gt;
 &lt;h3 id=&quot;搭建工具&quot;&gt;&lt;a href=&quot;#搭建工具&quot; class=&quot;headerlink&quot; title=&quot;搭建工具&quot;&gt;&lt;/a&gt;搭建工具&lt;/h3&gt;&lt;ul&gt;
@@ -1246,7 +1246,7 @@
     
     </summary>
     
-      <category term="错误解决或优化" scheme="http://whatbeg.com/categories/%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3%E6%88%96%E4%BC%98%E5%8C%96/"/>
+      <category term="错误解决或优化 | FaultOpt" scheme="http://whatbeg.com/categories/%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3%E6%88%96%E4%BC%98%E5%8C%96-FaultOpt/"/>
     
     
       <category term="hexo" scheme="http://whatbeg.com/tags/hexo/"/>
@@ -1258,7 +1258,7 @@
     <link href="http://whatbeg.com/2016/04/06/httpguide.html"/>
     <id>http://whatbeg.com/2016/04/06/httpguide.html</id>
     <published>2016-04-06T03:09:46.000Z</published>
-    <updated>2016-04-30T14:06:37.560Z</updated>
+    <updated>2016-05-12T03:05:45.045Z</updated>
     
     <content type="html">&lt;p&gt;《HTTP权威指南》是公认比较经典的书了，刚好前段时间在做Web相关方面的工作，而且遇到了难题，所以便拿起了这本书来读，以求能对HTTP协议的原理与机制做更深的了解。&lt;/p&gt;
 &lt;p&gt;读到后面我才知道，原来这本书的英文版是2002年出版的，而中文版到2012年才出版，所以我一直以为它是12年出的，可惜并不是。如此一来导致书中很多内容会出现老旧和不再适用的情况。我选择略去不读这些内容。当然大部分内容还是现在通用的。还有一个问题就是这本书的翻译读起来总感觉怪怪的，我觉得如果说有败笔，那么最大的败笔就是翻译了。&lt;/p&gt;
@@ -1279,7 +1279,7 @@
     
     </summary>
     
-      <category term="读书" scheme="http://whatbeg.com/categories/%E8%AF%BB%E4%B9%A6/"/>
+      <category term="读书 | Reading" scheme="http://whatbeg.com/categories/%E8%AF%BB%E4%B9%A6-Reading/"/>
     
     
       <category term="读书" scheme="http://whatbeg.com/tags/%E8%AF%BB%E4%B9%A6/"/>
