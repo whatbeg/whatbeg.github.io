@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://whatbeg.com/"/>
-  <updated>2016-05-12T03:05:59.644Z</updated>
+  <updated>2016-05-17T03:29:23.239Z</updated>
   <id>http://whatbeg.com/</id>
   
   <author>
@@ -14,6 +14,50 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>给机器学习初学者的建议</title>
+    <link href="http://whatbeg.com/2016/05/17/adviceforMLfish.html"/>
+    <id>http://whatbeg.com/2016/05/17/adviceforMLfish.html</id>
+    <published>2016-05-17T03:12:50.000Z</published>
+    <updated>2016-05-17T03:29:23.239Z</updated>
+    
+    <content type="html">&lt;p&gt;本文译自康奈尔大学信息科学系助理教授David Mimno写的《Advice for students of machine learning》，Mimno先生总结了一些对于机器学习学生/初学者的建议，强调理论与实践相结合，要有耐心和毅力，并提出了深入研究一篇论文的方法。希望对读者有所帮助。&lt;br&gt;原文地址：&lt;a href=&quot;http://www.mimno.org/articles/ml-learn/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.mimno.org/articles/ml-learn/&lt;/a&gt;&lt;br&gt;Mimno先生主页：&lt;a href=&quot;http://mimno.infosci.cornell.edu/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://mimno.infosci.cornell.edu/&lt;/a&gt;&lt;br&gt;下面是译文正文：&lt;/p&gt;
+&lt;p&gt;=============================================================&lt;br&gt;题名：给机器学习初学者的建议&lt;br&gt;作者：David Mimno&lt;br&gt;译者：&lt;a href=&quot;http://whatbeg.com/about/&quot;&gt;whatbeg&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;最近我的一个学生问我学习机器学习的建议，于是我写下了这篇文章，此文偏向于我个人的经验，但我还是要概括一下。&lt;/p&gt;
+&lt;p&gt;我现在最爱推荐的入门书籍是Kevin Murphy的书《机器学习》(&lt;a href=&quot;https://book.douban.com/subject/10758624/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Machine Learning&lt;/a&gt;)&lt;br&gt;你可能也想读&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Chris Bishop的《模式识别和机器学习》(译者注：&lt;a href=&quot;https://book.douban.com/subject/2061116/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Pattern Recognition and Machine Learning&lt;/a&gt;, PRML，经典书籍，豆瓣评分9.6)&lt;/li&gt;
+&lt;li&gt;Daphne Koller的《概率图模型》(&lt;a href=&quot;https://book.douban.com/subject/4007200/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Probabilistic Graphical Models : Principles and Techniques&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;以及David Mackay的《信息理论：推理与学习算法》(&lt;a href=&quot;https://book.douban.com/subject/1789534/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Information Theory, Inference and Learning Algorithms&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;任何你学习的关于线性代数和概率论/统计学的知识都会有所帮助。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Strang的《线性代数概论》(&lt;a href=&quot;https://book.douban.com/subject/4530041/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Introduction To Linear Algebra&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Gelman,Carlin,Stern和Rubin的《贝叶斯数据分析》(&lt;a href=&quot;https://book.douban.com/subject/1464230/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Bayesian Data Analysis, Second Edition&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Gelman和Hill的《用回归和多级/分层模型进行数据分析》(&lt;a href=&quot;https://book.douban.com/subject/2859924/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Data Analysis Using Regression and Multilevel/Hierarchical Models&lt;/a&gt;)&lt;br&gt;等，这些都是我喜欢的书籍。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;不要想着一开始就获得某个知识的所有方面，尽量从多个不同的资源去阅读同一件事的描述。&lt;/p&gt;
+&lt;p&gt;没有什么比你自己亲自尝试更重要。选择一个模型，然后实现它，将它与其它开源实现进行比较，想一想，是不是有什么使程序工作的计算或者数学上的技巧呢？&lt;/p&gt;
+&lt;p&gt;读一些论文。我在读研究生的时候，早上和晚上都有20分钟在公交车上，我包里总是带着一篇有趣的论文，公交不是重点–真正起作用的是我每天能花大约半小时在阅读（这些论文）上。&lt;/p&gt;
+&lt;p&gt;选择一篇你喜欢的论文，然后花一个星期深入研究它，无时无刻不想着它，回忆每个公式的形式，花点时间散步并琢磨每个变量是如何影响结果的，不同的变量是怎样相互影响的。想一想公式6是如何得到公式7的–作者常常省略中间步骤和代数细节，将步骤补充完整。&lt;/p&gt;
+&lt;p&gt;要有耐心和坚持。记住冯·诺伊曼所说的，“in mathematics you don’t understand things, you just get used to them.”。&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;本文译自康奈尔大学信息科学系助理教授David Mimno写的《Advice for students of machine learning》，Mimno先生总结了一些对于机器学习学生/初学者的建议，强调理论与实践相结合，要有耐心和毅力，并提出了深入研究一篇论文的方法。希
+    
+    </summary>
+    
+      <category term="译文 | Translation" scheme="http://whatbeg.com/categories/%E8%AF%91%E6%96%87-Translation/"/>
+    
+    
+      <category term="机器学习" scheme="http://whatbeg.com/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="译文" scheme="http://whatbeg.com/tags/%E8%AF%91%E6%96%87/"/>
+    
+  </entry>
   
   <entry>
     <title>怎样写出优秀的研究论文？</title>
@@ -240,9 +284,9 @@
       <category term="译文 | Translation" scheme="http://whatbeg.com/categories/%E8%AF%91%E6%96%87-Translation/"/>
     
     
-      <category term="CS" scheme="http://whatbeg.com/tags/CS/"/>
-    
       <category term="译文" scheme="http://whatbeg.com/tags/%E8%AF%91%E6%96%87/"/>
+    
+      <category term="CS" scheme="http://whatbeg.com/tags/CS/"/>
     
   </entry>
   
@@ -795,9 +839,9 @@
       <category term="机器学习 | Mac.Learning" scheme="http://whatbeg.com/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-Mac-Learning/"/>
     
     
-      <category term="Python" scheme="http://whatbeg.com/tags/Python/"/>
-    
       <category term="机器学习" scheme="http://whatbeg.com/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="Python" scheme="http://whatbeg.com/tags/Python/"/>
     
   </entry>
   
@@ -822,9 +866,9 @@
       <category term="机器学习 | Mac.Learning" scheme="http://whatbeg.com/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-Mac-Learning/"/>
     
     
-      <category term="Python" scheme="http://whatbeg.com/tags/Python/"/>
-    
       <category term="机器学习" scheme="http://whatbeg.com/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="Python" scheme="http://whatbeg.com/tags/Python/"/>
     
   </entry>
   
@@ -932,9 +976,9 @@
       <category term="机器学习 | Mac.Learning" scheme="http://whatbeg.com/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-Mac-Learning/"/>
     
     
-      <category term="Python" scheme="http://whatbeg.com/tags/Python/"/>
-    
       <category term="机器学习" scheme="http://whatbeg.com/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="Python" scheme="http://whatbeg.com/tags/Python/"/>
     
   </entry>
   
@@ -1254,41 +1298,6 @@
     
     
       <category term="hexo" scheme="http://whatbeg.com/tags/hexo/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>《HTTP权威指南》书评</title>
-    <link href="http://whatbeg.com/2016/04/06/httpguide.html"/>
-    <id>http://whatbeg.com/2016/04/06/httpguide.html</id>
-    <published>2016-04-06T03:09:46.000Z</published>
-    <updated>2016-05-12T03:05:45.045Z</updated>
-    
-    <content type="html">&lt;p&gt;《HTTP权威指南》是公认比较经典的书了，刚好前段时间在做Web相关方面的工作，而且遇到了难题，所以便拿起了这本书来读，以求能对HTTP协议的原理与机制做更深的了解。&lt;/p&gt;
-&lt;p&gt;读到后面我才知道，原来这本书的英文版是2002年出版的，而中文版到2012年才出版，所以我一直以为它是12年出的，可惜并不是。如此一来导致书中很多内容会出现老旧和不再适用的情况。我选择略去不读这些内容。当然大部分内容还是现在通用的。还有一个问题就是这本书的翻译读起来总感觉怪怪的，我觉得如果说有败笔，那么最大的败笔就是翻译了。&lt;/p&gt;
-&lt;p&gt;总体说来这本书是值得一看的，书中非常全面详细地叙述了HTTP的基本知识，资源、报文格式，以及中间结构如网关，代理，隧道等等，并且还涉及认证、安全，编码，Web机器人…基本你能想到的东西他都写了。但是全面必然会牺牲深度，以至于我看到很多内容都是我们计算机网络课上学过的，这本书并没有深入多少，所以有些内容就看的比较快了。而且700多页的书有200多页的附录，当手边的手册使也是极好的。&lt;/p&gt;
-&lt;p&gt;全书主要内容分为5个部分&lt;/p&gt;
-&lt;h4 id=&quot;第一部分&quot;&gt;&lt;a href=&quot;#第一部分&quot; class=&quot;headerlink&quot; title=&quot;第一部分&quot;&gt;&lt;/a&gt;第一部分&lt;/h4&gt;&lt;p&gt;讲述了Web基础和HTTP基础，包括什么是URI(URL+URN)，资源，事务，保温，连接，报文，响应等等等等。几乎是每一个Web相关工作人员都必看的。&lt;/p&gt;
-&lt;h4 id=&quot;第二部分&quot;&gt;&lt;a href=&quot;#第二部分&quot; class=&quot;headerlink&quot; title=&quot;第二部分&quot;&gt;&lt;/a&gt;第二部分&lt;/h4&gt;&lt;p&gt;HTTP结构，讲述了服务器，代理，缓存，网关，隧道，中继等内容，相对前面较深入，也是我觉得最有收获的一章，让我对HTTP的体系结构有更深入的了解。还讲述了Web机器人即网络爬虫的一些机制，第一次知道还有robot.txt这个东西来限制爬虫行为。。&lt;/p&gt;
-&lt;h4 id=&quot;第三部分&quot;&gt;&lt;a href=&quot;#第三部分&quot; class=&quot;headerlink&quot; title=&quot;第三部分&quot;&gt;&lt;/a&gt;第三部分&lt;/h4&gt;&lt;p&gt;识别，认证与安全，识别讲述cookies机制，认证讲述基本认证和摘要认证，安全方面介绍了HTTPS的机制。并且讲述了很多安全隐患以及如何避免的问题。Web安全相关人员必看，而且现在HTTPS正在成为主流，应该看下。&lt;/p&gt;
-&lt;h4 id=&quot;第四部分&quot;&gt;&lt;a href=&quot;#第四部分&quot; class=&quot;headerlink&quot; title=&quot;第四部分&quot;&gt;&lt;/a&gt;第四部分&lt;/h4&gt;&lt;p&gt;实体，编码和国际化，主要讲编码的问题，由于不涉及到这方面的开发类型的工作，就简单扫了一下。&lt;/p&gt;
-&lt;h4 id=&quot;第五部分&quot;&gt;&lt;a href=&quot;#第五部分&quot; class=&quot;headerlink&quot; title=&quot;第五部分&quot;&gt;&lt;/a&gt;第五部分&lt;/h4&gt;&lt;p&gt;Web主机托管和重定向可以看下，其余两章过于老旧，可略过。&lt;/p&gt;
-&lt;p&gt;基本就是这些，总体还是值得一看，看完能够对HTTP的整个运行体系有一个大概的了解，但是如果要达到深入理解的水平，还需要在实践中不断磨练。&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;《HTTP权威指南》是公认比较经典的书了，刚好前段时间在做Web相关方面的工作，而且遇到了难题，所以便拿起了这本书来读，以求能对HTTP协议的原理与机制做更深的了解。&lt;/p&gt;
-&lt;p&gt;读到后面我才知道，原来这本书的英文版是2002年出版的，而中文版到2012年才出版，所以我一
-    
-    </summary>
-    
-      <category term="读书 | Reading" scheme="http://whatbeg.com/categories/%E8%AF%BB%E4%B9%A6-Reading/"/>
-    
-    
-      <category term="读书" scheme="http://whatbeg.com/tags/%E8%AF%BB%E4%B9%A6/"/>
-    
-      <category term="Web" scheme="http://whatbeg.com/tags/Web/"/>
     
   </entry>
   
