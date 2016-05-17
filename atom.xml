@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://whatbeg.com/"/>
-  <updated>2016-05-17T03:29:23.239Z</updated>
+  <updated>2016-05-17T10:52:52.899Z</updated>
   <id>http://whatbeg.com/</id>
   
   <author>
@@ -20,12 +20,12 @@
     <link href="http://whatbeg.com/2016/05/17/adviceforMLfish.html"/>
     <id>http://whatbeg.com/2016/05/17/adviceforMLfish.html</id>
     <published>2016-05-17T03:12:50.000Z</published>
-    <updated>2016-05-17T03:29:23.239Z</updated>
+    <updated>2016-05-17T10:52:52.899Z</updated>
     
     <content type="html">&lt;p&gt;本文译自康奈尔大学信息科学系助理教授David Mimno写的《Advice for students of machine learning》，Mimno先生总结了一些对于机器学习学生/初学者的建议，强调理论与实践相结合，要有耐心和毅力，并提出了深入研究一篇论文的方法。希望对读者有所帮助。&lt;br&gt;原文地址：&lt;a href=&quot;http://www.mimno.org/articles/ml-learn/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.mimno.org/articles/ml-learn/&lt;/a&gt;&lt;br&gt;Mimno先生主页：&lt;a href=&quot;http://mimno.infosci.cornell.edu/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://mimno.infosci.cornell.edu/&lt;/a&gt;&lt;br&gt;下面是译文正文：&lt;/p&gt;
 &lt;p&gt;=============================================================&lt;br&gt;题名：给机器学习初学者的建议&lt;br&gt;作者：David Mimno&lt;br&gt;译者：&lt;a href=&quot;http://whatbeg.com/about/&quot;&gt;whatbeg&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;最近我的一个学生问我学习机器学习的建议，于是我写下了这篇文章，此文偏向于我个人的经验，但我还是要概括一下。&lt;/p&gt;
-&lt;p&gt;我现在最爱推荐的入门书籍是Kevin Murphy的书《机器学习》(&lt;a href=&quot;https://book.douban.com/subject/10758624/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Machine Learning&lt;/a&gt;)&lt;br&gt;你可能也想读&lt;/p&gt;
+&lt;p&gt;我现在最乐意推荐的入门书籍是Kevin Murphy的书《机器学习》(&lt;a href=&quot;https://book.douban.com/subject/10758624/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Machine Learning&lt;/a&gt;)&lt;br&gt;你可能也想读&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Chris Bishop的《模式识别和机器学习》(译者注：&lt;a href=&quot;https://book.douban.com/subject/2061116/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Pattern Recognition and Machine Learning&lt;/a&gt;, PRML，经典书籍，豆瓣评分9.6)&lt;/li&gt;
 &lt;li&gt;Daphne Koller的《概率图模型》(&lt;a href=&quot;https://book.douban.com/subject/4007200/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Probabilistic Graphical Models : Principles and Techniques&lt;/a&gt;)&lt;/li&gt;
@@ -37,10 +37,10 @@
 &lt;li&gt;Gelman,Carlin,Stern和Rubin的《贝叶斯数据分析》(&lt;a href=&quot;https://book.douban.com/subject/1464230/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Bayesian Data Analysis, Second Edition&lt;/a&gt;)&lt;/li&gt;
 &lt;li&gt;Gelman和Hill的《用回归和多级/分层模型进行数据分析》(&lt;a href=&quot;https://book.douban.com/subject/2859924/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Data Analysis Using Regression and Multilevel/Hierarchical Models&lt;/a&gt;)&lt;br&gt;等，这些都是我喜欢的书籍。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;不要想着一开始就获得某个知识的所有方面，尽量从多个不同的资源去阅读同一件事的描述。&lt;/p&gt;
+&lt;p&gt;不要想着一开始就获得某个知识的所有方面，尽量从多个不同的资源去阅读对同一个知识的描述。&lt;/p&gt;
 &lt;p&gt;没有什么比你自己亲自尝试更重要。选择一个模型，然后实现它，将它与其它开源实现进行比较，想一想，是不是有什么使程序工作的计算或者数学上的技巧呢？&lt;/p&gt;
 &lt;p&gt;读一些论文。我在读研究生的时候，早上和晚上都有20分钟在公交车上，我包里总是带着一篇有趣的论文，公交不是重点–真正起作用的是我每天能花大约半小时在阅读（这些论文）上。&lt;/p&gt;
-&lt;p&gt;选择一篇你喜欢的论文，然后花一个星期深入研究它，无时无刻不想着它，回忆每个公式的形式，花点时间散步并琢磨每个变量是如何影响结果的，不同的变量是怎样相互影响的。想一想公式6是如何得到公式7的–作者常常省略中间步骤和代数细节，将步骤补充完整。&lt;/p&gt;
+&lt;p&gt;选择一篇你喜欢的论文，然后花一个星期深入研究它，无时无刻不想着它，回忆每个公式的形式，花点时间散步并琢磨每个变量是如何影响结果的，不同的变量是怎样相互影响的。想一想公式6是如何得到公式7的&lt;code&gt;--&lt;/code&gt;作者常常省略中间步骤和代数细节，你可以将步骤补充完整。&lt;/p&gt;
 &lt;p&gt;要有耐心和坚持。记住冯·诺伊曼所说的，“in mathematics you don’t understand things, you just get used to them.”。&lt;/p&gt;
 </content>
     
