@@ -136,6 +136,106 @@
 <p>结果（点击右键看大图）<br><img src="http://7xsl28.com2.z0.glb.clouddn.com/dectree4.png" alt="在乳腺癌数据上构建决策树"><br><img src="http://7xsl28.com2.z0.glb.clouddn.com/canceroutput.png" alt="测试结果"><br>正确率约为96%左右，算是不差的分类器了。<br>我的乳腺癌数据见：<a href="http://7xt9qk.com2.z0.glb.clouddn.com/breastcancer.txt" target="_blank" rel="external">乳腺癌数据</a><br>至此，决策树算法ID3的实现完毕，下面考虑基于基尼指数和信息增益率进行划分选择，以及考虑实现剪枝过程，因为我们可以看到上面训练出的决策树还存在着很多冗余分支，是因为实现过程中，由于数据量太大，每个分支都不完全纯净，所以会创建往下的分支，但是分支投票的结果又是一致的，而且数据量再大，特征数再多的话，决策树会非常大非常复杂，所以剪枝一般是必做的一步。剪枝分为先剪枝和后剪枝，如果细说的话可以写很多了。<br>利用matplotlib画决策树的代码见<a href="http://whatbeg.com/2016/04/23/matplotlib-desiciontree.html">利用matplotlib画决策树</a><br>此文亦可见：<a href="http://www.cnblogs.com/whatbeg/p/5424890.html" target="_blank" rel="external">Here</a><br>MathJax的一些使用方法见<a href="http://iori.sinaapp.com/17.html/comment-page-1?replytocom=2" target="_blank" rel="external">1</a><a href="http://meta.math.stackexchange.com/questions/5020/mathjax-basic-tutorial-and-quick-reference" target="_blank" rel="external">2</a><a href="http://www.ibiblio.org/koine/greek/lessons/alphabet.html" target="_blank" rel="external">3</a><br>参考资料：《机器学习》《机器学习实战》通过本次实战也发现了这两本书中的一些错误之处。<br>lz初学机器学习不久，如有错漏之处请多包涵指出或者各位有什么想法或意见欢迎评论去告诉我:-)</p>
   
 	</div>
+
+
+    
+	<!-- css -->
+	<style type="text/css">
+	    .center {
+	        text-align: center;
+	    }
+	    .hidden {
+	        display: none;
+	    }
+		.donate_bar a.btn_donate{
+			display: inline-block;
+			width: 82px;
+			height: 82px;
+			background: url("http://7xsl28.com1.z0.glb.clouddn.com/btn_reward.gif") no-repeat;
+			_background: url("http://7xsl28.com1.z0.glb.clouddn.com/btn_reward.gif") no-repeat;
+
+			<!-- http://img.t.sinajs.cn/t5/style/images/apps_PRF/e_media/btn_reward.gif
+			     因为本 hexo 生成的博客所用的 theme 的 a:hover 带动画效果，
+				 为了在让打赏按钮显示效果正常 而 添加了以下几行 css，
+				 嵌入其它博客时不一定要它们。 -->
+			-webkit-transition: background 0s;
+			-moz-transition: background 0s;
+			-o-transition: background 0s;
+			-ms-transition: background 0s;
+			transition: background 0s;
+			<!-- /让打赏按钮的效果显示正常 而 添加的几行 css 到此结束 -->
+		}
+
+		.donate_bar a.btn_donate:hover{ background-position: 0px -82px;}
+		.donate_bar .donate_txt {
+			display: block;
+			color: #9d9d9d;
+			font: 14px/2 "Microsoft Yahei";
+		}
+		.bold{ font-weight: bold; }
+	</style>
+	<!-- /css -->
+
+    <!-- Donate Module -->
+    <div id="donate_module">
+
+	<!-- btn_donate & tips -->
+	<div id="donate_board" class="donate_bar center">
+	    <br>
+	    ------------------------------------------------------------------------------------------------------------------------------
+	    <br>
+		<a id="btn_donate" class="btn_donate" target="_self" href="javascript:;" title="Donate 打赏"></a>
+		<span class="donate_txt">
+			打赏我的人，运气都不会太差~
+		</span>
+			
+		
+	</div>
+	<!-- /btn_donate & tips -->
+
+	<!-- donate guide -->
+
+	<div id="donate_guide" class="donate_bar center hidden">
+        <br>
+		<a href="http://7xsl28.com1.z0.glb.clouddn.com/wechat.png" title="用微信扫一扫哦~" class="fancybox" rel="article0">
+			<img src="http://7xsl28.com1.z0.glb.clouddn.com/wechat.png" title="微信打赏 Donate" height="190px" width="190px"/>
+		</a>
+
+		&nbsp;&nbsp;&nbsp;&nbsp;
+
+		<a href="http://7xsl28.com1.z0.glb.clouddn.com/alipay.png" title="用支付宝扫一扫即可~" class="fancybox" rel="article0">
+			<img src="http://7xsl28.com1.z0.glb.clouddn.com/alipay.png" title="支付宝打赏 Donate" height="190px" width="auto"/>
+		</a>
+		<br>
+        打赏我的人，运气都不会太差~
+
+	</div>
+	<!-- /donate guide -->
+
+	<!-- donate script -->
+	<script type="text/javascript">
+		document.getElementById('btn_donate').onclick = function() {
+			$('#donate_board').addClass('hidden');
+			$('#donate_guide').removeClass('hidden');
+		}
+
+		function donate_on_web(){
+			$('#donate').submit();
+        }
+
+		var original_window_onload = window.onload;
+        window.onload = function () {
+            if (original_window_onload) {
+                original_window_onload();
+            }
+            document.getElementById('donate_board_wdg').className = 'hidden';
+		}
+	</script>
+	<!-- /donate script -->
+</div>
+<!-- /Donate Module -->
+   
+
 		<footer class="article-footer clearfix">
 <div class="article-catetags">
 
@@ -362,13 +462,6 @@
   <div class="weiboshow">
   <p class="asidetitle">新浪微博</p>
     <iframe width="220" height="450" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=220&height=450&fansRow=1&ptype=1&speed=0&skin=7&isTitle=1&noborder=1&isWeibo=1&isFans=0&uid=2669063224&verifier=4f45c1f5&dpc=1"></iframe>
-</div>
-
-
-  <div class="xiamishow">
-    <p class="asidetitle">听听音乐</p>
-    
-    <script type="text/javascript" src="http://www.xiami.com/widget/player-multi?uid=34003203&sid=1769183201,1775751240,1773662412,1775713592,1771995107,&width=220&height=346&mainColor=ff6600&backColor=c0c0c0&autoplay=0&mode=js"></script>
 </div>
 
 
