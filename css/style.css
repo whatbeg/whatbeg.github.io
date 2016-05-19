@@ -1529,6 +1529,7 @@ section.comment {
   padding: 0;
 }
 #toc .toc li {
+  font-size: 15px;
   list-style-type: none;
 }
 #toc .toc-child {

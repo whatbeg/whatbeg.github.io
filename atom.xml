@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://whatbeg.com/"/>
-  <updated>2016-05-19T10:48:14.461Z</updated>
+  <updated>2016-05-19T16:54:51.359Z</updated>
   <id>http://whatbeg.com/</id>
   
   <author>
@@ -16,11 +16,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>快速入门Scrapy--打赏用什么措辞最吸金？</title>
+    <title>快速入门Scrapy(一)--简书打赏</title>
     <link href="http://whatbeg.com/2016/05/19/learnscrapy.html"/>
     <id>http://whatbeg.com/2016/05/19/learnscrapy.html</id>
     <published>2016-05-19T08:39:52.000Z</published>
-    <updated>2016-05-19T10:48:14.461Z</updated>
+    <updated>2016-05-19T16:54:51.359Z</updated>
     
     <content type="html">&lt;h2 id=&quot;Scrapy是什么？&quot;&gt;&lt;a href=&quot;#Scrapy是什么？&quot; class=&quot;headerlink&quot; title=&quot;Scrapy是什么？&quot;&gt;&lt;/a&gt;Scrapy是什么？&lt;/h2&gt;&lt;p&gt;Scrapy是一款网络爬虫框架，官方文档的描述如下：&lt;/p&gt;
 &lt;blockquote&gt;
@@ -107,13 +107,13 @@
   </entry>
   
   <entry>
-    <title>Hexo博客Jacman主题的优化--增加博客打赏功能</title>
+    <title>Hexo博客Jacman主题优化(二)--打赏功能</title>
     <link href="http://whatbeg.com/2016/05/18/hexo-donate.html"/>
     <id>http://whatbeg.com/2016/05/18/hexo-donate.html</id>
     <published>2016-05-18T15:26:29.000Z</published>
-    <updated>2016-05-19T09:04:24.901Z</updated>
+    <updated>2016-05-19T16:49:54.995Z</updated>
     
-    <content type="html">&lt;p&gt; –本博客5月18日优化&lt;/p&gt;
+    <content type="html">&lt;p&gt;–本博客5月18日优化，增加博客打赏功能&lt;/p&gt;
 &lt;p&gt;使用Hexo这款博客框架已经很久了，期间也一直在摸索，一次次地修改代码，看效果，修改，看效果…，现在已经大致熟悉了整个框架的结构，能够自主完成对主题的修改了。&lt;/p&gt;
 &lt;p&gt;接下来可以考虑写一篇解析Hexo框架的文章，一来加深自己对框架的理解，方便后续研究，而来也为其他刚开始接触Hexo的童鞋提供一些方法，让他们能够更快地适应，熟悉这个框架。&lt;/p&gt;
 &lt;p&gt;今天偶然看到一个打赏功能，于是想在自己的博客上实现一下，虽然自觉自己的文章还有待加强，但是客官您随意啦。听说，打赏我的人最后都找到了真爱~&lt;/p&gt;
@@ -132,9 +132,9 @@
     
     <summary type="html">
     
-      &lt;p&gt; –本博客5月18日优化&lt;/p&gt;
+      &lt;p&gt;–本博客5月18日优化，增加博客打赏功能&lt;/p&gt;
 &lt;p&gt;使用Hexo这款博客框架已经很久了，期间也一直在摸索，一次次地修改代码，看效果，修改，看效果…，现在已经大致熟悉了整个框架的结构，能够自主完成对主题的修改了。&lt;/p&gt;
-&lt;p&gt;接下来可以考虑写一篇解析Hexo框架的文章，一来加深自己对框
+&lt;p&gt;接下来可以考虑写一篇解析Hexo框架的文章，
     
     </summary>
     
@@ -1029,11 +1029,11 @@
   </entry>
   
   <entry>
-    <title>Hexo博客Jacman主题的一些优化  --本博客4月20日优化</title>
+    <title>Hexo博客Jacman主题优化(一)--访问计数等</title>
     <link href="http://whatbeg.com/2016/04/20/blogopt420.html"/>
     <id>http://whatbeg.com/2016/04/20/blogopt420.html</id>
     <published>2016-04-20T05:37:17.000Z</published>
-    <updated>2016-05-12T03:15:42.032Z</updated>
+    <updated>2016-05-19T16:53:57.191Z</updated>
     
     <content type="html">&lt;h2 id=&quot;1-新增博客访问量统计和文章访问量统计&quot;&gt;&lt;a href=&quot;#1-新增博客访问量统计和文章访问量统计&quot; class=&quot;headerlink&quot; title=&quot;1.新增博客访问量统计和文章访问量统计&quot;&gt;&lt;/a&gt;1.新增博客访问量统计和文章访问量统计&lt;/h2&gt;&lt;h3 id=&quot;采用-不蒜子-极简计数器&quot;&gt;&lt;a href=&quot;#采用-不蒜子-极简计数器&quot; class=&quot;headerlink&quot; title=&quot;采用 不蒜子 极简计数器&quot;&gt;&lt;/a&gt;采用 &lt;a href=&quot;http://service.ibruce.info/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;不蒜子&lt;/a&gt; 极简计数器&lt;/h3&gt;&lt;p&gt;在 &lt;/p&gt;
 &lt;blockquote&gt;
@@ -1059,7 +1059,7 @@
 &lt;p&gt;那么在categories文件夹中会创建A分类和A\B分类，B分类目录是A分类目录的子目录，所以如果下一篇文章不是上述这样分类但是又有B时，如：&lt;br&gt;&lt;figure class=&quot;highlight yaml&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;attr&quot;&gt;title:&lt;/span&gt; ...&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;attr&quot;&gt;date:&lt;/span&gt; ...&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;attr&quot;&gt;categories:&lt;/span&gt; B&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta&quot;&gt;---&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
 &lt;p&gt;这样又会创建一个跟A同目录的B分类文件夹，这里的B不等于上述的A\B，所以在侧边栏显示分类的时候就会显示两个B分类，显然违背了我们这样做的初衷。&lt;br&gt;解决方法有两个：&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;1.改进此主题&lt;/strong&gt;&lt;br&gt;&lt;strong&gt;2.尽量只将文章分到一个类别&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;1.改进此主题&lt;/strong&gt;&lt;br&gt;&lt;strong&gt;2.尽量只将文章分到一个类别，事实上归到多个标签就够了&lt;/strong&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 </content>
     
