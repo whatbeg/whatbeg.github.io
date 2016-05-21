@@ -1661,6 +1661,28 @@ section.comment {
   -ms-transition: color 0.5s;
   transition: color 0.5s;
 }
+#about-image {
+  float: left;
+  margin: 3px 8px 8px 0px;
+}
+.about {
+  margin-top: 0.5em;
+}
+@media only screen and (min-width: 768px) {
+  .about {
+    width: 45%;
+    float: left;
+    margin: 0 5% 0 0;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .about {
+    width: 100%;
+    position: relative;
+    float: none;
+    margin: 1em 0 0;
+  }
+}
 @media only screen and (min-width: 768px) {
   .categorieslist {
     width: 45%;
@@ -1727,7 +1749,7 @@ section.comment {
   .rsspart {
     float: left;
     width: 45%;
-    margin: 0 5% 0 0;
+    margin: 0 1% 0 0;
   }
 }
 @media only screen and (min-width: 1024px) {
