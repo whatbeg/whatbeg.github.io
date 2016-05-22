@@ -317,18 +317,18 @@
 <div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
 <aside class="clearfix">
 
-  <div class="about">
+  
+<div class="about">
     <p class="asidetitle">关于</p>
-
     <div class="clearfix">
         <img src="http://7xsl28.com1.z0.glb.clouddn.com/niuzai.jpg" height="74px" width="74px" id="about-image" alt>
         <span style="font-size: medium; font-family: Calibri Light, Open Sans, Microsoft YaHei Light">
         whatbeg.com is written by Qiu Hu. Now Qiu Hu is a senior student living in Chengdu, Sichuan, China. 
         Enjoy your reading! Comment is good:)
         </span>
-    </div> 
-
+    </div>
 </div>
+
 
   
 <div class="categorieslist">
@@ -556,7 +556,7 @@ $(document).ready(function(){
   });
   o.click(function(){
     o.css('display', 'none').removeClass('beforeFadeIn');
-    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');   //侧边栏显示widget
     m.removeClass('moveMain');
   });
   $(window).scroll(function(){
