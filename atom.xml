@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://whatbeg.com/"/>
-  <updated>2016-05-23T13:54:14.042Z</updated>
+  <updated>2016-05-24T13:01:32.682Z</updated>
   <id>http://whatbeg.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://whatbeg.com/2016/05/23/talkwrite.html"/>
     <id>http://whatbeg.com/2016/05/23/talkwrite.html</id>
     <published>2016-05-23T13:50:51.000Z</published>
-    <updated>2016-05-23T13:54:14.042Z</updated>
+    <updated>2016-05-24T13:01:32.682Z</updated>
     
     <content type="html">&lt;p&gt;论文初稿终于告成，又可以偷得浮生几日闲了，上次谈了谈&lt;a href=&quot;http://whatbeg.com/2016/05/02/talkread.html&quot;&gt;阅读&lt;/a&gt;，这次来说说写作这件事儿。&lt;/p&gt;
 &lt;p&gt;笔者最早接触博客是在2012年，1月17日注册了新浪博客，那时候韩寒和方舟子在博客上打笔仗闹得正欢，为了更加密切的关注，就顺手注册了一个新浪博客。后来也发了一些个文章，现在回去看那些文字真是有点哭笑不得。&lt;/p&gt;
@@ -28,6 +28,8 @@
 &lt;p&gt;在一些博客网站上都写过文章，比如新浪，网易，博客园，CSDN等等，感觉各有不同：新浪写写随笔什么的，发个长微博还行，写技术文章的话还是算了，对代码不友好，而且没什么开发者会天天登新浪去看文章，而且新浪广告太多，太多，太多，对用户太不友好；网易的话广告要少一些，但是好像没什么人看。博客园简洁，广告少，开发者多至少前几年是这样的，但是笔者也提几点问题，不是用得着菩萨求菩萨，用不着菩萨骂菩萨，而是客观地提几点：一是主题太丑，严苛一点说，除了笔者现在用的这款比较好看之外，其它无疑都很丑，想套用一句王者荣耀中张良的台词，“伤心不是哭的理由，傻才是”，追求简洁不应该是丑的理由，懒才是，二是现在明显感觉到博客园首页文章质量在下降，大牛在减少，是时候想点办法了。笔者离开博客园还有一个原因就是这是一个.NET,C#,前端等技术风靡的站点，这类技术的开发者居多，其他技术内容得不到太大的关注，所以注定基因不合适，虽然现在在博客园写各种技术和人生经历的文章也多了起来。CSDN的话界面笔者也不喜欢，虽然这个平台开发者众多，主题也多，但是正是主题太多，导致几乎没有其首页的概念，太过宽泛，多看看可以，写的话就算了，评论也不友好，每次很久才能评上一条。这些种种再加上独立博客已经建成，域名也买了，是时候进入一个独立发展的阶段了，时间在向前推移，在某些阶段就会发生某些故事，不是么？&lt;/p&gt;
 &lt;p&gt;其实笔者的写作目标很简单，就是写出一些既有益又有趣的东西，这里其实就是向内和向外两种，对自己有益是向内，对他人有益和有趣是向外的，内外兼修是我的目标，嘻嘻。如果我觉得一篇文章写出来对自己或者对读者有益，那么不妨一写，对自己有益的有比如知识的梳理总结，备忘的内容，某些错误解决过程，或者自己写着开心的随笔等等，对他人有益的包括经验类文章，知识总结，错误解决的过程，搜集整理类，推荐类文章等等。&lt;/p&gt;
 &lt;p&gt;小时候觉得作文是很难写的，每次写作文都要斟酌叙旧才能动笔，而且总感觉写的不好。其实是因为那时候要写的不是自己想写的，作为一个理工科的男生，我表示正式作文这么多年写的议论文外的文章不超过3篇，而且写记叙文什么的得分还超低，直接没信心了，议论文的话大体有一个固定的格式，说明一下论点，举几个名人的例子，可怜那些名人尤其是某几个，自己一个故事被中国无数中小学生举了无数遍。。长大了发现，其实写文章没那么难，自己想写什么就写什么就行了，我们不是搞文学创作的，没必要过分斟酌语言，语言朴实，把想说的说清楚就可以了，这样想来，其实挺简单的。&lt;/p&gt;
+&lt;p&gt;在杂文上，我喜欢王小波式的文风，针砭时弊，对很多社会问题提出了自己的见解，文笔幽默，坦率真实，看他的杂文集简直是一种享受，我蛮希望自己也能写出这样的文章。在哲理散文中，我喜欢罗素，尼采那样的讲述，并没有太多晦涩的哲学术语，尤其是罗素先生，他的《幸福之路》面向普罗大众，文章平实但又发人深省，妙语不断。而尼采而没有那么好懂了，但是他的语句往往揭示一种普遍规律与法则而不是具体问题的分析，大概这就是哲学家吧。我喜欢这种哲学，受尼采先生的影响，我经常也会思考并写下一些我对事物或人情的一些根本法则，并自以为在寻求智慧，其乐无穷。&lt;/p&gt;
+&lt;p&gt;关于写作与个人经历的丰富程度的关系，笔者还是赞同作者的经历能够使作品更加丰富，至少他的经历可以成为向内写的素材。我看很多文章集都有一个共同的特点，就是文章会掺杂着作者许多的经历，看王小波的杂文往往可以看到他写自己上山下乡的经历，进场的经历，与社会各路人士打交道的经历；看吴军的《浪潮之巅》，其中也会写道很多自己在谷歌时的经历；如果没有这些经历，我想，能写的应该少很多吧。&lt;/p&gt;
 &lt;p&gt;当然不爱写作的自是可以不写，一个人不需要写多少字也能过这一生，所以写作只是作为一种兴趣爱好吧，笔者写作的核心就是热爱写作，热爱分享，这两点是支撑我写下去的主要原因，不管多没时间，有好的题目好的想法就像动动笔把它记下来。&lt;/p&gt;
 &lt;p&gt;希望我能将这份热爱保持下去，直到老了写不动了为止。&lt;/p&gt;
 &lt;p&gt;&lt;br&gt;&lt;br&gt;2016.5.23 于成都&lt;/p&gt;
@@ -999,9 +1001,9 @@
       <category term="机器学习 | Mac.Learning" scheme="http://whatbeg.com/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-Mac-Learning/"/>
     
     
-      <category term="机器学习" scheme="http://whatbeg.com/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
-    
       <category term="Python" scheme="http://whatbeg.com/tags/Python/"/>
+    
+      <category term="机器学习" scheme="http://whatbeg.com/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
     
   </entry>
   
@@ -1026,9 +1028,9 @@
       <category term="机器学习 | Mac.Learning" scheme="http://whatbeg.com/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-Mac-Learning/"/>
     
     
-      <category term="机器学习" scheme="http://whatbeg.com/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
-    
       <category term="Python" scheme="http://whatbeg.com/tags/Python/"/>
+    
+      <category term="机器学习" scheme="http://whatbeg.com/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
     
   </entry>
   
@@ -1069,7 +1071,7 @@
 &lt;blockquote&gt;
 &lt;p&gt;themes/你的主题/layout/_partial/footer.ejs&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;中最后面添加脚本：&lt;br&gt;&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;script &lt;span class=&quot;keyword&quot;&gt;async&lt;/span&gt; src=&lt;span class=&quot;string&quot;&gt;&quot;https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;xml&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;script&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;中最后面添加脚本：&lt;br&gt;&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;script &lt;span class=&quot;keyword&quot;&gt;async&lt;/span&gt; src=&lt;span class=&quot;string&quot;&gt;&quot;https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
 &lt;h3 id=&quot;添加总pv计数和总uv计数&quot;&gt;&lt;a href=&quot;#添加总pv计数和总uv计数&quot; class=&quot;headerlink&quot; title=&quot;添加总pv计数和总uv计数&quot;&gt;&lt;/a&gt;添加总pv计数和总uv计数&lt;/h3&gt;&lt;p&gt;在上面footer.ejs文件最后添加这两个计数脚本：&lt;br&gt;&lt;figure class=&quot;highlight&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;span id=&quot;busuanzi_container_site_pv&quot;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;amp;nbsp;&amp;amp;nbsp;Total visits:&amp;amp;nbsp;&amp;lt;span id=&quot;busuanzi_value_site_pv&quot;&amp;gt;&amp;lt;/span&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;/span&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;span id=&quot;busuanzi_container_site_uv&quot;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &amp;amp;nbsp;&amp;amp;nbsp;You are Visiter No.&amp;lt;span id=&quot;busuanzi_value_site_uv&quot;&amp;gt;&amp;lt;/span&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;/span&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
 &lt;h3 id=&quot;添加文章访问计数&quot;&gt;&lt;a href=&quot;#添加文章访问计数&quot; class=&quot;headerlink&quot; title=&quot;添加文章访问计数&quot;&gt;&lt;/a&gt;添加文章访问计数&lt;/h3&gt;&lt;p&gt;这里我添加到标题右下方，正文上面的地方。&lt;br&gt;在&lt;/p&gt;
 &lt;blockquote&gt;
@@ -1136,9 +1138,9 @@
       <category term="机器学习 | Mac.Learning" scheme="http://whatbeg.com/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-Mac-Learning/"/>
     
     
-      <category term="机器学习" scheme="http://whatbeg.com/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
-    
       <category term="Python" scheme="http://whatbeg.com/tags/Python/"/>
+    
+      <category term="机器学习" scheme="http://whatbeg.com/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
     
   </entry>
   

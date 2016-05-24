@@ -4,14 +4,14 @@
 
     
   <url>
-    <loc>http://whatbeg.com/2016/05/02/talkread.html</loc>
-    <lastmod>2016-05-23T13:54:17.466Z</lastmod>
+    <loc>http://whatbeg.com/2016/05/23/talkwrite.html</loc>
+    <lastmod>2016-05-24T13:01:32.682Z</lastmod>
     <data>
         <display>
-        <title>当我谈阅读时我谈些什么</title>
-        <pubTime>2016-05-02T02:24:35.000Z</pubTime>
+        <title>当我谈写作时我谈些什么</title>
+        <pubTime>2016-05-23T13:50:51.000Z</pubTime>
         
-        <tag>读书</tag>
+        <tag>随笔</tag>
          
          
            
@@ -24,14 +24,14 @@
 
     
   <url>
-    <loc>http://whatbeg.com/2016/05/23/talkwrite.html</loc>
-    <lastmod>2016-05-23T13:54:14.042Z</lastmod>
+    <loc>http://whatbeg.com/2016/05/02/talkread.html</loc>
+    <lastmod>2016-05-23T13:54:17.466Z</lastmod>
     <data>
         <display>
-        <title>当我谈写作时我谈些什么</title>
-        <pubTime>2016-05-23T13:50:51.000Z</pubTime>
+        <title>当我谈阅读时我谈些什么</title>
+        <pubTime>2016-05-02T02:24:35.000Z</pubTime>
         
-        <tag>随笔</tag>
+        <tag>读书</tag>
          
          
            
@@ -286,9 +286,9 @@
         <title>如何实现并应用决策树算法？</title>
         <pubTime>2016-04-23T12:35:01.000Z</pubTime>
         
-        <tag>机器学习</tag>
-         
         <tag>Python</tag>
+         
+        <tag>机器学习</tag>
          
          
            
@@ -452,9 +452,9 @@
         <title>利用matplotlib画决策树</title>
         <pubTime>2016-04-23T12:05:51.000Z</pubTime>
         
-        <tag>机器学习</tag>
-         
         <tag>Python</tag>
+         
+        <tag>机器学习</tag>
          
          
            
@@ -514,9 +514,9 @@
         <title>kNN分类器在西瓜数据集3.0$\alpha$上的结果</title>
         <pubTime>2016-04-19T12:45:57.000Z</pubTime>
         
-        <tag>机器学习</tag>
-         
         <tag>Python</tag>
+         
+        <tag>机器学习</tag>
          
          
            
