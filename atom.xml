@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://whatbeg.com/"/>
-  <updated>2016-05-24T13:01:32.682Z</updated>
+  <updated>2016-05-24T13:26:01.474Z</updated>
   <id>http://whatbeg.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://whatbeg.com/2016/05/23/talkwrite.html"/>
     <id>http://whatbeg.com/2016/05/23/talkwrite.html</id>
     <published>2016-05-23T13:50:51.000Z</published>
-    <updated>2016-05-24T13:01:32.682Z</updated>
+    <updated>2016-05-24T13:26:01.474Z</updated>
     
     <content type="html">&lt;p&gt;论文初稿终于告成，又可以偷得浮生几日闲了，上次谈了谈&lt;a href=&quot;http://whatbeg.com/2016/05/02/talkread.html&quot;&gt;阅读&lt;/a&gt;，这次来说说写作这件事儿。&lt;/p&gt;
 &lt;p&gt;笔者最早接触博客是在2012年，1月17日注册了新浪博客，那时候韩寒和方舟子在博客上打笔仗闹得正欢，为了更加密切的关注，就顺手注册了一个新浪博客。后来也发了一些个文章，现在回去看那些文字真是有点哭笑不得。&lt;/p&gt;
@@ -1001,9 +1001,9 @@
       <category term="机器学习 | Mac.Learning" scheme="http://whatbeg.com/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-Mac-Learning/"/>
     
     
-      <category term="Python" scheme="http://whatbeg.com/tags/Python/"/>
-    
       <category term="机器学习" scheme="http://whatbeg.com/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="Python" scheme="http://whatbeg.com/tags/Python/"/>
     
   </entry>
   
@@ -1028,9 +1028,9 @@
       <category term="机器学习 | Mac.Learning" scheme="http://whatbeg.com/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-Mac-Learning/"/>
     
     
-      <category term="Python" scheme="http://whatbeg.com/tags/Python/"/>
-    
       <category term="机器学习" scheme="http://whatbeg.com/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="Python" scheme="http://whatbeg.com/tags/Python/"/>
     
   </entry>
   
@@ -1138,9 +1138,9 @@
       <category term="机器学习 | Mac.Learning" scheme="http://whatbeg.com/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-Mac-Learning/"/>
     
     
-      <category term="Python" scheme="http://whatbeg.com/tags/Python/"/>
-    
       <category term="机器学习" scheme="http://whatbeg.com/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="Python" scheme="http://whatbeg.com/tags/Python/"/>
     
   </entry>
   
