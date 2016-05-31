@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>http://whatbeg.com/2016/05/31/2016read-may.html</loc>
+    <lastmod>2016-05-31T03:17:33.739Z</lastmod>
+    <data>
+        <display>
+        <title>【2016读书】5月读书笔记</title>
+        <pubTime>2016-05-31T03:08:44.000Z</pubTime>
+        
+        <tag>读书</tag>
+         
+         
+           
+             
+              <breadCrumb title="读书" url="http://whatbeg.com/categories/%E8%AF%BB%E4%B9%A6/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://whatbeg.com/2016/04/26/zarathushtra.html</loc>
     <lastmod>2016-05-26T03:16:32.182Z</lastmod>
     <data>
@@ -306,9 +326,9 @@
         <title>如何实现并应用决策树算法？</title>
         <pubTime>2016-04-23T12:35:01.000Z</pubTime>
         
-        <tag>机器学习</tag>
-         
         <tag>Python</tag>
+         
+        <tag>机器学习</tag>
          
          
            
@@ -472,9 +492,9 @@
         <title>利用matplotlib画决策树</title>
         <pubTime>2016-04-23T12:05:51.000Z</pubTime>
         
-        <tag>机器学习</tag>
-         
         <tag>Python</tag>
+         
+        <tag>机器学习</tag>
          
          
            
@@ -534,9 +554,9 @@
         <title>kNN分类器在西瓜数据集3.0$\alpha$上的结果</title>
         <pubTime>2016-04-19T12:45:57.000Z</pubTime>
         
-        <tag>机器学习</tag>
-         
         <tag>Python</tag>
+         
+        <tag>机器学习</tag>
          
          
            
@@ -598,9 +618,9 @@
         <title>怎样写出优秀的研究论文？</title>
         <pubTime>2016-05-10T07:44:54.000Z</pubTime>
         
-        <tag>译文</tag>
-         
         <tag>CS</tag>
+         
+        <tag>译文</tag>
          
          
            
