@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://whatbeg.com/"/>
-  <updated>2016-05-31T03:17:33.739Z</updated>
+  <updated>2016-05-31T03:40:53.044Z</updated>
   <id>http://whatbeg.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://whatbeg.com/2016/05/31/2016read-may.html"/>
     <id>http://whatbeg.com/2016/05/31/2016read-may.html</id>
     <published>2016-05-31T03:08:44.000Z</published>
-    <updated>2016-05-31T03:17:33.739Z</updated>
+    <updated>2016-05-31T03:40:53.044Z</updated>
     
     <content type="html">&lt;h2 id=&quot;《谁动了我的奶酪》-斯宾塞·约翰逊&quot;&gt;&lt;a href=&quot;#《谁动了我的奶酪》-斯宾塞·约翰逊&quot; class=&quot;headerlink&quot; title=&quot;《谁动了我的奶酪》 斯宾塞·约翰逊&quot;&gt;&lt;/a&gt;《谁动了我的奶酪》 斯宾塞·约翰逊&lt;/h2&gt;&lt;p&gt;这本书故事看来很简单，主要说的就是要拥抱变化，提前察觉变化，做好准备应对变化，尽快适应变化等等。总之就是叫你不要因循守旧，变则通，通则久。&lt;/p&gt;
 &lt;h2 id=&quot;《幸福之路》-罗素-刘勃译&quot;&gt;&lt;a href=&quot;#《幸福之路》-罗素-刘勃译&quot; class=&quot;headerlink&quot; title=&quot;《幸福之路》 罗素  (刘勃译)&quot;&gt;&lt;/a&gt;《幸福之路》 罗素  (刘勃译)&lt;/h2&gt;&lt;p&gt;数学专业，获得诺贝尔文学奖的哲学大师罗素在这本书里阐述了我们不快乐的一些原因和如何变得快乐的一些想法，文字很好，娓娓道来，具有很大的思维启发性，可惜有部分地方翻译的别别扭扭，但是还好啦。&lt;br&gt;这本书分两部分，第一部分论述了有哪些原因让我们不快乐，第二部分则论述了我们应该如何去变得快乐幸福，在罗素看来，幸福不是一件会主动落到人们头上的东西，它也是需要人去争取的。我摘出一些觉得可以细细品味的句段如下：&lt;/p&gt;
@@ -76,7 +76,7 @@
     
     </summary>
     
-      <category term="读书" scheme="http://whatbeg.com/categories/%E8%AF%BB%E4%B9%A6/"/>
+      <category term="读书 | Reading" scheme="http://whatbeg.com/categories/%E8%AF%BB%E4%B9%A6-Reading/"/>
     
     
       <category term="读书" scheme="http://whatbeg.com/tags/%E8%AF%BB%E4%B9%A6/"/>
@@ -516,9 +516,9 @@
       <category term="译文 | Translation" scheme="http://whatbeg.com/categories/%E8%AF%91%E6%96%87-Translation/"/>
     
     
-      <category term="CS" scheme="http://whatbeg.com/tags/CS/"/>
-    
       <category term="译文" scheme="http://whatbeg.com/tags/%E8%AF%91%E6%96%87/"/>
+    
+      <category term="CS" scheme="http://whatbeg.com/tags/CS/"/>
     
   </entry>
   
@@ -1150,9 +1150,9 @@
       <category term="机器学习 | Mac.Learning" scheme="http://whatbeg.com/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-Mac-Learning/"/>
     
     
-      <category term="Python" scheme="http://whatbeg.com/tags/Python/"/>
-    
       <category term="机器学习" scheme="http://whatbeg.com/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="Python" scheme="http://whatbeg.com/tags/Python/"/>
     
   </entry>
   
@@ -1177,9 +1177,9 @@
       <category term="机器学习 | Mac.Learning" scheme="http://whatbeg.com/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-Mac-Learning/"/>
     
     
-      <category term="Python" scheme="http://whatbeg.com/tags/Python/"/>
-    
       <category term="机器学习" scheme="http://whatbeg.com/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="Python" scheme="http://whatbeg.com/tags/Python/"/>
     
   </entry>
   
@@ -1220,7 +1220,7 @@
 &lt;blockquote&gt;
 &lt;p&gt;themes/你的主题/layout/_partial/footer.ejs&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;中最后面添加脚本：&lt;br&gt;&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;script &lt;span class=&quot;keyword&quot;&gt;async&lt;/span&gt; src=&lt;span class=&quot;string&quot;&gt;&quot;https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;xml&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;script&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;中最后面添加脚本：&lt;br&gt;&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;script &lt;span class=&quot;keyword&quot;&gt;async&lt;/span&gt; src=&lt;span class=&quot;string&quot;&gt;&quot;https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
 &lt;h3 id=&quot;添加总pv计数和总uv计数&quot;&gt;&lt;a href=&quot;#添加总pv计数和总uv计数&quot; class=&quot;headerlink&quot; title=&quot;添加总pv计数和总uv计数&quot;&gt;&lt;/a&gt;添加总pv计数和总uv计数&lt;/h3&gt;&lt;p&gt;在上面footer.ejs文件最后添加这两个计数脚本：&lt;br&gt;&lt;figure class=&quot;highlight&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;span id=&quot;busuanzi_container_site_pv&quot;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;amp;nbsp;&amp;amp;nbsp;Total visits:&amp;amp;nbsp;&amp;lt;span id=&quot;busuanzi_value_site_pv&quot;&amp;gt;&amp;lt;/span&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;/span&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;span id=&quot;busuanzi_container_site_uv&quot;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &amp;amp;nbsp;&amp;amp;nbsp;You are Visiter No.&amp;lt;span id=&quot;busuanzi_value_site_uv&quot;&amp;gt;&amp;lt;/span&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;/span&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
 &lt;h3 id=&quot;添加文章访问计数&quot;&gt;&lt;a href=&quot;#添加文章访问计数&quot; class=&quot;headerlink&quot; title=&quot;添加文章访问计数&quot;&gt;&lt;/a&gt;添加文章访问计数&lt;/h3&gt;&lt;p&gt;这里我添加到标题右下方，正文上面的地方。&lt;br&gt;在&lt;/p&gt;
 &lt;blockquote&gt;
@@ -1287,9 +1287,9 @@
       <category term="机器学习 | Mac.Learning" scheme="http://whatbeg.com/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-Mac-Learning/"/>
     
     
-      <category term="Python" scheme="http://whatbeg.com/tags/Python/"/>
-    
       <category term="机器学习" scheme="http://whatbeg.com/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="Python" scheme="http://whatbeg.com/tags/Python/"/>
     
   </entry>
   
