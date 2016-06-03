@@ -4,23 +4,46 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>《机器学习》西瓜数据集汇总 | Whatbeg&#39;s blog</title>
+    <title>处理地图数据的6种方法 | Whatbeg&#39;s blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="whatbeg">
     
 
     
-    <meta name="description" content="1.西瓜数据集2.0123456789101112131415161718编号,色泽,根蒂,敲声,纹理,脐部,触感,好瓜1,青绿,蜷缩,浊响,清晰,凹陷,硬滑,是2,乌黑,蜷缩,沉闷,清晰,凹陷,硬滑,是3,乌黑,蜷缩,浊响,清晰,凹陷,硬滑,是4,青绿,蜷缩,沉闷,清晰,凹陷,硬滑,是5,浅白,蜷缩,浊响,清晰,凹陷,硬滑,是6,青绿,稍蜷,浊响,清晰,稍凹,软粘,是7,乌黑,稍蜷,浊响,稍糊,">
+    <meta name="description" content="最近找到一个网站，http://www.pm25x.com/，发现上面有全国基本所有市的实时空气质量指数（AQI），就将它们爬了下来，存入了xlsx文件和CSV文件。又想着要利用一下才好，于是想到了描绘全国城市AQI分布图。这时就需要画包括省市的中国地图。最终找到了如下几种方式来根据数据描绘地图：
+
+SVG格式处理来画图，参照《鲜活的数据》
+R语言
+地图慧
+Excel
+地图API
+其他画图工具">
 <meta property="og:type" content="article">
-<meta property="og:title" content="《机器学习》西瓜数据集汇总">
-<meta property="og:url" content="http://whatbeg.com/2016/04/22/xiguadataset.html">
+<meta property="og:title" content="处理地图数据的6种方法">
+<meta property="og:url" content="http://whatbeg.com/2016/06/03/map.html">
 <meta property="og:site_name" content="Whatbeg's blog">
-<meta property="og:description" content="1.西瓜数据集2.0123456789101112131415161718编号,色泽,根蒂,敲声,纹理,脐部,触感,好瓜1,青绿,蜷缩,浊响,清晰,凹陷,硬滑,是2,乌黑,蜷缩,沉闷,清晰,凹陷,硬滑,是3,乌黑,蜷缩,浊响,清晰,凹陷,硬滑,是4,青绿,蜷缩,沉闷,清晰,凹陷,硬滑,是5,浅白,蜷缩,浊响,清晰,凹陷,硬滑,是6,青绿,稍蜷,浊响,清晰,稍凹,软粘,是7,乌黑,稍蜷,浊响,稍糊,">
-<meta property="og:updated_time" content="2016-05-12T03:12:25.627Z">
+<meta property="og:description" content="最近找到一个网站，http://www.pm25x.com/，发现上面有全国基本所有市的实时空气质量指数（AQI），就将它们爬了下来，存入了xlsx文件和CSV文件。又想着要利用一下才好，于是想到了描绘全国城市AQI分布图。这时就需要画包括省市的中国地图。最终找到了如下几种方式来根据数据描绘地图：
+
+SVG格式处理来画图，参照《鲜活的数据》
+R语言
+地图慧
+Excel
+地图API
+其他画图工具">
+<meta property="og:image" content="http://7xsl28.com1.z0.glb.clouddn.com/aqi.png">
+<meta property="og:updated_time" content="2016-06-03T06:56:51.593Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="《机器学习》西瓜数据集汇总">
-<meta name="twitter:description" content="1.西瓜数据集2.0123456789101112131415161718编号,色泽,根蒂,敲声,纹理,脐部,触感,好瓜1,青绿,蜷缩,浊响,清晰,凹陷,硬滑,是2,乌黑,蜷缩,沉闷,清晰,凹陷,硬滑,是3,乌黑,蜷缩,浊响,清晰,凹陷,硬滑,是4,青绿,蜷缩,沉闷,清晰,凹陷,硬滑,是5,浅白,蜷缩,浊响,清晰,凹陷,硬滑,是6,青绿,稍蜷,浊响,清晰,稍凹,软粘,是7,乌黑,稍蜷,浊响,稍糊,">
+<meta name="twitter:title" content="处理地图数据的6种方法">
+<meta name="twitter:description" content="最近找到一个网站，http://www.pm25x.com/，发现上面有全国基本所有市的实时空气质量指数（AQI），就将它们爬了下来，存入了xlsx文件和CSV文件。又想着要利用一下才好，于是想到了描绘全国城市AQI分布图。这时就需要画包括省市的中国地图。最终找到了如下几种方式来根据数据描绘地图：
+
+SVG格式处理来画图，参照《鲜活的数据》
+R语言
+地图慧
+Excel
+地图API
+其他画图工具">
+<meta name="twitter:image" content="http://7xsl28.com1.z0.glb.clouddn.com/aqi.png">
 
     
     <link rel="alternative" href="/atom.xml" title="Whatbeg&#39;s blog" type="application/atom+xml">
@@ -69,14 +92,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2016/04/22/xiguadataset.html" title="《机器学习》西瓜数据集汇总" itemprop="url">《机器学习》西瓜数据集汇总</a>
+      <a href="/2016/06/03/map.html" title="处理地图数据的6种方法" itemprop="url">处理地图数据的6种方法</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="whatbeg" target="_blank" itemprop="author">whatbeg</a>
 		
   <p class="article-time">
-    <time datetime="2016-04-22T08:47:11.000Z" itemprop="datePublished"> 发表于 2016-04-22</time>
+    <time datetime="2016-06-03T06:51:30.000Z" itemprop="datePublished"> 发表于 2016-06-03</time>
     <span id="busuanzi_container_page_pv">
     总阅读<span id="busuanzi_value_page_pv"></span>次
     </span>
@@ -88,14 +111,37 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-西瓜数据集2-0"><span class="toc-number">1.</span> <span class="toc-text">1.西瓜数据集2.0</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-西瓜数据集2-0-alpha"><span class="toc-number">2.</span> <span class="toc-text">2.西瓜数据集2.0$\alpha$</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-西瓜数据集3-0"><span class="toc-number">3.</span> <span class="toc-text">3.西瓜数据集3.0</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-西瓜数据集3-0-alpha"><span class="toc-number">4.</span> <span class="toc-text">4.西瓜数据集3.0$\alpha$</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#SVG"><span class="toc-number">1.</span> <span class="toc-text">SVG</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#R语言"><span class="toc-number">2.</span> <span class="toc-text">R语言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#地图慧"><span class="toc-number">3.</span> <span class="toc-text">地图慧</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Excel"><span class="toc-number">4.</span> <span class="toc-text">Excel</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#地图API"><span class="toc-number">5.</span> <span class="toc-text">地图API</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#其他"><span class="toc-number">6.</span> <span class="toc-text">其他</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#资料"><span class="toc-number">7.</span> <span class="toc-text">资料</span></a></li></ol>
 		
 		</div>
 		
-		<h2 id="1-西瓜数据集2-0"><a href="#1-西瓜数据集2-0" class="headerlink" title="1.西瓜数据集2.0"></a>1.<a href="http://7xt9qk.com2.z0.glb.clouddn.com/%E8%A5%BF%E7%93%9C2.0.txt" target="_blank" rel="external">西瓜数据集2.0</a></h2><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">编号,色泽,根蒂,敲声,纹理,脐部,触感,好瓜</span><br><span class="line">1,青绿,蜷缩,浊响,清晰,凹陷,硬滑,是</span><br><span class="line">2,乌黑,蜷缩,沉闷,清晰,凹陷,硬滑,是</span><br><span class="line">3,乌黑,蜷缩,浊响,清晰,凹陷,硬滑,是</span><br><span class="line">4,青绿,蜷缩,沉闷,清晰,凹陷,硬滑,是</span><br><span class="line">5,浅白,蜷缩,浊响,清晰,凹陷,硬滑,是</span><br><span class="line">6,青绿,稍蜷,浊响,清晰,稍凹,软粘,是</span><br><span class="line">7,乌黑,稍蜷,浊响,稍糊,稍凹,软粘,是</span><br><span class="line">8,乌黑,稍蜷,浊响,清晰,稍凹,硬滑,是</span><br><span class="line">9,乌黑,稍蜷,沉闷,稍糊,稍凹,硬滑,否</span><br><span class="line">10,青绿,硬挺,清脆,清晰,平坦,软粘,否</span><br><span class="line">11,浅白,硬挺,清脆,模糊,平坦,硬滑,否</span><br><span class="line">12,浅白,蜷缩,浊响,模糊,平坦,软粘,否</span><br><span class="line">13,青绿,稍蜷,浊响,稍糊,凹陷,硬滑,否</span><br><span class="line">14,浅白,稍蜷,沉闷,稍糊,凹陷,硬滑,否</span><br><span class="line">15,乌黑,稍蜷,浊响,清晰,稍凹,软粘,否</span><br><span class="line">16,浅白,蜷缩,浊响,模糊,平坦,硬滑,否</span><br><span class="line">17,青绿,蜷缩,沉闷,稍糊,稍凹,硬滑,否</span><br></pre></td></tr></table></figure>
-<h2 id="2-西瓜数据集2-0-alpha"><a href="#2-西瓜数据集2-0-alpha" class="headerlink" title="2.西瓜数据集2.0$\alpha$"></a>2.<a href="http://7xt9qk.com2.z0.glb.clouddn.com/%E8%A5%BF%E7%93%9C2.0alpha.txt" target="_blank" rel="external">西瓜数据集2.0$\alpha$</a></h2><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">编号,色泽,根蒂,敲声,纹理,脐部,触感,好瓜</span><br><span class="line">1,?,蜷缩,浊响,清晰,凹陷,硬滑,是</span><br><span class="line">2,乌黑,蜷缩,沉闷,清晰,凹陷,?,是</span><br><span class="line">3,乌黑,蜷缩,?,清晰,凹陷,硬滑,是</span><br><span class="line">4,青绿,蜷缩,沉闷,清晰,凹陷,硬滑,是</span><br><span class="line">5,?,蜷缩,浊响,清晰,凹陷,硬滑,是</span><br><span class="line">6,青绿,稍蜷,浊响,清晰,?,软粘,是</span><br><span class="line">7,乌黑,稍蜷,浊响,稍糊,稍凹,软粘,是</span><br><span class="line">8,乌黑,稍蜷,浊响,?,稍凹,硬滑,是</span><br><span class="line">9,乌黑,?,沉闷,稍糊,稍凹,硬滑,否</span><br><span class="line">10,青绿,硬挺,清脆,?,平坦,软粘,否</span><br><span class="line">11,浅白,硬挺,清脆,模糊,平坦,?,否</span><br><span class="line">12,浅白,蜷缩,?,模糊,平坦,软粘,否</span><br><span class="line">13,?,稍蜷,浊响,稍糊,凹陷,硬滑,否</span><br><span class="line">14,浅白,稍蜷,沉闷,稍糊,凹陷,硬滑,否</span><br><span class="line">15,乌黑,稍蜷,浊响,清晰,?,软粘,否</span><br><span class="line">16,浅白,蜷缩,浊响,模糊,平坦,硬滑,否</span><br><span class="line">17,青绿,?,沉闷,稍糊,稍凹,硬滑,否</span><br></pre></td></tr></table></figure>
-<h2 id="3-西瓜数据集3-0"><a href="#3-西瓜数据集3-0" class="headerlink" title="3.西瓜数据集3.0"></a>3.<a href="http://7xt9qk.com2.z0.glb.clouddn.com/%E8%A5%BF%E7%93%9C3.0.txt" target="_blank" rel="external">西瓜数据集3.0</a></h2><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">编号,色泽,根蒂,敲声,纹理,脐部,触感,密度,含糖率,好瓜</span><br><span class="line">1,青绿,蜷缩,浊响,清晰,凹陷,硬滑,0<span class="selector-class">.697</span>,0<span class="selector-class">.460</span>,是</span><br><span class="line">2,乌黑,蜷缩,沉闷,清晰,凹陷,硬滑,0<span class="selector-class">.774</span>,0<span class="selector-class">.376</span>,是</span><br><span class="line">3,乌黑,蜷缩,浊响,清晰,凹陷,硬滑,0<span class="selector-class">.634</span>,0<span class="selector-class">.264</span>,是</span><br><span class="line">4,青绿,蜷缩,沉闷,清晰,凹陷,硬滑,0<span class="selector-class">.608</span>,0<span class="selector-class">.318</span>,是</span><br><span class="line">5,浅白,蜷缩,浊响,清晰,凹陷,硬滑,0<span class="selector-class">.556</span>,0<span class="selector-class">.215</span>,是</span><br><span class="line">6,青绿,稍蜷,浊响,清晰,稍凹,软粘,0<span class="selector-class">.403</span>,0<span class="selector-class">.237</span>,是</span><br><span class="line">7,乌黑,稍蜷,浊响,稍糊,稍凹,软粘,0<span class="selector-class">.481</span>,0<span class="selector-class">.149</span>,是</span><br><span class="line">8,乌黑,稍蜷,浊响,清晰,稍凹,硬滑,0<span class="selector-class">.437</span>,0<span class="selector-class">.211</span>,是</span><br><span class="line">9,乌黑,稍蜷,沉闷,稍糊,稍凹,硬滑,0<span class="selector-class">.666</span>,0<span class="selector-class">.091</span>,否</span><br><span class="line">10,青绿,硬挺,清脆,清晰,平坦,软粘,0<span class="selector-class">.243</span>,0<span class="selector-class">.267</span>,否</span><br><span class="line">11,浅白,硬挺,清脆,模糊,平坦,硬滑,0<span class="selector-class">.245</span>,0<span class="selector-class">.057</span>,否</span><br><span class="line">12,浅白,蜷缩,浊响,模糊,平坦,软粘,0<span class="selector-class">.343</span>,0<span class="selector-class">.099</span>,否</span><br><span class="line">13,青绿,稍蜷,浊响,稍糊,凹陷,硬滑,0<span class="selector-class">.639</span>,0<span class="selector-class">.161</span>,否</span><br><span class="line">14,浅白,稍蜷,沉闷,稍糊,凹陷,硬滑,0<span class="selector-class">.657</span>,0<span class="selector-class">.198</span>,否</span><br><span class="line">15,乌黑,稍蜷,浊响,清晰,稍凹,软粘,0<span class="selector-class">.360</span>,0<span class="selector-class">.370</span>,否</span><br><span class="line">16,浅白,蜷缩,浊响,模糊,平坦,硬滑,0<span class="selector-class">.593</span>,0<span class="selector-class">.042</span>,否</span><br><span class="line">17,青绿,蜷缩,沉闷,稍糊,稍凹,硬滑,0<span class="selector-class">.719</span>,0<span class="selector-class">.103</span>,否</span><br></pre></td></tr></table></figure>
-<h2 id="4-西瓜数据集3-0-alpha"><a href="#4-西瓜数据集3-0-alpha" class="headerlink" title="4.西瓜数据集3.0$\alpha$"></a>4.<a href="http://7xt9qk.com2.z0.glb.clouddn.com/%E8%A5%BF%E7%93%9C3.0alpha.txt" target="_blank" rel="external">西瓜数据集3.0$\alpha$</a></h2><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">密度 含糖率 好瓜</span><br><span class="line">0<span class="selector-class">.697</span> 0<span class="selector-class">.460</span> 1</span><br><span class="line">0<span class="selector-class">.774</span> 0<span class="selector-class">.376</span> 1</span><br><span class="line">0<span class="selector-class">.634</span> 0<span class="selector-class">.264</span> 1</span><br><span class="line">0<span class="selector-class">.608</span> 0<span class="selector-class">.318</span> 1</span><br><span class="line">0<span class="selector-class">.556</span> 0<span class="selector-class">.215</span> 1</span><br><span class="line">0<span class="selector-class">.403</span> 0<span class="selector-class">.237</span> 1</span><br><span class="line">0<span class="selector-class">.481</span> 0<span class="selector-class">.149</span> 1</span><br><span class="line">0<span class="selector-class">.437</span> 0<span class="selector-class">.211</span> 1</span><br><span class="line">0<span class="selector-class">.666</span> 0<span class="selector-class">.091</span> 0</span><br><span class="line">0<span class="selector-class">.243</span> 0<span class="selector-class">.267</span> 0</span><br><span class="line">0<span class="selector-class">.245</span> 0<span class="selector-class">.057</span> 0</span><br><span class="line">0<span class="selector-class">.343</span> 0<span class="selector-class">.099</span> 0</span><br><span class="line">0<span class="selector-class">.639</span> 0<span class="selector-class">.161</span> 0</span><br><span class="line">0<span class="selector-class">.657</span> 0<span class="selector-class">.198</span> 0</span><br><span class="line">0<span class="selector-class">.360</span> 0<span class="selector-class">.370</span> 0</span><br><span class="line">0<span class="selector-class">.593</span> 0<span class="selector-class">.042</span> 0</span><br><span class="line">0<span class="selector-class">.719</span> 0<span class="selector-class">.103</span> 0</span><br></pre></td></tr></table></figure>
+		<p>最近找到一个网站，<a href="http://www.pm25x.com/" target="_blank" rel="external">http://www.pm25x.com/</a>，发现上面有全国基本所有市的实时空气质量指数（AQI），就将它们爬了下来，存入了xlsx文件和CSV文件。又想着要利用一下才好，于是想到了描绘全国城市AQI分布图。这时就需要画包括省市的中国地图。<br>最终找到了如下几种方式来根据数据描绘地图：</p>
+<ul>
+<li>SVG格式处理来画图，参照《鲜活的数据》</li>
+<li>R语言</li>
+<li>地图慧</li>
+<li>Excel</li>
+<li>地图API</li>
+<li>其他画图工具</li>
+</ul>
+<h3 id="SVG"><a href="#SVG" class="headerlink" title="SVG"></a>SVG</h3><p>SVG方法在Wiki Creative Commons上没有找到市一级的svg格式的中国地图，并且他那个id我看不懂，不知道代表什么，查了一下中国行政区划编码，没有40开头的，而我下的某一个svg中国地图中有个id是’_40…’，所以排除是行政区划编码，那我就不知道是什么意思了，排除此方法。</p>
+<h3 id="R语言"><a href="#R语言" class="headerlink" title="R语言"></a>R语言</h3><p>R语言有一定的地图处理能力，相信应该可以搞定，但是此前并未接触过R语言，重新学来解决一个简单的问题似乎有点杀鸡用牛刀的感觉，划不来。排除。<br>关于R语言画地图我倒是看到这几篇文章[1],[2],[3]，收藏下。</p>
+<h3 id="地图慧"><a href="#地图慧" class="headerlink" title="地图慧"></a>地图慧</h3><p>地图慧[4]提供在线地图制作，可以精确到市县一级，提供上传xlsx和CSV格式的数据，利用收集的AQI数据做的一副全国城市AQI分布图如下：<br><img src="http://7xsl28.com1.z0.glb.clouddn.com/aqi.png" alt="全国城市AQI指数分布-5月20日晚"></p>
+<h3 id="Excel"><a href="#Excel" class="headerlink" title="Excel"></a>Excel</h3><p>采用</p>
+<ul>
+<li>OfficeMapFree_setup(2.2007.0.2.1)</li>
+<li>Microsoft Office Excel 2007<br>可以画，没试过，见[5]，[6]<br>WPS好像不得行，在线的有Google Sheet.</li>
+</ul>
+<h3 id="地图API"><a href="#地图API" class="headerlink" title="地图API"></a>地图API</h3><p>谷歌地图，百度地图，雅虎地图，Bing地图都有API可供调用，只是需要去了解它们的API，并具有一定的编程技能。</p>
+<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><p>其他制作软件大部分都是英文的，而且有些只能画美国地图，对中国地图来说不是很适合，可以考虑用他们分析美国数据或者世界地图数据，对此问题时间成本太高，排除。<br>不过仍然值得把它们列一下，它们基本来自《鲜活的数据》这本书。</p>
+<ul>
+<li>Modest Maps</li>
+<li><a href="http://www.polymaps.org/" target="_blank" rel="external">Polymaps</a></li>
+<li>ArcGIS</li>
+<li>Many Eyes</li>
+<li>GeoCommons</li>
+</ul>
+<h3 id="资料"><a href="#资料" class="headerlink" title="资料"></a>资料</h3><p>[1] <a href="http://cos.name/2013/01/drawing-map-in-r-era/" target="_blank" rel="external">http://cos.name/2013/01/drawing-map-in-r-era/</a><br>[2] <a href="http://cos.name/2009/07/drawing-china-map-using-r/" target="_blank" rel="external">http://cos.name/2009/07/drawing-china-map-using-r/</a><br>[3] <a href="http://xccds1977.blogspot.com/2012/07/blog-post_26.html" target="_blank" rel="external">http://xccds1977.blogspot.com/2012/07/blog-post_26.html</a><br>[4] <a href="http://www.dituhui.com/" target="_blank" rel="external">地图慧</a><br>[5] <a href="http://jingyan.baidu.com/article/91f5db1bee10e91c7f05e39d.html" target="_blank" rel="external">Excel 地图</a><br>[6] <a href="http://www.36dsj.com/archives/12053" target="_blank" rel="external">Excel 百度迁徙地图</a><br>[7] <a href="http://flowingdata.com/" target="_blank" rel="external">Flowing Data</a></p>
   
 	</div>
 
@@ -212,13 +258,13 @@
 
 <div class="article-categories">
   
-  <span></span> <a href="/categories/机器学习-Mac-Learning/">机器学习 | Mac.Learning</a>
+  <span></span> <a href="/categories/数据科学-Data-Science/">数据科学 | Data Science</a>
   </div>
 
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/机器学习/">机器学习</a>
+  <span></span> <a href="/tags/数据分析/">数据分析</a>
   </div>
 
 </div>
@@ -262,19 +308,11 @@
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2016/04/23/matplotlib-desiciontree.html" title="利用matplotlib画决策树">
-  <strong>上一篇：</strong><br/>
-  <span>
-  利用matplotlib画决策树</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/2016/04/20/blogopt420.html"  title="Hexo博客Jacman主题优化(一)--访问计数等">
+<a href="/2016/05/31/2016read-may.html"  title="【2016读书】5月读书笔记">
  <strong>下一篇：</strong><br/> 
- <span>Hexo博客Jacman主题优化(一)--访问计数等
+ <span>【2016读书】5月读书笔记
 </span>
 </a>
 </div>
@@ -283,7 +321,7 @@
 
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="2016/04/22/xiguadataset.html" data-title="《机器学习》西瓜数据集汇总" data-url="http://whatbeg.com/2016/04/22/xiguadataset.html"></div>
+	<div class="ds-thread" data-thread-key="2016/06/03/map.html" data-title="处理地图数据的6种方法" data-url="http://whatbeg.com/2016/06/03/map.html"></div>
 </section>
 
 
@@ -294,7 +332,7 @@
   <aside class="clearfix">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-西瓜数据集2-0"><span class="toc-number">1.</span> <span class="toc-text">1.西瓜数据集2.0</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-西瓜数据集2-0-alpha"><span class="toc-number">2.</span> <span class="toc-text">2.西瓜数据集2.0$\alpha$</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-西瓜数据集3-0"><span class="toc-number">3.</span> <span class="toc-text">3.西瓜数据集3.0</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-西瓜数据集3-0-alpha"><span class="toc-number">4.</span> <span class="toc-text">4.西瓜数据集3.0$\alpha$</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#SVG"><span class="toc-number">1.</span> <span class="toc-text">SVG</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#R语言"><span class="toc-number">2.</span> <span class="toc-text">R语言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#地图慧"><span class="toc-number">3.</span> <span class="toc-text">地图慧</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Excel"><span class="toc-number">4.</span> <span class="toc-text">Excel</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#地图API"><span class="toc-number">5.</span> <span class="toc-text">地图API</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#其他"><span class="toc-number">6.</span> <span class="toc-text">其他</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#资料"><span class="toc-number">7.</span> <span class="toc-text">资料</span></a></li></ol>
  
  </aside>
   </div>
