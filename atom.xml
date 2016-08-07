@@ -336,7 +336,7 @@
     <link href="http://whatbeg.com/2016/05/18/hexo-donate.html"/>
     <id>http://whatbeg.com/2016/05/18/hexo-donate.html</id>
     <published>2016-05-18T15:26:29.000Z</published>
-    <updated>2016-08-07T05:40:50.882Z</updated>
+    <updated>2016-08-07T05:49:33.246Z</updated>
     
     <content type="html">&lt;p&gt;–本博客5月18日优化，增加博客打赏功能&lt;/p&gt;
 &lt;p&gt;使用Hexo这款博客框架已经很久了，期间也一直在摸索，一次次地修改代码，看效果，修改，看效果…，现在已经大致熟悉了整个框架的结构，能够自主完成对主题的修改了。&lt;/p&gt;
@@ -363,7 +363,7 @@
     
     </summary>
     
-      <category term="错误解决或优化 | Err&Opt" scheme="http://whatbeg.com/categories/%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3%E6%88%96%E4%BC%98%E5%8C%96-Err-Opt/"/>
+      <category term="错误解决与优化 | Err&Opt" scheme="http://whatbeg.com/categories/%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3%E4%B8%8E%E4%BC%98%E5%8C%96-Err-Opt/"/>
     
     
       <category term="hexo" scheme="http://whatbeg.com/tags/hexo/"/>
@@ -408,9 +408,9 @@
       <category term="译文 | Translation" scheme="http://whatbeg.com/categories/%E8%AF%91%E6%96%87-Translation/"/>
     
     
-      <category term="译文" scheme="http://whatbeg.com/tags/%E8%AF%91%E6%96%87/"/>
-    
       <category term="机器学习" scheme="http://whatbeg.com/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="译文" scheme="http://whatbeg.com/tags/%E8%AF%91%E6%96%87/"/>
     
   </entry>
   
@@ -639,9 +639,9 @@
       <category term="译文 | Translation" scheme="http://whatbeg.com/categories/%E8%AF%91%E6%96%87-Translation/"/>
     
     
-      <category term="CS" scheme="http://whatbeg.com/tags/CS/"/>
-    
       <category term="译文" scheme="http://whatbeg.com/tags/%E8%AF%91%E6%96%87/"/>
+    
+      <category term="CS" scheme="http://whatbeg.com/tags/CS/"/>
     
   </entry>
   
@@ -1273,9 +1273,9 @@
       <category term="机器学习 | Mac.Learning" scheme="http://whatbeg.com/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-Mac-Learning/"/>
     
     
-      <category term="Python" scheme="http://whatbeg.com/tags/Python/"/>
-    
       <category term="机器学习" scheme="http://whatbeg.com/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="Python" scheme="http://whatbeg.com/tags/Python/"/>
     
   </entry>
   
@@ -1300,9 +1300,9 @@
       <category term="机器学习 | Mac.Learning" scheme="http://whatbeg.com/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-Mac-Learning/"/>
     
     
-      <category term="Python" scheme="http://whatbeg.com/tags/Python/"/>
-    
       <category term="机器学习" scheme="http://whatbeg.com/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="Python" scheme="http://whatbeg.com/tags/Python/"/>
     
   </entry>
   
@@ -1337,7 +1337,7 @@
     <link href="http://whatbeg.com/2016/04/20/blogopt420.html"/>
     <id>http://whatbeg.com/2016/04/20/blogopt420.html</id>
     <published>2016-04-20T05:37:17.000Z</published>
-    <updated>2016-08-07T05:41:01.550Z</updated>
+    <updated>2016-08-07T05:49:24.979Z</updated>
     
     <content type="html">&lt;h2 id=&quot;1-新增博客访问量统计和文章访问量统计&quot;&gt;&lt;a href=&quot;#1-新增博客访问量统计和文章访问量统计&quot; class=&quot;headerlink&quot; title=&quot;1.新增博客访问量统计和文章访问量统计&quot;&gt;&lt;/a&gt;1.新增博客访问量统计和文章访问量统计&lt;/h2&gt;&lt;h3 id=&quot;采用-不蒜子-极简计数器&quot;&gt;&lt;a href=&quot;#采用-不蒜子-极简计数器&quot; class=&quot;headerlink&quot; title=&quot;采用 不蒜子 极简计数器&quot;&gt;&lt;/a&gt;采用 &lt;a href=&quot;http://service.ibruce.info/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;不蒜子&lt;/a&gt; 极简计数器&lt;/h3&gt;&lt;p&gt;在 &lt;/p&gt;
 &lt;blockquote&gt;
@@ -1373,7 +1373,7 @@
     
     </summary>
     
-      <category term="错误解决或优化 | Err&Opt" scheme="http://whatbeg.com/categories/%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3%E6%88%96%E4%BC%98%E5%8C%96-Err-Opt/"/>
+      <category term="错误解决与优化 | Err&Opt" scheme="http://whatbeg.com/categories/%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3%E4%B8%8E%E4%BC%98%E5%8C%96-Err-Opt/"/>
     
     
       <category term="hexo" scheme="http://whatbeg.com/tags/hexo/"/>
