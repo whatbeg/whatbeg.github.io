@@ -4,6 +4,66 @@
 
     
   <url>
+    <loc>http://whatbeg.com/2016/04/07/hexofault.html</loc>
+    <lastmod>2016-08-07T05:41:22.507Z</lastmod>
+    <data>
+        <display>
+        <title>Hexo+Github搭建独立博客遇到的问题及处理几则</title>
+        <pubTime>2016-04-07T01:21:30.000Z</pubTime>
+        
+        <tag>hexo</tag>
+         
+         
+           
+             
+              <breadCrumb title="错误解决或优化 | Err&amp;Opt" url="http://whatbeg.com/categories/%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3%E6%88%96%E4%BC%98%E5%8C%96-Err-Opt/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://whatbeg.com/2016/04/20/blogopt420.html</loc>
+    <lastmod>2016-08-07T05:41:01.550Z</lastmod>
+    <data>
+        <display>
+        <title>Hexo博客Jacman主题优化(一)--访问计数等</title>
+        <pubTime>2016-04-20T05:37:17.000Z</pubTime>
+        
+        <tag>hexo</tag>
+         
+         
+           
+             
+              <breadCrumb title="错误解决或优化 | Err&amp;Opt" url="http://whatbeg.com/categories/%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3%E6%88%96%E4%BC%98%E5%8C%96-Err-Opt/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://whatbeg.com/2016/05/18/hexo-donate.html</loc>
+    <lastmod>2016-08-07T05:40:50.882Z</lastmod>
+    <data>
+        <display>
+        <title>Hexo博客Jacman主题优化(二)--打赏功能</title>
+        <pubTime>2016-05-18T15:26:29.000Z</pubTime>
+        
+        <tag>hexo</tag>
+         
+         
+           
+             
+              <breadCrumb title="错误解决或优化 | Err&amp;Opt" url="http://whatbeg.com/categories/%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3%E6%88%96%E4%BC%98%E5%8C%96-Err-Opt/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://whatbeg.com/2016/07/29/justtalk01.html</loc>
     <lastmod>2016-07-29T13:49:32.599Z</lastmod>
     <data>
@@ -277,66 +337,6 @@
 
     
   <url>
-    <loc>http://whatbeg.com/2016/04/20/blogopt420.html</loc>
-    <lastmod>2016-05-19T16:53:57.191Z</lastmod>
-    <data>
-        <display>
-        <title>Hexo博客Jacman主题优化(一)--访问计数等</title>
-        <pubTime>2016-04-20T05:37:17.000Z</pubTime>
-        
-        <tag>hexo</tag>
-         
-         
-           
-             
-              <breadCrumb title="错误解决或优化 | FaultOpt" url="http://whatbeg.com/categories/%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3%E6%88%96%E4%BC%98%E5%8C%96-FaultOpt/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://whatbeg.com/2016/05/18/hexo-donate.html</loc>
-    <lastmod>2016-05-19T16:49:54.995Z</lastmod>
-    <data>
-        <display>
-        <title>Hexo博客Jacman主题优化(二)--打赏功能</title>
-        <pubTime>2016-05-18T15:26:29.000Z</pubTime>
-        
-        <tag>hexo</tag>
-         
-         
-           
-             
-              <breadCrumb title="错误解决或优化 | FaultOpt" url="http://whatbeg.com/categories/%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3%E6%88%96%E4%BC%98%E5%8C%96-FaultOpt/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://whatbeg.com/2016/04/07/hexofault.html</loc>
-    <lastmod>2016-05-19T16:47:50.347Z</lastmod>
-    <data>
-        <display>
-        <title>Hexo+Github搭建独立博客遇到的问题及处理几则</title>
-        <pubTime>2016-04-07T01:21:30.000Z</pubTime>
-        
-        <tag>hexo</tag>
-         
-         
-           
-             
-              <breadCrumb title="错误解决或优化 | FaultOpt" url="http://whatbeg.com/categories/%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3%E6%88%96%E4%BC%98%E5%8C%96-FaultOpt/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://whatbeg.com/2016/05/17/adviceforMLfish.html</loc>
     <lastmod>2016-05-18T13:15:15.175Z</lastmod>
     <data>
@@ -344,9 +344,9 @@
         <title>给机器学习初学者的建议</title>
         <pubTime>2016-05-17T03:12:50.000Z</pubTime>
         
-        <tag>机器学习</tag>
-         
         <tag>译文</tag>
+         
+        <tag>机器学习</tag>
          
          
            
@@ -386,9 +386,9 @@
         <title>如何实现并应用决策树算法？</title>
         <pubTime>2016-04-23T12:35:01.000Z</pubTime>
         
-        <tag>机器学习</tag>
-         
         <tag>Python</tag>
+         
+        <tag>机器学习</tag>
          
          
            
@@ -552,9 +552,9 @@
         <title>利用matplotlib画决策树</title>
         <pubTime>2016-04-23T12:05:51.000Z</pubTime>
         
-        <tag>机器学习</tag>
-         
         <tag>Python</tag>
+         
+        <tag>机器学习</tag>
          
          
            
@@ -614,9 +614,9 @@
         <title>kNN分类器在西瓜数据集3.0$\alpha$上的结果</title>
         <pubTime>2016-04-19T12:45:57.000Z</pubTime>
         
-        <tag>机器学习</tag>
-         
         <tag>Python</tag>
+         
+        <tag>机器学习</tag>
          
          
            
@@ -678,9 +678,9 @@
         <title>怎样写出优秀的研究论文？</title>
         <pubTime>2016-05-10T07:44:54.000Z</pubTime>
         
-        <tag>译文</tag>
-         
         <tag>CS</tag>
+         
+        <tag>译文</tag>
          
          
            
