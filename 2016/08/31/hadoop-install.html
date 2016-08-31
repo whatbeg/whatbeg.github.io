@@ -4,29 +4,33 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>当我谈写作时我谈些什么 | Whatbeg&#39;s blog</title>
+    <title>Linux Ubuntu 16.04安装Hadoop全过程（一） | Whatbeg&#39;s blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="whatbeg">
     
 
     
-    <meta name="description" content="论文初稿终于告成，又可以偷得浮生几日闲了，上次谈了谈阅读，这次来说说写作这件事儿。
-笔者最早接触博客是在2012年，1月17日注册了新浪博客，那时候韩寒和方舟子在博客上打笔仗闹得正欢，为了更加密切的关注，就顺手注册了一个新浪博客。后来也发了一些个文章，现在回去看那些文字真是有点哭笑不得。
-时隔两年，时间来到2013年12月份，我注册了博客园，开始写“技术博客”，其实刚开始并不是想写技术博客才注册的">
+    <meta name="description" content="本文简要记述了本人参考网上教程在Ubuntu上（虚拟机）搭建Hadoop的过程，以备后用和各位获取。
+前言Hadoop是当今最流行的分布式系统之一，能够充分利用集群进行分布式程序的开发，以实现大规模数据的高速运算和存储。Hadoop包括两个最重要的设计：HDFS和MapReduce。HDFS是分布式文件系统（Hadoop Distribution File System），为海量数据提供高效的存储">
 <meta property="og:type" content="article">
-<meta property="og:title" content="当我谈写作时我谈些什么">
-<meta property="og:url" content="http://whatbeg.com/2016/05/23/talkwrite.html">
+<meta property="og:title" content="Linux Ubuntu 16.04安装Hadoop全过程（一）">
+<meta property="og:url" content="http://whatbeg.com/2016/08/31/hadoop-install.html">
 <meta property="og:site_name" content="Whatbeg's blog">
-<meta property="og:description" content="论文初稿终于告成，又可以偷得浮生几日闲了，上次谈了谈阅读，这次来说说写作这件事儿。
-笔者最早接触博客是在2012年，1月17日注册了新浪博客，那时候韩寒和方舟子在博客上打笔仗闹得正欢，为了更加密切的关注，就顺手注册了一个新浪博客。后来也发了一些个文章，现在回去看那些文字真是有点哭笑不得。
-时隔两年，时间来到2013年12月份，我注册了博客园，开始写“技术博客”，其实刚开始并不是想写技术博客才注册的">
-<meta property="og:updated_time" content="2016-05-24T13:26:01.474Z">
+<meta property="og:description" content="本文简要记述了本人参考网上教程在Ubuntu上（虚拟机）搭建Hadoop的过程，以备后用和各位获取。
+前言Hadoop是当今最流行的分布式系统之一，能够充分利用集群进行分布式程序的开发，以实现大规模数据的高速运算和存储。Hadoop包括两个最重要的设计：HDFS和MapReduce。HDFS是分布式文件系统（Hadoop Distribution File System），为海量数据提供高效的存储">
+<meta property="og:image" content="http://7xsl28.com1.z0.glb.clouddn.com/hadoop_1.png">
+<meta property="og:image" content="http://7xsl28.com1.z0.glb.clouddn.com/hadoop_2.png">
+<meta property="og:image" content="http://7xsl28.com1.z0.glb.clouddn.com/hadoop_3.png">
+<meta property="og:image" content="http://7xsl28.com1.z0.glb.clouddn.com/hadoop_4.png">
+<meta property="og:image" content="http://7xsl28.com1.z0.glb.clouddn.com/hadoop_5.png">
+<meta property="og:image" content="http://7xsl28.com1.z0.glb.clouddn.com/hadoop_6.png">
+<meta property="og:updated_time" content="2016-08-31T13:31:06.924Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="当我谈写作时我谈些什么">
-<meta name="twitter:description" content="论文初稿终于告成，又可以偷得浮生几日闲了，上次谈了谈阅读，这次来说说写作这件事儿。
-笔者最早接触博客是在2012年，1月17日注册了新浪博客，那时候韩寒和方舟子在博客上打笔仗闹得正欢，为了更加密切的关注，就顺手注册了一个新浪博客。后来也发了一些个文章，现在回去看那些文字真是有点哭笑不得。
-时隔两年，时间来到2013年12月份，我注册了博客园，开始写“技术博客”，其实刚开始并不是想写技术博客才注册的">
+<meta name="twitter:title" content="Linux Ubuntu 16.04安装Hadoop全过程（一）">
+<meta name="twitter:description" content="本文简要记述了本人参考网上教程在Ubuntu上（虚拟机）搭建Hadoop的过程，以备后用和各位获取。
+前言Hadoop是当今最流行的分布式系统之一，能够充分利用集群进行分布式程序的开发，以实现大规模数据的高速运算和存储。Hadoop包括两个最重要的设计：HDFS和MapReduce。HDFS是分布式文件系统（Hadoop Distribution File System），为海量数据提供高效的存储">
+<meta name="twitter:image" content="http://7xsl28.com1.z0.glb.clouddn.com/hadoop_1.png">
 
     
     <link rel="alternative" href="/atom.xml" title="Whatbeg&#39;s blog" type="application/atom+xml">
@@ -75,14 +79,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2016/05/23/talkwrite.html" title="当我谈写作时我谈些什么" itemprop="url">当我谈写作时我谈些什么</a>
+      <a href="/2016/08/31/hadoop-install.html" title="Linux Ubuntu 16.04安装Hadoop全过程（一）" itemprop="url">Linux Ubuntu 16.04安装Hadoop全过程（一）</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="whatbeg" target="_blank" itemprop="author">whatbeg</a>
 		
   <p class="article-time">
-    <time datetime="2016-05-23T13:50:51.000Z" itemprop="datePublished"> 发表于 2016-05-23</time>
+    <time datetime="2016-08-31T08:57:42.000Z" itemprop="datePublished"> 发表于 2016-08-31</time>
     <span id="busuanzi_container_page_pv">
     总阅读<span id="busuanzi_value_page_pv"></span>次
     </span>
@@ -94,21 +98,45 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#软件"><span class="toc-number">2.</span> <span class="toc-text">软件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#步骤"><span class="toc-number">3.</span> <span class="toc-text">步骤</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#安装JDK"><span class="toc-number">3.1.</span> <span class="toc-text">安装JDK</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#配置SSH"><span class="toc-number">3.2.</span> <span class="toc-text">配置SSH</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建新的Hadoop用户"><span class="toc-number">3.3.</span> <span class="toc-text">创建新的Hadoop用户</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装Hadoop"><span class="toc-number">3.4.</span> <span class="toc-text">安装Hadoop</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#单机模式配置"><span class="toc-number">3.5.</span> <span class="toc-text">单机模式配置</span></a></li></ol></li></ol>
 		
 		</div>
 		
-		<p>论文初稿终于告成，又可以偷得浮生几日闲了，上次谈了谈<a href="http://whatbeg.com/2016/05/02/talkread.html">阅读</a>，这次来说说写作这件事儿。</p>
-<p>笔者最早接触博客是在2012年，1月17日注册了新浪博客，那时候韩寒和方舟子在博客上打笔仗闹得正欢，为了更加密切的关注，就顺手注册了一个新浪博客。后来也发了一些个文章，现在回去看那些文字真是有点哭笑不得。</p>
-<p>时隔两年，时间来到2013年12月份，我注册了博客园，开始写“技术博客”，其实刚开始并不是想写技术博客才注册的，只是想记录自己不会做或者做错的一些算法题而已，到后来慢慢地写一些自己觉得值得分享的算法题的题解，再后来就慢慢地什么都写了，在我的老博客中有390多篇文章，2年多的时间写了那么多，是有多爱分享。。其中大部分是算法题的解题报告，还有一些比赛的解题报告，解题报告的特点在于篇幅不长，一般简单描述一下问题和解法，再贴上代码，就完成了，所以还是不太费时间的。</p>
-<p>在一些博客网站上都写过文章，比如新浪，网易，博客园，CSDN等等，感觉各有不同：新浪写写随笔什么的，发个长微博还行，写技术文章的话还是算了，对代码不友好，而且没什么开发者会天天登新浪去看文章，而且新浪广告太多，太多，太多，对用户太不友好；网易的话广告要少一些，但是好像没什么人看。博客园简洁，广告少，开发者多至少前几年是这样的，但是笔者也提几点问题，不是用得着菩萨求菩萨，用不着菩萨骂菩萨，而是客观地提几点：一是主题太丑，严苛一点说，除了笔者现在用的这款比较好看之外，其它无疑都很丑，想套用一句王者荣耀中张良的台词，“伤心不是哭的理由，傻才是”，追求简洁不应该是丑的理由，懒才是，二是现在明显感觉到博客园首页文章质量在下降，大牛在减少，是时候想点办法了。笔者离开博客园还有一个原因就是这是一个.NET,C#,前端等技术风靡的站点，这类技术的开发者居多，其他技术内容得不到太大的关注，所以注定基因不合适，虽然现在在博客园写各种技术和人生经历的文章也多了起来。CSDN的话界面笔者也不喜欢，虽然这个平台开发者众多，主题也多，但是正是主题太多，导致几乎没有其首页的概念，太过宽泛，多看看可以，写的话就算了，评论也不友好，每次很久才能评上一条。这些种种再加上独立博客已经建成，域名也买了，是时候进入一个独立发展的阶段了，时间在向前推移，在某些阶段就会发生某些故事，不是么？</p>
-<p>其实笔者的写作目标很简单，就是写出一些既有益又有趣的东西，这里其实就是向内和向外两种，对自己有益是向内，对他人有益和有趣是向外的，内外兼修是我的目标，嘻嘻。如果我觉得一篇文章写出来对自己或者对读者有益，那么不妨一写，对自己有益的有比如知识的梳理总结，备忘的内容，某些错误解决过程，或者自己写着开心的随笔等等，对他人有益的包括经验类文章，知识总结，错误解决的过程，搜集整理类，推荐类文章等等。</p>
-<p>小时候觉得作文是很难写的，每次写作文都要斟酌叙旧才能动笔，而且总感觉写的不好。其实是因为那时候要写的不是自己想写的，作为一个理工科的男生，我表示正式作文这么多年写的议论文外的文章不超过3篇，而且写记叙文什么的得分还超低，直接没信心了，议论文的话大体有一个固定的格式，说明一下论点，举几个名人的例子，可怜那些名人尤其是某几个，自己一个故事被中国无数中小学生举了无数遍。。长大了发现，其实写文章没那么难，自己想写什么就写什么就行了，我们不是搞文学创作的，没必要过分斟酌语言，语言朴实，把想说的说清楚就可以了，这样想来，其实挺简单的。</p>
-<p>在杂文上，我喜欢王小波式的文风，针砭时弊，对很多社会问题提出了自己的见解，文笔幽默，坦率真实，看他的杂文集简直是一种享受，我蛮希望自己也能写出这样的文章。在哲理散文中，我喜欢罗素，尼采那样的讲述，并没有太多晦涩的哲学术语，尤其是罗素先生，他的《幸福之路》面向普罗大众，文章平实但又发人深省，妙语不断。而尼采而没有那么好懂了，但是他的语句往往揭示一种普遍规律与法则而不是具体问题的分析，大概这就是哲学家吧。我喜欢这种哲学，受尼采先生的影响，我经常也会思考并写下一些我对事物或人情的一些根本法则，并自以为在寻求智慧，其乐无穷。</p>
-<p>关于写作与个人经历的丰富程度的关系，笔者还是赞同作者的经历能够使作品更加丰富，至少他的经历可以成为向内写的素材。我看很多文章集都有一个共同的特点，就是文章会掺杂着作者许多的经历，看王小波的杂文往往可以看到他写自己上山下乡的经历，进场的经历，与社会各路人士打交道的经历；看吴军的《浪潮之巅》，其中也会写道很多自己在谷歌时的经历；如果没有这些经历，我想，能写的应该少很多吧。</p>
-<p>当然不爱写作的自是可以不写，一个人不需要写多少字也能过这一生，所以写作只是作为一种兴趣爱好吧，笔者写作的核心就是热爱写作，热爱分享，这两点是支撑我写下去的主要原因，不管多没时间，有好的题目好的想法就像动动笔把它记下来。</p>
-<p>希望我能将这份热爱保持下去，直到老了写不动了为止。</p>
-<p><br><br>2016.5.23 于成都</p>
+		<p>本文简要记述了本人参考网上教程在Ubuntu上（虚拟机）搭建Hadoop的过程，以备后用和各位获取。</p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>Hadoop是当今最流行的分布式系统之一，能够充分利用集群进行分布式程序的开发，以实现大规模数据的高速运算和存储。<br>Hadoop包括两个最重要的设计：HDFS和MapReduce。<br>HDFS是分布式文件系统（Hadoop Distribution File System），为海量数据提供高效的存储。<br>MapReduce是一种并行计算的思想，加快大数据处理的速度。</p>
+<h2 id="软件"><a href="#软件" class="headerlink" title="软件"></a>软件</h2><p>1.JDK 8 （下载：<a href="http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html）" target="_blank" rel="external">http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html）</a><br>2.Hadoop 2.7.3<br>3.ssh</p>
+<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><h3 id="安装JDK"><a href="#安装JDK" class="headerlink" title="安装JDK"></a>安装JDK</h3><p>1.下载JDK的.tar.gz压缩文件后（这里我下载的是jdk-8u101-linux-x64.tar.gz），将其移动到位置如/usr/jdk:<br><figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mv <span class="meta-keyword">/home/</span>../Downloads <span class="meta-keyword">/usr/</span>jdk</span><br></pre></td></tr></table></figure></p>
+<p><img src="http://7xsl28.com1.z0.glb.clouddn.com/hadoop_1.png" alt="Hadoop-1"><br>2.然后将压缩文件解压<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf jdk-<span class="number">8</span>u101-linux-x64<span class="selector-class">.tar</span><span class="selector-class">.gz</span></span><br></pre></td></tr></table></figure></p>
+<p>3.然后修改配置文件.bashrc，并用source命令保存修改<br><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vim ~/.bashrc</span><br><span class="line">编辑<span class="keyword">...</span></span><br><span class="line"><span class="keyword">source</span> ~/.bashrc</span><br></pre></td></tr></table></figure></p>
+<p>在最后一行添加：<br><figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">export JAVA_HOME=<span class="regexp">/usr/jdk</span><span class="regexp">/jdk1.8.0_101</span><br><span class="line">export JRE_HOME=$&#123;JAVA_HOME&#125;/jre</span></span><br><span class="line">export CLASSPATH=.:$&#123;JAVA_HOME&#125;/<span class="class"><span class="keyword">lib</span>:$&#123;<span class="title">JRE_HOME</span>&#125;/<span class="title">lib</span></span></span><br><span class="line">export PATH=$&#123;JAVA_HOME&#125;/<span class="symbol">bin:</span>$PATH</span><br></pre></td></tr></table></figure></p>
+<p>4.然后在任意目录输入<br><figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -<span class="built_in">version</span></span><br></pre></td></tr></table></figure></p>
+<p>查看Java JDK的安装情况。至此，JDK 8就安装好了。</p>
+<p><img src="http://7xsl28.com1.z0.glb.clouddn.com/hadoop_2.png" alt="Hadoop-2"></p>
+<h3 id="配置SSH"><a href="#配置SSH" class="headerlink" title="配置SSH"></a>配置SSH</h3><p>完全分布模式和单机伪分布模式都需要用到SSH，以保证在远程管理Hadoop节点以及Hadoop节点间用户共享访问时的安全性。<br>SSH登录类似于远程登录，登录某台Linux主机，并可在上面运行命令。</p>
+<p>1.Ubuntu默认已经安装SSH Client， 我们还要安装SSH Server<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get <span class="keyword">install</span> openssh-<span class="keyword">server</span></span><br></pre></td></tr></table></figure></p>
+<p>2.输入<br><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">ssh</span> localhost</span><br></pre></td></tr></table></figure></p>
+<p>登录到本机，可见此时需要密码才能登录，下面免去此步骤。</p>
+<p><img src="http://7xsl28.com1.z0.glb.clouddn.com/hadoop_3.png" alt="Hadoop-3"></p>
+<p>退出刚刚的登录，然后在用户目录下(~/)新建隐藏目录.ssh，生成密钥对，一直按<enter>键，系统会默认将密钥对保存在.ssh/id_rsa 和 .ssh/id_rsa.pub中</enter></p>
+<figure class="highlight haml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">~$ exit</span><br><span class="line">~$ mkdir .ssh</span><br><span class="line">~$ cd .ssh</span><br><span class="line">~/.ssh$ ssh-keygen -t rsa</span><br></pre></td></tr></table></figure>
+<p><img src="http://7xsl28.com1.z0.glb.clouddn.com/hadoop_4.png" alt="Hadoop-4"></p>
+<p>3.然后再执行命令：<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~<span class="regexp">/.ssh$ cat ./id</span>_rsa.pub <span class="meta">&gt;&gt; </span>./authorized_keys</span><br></pre></td></tr></table></figure></p>
+<p>4.然后输入<code>ssh localhost</code>就不再需要密码了。</p>
+<p><img src="http://7xsl28.com1.z0.glb.clouddn.com/hadoop_5.png" alt="Hadoop-5"></p>
+<h3 id="创建新的Hadoop用户"><a href="#创建新的Hadoop用户" class="headerlink" title="创建新的Hadoop用户"></a>创建新的Hadoop用户</h3><p>1.创建一个新的Hadoop用户用来测试：</p>
+<figure class="highlight vala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">~$ su</span><br><span class="line">输入密码</span><br><span class="line"><span class="meta">#groupadd hadoop-user</span></span><br><span class="line"><span class="meta">#useradd -g hadoop-user hadoop</span></span><br><span class="line"><span class="meta">#passwd hadoop</span></span><br><span class="line">设置密码</span><br><span class="line"><span class="meta">### 安装Hadoop</span></span><br></pre></td></tr></table></figure>
+<h3 id="安装Hadoop"><a href="#安装Hadoop" class="headerlink" title="安装Hadoop"></a>安装Hadoop</h3><p>1.下载Hadoop包<br>源代码包（需编译）或二进制文件在<a href="http://hadoop.apache.org/releases.html下载" target="_blank" rel="external">http://hadoop.apache.org/releases.html下载</a><br>编译好的版本(hadoop-2.x.y.tar.gz)或者源代码包(hadoop-2.x.y-src.tar.gz)还可以在 <a href="http://mirror.bit.edu.cn/apache/hadoop/common/或者" target="_blank" rel="external">http://mirror.bit.edu.cn/apache/hadoop/common/或者</a><br><a href="http://mirrors.cnnic.cn/apache/hadoop/common/下载" target="_blank" rel="external">http://mirrors.cnnic.cn/apache/hadoop/common/下载</a></p>
+<p>2.将下载的Hadoop包（我下载的是hadoop-2.7.3.tar.gz，注意不带src！）移动到/usr/local下，我们将Hadoop安装在这个目录下。</p>
+<p>3.解压<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">tar</span> <span class="selector-tag">-zxvf</span> <span class="selector-tag">hadoop-2</span><span class="selector-class">.7</span><span class="selector-class">.3</span><span class="selector-class">.tar</span><span class="selector-class">.gz</span></span><br><span class="line"><span class="selector-tag">mv</span> <span class="selector-tag">hadoop-2</span><span class="selector-class">.7</span><span class="selector-class">.3</span> <span class="selector-tag">hadoop</span>        # 将目录更名</span><br><span class="line"><span class="selector-tag">chown</span> <span class="selector-tag">-R</span> <span class="selector-tag">hadoop</span> <span class="selector-tag">hadoop</span>        # 更改文件权限</span><br></pre></td></tr></table></figure></p>
+<p>4.解压后Hadoop即可使用<br>使用如下命令查看是否安装成功<br><figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">cd</span> /usr/<span class="keyword">local</span>/hadoop</span><br><span class="line">./bin/hadoop <span class="keyword">version</span></span><br></pre></td></tr></table></figure></p>
+<p><img src="http://7xsl28.com1.z0.glb.clouddn.com/hadoop_6.png" alt="Hadoop-6"></p>
+<h3 id="单机模式配置"><a href="#单机模式配置" class="headerlink" title="单机模式配置"></a>单机模式配置</h3><p>单机模式没有守护进程，其实无需进行SSH配置，所以上面SSH配置步可以省略。</p>
+<p>1.打开/usr/local/hadoop/etc/hadoop/hadoop-env.sh<br>2.将<br><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> J<span class="built_in">AVA_HOME</span>=$&#123;J<span class="built_in">AVA_HOME</span>&#125;</span><br></pre></td></tr></table></figure></p>
+<p>处修改为<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> JAVA_HOME=/usr/jdk/jdk1.8.0_101    <span class="comment"># 视Java安装位置而定</span></span><br><span class="line"><span class="built_in">export</span> HADOOP_HOME=/usr/<span class="built_in">local</span>/hadoop</span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:/usr/<span class="built_in">local</span>/hadoop/bin</span><br></pre></td></tr></table></figure></p>
+<p>然后<figure class="highlight plain"><figcaption><span>hadoop-env.sh```以保存修改</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">此时单机模式就已配置完成。</span><br><span class="line"></span><br><span class="line">### 单机模式测试</span><br><span class="line"></span><br><span class="line">1.采用Hadoop自带的示例WordCount来测试单机模式是否安装成功。</span><br><span class="line"></span><br><span class="line">2.在`/usr/local/hadoop`路径下创建input目录，然后拷贝统计的输入文件README.txt到input中，然后执行。</span><br></pre></td></tr></table></figure></p>
+<p>mkdir input<br>cp README.txt input<br>bin/hadoop jar share/hadoop/mapreduce/sources/hadoop-mapreduce-examples-2.7.3-sources.jar org.apache.hadoop.examples.WordCount input output<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">可以看到输出如下</span><br></pre></td></tr></table></figure></p>
+<p>…<br>File System Counters<br>        FILE: Number of bytes read=598380<br>        FILE: Number of bytes written=1162470<br>        FILE: Number of read operations=0<br>        FILE: Number of large read operations=0<br>        FILE: Number of write operations=0<br>    Map-Reduce Framework<br>        Map input records=31<br>        Map output records=179<br>        Map output bytes=2055<br>        Map output materialized bytes=1836<br>        Input split bytes=104<br>        Combine input records=179<br>        Combine output records=131<br>        Reduce input groups=131<br>        Reduce shuffle bytes=1836<br>        Reduce input records=131<br>        Reduce output records=131<br>        Spilled Records=262<br>        Shuffled Maps =1<br>        Failed Shuffles=0<br>        Merged Map outputs=1<br>        GC time elapsed (ms)=110<br>        Total committed heap usage (bytes)=242360320<br>    Shuffle Errors<br>        BAD_ID=0<br>        CONNECTION=0<br>        IO_ERROR=0<br>        WRONG_LENGTH=0<br>        WRONG_MAP=0<br>        WRONG_REDUCE=0<br>    File Input Format Counters<br>        Bytes Read=1366<br>    File Output Format Counters<br>        Bytes Written=1326<br>```<br>即说明配置成功。</p>
+<p>接下来还将进行伪分布式和集群分布式的配置。</p>
   
 	</div>
 
@@ -225,13 +253,13 @@
 
 <div class="article-categories">
   
-  <span></span> <a href="/categories/随笔-Essays/">随笔 | Essays</a>
+  <span></span> <a href="/categories/大数据处理技术-Big-Data/">大数据处理技术 | Big Data</a>
   </div>
 
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/随笔/">随笔</a>
+  <span></span> <a href="/tags/Hadoop/">Hadoop</a>
   </div>
 
 </div>
@@ -275,19 +303,11 @@
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2016/05/31/2016read-may.html" title="【2016读书】5月读书笔记">
-  <strong>上一篇：</strong><br/>
-  <span>
-  【2016读书】5月读书笔记</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/2016/05/19/learnscrapy.html"  title="快速入门Scrapy(一)--简书打赏">
+<a href="/2016/07/29/justtalk01.html"  title="谈谈这个七月">
  <strong>下一篇：</strong><br/> 
- <span>快速入门Scrapy(一)--简书打赏
+ <span>谈谈这个七月
 </span>
 </a>
 </div>
@@ -296,7 +316,7 @@
 
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="2016/05/23/talkwrite.html" data-title="当我谈写作时我谈些什么" data-url="http://whatbeg.com/2016/05/23/talkwrite.html"></div>
+	<div class="ds-thread" data-thread-key="2016/08/31/hadoop-install.html" data-title="Linux Ubuntu 16.04安装Hadoop全过程（一）" data-url="http://whatbeg.com/2016/08/31/hadoop-install.html"></div>
 </section>
 
 
@@ -307,7 +327,7 @@
   <aside class="clearfix">
   <strong class="toc-title">文章目录</strong>
  
- 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#软件"><span class="toc-number">2.</span> <span class="toc-text">软件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#步骤"><span class="toc-number">3.</span> <span class="toc-text">步骤</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#安装JDK"><span class="toc-number">3.1.</span> <span class="toc-text">安装JDK</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#配置SSH"><span class="toc-number">3.2.</span> <span class="toc-text">配置SSH</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建新的Hadoop用户"><span class="toc-number">3.3.</span> <span class="toc-text">创建新的Hadoop用户</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装Hadoop"><span class="toc-number">3.4.</span> <span class="toc-text">安装Hadoop</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#单机模式配置"><span class="toc-number">3.5.</span> <span class="toc-text">单机模式配置</span></a></li></ol></li></ol>
  
  </aside>
   </div>
