@@ -21,11 +21,11 @@
 前言Hadoop是当今最流行的分布式系统之一，能够充分利用集群进行分布式程序的开发，以实现大规模数据的高速运算和存储。Hadoop包括两个最重要的设计：HDFS和MapReduce。HDFS是分布式文件系统（Hadoop Distribution File System），为海量数据提供高效的存储">
 <meta property="og:image" content="http://7xsl28.com1.z0.glb.clouddn.com/hadoop_1.png">
 <meta property="og:image" content="http://7xsl28.com1.z0.glb.clouddn.com/hadoop_2.png">
-<meta property="og:image" content="http://7xsl28.com1.z0.glb.clouddn.com/hadoop_3.png">
-<meta property="og:image" content="http://7xsl28.com1.z0.glb.clouddn.com/hadoop_4.png">
-<meta property="og:image" content="http://7xsl28.com1.z0.glb.clouddn.com/hadoop_5.png">
+<meta property="og:image" content="http://7xsl28.com1.z0.glb.clouddn.com/hadoop_3a.png">
+<meta property="og:image" content="http://7xsl28.com1.z0.glb.clouddn.com/hadoop_4a.png">
+<meta property="og:image" content="http://7xsl28.com1.z0.glb.clouddn.com/hadoop_5a.png">
 <meta property="og:image" content="http://7xsl28.com1.z0.glb.clouddn.com/hadoop_6.png">
-<meta property="og:updated_time" content="2016-09-01T10:45:07.842Z">
+<meta property="og:updated_time" content="2016-09-01T11:15:38.133Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux Ubuntu 16.04安装Hadoop全过程（一）">
 <meta name="twitter:description" content="本文简要记述了本人参考网上教程在Ubuntu上（虚拟机）搭建Hadoop的过程，以备后用和各位获取。
@@ -119,13 +119,13 @@
 <p>1.Ubuntu默认已经安装SSH Client， 我们还要安装SSH Server<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get <span class="keyword">install</span> openssh-<span class="keyword">server</span></span><br></pre></td></tr></table></figure></p>
 <p>2.在用户hadoop命令行中输入<br><figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>ssh localhost</span><br></pre></td></tr></table></figure></p>
 <p>登录到本机，可见此时需要密码才能登录，下面免去此步骤。</p>
-<p><img src="http://7xsl28.com1.z0.glb.clouddn.com/hadoop_3.png" alt="Hadoop-3"></p>
+<p><img src="http://7xsl28.com1.z0.glb.clouddn.com/hadoop_3a.png" alt="Hadoop-3"></p>
 <p>退出刚刚的登录，然后在用户hadoop目录下(~/)新建隐藏目录.ssh，生成密钥对，一直按<enter>键，系统会默认将密钥对保存在.ssh/id_rsa 和 .ssh/id_rsa.pub中</enter></p>
 <figure class="highlight haml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">~$ exit</span><br><span class="line">~$ mkdir .ssh</span><br><span class="line">~$ cd .ssh</span><br><span class="line">~/.ssh$ ssh-keygen -t rsa</span><br></pre></td></tr></table></figure>
-<p><img src="http://7xsl28.com1.z0.glb.clouddn.com/hadoop_4.png" alt="Hadoop-4"></p>
+<p><img src="http://7xsl28.com1.z0.glb.clouddn.com/hadoop_4a.png" alt="Hadoop-4"></p>
 <p>3.然后再执行命令：<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~<span class="regexp">/.ssh$ cat ./id</span>_rsa.pub <span class="meta">&gt;&gt; </span>./authorized_keys</span><br></pre></td></tr></table></figure></p>
 <p>4.然后输入<code>ssh localhost</code>就不再需要密码了。</p>
-<p><img src="http://7xsl28.com1.z0.glb.clouddn.com/hadoop_5.png" alt="Hadoop-5"></p>
+<p><img src="http://7xsl28.com1.z0.glb.clouddn.com/hadoop_5a.png" alt="Hadoop-5"></p>
 <h3 id="安装Hadoop"><a href="#安装Hadoop" class="headerlink" title="安装Hadoop"></a>安装Hadoop</h3><p>1.下载Hadoop包<br>源代码包（需编译）或二进制文件在<a href="http://hadoop.apache.org/releases.html下载" target="_blank" rel="external">http://hadoop.apache.org/releases.html下载</a><br>编译好的版本(hadoop-2.x.y.tar.gz)或者源代码包(hadoop-2.x.y-src.tar.gz)还可以在 <a href="http://mirror.bit.edu.cn/apache/hadoop/common/或者" target="_blank" rel="external">http://mirror.bit.edu.cn/apache/hadoop/common/或者</a><br><a href="http://mirrors.cnnic.cn/apache/hadoop/common/下载" target="_blank" rel="external">http://mirrors.cnnic.cn/apache/hadoop/common/下载</a></p>
 <p>2.将下载的Hadoop包（我下载的是hadoop-2.7.3.tar.gz，注意不带src！）移动到/usr/local下，我们将Hadoop安装在这个目录下。</p>
 <p>3.解压<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">tar</span> <span class="selector-tag">-zxvf</span> <span class="selector-tag">hadoop-2</span><span class="selector-class">.7</span><span class="selector-class">.3</span><span class="selector-class">.tar</span><span class="selector-class">.gz</span></span><br><span class="line"><span class="selector-tag">mv</span> <span class="selector-tag">hadoop-2</span><span class="selector-class">.7</span><span class="selector-class">.3</span> <span class="selector-tag">hadoop</span>        # 将目录更名</span><br><span class="line"><span class="selector-tag">chown</span> <span class="selector-tag">-R</span> <span class="selector-tag">hadoop</span> <span class="selector-tag">hadoop</span>        # 更改文件权限</span><br></pre></td></tr></table></figure></p>
