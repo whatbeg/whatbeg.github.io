@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://whatbeg.com/"/>
-  <updated>2016-09-01T09:45:11.114Z</updated>
+  <updated>2016-09-01T10:45:07.842Z</updated>
   <id>http://whatbeg.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://whatbeg.com/2016/08/31/hadoop-install.html"/>
     <id>http://whatbeg.com/2016/08/31/hadoop-install.html</id>
     <published>2016-08-31T08:57:42.000Z</published>
-    <updated>2016-09-01T09:45:11.114Z</updated>
+    <updated>2016-09-01T10:45:07.842Z</updated>
     
     <content type="html">&lt;p&gt;本文简要记述了本人参考网上教程在Ubuntu上（虚拟机）搭建Hadoop的过程，以备后用和各位获取。&lt;/p&gt;
 &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;Hadoop是当今最流行的分布式系统之一，能够充分利用集群进行分布式程序的开发，以实现大规模数据的高速运算和存储。&lt;br&gt;Hadoop包括两个最重要的设计：HDFS和MapReduce。&lt;br&gt;HDFS是分布式文件系统（Hadoop Distribution File System），为海量数据提供高效的存储。&lt;br&gt;MapReduce是一种并行计算的思想，加快大数据处理的速度。&lt;/p&gt;
