@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>http://whatbeg.com/2016/09/02/hadoop-install-2.html</loc>
+    <lastmod>2016-09-02T09:09:27.446Z</lastmod>
+    <data>
+        <display>
+        <title>Linux Ubuntu 16.04安装Hadoop全过程（二） --伪分布式</title>
+        <pubTime>2016-09-02T09:00:24.000Z</pubTime>
+        
+        <tag>Hadoop</tag>
+         
+         
+           
+             
+              <breadCrumb title="大数据处理技术 | Big Data" url="http://whatbeg.com/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E6%8A%80%E6%9C%AF-Big-Data/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://whatbeg.com/2016/08/31/hadoop-install.html</loc>
     <lastmod>2016-09-01T11:15:38.133Z</lastmod>
     <data>
@@ -698,9 +718,9 @@
         <title>怎样写出优秀的研究论文？</title>
         <pubTime>2016-05-10T07:44:54.000Z</pubTime>
         
-        <tag>译文</tag>
-         
         <tag>CS</tag>
+         
+        <tag>译文</tag>
          
          
            
