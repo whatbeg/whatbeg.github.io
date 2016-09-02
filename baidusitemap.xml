@@ -5,7 +5,7 @@
     
   <url>
     <loc>http://whatbeg.com/2016/09/02/hadoop-install-2.html</loc>
-    <lastmod>2016-09-02T09:09:27.446Z</lastmod>
+    <lastmod>2016-09-02T09:14:49.975Z</lastmod>
     <data>
         <display>
         <title>Linux Ubuntu 16.04安装Hadoop全过程（二） --伪分布式</title>
@@ -718,9 +718,9 @@
         <title>怎样写出优秀的研究论文？</title>
         <pubTime>2016-05-10T07:44:54.000Z</pubTime>
         
-        <tag>CS</tag>
-         
         <tag>译文</tag>
+         
+        <tag>CS</tag>
          
          
            

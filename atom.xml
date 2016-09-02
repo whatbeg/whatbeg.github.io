@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://whatbeg.com/"/>
-  <updated>2016-09-02T09:09:27.446Z</updated>
+  <updated>2016-09-02T09:14:49.975Z</updated>
   <id>http://whatbeg.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://whatbeg.com/2016/09/02/hadoop-install-2.html"/>
     <id>http://whatbeg.com/2016/09/02/hadoop-install-2.html</id>
     <published>2016-09-02T09:00:24.000Z</published>
-    <updated>2016-09-02T09:09:27.446Z</updated>
+    <updated>2016-09-02T09:14:49.975Z</updated>
     
     <content type="html">&lt;p&gt;本文承接上文，&lt;a href=&quot;http://whatbeg.com/2016/08/31/hadoop-install.html&quot;&gt;Linux Ubuntu 16.04安装Hadoop全过程（一）&lt;/a&gt;，前文实践了单机模式的配置，此文实现伪分布式模式的配置（非YARN）。&lt;/p&gt;
 &lt;h2 id=&quot;之前遇到的问题&quot;&gt;&lt;a href=&quot;#之前遇到的问题&quot; class=&quot;headerlink&quot; title=&quot;之前遇到的问题&quot;&gt;&lt;/a&gt;之前遇到的问题&lt;/h2&gt;&lt;p&gt;先说一下遇到的一个问题。&lt;/p&gt;
@@ -57,6 +57,7 @@
 &lt;p&gt;然后如同单机模式中运行WordCount程序一样，运行：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ bin/hadoop jar share/hadoop/mapreduce/sources/hadoop-mapreduce-examples-2.7.3-sources.jar org.apache.hadoop.examples.WordCount input output&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
 &lt;p&gt;最后查看结果如下：&lt;br&gt;&lt;img src=&quot;http://7xsl28.com1.z0.glb.clouddn.com/hadoop-16.png&quot; alt=&quot;hadoop-16&quot;&gt;&lt;br&gt;移入的几个xml中（并非全部），总共有302个“单词”，每个单词的词频统计都在文件中汇总。&lt;/p&gt;
 &lt;p&gt;至此运行成功，伪分布式系统配置完毕。&lt;/p&gt;
+&lt;h2 id=&quot;下一步的工作&quot;&gt;&lt;a href=&quot;#下一步的工作&quot; class=&quot;headerlink&quot; title=&quot;下一步的工作&quot;&gt;&lt;/a&gt;下一步的工作&lt;/h2&gt;&lt;p&gt;1.探索YARN模式&lt;br&gt;2.MapReduce程序的设计与实现（WordCount）&lt;/p&gt;
 </content>
     
     <summary type="html">
@@ -760,9 +761,9 @@
       <category term="译文 | Translation" scheme="http://whatbeg.com/categories/%E8%AF%91%E6%96%87-Translation/"/>
     
     
-      <category term="CS" scheme="http://whatbeg.com/tags/CS/"/>
-    
       <category term="译文" scheme="http://whatbeg.com/tags/%E8%AF%91%E6%96%87/"/>
+    
+      <category term="CS" scheme="http://whatbeg.com/tags/CS/"/>
     
   </entry>
   
