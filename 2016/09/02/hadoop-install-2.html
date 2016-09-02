@@ -26,11 +26,12 @@
 <meta property="og:image" content="http://7xsl28.com1.z0.glb.clouddn.com/hadoop-10.png">
 <meta property="og:image" content="http://7xsl28.com1.z0.glb.clouddn.com/hadoop-11.png">
 <meta property="og:image" content="http://7xsl28.com1.z0.glb.clouddn.com/hadoop-12.png">
+<meta property="og:image" content="http://7xsl28.com1.z0.glb.clouddn.com/hadoop-17.png">
 <meta property="og:image" content="http://7xsl28.com1.z0.glb.clouddn.com/hadoop-13.png">
 <meta property="og:image" content="http://7xsl28.com1.z0.glb.clouddn.com/hadoop-14.png">
 <meta property="og:image" content="http://7xsl28.com1.z0.glb.clouddn.com/hadoop-15.png">
 <meta property="og:image" content="http://7xsl28.com1.z0.glb.clouddn.com/hadoop-16.png">
-<meta property="og:updated_time" content="2016-09-02T09:14:49.975Z">
+<meta property="og:updated_time" content="2016-09-02T12:02:06.714Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux Ubuntu 16.04安装Hadoop全过程（二） --伪分布式">
 <meta name="twitter:description" content="本文承接上文，Linux Ubuntu 16.04安装Hadoop全过程（一），前文实践了单机模式的配置，此文实现伪分布式模式的配置（非YARN）。
@@ -133,7 +134,8 @@
 <p>4.启动成功后可打开<a href="http://localhost:50070" target="_blank" rel="external">http://localhost:50070</a>查看namenode和datanode或者DFS的信息。<br><img src="http://7xsl28.com1.z0.glb.clouddn.com/hadoop-12.png" alt="hadoop-12"></p>
 <h2 id="伪分布式模式测试"><a href="#伪分布式模式测试" class="headerlink" title="伪分布式模式测试"></a>伪分布式模式测试</h2><p>单机模式直接读取的是本地文件，如input目录和output目录，而伪分布式模式需要读取分布式文件系统HDFS中的文件，所以还得先建立HDFS。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ ./bin/hdfs dfs -mkdir -p /user/hadoop  # 在HDFS中创建用户目录</span><br><span class="line">$ ./bin/hdfs dfs -mkdir input  # 在用户目录下创建input目录</span><br><span class="line">$ ./bin/hdfs dfs -put ./etc/hadoop/*.xml input  # 将一些测试文件移入input目录，就移配置xml文件作为输入</span><br></pre></td></tr></table></figure></p>
 <p>注意，我们创建了/user/hadoop用户目录，又使用的是hadoop用户，所以直接用相对路径input即可表示/user/hadoop/input。</p>
-<p>然后执行一个筛出dfs开头的单词的程序：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ./bin/hadoop jar ./share/hadoop/mapreduce/hadoop-mapreduce-examples-*.jar grep input output &apos;dfs[a-z.]+&apos;</span><br></pre></td></tr></table></figure></p>
+<p>然后执行一个筛出dfs开头的单词的程序：<br>其中<code>./bin/hadoop jar</code>向集群提交作业<br><code>grep</code>是Hadoop提供的一个示例程序。<br>hadoop提供的示例程序如下：（0.19版本）<br><img src="http://7xsl28.com1.z0.glb.clouddn.com/hadoop-17.png" alt="hadoop-17"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ./bin/hadoop jar ./share/hadoop/mapreduce/hadoop-mapreduce-examples-*.jar grep input output &apos;dfs[a-z.]+&apos;</span><br></pre></td></tr></table></figure>
 <p><img src="http://7xsl28.com1.z0.glb.clouddn.com/hadoop-13.png" alt="hadoop-13"></p>
 <p>然后查看输出，此时输出仍在HDFS中。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ./bin/hdfs dfs -cat output/*</span><br></pre></td></tr></table></figure></p>
 <p><img src="http://7xsl28.com1.z0.glb.clouddn.com/hadoop-14.png" alt="hadoop-14"></p>
