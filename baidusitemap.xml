@@ -3,6 +3,26 @@
 
 
     
+  <url>
+    <loc>http://whatbeg.com/2016/09/10/hadoop-go-1.html</loc>
+    <lastmod>2016-09-10T12:41:14.229Z</lastmod>
+    <data>
+        <display>
+        <title>Hadoop MapReduce进行WordCount自主编译运行</title>
+        <pubTime>2016-09-10T12:28:29.000Z</pubTime>
+        
+        <tag>Hadoop</tag>
+         
+         
+           
+             
+              <breadCrumb title="大数据处理技术 | Big Data" url="http://whatbeg.com/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E6%8A%80%E6%9C%AF-Big-Data/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
     
   <url>
     <loc>http://whatbeg.com/2016/09/02/hadoop-install-2.html</loc>
@@ -320,9 +340,9 @@
         
         <tag>Python</tag>
          
-        <tag>数据分析</tag>
-         
         <tag>Web</tag>
+         
+        <tag>数据分析</tag>
          
          
            
