@@ -1,0 +1,781 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>多台虚拟机搭建模拟网络环境 | Whatbeg&#39;s blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="whatbeg">
+    
+
+    
+    <meta name="description" content="目的采用多台虚拟机在一台计算机实体上模拟一个小型的网络环境。我们采用虚拟机（ Virtual Machine）软件来模拟一个网络环境进行实验，这类软件的主要功能是利用软件来模拟出具有完整硬件系统功能的且运行在隔离环境中的完整计算机系统。这样我们可以在一台物理计算机即宿主机器（Host Machine）上模拟出一台或多台虚拟的计算机。这些虚拟机能够像真正的计算机那样进行工作，我们可以在其上安装全新的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="多台虚拟机搭建模拟网络环境">
+<meta property="og:url" content="http://whatbeg.com/2016/09/24/vmnetconstruction.html">
+<meta property="og:site_name" content="Whatbeg's blog">
+<meta property="og:description" content="目的采用多台虚拟机在一台计算机实体上模拟一个小型的网络环境。我们采用虚拟机（ Virtual Machine）软件来模拟一个网络环境进行实验，这类软件的主要功能是利用软件来模拟出具有完整硬件系统功能的且运行在隔离环境中的完整计算机系统。这样我们可以在一台物理计算机即宿主机器（Host Machine）上模拟出一台或多台虚拟的计算机。这些虚拟机能够像真正的计算机那样进行工作，我们可以在其上安装全新的">
+<meta property="og:image" content="http://7xsl28.com1.z0.glb.clouddn.com/network-01.png">
+<meta property="og:image" content="http://7xsl28.com1.z0.glb.clouddn.com/network-02.png">
+<meta property="og:image" content="http://7xsl28.com1.z0.glb.clouddn.com/network-0301.png">
+<meta property="og:image" content="http://7xsl28.com1.z0.glb.clouddn.com/network-03.png">
+<meta property="og:image" content="http://7xsl28.com1.z0.glb.clouddn.com/network-04.png">
+<meta property="og:image" content="http://7xsl28.com1.z0.glb.clouddn.com/network-05.png">
+<meta property="og:image" content="http://7xsl28.com1.z0.glb.clouddn.com/network-06.png">
+<meta property="og:image" content="http://7xsl28.com1.z0.glb.clouddn.com/network-10.png">
+<meta property="og:image" content="http://7xsl28.com1.z0.glb.clouddn.com/network-09.png">
+<meta property="og:image" content="http://7xsl28.com1.z0.glb.clouddn.com/network-07.png">
+<meta property="og:image" content="http://7xsl28.com1.z0.glb.clouddn.com/network-08.png">
+<meta property="og:image" content="http://7xsl28.com1.z0.glb.clouddn.com/network-11.png">
+<meta property="og:image" content="http://7xsl28.com1.z0.glb.clouddn.com/network-12.png">
+<meta property="og:image" content="http://7xsl28.com1.z0.glb.clouddn.com/network-13.png">
+<meta property="og:image" content="http://7xsl28.com1.z0.glb.clouddn.com/network-14.png">
+<meta property="og:image" content="http://7xsl28.com1.z0.glb.clouddn.com/network-19.png">
+<meta property="og:image" content="http://7xsl28.com1.z0.glb.clouddn.com/network-22.png">
+<meta property="og:image" content="http://7xsl28.com1.z0.glb.clouddn.com/network-26.png">
+<meta property="og:image" content="http://7xsl28.com1.z0.glb.clouddn.com/network-24.png">
+<meta property="og:image" content="http://7xsl28.com1.z0.glb.clouddn.com/network-25.png">
+<meta property="og:image" content="http://7xsl28.com1.z0.glb.clouddn.com/network-27.png">
+<meta property="og:updated_time" content="2016-09-24T07:39:41.339Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="多台虚拟机搭建模拟网络环境">
+<meta name="twitter:description" content="目的采用多台虚拟机在一台计算机实体上模拟一个小型的网络环境。我们采用虚拟机（ Virtual Machine）软件来模拟一个网络环境进行实验，这类软件的主要功能是利用软件来模拟出具有完整硬件系统功能的且运行在隔离环境中的完整计算机系统。这样我们可以在一台物理计算机即宿主机器（Host Machine）上模拟出一台或多台虚拟的计算机。这些虚拟机能够像真正的计算机那样进行工作，我们可以在其上安装全新的">
+<meta name="twitter:image" content="http://7xsl28.com1.z0.glb.clouddn.com/network-01.png">
+
+    
+    <link rel="alternative" href="/atom.xml" title="Whatbeg&#39;s blog" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/w.ico">
+    
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Whatbeg&#39;s blog">Whatbeg&#39;s blog</a></h1>
+				<h2 class="blog-motto">路漫漫其修远兮，仍将上下而求索</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">首页(Home)</a></li>
+					
+						<li><a href="/archives">归档(Archives)</a></li>
+					
+						<li><a href="/tags">标签(Tags)</a></li>
+					
+						<li><a href="/categories">分类(Categories)</a></li>
+					
+						<li><a href="/about">关于(About)</a></li>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/09/24/vmnetconstruction.html" title="多台虚拟机搭建模拟网络环境" itemprop="url">多台虚拟机搭建模拟网络环境</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="whatbeg" target="_blank" itemprop="author">whatbeg</a>
+		
+  <p class="article-time">
+    <time datetime="2016-09-24T07:19:51.000Z" itemprop="datePublished"> 发表于 2016-09-24</time>
+    <span id="busuanzi_container_page_pv">
+    总阅读<span id="busuanzi_value_page_pv"></span>次
+    </span>
+  </p>
+
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#目的"><span class="toc-number">1.</span> <span class="toc-text">目的</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#网络拓扑"><span class="toc-number">2.</span> <span class="toc-text">网络拓扑</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#步骤"><span class="toc-number">3.</span> <span class="toc-text">步骤</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#配置虚拟机"><span class="toc-number">3.1.</span> <span class="toc-text">配置虚拟机</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设置每个终端PC"><span class="toc-number">3.2.</span> <span class="toc-text">设置每个终端PC</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设置路由器"><span class="toc-number">3.3.</span> <span class="toc-text">设置路由器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#测试"><span class="toc-number">3.4.</span> <span class="toc-text">测试</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#wireshark抓包"><span class="toc-number">3.5.</span> <span class="toc-text">wireshark抓包</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#完结"><span class="toc-number">4.</span> <span class="toc-text">完结</span></a></li></ol>
+		
+		</div>
+		
+		<h2 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h2><p>采用多台虚拟机在一台计算机实体上模拟一个小型的网络环境。<br>我们采用虚拟机（ Virtual Machine）软件来模拟一个网络环境进行实验，这类软件的主<br>要功能是利用软件来模拟出具有完整硬件系统功能的且运行在隔离环境中的完整计算机系统。这样我们可以在一台物理计算机即宿主机器（Host Machine）上模拟出一台或多台虚拟的计算机。这些虚拟机能够像真正的计算机那样进行工作，我们可以在其上安装全新的操作系统和应用软件。通过虚拟机软件中的虚连接设备将各个虚拟机连接起来，我们就可以搭建出实验所需的网络环境。</p>
+<h2 id="网络拓扑"><a href="#网络拓扑" class="headerlink" title="网络拓扑"></a>网络拓扑</h2><p>接下来给出要构建的网络拓扑结构和拓扑结构配置信息表：</p>
+<p><img src="http://7xsl28.com1.z0.glb.clouddn.com/network-01.png" alt=""></p>
+<p><img src="http://7xsl28.com1.z0.glb.clouddn.com/network-02.png" alt=""></p>
+<p>此次实验我们采用5台虚拟机，分别为UT-571~UT-575，网络拓扑中有两台路由器，分别用UT-571和UT-574来模拟，两个路由器通过网络相连，这里用虚拟网络VMnet4来模拟，两个路由器分别下辖PC0，PC1和PC2三台主机，三台主机分别用UT-572,UT-573和UT-575来模拟。</p>
+<p>由网络拓扑结构图可以看出，PC0，PC1和Route0处于同一个网段，网段为192.168.2.0/24，而PC2和Route1处于同一个网段，为192.168.3.0/24，然后为了实现两个网段的联通，我们将两个路由器设置在同一个网段192.168.4.0/24中，即需要三个虚拟网络，来实现5台机器相互的联通。<br>我们的目标是配置每台机器的网卡，IP，网关和路由器的转发表，使得此虚拟网络上的每台机器之间都可以实现通信。<br>图中正方体的图形表示局域网的交换机。<br>最后我们通过机器之间相互Ping操作来测试是否联通。</p>
+<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><h3 id="配置虚拟机"><a href="#配置虚拟机" class="headerlink" title="配置虚拟机"></a>配置虚拟机</h3><p>我们至少需要给每台虚拟机配置一个网卡以实现网络互连，并且需要给虚拟机UT-571和UT-574配置两块网卡，因为它们是路由器，分属于两个网段，配置虚拟机的过程如下所示：<br>在虚拟机开机之前选择编辑选项<br><img src="http://7xsl28.com1.z0.glb.clouddn.com/network-0301.png" alt=""></p>
+<p>如果之前没有网卡，那么点Add添加网卡，然后next：<br><img src="http://7xsl28.com1.z0.glb.clouddn.com/network-03.png" alt=""><br><img src="http://7xsl28.com1.z0.glb.clouddn.com/network-04.png" alt=""></p>
+<p>添加网卡的配置，选择Custom: Specific virtual network，将机器配置到对应的虚拟网络，如PC0和PC1配置到VMnet2，PC2配置到VMnet3，两个路由器虚拟机配置添加两块网卡分别设为两个网段。<br><img src="http://7xsl28.com1.z0.glb.clouddn.com/network-05.png" alt=""><br><img src="http://7xsl28.com1.z0.glb.clouddn.com/network-06.png" alt=""></p>
+<h3 id="设置每个终端PC"><a href="#设置每个终端PC" class="headerlink" title="设置每个终端PC"></a>设置每个终端PC</h3><p>ip 地址是计算机进行网络通讯的基础，每一台联网计算机都至少具有一个 ip 地址。在日常使用中，我们通常能自动获取 ip，这是由于 DHCP 协议的作用。这次我们需要手动为配置好的虚拟网络分配 ip 地址。</p>
+<p>打开每台机器（PC0，PC1，PC2）的终端Terminal，输入<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ifconfig <span class="_">-a</span></span><br></pre></td></tr></table></figure></p>
+<p>将会看到如下的输出：<br><img src="http://7xsl28.com1.z0.glb.clouddn.com/network-10.png" alt=""><br>输出显示机器网卡还没有配置IPV4地址，我们将手动配置固定的IP地址。</p>
+<p>为了防止DHCP协议和Network Manager的干扰，改变我们设置的IP地址，我们输入<br><figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo service network-manager <span class="built_in">stop</span></span><br></pre></td></tr></table></figure></p>
+<p>停用network-manager服务，这样我们设置的IP就不会被系统改变了。</p>
+<blockquote>
+<p>Network Manager是Linux系统进行网络管理的一项服务。<br>Network Manager由一个管理系统网络连接、并且将其状态通过D-BUS（是一个提供简单的应用程序互相通讯的途径的自由软件项目，它是做为freedesktoporg项目的一部分来开发的。）进行报告的后台服务，以及一个允许用户管理网络连接的客户端程序。<br>Network Manager的优点：简化网络连接的工作，让桌面本身和其他应用程序能感知网络。</p>
+</blockquote>
+<p>想了解network manager请自行查阅资料。</p>
+<p>然后设置各个PC的IP，PC0和PC1由于同处192.168.2.0/24网段，所以我们将它们的IP分别设置为192.168.2.2（UT-572）和192.168.2.3（UT-573），将192.168.2.1留给路由器Route0（UT-571）使用。<br>设置IP地址有如下命令：（以192.168.2.2为例）<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">sudo</span> <span class="selector-tag">ifconfig</span> <span class="selector-tag">eth0</span> 192<span class="selector-class">.168</span><span class="selector-class">.2</span><span class="selector-class">.2</span> <span class="selector-tag">netmask</span> 255<span class="selector-class">.255</span><span class="selector-class">.255</span><span class="selector-class">.0</span></span><br></pre></td></tr></table></figure></p>
+<p>然后可使用<code>ifconfig -a</code>命令查看IP情况如图。<br><img src="http://7xsl28.com1.z0.glb.clouddn.com/network-09.png" alt=""></p>
+<p>然后设置默认网关为该网段的路由器Route0的eth0的IP地址（192.168.2.1）：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">sudo</span> <span class="selector-tag">route</span> <span class="selector-tag">add</span> <span class="selector-tag">default</span> <span class="selector-tag">gw</span> 192<span class="selector-class">.168</span><span class="selector-class">.2</span><span class="selector-class">.1</span></span><br></pre></td></tr></table></figure></p>
+<p>这样一个终端PC就已经配置好了，它有了自己的IP地址和默认网关。</p>
+<blockquote>
+<p>大家都知道，从一个房间走到另一个房间，必然要经过一扇门。同样，从一个网络向另一个网络发送信息，也必须经过一道“关口”，这道关口就是网关。顾名思义，网关（Gateway）就是一个网络连接到另一个网络的“关口”，也就是网络关卡（–百度百科），此时PC0的网络关口就是它的路由器Route0的eth0。</p>
+</blockquote>
+<p>其它终端PC配置相似。</p>
+<h3 id="设置路由器"><a href="#设置路由器" class="headerlink" title="设置路由器"></a>设置路由器</h3><p>IP地址设置同上，<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">ifconfig</span> <span class="selector-tag">-a</span>  # 查看<span class="selector-tag">IP</span>地址情况</span><br><span class="line"><span class="selector-tag">sudo</span> <span class="selector-tag">ifconfig</span> <span class="selector-tag">eth0</span> 192<span class="selector-class">.168</span><span class="selector-class">.2</span><span class="selector-class">.1</span> <span class="selector-tag">netmask</span> 255<span class="selector-class">.255</span><span class="selector-class">.255</span><span class="selector-class">.0</span>  # 设置<span class="selector-tag">eth0</span>端<span class="selector-tag">IP</span>地址</span><br><span class="line"><span class="selector-tag">sudo</span> <span class="selector-tag">ifconfig</span> <span class="selector-tag">eth1</span> 192<span class="selector-class">.168</span><span class="selector-class">.4</span><span class="selector-class">.1</span> <span class="selector-tag">netmask</span> 255<span class="selector-class">.255</span><span class="selector-class">.255</span><span class="selector-class">.0</span>  # <span class="selector-tag">eth1</span>端</span><br></pre></td></tr></table></figure></p>
+<p>eth0是面向PC0和PC1的网卡，而eth1是面向另一个网段(192.168.4.0/24)的的网卡<br>但路由器毕竟是路由器，它还需要有一套路由转发表，以便起到路由的作用。<br>所以接下来设置Route0（UT-571）的路由表：<br><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">sudo</span> ip route add <span class="number">192.168.2.0</span>/<span class="number">24</span> via <span class="number">192.168.2.1</span></span><br><span class="line">sudo ip route add <span class="number">192.168.3.0</span>/<span class="number">24</span> via <span class="number">192.168.4.2</span></span><br><span class="line">sudo ip route add <span class="number">192.168.4.0</span>/<span class="number">24</span> via <span class="number">192.168.4.1</span></span><br></pre></td></tr></table></figure></p>
+<p>其中 ip route add 192.168.2.0/24 via 192.168.2.1 命令添加的规则，告诉路由目的 ip 在<br>192.168.2.0/24(192.168.2.1~192.168.2.255)网段内的封包经由 ip 地址为 192.168.2.1 的设备(Route0)转发出去，即下一跳的 ip 为 192.168.2.1。而 192.168.2.0/24 是 Linux 中常用的掩码表示方式。<br>24 表示掩码字长为 24 即掩码为 255.255.255.0， 192.168.2 为网络号， 1 ~ 254 为网络中的主机号。此外还有其他形式用于添加路由规则的命令。<br>而第二条规则表示告诉路由目的IP在192.168.3.0/24网段的封包要经过的下一跳IP为192.168.4.2（即VMnet4的另一端，也即Route1的eth1，因为Route1是网段192.168.3.0/24的路由器）<br>最后一条规则表示，告诉路由目的IP在192.168.4.0/24网段的封包将被转发的下一跳IP为192.168.4.1即Route0的eth1.</p>
+<p>最后我们要让虚拟路由允许转发，置虚拟机 U-571 的 <code>ip_forward</code> 标志为 1。 这里我们需要把<code>/proc/sys/net/ipv4/</code>目录下的文件<code>ip_forward</code>值置为 1。使用命令 echo，形如：<br><figure class="highlight gauss"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo <span class="number">1</span> &gt; /<span class="function"><span class="keyword">proc</span>/<span class="title">sys</span>/<span class="title">net</span>/<span class="title">ipv4</span>/<span class="title">ip_forward</span></span></span><br></pre></td></tr></table></figure></p>
+<p>这样我们的路由器Route0也就设置好了，以相同的步骤我们很快可以设置好Route1。<br>一些步骤图如下：<br><img src="http://7xsl28.com1.z0.glb.clouddn.com/network-07.png" alt=""><br><img src="http://7xsl28.com1.z0.glb.clouddn.com/network-08.png" alt=""><br><img src="http://7xsl28.com1.z0.glb.clouddn.com/network-11.png" alt=""><br><img src="http://7xsl28.com1.z0.glb.clouddn.com/network-12.png" alt=""><br><img src="http://7xsl28.com1.z0.glb.clouddn.com/network-13.png" alt=""></p>
+<h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><p>最后我们可以在不同的虚拟机上ping别的虚拟机的IP，已测试是否实现互联互通。</p>
+<p>PC0 ping PC1:<br><img src="http://7xsl28.com1.z0.glb.clouddn.com/network-14.png" alt=""></p>
+<p>PC0 ping Route1 eth1 和 PC2:<br><img src="http://7xsl28.com1.z0.glb.clouddn.com/network-19.png" alt=""></p>
+<p>PC2 ping PC0, PC1:<br><img src="http://7xsl28.com1.z0.glb.clouddn.com/network-22.png" alt=""></p>
+<p>等等等等，容易看到，正确设置的情况下，都可以ping通，实现了两个局域网的互联互通。</p>
+<h3 id="wireshark抓包"><a href="#wireshark抓包" class="headerlink" title="wireshark抓包"></a>wireshark抓包</h3><p>在Terminal中输入<br><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">sudo</span> wireshark</span><br></pre></td></tr></table></figure></p>
+<p>启动wireshark，通过下图蓝框选择要监听的设备，如eth0，然后在终端中启动ping，观测数据包的来往：<br><img src="http://7xsl28.com1.z0.glb.clouddn.com/network-26.png" alt=""></p>
+<p>结果如下，PC0 ping PC1的包流动情况：<br><img src="http://7xsl28.com1.z0.glb.clouddn.com/network-24.png" alt=""></p>
+<p>PC0 ping PC2的包流动情况：<br><img src="http://7xsl28.com1.z0.glb.clouddn.com/network-25.png" alt=""></p>
+<p>点开某个包，可以看到：<br><img src="http://7xsl28.com1.z0.glb.clouddn.com/network-27.png" alt=""></p>
+<p>协议框中显示所选分组的各层协议：物理层帧、以太网帧及其首部、 IP 协议数据报及其首部， Internet控制报文协议。原始框中则显示分组中包含的数据的每个字节。从中可以观察到原始数据，其中左边显示的是十六进制的数据，右边则是 ASCII 码。在协议框中选中一个条目，在原始框中会标记出对应的原始数据，反之在原始框中选中也一样。</p>
+<h2 id="完结"><a href="#完结" class="headerlink" title="完结"></a>完结</h2><p>这样，此次虚拟网络构建就成功了。<br>总的来说，计算机网络这个东西，知道 和 会做 之间有着很大的距离，一些基础的网络理论知识，真正用起来却显得无比的生疏，终究还是太菜了罢~</p>
+  
+	</div>
+
+
+    
+	<!-- css -->
+	<style type="text/css">
+	    .center {
+	        text-align: center;
+	    }
+	    .hidden {
+	        display: none;
+	    }
+		.donate_bar a.btn_donate{
+			display: inline-block;
+			width: 82px;
+			height: 82px;
+			background: url("http://7xsl28.com1.z0.glb.clouddn.com/btn_reward.gif") no-repeat;
+			_background: url("http://7xsl28.com1.z0.glb.clouddn.com/btn_reward.gif") no-repeat;
+
+			<!-- http://img.t.sinajs.cn/t5/style/images/apps_PRF/e_media/btn_reward.gif
+			     因为本 hexo 生成的博客所用的 theme 的 a:hover 带动画效果，
+				 为了在让打赏按钮显示效果正常 而 添加了以下几行 css，
+				 嵌入其它博客时不一定要它们。 -->
+			-webkit-transition: background 0s;
+			-moz-transition: background 0s;
+			-o-transition: background 0s;
+			-ms-transition: background 0s;
+			transition: background 0s;
+			<!-- /让打赏按钮的效果显示正常 而 添加的几行 css 到此结束 -->
+		}
+
+		.donate_bar a.btn_donate:hover{ background-position: 0px -82px;}
+		.donate_bar .donate_txt {
+			display: block;
+			color: #9d9d9d;
+			font: 14px/2 "Microsoft Yahei";
+		}
+		.bold{ font-weight: bold; }
+	</style>
+	<!-- /css -->
+
+    <!-- Donate Module -->
+    <div id="donate_module">
+
+	<!-- btn_donate & tips -->
+	<div id="donate_board" class="donate_bar center">
+	    <br>
+	    ------------------------------------------------------------------------------------------------------------------------------
+	    <br>
+		<a id="btn_donate" class="btn_donate" target="_self" href="javascript:;" title="Donate 打赏"></a>
+		<span class="donate_txt">
+			听说，打赏我的人最后都找到了真爱。
+		</span>
+			
+		
+	</div>
+	<!-- /btn_donate & tips -->
+
+	<!-- donate guide -->
+    
+	<div id="donate_guide" class="donate_bar center hidden">
+        <br>
+	    ------------------------------------------------------------------------------------------------------------------------------
+	    <br>
+	    
+	    <div width="100%" align="center"><div name="dashmain" id="dash-main-id-87895f" class="dash-main-3 87895f-0.99"></div></div>
+		<script type="text/javascript" charset="utf-8" src="http://www.dashangcloud.com/static/ds.js"></script>
+		
+
+		<a href="http://7xsl28.com1.z0.glb.clouddn.com/wechatpay.png" title="用微信扫一扫哦~" class="fancybox" rel="article0">
+			<img src="http://7xsl28.com1.z0.glb.clouddn.com/wechatpay.png" title="微信打赏 Donate" height="190px" width="auto"/>
+		</a>
+        
+        &nbsp;&nbsp;
+
+		<a href="http://7xsl28.com1.z0.glb.clouddn.com/alipay.jpg" title="用支付宝扫一扫即可~" class="fancybox" rel="article0">
+			<img src="http://7xsl28.com1.z0.glb.clouddn.com/alipay.jpg" title="支付宝打赏 Donate" height="190px" width="auto"/>
+		</a>
+
+		<span class="donate_txt">
+			听说，打赏我的人最后都找到了真爱。
+		</span>
+
+	</div>
+	<!-- /donate guide -->
+
+	<!-- donate script -->
+	<script type="text/javascript">
+		document.getElementById('btn_donate').onclick = function() {
+			$('#donate_board').addClass('hidden');
+			$('#donate_guide').removeClass('hidden');
+		}
+
+		function donate_on_web(){
+			$('#donate').submit();
+        }
+
+		var original_window_onload = window.onload;
+        window.onload = function () {
+            if (original_window_onload) {
+                original_window_onload();
+            }
+            document.getElementById('donate_board_wdg').className = 'hidden';
+		}
+	</script>
+	<!-- /donate script -->
+</div>
+<!-- /Donate Module -->
+   
+
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  
+  <span></span> <a href="/categories/计算机相关-CS-Related/">计算机相关 | CS.Related</a>
+  </div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/CS/">CS</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	<div class="share-jiathis">
+	  
+<div class="jiathis_style_24x24">
+	<a class="jiathis_button_tsina"></a>
+	<a class="jiathis_button_weixin"></a>
+	<a class="jiathis_button_tqq"></a>
+	<a class="jiathis_button_qzone"></a>
+	<a class="jiathis_button_douban"></a>
+	<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+    var jiathis_config={
+    data_track_clickback:true,
+    sm:"copy,renren,cqq",
+    pic:"",
+    summary:"",
+     ralateuid:{"tsina":"husuche## e.g. 2176287895 Your weibo id,It will be used in share button."},hideMore:false}
+    
+  </script> 
+<script type="text/javascript" src="//v3.jiathis.com/code/jia.js?uid=2094149
+2094149" charset="utf-8"></script>      
+
+	 </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2016/10/06/bigdatapapers.html" title="大数据系统方面的经典论文">
+  <strong>上一篇：</strong><br/>
+  <span>
+  大数据系统方面的经典论文</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2016/09/20/computationgeometrycomplate.html"  title="珍藏多年的计算几何模板">
+ <strong>下一篇：</strong><br/> 
+ <span>珍藏多年的计算几何模板
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+<section id="comments" class="comment">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <aside class="clearfix">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#目的"><span class="toc-number">1.</span> <span class="toc-text">目的</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#网络拓扑"><span class="toc-number">2.</span> <span class="toc-text">网络拓扑</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#步骤"><span class="toc-number">3.</span> <span class="toc-text">步骤</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#配置虚拟机"><span class="toc-number">3.1.</span> <span class="toc-text">配置虚拟机</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设置每个终端PC"><span class="toc-number">3.2.</span> <span class="toc-text">设置每个终端PC</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设置路由器"><span class="toc-number">3.3.</span> <span class="toc-text">设置路由器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#测试"><span class="toc-number">3.4.</span> <span class="toc-text">测试</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#wireshark抓包"><span class="toc-number">3.5.</span> <span class="toc-text">wireshark抓包</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#完结"><span class="toc-number">4.</span> <span class="toc-text">完结</span></a></li></ol>
+ 
+ </aside>
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+<div class="about">
+    <p class="asidetitle">Short bio</p>
+    <div class="clearfix">
+        <!-- <img src="http://7xsl28.com1.z0.glb.clouddn.com/niuzai.jpg" height="74px" width="74px" id="about-image" alt> -->
+        <span style="font-size: medium; font-family: Calibri Light, Open Sans, Microsoft YaHei Light">
+        whatbeg.com is written by Qiu Hu. Now Qiu Hu is a Master Grad. living in Nanjing, Jiangsu Province, China.
+        <br>
+        You can contact me with email.
+        <br>
+        Just enjoy your reading here!
+        <br>
+        Comments are always welcome:)
+        </span>
+    </div>
+</div>
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/大数据系统与技术-Big-Data/" title="大数据系统与技术 | Big Data">大数据系统与技术 | Big Data<sup>6</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/成长之路-Biography/" title="成长之路 | Biography">成长之路 | Biography<sup>8</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/数据科学-Data-Science/" title="数据科学 | Data Science">数据科学 | Data Science<sup>8</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/机器学习-Mac-Learning/" title="机器学习 | Mac.Learning">机器学习 | Mac.Learning<sup>7</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/深度学习-Deep-Learning/" title="深度学习 | Deep Learning">深度学习 | Deep Learning<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/算法-Algorithm/" title="算法 | Algorithm">算法 | Algorithm<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/编程语言-Program-Lang/" title="编程语言 | Program Lang.">编程语言 | Program Lang.<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/计算机相关-CS-Related/" title="计算机相关 | CS.Related">计算机相关 | CS.Related<sup>4</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/译文-Translation/" title="译文 | Translation">译文 | Translation<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/读书-Reading/" title="读书 | Reading">读书 | Reading<sup>6</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/错误解决与优化-Err-Opt/" title="错误解决与优化 | Err&amp;Opt">错误解决与优化 | Err&amp;Opt<sup>4</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/随笔-Essays/" title="随笔 | Essays">随笔 | Essays<sup>6</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+  <div class="archiveslist">
+    <p class="asidetitle"><a href="/archives">归档</a></p>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">23</span></li></ul>
+  </div>
+
+
+  
+  <div class="tagcloudlist">
+    <p class="asidetitle">标签云</p>
+    <div class="tagcloudlist clearfix">
+       <a href="/tags/CS/" style="font-size: 15.56px;">CS</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Hadoop/" style="font-size: 13.33px;">Hadoop</a> <a href="/tags/Latex/" style="font-size: 10px;">Latex</a> <a href="/tags/Python/" style="font-size: 18.89px;">Python</a> <a href="/tags/Summary/" style="font-size: 14.44px;">Summary</a> <a href="/tags/TensorFlow/" style="font-size: 10px;">TensorFlow</a> <a href="/tags/Web/" style="font-size: 11.11px;">Web</a> <a href="/tags/hexo/" style="font-size: 13.33px;">hexo</a> <a href="/tags/吃喝玩乐/" style="font-size: 10px;">吃喝玩乐</a> <a href="/tags/大数据/" style="font-size: 11.11px;">大数据</a> <a href="/tags/影视/" style="font-size: 11.11px;">影视</a> <a href="/tags/数据分析/" style="font-size: 16.67px;">数据分析</a> <a href="/tags/机器学习/" style="font-size: 20px;">机器学习</a> <a href="/tags/深度学习/" style="font-size: 12.22px;">深度学习</a> <a href="/tags/算法/" style="font-size: 12.22px;">算法</a> <a href="/tags/论文阅读/" style="font-size: 10px;">论文阅读</a> <a href="/tags/译文/" style="font-size: 11.11px;">译文</a> <a href="/tags/读书/" style="font-size: 17.78px;">读书</a> <a href="/tags/随笔/" style="font-size: 14.44px;">随笔</a>
+    </div>
+  </div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="http://www.cnblogs.com/whatbeg/" target="_blank" title="Old Blog">Old Blog</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://github.com/whatbeg" target="_blank" title="My Github">My Github</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.matrix67.com/blog/" target="_blank" title="Matrix67">Matrix67</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.liaoxuefeng.com/" target="_blank" title="廖雪峰">廖雪峰</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.ruanyifeng.com/blog/" target="_blank" title="阮一峰">阮一峰</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://mindhacks.cn/" target="_blank" title="刘未鹏">刘未鹏</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://blog.pluskid.org/" target="_blank" title="Free Mind">Free Mind</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://blog.csdn.net/zouxy09/" target="_blank" title="zouxy机器学习">zouxy机器学习</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  <table height=30 cellSpacing=0 cellPadding=0 width=180 border=0>
+<form action="http://www.sogou.com/web" target="_blank">
+<tr style='font-size:12px;color:#000000'>
+<td align="center" width=100><input type="text" name="query" size=14 style='BORDER-RIGHT: #999 1px solid; BORDER-TOP: #999 1px solid; BORDER-LEFT: #999	1px	solid; BORDER-BOTTOM: #999 1px solid; HEIGHT: 19px; BACKGROUND-COLOR: #fff'>
+<input type="hidden" name="insite" value="whatbeg.com">
+<input type="hidden" name="insite2" value="whatbeg.com"></td>
+<td align="left" width=45><input type="submit" name="sogou_submit" value="搜索">
+</td></tr></form>
+</table>
+
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+        
+
+	    
+		
+				<div class="cc-license">
+          <a href="http://creativecommons.org/licenses/by-nc-nd/4.0" class="cc-opacity" target="_blank">
+            <img src="/img/cc-by-nc-nd.svg" alt="Creative Commons" />
+          </a>
+        </div>
+    
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2016-2017 
+		
+		<a href="/about" target="_blank" title="whatbeg">whatbeg</a>
+		
+		<br>
+		<span class="post-count">Total words: <span style="color:orange">201.0k</span></span>
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+        <span id="busuanzi_container_site_pv">
+        &nbsp;&nbsp;Total visits:&nbsp;<span style="color:orange" id="busuanzi_value_site_pv"></span>
+        </span>
+        <span id="busuanzi_container_site_uv">
+        &nbsp;&nbsp;You are Visitor No.<span style="color:orange" id="busuanzi_value_site_uv"></span>
+        </span>
+        </br>
+		</p>
+		
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    $('#toc.toc-aside').css('display', 'block').addClass('fadeIn');  //侧边栏显示文章目录
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');   //侧边栏显示widget
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+        getSize();
+        if (myWidth >= 1024) {
+          c.click();
+        }
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+
+
+
+<script type="text/javascript">
+
+var disqus_shortname = 'whatbeg';
+
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+</script>
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1258390595'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s95.cnzz.com/z_stat.php%3Fid%3D1258390595%26online%3D1%26show%3Dline' type='text/javascript'%3E%3C/script%3E"));</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    bp.src = '//push.zhanzhang.baidu.com/push.js';
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+  </body>
+</html>
+
+
