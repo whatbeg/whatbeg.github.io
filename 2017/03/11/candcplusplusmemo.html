@@ -4,29 +4,29 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>当我谈写作时我谈些什么 | Whatbeg&#39;s blog</title>
+    <title>C/C++语言备忘 | Whatbeg&#39;s blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="whatbeg">
     
 
     
-    <meta name="description" content="论文初稿终于告成，又可以偷得浮生几日闲了，上次谈了谈阅读，这次来说说写作这件事儿。
-笔者最早接触博客是在2012年，1月17日注册了新浪博客，那时候韩寒和方舟子在博客上打笔仗闹得正欢，为了更加密切的关注，就顺手注册了一个新浪博客。后来也发了一些个文章，现在回去看那些文字真是有点哭笑不得。
-时隔两年，时间来到2013年12月份，我注册了博客园，开始写“技术博客”，其实刚开始并不是想写技术博客才注册的">
+    <meta name="description" content="本文对一些常用的C/C++语言的小技巧或者小知识做一个备忘，以便查找。
+数字转String12345int x;string id;stringstream ss;ss &amp;lt;&amp;lt; x;ss &amp;gt;&amp;gt; id;
+结构体内嵌比较函数的规则1234567struct node&amp;#123;    int l,r;    bool operator &amp;lt;(const node &amp;amp;a">
 <meta property="og:type" content="article">
-<meta property="og:title" content="当我谈写作时我谈些什么">
-<meta property="og:url" content="http://whatbeg.com/2016/05/23/talkwrite.html">
+<meta property="og:title" content="C/C++语言备忘">
+<meta property="og:url" content="http://whatbeg.com/2017/03/11/candcplusplusmemo.html">
 <meta property="og:site_name" content="Whatbeg's blog">
-<meta property="og:description" content="论文初稿终于告成，又可以偷得浮生几日闲了，上次谈了谈阅读，这次来说说写作这件事儿。
-笔者最早接触博客是在2012年，1月17日注册了新浪博客，那时候韩寒和方舟子在博客上打笔仗闹得正欢，为了更加密切的关注，就顺手注册了一个新浪博客。后来也发了一些个文章，现在回去看那些文字真是有点哭笑不得。
-时隔两年，时间来到2013年12月份，我注册了博客园，开始写“技术博客”，其实刚开始并不是想写技术博客才注册的">
-<meta property="og:updated_time" content="2016-05-24T13:26:01.474Z">
+<meta property="og:description" content="本文对一些常用的C/C++语言的小技巧或者小知识做一个备忘，以便查找。
+数字转String12345int x;string id;stringstream ss;ss &amp;lt;&amp;lt; x;ss &amp;gt;&amp;gt; id;
+结构体内嵌比较函数的规则1234567struct node&amp;#123;    int l,r;    bool operator &amp;lt;(const node &amp;amp;a">
+<meta property="og:updated_time" content="2017-03-11T05:01:00.400Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="当我谈写作时我谈些什么">
-<meta name="twitter:description" content="论文初稿终于告成，又可以偷得浮生几日闲了，上次谈了谈阅读，这次来说说写作这件事儿。
-笔者最早接触博客是在2012年，1月17日注册了新浪博客，那时候韩寒和方舟子在博客上打笔仗闹得正欢，为了更加密切的关注，就顺手注册了一个新浪博客。后来也发了一些个文章，现在回去看那些文字真是有点哭笑不得。
-时隔两年，时间来到2013年12月份，我注册了博客园，开始写“技术博客”，其实刚开始并不是想写技术博客才注册的">
+<meta name="twitter:title" content="C/C++语言备忘">
+<meta name="twitter:description" content="本文对一些常用的C/C++语言的小技巧或者小知识做一个备忘，以便查找。
+数字转String12345int x;string id;stringstream ss;ss &amp;lt;&amp;lt; x;ss &amp;gt;&amp;gt; id;
+结构体内嵌比较函数的规则1234567struct node&amp;#123;    int l,r;    bool operator &amp;lt;(const node &amp;amp;a">
 
     
     <link rel="alternative" href="/atom.xml" title="Whatbeg&#39;s blog" type="application/atom+xml">
@@ -75,14 +75,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2016/05/23/talkwrite.html" title="当我谈写作时我谈些什么" itemprop="url">当我谈写作时我谈些什么</a>
+      <a href="/2017/03/11/candcplusplusmemo.html" title="C/C++语言备忘" itemprop="url">C/C++语言备忘</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="whatbeg" target="_blank" itemprop="author">whatbeg</a>
 		
   <p class="article-time">
-    <time datetime="2016-05-23T13:50:51.000Z" itemprop="datePublished"> 发表于 2016-05-23</time>
+    <time datetime="2017-03-11T04:42:43.000Z" itemprop="datePublished"> 发表于 2017-03-11</time>
     <span id="busuanzi_container_page_pv">
     总阅读<span id="busuanzi_value_page_pv"></span>次
     </span>
@@ -94,21 +94,26 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			
+			<ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#数字转String"><span class="toc-number">1.</span> <span class="toc-text">数字转String</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#结构体内嵌比较函数的规则"><span class="toc-number">2.</span> <span class="toc-text">结构体内嵌比较函数的规则</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#拷贝vector-v1到vector-v2"><span class="toc-number">3.</span> <span class="toc-text">拷贝vector v1到vector v2</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#一些数据类型的表示范围"><span class="toc-number">4.</span> <span class="toc-text">一些数据类型的表示范围</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#字符串转数字"><span class="toc-number">5.</span> <span class="toc-text">字符串转数字</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#排序vector结构体最好内嵌比较函数"><span class="toc-number">6.</span> <span class="toc-text">排序vector结构体最好内嵌比较函数</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#lower-bound-upper-bound-和unique函数的下标关系"><span class="toc-number">7.</span> <span class="toc-text">lower_bound(),upper_bound()和unique函数的下标关系</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#vector中unique与erase结合去重"><span class="toc-number">8.</span> <span class="toc-text">vector中unique与erase结合去重</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#G-与C-的区别"><span class="toc-number">9.</span> <span class="toc-text">G++与C++的区别</span></a></li></ol>
 		
 		</div>
 		
-		<p>论文初稿终于告成，又可以偷得浮生几日闲了，上次谈了谈<a href="http://whatbeg.com/2016/05/02/talkread.html">阅读</a>，这次来说说写作这件事儿。</p>
-<p>笔者最早接触博客是在2012年，1月17日注册了新浪博客，那时候韩寒和方舟子在博客上打笔仗闹得正欢，为了更加密切的关注，就顺手注册了一个新浪博客。后来也发了一些个文章，现在回去看那些文字真是有点哭笑不得。</p>
-<p>时隔两年，时间来到2013年12月份，我注册了博客园，开始写“技术博客”，其实刚开始并不是想写技术博客才注册的，只是想记录自己不会做或者做错的一些算法题而已，到后来慢慢地写一些自己觉得值得分享的算法题的题解，再后来就慢慢地什么都写了，在我的老博客中有390多篇文章，2年多的时间写了那么多，是有多爱分享。。其中大部分是算法题的解题报告，还有一些比赛的解题报告，解题报告的特点在于篇幅不长，一般简单描述一下问题和解法，再贴上代码，就完成了，所以还是不太费时间的。</p>
-<p>在一些博客网站上都写过文章，比如新浪，网易，博客园，CSDN等等，感觉各有不同：新浪写写随笔什么的，发个长微博还行，写技术文章的话还是算了，对代码不友好，而且没什么开发者会天天登新浪去看文章，而且新浪广告太多，太多，太多，对用户太不友好；网易的话广告要少一些，但是好像没什么人看。博客园简洁，广告少，开发者多至少前几年是这样的，但是笔者也提几点问题，不是用得着菩萨求菩萨，用不着菩萨骂菩萨，而是客观地提几点：一是主题太丑，严苛一点说，除了笔者现在用的这款比较好看之外，其它无疑都很丑，想套用一句王者荣耀中张良的台词，“伤心不是哭的理由，傻才是”，追求简洁不应该是丑的理由，懒才是，二是现在明显感觉到博客园首页文章质量在下降，大牛在减少，是时候想点办法了。笔者离开博客园还有一个原因就是这是一个.NET,C#,前端等技术风靡的站点，这类技术的开发者居多，其他技术内容得不到太大的关注，所以注定基因不合适，虽然现在在博客园写各种技术和人生经历的文章也多了起来。CSDN的话界面笔者也不喜欢，虽然这个平台开发者众多，主题也多，但是正是主题太多，导致几乎没有其首页的概念，太过宽泛，多看看可以，写的话就算了，评论也不友好，每次很久才能评上一条。这些种种再加上独立博客已经建成，域名也买了，是时候进入一个独立发展的阶段了，时间在向前推移，在某些阶段就会发生某些故事，不是么？</p>
-<p>其实笔者的写作目标很简单，就是写出一些既有益又有趣的东西，这里其实就是向内和向外两种，对自己有益是向内，对他人有益和有趣是向外的，内外兼修是我的目标，嘻嘻。如果我觉得一篇文章写出来对自己或者对读者有益，那么不妨一写，对自己有益的有比如知识的梳理总结，备忘的内容，某些错误解决过程，或者自己写着开心的随笔等等，对他人有益的包括经验类文章，知识总结，错误解决的过程，搜集整理类，推荐类文章等等。</p>
-<p>小时候觉得作文是很难写的，每次写作文都要斟酌叙旧才能动笔，而且总感觉写的不好。其实是因为那时候要写的不是自己想写的，作为一个理工科的男生，我表示正式作文这么多年写的议论文外的文章不超过3篇，而且写记叙文什么的得分还超低，直接没信心了，议论文的话大体有一个固定的格式，说明一下论点，举几个名人的例子，可怜那些名人尤其是某几个，自己一个故事被中国无数中小学生举了无数遍。。长大了发现，其实写文章没那么难，自己想写什么就写什么就行了，我们不是搞文学创作的，没必要过分斟酌语言，语言朴实，把想说的说清楚就可以了，这样想来，其实挺简单的。</p>
-<p>在杂文上，我喜欢王小波式的文风，针砭时弊，对很多社会问题提出了自己的见解，文笔幽默，坦率真实，看他的杂文集简直是一种享受，我蛮希望自己也能写出这样的文章。在哲理散文中，我喜欢罗素，尼采那样的讲述，并没有太多晦涩的哲学术语，尤其是罗素先生，他的《幸福之路》面向普罗大众，文章平实但又发人深省，妙语不断。而尼采而没有那么好懂了，但是他的语句往往揭示一种普遍规律与法则而不是具体问题的分析，大概这就是哲学家吧。我喜欢这种哲学，受尼采先生的影响，我经常也会思考并写下一些我对事物或人情的一些根本法则，并自以为在寻求智慧，其乐无穷。</p>
-<p>关于写作与个人经历的丰富程度的关系，笔者还是赞同作者的经历能够使作品更加丰富，至少他的经历可以成为向内写的素材。我看很多文章集都有一个共同的特点，就是文章会掺杂着作者许多的经历，看王小波的杂文往往可以看到他写自己上山下乡的经历，进场的经历，与社会各路人士打交道的经历；看吴军的《浪潮之巅》，其中也会写道很多自己在谷歌时的经历；如果没有这些经历，我想，能写的应该少很多吧。</p>
-<p>当然不爱写作的自是可以不写，一个人不需要写多少字也能过这一生，所以写作只是作为一种兴趣爱好吧，笔者写作的核心就是热爱写作，热爱分享，这两点是支撑我写下去的主要原因，不管多没时间，有好的题目好的想法就像动动笔把它记下来。</p>
-<p>希望我能将这份热爱保持下去，直到老了写不动了为止。</p>
-<p><br><br>2016.5.23 于成都</p>
+		<p>本文对一些常用的C/C++语言的小技巧或者小知识做一个备忘，以便查找。</p>
+<h5 id="数字转String"><a href="#数字转String" class="headerlink" title="数字转String"></a>数字转String</h5><figure class="highlight hsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> x<span class="comment">;</span></span><br><span class="line">string id<span class="comment">;</span></span><br><span class="line">stringstream ss<span class="comment">;</span></span><br><span class="line">ss &lt;&lt; x<span class="comment">;</span></span><br><span class="line">ss &gt;&gt; id<span class="comment">;</span></span><br></pre></td></tr></table></figure>
+<h5 id="结构体内嵌比较函数的规则"><a href="#结构体内嵌比较函数的规则" class="headerlink" title="结构体内嵌比较函数的规则"></a>结构体内嵌比较函数的规则</h5><figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> node</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">int</span> l,r;</span><br><span class="line">    <span class="keyword">bool</span> <span class="keyword">operator</span> &lt;(<span class="keyword">const</span> node &amp;a)<span class="keyword">const</span>&#123;</span><br><span class="line">        <span class="built_in">return</span> r &lt; a.r;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>此时左边那个<code>r</code>表示自己这个<code>r</code>，如果排序的话，会按<code>r</code>值从小到大排序，因为<code>sort</code>默认就是从小到大的。<br>而优先队列就不同了，优先队列中默认是大值优先，所以大小关系相反，比如下面这个：<br><figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> SELL</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">int</span> price,num;</span><br><span class="line">    <span class="keyword">bool</span> <span class="keyword">operator</span> &lt;(<span class="keyword">const</span> SELL &amp;a)<span class="keyword">const</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">return</span> price&gt;a.price;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line">priority_queue&lt;SELL&gt; que;</span><br></pre></td></tr></table></figure></p>
+<p>那么这个优先队列是按<code>price</code>小的优先出队。<br>总之记住：<strong>结构体中直接写比较函数一定是左边那个裸的r表示当前<code>this</code>值，如果<code>r&lt;a.r</code>，那么就是从小到大排序，而优先队列恰恰相反</strong>，就行了。</p>
+<h5 id="拷贝vector-v1到vector-v2"><a href="#拷贝vector-v1到vector-v2" class="headerlink" title="拷贝vector v1到vector v2"></a>拷贝vector v1到vector v2</h5><figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">v2.insert</span>(<span class="built_in">v2</span><span class="meta">.end</span>(), <span class="built_in">v1</span>.<span class="keyword">begin(), </span><span class="built_in">v1</span><span class="meta">.end</span>())</span><br></pre></td></tr></table></figure>
+<h5 id="一些数据类型的表示范围"><a href="#一些数据类型的表示范围" class="headerlink" title="一些数据类型的表示范围"></a>一些数据类型的表示范围</h5><figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">unsigned</span> <span class="keyword">int</span>    <span class="number">0</span>～<span class="number">4294967295</span> </span><br><span class="line"><span class="keyword">int</span>             <span class="number">-2147483648</span>～<span class="number">2147483647</span> </span><br><span class="line"><span class="keyword">unsigned</span> <span class="keyword">long</span>   <span class="number">0</span>～<span class="number">4294967295</span></span><br><span class="line"><span class="keyword">long</span>            <span class="number">-2147483648</span>～<span class="number">2147483647</span></span><br><span class="line"><span class="keyword">long</span> <span class="keyword">long</span>：     <span class="number">-9223372036854775808</span>~<span class="number">9223372036854775807</span></span><br><span class="line"><span class="keyword">unsigned</span> <span class="keyword">long</span> <span class="keyword">long</span>的最大值：  <span class="number">1844674407370955161</span></span><br><span class="line">__int64：       <span class="number">-9223372036854775808</span>~<span class="number">9223372036854775807</span></span><br><span class="line"><span class="keyword">unsigned</span> __int64的最大值：   <span class="number">18446744073709551615</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">float</span>的范围为 <span class="number">-2</span>^<span class="number">128</span> ~ +<span class="number">2</span>^<span class="number">128</span> 也即<span class="number">-3.40E+38</span> ~ +<span class="number">3.40E+38</span></span><br><span class="line"><span class="keyword">double</span>的范围为 <span class="number">-2</span>^<span class="number">1024</span> ~ +<span class="number">2</span>^<span class="number">1024</span>   也即<span class="number">-1.79E+308</span> ~ +<span class="number">1.79E+308</span></span><br></pre></td></tr></table></figure>
+<h5 id="字符串转数字"><a href="#字符串转数字" class="headerlink" title="字符串转数字"></a>字符串转数字</h5><figure class="highlight hsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> num<span class="comment">;</span></span><br><span class="line">string s<span class="comment">;</span></span><br><span class="line">stringstream ss(s)<span class="comment">;</span></span><br><span class="line">ss&gt;&gt;num<span class="comment">;</span></span><br><span class="line"></span><br><span class="line">--------------------------------------------------------------------------</span><br><span class="line"></span><br><span class="line">char <span class="keyword">str</span>[]<span class="comment">;</span></span><br><span class="line">sscanf( <span class="keyword">str</span>, <span class="string">"%d"</span>, &amp;num )<span class="comment">;         // 将字符串转换成整数</span></span><br><span class="line">sscanf( <span class="keyword">str</span>, <span class="string">"%f"</span>, &amp;floatnum )<span class="comment">;    // 将字符串转换成浮点数</span></span><br><span class="line"></span><br><span class="line">--------------------------------------------------------------------------</span><br><span class="line"></span><br><span class="line">char <span class="keyword">str</span>[]<span class="comment">;</span></span><br><span class="line">floatnum = atof(<span class="keyword">str</span>)<span class="comment">;   // 字符串转浮点数</span></span><br><span class="line">num = atoi(<span class="keyword">str</span>)<span class="comment">;        // 字符串转整数</span></span><br><span class="line"></span><br><span class="line">--------------------------------------------------------------------------</span><br><span class="line"></span><br><span class="line">若字符串为string类型，则要用c_str()方法获取其字符串指针</span><br><span class="line">string <span class="keyword">str</span><span class="comment">;</span></span><br><span class="line">floatnum = atof(<span class="keyword">str</span>.c_str())<span class="comment">;   // string转浮点数</span></span><br><span class="line">num = atoi(<span class="keyword">str</span>.c_str())<span class="comment">;        // string转整数</span></span><br></pre></td></tr></table></figure>
+<h5 id="排序vector结构体最好内嵌比较函数"><a href="#排序vector结构体最好内嵌比较函数" class="headerlink" title="排序vector结构体最好内嵌比较函数"></a>排序vector结构体最好内嵌比较函数</h5><p>比如内嵌：<br><figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">bool</span> <span class="keyword">operator</span>&lt;(<span class="keyword">const</span> node &amp;B)<span class="keyword">const</span> &#123;</span><br><span class="line">      <span class="built_in">return</span> r&lt;B.r;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>时 <code>sort(v.begin(),v.end())</code>  比  <code>sort(v.begin(),v.end(),cmp)</code> 快。 而且是超时的点。 注意！</p>
+<h5 id="lower-bound-upper-bound-和unique函数的下标关系"><a href="#lower-bound-upper-bound-和unique函数的下标关系" class="headerlink" title="lower_bound(),upper_bound()和unique函数的下标关系"></a>lower_bound(),upper_bound()和unique函数的下标关系</h5><p>我们经常要用到这两个函数，但是每次都要斟酌到底下标减不减1.<br>正确规则是：</p>
+<p><strong>*unique函数想要得到正确的不相同元素个数，那么下标在以1开始时要减去num+1</strong><br>即应该如此调用：<br><figure class="highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tot = <span class="built_in">unique</span>(<span class="built_in">num</span>,<span class="built_in">num</span>+tot)-<span class="built_in">num</span>;</span><br><span class="line">tot = <span class="built_in">unique</span>(<span class="built_in">num</span>+<span class="number">1</span>,<span class="built_in">num</span>+tot+<span class="number">1</span>)-<span class="built_in">num</span>-<span class="number">1</span>;</span><br></pre></td></tr></table></figure></p>
+<p>因为tot是记录个数，个数必然是与最初的下标的距离，所以最初的下标是0或1则减去0或1.</p>
+<p>而<code>lower_bound()</code>则不同，<code>lower_bound()</code>,<code>upper_bound()</code>得到的是大于（等于）某数的第一个数的下标，无论数组从0还是1开始，都只要减num（数组）即可，得到的下标自会调整为应该的下标。<br>即 应该如此调用：<br><figure class="highlight autoit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">int</span> K1 = upper_bound(a+<span class="number">1</span>,a+n+<span class="number">1</span>,<span class="built_in">now</span>)-a<span class="comment">;</span></span><br><span class="line"><span class="built_in">int</span> K2 = upper_bound(a,a+n,<span class="built_in">now</span>)-a<span class="comment">;</span></span><br></pre></td></tr></table></figure></p>
+<h5 id="vector中unique与erase结合去重"><a href="#vector中unique与erase结合去重" class="headerlink" title="vector中unique与erase结合去重"></a>vector中unique与erase结合去重</h5><figure class="highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sort(<span class="keyword">A</span>.begin(),<span class="keyword">A</span>.end())<span class="comment">;       </span></span><br><span class="line"><span class="keyword">A</span>.erase(unique(<span class="keyword">A</span>.begin(),<span class="keyword">A</span>.end()),<span class="keyword">A</span>.end())<span class="comment">;</span></span><br></pre></td></tr></table></figure>
+<h5 id="G-与C-的区别"><a href="#G-与C-的区别" class="headerlink" title="G++与C++的区别"></a>G++与C++的区别</h5><p>1、输出<code>double</code>类型时，如果采用G++提交，<code>scanf</code>采用<code>%lf</code>，<code>prinf</code>采用<code>%f</code>，否则会报错<br>2、使用GCC/G++的提醒:<br>对于64位整数, long long int 和 __int64 都是支持并且等价的.但是在读和写的时候只支持<code>scanf(&quot;%I64d&quot;, ...)</code>和<code>printf(&quot;%I64d&quot;, ...)</code>.<br>不支持<code>%lld</code>是因为MinGW下的GCC和G++使用的<code>msvcrt.dll</code>动态链接库并不支持C99标准.<br>根据ISO C++标准,在G++下, main函数的返回值必须是int,否则将会导致Compile Error(编译错误)的判答.</p>
   
 	</div>
 
@@ -225,13 +230,13 @@
 
 <div class="article-categories">
   
-  <span></span> <a href="/categories/随笔-Essays/">随笔 | Essays</a>
+  <span></span> <a href="/categories/编程语言-Program-Lang/">编程语言 | Program Lang.</a>
   </div>
 
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/随笔/">随笔</a>
+  <span></span> <a href="/tags/CS/">CS</a>
   </div>
 
 </div>
@@ -276,18 +281,18 @@
 <nav class="article-nav clearfix">
  
  <div class="prev" >
- <a href="/2016/05/31/2016read-may.html" title="【2016读书】5月读书笔记">
+ <a href="/2017/03/11/linuxmemo.html" title="Linux备忘命令">
   <strong>上一篇：</strong><br/>
   <span>
-  【2016读书】5月读书笔记</span>
+  Linux备忘命令</span>
 </a>
 </div>
 
 
 <div class="next">
-<a href="/2016/05/19/learnscrapy.html"  title="快速入门Scrapy(一)--简书打赏">
+<a href="/2017/03/06/semaphore.html"  title="用信号量解决进程的同步与互斥探讨">
  <strong>下一篇：</strong><br/> 
- <span>快速入门Scrapy(一)--简书打赏
+ <span>用信号量解决进程的同步与互斥探讨
 </span>
 </a>
 </div>
@@ -309,7 +314,7 @@
   <aside class="clearfix">
   <strong class="toc-title">文章目录</strong>
  
- 
+ <ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#数字转String"><span class="toc-number">1.</span> <span class="toc-text">数字转String</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#结构体内嵌比较函数的规则"><span class="toc-number">2.</span> <span class="toc-text">结构体内嵌比较函数的规则</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#拷贝vector-v1到vector-v2"><span class="toc-number">3.</span> <span class="toc-text">拷贝vector v1到vector v2</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#一些数据类型的表示范围"><span class="toc-number">4.</span> <span class="toc-text">一些数据类型的表示范围</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#字符串转数字"><span class="toc-number">5.</span> <span class="toc-text">字符串转数字</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#排序vector结构体最好内嵌比较函数"><span class="toc-number">6.</span> <span class="toc-text">排序vector结构体最好内嵌比较函数</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#lower-bound-upper-bound-和unique函数的下标关系"><span class="toc-number">7.</span> <span class="toc-text">lower_bound(),upper_bound()和unique函数的下标关系</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#vector中unique与erase结合去重"><span class="toc-number">8.</span> <span class="toc-text">vector中unique与erase结合去重</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#G-与C-的区别"><span class="toc-number">9.</span> <span class="toc-text">G++与C++的区别</span></a></li></ol>
  
  </aside>
   </div>

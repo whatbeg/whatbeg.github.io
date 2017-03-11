@@ -4,6 +4,46 @@
 
     
   <url>
+    <loc>http://whatbeg.com/2017/03/11/candcplusplusmemo.html</loc>
+    <lastmod>2017-03-11T05:01:00.400Z</lastmod>
+    <data>
+        <display>
+        <title>C/C++语言备忘</title>
+        <pubTime>2017-03-11T04:42:43.000Z</pubTime>
+        
+        <tag>CS</tag>
+         
+         
+           
+             
+              <breadCrumb title="编程语言 | Program Lang." url="http://whatbeg.com/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80-Program-Lang/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://whatbeg.com/2017/03/11/linuxmemo.html</loc>
+    <lastmod>2017-03-11T05:00:58.098Z</lastmod>
+    <data>
+        <display>
+        <title>Linux备忘命令</title>
+        <pubTime>2017-03-11T04:42:52.000Z</pubTime>
+        
+        <tag>Linux</tag>
+         
+         
+           
+             
+              <breadCrumb title="计算机相关 | CS.Related" url="http://whatbeg.com/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9B%B8%E5%85%B3-CS-Related/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://whatbeg.com/2017/03/06/semaphore.html</loc>
     <lastmod>2017-03-06T11:48:09.838Z</lastmod>
     <data>
@@ -854,9 +894,9 @@
         
         <tag>Python</tag>
          
-        <tag>数据分析</tag>
-         
         <tag>Web</tag>
+         
+        <tag>数据分析</tag>
          
          
            
