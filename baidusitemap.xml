@@ -4,6 +4,28 @@
 
     
   <url>
+    <loc>http://whatbeg.com/2017/03/23/addemailsubscribe.html</loc>
+    <lastmod>2017-03-23T13:02:23.321Z</lastmod>
+    <data>
+        <display>
+        <title>给静态博客加上邮件订阅功能</title>
+        <pubTime>2017-03-23T12:54:09.000Z</pubTime>
+        
+        <tag>hexo</tag>
+         
+        <tag>Web</tag>
+         
+         
+           
+             
+              <breadCrumb title="错误解决与优化 | Err&amp;Opt" url="http://whatbeg.com/categories/%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3%E4%B8%8E%E4%BC%98%E5%8C%96-Err-Opt/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://whatbeg.com/2017/03/11/candcplusplusmemo.html</loc>
     <lastmod>2017-03-11T08:32:06.139Z</lastmod>
     <data>
@@ -892,11 +914,11 @@
         <title>【模拟登录】(二) 加密与重放方式登录 -以模拟登录博客园为例</title>
         <pubTime>2016-04-14T07:37:53.000Z</pubTime>
         
+        <tag>Web</tag>
+         
         <tag>Python</tag>
          
         <tag>数据分析</tag>
-         
-        <tag>Web</tag>
          
          
            
