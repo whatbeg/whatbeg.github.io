@@ -989,21 +989,21 @@ article .article-content .kb {
 }
 article .article-content h1,
 article .article-content h2 {
-  font-size: 180%;
+  font-size: 150%;
   line-height: 1.2em;
   padding-bottom: 0.3em;
   margin-top: 1.5em;
   border-bottom: 2px solid #dbdbdb;
 }
 article .article-content h3 {
-  font-size: 140%;
+  font-size: 130%;
   line-height: 1em;
   margin-top: 1.3em;
 }
 article .article-content h4,
 article .article-content h5,
 article .article-content h6 {
-  font-size: 140%;
+  font-size: 130%;
 }
 article .article-content h1,
 article .article-content h2,
@@ -1678,7 +1678,7 @@ section.comment {
   }
 }
 .categorieslist li {
-  font-family: Consolas, Merriweather, Georgia, Microsoft YaHei;
+  font-family: Lato, Consolas, Merriweather, Georgia, "Microsoft YaHei";
   border-bottom: 1px solid #ccc;
 }
 .categorieslist li a {
@@ -1709,6 +1709,7 @@ section.comment {
   padding: 0.5em 0;
 }
 .tagslist ul li {
+  font-family: Lato, Consolas, Merriweather, Georgia, "Microsoft YaHei", sans-serif;
   float: left;
 }
 .tagslist ul li a {
@@ -1817,7 +1818,7 @@ section.comment {
   }
 }
 .tagcloudlist .tagcloudlist {
-  font-family: Consolas, Merriweather, Georgia, Microsoft YaHei;
+  font-family: Lato, Consolas, Merriweather, Georgia, Microsoft YaHei, sans-serif;
 }
 .tagcloudlist .tagcloudlist a {
   padding: 0.2em;
@@ -1853,7 +1854,7 @@ section.comment {
   padding: 0.5em 0;
 }
 .linkslist ul a {
-  font-family: Consolas, Merriweather, Georgia, Microsoft YaHei;
+  font-family: Lato, Consolas, Merriweather, Georgia, Microsoft YaHei, sans-serif;
   font-size: 1em;
   line-height: 1.5;
   display: block;

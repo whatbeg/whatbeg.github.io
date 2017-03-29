@@ -4,6 +4,28 @@
 
     
   <url>
+    <loc>http://whatbeg.com/2017/03/29/deeplearningbook-01.html</loc>
+    <lastmod>2017-03-29T14:43:36.396Z</lastmod>
+    <data>
+        <display>
+        <title>Deep Learning读书笔记（1）–开篇</title>
+        <pubTime>2017-03-29T14:39:32.000Z</pubTime>
+        
+        <tag>深度学习</tag>
+         
+        <tag>Deep Learning</tag>
+         
+         
+           
+             
+              <breadCrumb title="深度学习 | Deep Learning" url="http://whatbeg.com/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0-Deep-Learning/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://whatbeg.com/2017/03/23/addemailsubscribe.html</loc>
     <lastmod>2017-03-23T13:02:23.321Z</lastmod>
     <data>
@@ -1232,9 +1254,9 @@
         <title>怎样写出优秀的研究论文？</title>
         <pubTime>2016-05-10T07:44:54.000Z</pubTime>
         
-        <tag>CS</tag>
-         
         <tag>译文</tag>
+         
+        <tag>CS</tag>
          
          
            
