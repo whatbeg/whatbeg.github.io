@@ -120,7 +120,7 @@ a img {
 body {
   background: #ddd;
 /*background-image url('/img/scene.jpg')  主题背景色*/
-  font-family: Lato, "PingFang SC", Consolas, Georgia, "Microsoft YaHei";
+  font-family: Lato, "PingFang SC", Consolas, Georgia, "Microsoft YaHei", sans-serif;
   font-size: 100%;
   color: #817c7c;
   line-height: 1.5;
@@ -1014,7 +1014,8 @@ article .article-content h6 {
   color: #333;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-family: Lato;
+  font-family: Lato, "PingFang SC", Consolas, Georgia, "Microsoft YaHei", sans-serif;
+  border: 1px solid lighten;
 }
 article .article-content h1 >code,
 article .article-content h2 >code,
