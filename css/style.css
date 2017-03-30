@@ -118,11 +118,11 @@ a img {
   -webkit-margin-after: 0;
 }
 body {
-  background: #ddd;
+  background: #fffafa;
 /*background-image url('/img/scene.jpg')  主题背景色*/
   font-family: Lato, "PingFang SC", Consolas, Georgia, "Microsoft YaHei", sans-serif;
   font-size: 100%;
-  color: #817c7c;
+  color: #000;
   line-height: 1.5;
   min-height: 100vh;
   display: -webkit-flex;
@@ -162,7 +162,7 @@ sub {
 }
 a {
   text-decoration: none;
-  color: #817c7c;
+  color: #000;
 }
 a:hover,
 a:focus {
@@ -587,6 +587,7 @@ header nav ul li a:hover {
 }
 /* index layout */
 #container {
+  background: new-color-background;
   -webkit-flex: 1;
   width: 95%;
   margin: 0 auto;
@@ -624,7 +625,7 @@ header nav ul li a:hover {
   }
 }
 #main section.post {
-  background: #fafafa;
+  background: #fffafa;
   margin-bottom: 0.125em;
 }
 #main section.post a {
@@ -650,16 +651,16 @@ header nav ul li a:hover {
   line-height: 2;
 }
 #main section.post a p {
-  color: #817c7c;
+  color: #000;
 }
 #main section.post a time {
-  color: #817c7c;
+  color: #000;
   display: block;
   margin: 0.5em 0;
   font-size: 0.9em;
 }
 #main article.post-expand {
-  background: #fafafa;
+  background: #fffafa;
   margin-bottom: 3.5em;
 }
 #main article.post-expand .img-logo {
@@ -689,7 +690,7 @@ header nav ul li a:hover {
   -webkit-border-radius: 15px;
   border-radius: 15px;
   background: #ddd;
-  color: #817c7c;
+  color: #000;
   text-decoration: none;
 }
 #main article.post-expand .article-more-link a:hover {
@@ -716,7 +717,7 @@ header nav ul li a:hover {
   border-left: 0.5em solid #6a005f;
 }
 #page-nav {
-  background: #fafafa;
+  background: #fffafa;
   text-align: center;
   overflow: hidden;
 }
@@ -801,7 +802,7 @@ header nav ul li a:hover {
 .archive-title {
   margin: 1em 0;
   padding: 2em;
-  background: #fafafa;
+  background: #fffafa;
   border-left: 0.5em solid #ccc;
 }
 @media only screen and (min-width: 1024px) {
@@ -891,7 +892,7 @@ header nav ul li a:hover {
 .page,
 .link,
 .photo {
-  background: #fafafa;
+  background: #fffafa;
 }
 .post a,
 .page a,
@@ -962,7 +963,7 @@ article header.article-info >p.article-time:before {
 }
 article .article-content {
   padding: 1.5em 4%;
-  color: #413f3f;
+  color: #000;
   font-size: 105%;
   font-family: Lato, "PingFang SC", Consolas, "Times New Roman", Georgia, "Microsoft YaHei", sans-serif;
 }
@@ -1047,7 +1048,7 @@ article .article-content blockquote {
   color: #808080;
 }
 article .article-content blockquote footer {
-  background: #fafafa;
+  background: #fffafa;
   padding: 0;
   margin: 0;
   font-size: 80%;
@@ -1203,7 +1204,7 @@ article .article-content .right {
   float: right;
 }
 footer.article-footer {
-  background: #fafafa;
+  background: #fffafa;
   padding: 0 4%;
   margin: 0;
   border-top: 1px solid #dbdbdb;
@@ -1259,7 +1260,7 @@ footer.article-footer {
   font-size: 1.2em;
   font-family: "FontAwesome";
   text-align: center;
-  color: #817c7c;
+  color: #000;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   width: 1.5em;
@@ -1559,7 +1560,7 @@ section.comment {
 }
 #toc.toc-aside strong {
   padding: 0.3em 0;
-  color: #817c7c;
+  color: #000;
 }
 #toc.toc-aside:hover {
   -webkit-transition: opacity 0.3s ease-out;
@@ -1634,7 +1635,7 @@ section.comment {
   }
 }
 #asidepart {
-  background: #fafafa;
+  background: new-color-background;
   margin: 1em 0 0;
   padding: 0.5em 2% 1em;
 }
@@ -1748,7 +1749,7 @@ section.comment {
 }
 .rsspart a:hover {
   color: #6a005f;
-  background: #fafafa;
+  background: #fffafa;
 }
 .rsspart a::before {
   font-family: "FontAwesome";
