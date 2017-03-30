@@ -4,6 +4,28 @@
 
     
   <url>
+    <loc>http://whatbeg.com/2017/02/27/deeplearning0.html</loc>
+    <lastmod>2017-03-30T07:36:47.493Z</lastmod>
+    <data>
+        <display>
+        <title>Deep Learning读书笔记系列 写作计划</title>
+        <pubTime>2017-02-27T14:48:25.000Z</pubTime>
+        
+        <tag>机器学习</tag>
+         
+        <tag>深度学习</tag>
+         
+         
+           
+             
+              <breadCrumb title="深度学习 | Deep Learning" url="http://whatbeg.com/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0-Deep-Learning/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://whatbeg.com/2017/03/29/deeplearningbook-01.html</loc>
     <lastmod>2017-03-29T14:43:36.396Z</lastmod>
     <data>
@@ -101,28 +123,6 @@
            
              
               <breadCrumb title="计算机相关 | CS.Related" url="http://whatbeg.com/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9B%B8%E5%85%B3-CS-Related/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://whatbeg.com/2017/02/27/deeplearning0.html</loc>
-    <lastmod>2017-02-27T14:52:38.465Z</lastmod>
-    <data>
-        <display>
-        <title>Deep Learning读书笔记系列 写作计划</title>
-        <pubTime>2017-02-27T14:48:25.000Z</pubTime>
-        
-        <tag>机器学习</tag>
-         
-        <tag>深度学习</tag>
-         
-         
-           
-             
-              <breadCrumb title="深度学习 | Deep Learning" url="http://whatbeg.com/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0-Deep-Learning/"/>
           
         </display>
     </data>

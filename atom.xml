@@ -301,11 +301,22 @@
     <link href="http://whatbeg.com/2017/02/27/deeplearning0.html"/>
     <id>http://whatbeg.com/2017/02/27/deeplearning0.html</id>
     <published>2017-02-27T14:48:25.000Z</published>
-    <updated>2017-02-27T14:52:38.465Z</updated>
+    <updated>2017-03-30T07:36:47.493Z</updated>
     
     <content type="html">&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;之前看了一些Bengio的《Deep Learning》，有许多收获和感触，但是由于缺乏回顾，反思与实践加以消化，许多东西已经忘记了，借这个契机，想写一套专门阐述自己阅读Deep Learning及Machine Learning相关资料的阅读心得或者读书笔记的文章，文章不拘深浅，不拘长短，只求能够阐述出自己的心得收获，便于加深理解，如果能够把一件事情讲明白，那就不会那么轻易地忘记了，知识在脑子里也会更加成系统，不然老是东一点西一点，拣了芝麻丢了西瓜，或是狗熊掰棒子，一路掰一路扔。&lt;br&gt;其次，实践也很重要，光看书始终是纸上谈兵，只有实实在在地利用深度学习去做一些事情，实现了某些效果，那样的感受才会更深切。总而言之，知行合一很重要。&lt;br&gt;当然，文章也不仅仅局限于对Bengio的《Deep Learning》的读书笔记，也包括相关书籍，文章，论文，也不必局限于DL这一个子领域，适当拓展到Machine Learning也是可以的。&lt;br&gt;虽然计划着，却仍有两个忧虑，一是怕没有时间，二是实在才疏学浅，写的浅不要紧，怕就怕出错，闹出笑话还误了读者朋友们，那可是要被骂惨的。但是反过来又提醒自己，“怕什么真理无穷，进一寸有进一寸的欢喜”，没时间不要紧，一点一滴慢慢做就是了，二一个实在有不妥之处相比读者们也会提出来的，所以就不要脸【捂脸】的先忽略这两个问题。&lt;/p&gt;
 &lt;h2 id=&quot;写作计划&quot;&gt;&lt;a href=&quot;#写作计划&quot; class=&quot;headerlink&quot; title=&quot;写作计划&quot;&gt;&lt;/a&gt;写作计划&lt;/h2&gt;&lt;p&gt;写作计划暂时包括但不限于：&lt;/p&gt;
-&lt;p&gt;× Deep Learning读书笔记（1）–开篇&lt;br&gt;× Deep Learning读书笔记（2）–数学基础简摘&lt;br&gt;× Deep Learning读书笔记（3）–数值计算&lt;br&gt;× Deep Learning读书笔记（4）–机器学习基础&lt;br&gt;× Deep Learning读书笔记（5）–关于机器学习的提纲（或机器学习总论）&lt;br&gt;× Deep Learning读书笔记（6）–神经网络&lt;br&gt;× Deep Learning读书笔记（7）–DL的优化&lt;br&gt;× Deep Learning读书笔记（8）–DL的正则化&lt;br&gt;× Deep Learning读书笔记（9）–实践方法论&lt;br&gt;× Deep Learning读书笔记（10）–DL前沿&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://whatbeg.com/2017/03/29/deeplearningbook-01.html&quot;&gt;Deep Learning读书笔记（1）–开篇&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Deep Learning读书笔记（2）–数学基础简摘&lt;/li&gt;
+&lt;li&gt;Deep Learning读书笔记（3）–数值计算&lt;/li&gt;
+&lt;li&gt;Deep Learning读书笔记（4）–机器学习基础&lt;/li&gt;
+&lt;li&gt;Deep Learning读书笔记（5）–关于机器学习的提纲（或机器学习总论）&lt;/li&gt;
+&lt;li&gt;Deep Learning读书笔记（6）–神经网络&lt;/li&gt;
+&lt;li&gt;Deep Learning读书笔记（7）–DL的优化&lt;/li&gt;
+&lt;li&gt;Deep Learning读书笔记（8）–DL的正则化&lt;/li&gt;
+&lt;li&gt;Deep Learning读书笔记（9）–实践方法论&lt;/li&gt;
+&lt;li&gt;Deep Learning读书笔记（10）–DL前沿&lt;/li&gt;
+&lt;/ul&gt;
 &lt;p&gt;计划1年时间完成，即2018年3月1日前完成，希望能够有始有终，千万不要烂尾。。&lt;/p&gt;
 </content>
     
