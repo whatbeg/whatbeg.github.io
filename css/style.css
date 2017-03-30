@@ -122,7 +122,7 @@ body {
 /*background-image url('/img/scene.jpg')  主题背景色*/
   font-family: Lato, "PingFang SC", Consolas, Georgia, "Microsoft YaHei", sans-serif;
   font-size: 100%;
-  color: #000;
+  color: #817c7c;
   line-height: 1.5;
   min-height: 100vh;
   display: -webkit-flex;
@@ -162,7 +162,7 @@ sub {
 }
 a {
   text-decoration: none;
-  color: #000;
+  color: #817c7c;
 }
 a:hover,
 a:focus {
@@ -651,10 +651,10 @@ header nav ul li a:hover {
   line-height: 2;
 }
 #main section.post a p {
-  color: #000;
+  color: #817c7c;
 }
 #main section.post a time {
-  color: #000;
+  color: #817c7c;
   display: block;
   margin: 0.5em 0;
   font-size: 0.9em;
@@ -690,7 +690,7 @@ header nav ul li a:hover {
   -webkit-border-radius: 15px;
   border-radius: 15px;
   background: #ddd;
-  color: #000;
+  color: #817c7c;
   text-decoration: none;
 }
 #main article.post-expand .article-more-link a:hover {
@@ -1260,7 +1260,7 @@ footer.article-footer {
   font-size: 1.2em;
   font-family: "FontAwesome";
   text-align: center;
-  color: #000;
+  color: #817c7c;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   width: 1.5em;
@@ -1560,7 +1560,7 @@ section.comment {
 }
 #toc.toc-aside strong {
   padding: 0.3em 0;
-  color: #000;
+  color: #817c7c;
 }
 #toc.toc-aside:hover {
   -webkit-transition: opacity 0.3s ease-out;
