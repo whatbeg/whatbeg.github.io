@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://whatbeg.com/"/>
-  <updated>2017-03-29T14:43:36.396Z</updated>
+  <updated>2017-03-30T12:01:25.924Z</updated>
   <id>http://whatbeg.com/</id>
   
   <author>
@@ -16,11 +16,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Deep Learning读书笔记（1）–开篇</title>
+    <title>Deep Learning读书笔记（1）【开篇】</title>
     <link href="http://whatbeg.com/2017/03/29/deeplearningbook-01.html"/>
     <id>http://whatbeg.com/2017/03/29/deeplearningbook-01.html</id>
     <published>2017-03-29T14:39:32.000Z</published>
-    <updated>2017-03-29T14:43:36.396Z</updated>
+    <updated>2017-03-30T12:01:25.924Z</updated>
     
     <content type="html">&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;“深度学习”的概念萌芽于2006年，2010年以后逐渐兴起，到2015,2016年达到顶峰，尤其是2016年，感觉各种IT网站，业界公号，微博等等都充斥着”深度学习”这个词语，论文数量急剧增加，盛况空前。到现在，2017年上半年，火热之势不减，诸多meetup，讨论会，交流会，分享会此起彼伏，人头攒动，业界大牛则在展望未来，规划前程或是默默做着前沿探索。&lt;br&gt;初次接触深度学习是在去年做一个NLP比赛的时候，尝试了深度学习的方法，效果确实不错，未加集成，融合的单模型就能表现出很好的效果，于是入坑，，直至遇到Bengio,Goodfellow,Courville合著的这本《Deep Learning》，想把它啃下来，陆陆续续看了一些，前几章还好，越到后面会难一些，借着这个机会，分享下自己的阅读心得，也督促自己继续把它啃完。&lt;/p&gt;
 &lt;h2 id=&quot;智能机器&quot;&gt;&lt;a href=&quot;#智能机器&quot; class=&quot;headerlink&quot; title=&quot;智能机器&quot;&gt;&lt;/a&gt;智能机器&lt;/h2&gt;&lt;p&gt;人类一直以来都有一个梦想，就是制造出能够思考的机器。可是一直到近代，计算机的发明，才使得这一梦想有了巨大的推进。再到今天，人工智能(Artificial Intelligence)，起源于1956年夏季”达特茅斯会议”的这门学科，经过1997年IBM DeepBlue战胜国际象棋大师卡斯帕罗夫，再到2016年3月AlphaGo战胜李世石，到最近的Master，已经成为了最蓬勃发展的一个领域之一，此时，我们重新问自己这个问题: “人类能否制造出有智能的机器？”。诚然，”智能”的定义又有许多种，有人说，通过图灵测试的机器就具有智能，有人说，有自我意识，会思考的机器才算具有智能，总的来说没有一致公认的定义。于是观点逐渐分为两派，一个是强AI观点，一个是弱AI观点，强AI观点认为人类有可能制造出能推理和解决问题，并具有自我意识和直觉的机器，弱AI观点则认为不能。&lt;/p&gt;
@@ -301,12 +301,12 @@
     <link href="http://whatbeg.com/2017/02/27/deeplearning0.html"/>
     <id>http://whatbeg.com/2017/02/27/deeplearning0.html</id>
     <published>2017-02-27T14:48:25.000Z</published>
-    <updated>2017-03-30T07:36:47.493Z</updated>
+    <updated>2017-03-30T12:01:05.083Z</updated>
     
     <content type="html">&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;之前看了一些Bengio的《Deep Learning》，有许多收获和感触，但是由于缺乏回顾，反思与实践加以消化，许多东西已经忘记了，借这个契机，想写一套专门阐述自己阅读Deep Learning及Machine Learning相关资料的阅读心得或者读书笔记的文章，文章不拘深浅，不拘长短，只求能够阐述出自己的心得收获，便于加深理解，如果能够把一件事情讲明白，那就不会那么轻易地忘记了，知识在脑子里也会更加成系统，不然老是东一点西一点，拣了芝麻丢了西瓜，或是狗熊掰棒子，一路掰一路扔。&lt;br&gt;其次，实践也很重要，光看书始终是纸上谈兵，只有实实在在地利用深度学习去做一些事情，实现了某些效果，那样的感受才会更深切。总而言之，知行合一很重要。&lt;br&gt;当然，文章也不仅仅局限于对Bengio的《Deep Learning》的读书笔记，也包括相关书籍，文章，论文，也不必局限于DL这一个子领域，适当拓展到Machine Learning也是可以的。&lt;br&gt;虽然计划着，却仍有两个忧虑，一是怕没有时间，二是实在才疏学浅，写的浅不要紧，怕就怕出错，闹出笑话还误了读者朋友们，那可是要被骂惨的。但是反过来又提醒自己，“怕什么真理无穷，进一寸有进一寸的欢喜”，没时间不要紧，一点一滴慢慢做就是了，二一个实在有不妥之处相比读者们也会提出来的，所以就不要脸【捂脸】的先忽略这两个问题。&lt;/p&gt;
 &lt;h2 id=&quot;写作计划&quot;&gt;&lt;a href=&quot;#写作计划&quot; class=&quot;headerlink&quot; title=&quot;写作计划&quot;&gt;&lt;/a&gt;写作计划&lt;/h2&gt;&lt;p&gt;写作计划暂时包括但不限于：&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;http://whatbeg.com/2017/03/29/deeplearningbook-01.html&quot;&gt;Deep Learning读书笔记（1）–开篇&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://whatbeg.com/2017/03/29/deeplearningbook-01.html&quot;&gt;Deep Learning读书笔记（1）【开篇】&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;Deep Learning读书笔记（2）–数学基础简摘&lt;/li&gt;
 &lt;li&gt;Deep Learning读书笔记（3）–数值计算&lt;/li&gt;
 &lt;li&gt;Deep Learning读书笔记（4）–机器学习基础&lt;/li&gt;

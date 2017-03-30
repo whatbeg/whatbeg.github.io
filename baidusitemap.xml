@@ -3,17 +3,18 @@
 
 
     
+    
   <url>
-    <loc>http://whatbeg.com/2017/02/27/deeplearning0.html</loc>
-    <lastmod>2017-03-30T07:36:47.493Z</lastmod>
+    <loc>http://whatbeg.com/2017/03/29/deeplearningbook-01.html</loc>
+    <lastmod>2017-03-30T12:01:25.924Z</lastmod>
     <data>
         <display>
-        <title>Deep Learning读书笔记系列 写作计划</title>
-        <pubTime>2017-02-27T14:48:25.000Z</pubTime>
+        <title>Deep Learning读书笔记（1）【开篇】</title>
+        <pubTime>2017-03-29T14:39:32.000Z</pubTime>
         
-        <tag>机器学习</tag>
-         
         <tag>深度学习</tag>
+         
+        <tag>Deep Learning</tag>
          
          
            
@@ -26,16 +27,16 @@
 
     
   <url>
-    <loc>http://whatbeg.com/2017/03/29/deeplearningbook-01.html</loc>
-    <lastmod>2017-03-29T14:43:36.396Z</lastmod>
+    <loc>http://whatbeg.com/2017/02/27/deeplearning0.html</loc>
+    <lastmod>2017-03-30T12:01:05.083Z</lastmod>
     <data>
         <display>
-        <title>Deep Learning读书笔记（1）–开篇</title>
-        <pubTime>2017-03-29T14:39:32.000Z</pubTime>
+        <title>Deep Learning读书笔记系列 写作计划</title>
+        <pubTime>2017-02-27T14:48:25.000Z</pubTime>
         
-        <tag>深度学习</tag>
+        <tag>机器学习</tag>
          
-        <tag>Deep Learning</tag>
+        <tag>深度学习</tag>
          
          
            
@@ -356,7 +357,6 @@
     </data>
     </url>
 
-    
     
   <url>
     <loc>http://whatbeg.com/2016/12/31/annualsummary2016.html</loc>
