@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://whatbeg.com/"/>
-  <updated>2017-03-30T12:01:25.924Z</updated>
+  <updated>2017-04-01T11:48:28.282Z</updated>
   <id>http://whatbeg.com/</id>
   
   <author>
@@ -14,6 +14,51 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>合并多个Commits，请注意！</title>
+    <link href="http://whatbeg.com/2017/04/01/combinecommits.html"/>
+    <id>http://whatbeg.com/2017/04/01/combinecommits.html</id>
+    <published>2017-04-01T11:47:16.000Z</published>
+    <updated>2017-04-01T11:48:28.282Z</updated>
+    
+    <content type="html">&lt;h2 id=&quot;合并多个Commits&quot;&gt;&lt;a href=&quot;#合并多个Commits&quot; class=&quot;headerlink&quot; title=&quot;合并多个Commits&quot;&gt;&lt;/a&gt;合并多个Commits&lt;/h2&gt;&lt;p&gt;我们提交Pull Request的时候有时候并不是一个Commit就完成的，往往会做一些修改，然后再提交Commit，通常会走多轮，到最后就可能会有多个Commit，这时候往往需要合并这些Commits为一个，然后Manager帮你Merge。&lt;br&gt;这时候我们就需要使用git rebase了。&lt;br&gt;这里我并不打算详解rebase，这是Git book做的事，这里只是记录一下自己做的一个过程。&lt;/p&gt;
+&lt;p&gt;关于rebase可以参看这几篇文章：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://git-scm.com/book/zh/v2/Git-%E5%88%86%E6%94%AF-%E5%8F%98%E5%9F%BA&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;3.6 Git 分支 - 变基&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://zerodie.github.io/blog/2012/01/19/git-rebase-i/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;如何合併多個commits&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.jianshu.com/p/964de879904a&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;「Git」合并多个 Commit&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;首先&lt;code&gt;git log&lt;/code&gt;查看需要合并的Commits，比如如下形式：&lt;/p&gt;
+&lt;figure class=&quot;highlight sql&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;commit&lt;/span&gt; &lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;ade56efc466c093d7e8e25c520293cesedc96cc&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Author: xxx&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;Date&lt;/span&gt;:   Wed Mar &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;number&quot;&gt;12&lt;/span&gt;:&lt;span class=&quot;number&quot;&gt;31&lt;/span&gt;:&lt;span class=&quot;number&quot;&gt;10&lt;/span&gt; &lt;span class=&quot;number&quot;&gt;2017&lt;/span&gt; +&lt;span class=&quot;number&quot;&gt;0800&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;Commit&lt;/span&gt; Message &lt;span class=&quot;number&quot;&gt;4&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;commit&lt;/span&gt; &lt;span class=&quot;number&quot;&gt;546&lt;/span&gt;ffc32692d3f935feb9b04d6ecb66feda9560b&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Author: xxx&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;Date&lt;/span&gt;:   Mon Feb &lt;span class=&quot;number&quot;&gt;20&lt;/span&gt; &lt;span class=&quot;number&quot;&gt;15&lt;/span&gt;:&lt;span class=&quot;number&quot;&gt;28&lt;/span&gt;:&lt;span class=&quot;number&quot;&gt;40&lt;/span&gt; &lt;span class=&quot;number&quot;&gt;2017&lt;/span&gt; +&lt;span class=&quot;number&quot;&gt;0800&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;Commit&lt;/span&gt; Message &lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;commit&lt;/span&gt; f48b8644013c23f132c3fe72f8cc38ea288e6f3d&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Author: xxx&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;Date&lt;/span&gt;:   Thu Feb &lt;span class=&quot;number&quot;&gt;9&lt;/span&gt; &lt;span class=&quot;number&quot;&gt;13&lt;/span&gt;:&lt;span class=&quot;number&quot;&gt;52&lt;/span&gt;:&lt;span class=&quot;number&quot;&gt;39&lt;/span&gt; &lt;span class=&quot;number&quot;&gt;2017&lt;/span&gt; +&lt;span class=&quot;number&quot;&gt;0800&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;Commit&lt;/span&gt; Message &lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;commit&lt;/span&gt; fe72f8cc38ea288e6c3fe72f8cc38ea288e6f3de&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Author: xxx&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;Date&lt;/span&gt;:   Thu Feb &lt;span class=&quot;number&quot;&gt;9&lt;/span&gt; &lt;span class=&quot;number&quot;&gt;10&lt;/span&gt;:&lt;span class=&quot;number&quot;&gt;12&lt;/span&gt;:&lt;span class=&quot;number&quot;&gt;39&lt;/span&gt; &lt;span class=&quot;number&quot;&gt;2017&lt;/span&gt; +&lt;span class=&quot;number&quot;&gt;0800&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;Commit&lt;/span&gt; Message &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;比如说我们需要合并Commit 2-4这三个提交，我们运行&lt;br&gt;&lt;figure class=&quot;highlight applescript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;git rebase -i &amp;lt;SHA&lt;span class=&quot;number&quot;&gt;-1&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;of&lt;/span&gt; Commit &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;&amp;gt;  &lt;span class=&quot;comment&quot;&gt;# -i后面的参数为最后一个不需要合并的Commit，这里为Commit 1&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;然后出现交互框，出现三个pick&lt;br&gt;&lt;figure class=&quot;highlight cmake&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;pick ... Commit &lt;span class=&quot;keyword&quot;&gt;Message&lt;/span&gt; &lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;pick ... Commit &lt;span class=&quot;keyword&quot;&gt;Message&lt;/span&gt; &lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;pick ... Commit &lt;span class=&quot;keyword&quot;&gt;Message&lt;/span&gt; &lt;span class=&quot;number&quot;&gt;4&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;我们将后两个pick改成squash，即：&lt;br&gt;&lt;figure class=&quot;highlight cmake&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;pick ... Commit &lt;span class=&quot;keyword&quot;&gt;Message&lt;/span&gt; &lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;squash ... Commit &lt;span class=&quot;keyword&quot;&gt;Message&lt;/span&gt; &lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;squash ... Commit &lt;span class=&quot;keyword&quot;&gt;Message&lt;/span&gt; &lt;span class=&quot;number&quot;&gt;4&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;这里两个操作的区别是：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;pick的意思是要会选择合并到这个commit&lt;/li&gt;
+&lt;li&gt;squash(挤压)的意思是这个commit会被合并到前一个commit&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;然后输入新的Commit Message，保存，即合并成功，最后看只剩一个Commit了。&lt;br&gt;最后Push到remote，这时会提示版本不合，因为本地这个进行了合并后，已经比remote老了，这时只需强推即可：&lt;br&gt;&lt;figure class=&quot;highlight xml&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;git push -f &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;upstream&lt;/span&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;localbranch&lt;/span&gt;&amp;gt;&lt;/span&gt;:&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;remotebranch&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;最后，多个提交就变成了一个提交，可以被merge了。&lt;/p&gt;
+&lt;h2 id=&quot;后悔药&quot;&gt;&lt;a href=&quot;#后悔药&quot; class=&quot;headerlink&quot; title=&quot;后悔药&quot;&gt;&lt;/a&gt;后悔药&lt;/h2&gt;&lt;p&gt;注意，如果出现了什么不想看到的结果或者操作错误，可以使用&lt;br&gt;&lt;figure class=&quot;highlight applescript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;git rebase &lt;span class=&quot;comment&quot;&gt;--abort&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;进行挽救，即可恢复到rebase之前的状态。&lt;/p&gt;
+&lt;h2 id=&quot;简易方法&quot;&gt;&lt;a href=&quot;#简易方法&quot; class=&quot;headerlink&quot; title=&quot;简易方法&quot;&gt;&lt;/a&gt;简易方法&lt;/h2&gt;&lt;p&gt;如果只需合并两个Commit，且又是最近的两个Commit，其实可以更简单地使用：&lt;br&gt;&lt;figure class=&quot;highlight sql&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;git &lt;span class=&quot;keyword&quot;&gt;reset&lt;/span&gt; &lt;span class=&quot;comment&quot;&gt;--soft HEAD^1&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;git &lt;span class=&quot;keyword&quot;&gt;commit&lt;/span&gt; &lt;span class=&quot;comment&quot;&gt;--amend&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;来解决。&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;合并多个Commits&quot;&gt;&lt;a href=&quot;#合并多个Commits&quot; class=&quot;headerlink&quot; title=&quot;合并多个Commits&quot;&gt;&lt;/a&gt;合并多个Commits&lt;/h2&gt;&lt;p&gt;我们提交Pull Request的时候有时候并不是一个Commit就
+    
+    </summary>
+    
+      <category term="计算机相关 | CS.Related" scheme="http://whatbeg.com/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9B%B8%E5%85%B3-CS-Related/"/>
+    
+    
+      <category term="Git" scheme="http://whatbeg.com/tags/Git/"/>
+    
+  </entry>
   
   <entry>
     <title>Deep Learning读书笔记（1）【开篇】</title>
@@ -533,9 +578,9 @@
       <category term="大数据系统与技术 | Big Data" scheme="http://whatbeg.com/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE%E7%B3%BB%E7%BB%9F%E4%B8%8E%E6%8A%80%E6%9C%AF-Big-Data/"/>
     
     
-      <category term="大数据" scheme="http://whatbeg.com/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
-    
       <category term="深度学习" scheme="http://whatbeg.com/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="大数据" scheme="http://whatbeg.com/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
     
       <category term="TensorFlow" scheme="http://whatbeg.com/tags/TensorFlow/"/>
     
@@ -1472,63 +1517,6 @@
     
     
       <category term="算法" scheme="http://whatbeg.com/tags/%E7%AE%97%E6%B3%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>大数据系统方面的经典论文</title>
-    <link href="http://whatbeg.com/2016/10/06/bigdatapapers.html"/>
-    <id>http://whatbeg.com/2016/10/06/bigdatapapers.html</id>
-    <published>2016-10-06T12:57:12.000Z</published>
-    <updated>2017-01-11T06:52:15.457Z</updated>
-    
-    <content type="html">&lt;p&gt;本文转自&lt;a href=&quot;www.52cs.org/?p=1203&quot;&gt;《大数据系统方面的经典论文》&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;说明：下面倾向选取已经在工业界广泛使用的系统论文，还有很多优秀论文没有在列表中，可以查阅近年来SOSP/OSDI/EuroSys/USENIX ATC/SIGMOD/VLDB/NIPS/ICML/KDD等相关会议获取。&lt;/p&gt;
-&lt;h2 id=&quot;分布式数据并行处理框架与编程模型&quot;&gt;&lt;a href=&quot;#分布式数据并行处理框架与编程模型&quot; class=&quot;headerlink&quot; title=&quot;分布式数据并行处理框架与编程模型&quot;&gt;&lt;/a&gt;分布式数据并行处理框架与编程模型&lt;/h2&gt;&lt;p&gt;[Google MapReduce] Jeffrey Dean, Sanjay Ghemawat:&lt;br&gt;MapReduce: Simplified Data Processing on Large Clusters. OSDI 2004: 137-150&lt;/p&gt;
-&lt;p&gt;[Microsoft Dryad] Michael Isard, Mihai Budiu, Yuan Yu, Andrew Birrell, Dennis Fetterly:&lt;br&gt;Dryad: distributed data-parallel programs from sequential building blocks. EuroSys 2007: 59-72&lt;/p&gt;
-&lt;p&gt;[Microsoft DryadLINQ] Yuan Yu, Michael Isard, Dennis Fetterly, Mihai Budiu, Úlfar Erlingsson, Pradeep Kumar Gunda, Jon Currey:&lt;br&gt;DryadLINQ: A System for General-Purpose Distributed Data-Parallel Computing Using a High-Level Language. OSDI 2008: 1-14&lt;/p&gt;
-&lt;p&gt;[Google FlumeJava] Craig Chambers, Ashish Raniwala, Frances Perry, Stephen Adams, Robert R. Henry, Robert Bradshaw, Nathan Weizenbaum:&lt;br&gt;FlumeJava: easy, efficient data-parallel pipelines. PLDI 2010: 363-375&lt;/p&gt;
-&lt;p&gt;[Apache Spark Core] Matei Zaharia, Mosharaf Chowdhury, Tathagata Das, Ankur Dave, Justin Ma, Murphy McCauly, Michael J. Franklin, Scott Shenker, Ion Stoica:&lt;br&gt;Resilient Distributed Datasets: A Fault-Tolerant Abstraction for In-Memory Cluster Computing. NSDI2012: 15-28&lt;/p&gt;
-&lt;p&gt;[Google Cloud Dataflow] Tyler Akidau, Robert Bradshaw, Craig Chambers, Slava Chernyak, Rafael Fernández-Moctezuma, Reuven Lax, Sam McVeety, Daniel Mills, Frances Perry, Eric Schmidt, Sam Whittle:&lt;br&gt;The Dataflow Model: A Practical Approach to Balancing Correctness, Latency, and Cost in Massive-Scale, Unbounded, Out-of-Order Data Processing. PVLDB 8(12): 1792-1803 (2015)&lt;/p&gt;
-&lt;p&gt;[Apache Tez] Bikas Saha, Hitesh Shah, Siddharth Seth, Gopal Vijayaraghavan, Arun C. Murthy, Carlo Curino:&lt;br&gt;Apache Tez: A Unifying Framework for Modeling and Building Data Processing Applications. SIGMOD Conference 2015: 1357-1369&lt;/p&gt;
-&lt;p&gt;[Apache Flink] Paris Carbone, Asterios Katsifodimos, Stephan Ewen, Volker Markl, Seif Haridi, Kostas Tzoumas:&lt;br&gt;Apache Flink™: Stream and Batch Processing in a Single Engine. IEEE Data Eng. Bull. 38(4): 28-38 (2015)&lt;/p&gt;
-&lt;h2 id=&quot;大数据SQL&quot;&gt;&lt;a href=&quot;#大数据SQL&quot; class=&quot;headerlink&quot; title=&quot;大数据SQL&quot;&gt;&lt;/a&gt;大数据SQL&lt;/h2&gt;&lt;p&gt;[Google Sawzall] Rob Pike, Sean Dorward, Robert Griesemer, Sean Quinlan:&lt;br&gt;Interpreting the data: Parallel analysis with Sawzall. Scientific Programming 13(4): 277-298 (2005)&lt;/p&gt;
-&lt;p&gt;[Apache Pig] Christopher Olston, Benjamin Reed, Utkarsh Srivastava, Ravi Kumar, Andrew Tomkins:&lt;br&gt;Pig latin: a not-so-foreign language for data processing. SIGMOD Conference 2008: 1099-1110&lt;/p&gt;
-&lt;p&gt;[Apache Hive] Ashish Thusoo, Joydeep Sen Sarma, Namit Jain, Zheng Shao, Prasad Chakka, Suresh Anthony, Hao Liu, Pete Wyckoff,Raghotham Murthy:&lt;br&gt;Hive - A Warehousing Solution Over a Map-Reduce Framework. PVLDB 2(2): 1626-1629 (2009)&lt;/p&gt;
-&lt;p&gt;[Berkeley Spark Shark] Reynold S. Xin, Josh Rosen, Matei Zaharia, Michael J. Franklin, Scott Shenker, Ion Stoica:&lt;br&gt;Shark: SQL and rich analytics at scale. SIGMOD Conference 2013: 13-24&lt;/p&gt;
-&lt;p&gt;[Apache Spark SQL] Michael Armbrust, Reynold S. Xin, Cheng Lian, Yin Huai, Davies Liu, Joseph K. Bradley, Xiangrui Meng, Tomer Kaftan, Michael J. Franklin, Ali Ghodsi, Matei Zaharia:&lt;br&gt;Spark SQL: Relational Data Processing in Spark. SIGMOD Conference 2015: 1383-1394&lt;/p&gt;
-&lt;p&gt;[Google Tenzing] Biswapesh Chattopadhyay, Liang Lin, Weiran Liu, Sagar Mittal, Prathyusha Aragonda, Vera Lychagina, Younghee Kwon, Michael Wong:&lt;br&gt;Tenzing A SQL Implementation On The MapReduce Framework. PVLDB 4(12): 1318-1327 (2011)&lt;/p&gt;
-&lt;h2 id=&quot;大规模图计算&quot;&gt;&lt;a href=&quot;#大规模图计算&quot; class=&quot;headerlink&quot; title=&quot;大规模图计算&quot;&gt;&lt;/a&gt;大规模图计算&lt;/h2&gt;&lt;p&gt;[Google Pregel] Grzegorz Malewicz, Matthew H. Austern, Aart J. C. Bik, James C. Dehnert, Ilan Horn, Naty Leiser, Grzegorz Czajkowski:&lt;br&gt;Pregel: a system for large-scale graph processing. SIGMOD Conference 2010: 135-146&lt;/p&gt;
-&lt;p&gt;[CMU GraphLab] Yucheng Low, Joseph Gonzalez, Aapo Kyrola, Danny Bickson, Carlos Guestrin, Joseph M. Hellerstein:&lt;br&gt;Distributed GraphLab: A Framework for Machine Learning in the Cloud. PVLDB 5(8): 716-727 (2012)&lt;/p&gt;
-&lt;p&gt;[CMU PowerGraph] Joseph E. Gonzalez, Yucheng Low, Haijie Gu, Danny Bickson, Carlos Guestrin:&lt;br&gt;PowerGraph: Distributed Graph-Parallel Computation on Natural Graphs. OSDI 2012: 17-30&lt;/p&gt;
-&lt;p&gt;[CMU GraphChi] Aapo Kyrola, Guy E. Blelloch, Carlos Guestrin:&lt;br&gt;GraphChi: Large-Scale Graph Computation on Just a PC. OSDI 2012: 31-46&lt;/p&gt;
-&lt;p&gt;[Apache Spark GraphX] Joseph E. Gonzalez, Reynold S. Xin, Ankur Dave, Daniel Crankshaw, Michael J. Franklin, Ion Stoica:&lt;br&gt;GraphX: Graph Processing in a Distributed Dataflow Framework. OSDI 2014: 599-613&lt;/p&gt;
-&lt;h2 id=&quot;分布式机器学习&quot;&gt;&lt;a href=&quot;#分布式机器学习&quot; class=&quot;headerlink&quot; title=&quot;分布式机器学习&quot;&gt;&lt;/a&gt;分布式机器学习&lt;/h2&gt;&lt;p&gt;[Google Distbelief] Jeffrey Dean, Greg Corrado, Rajat Monga, Kai Chen, Matthieu Devin, Quoc V. Le, Mark Z. Mao, Marc’Aurelio Ranzato, Andrew W. Senior, Paul A. Tucker, Ke Yang, Andrew Y. Ng:&lt;br&gt;Large Scale Distributed Deep Networks. NIPS 2012: 1232-1240&lt;/p&gt;
-&lt;p&gt;[CMU Parameter Server] Mu Li, David G. Andersen, Jun Woo Park, Alexander J. Smola, Amr Ahmed, Vanja Josifovski, James Long,Eugene J. Shekita, Bor-Yiing Su:&lt;br&gt;&lt;a href=&quot;https://www.cs.cmu.edu/~muli/file/parameter_server_osdi14.pdf&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Scaling Distributed Machine Learning with the Parameter Server&lt;/a&gt;. OSDI 2014: 583-598&lt;/p&gt;
-&lt;p&gt;[CMU Petuum] Eric P. Xing, Qirong Ho, Wei Dai, Jin Kyu Kim, Jinliang Wei, Seunghak Lee, Xun Zheng, Pengtao Xie, Abhimanu Kumar, Yaoliang Yu:&lt;br&gt;Petuum: A New Platform for Distributed Machine Learning on Big Data. KDD 2015: 1335-1344&lt;/p&gt;
-&lt;p&gt;[Google TensorFlow] Martín Abadi, Ashish Agarwal, Paul Barham, Eugene Brevdo, Zhifeng Chen, Craig Citro, Gregory S. Corrado, Andy Davis,Jeffrey Dean, Matthieu Devin, Sanjay Ghemawat, Ian J. Goodfellow, Andrew Harp, Geoffrey Irving, Michael Isard,Yangqing Jia, Rafal Józefowicz, Lukasz Kaiser, Manjunath Kudlur, Josh Levenberg, Dan Mané, Rajat Monga, Sherry Moore,Derek Gordon Murray, Chris Olah, Mike Schuster, Jonathon Shlens, Benoit Steiner, Ilya Sutskever, Kunal Talwar, Paul A. Tucker, Vincent Vanhoucke, Vijay Vasudevan, Fernanda B. Viégas, Oriol Vinyals, Pete Warden, Martin Wattenberg, Martin Wicke, Yuan Yu, Xiaoqiang Zheng:&lt;br&gt;&lt;a href=&quot;https://arxiv.org/abs/1603.04467&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;TensorFlow: Large-Scale Machine Learning on Heterogeneous Distributed Systems&lt;/a&gt;. CoRR abs/1603.04467 (2016)&lt;/p&gt;
-&lt;p&gt;[Open-source MXNet] Tianqi Chen, Mu Li, Yutian Li, Min Lin, Naiyan Wang, Minjie Wang, Tianjun Xiao, Bing Xu, Chiyuan Zhang, Zheng Zhang:&lt;br&gt;&lt;a href=&quot;https://arxiv.org/abs/1512.01274&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;MXNet: A Flexible and Efficient Machine Learning Library for Heterogeneous Distributed Systems&lt;/a&gt;. CoRRabs/1512.01274 (2015)&lt;/p&gt;
-&lt;p&gt;[Apache Spark MLlib] Xiangrui Meng, Joseph K. Bradley, Burak Yavuz, Evan R. Sparks, Shivaram Venkataraman, Davies Liu, Jeremy Freeman, D. B. Tsai, Manish Amde, Sean Owen, Doris Xin, Reynold Xin, Michael J. Franklin, Reza Zadeh, Matei Zaharia, Ameet Talwalkar:&lt;br&gt;MLlib: Machine Learning in Apache Spark. CoRR abs/1505.06807 (2015)&lt;/p&gt;
-&lt;p&gt;[CMU SSP Protocol] Henggang Cui, James Cipar, Qirong Ho, Jin Kyu Kim, Seunghak Lee, Abhimanu Kumar, Jinliang Wei, Wei Dai,Gregory R. Ganger, Phillip B. Gibbons, Garth A. Gibson, Eric P. Xing:&lt;br&gt;Exploiting Bounded Staleness to Speed Up Big Data Analytics. USENIX Annual Technical Conference2014: 37-48&lt;/p&gt;
-&lt;h2 id=&quot;流式数据处理&quot;&gt;&lt;a href=&quot;#流式数据处理&quot; class=&quot;headerlink&quot; title=&quot;流式数据处理&quot;&gt;&lt;/a&gt;流式数据处理&lt;/h2&gt;&lt;p&gt;[Apache Spark Streaming] Matei Zaharia, Tathagata Das, Haoyuan Li, Timothy Hunter, Scott Shenker, Ion Stoica:&lt;br&gt;Discretized streams: fault-tolerant streaming computation at scale. SOSP 2013: 423-438&lt;/p&gt;
-&lt;p&gt;[Google MillWheel] Tyler Akidau, Alex Balikov, Kaya Bekiroglu, Slava Chernyak, Josh Haberman, Reuven Lax, Sam McVeety, Daniel Mills, Paul Nordstrom, Sam Whittle:&lt;br&gt;MillWheel: Fault-Tolerant Stream Processing at Internet Scale. PVLDB 6(11): 1033-1044 (2013)&lt;/p&gt;
-&lt;p&gt;[Microsoft TimeStream] Zhengping Qian, Yong He, Chunzhi Su, Zhuojie Wu, Hongyu Zhu, Taizhi Zhang, Lidong Zhou, Yuan Yu, Zheng Zhang:&lt;br&gt;TimeStream: reliable stream computation in the cloud. EuroSys 2013: 1-14&lt;/p&gt;
-&lt;h2 id=&quot;资源管理与任务调度&quot;&gt;&lt;a href=&quot;#资源管理与任务调度&quot; class=&quot;headerlink&quot; title=&quot;资源管理与任务调度&quot;&gt;&lt;/a&gt;资源管理与任务调度&lt;/h2&gt;&lt;p&gt;[Apache Hadoop YARN] Vinod Kumar Vavilapalli, Arun C. Murthy, Chris Douglas, Sharad Agarwal, Mahadev Konar, Robert Evans,Thomas Graves, Jason Lowe, Hitesh Shah, Siddharth Seth, Bikas Saha, Carlo Curino, Owen O’Malley, Sanjay Radia, Benjamin Reed, Eric Baldeschwieler:&lt;br&gt;Apache Hadoop YARN: yet another resource negotiator. SoCC 2013: 5:1-5:16&lt;/p&gt;
-&lt;p&gt;[Apache Mesos] Benjamin Hindman, Andy Konwinski, Matei Zaharia, Ali Ghodsi, Anthony D. Joseph, Randy H. Katz, Scott Shenker, Ion Stoica:&lt;br&gt;Mesos: A Platform for Fine-Grained Resource Sharing in the Data Center. NSDI 2011&lt;/p&gt;
-&lt;p&gt;[Google Borg] Abhishek Verma, Luis Pedrosa, Madhukar Korupolu, David Oppenheimer, Eric Tune, John Wilkes:&lt;br&gt;Large-scale cluster management at Google with Borg. EuroSys 2015: 18:1-18:17&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;本文转自&lt;a href=&quot;www.52cs.org/?p=1203&quot;&gt;《大数据系统方面的经典论文》&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;说明：下面倾向选取已经在工业界广泛使用的系统论文，还有很多优秀论文没有在列表中，可以查阅近年来SOSP/OSDI/EuroSys/USENIX ATC/
-    
-    </summary>
-    
-      <category term="大数据系统与技术 | Big Data" scheme="http://whatbeg.com/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE%E7%B3%BB%E7%BB%9F%E4%B8%8E%E6%8A%80%E6%9C%AF-Big-Data/"/>
-    
-    
-      <category term="大数据" scheme="http://whatbeg.com/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
     
   </entry>
   

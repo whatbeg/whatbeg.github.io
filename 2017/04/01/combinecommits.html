@@ -4,26 +4,23 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>《HTTP权威指南》书评 | Whatbeg&#39;s blog</title>
+    <title>合并多个Commits，请注意！ | Whatbeg&#39;s blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="whatbeg">
     
 
     
-    <meta name="description" content="《HTTP权威指南》是公认比较经典的书了，刚好前段时间在做Web相关方面的工作，而且遇到了难题，所以便拿起了这本书来读，以求能对HTTP协议的原理与机制做更深的了解。
-读到后面我才知道，原来这本书的英文版是2002年出版的，而中文版到2012年才出版，所以我一直以为它是12年出的，可惜并不是。如此一来导致书中很多内容会出现老旧和不再适用的情况。我选择略去不读这些内容。当然大部分内容还是现在通用的。">
+    <meta name="description" content="合并多个Commits我们提交Pull Request的时候有时候并不是一个Commit就完成的，往往会做一些修改，然后再提交Commit，通常会走多轮，到最后就可能会有多个Commit，这时候往往需要合并这些Commits为一个，然后Manager帮你Merge。这时候我们就需要使用git rebase了。这里我并不打算详解rebase，这是Git book做的事，这里只是记录一下自己做的一个过">
 <meta property="og:type" content="article">
-<meta property="og:title" content="《HTTP权威指南》书评">
-<meta property="og:url" content="http://whatbeg.com/2016/04/06/httpguide.html">
+<meta property="og:title" content="合并多个Commits，请注意！">
+<meta property="og:url" content="http://whatbeg.com/2017/04/01/combinecommits.html">
 <meta property="og:site_name" content="Whatbeg's blog">
-<meta property="og:description" content="《HTTP权威指南》是公认比较经典的书了，刚好前段时间在做Web相关方面的工作，而且遇到了难题，所以便拿起了这本书来读，以求能对HTTP协议的原理与机制做更深的了解。
-读到后面我才知道，原来这本书的英文版是2002年出版的，而中文版到2012年才出版，所以我一直以为它是12年出的，可惜并不是。如此一来导致书中很多内容会出现老旧和不再适用的情况。我选择略去不读这些内容。当然大部分内容还是现在通用的。">
-<meta property="og:updated_time" content="2016-05-12T03:05:45.045Z">
+<meta property="og:description" content="合并多个Commits我们提交Pull Request的时候有时候并不是一个Commit就完成的，往往会做一些修改，然后再提交Commit，通常会走多轮，到最后就可能会有多个Commit，这时候往往需要合并这些Commits为一个，然后Manager帮你Merge。这时候我们就需要使用git rebase了。这里我并不打算详解rebase，这是Git book做的事，这里只是记录一下自己做的一个过">
+<meta property="og:updated_time" content="2017-04-01T11:48:28.282Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="《HTTP权威指南》书评">
-<meta name="twitter:description" content="《HTTP权威指南》是公认比较经典的书了，刚好前段时间在做Web相关方面的工作，而且遇到了难题，所以便拿起了这本书来读，以求能对HTTP协议的原理与机制做更深的了解。
-读到后面我才知道，原来这本书的英文版是2002年出版的，而中文版到2012年才出版，所以我一直以为它是12年出的，可惜并不是。如此一来导致书中很多内容会出现老旧和不再适用的情况。我选择略去不读这些内容。当然大部分内容还是现在通用的。">
+<meta name="twitter:title" content="合并多个Commits，请注意！">
+<meta name="twitter:description" content="合并多个Commits我们提交Pull Request的时候有时候并不是一个Commit就完成的，往往会做一些修改，然后再提交Commit，通常会走多轮，到最后就可能会有多个Commit，这时候往往需要合并这些Commits为一个，然后Manager帮你Merge。这时候我们就需要使用git rebase了。这里我并不打算详解rebase，这是Git book做的事，这里只是记录一下自己做的一个过">
 
     
     <link rel="alternative" href="/atom.xml" title="Whatbeg&#39;s blog" type="application/atom+xml">
@@ -72,14 +69,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2016/04/06/httpguide.html" title="《HTTP权威指南》书评" itemprop="url">《HTTP权威指南》书评</a>
+      <a href="/2017/04/01/combinecommits.html" title="合并多个Commits，请注意！" itemprop="url">合并多个Commits，请注意！</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="whatbeg" target="_blank" itemprop="author">whatbeg</a>
 		
   <p class="article-time">
-    <time datetime="2016-04-06T03:09:46.000Z" itemprop="datePublished"> 发表于 2016-04-06</time>
+    <time datetime="2017-04-01T11:47:16.000Z" itemprop="datePublished"> 发表于 2017-04-01</time>
     <span id="busuanzi_container_page_pv">
     总阅读<span id="busuanzi_value_page_pv"></span>次
     </span>
@@ -91,20 +88,33 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#第一部分"><span class="toc-number">1.</span> <span class="toc-text">第一部分</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#第二部分"><span class="toc-number">2.</span> <span class="toc-text">第二部分</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#第三部分"><span class="toc-number">3.</span> <span class="toc-text">第三部分</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#第四部分"><span class="toc-number">4.</span> <span class="toc-text">第四部分</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#第五部分"><span class="toc-number">5.</span> <span class="toc-text">第五部分</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#合并多个Commits"><span class="toc-number">1.</span> <span class="toc-text">合并多个Commits</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#后悔药"><span class="toc-number">2.</span> <span class="toc-text">后悔药</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#简易方法"><span class="toc-number">3.</span> <span class="toc-text">简易方法</span></a></li></ol>
 		
 		</div>
 		
-		<p>《HTTP权威指南》是公认比较经典的书了，刚好前段时间在做Web相关方面的工作，而且遇到了难题，所以便拿起了这本书来读，以求能对HTTP协议的原理与机制做更深的了解。</p>
-<p>读到后面我才知道，原来这本书的英文版是2002年出版的，而中文版到2012年才出版，所以我一直以为它是12年出的，可惜并不是。如此一来导致书中很多内容会出现老旧和不再适用的情况。我选择略去不读这些内容。当然大部分内容还是现在通用的。还有一个问题就是这本书的翻译读起来总感觉怪怪的，我觉得如果说有败笔，那么最大的败笔就是翻译了。</p>
-<p>总体说来这本书是值得一看的，书中非常全面详细地叙述了HTTP的基本知识，资源、报文格式，以及中间结构如网关，代理，隧道等等，并且还涉及认证、安全，编码，Web机器人…基本你能想到的东西他都写了。但是全面必然会牺牲深度，以至于我看到很多内容都是我们计算机网络课上学过的，这本书并没有深入多少，所以有些内容就看的比较快了。而且700多页的书有200多页的附录，当手边的手册使也是极好的。</p>
-<p>全书主要内容分为5个部分</p>
-<h4 id="第一部分"><a href="#第一部分" class="headerlink" title="第一部分"></a>第一部分</h4><p>讲述了Web基础和HTTP基础，包括什么是URI(URL+URN)，资源，事务，保温，连接，报文，响应等等等等。几乎是每一个Web相关工作人员都必看的。</p>
-<h4 id="第二部分"><a href="#第二部分" class="headerlink" title="第二部分"></a>第二部分</h4><p>HTTP结构，讲述了服务器，代理，缓存，网关，隧道，中继等内容，相对前面较深入，也是我觉得最有收获的一章，让我对HTTP的体系结构有更深入的了解。还讲述了Web机器人即网络爬虫的一些机制，第一次知道还有robot.txt这个东西来限制爬虫行为。。</p>
-<h4 id="第三部分"><a href="#第三部分" class="headerlink" title="第三部分"></a>第三部分</h4><p>识别，认证与安全，识别讲述cookies机制，认证讲述基本认证和摘要认证，安全方面介绍了HTTPS的机制。并且讲述了很多安全隐患以及如何避免的问题。Web安全相关人员必看，而且现在HTTPS正在成为主流，应该看下。</p>
-<h4 id="第四部分"><a href="#第四部分" class="headerlink" title="第四部分"></a>第四部分</h4><p>实体，编码和国际化，主要讲编码的问题，由于不涉及到这方面的开发类型的工作，就简单扫了一下。</p>
-<h4 id="第五部分"><a href="#第五部分" class="headerlink" title="第五部分"></a>第五部分</h4><p>Web主机托管和重定向可以看下，其余两章过于老旧，可略过。</p>
-<p>基本就是这些，总体还是值得一看，看完能够对HTTP的整个运行体系有一个大概的了解，但是如果要达到深入理解的水平，还需要在实践中不断磨练。</p>
+		<h2 id="合并多个Commits"><a href="#合并多个Commits" class="headerlink" title="合并多个Commits"></a>合并多个Commits</h2><p>我们提交Pull Request的时候有时候并不是一个Commit就完成的，往往会做一些修改，然后再提交Commit，通常会走多轮，到最后就可能会有多个Commit，这时候往往需要合并这些Commits为一个，然后Manager帮你Merge。<br>这时候我们就需要使用git rebase了。<br>这里我并不打算详解rebase，这是Git book做的事，这里只是记录一下自己做的一个过程。</p>
+<p>关于rebase可以参看这几篇文章：</p>
+<ul>
+<li><a href="https://git-scm.com/book/zh/v2/Git-%E5%88%86%E6%94%AF-%E5%8F%98%E5%9F%BA" target="_blank" rel="external">3.6 Git 分支 - 变基</a></li>
+<li><a href="http://zerodie.github.io/blog/2012/01/19/git-rebase-i/" target="_blank" rel="external">如何合併多個commits</a></li>
+<li><a href="http://www.jianshu.com/p/964de879904a" target="_blank" rel="external">「Git」合并多个 Commit</a></li>
+</ul>
+<p>首先<code>git log</code>查看需要合并的Commits，比如如下形式：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">commit</span> <span class="number">3</span>ade56efc466c093d7e8e25c520293cesedc96cc</span><br><span class="line">Author: xxx</span><br><span class="line"><span class="built_in">Date</span>:   Wed Mar <span class="number">1</span> <span class="number">12</span>:<span class="number">31</span>:<span class="number">10</span> <span class="number">2017</span> +<span class="number">0800</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">Commit</span> Message <span class="number">4</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">commit</span> <span class="number">546</span>ffc32692d3f935feb9b04d6ecb66feda9560b</span><br><span class="line">Author: xxx</span><br><span class="line"><span class="built_in">Date</span>:   Mon Feb <span class="number">20</span> <span class="number">15</span>:<span class="number">28</span>:<span class="number">40</span> <span class="number">2017</span> +<span class="number">0800</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">Commit</span> Message <span class="number">3</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">commit</span> f48b8644013c23f132c3fe72f8cc38ea288e6f3d</span><br><span class="line">Author: xxx</span><br><span class="line"><span class="built_in">Date</span>:   Thu Feb <span class="number">9</span> <span class="number">13</span>:<span class="number">52</span>:<span class="number">39</span> <span class="number">2017</span> +<span class="number">0800</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">Commit</span> Message <span class="number">2</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">commit</span> fe72f8cc38ea288e6c3fe72f8cc38ea288e6f3de</span><br><span class="line">Author: xxx</span><br><span class="line"><span class="built_in">Date</span>:   Thu Feb <span class="number">9</span> <span class="number">10</span>:<span class="number">12</span>:<span class="number">39</span> <span class="number">2017</span> +<span class="number">0800</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">Commit</span> Message <span class="number">1</span></span><br></pre></td></tr></table></figure>
+<p>比如说我们需要合并Commit 2-4这三个提交，我们运行<br><figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rebase -i &lt;SHA<span class="number">-1</span> <span class="keyword">of</span> Commit <span class="number">1</span>&gt;  <span class="comment"># -i后面的参数为最后一个不需要合并的Commit，这里为Commit 1</span></span><br></pre></td></tr></table></figure></p>
+<p>然后出现交互框，出现三个pick<br><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pick ... Commit <span class="keyword">Message</span> <span class="number">2</span></span><br><span class="line">pick ... Commit <span class="keyword">Message</span> <span class="number">3</span></span><br><span class="line">pick ... Commit <span class="keyword">Message</span> <span class="number">4</span></span><br></pre></td></tr></table></figure></p>
+<p>我们将后两个pick改成squash，即：<br><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pick ... Commit <span class="keyword">Message</span> <span class="number">2</span></span><br><span class="line">squash ... Commit <span class="keyword">Message</span> <span class="number">3</span></span><br><span class="line">squash ... Commit <span class="keyword">Message</span> <span class="number">4</span></span><br></pre></td></tr></table></figure></p>
+<p>这里两个操作的区别是：</p>
+<ul>
+<li>pick的意思是要会选择合并到这个commit</li>
+<li>squash(挤压)的意思是这个commit会被合并到前一个commit</li>
+</ul>
+<p>然后输入新的Commit Message，保存，即合并成功，最后看只剩一个Commit了。<br>最后Push到remote，这时会提示版本不合，因为本地这个进行了合并后，已经比remote老了，这时只需强推即可：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push -f <span class="tag">&lt;<span class="name">upstream</span>&gt;</span> <span class="tag">&lt;<span class="name">localbranch</span>&gt;</span>:<span class="tag">&lt;<span class="name">remotebranch</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>最后，多个提交就变成了一个提交，可以被merge了。</p>
+<h2 id="后悔药"><a href="#后悔药" class="headerlink" title="后悔药"></a>后悔药</h2><p>注意，如果出现了什么不想看到的结果或者操作错误，可以使用<br><figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rebase <span class="comment">--abort</span></span><br></pre></td></tr></table></figure></p>
+<p>进行挽救，即可恢复到rebase之前的状态。</p>
+<h2 id="简易方法"><a href="#简易方法" class="headerlink" title="简易方法"></a>简易方法</h2><p>如果只需合并两个Commit，且又是最近的两个Commit，其实可以更简单地使用：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git <span class="keyword">reset</span> <span class="comment">--soft HEAD^1</span></span><br><span class="line">git <span class="keyword">commit</span> <span class="comment">--amend</span></span><br></pre></td></tr></table></figure></p>
+<p>来解决。</p>
   
 	</div>
 
@@ -221,13 +231,13 @@
 
 <div class="article-categories">
   
-  <span></span> <a href="/categories/读书-Reading/">读书 | Reading</a>
+  <span></span> <a href="/categories/计算机相关-CS-Related/">计算机相关 | CS.Related</a>
   </div>
 
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/读书/">读书</a><a href="/tags/Web/">Web</a>
+  <span></span> <a href="/tags/Git/">Git</a>
   </div>
 
 </div>
@@ -271,19 +281,11 @@
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2016/04/07/hexofault.html" title="Hexo+Github搭建独立博客遇到的问题及处理几则">
-  <strong>上一篇：</strong><br/>
-  <span>
-  Hexo+Github搭建独立博客遇到的问题及处理几则</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/2016/04/05/kaoyan.html"  title="我的NJU-CS考研路">
+<a href="/2017/03/29/deeplearningbook-01.html"  title="Deep Learning读书笔记（1）【开篇】">
  <strong>下一篇：</strong><br/> 
- <span>我的NJU-CS考研路
+ <span>Deep Learning读书笔记（1）【开篇】
 </span>
 </a>
 </div>
@@ -305,7 +307,7 @@
   <aside class="clearfix">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#第一部分"><span class="toc-number">1.</span> <span class="toc-text">第一部分</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#第二部分"><span class="toc-number">2.</span> <span class="toc-text">第二部分</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#第三部分"><span class="toc-number">3.</span> <span class="toc-text">第三部分</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#第四部分"><span class="toc-number">4.</span> <span class="toc-text">第四部分</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#第五部分"><span class="toc-number">5.</span> <span class="toc-text">第五部分</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#合并多个Commits"><span class="toc-number">1.</span> <span class="toc-text">合并多个Commits</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#后悔药"><span class="toc-number">2.</span> <span class="toc-text">后悔药</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#简易方法"><span class="toc-number">3.</span> <span class="toc-text">简易方法</span></a></li></ol>
  
  </aside>
   </div>
