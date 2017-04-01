@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://whatbeg.com/"/>
-  <updated>2017-04-01T11:48:28.282Z</updated>
+  <updated>2017-04-01T12:40:09.672Z</updated>
   <id>http://whatbeg.com/</id>
   
   <author>
@@ -14,6 +14,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Ubuntu 使用中的问题集锦</title>
+    <link href="http://whatbeg.com/2017/04/01/ubuntuproblems.html"/>
+    <id>http://whatbeg.com/2017/04/01/ubuntuproblems.html</id>
+    <published>2017-04-01T12:38:53.000Z</published>
+    <updated>2017-04-01T12:40:09.672Z</updated>
+    
+    <content type="html">&lt;p&gt;新开一贴，记录一下Ubuntu使用中的一些问题。&lt;/p&gt;
+&lt;h5 id=&quot;Ubuntu-搜狗输入法问题&quot;&gt;&lt;a href=&quot;#Ubuntu-搜狗输入法问题&quot; class=&quot;headerlink&quot; title=&quot;Ubuntu 搜狗输入法问题&quot;&gt;&lt;/a&gt;Ubuntu 搜狗输入法问题&lt;/h5&gt;&lt;p&gt;搜狗输入法突然不能用，打字的时候界面也没了，就剩个框框，打着打着就没了。&lt;br&gt;&lt;img src=&quot;http://7xsl28.com1.z0.glb.clouddn.com/error_sogoupinyin.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;重装了fcitx和sogoupinyin也不行，最后在&lt;a href=&quot;http://forum.ubuntu.org.cn/viewtopic.php?f=8&amp;amp;t=483206&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Ubuntu Forum&lt;/a&gt;找到了解决方案。&lt;br&gt;据说是自动升级什么造成的，deepin里提示说&lt;br&gt;&lt;figure class=&quot;highlight arduino&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;mv  ~/.&lt;span class=&quot;built_in&quot;&gt;config&lt;/span&gt;/SogouPY*  /tmp&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;Ubuntu出问题常去&lt;a href=&quot;http://forum.ubuntu.org.cn/index.php&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Ubuntu 论坛&lt;/a&gt;是正道。&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;新开一贴，记录一下Ubuntu使用中的一些问题。&lt;/p&gt;
+&lt;h5 id=&quot;Ubuntu-搜狗输入法问题&quot;&gt;&lt;a href=&quot;#Ubuntu-搜狗输入法问题&quot; class=&quot;headerlink&quot; title=&quot;Ubuntu 搜狗输入法问题&quot;&gt;&lt;/a&gt;Ubuntu 搜狗输入法
+    
+    </summary>
+    
+      <category term="错误解决与优化 | Err&Opt" scheme="http://whatbeg.com/categories/%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3%E4%B8%8E%E4%BC%98%E5%8C%96-Err-Opt/"/>
+    
+    
+      <category term="Linux" scheme="http://whatbeg.com/tags/Linux/"/>
+    
+  </entry>
   
   <entry>
     <title>合并多个Commits，请注意！</title>
@@ -178,13 +204,15 @@
     <link href="http://whatbeg.com/2017/03/11/linuxmemo.html"/>
     <id>http://whatbeg.com/2017/03/11/linuxmemo.html</id>
     <published>2017-03-11T04:42:52.000Z</published>
-    <updated>2017-03-11T05:00:58.098Z</updated>
+    <updated>2017-04-01T12:38:38.417Z</updated>
     
     <content type="html">&lt;h5 id=&quot;图片压缩&quot;&gt;&lt;a href=&quot;#图片压缩&quot; class=&quot;headerlink&quot; title=&quot;图片压缩&quot;&gt;&lt;/a&gt;图片压缩&lt;/h5&gt;&lt;figure class=&quot;highlight livecodeserver&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;sudo apt-&lt;span class=&quot;built_in&quot;&gt;get&lt;/span&gt; imagemagick&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;convert&lt;/span&gt; -resize &lt;span class=&quot;number&quot;&gt;100&lt;/span&gt;x100 &lt;span class=&quot;built_in&quot;&gt;from&lt;/span&gt;.jpg &lt;span class=&quot;built_in&quot;&gt;to&lt;/span&gt;.jpg&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;convert&lt;/span&gt; -resize &lt;span class=&quot;number&quot;&gt;50&lt;/span&gt;%x50% &lt;span class=&quot;built_in&quot;&gt;from&lt;/span&gt;.jpg &lt;span class=&quot;built_in&quot;&gt;to&lt;/span&gt;.jpg&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;h5 id=&quot;Neural-Artistic-Style&quot;&gt;&lt;a href=&quot;#Neural-Artistic-Style&quot; class=&quot;headerlink&quot; title=&quot;Neural Artistic Style&quot;&gt;&lt;/a&gt;Neural Artistic Style&lt;/h5&gt;&lt;figure class=&quot;highlight brainfuck&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;python&lt;/span&gt; &lt;span class=&quot;comment&quot;&gt;neural_style&lt;/span&gt;&lt;span class=&quot;string&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;comment&quot;&gt;py&lt;/span&gt; &lt;span class=&quot;literal&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;literal&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;comment&quot;&gt;checkpoint&lt;/span&gt;&lt;span class=&quot;literal&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;comment&quot;&gt;output&lt;/span&gt; &lt;span class=&quot;comment&quot;&gt;400out/out%s&lt;/span&gt;&lt;span class=&quot;string&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;comment&quot;&gt;jpg&lt;/span&gt; &lt;span class=&quot;literal&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;literal&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;comment&quot;&gt;checkpoint&lt;/span&gt;&lt;span class=&quot;literal&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;comment&quot;&gt;iterations&lt;/span&gt; &lt;span class=&quot;comment&quot;&gt;50&lt;/span&gt; &lt;span class=&quot;literal&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;literal&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;comment&quot;&gt;iterations&lt;/span&gt; &lt;span class=&quot;comment&quot;&gt;1000&lt;/span&gt; &lt;span class=&quot;literal&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;literal&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;comment&quot;&gt;content&lt;/span&gt; &amp;lt;&lt;span class=&quot;comment&quot;&gt;content&lt;/span&gt; &lt;span class=&quot;comment&quot;&gt;file&lt;/span&gt;&amp;gt; &lt;span class=&quot;literal&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;literal&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;comment&quot;&gt;styles&lt;/span&gt; &amp;lt;&lt;span class=&quot;comment&quot;&gt;style&lt;/span&gt; &lt;span class=&quot;comment&quot;&gt;file&lt;/span&gt;&amp;gt; &lt;span class=&quot;literal&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;literal&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;comment&quot;&gt;output&lt;/span&gt; &amp;lt;&lt;span class=&quot;comment&quot;&gt;output&lt;/span&gt; &lt;span class=&quot;comment&quot;&gt;file&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;h5 id=&quot;删除目录下符合条件的文件&quot;&gt;&lt;a href=&quot;#删除目录下符合条件的文件&quot; class=&quot;headerlink&quot; title=&quot;删除目录下符合条件的文件&quot;&gt;&lt;/a&gt;删除目录下符合条件的文件&lt;/h5&gt;&lt;figure class=&quot;highlight stata&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;find ./ -name &lt;span class=&quot;string&quot;&gt;&quot;CMakeCache.txt&quot;&lt;/span&gt; | xargs &lt;span class=&quot;keyword&quot;&gt;rm&lt;/span&gt; -rf;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;TORCH_LUA_VERSION=LUA52 ./install.&lt;span class=&quot;keyword&quot;&gt;sh&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;h5 id=&quot;安装cudnn，cuda配置的环境变量&quot;&gt;&lt;a href=&quot;#安装cudnn，cuda配置的环境变量&quot; class=&quot;headerlink&quot; title=&quot;安装cudnn，cuda配置的环境变量&quot;&gt;&lt;/a&gt;安装cudnn，cuda配置的环境变量&lt;/h5&gt;&lt;figure class=&quot;highlight xquery&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;export LD_LIBRARY_PATH=/usr/local/cuda-&lt;span class=&quot;number&quot;&gt;8.0&lt;/span&gt;/lib64:/usr/local/cuda-&lt;span class=&quot;number&quot;&gt;8.0&lt;/span&gt;/extras/CUPTI/lib64:$LD_LIBRARY_PATH&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;export CUDA_HOME=/usr/local/cuda-&lt;span class=&quot;number&quot;&gt;8.0&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;export PATH=$CUDA_HOME/bin:$PATH&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;h5 id=&quot;安装JAVA，JDK配置环境变量&quot;&gt;&lt;a href=&quot;#安装JAVA，JDK配置环境变量&quot; class=&quot;headerlink&quot; title=&quot;安装JAVA，JDK配置环境变量&quot;&gt;&lt;/a&gt;安装JAVA，JDK配置环境变量&lt;/h5&gt;&lt;figure class=&quot;highlight xquery&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;export JAVA_HOME=/usr/local/jdk1.&lt;span class=&quot;number&quot;&gt;8.0_121&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;export JRE_HOME=$JAVA_HOME/jre&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;export CLASSPATH=.:$JAVA_HOME/lib:$JRE_HOME/lib&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;export PATH=$JAVA_HOME/bin:$PATH&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h5 id=&quot;查找一个或多个文件中是否含有某字符串&quot;&gt;&lt;a href=&quot;#查找一个或多个文件中是否含有某字符串&quot; class=&quot;headerlink&quot; title=&quot;查找一个或多个文件中是否含有某字符串&quot;&gt;&lt;/a&gt;查找一个或多个文件中是否含有某字符串&lt;/h5&gt;&lt;figure class=&quot;highlight nginx&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;attribute&quot;&gt;strings&lt;/span&gt; ./\&lt;span class=&quot;regexp&quot;&gt;*.sh&lt;/span&gt; | grep &lt;span class=&quot;string&quot;&gt;&quot;STR*&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h5 id=&quot;yarn-终结application&quot;&gt;&lt;a href=&quot;#yarn-终结application&quot; class=&quot;headerlink&quot; title=&quot;yarn 终结application&quot;&gt;&lt;/a&gt;yarn 终结application&lt;/h5&gt;&lt;figure class=&quot;highlight applescript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;yarn &lt;span class=&quot;built_in&quot;&gt;application&lt;/span&gt; -kill &amp;lt;application_ID&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 </content>
     
     <summary type="html">
@@ -578,9 +606,9 @@
       <category term="大数据系统与技术 | Big Data" scheme="http://whatbeg.com/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE%E7%B3%BB%E7%BB%9F%E4%B8%8E%E6%8A%80%E6%9C%AF-Big-Data/"/>
     
     
-      <category term="深度学习" scheme="http://whatbeg.com/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
-    
       <category term="大数据" scheme="http://whatbeg.com/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
+    
+      <category term="深度学习" scheme="http://whatbeg.com/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
     
       <category term="TensorFlow" scheme="http://whatbeg.com/tags/TensorFlow/"/>
     
@@ -1435,88 +1463,6 @@
     
     
       <category term="机器学习" scheme="http://whatbeg.com/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>如何从头开始实现一个中文拼音输入法？</title>
-    <link href="http://whatbeg.com/2016/11/16/godtianpinyin.html"/>
-    <id>http://whatbeg.com/2016/11/16/godtianpinyin.html</id>
-    <published>2016-11-16T08:26:26.000Z</published>
-    <updated>2016-11-24T14:37:58.105Z</updated>
-    
-    <content type="html">&lt;h2 id=&quot;Abstract&quot;&gt;&lt;a href=&quot;#Abstract&quot; class=&quot;headerlink&quot; title=&quot;Abstract&quot;&gt;&lt;/a&gt;Abstract&lt;/h2&gt;&lt;p&gt;众所周知，中文输入法是一个历史悠久的问题，但也实在是个繁琐的活，不知道这是不是网上很少有人分享中文拼音输入法的原因，接着这次NLP Project的机会，我觉得实现一发中文拼音输入法，看看水有多深，结果发现还挺深的，但是基本效果还是能出来的，而且看别的组都做得挺好的，这次就分享一下我们做的结果吧。 （注：此文假设读者已经具备一些隐马尔可夫模型的知识）&lt;/p&gt;
-&lt;h2 id=&quot;任务描述&quot;&gt;&lt;a href=&quot;#任务描述&quot; class=&quot;headerlink&quot; title=&quot;任务描述&quot;&gt;&lt;/a&gt;任务描述&lt;/h2&gt;&lt;p&gt;实现一个中文拼音输入法。&lt;/p&gt;
-&lt;p&gt;经过分析，分为以下几个模块来对中文拼音输入法进行实现：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;核心功能包括拼音切分(SplitPinyin.py)&lt;/li&gt;
-&lt;li&gt;HMM模型训练(TrainMatrix.py)&lt;/li&gt;
-&lt;li&gt;Trie树构建与搜索接口实现(PinyinTrie.py)&lt;/li&gt;
-&lt;li&gt;维特比算法实现以及提供给UI的服务接口(GodTian_Pinyin.py)&lt;/li&gt;
-&lt;li&gt;最后的UI实现(gui.py)&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&quot;技术路线&quot;&gt;&lt;a href=&quot;#技术路线&quot; class=&quot;headerlink&quot; title=&quot;技术路线&quot;&gt;&lt;/a&gt;技术路线&lt;/h2&gt;&lt;p&gt;在中文拼音输入法中，我们需要完成拼音序列到汉字序列的转换，比如输入“nihao”，输入法会给出我们想输入的字“你好”，到这里我们就可以问出几个问题：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;如何切分拼音？ &lt;/strong&gt;&lt;br&gt;如： 用户输入”xiana”， 输入法应该判断用户想输入”xian a”（闲啊） 还是”xia na”（夏娜） 还是”xi an a”（西安啊）？&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;如何实时给用户以反馈？&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;对于切分好的拼音，怎样找出用户最想输入的一串中文显示给用户？&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;用户输入的拼音是错的的情况下，如何容忍这种错误？该如何显示？&lt;/strong&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;也许我们还能问出更多的问题，中文拼音输入法就是这样，总有可以继续抠下去的细节。&lt;br&gt;那么我们如何解决上面的问题？我们的方案如下：&lt;/p&gt;
-&lt;h3 id=&quot;如何切分拼音？&quot;&gt;&lt;a href=&quot;#如何切分拼音？&quot; class=&quot;headerlink&quot; title=&quot;如何切分拼音？&quot;&gt;&lt;/a&gt;如何切分拼音？&lt;/h3&gt;&lt;p&gt;这里我们暂时采用最长匹配的方式，也就是说，如果用户输入的首个串是拼音或者是某个合法拼音的前缀，那么我们会继续向后发现，等待用户输入，直到用户输完后发现这个字符（假设是第n个）与原来n-1个不是合法的拼音也不是合法的拼音的前缀，那么此时将前面n-1串切分成拼音，这就完成了一个拼音的发现，比如说输入”xiant”（想输xiantian），则我们会扫描这个串，一直到”xian”，到”xiant”的时候发现既不是合法拼音的前缀也不是合法拼音，那么从t前面划分开，得到”xian’t”，同样的道理发现后续的拼音。&lt;br&gt;在实时任务中，用户即使没有输完我们仍应该显示东西，那么我们先切分拼音，最多只会有最后一个是不完整的拼音前缀，那么我们将完整的和不完整的分开处理。假设是”xian’t”的情况，我们将”xian”放入viterbi算法中，通过HMM得出概率最大的一个输出串，然后将最后的”t”在训练过的Trie树中搜索出所有以”t”为前缀的字，以及他们出现的频率，取频率最高的若干个，作为viterbi算法的下一个状态的可能集合，然后得到他们的拼音，与前面n-1个拼音组合起来跑Viterbi算法，得到最可能的一个中文串，由于这些频率最高的字的拼音（即我们可能的观测值）可能不相同，我们只能将相同音的字作为一次viterbi算法运行的下一状态，这样viterbi跑的次数就是这些字里面不同音的个数，但是由于总数固定，异音越多，每个音对应的越少，所以总时间是没有差别的。&lt;br&gt;具体Trie树会在后面讲解。&lt;/p&gt;
-&lt;h3 id=&quot;如何实时给用户以反馈？&quot;&gt;&lt;a href=&quot;#如何实时给用户以反馈？&quot; class=&quot;headerlink&quot; title=&quot;如何实时给用户以反馈？&quot;&gt;&lt;/a&gt;如何实时给用户以反馈？&lt;/h3&gt;&lt;p&gt;上面其实已经初步解释了如何实时反馈，实时反馈我们要做的就是用户每输一个字母，我们就能够显示出用户可能想要打的字，那么，以一个字母开头的拼音有很多，每个拼音对应的字也可能有很多，也即结果有很多，但是我们又不能漏掉，所以只能考虑所有的字，比较选出概率最大的若干个字，这时候我们可以采用Trie树来解决。Trie树就是前缀树，说白了就是将拼音的字母按顺序顺着根插入到树中，每个叶子节点就是一个拼音，这个拼音就是顺着根一路走下来取的字母的顺序组合，这样我们就可以找出以任意字符串为前缀的所有拼音，方法就是dfs遍历每一个以其为前缀的子树的叶子节点，这时候我们叶子节点存的其实是一个字典，key为这个拼音对应的可能的字，value为这个字出现的频率，以作为比较。&lt;/p&gt;
-&lt;h3 id=&quot;对于切分好的拼音，怎样找出用户最想输入的一串中文显示给用户？&quot;&gt;&lt;a href=&quot;#对于切分好的拼音，怎样找出用户最想输入的一串中文显示给用户？&quot; class=&quot;headerlink&quot; title=&quot;对于切分好的拼音，怎样找出用户最想输入的一串中文显示给用户？&quot;&gt;&lt;/a&gt;对于切分好的拼音，怎样找出用户最想输入的一串中文显示给用户？&lt;/h3&gt;&lt;p&gt;这里我们使用隐马尔可夫模型，将用户想输入的中文字作为隐状态，用户输入的拼音为显状态，通过最大似然估计即频率估计出HMM的三个矩阵的值，最后通过viterbi算法找出概率最大的若干个中文字串显示出来。&lt;/p&gt;
-&lt;h3 id=&quot;用户输入的拼音是错的的情况下，如何容忍这种错误？该如何显示？&quot;&gt;&lt;a href=&quot;#用户输入的拼音是错的的情况下，如何容忍这种错误？该如何显示？&quot; class=&quot;headerlink&quot; title=&quot;用户输入的拼音是错的的情况下，如何容忍这种错误？该如何显示？&quot;&gt;&lt;/a&gt;用户输入的拼音是错的的情况下，如何容忍这种错误？该如何显示？&lt;/h3&gt;&lt;p&gt;由于考虑到实现高度容错的复杂性，我们假设用户会输入正确的拼音，在想分割的时候会自行添加分隔符”‘“，由于大部分输入法用户绝大部分时间都会输入正确的拼音，所以，这样一个假设既简化了实现的过程，又没有损失太大的用户体验。&lt;/p&gt;
-&lt;h2 id=&quot;用到的数据&quot;&gt;&lt;a href=&quot;#用到的数据&quot; class=&quot;headerlink&quot; title=&quot;用到的数据&quot;&gt;&lt;/a&gt;用到的数据&lt;/h2&gt;&lt;p&gt;由于训练HMM模型的需要，我们从搜狗实验室找到了SogouQ用户查询数据集，预处理成合法的句子之后大约有360M，且为了避免查询句太短，我们也增加了将近30M的搜狐新闻数据作为训练语料，这里面包含了很多的长句子。&lt;br&gt;通过这两个语料的训练，我们得到了长句和短句皆可表现较好效果的HMM模型。并且我们还可以继续拓展语料，以增加我们HMM模型的准确性，这是后话，不提。&lt;/p&gt;
-&lt;h2 id=&quot;遇到的问题及解决方案，&quot;&gt;&lt;a href=&quot;#遇到的问题及解决方案，&quot; class=&quot;headerlink&quot; title=&quot;遇到的问题及解决方案，&quot;&gt;&lt;/a&gt;遇到的问题及解决方案，&lt;/h2&gt;&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;UI界面的问题，由于UI设计的复杂性与不同系统的考虑，出现了许多莫名其妙的BUG，这使得我们花了许多时间。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;viterbi算法的效率问题，由于以某个字母开头的拼音对应的字有很多个，假设我们取最优的K个，我们需要将这K个与前面已有的拼音组合，然后跑一遍Viterbi算法，由于Viterbi算法从一个状态转移到另一个状态的计算量很大，我们使用了记忆（cache）的方法来加速，具体方法就是记录下某一个完整拼音串所对应的viterbi算法的最后一个状态的相关情况，这样如果我们再次遇到这个拼音串（A） 加上另一个拼音（B）跑viterbi的情况，我们就不需要从这个组合串的开头开始跑viterbi算法了，而是直接从A 串跑完viterbi的最后一个状态（从记忆单元读取）开始，向B进行转移。&lt;br&gt;这个记忆单元会随着程序而一直存在，并且我们对这个对象做了持久化，在输入法启动时我们会读取这个文件（记忆单元），这也就意味着，如果我们曾经输入过某个拼音串，那么我们以后再输入同样的拼音串的时候，不再需要跑核心算法，而是直接显示结果，这样在速度上就取得了显著的提高，就会出现，输入法越用越好用，越用越快的好处，当然这牺牲了一些存储空间，但是如今我们都不缺存储空间。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;重复计算的问题，比如在用户觉得打错了的时候，往后退格，这时就会退到某一个前缀，但是其实这个前缀我们是算过了的，也显示过了的，就是说我们退回到我们以前显示过的内容的时候，如果不加优化，那么又会重新跑一遍核心的viterbi算法，这样就会很慢，那么我们还是利用cache思想，将输入的拼音串以及对应的显示结果相对应并且存起来，这样我们就做到了飞速的退格操作。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Python语言固有的性能问题，解决这个问题只有更换语言，事实上用C++语言实现的话我相信会快很多，这在后面可以考虑用C++实现，这也是完全可行的。&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h2 id=&quot;性能评价&quot;&gt;&lt;a href=&quot;#性能评价&quot; class=&quot;headerlink&quot; title=&quot;性能评价&quot;&gt;&lt;/a&gt;性能评价&lt;/h2&gt;&lt;p&gt;输入比较迅速，绝大多数输入能在1秒以内显示。输入过的句子再输入和退格操作都是毫秒级别的。&lt;/p&gt;
-&lt;h2 id=&quot;给出程序的运行环境&quot;&gt;&lt;a href=&quot;#给出程序的运行环境&quot; class=&quot;headerlink&quot; title=&quot;给出程序的运行环境&quot;&gt;&lt;/a&gt;给出程序的运行环境&lt;/h2&gt;&lt;ol&gt;
-&lt;li&gt;Python 2.7&lt;/li&gt;
-&lt;li&gt;需要安装的Python包： Tkinter, cPickle, pypinyin等模块&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h2 id=&quot;执行方法及参数&quot;&gt;&lt;a href=&quot;#执行方法及参数&quot; class=&quot;headerlink&quot; title=&quot;执行方法及参数&quot;&gt;&lt;/a&gt;执行方法及参数&lt;/h2&gt;&lt;p&gt;在项目Project目录下，运行&lt;br&gt;&lt;figure class=&quot;highlight vim&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ &lt;span class=&quot;keyword&quot;&gt;python&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;gui&lt;/span&gt;.&lt;span class=&quot;keyword&quot;&gt;py&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;即可。&lt;br&gt;&lt;img src=&quot;http://7xsl28.com1.z0.glb.clouddn.com/GodTian_Pinyin.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;h2 id=&quot;Future-Works&quot;&gt;&lt;a href=&quot;#Future-Works&quot; class=&quot;headerlink&quot; title=&quot;Future Works&quot;&gt;&lt;/a&gt;Future Works&lt;/h2&gt;&lt;p&gt;由上面我们可以看到其实可以做的工作还很多，比如&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;改换编译型语言，如C++，大幅减小计算开销&lt;/li&gt;
-&lt;li&gt;不断随着用户的输入更新HMM模型&lt;/li&gt;
-&lt;li&gt;将软件嵌入系统中&lt;/li&gt;
-&lt;li&gt;我们观察到，长句输入很少有多个是想打的，不想短句可能想打的情况很多，所以很多与输入拼音串长度相同的句子我们可以换成短句。&lt;/li&gt;
-&lt;li&gt;。。。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&quot;Reference-and-Links&quot;&gt;&lt;a href=&quot;#Reference-and-Links&quot; class=&quot;headerlink&quot; title=&quot;Reference and Links&quot;&gt;&lt;/a&gt;Reference and Links&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;http://www.cs.sjsu.edu/~stamp/RUA/HMM.pdf&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;A Revealing Introduction to Hidden Markov Models&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://my.oschina.net/u/158589/blog/61037&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Trie 的原理和实现 (python 实现)&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://github.com/LiuRoy/Pinyin_Demo&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Pinyin_Demo&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://github.com/letiantian/Pinyin2Hanzi&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Pinyin2Hanzi&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;http://www.sciencedirect.com/science/article/pii/S1571066115000638&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Adapting Hidden Markov Models for Online Learning&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://core.ac.uk/download/pdf/4881023.pdf&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Smooth On-Line Learning Algorithm for Hidden Markov Models&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.475.7176&amp;amp;rep=rep1&amp;amp;type=pdf&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;A survey of techniques for incremental learning of HMM parameters&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://github.com/whatbeg/GodTian_Pinyin&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;GodTian_Pinyin Code on my Github&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;http://www.sogou.com/labs/resource/list_pingce.php&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;搜狗实验室&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;SogouQ 和 SohuNews 整理好的数据有兴趣可以发邮件问我要&lt;/li&gt;
-&lt;/ul&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;Abstract&quot;&gt;&lt;a href=&quot;#Abstract&quot; class=&quot;headerlink&quot; title=&quot;Abstract&quot;&gt;&lt;/a&gt;Abstract&lt;/h2&gt;&lt;p&gt;众所周知，中文输入法是一个历史悠久的问题，但也实在是个繁琐的活，不知道这是不是网上很少有人分
-    
-    </summary>
-    
-      <category term="算法 | Algorithm" scheme="http://whatbeg.com/categories/%E7%AE%97%E6%B3%95-Algorithm/"/>
-    
-    
-      <category term="算法" scheme="http://whatbeg.com/tags/%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   
