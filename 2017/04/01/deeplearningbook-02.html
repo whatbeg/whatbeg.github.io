@@ -4,23 +4,47 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>Deep Learning读书笔记系列 写作计划 | Whatbeg&#39;s blog</title>
+    <title>Deep Learning读书笔记（2）【深度学习的数学基础摘要】 | Whatbeg&#39;s blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="whatbeg">
     
 
     
-    <meta name="description" content="前言之前看了一些Bengio的《Deep Learning》，有许多收获和感触，但是由于缺乏回顾，反思与实践加以消化，许多东西已经忘记了，借这个契机，想写一套专门阐述自己阅读Deep Learning及Machine Learning相关资料的阅读心得或者读书笔记的文章，文章不拘深浅，不拘长短，只求能够阐述出自己的心得收获，便于加深理解，如果能够把一件事情讲明白，那就不会那么轻易地忘记了，知识在脑">
+    <meta name="description" content="深度学习需要的数学基础同机器学习所需的数学基础类似，包括三大块：
+
+线性代数
+概率论与数理统计
+信息论基础
+
+分三部分摘要如下，
+线性代数Scalar, Vectors, Matrices, Tensors的概念Scalar: 标量，可以看成一个数Vector: 向量，可以看成一个一维数组Matrix: 矩阵，可以看成二维数组Tensor: 张量，三维或三维以上的数组的统称，维度不定
+很多时候我们">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Deep Learning读书笔记系列 写作计划">
-<meta property="og:url" content="http://whatbeg.com/2017/02/27/deeplearning0.html">
+<meta property="og:title" content="Deep Learning读书笔记（2）【深度学习的数学基础摘要】">
+<meta property="og:url" content="http://whatbeg.com/2017/04/01/deeplearningbook-02.html">
 <meta property="og:site_name" content="Whatbeg's blog">
-<meta property="og:description" content="前言之前看了一些Bengio的《Deep Learning》，有许多收获和感触，但是由于缺乏回顾，反思与实践加以消化，许多东西已经忘记了，借这个契机，想写一套专门阐述自己阅读Deep Learning及Machine Learning相关资料的阅读心得或者读书笔记的文章，文章不拘深浅，不拘长短，只求能够阐述出自己的心得收获，便于加深理解，如果能够把一件事情讲明白，那就不会那么轻易地忘记了，知识在脑">
-<meta property="og:updated_time" content="2017-03-30T12:01:05.083Z">
+<meta property="og:description" content="深度学习需要的数学基础同机器学习所需的数学基础类似，包括三大块：
+
+线性代数
+概率论与数理统计
+信息论基础
+
+分三部分摘要如下，
+线性代数Scalar, Vectors, Matrices, Tensors的概念Scalar: 标量，可以看成一个数Vector: 向量，可以看成一个一维数组Matrix: 矩阵，可以看成二维数组Tensor: 张量，三维或三维以上的数组的统称，维度不定
+很多时候我们">
+<meta property="og:updated_time" content="2017-04-01T14:12:39.043Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Deep Learning读书笔记系列 写作计划">
-<meta name="twitter:description" content="前言之前看了一些Bengio的《Deep Learning》，有许多收获和感触，但是由于缺乏回顾，反思与实践加以消化，许多东西已经忘记了，借这个契机，想写一套专门阐述自己阅读Deep Learning及Machine Learning相关资料的阅读心得或者读书笔记的文章，文章不拘深浅，不拘长短，只求能够阐述出自己的心得收获，便于加深理解，如果能够把一件事情讲明白，那就不会那么轻易地忘记了，知识在脑">
+<meta name="twitter:title" content="Deep Learning读书笔记（2）【深度学习的数学基础摘要】">
+<meta name="twitter:description" content="深度学习需要的数学基础同机器学习所需的数学基础类似，包括三大块：
+
+线性代数
+概率论与数理统计
+信息论基础
+
+分三部分摘要如下，
+线性代数Scalar, Vectors, Matrices, Tensors的概念Scalar: 标量，可以看成一个数Vector: 向量，可以看成一个一维数组Matrix: 矩阵，可以看成二维数组Tensor: 张量，三维或三维以上的数组的统称，维度不定
+很多时候我们">
 
     
     <link rel="alternative" href="/atom.xml" title="Whatbeg&#39;s blog" type="application/atom+xml">
@@ -69,14 +93,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2017/02/27/deeplearning0.html" title="Deep Learning读书笔记系列 写作计划" itemprop="url">Deep Learning读书笔记系列 写作计划</a>
+      <a href="/2017/04/01/deeplearningbook-02.html" title="Deep Learning读书笔记（2）【深度学习的数学基础摘要】" itemprop="url">Deep Learning读书笔记（2）【深度学习的数学基础摘要】</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="whatbeg" target="_blank" itemprop="author">whatbeg</a>
 		
   <p class="article-time">
-    <time datetime="2017-02-27T14:48:25.000Z" itemprop="datePublished"> 发表于 2017-02-27</time>
+    <time datetime="2017-04-01T13:16:46.000Z" itemprop="datePublished"> 发表于 2017-04-01</time>
     <span id="busuanzi_container_page_pv">
     总阅读<span id="busuanzi_value_page_pv"></span>次
     </span>
@@ -88,25 +112,60 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#写作计划"><span class="toc-number">2.</span> <span class="toc-text">写作计划</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#线性代数"><span class="toc-number">1.</span> <span class="toc-text">线性代数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Scalar-Vectors-Matrices-Tensors的概念"><span class="toc-number">1.1.</span> <span class="toc-text">Scalar, Vectors, Matrices, Tensors的概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#矩阵的基本操作"><span class="toc-number">1.2.</span> <span class="toc-text">矩阵的基本操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#奇异-Singular-矩阵和非奇异矩阵"><span class="toc-number">1.3.</span> <span class="toc-text">奇异(Singular)矩阵和非奇异矩阵</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#范数-Norm"><span class="toc-number">1.4.</span> <span class="toc-text">范数(Norm)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#特殊矩阵"><span class="toc-number">1.5.</span> <span class="toc-text">特殊矩阵</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#特征值分解"><span class="toc-number">1.6.</span> <span class="toc-text">特征值分解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#奇异值分解-Singular-Value-Decomposition"><span class="toc-number">1.7.</span> <span class="toc-text">奇异值分解(Singular Value Decomposition)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Moore-Penrose-Pseudoinverse"><span class="toc-number">1.8.</span> <span class="toc-text">*Moore-Penrose Pseudoinverse</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#迹运算符-Trace"><span class="toc-number">1.9.</span> <span class="toc-text">迹运算符(Trace)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#行列式"><span class="toc-number">1.10.</span> <span class="toc-text">行列式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#概率论"><span class="toc-number">2.</span> <span class="toc-text">概率论</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#随机变量"><span class="toc-number">2.1.</span> <span class="toc-text">随机变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#概率分布"><span class="toc-number">2.2.</span> <span class="toc-text">概率分布</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#边缘概率"><span class="toc-number">2.3.</span> <span class="toc-text">边缘概率</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#条件概率及其链式法则"><span class="toc-number">2.4.</span> <span class="toc-text">条件概率及其链式法则</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#独立和条件独立"><span class="toc-number">2.5.</span> <span class="toc-text">独立和条件独立</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#期望，方差与协方差"><span class="toc-number">2.6.</span> <span class="toc-text">期望，方差与协方差</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#常用概率分布"><span class="toc-number">2.7.</span> <span class="toc-text">常用概率分布</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#一些有用的性质和通用函数"><span class="toc-number">2.8.</span> <span class="toc-text">一些有用的性质和通用函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#贝叶斯规则"><span class="toc-number">2.9.</span> <span class="toc-text">贝叶斯规则</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#连续变量的一些技术细节"><span class="toc-number">2.10.</span> <span class="toc-text">连续变量的一些技术细节</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#信息论"><span class="toc-number">3.</span> <span class="toc-text">信息论</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#结构化概率模型"><span class="toc-number">4.</span> <span class="toc-text">结构化概率模型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#References"><span class="toc-number">5.</span> <span class="toc-text">References</span></a></li></ol>
 		
 		</div>
 		
-		<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>之前看了一些Bengio的《Deep Learning》，有许多收获和感触，但是由于缺乏回顾，反思与实践加以消化，许多东西已经忘记了，借这个契机，想写一套专门阐述自己阅读Deep Learning及Machine Learning相关资料的阅读心得或者读书笔记的文章，文章不拘深浅，不拘长短，只求能够阐述出自己的心得收获，便于加深理解，如果能够把一件事情讲明白，那就不会那么轻易地忘记了，知识在脑子里也会更加成系统，不然老是东一点西一点，拣了芝麻丢了西瓜，或是狗熊掰棒子，一路掰一路扔。<br>其次，实践也很重要，光看书始终是纸上谈兵，只有实实在在地利用深度学习去做一些事情，实现了某些效果，那样的感受才会更深切。总而言之，知行合一很重要。<br>当然，文章也不仅仅局限于对Bengio的《Deep Learning》的读书笔记，也包括相关书籍，文章，论文，也不必局限于DL这一个子领域，适当拓展到Machine Learning也是可以的。<br>虽然计划着，却仍有两个忧虑，一是怕没有时间，二是实在才疏学浅，写的浅不要紧，怕就怕出错，闹出笑话还误了读者朋友们，那可是要被骂惨的。但是反过来又提醒自己，“怕什么真理无穷，进一寸有进一寸的欢喜”，没时间不要紧，一点一滴慢慢做就是了，二一个实在有不妥之处相比读者们也会提出来的，所以就不要脸【捂脸】的先忽略这两个问题。</p>
-<h2 id="写作计划"><a href="#写作计划" class="headerlink" title="写作计划"></a>写作计划</h2><p>写作计划暂时包括但不限于：</p>
+		<p>深度学习需要的数学基础同机器学习所需的数学基础类似，包括三大块：</p>
 <ul>
-<li><a href="http://whatbeg.com/2017/03/29/deeplearningbook-01.html">Deep Learning读书笔记（1）【开篇】</a></li>
-<li>Deep Learning读书笔记（2）–数学基础简摘</li>
-<li>Deep Learning读书笔记（3）–数值计算</li>
-<li>Deep Learning读书笔记（4）–机器学习基础</li>
-<li>Deep Learning读书笔记（5）–关于机器学习的提纲（或机器学习总论）</li>
-<li>Deep Learning读书笔记（6）–神经网络</li>
-<li>Deep Learning读书笔记（7）–DL的优化</li>
-<li>Deep Learning读书笔记（8）–DL的正则化</li>
-<li>Deep Learning读书笔记（9）–实践方法论</li>
-<li>Deep Learning读书笔记（10）–DL前沿</li>
+<li>线性代数</li>
+<li>概率论与数理统计</li>
+<li>信息论基础</li>
 </ul>
-<p>计划1年时间完成，即2018年3月1日前完成，希望能够有始有终，千万不要烂尾。。</p>
+<p>分三部分摘要如下，</p>
+<h2 id="线性代数"><a href="#线性代数" class="headerlink" title="线性代数"></a>线性代数</h2><h3 id="Scalar-Vectors-Matrices-Tensors的概念"><a href="#Scalar-Vectors-Matrices-Tensors的概念" class="headerlink" title="Scalar, Vectors, Matrices, Tensors的概念"></a>Scalar, Vectors, Matrices, Tensors的概念</h3><p>Scalar: 标量，可以看成一个数<br>Vector: 向量，可以看成一个一维数组<br>Matrix: 矩阵，可以看成二维数组<br>Tensor: 张量，三维或三维以上的数组的统称，维度不定</p>
+<p>很多时候我们处理的都是超过2维的数组，这时候叫矩阵(Matrix)又不太合适，因为一般提到矩阵都会想到二维的矩阵，所以采用Tensor来统一表示不定维的数组。这也是几乎所有深度学习框架的基本数据结构。”Tensorflow”名字中就包含了”Tensor”，于是向量可以称为1-D Tensor，一维张量，矩阵可以称为二维张量。</p>
+<p>这样，深度学习中包括数据，梯度，权重等等都可以用某维度的Tensor来表示了，底层数据结构的统一为上层编程带来了极大的方便。</p>
+<h3 id="矩阵的基本操作"><a href="#矩阵的基本操作" class="headerlink" title="矩阵的基本操作"></a>矩阵的基本操作</h3><p>矩阵转置，相乘，矩阵与向量相乘<br>单位矩阵与逆矩阵<br>线性相关性<br>展开(Span)，一个向量集的展开定义为向量集中通过向量的线性组合能够得到的点</p>
+<h3 id="奇异-Singular-矩阵和非奇异矩阵"><a href="#奇异-Singular-矩阵和非奇异矩阵" class="headerlink" title="奇异(Singular)矩阵和非奇异矩阵"></a>奇异(Singular)矩阵和非奇异矩阵</h3><p>奇异矩阵：存在线性相关的列的方阵或者行列式为0的方阵称为奇异矩阵<br>奇异矩阵不可逆<br>若n阶方阵A的行列式不为零，即$|A|≠0$，则称A为非奇异矩阵或满秩矩阵，存在逆矩阵</p>
+<p>要注意的是，即使A不是方阵或者A是方阵但是奇异，也是有可能解方程$Ax=b$的，只是不能通过求逆矩阵$A^{-1}$从而$x=A^{-1}b$来解而已。<br>线性方程组$Ax=b$有解的充分必要条件是: 增广矩阵的秩等于系数矩阵的秩，即$r(A,b) = r(A)$</p>
+<h3 id="范数-Norm"><a href="#范数-Norm" class="headerlink" title="范数(Norm)"></a>范数(Norm)</h3><p>范数的作用是度量向量的大小，将向量映射为非负实数<br>$L^p$范数定义为：<br>$$||x||_p=(\Sigma_i {|x_i|^p})^{\frac 1 p}$$</p>
+<p>在正则化中常常用到范数，主要用到1-范数和2-范数。</p>
+<p>$x^{\top}x=||x||_2^2$</p>
+<p>Frobenius Norms:  $||A||_{F}=\sqrt{\Sigma_{i,j}A_{i,j}^2}$</p>
+<p>向量点积： $x^{\top}y=||x||_2||y||_2cos\theta$</p>
+<h3 id="特殊矩阵"><a href="#特殊矩阵" class="headerlink" title="特殊矩阵"></a>特殊矩阵</h3><p>对角矩阵<br>实对称矩阵及其性质：<br>（1）A的特征值为实数，且其特征向量为实向量<br>（2）A的不同特征值对应的特征向量必定正交<br>（3）A一定有n个线性无关的特征向量，从而A相似于对角矩阵<br>正交矩阵的性质： $A^{-1}=A^{\top}$</p>
+<h3 id="特征值分解"><a href="#特征值分解" class="headerlink" title="特征值分解"></a>特征值分解</h3><p>特征值分解的思想类似于因式分解的思想，对于一个数，我们想要分析它的性质，可能直接看看不出什么来，但是可以把它因式分解一下，再来分析。比如180，$180 = 2 \times 2 \times 3 \times 3 \times 5=2^2 \times 3^2 \times 5^1$，这样我们可以知道，180是2,3,5的倍数，也是6的倍数，15的倍数，等等，进而分析其它性质。<br>矩阵分解也是如此，面对一个复杂的矩阵，我们可能毫无头绪，但是将其分解为两个或者多个矩阵的乘积，我们可能就能收获很多的性质。<br>特征值分解 $A=Q \Lambda Q^{\top}$，将矩阵分解为特征值和特征向量，Q是由A的特征向量组成的正交矩阵，而$\Lambda$则为特征值组成的对角矩阵，$\Lambda_{i,i}$ 对应着 $Q_{:,i}$。</p>
+<h3 id="奇异值分解-Singular-Value-Decomposition"><a href="#奇异值分解-Singular-Value-Decomposition" class="headerlink" title="奇异值分解(Singular Value Decomposition)"></a>奇异值分解(Singular Value Decomposition)</h3><p>$A=UDV^{-1}$，U称为左奇异向量，为$AA^{\top}$的特征向量，V称为右奇异向量，为$A^{\top}A$的特征向量。<br>非0奇异值是$A^{\top}A$的特征值的开根号</p>
+<h3 id="Moore-Penrose-Pseudoinverse"><a href="#Moore-Penrose-Pseudoinverse" class="headerlink" title="*Moore-Penrose Pseudoinverse"></a>*Moore-Penrose Pseudoinverse</h3><h3 id="迹运算符-Trace"><a href="#迹运算符-Trace" class="headerlink" title="迹运算符(Trace)"></a>迹运算符(Trace)</h3><p>$ Tr(A) = {\Sigma}_i A_{i,i} $<br>迹运算符有许多性质，比如循环不变性等等</p>
+<h3 id="行列式"><a href="#行列式" class="headerlink" title="行列式"></a>行列式</h3><p>行列式的绝对值度量了矩阵扩展或者空间收缩所包含的操作多少的度量。</p>
+<h2 id="概率论"><a href="#概率论" class="headerlink" title="概率论"></a>概率论</h2><p>概率论也是很多领域包括计算机科学尤其是机器学习这块的基础学科。一般的计算机程序或者问题的求解是没有随机性的，按照一个确定的算法来即可。但是在机器学习中，经常会遇到不确定的量，比如说数据的采集，可能是随机采集的，或者说数据中包含随机噪声等等，而概率论则是量化各种不确定性的手段。<br>可以说，几乎所有的活动都要求参与者具有分析不确定性的出现的一些能力。<br>不确定性有三种可能的来源：</p>
+<ul>
+<li>系统固有的随机性<br>比如说打牌的游戏，我们都会假设洗牌确实是能够将牌的顺序变的随机。</li>
+<li>不完备的观察<br>即使是一个确定的系统，当我们不能够观察到系统中所有驱动系统行为的变量时，也是会呈现出随机性的。</li>
+<li>不完备的建模<br>我们有时候建模时无法完美地使用所有信息，从而必须丢弃一些观察到的信息，丢弃的信息就会造成模型预测的不确定性。</li>
+</ul>
+<p>在概率论领域，有两种学派，一种是频率学派，一种是贝叶斯学派。关于这两个学派的观点，可以参看<a href="https://www.zhihu.com/question/20587681" target="_blank" rel="external">贝叶斯学派与频率学派有何不同？</a>等。</p>
+<h3 id="随机变量"><a href="#随机变量" class="headerlink" title="随机变量"></a>随机变量</h3><p>简单来说，随机变量就是<strong>能够随机的取不同值的变量</strong>，又分为连续随机变量和离散随机变量，离散随机变量包含有限个或者可数无穷个状态，状态不必是整数。而连续随机变量则与一个实值相关联。</p>
+<h3 id="概率分布"><a href="#概率分布" class="headerlink" title="概率分布"></a>概率分布</h3><p>一个或一组随机变量取到每个可能状态的可能性的描述即为概率分布。</p>
+<ul>
+<li>离散随机变量的概率分布称为概率质量函数(PMF, Probablity Mass Function)</li>
+<li>连续随机变量的概率分布称为概率密度函数(PDF, Probablity Density Function)</li>
+</ul>
+<h3 id="边缘概率"><a href="#边缘概率" class="headerlink" title="边缘概率"></a>边缘概率</h3><p>原来变量集合的一个子集上的概率分布。</p>
+<h3 id="条件概率及其链式法则"><a href="#条件概率及其链式法则" class="headerlink" title="条件概率及其链式法则"></a>条件概率及其链式法则</h3><h3 id="独立和条件独立"><a href="#独立和条件独立" class="headerlink" title="独立和条件独立"></a>独立和条件独立</h3><h3 id="期望，方差与协方差"><a href="#期望，方差与协方差" class="headerlink" title="期望，方差与协方差"></a>期望，方差与协方差</h3><h3 id="常用概率分布"><a href="#常用概率分布" class="headerlink" title="常用概率分布"></a>常用概率分布</h3><ul>
+<li>贝努利分布</li>
+<li>多贝努利分布/多类分布</li>
+<li>高斯分布</li>
+<li>指数分布</li>
+<li>拉普拉斯分布</li>
+<li>狄拉克分布(Dirac)与经验分布</li>
+<li>混合分布</li>
+</ul>
+<h3 id="一些有用的性质和通用函数"><a href="#一些有用的性质和通用函数" class="headerlink" title="一些有用的性质和通用函数"></a>一些有用的性质和通用函数</h3><h3 id="贝叶斯规则"><a href="#贝叶斯规则" class="headerlink" title="贝叶斯规则"></a>贝叶斯规则</h3><h3 id="连续变量的一些技术细节"><a href="#连续变量的一些技术细节" class="headerlink" title="连续变量的一些技术细节"></a>连续变量的一些技术细节</h3><h2 id="信息论"><a href="#信息论" class="headerlink" title="信息论"></a>信息论</h2><h2 id="结构化概率模型"><a href="#结构化概率模型" class="headerlink" title="结构化概率模型"></a>结构化概率模型</h2><h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ul>
+<li><a href="http://ogbh7uglm.bkt.clouddn.com/MatrixCookBook.pdf" target="_blank" rel="external">Matrix Cook Book</a></li>
+<li></li>
+</ul>
   
 	</div>
 
@@ -229,7 +288,7 @@
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/机器学习/">机器学习</a><a href="/tags/深度学习/">深度学习</a>
+  <span></span> <a href="/tags/深度学习/">深度学习</a><a href="/tags/Deep-Learning/">Deep Learning</a>
   </div>
 
 </div>
@@ -274,18 +333,18 @@
 <nav class="article-nav clearfix">
  
  <div class="prev" >
- <a href="/2017/03/06/semaphore.html" title="用信号量解决进程的同步与互斥探讨">
+ <a href="/2017/04/01/hexosomeopt.html" title="Hexo新的一些优化">
   <strong>上一篇：</strong><br/>
   <span>
-  用信号量解决进程的同步与互斥探讨</span>
+  Hexo新的一些优化</span>
 </a>
 </div>
 
 
 <div class="next">
-<a href="/2017/02/20/darktime.html"  title="《暗时间》读书笔记">
+<a href="/2017/04/01/ubuntuproblems.html"  title="Ubuntu 使用中的问题集锦">
  <strong>下一篇：</strong><br/> 
- <span>《暗时间》读书笔记
+ <span>Ubuntu 使用中的问题集锦
 </span>
 </a>
 </div>
@@ -307,7 +366,7 @@
   <aside class="clearfix">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#写作计划"><span class="toc-number">2.</span> <span class="toc-text">写作计划</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#线性代数"><span class="toc-number">1.</span> <span class="toc-text">线性代数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Scalar-Vectors-Matrices-Tensors的概念"><span class="toc-number">1.1.</span> <span class="toc-text">Scalar, Vectors, Matrices, Tensors的概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#矩阵的基本操作"><span class="toc-number">1.2.</span> <span class="toc-text">矩阵的基本操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#奇异-Singular-矩阵和非奇异矩阵"><span class="toc-number">1.3.</span> <span class="toc-text">奇异(Singular)矩阵和非奇异矩阵</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#范数-Norm"><span class="toc-number">1.4.</span> <span class="toc-text">范数(Norm)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#特殊矩阵"><span class="toc-number">1.5.</span> <span class="toc-text">特殊矩阵</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#特征值分解"><span class="toc-number">1.6.</span> <span class="toc-text">特征值分解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#奇异值分解-Singular-Value-Decomposition"><span class="toc-number">1.7.</span> <span class="toc-text">奇异值分解(Singular Value Decomposition)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Moore-Penrose-Pseudoinverse"><span class="toc-number">1.8.</span> <span class="toc-text">*Moore-Penrose Pseudoinverse</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#迹运算符-Trace"><span class="toc-number">1.9.</span> <span class="toc-text">迹运算符(Trace)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#行列式"><span class="toc-number">1.10.</span> <span class="toc-text">行列式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#概率论"><span class="toc-number">2.</span> <span class="toc-text">概率论</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#随机变量"><span class="toc-number">2.1.</span> <span class="toc-text">随机变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#概率分布"><span class="toc-number">2.2.</span> <span class="toc-text">概率分布</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#边缘概率"><span class="toc-number">2.3.</span> <span class="toc-text">边缘概率</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#条件概率及其链式法则"><span class="toc-number">2.4.</span> <span class="toc-text">条件概率及其链式法则</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#独立和条件独立"><span class="toc-number">2.5.</span> <span class="toc-text">独立和条件独立</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#期望，方差与协方差"><span class="toc-number">2.6.</span> <span class="toc-text">期望，方差与协方差</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#常用概率分布"><span class="toc-number">2.7.</span> <span class="toc-text">常用概率分布</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#一些有用的性质和通用函数"><span class="toc-number">2.8.</span> <span class="toc-text">一些有用的性质和通用函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#贝叶斯规则"><span class="toc-number">2.9.</span> <span class="toc-text">贝叶斯规则</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#连续变量的一些技术细节"><span class="toc-number">2.10.</span> <span class="toc-text">连续变量的一些技术细节</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#信息论"><span class="toc-number">3.</span> <span class="toc-text">信息论</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#结构化概率模型"><span class="toc-number">4.</span> <span class="toc-text">结构化概率模型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#References"><span class="toc-number">5.</span> <span class="toc-text">References</span></a></li></ol>
  
  </aside>
   </div>

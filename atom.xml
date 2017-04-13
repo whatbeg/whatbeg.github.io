@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>Whatbeg&#39;s blog</title>
-  <subtitle>路漫漫其修远兮，仍将上下而求索</subtitle>
+  <subtitle>当你的才华撑不起你的野心时，就应该静下心来好好学习。</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://whatbeg.com/"/>
-  <updated>2017-04-01T12:40:09.672Z</updated>
+  <updated>2017-04-01T13:56:24.708Z</updated>
   <id>http://whatbeg.com/</id>
   
   <author>
@@ -16,15 +16,123 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Hexo新的一些优化</title>
+    <link href="http://whatbeg.com/2017/04/01/hexosomeopt.html"/>
+    <id>http://whatbeg.com/2017/04/01/hexosomeopt.html</id>
+    <published>2017-04-01T13:55:39.000Z</published>
+    <updated>2017-04-01T13:56:24.708Z</updated>
+    
+    <content type="html">&lt;h2 id=&quot;Hexo-Mathjax下划线-的渲染问题&quot;&gt;&lt;a href=&quot;#Hexo-Mathjax下划线-的渲染问题&quot; class=&quot;headerlink&quot; title=&quot;Hexo Mathjax下划线_的渲染问题&quot;&gt;&lt;/a&gt;Hexo Mathjax下划线&lt;code&gt;_&lt;/code&gt;的渲染问题&lt;/h2&gt;&lt;p&gt;以前Hexo渲染数学公式的时候有时候下划线会渲染成&lt;code&gt;&amp;lt;em&amp;gt;&lt;/code&gt;，导致渲染不出公式的情况。&lt;br&gt;比如下面这种情况：&lt;br&gt;&lt;img src=&quot;http://7xsl28.com1.z0.glb.clouddn.com/hexosomeopt1.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;但是在其他markdown中又能够正确显示，这时候其实是Hexo的锅，它渲染的时候把&lt;code&gt;_&lt;/code&gt;渲染成&lt;code&gt;&amp;lt;em&amp;gt;&lt;/code&gt;    ，可以修改渲染规则来使之渲染正常。&lt;br&gt;打开：&lt;code&gt;hexo\node_modules\marked\lib\marked.js&lt;/code&gt;&lt;br&gt;找到：&lt;br&gt;&lt;img src=&quot;http://7xsl28.com1.z0.glb.clouddn.com/hexosomeopt3.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;&lt;img src=&quot;http://7xsl28.com1.z0.glb.clouddn.com/hexosomeopt2.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;删去选中的部分，即删除对&lt;code&gt;_&lt;/code&gt;的渲染转换，重新生成即可。&lt;br&gt;当然还有其它方式，不过这种比较简便有效。&lt;/p&gt;
+&lt;h2 id=&quot;References&quot;&gt;&lt;a href=&quot;#References&quot; class=&quot;headerlink&quot; title=&quot;References&quot;&gt;&lt;/a&gt;References&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://kubicode.me/2016/03/16/Hexo/Fix-Hexo-Bug-In-Mathjax/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;修复Hexo写Mathjax公式多个下标失效的问题&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://2wildkids.com/2016/10/06/%E5%A6%82%E4%BD%95%E5%A4%84%E7%90%86Hexo%E5%92%8CMathJax%E7%9A%84%E5%85%BC%E5%AE%B9%E9%97%AE%E9%A2%98/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;如何处理Hexo和MathJax的兼容问题&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;Hexo-Mathjax下划线-的渲染问题&quot;&gt;&lt;a href=&quot;#Hexo-Mathjax下划线-的渲染问题&quot; class=&quot;headerlink&quot; title=&quot;Hexo Mathjax下划线_的渲染问题&quot;&gt;&lt;/a&gt;Hexo Mathjax下划线&lt;code&gt;_&lt;
+    
+    </summary>
+    
+      <category term="错误解决与优化 | Err&Opt" scheme="http://whatbeg.com/categories/%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3%E4%B8%8E%E4%BC%98%E5%8C%96-Err-Opt/"/>
+    
+    
+      <category term="Hexo" scheme="http://whatbeg.com/tags/Hexo/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Deep Learning读书笔记（2）【深度学习的数学基础摘要】</title>
+    <link href="http://whatbeg.com/2017/04/01/deeplearningbook-02.html"/>
+    <id>http://whatbeg.com/2017/04/01/deeplearningbook-02.html</id>
+    <published>2017-04-01T13:16:46.000Z</published>
+    <updated>2017-04-01T14:12:39.043Z</updated>
+    
+    <content type="html">&lt;p&gt;深度学习需要的数学基础同机器学习所需的数学基础类似，包括三大块：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;线性代数&lt;/li&gt;
+&lt;li&gt;概率论与数理统计&lt;/li&gt;
+&lt;li&gt;信息论基础&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;分三部分摘要如下，&lt;/p&gt;
+&lt;h2 id=&quot;线性代数&quot;&gt;&lt;a href=&quot;#线性代数&quot; class=&quot;headerlink&quot; title=&quot;线性代数&quot;&gt;&lt;/a&gt;线性代数&lt;/h2&gt;&lt;h3 id=&quot;Scalar-Vectors-Matrices-Tensors的概念&quot;&gt;&lt;a href=&quot;#Scalar-Vectors-Matrices-Tensors的概念&quot; class=&quot;headerlink&quot; title=&quot;Scalar, Vectors, Matrices, Tensors的概念&quot;&gt;&lt;/a&gt;Scalar, Vectors, Matrices, Tensors的概念&lt;/h3&gt;&lt;p&gt;Scalar: 标量，可以看成一个数&lt;br&gt;Vector: 向量，可以看成一个一维数组&lt;br&gt;Matrix: 矩阵，可以看成二维数组&lt;br&gt;Tensor: 张量，三维或三维以上的数组的统称，维度不定&lt;/p&gt;
+&lt;p&gt;很多时候我们处理的都是超过2维的数组，这时候叫矩阵(Matrix)又不太合适，因为一般提到矩阵都会想到二维的矩阵，所以采用Tensor来统一表示不定维的数组。这也是几乎所有深度学习框架的基本数据结构。”Tensorflow”名字中就包含了”Tensor”，于是向量可以称为1-D Tensor，一维张量，矩阵可以称为二维张量。&lt;/p&gt;
+&lt;p&gt;这样，深度学习中包括数据，梯度，权重等等都可以用某维度的Tensor来表示了，底层数据结构的统一为上层编程带来了极大的方便。&lt;/p&gt;
+&lt;h3 id=&quot;矩阵的基本操作&quot;&gt;&lt;a href=&quot;#矩阵的基本操作&quot; class=&quot;headerlink&quot; title=&quot;矩阵的基本操作&quot;&gt;&lt;/a&gt;矩阵的基本操作&lt;/h3&gt;&lt;p&gt;矩阵转置，相乘，矩阵与向量相乘&lt;br&gt;单位矩阵与逆矩阵&lt;br&gt;线性相关性&lt;br&gt;展开(Span)，一个向量集的展开定义为向量集中通过向量的线性组合能够得到的点&lt;/p&gt;
+&lt;h3 id=&quot;奇异-Singular-矩阵和非奇异矩阵&quot;&gt;&lt;a href=&quot;#奇异-Singular-矩阵和非奇异矩阵&quot; class=&quot;headerlink&quot; title=&quot;奇异(Singular)矩阵和非奇异矩阵&quot;&gt;&lt;/a&gt;奇异(Singular)矩阵和非奇异矩阵&lt;/h3&gt;&lt;p&gt;奇异矩阵：存在线性相关的列的方阵或者行列式为0的方阵称为奇异矩阵&lt;br&gt;奇异矩阵不可逆&lt;br&gt;若n阶方阵A的行列式不为零，即$|A|≠0$，则称A为非奇异矩阵或满秩矩阵，存在逆矩阵&lt;/p&gt;
+&lt;p&gt;要注意的是，即使A不是方阵或者A是方阵但是奇异，也是有可能解方程$Ax=b$的，只是不能通过求逆矩阵$A^{-1}$从而$x=A^{-1}b$来解而已。&lt;br&gt;线性方程组$Ax=b$有解的充分必要条件是: 增广矩阵的秩等于系数矩阵的秩，即$r(A,b) = r(A)$&lt;/p&gt;
+&lt;h3 id=&quot;范数-Norm&quot;&gt;&lt;a href=&quot;#范数-Norm&quot; class=&quot;headerlink&quot; title=&quot;范数(Norm)&quot;&gt;&lt;/a&gt;范数(Norm)&lt;/h3&gt;&lt;p&gt;范数的作用是度量向量的大小，将向量映射为非负实数&lt;br&gt;$L^p$范数定义为：&lt;br&gt;$$||x||_p=(\Sigma_i {|x_i|^p})^{\frac 1 p}$$&lt;/p&gt;
+&lt;p&gt;在正则化中常常用到范数，主要用到1-范数和2-范数。&lt;/p&gt;
+&lt;p&gt;$x^{\top}x=||x||_2^2$&lt;/p&gt;
+&lt;p&gt;Frobenius Norms:  $||A||_{F}=\sqrt{\Sigma_{i,j}A_{i,j}^2}$&lt;/p&gt;
+&lt;p&gt;向量点积： $x^{\top}y=||x||_2||y||_2cos\theta$&lt;/p&gt;
+&lt;h3 id=&quot;特殊矩阵&quot;&gt;&lt;a href=&quot;#特殊矩阵&quot; class=&quot;headerlink&quot; title=&quot;特殊矩阵&quot;&gt;&lt;/a&gt;特殊矩阵&lt;/h3&gt;&lt;p&gt;对角矩阵&lt;br&gt;实对称矩阵及其性质：&lt;br&gt;（1）A的特征值为实数，且其特征向量为实向量&lt;br&gt;（2）A的不同特征值对应的特征向量必定正交&lt;br&gt;（3）A一定有n个线性无关的特征向量，从而A相似于对角矩阵&lt;br&gt;正交矩阵的性质： $A^{-1}=A^{\top}$&lt;/p&gt;
+&lt;h3 id=&quot;特征值分解&quot;&gt;&lt;a href=&quot;#特征值分解&quot; class=&quot;headerlink&quot; title=&quot;特征值分解&quot;&gt;&lt;/a&gt;特征值分解&lt;/h3&gt;&lt;p&gt;特征值分解的思想类似于因式分解的思想，对于一个数，我们想要分析它的性质，可能直接看看不出什么来，但是可以把它因式分解一下，再来分析。比如180，$180 = 2 \times 2 \times 3 \times 3 \times 5=2^2 \times 3^2 \times 5^1$，这样我们可以知道，180是2,3,5的倍数，也是6的倍数，15的倍数，等等，进而分析其它性质。&lt;br&gt;矩阵分解也是如此，面对一个复杂的矩阵，我们可能毫无头绪，但是将其分解为两个或者多个矩阵的乘积，我们可能就能收获很多的性质。&lt;br&gt;特征值分解 $A=Q \Lambda Q^{\top}$，将矩阵分解为特征值和特征向量，Q是由A的特征向量组成的正交矩阵，而$\Lambda$则为特征值组成的对角矩阵，$\Lambda_{i,i}$ 对应着 $Q_{:,i}$。&lt;/p&gt;
+&lt;h3 id=&quot;奇异值分解-Singular-Value-Decomposition&quot;&gt;&lt;a href=&quot;#奇异值分解-Singular-Value-Decomposition&quot; class=&quot;headerlink&quot; title=&quot;奇异值分解(Singular Value Decomposition)&quot;&gt;&lt;/a&gt;奇异值分解(Singular Value Decomposition)&lt;/h3&gt;&lt;p&gt;$A=UDV^{-1}$，U称为左奇异向量，为$AA^{\top}$的特征向量，V称为右奇异向量，为$A^{\top}A$的特征向量。&lt;br&gt;非0奇异值是$A^{\top}A$的特征值的开根号&lt;/p&gt;
+&lt;h3 id=&quot;Moore-Penrose-Pseudoinverse&quot;&gt;&lt;a href=&quot;#Moore-Penrose-Pseudoinverse&quot; class=&quot;headerlink&quot; title=&quot;*Moore-Penrose Pseudoinverse&quot;&gt;&lt;/a&gt;*Moore-Penrose Pseudoinverse&lt;/h3&gt;&lt;h3 id=&quot;迹运算符-Trace&quot;&gt;&lt;a href=&quot;#迹运算符-Trace&quot; class=&quot;headerlink&quot; title=&quot;迹运算符(Trace)&quot;&gt;&lt;/a&gt;迹运算符(Trace)&lt;/h3&gt;&lt;p&gt;$ Tr(A) = {\Sigma}_i A_{i,i} $&lt;br&gt;迹运算符有许多性质，比如循环不变性等等&lt;/p&gt;
+&lt;h3 id=&quot;行列式&quot;&gt;&lt;a href=&quot;#行列式&quot; class=&quot;headerlink&quot; title=&quot;行列式&quot;&gt;&lt;/a&gt;行列式&lt;/h3&gt;&lt;p&gt;行列式的绝对值度量了矩阵扩展或者空间收缩所包含的操作多少的度量。&lt;/p&gt;
+&lt;h2 id=&quot;概率论&quot;&gt;&lt;a href=&quot;#概率论&quot; class=&quot;headerlink&quot; title=&quot;概率论&quot;&gt;&lt;/a&gt;概率论&lt;/h2&gt;&lt;p&gt;概率论也是很多领域包括计算机科学尤其是机器学习这块的基础学科。一般的计算机程序或者问题的求解是没有随机性的，按照一个确定的算法来即可。但是在机器学习中，经常会遇到不确定的量，比如说数据的采集，可能是随机采集的，或者说数据中包含随机噪声等等，而概率论则是量化各种不确定性的手段。&lt;br&gt;可以说，几乎所有的活动都要求参与者具有分析不确定性的出现的一些能力。&lt;br&gt;不确定性有三种可能的来源：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;系统固有的随机性&lt;br&gt;比如说打牌的游戏，我们都会假设洗牌确实是能够将牌的顺序变的随机。&lt;/li&gt;
+&lt;li&gt;不完备的观察&lt;br&gt;即使是一个确定的系统，当我们不能够观察到系统中所有驱动系统行为的变量时，也是会呈现出随机性的。&lt;/li&gt;
+&lt;li&gt;不完备的建模&lt;br&gt;我们有时候建模时无法完美地使用所有信息，从而必须丢弃一些观察到的信息，丢弃的信息就会造成模型预测的不确定性。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;在概率论领域，有两种学派，一种是频率学派，一种是贝叶斯学派。关于这两个学派的观点，可以参看&lt;a href=&quot;https://www.zhihu.com/question/20587681&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;贝叶斯学派与频率学派有何不同？&lt;/a&gt;等。&lt;/p&gt;
+&lt;h3 id=&quot;随机变量&quot;&gt;&lt;a href=&quot;#随机变量&quot; class=&quot;headerlink&quot; title=&quot;随机变量&quot;&gt;&lt;/a&gt;随机变量&lt;/h3&gt;&lt;p&gt;简单来说，随机变量就是&lt;strong&gt;能够随机的取不同值的变量&lt;/strong&gt;，又分为连续随机变量和离散随机变量，离散随机变量包含有限个或者可数无穷个状态，状态不必是整数。而连续随机变量则与一个实值相关联。&lt;/p&gt;
+&lt;h3 id=&quot;概率分布&quot;&gt;&lt;a href=&quot;#概率分布&quot; class=&quot;headerlink&quot; title=&quot;概率分布&quot;&gt;&lt;/a&gt;概率分布&lt;/h3&gt;&lt;p&gt;一个或一组随机变量取到每个可能状态的可能性的描述即为概率分布。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;离散随机变量的概率分布称为概率质量函数(PMF, Probablity Mass Function)&lt;/li&gt;
+&lt;li&gt;连续随机变量的概率分布称为概率密度函数(PDF, Probablity Density Function)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;边缘概率&quot;&gt;&lt;a href=&quot;#边缘概率&quot; class=&quot;headerlink&quot; title=&quot;边缘概率&quot;&gt;&lt;/a&gt;边缘概率&lt;/h3&gt;&lt;p&gt;原来变量集合的一个子集上的概率分布。&lt;/p&gt;
+&lt;h3 id=&quot;条件概率及其链式法则&quot;&gt;&lt;a href=&quot;#条件概率及其链式法则&quot; class=&quot;headerlink&quot; title=&quot;条件概率及其链式法则&quot;&gt;&lt;/a&gt;条件概率及其链式法则&lt;/h3&gt;&lt;h3 id=&quot;独立和条件独立&quot;&gt;&lt;a href=&quot;#独立和条件独立&quot; class=&quot;headerlink&quot; title=&quot;独立和条件独立&quot;&gt;&lt;/a&gt;独立和条件独立&lt;/h3&gt;&lt;h3 id=&quot;期望，方差与协方差&quot;&gt;&lt;a href=&quot;#期望，方差与协方差&quot; class=&quot;headerlink&quot; title=&quot;期望，方差与协方差&quot;&gt;&lt;/a&gt;期望，方差与协方差&lt;/h3&gt;&lt;h3 id=&quot;常用概率分布&quot;&gt;&lt;a href=&quot;#常用概率分布&quot; class=&quot;headerlink&quot; title=&quot;常用概率分布&quot;&gt;&lt;/a&gt;常用概率分布&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;贝努利分布&lt;/li&gt;
+&lt;li&gt;多贝努利分布/多类分布&lt;/li&gt;
+&lt;li&gt;高斯分布&lt;/li&gt;
+&lt;li&gt;指数分布&lt;/li&gt;
+&lt;li&gt;拉普拉斯分布&lt;/li&gt;
+&lt;li&gt;狄拉克分布(Dirac)与经验分布&lt;/li&gt;
+&lt;li&gt;混合分布&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;一些有用的性质和通用函数&quot;&gt;&lt;a href=&quot;#一些有用的性质和通用函数&quot; class=&quot;headerlink&quot; title=&quot;一些有用的性质和通用函数&quot;&gt;&lt;/a&gt;一些有用的性质和通用函数&lt;/h3&gt;&lt;h3 id=&quot;贝叶斯规则&quot;&gt;&lt;a href=&quot;#贝叶斯规则&quot; class=&quot;headerlink&quot; title=&quot;贝叶斯规则&quot;&gt;&lt;/a&gt;贝叶斯规则&lt;/h3&gt;&lt;h3 id=&quot;连续变量的一些技术细节&quot;&gt;&lt;a href=&quot;#连续变量的一些技术细节&quot; class=&quot;headerlink&quot; title=&quot;连续变量的一些技术细节&quot;&gt;&lt;/a&gt;连续变量的一些技术细节&lt;/h3&gt;&lt;h2 id=&quot;信息论&quot;&gt;&lt;a href=&quot;#信息论&quot; class=&quot;headerlink&quot; title=&quot;信息论&quot;&gt;&lt;/a&gt;信息论&lt;/h2&gt;&lt;h2 id=&quot;结构化概率模型&quot;&gt;&lt;a href=&quot;#结构化概率模型&quot; class=&quot;headerlink&quot; title=&quot;结构化概率模型&quot;&gt;&lt;/a&gt;结构化概率模型&lt;/h2&gt;&lt;h2 id=&quot;References&quot;&gt;&lt;a href=&quot;#References&quot; class=&quot;headerlink&quot; title=&quot;References&quot;&gt;&lt;/a&gt;References&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://ogbh7uglm.bkt.clouddn.com/MatrixCookBook.pdf&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Matrix Cook Book&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;深度学习需要的数学基础同机器学习所需的数学基础类似，包括三大块：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;线性代数&lt;/li&gt;
+&lt;li&gt;概率论与数理统计&lt;/li&gt;
+&lt;li&gt;信息论基础&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;分三部分摘要如下，&lt;/p&gt;
+&lt;h2 id=&quot;线性代数&quot;&gt;&lt;a href=&quot;#线
+    
+    </summary>
+    
+      <category term="深度学习 | Deep Learning" scheme="http://whatbeg.com/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0-Deep-Learning/"/>
+    
+    
+      <category term="深度学习" scheme="http://whatbeg.com/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="Deep Learning" scheme="http://whatbeg.com/tags/Deep-Learning/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Ubuntu 使用中的问题集锦</title>
     <link href="http://whatbeg.com/2017/04/01/ubuntuproblems.html"/>
     <id>http://whatbeg.com/2017/04/01/ubuntuproblems.html</id>
     <published>2017-04-01T12:38:53.000Z</published>
-    <updated>2017-04-01T12:40:09.672Z</updated>
+    <updated>2017-04-02T12:33:48.923Z</updated>
     
     <content type="html">&lt;p&gt;新开一贴，记录一下Ubuntu使用中的一些问题。&lt;/p&gt;
 &lt;h5 id=&quot;Ubuntu-搜狗输入法问题&quot;&gt;&lt;a href=&quot;#Ubuntu-搜狗输入法问题&quot; class=&quot;headerlink&quot; title=&quot;Ubuntu 搜狗输入法问题&quot;&gt;&lt;/a&gt;Ubuntu 搜狗输入法问题&lt;/h5&gt;&lt;p&gt;搜狗输入法突然不能用，打字的时候界面也没了，就剩个框框，打着打着就没了。&lt;br&gt;&lt;img src=&quot;http://7xsl28.com1.z0.glb.clouddn.com/error_sogoupinyin.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;重装了fcitx和sogoupinyin也不行，最后在&lt;a href=&quot;http://forum.ubuntu.org.cn/viewtopic.php?f=8&amp;amp;t=483206&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Ubuntu Forum&lt;/a&gt;找到了解决方案。&lt;br&gt;据说是自动升级什么造成的，deepin里提示说&lt;br&gt;&lt;figure class=&quot;highlight arduino&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;mv  ~/.&lt;span class=&quot;built_in&quot;&gt;config&lt;/span&gt;/SogouPY*  /tmp&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;Ubuntu出问题常去&lt;a href=&quot;http://forum.ubuntu.org.cn/index.php&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Ubuntu 论坛&lt;/a&gt;是正道。&lt;/p&gt;
+&lt;p&gt;发现了一个好地方，Ubuntu出问题可以多去&lt;a href=&quot;http://forum.ubuntu.org.cn/index.php&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Ubuntu 论坛&lt;/a&gt;看看。&lt;/p&gt;
 </content>
     
     <summary type="html">
@@ -204,15 +312,16 @@
     <link href="http://whatbeg.com/2017/03/11/linuxmemo.html"/>
     <id>http://whatbeg.com/2017/03/11/linuxmemo.html</id>
     <published>2017-03-11T04:42:52.000Z</published>
-    <updated>2017-04-01T12:38:38.417Z</updated>
+    <updated>2017-04-03T10:33:24.093Z</updated>
     
     <content type="html">&lt;h5 id=&quot;图片压缩&quot;&gt;&lt;a href=&quot;#图片压缩&quot; class=&quot;headerlink&quot; title=&quot;图片压缩&quot;&gt;&lt;/a&gt;图片压缩&lt;/h5&gt;&lt;figure class=&quot;highlight livecodeserver&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;sudo apt-&lt;span class=&quot;built_in&quot;&gt;get&lt;/span&gt; imagemagick&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;convert&lt;/span&gt; -resize &lt;span class=&quot;number&quot;&gt;100&lt;/span&gt;x100 &lt;span class=&quot;built_in&quot;&gt;from&lt;/span&gt;.jpg &lt;span class=&quot;built_in&quot;&gt;to&lt;/span&gt;.jpg&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;convert&lt;/span&gt; -resize &lt;span class=&quot;number&quot;&gt;50&lt;/span&gt;%x50% &lt;span class=&quot;built_in&quot;&gt;from&lt;/span&gt;.jpg &lt;span class=&quot;built_in&quot;&gt;to&lt;/span&gt;.jpg&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;h5 id=&quot;Neural-Artistic-Style&quot;&gt;&lt;a href=&quot;#Neural-Artistic-Style&quot; class=&quot;headerlink&quot; title=&quot;Neural Artistic Style&quot;&gt;&lt;/a&gt;Neural Artistic Style&lt;/h5&gt;&lt;figure class=&quot;highlight brainfuck&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;python&lt;/span&gt; &lt;span class=&quot;comment&quot;&gt;neural_style&lt;/span&gt;&lt;span class=&quot;string&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;comment&quot;&gt;py&lt;/span&gt; &lt;span class=&quot;literal&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;literal&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;comment&quot;&gt;checkpoint&lt;/span&gt;&lt;span class=&quot;literal&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;comment&quot;&gt;output&lt;/span&gt; &lt;span class=&quot;comment&quot;&gt;400out/out%s&lt;/span&gt;&lt;span class=&quot;string&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;comment&quot;&gt;jpg&lt;/span&gt; &lt;span class=&quot;literal&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;literal&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;comment&quot;&gt;checkpoint&lt;/span&gt;&lt;span class=&quot;literal&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;comment&quot;&gt;iterations&lt;/span&gt; &lt;span class=&quot;comment&quot;&gt;50&lt;/span&gt; &lt;span class=&quot;literal&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;literal&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;comment&quot;&gt;iterations&lt;/span&gt; &lt;span class=&quot;comment&quot;&gt;1000&lt;/span&gt; &lt;span class=&quot;literal&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;literal&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;comment&quot;&gt;content&lt;/span&gt; &amp;lt;&lt;span class=&quot;comment&quot;&gt;content&lt;/span&gt; &lt;span class=&quot;comment&quot;&gt;file&lt;/span&gt;&amp;gt; &lt;span class=&quot;literal&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;literal&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;comment&quot;&gt;styles&lt;/span&gt; &amp;lt;&lt;span class=&quot;comment&quot;&gt;style&lt;/span&gt; &lt;span class=&quot;comment&quot;&gt;file&lt;/span&gt;&amp;gt; &lt;span class=&quot;literal&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;literal&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;comment&quot;&gt;output&lt;/span&gt; &amp;lt;&lt;span class=&quot;comment&quot;&gt;output&lt;/span&gt; &lt;span class=&quot;comment&quot;&gt;file&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;h5 id=&quot;删除目录下符合条件的文件&quot;&gt;&lt;a href=&quot;#删除目录下符合条件的文件&quot; class=&quot;headerlink&quot; title=&quot;删除目录下符合条件的文件&quot;&gt;&lt;/a&gt;删除目录下符合条件的文件&lt;/h5&gt;&lt;figure class=&quot;highlight stata&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;find ./ -name &lt;span class=&quot;string&quot;&gt;&quot;CMakeCache.txt&quot;&lt;/span&gt; | xargs &lt;span class=&quot;keyword&quot;&gt;rm&lt;/span&gt; -rf;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;TORCH_LUA_VERSION=LUA52 ./install.&lt;span class=&quot;keyword&quot;&gt;sh&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;h5 id=&quot;安装cudnn，cuda配置的环境变量&quot;&gt;&lt;a href=&quot;#安装cudnn，cuda配置的环境变量&quot; class=&quot;headerlink&quot; title=&quot;安装cudnn，cuda配置的环境变量&quot;&gt;&lt;/a&gt;安装cudnn，cuda配置的环境变量&lt;/h5&gt;&lt;figure class=&quot;highlight xquery&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;export LD_LIBRARY_PATH=/usr/local/cuda-&lt;span class=&quot;number&quot;&gt;8.0&lt;/span&gt;/lib64:/usr/local/cuda-&lt;span class=&quot;number&quot;&gt;8.0&lt;/span&gt;/extras/CUPTI/lib64:$LD_LIBRARY_PATH&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;export CUDA_HOME=/usr/local/cuda-&lt;span class=&quot;number&quot;&gt;8.0&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;export PATH=$CUDA_HOME/bin:$PATH&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;h5 id=&quot;安装JAVA，JDK配置环境变量&quot;&gt;&lt;a href=&quot;#安装JAVA，JDK配置环境变量&quot; class=&quot;headerlink&quot; title=&quot;安装JAVA，JDK配置环境变量&quot;&gt;&lt;/a&gt;安装JAVA，JDK配置环境变量&lt;/h5&gt;&lt;figure class=&quot;highlight xquery&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;export JAVA_HOME=/usr/local/jdk1.&lt;span class=&quot;number&quot;&gt;8.0_121&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;export JRE_HOME=$JAVA_HOME/jre&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;export CLASSPATH=.:$JAVA_HOME/lib:$JRE_HOME/lib&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;export PATH=$JAVA_HOME/bin:$PATH&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h5 id=&quot;查找一个或多个文件中是否含有某字符串&quot;&gt;&lt;a href=&quot;#查找一个或多个文件中是否含有某字符串&quot; class=&quot;headerlink&quot; title=&quot;查找一个或多个文件中是否含有某字符串&quot;&gt;&lt;/a&gt;查找一个或多个文件中是否含有某字符串&lt;/h5&gt;&lt;figure class=&quot;highlight nginx&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;attribute&quot;&gt;strings&lt;/span&gt; ./\&lt;span class=&quot;regexp&quot;&gt;*.sh&lt;/span&gt; | grep &lt;span class=&quot;string&quot;&gt;&quot;STR*&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h5 id=&quot;查找一个或多个文件中是否含有某字符串&quot;&gt;&lt;a href=&quot;#查找一个或多个文件中是否含有某字符串&quot; class=&quot;headerlink&quot; title=&quot;查找一个或多个文件中是否含有某字符串&quot;&gt;&lt;/a&gt;查找一个或多个文件中是否含有某字符串&lt;/h5&gt;&lt;figure class=&quot;highlight vim&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;strings ./xx.&lt;span class=&quot;keyword&quot;&gt;sh&lt;/span&gt; | &lt;span class=&quot;keyword&quot;&gt;grep&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&quot;STR*&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;h5 id=&quot;yarn-终结application&quot;&gt;&lt;a href=&quot;#yarn-终结application&quot; class=&quot;headerlink&quot; title=&quot;yarn 终结application&quot;&gt;&lt;/a&gt;yarn 终结application&lt;/h5&gt;&lt;figure class=&quot;highlight applescript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;yarn &lt;span class=&quot;built_in&quot;&gt;application&lt;/span&gt; -kill &amp;lt;application_ID&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h5 id=&quot;vim字符串查找与替换&quot;&gt;&lt;a href=&quot;#vim字符串查找与替换&quot; class=&quot;headerlink&quot; title=&quot;vim字符串查找与替换&quot;&gt;&lt;/a&gt;vim字符串查找与替换&lt;/h5&gt;&lt;figure class=&quot;highlight elixir&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;symbol&quot;&gt;:%s/A/B/g&lt;/span&gt;    &lt;span class=&quot;comment&quot;&gt;# 将所有行的A替换为B&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;symbol&quot;&gt;:%s/A/B/&lt;/span&gt;    &lt;span class=&quot;comment&quot;&gt;# 将所有行的第一个A替换为B&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;symbol&quot;&gt;:s/A/B/g&lt;/span&gt;    &lt;span class=&quot;comment&quot;&gt;# 替换当前行所有A为B&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 </content>
     
     <summary type="html">
@@ -1200,262 +1309,6 @@
     <summary type="html">
     
       &lt;h2 id=&quot;Abstract&quot;&gt;&lt;a href=&quot;#Abstract&quot; class=&quot;headerlink&quot; title=&quot;Abstract&quot;&gt;&lt;/a&gt;Abstract&lt;/h2&gt;&lt;p&gt;Adaboost大家很熟了，是比较经典的一个提升方法，这次实现一下以朴素贝叶斯为基分类器的A
-    
-    </summary>
-    
-      <category term="机器学习 | Mac.Learning" scheme="http://whatbeg.com/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-Mac-Learning/"/>
-    
-    
-      <category term="机器学习" scheme="http://whatbeg.com/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>近几个月读书总结</title>
-    <link href="http://whatbeg.com/2016/11/26/2016read6month.html"/>
-    <id>http://whatbeg.com/2016/11/26/2016read6month.html</id>
-    <published>2016-11-26T14:32:23.000Z</published>
-    <updated>2017-01-14T13:45:35.292Z</updated>
-    
-    <content type="html">&lt;p&gt;有几个月没有写读书笔记了，一是没抽出时间，二是读的书基本都没有读完，都不是短时间能够读完的书，但是要是必得等到读完才写，那今年都别写了，但是这样不好，虽然没有读完，但多少算读了一点，有些心得就得记下来，不然后面就忘了，所以才有此文。&lt;/p&gt;
-&lt;p&gt;这几个月读的书很杂，一路读过来书一直在换，从6月份到快要过去的11月份，总共6个月，跨度也不小，也难怪，中间的环境一直在变动，在不同的环境下要学习不同的东西，面对不同的任务也需要读不同的书。&lt;/p&gt;
-&lt;p&gt;下面就这几个月度过的一些书和读的感受做一下梳理，大致分为三个阶段，分别是还未毕业阶段，暑期实习阶段，研一入学之后。&lt;/p&gt;
-&lt;h2 id=&quot;还未毕业阶段&quot;&gt;&lt;a href=&quot;#还未毕业阶段&quot; class=&quot;headerlink&quot; title=&quot;还未毕业阶段&quot;&gt;&lt;/a&gt;还未毕业阶段&lt;/h2&gt;&lt;h3 id=&quot;《鸟哥的Linux私房菜：基础学习篇》&quot;&gt;&lt;a href=&quot;#《鸟哥的Linux私房菜：基础学习篇》&quot; class=&quot;headerlink&quot; title=&quot;《鸟哥的Linux私房菜：基础学习篇》&quot;&gt;&lt;/a&gt;《鸟哥的Linux私房菜：基础学习篇》&lt;/h3&gt;&lt;p&gt;还没毕业的时候末期那段时间很闲，除了玩和浪之外，就是闲来看看这些技能类的书，实话说，这段时间看这本书学了一些linux的知识带我入linux的门，里面的一些基本技能现在也一直在使用，很遗憾，自打毕业以后真的就没翻过这本书，一直在吃老本，或者平时上网查命令。当然说这些的意思是这本书真的很有用…，尤其是入门！&lt;/p&gt;
-&lt;h3 id=&quot;《机器学习》&quot;&gt;&lt;a href=&quot;#《机器学习》&quot; class=&quot;headerlink&quot; title=&quot;《机器学习》&quot;&gt;&lt;/a&gt;《机器学习》&lt;/h3&gt;&lt;p&gt;这本书一直在看啦，现在回过头来发现，很多机器学习方面的基础都是从这本书打起来的，现在还是经常会用到这本书，发现里面真的是有取之不尽用之不竭的资源一样，反正现在还没挖完这片金矿。这本书周sir经典之作，内容讲的很通俗易懂，但是也是由易到难，覆盖了绝大多数的传统机器学习算法，大抵因为如此，所以才会挖不完吧。严重推荐啦。&lt;/p&gt;
-&lt;h3 id=&quot;《统计学习方法》&quot;&gt;&lt;a href=&quot;#《统计学习方法》&quot; class=&quot;headerlink&quot; title=&quot;《统计学习方法》&quot;&gt;&lt;/a&gt;《统计学习方法》&lt;/h3&gt;&lt;p&gt;这本书给我的感觉就是，都是干货~，不扯多的，上来就讲算法原理，感觉当算法手册真是好极了，但是用这本书入门和学习基础的机器学习算法，感觉有点太直白了，初学者一般都希望通俗易懂一点的。这本书还有一个特点是基本没有涉及无监督算法，所以并不是很全面，但是该讲到的讲的绝不含糊。推荐！&lt;/p&gt;
-&lt;h2 id=&quot;暑期实习阶段&quot;&gt;&lt;a href=&quot;#暑期实习阶段&quot; class=&quot;headerlink&quot; title=&quot;暑期实习阶段&quot;&gt;&lt;/a&gt;暑期实习阶段&lt;/h2&gt;&lt;h3 id=&quot;《数学分析新讲》-张筑生&quot;&gt;&lt;a href=&quot;#《数学分析新讲》-张筑生&quot; class=&quot;headerlink&quot; title=&quot;《数学分析新讲》 张筑生&quot;&gt;&lt;/a&gt;《数学分析新讲》 张筑生&lt;/h3&gt;&lt;p&gt;暑假做了一个月策略设计方面的事，简单来说就是自主设计方案解决一个问题，是蛮有意思的，整个上班时间就是看书学习然后实验，所以那段时间感觉都有点太闲了（指对于公司）。由于都是面向的实际问题，这其中其实会用到很多数学方法去解决，所以那段时间就一直觉得自己数学太菜，于是去清华的书店硬生生淘了很多本数学书，这一套《数学分析》是三本，是张筑生先生的大作，可惜的是，没看多少。。&lt;/p&gt;
-&lt;h3 id=&quot;《随机过程》-林元烈&quot;&gt;&lt;a href=&quot;#《随机过程》-林元烈&quot; class=&quot;headerlink&quot; title=&quot;《随机过程》 林元烈&quot;&gt;&lt;/a&gt;《随机过程》 林元烈&lt;/h3&gt;&lt;p&gt;那段时间有一个问题涉及到概率图模型的一些东西，其中的根本数学概念又在随机过程里面，所以搞了一本随机过程，遗憾的是这本书没选好，清华的这版太老了，而且写的太难，很难看懂，豆瓣的评价也很低。整体来讲，作为非数学系科班的我来说，读起来有点难度。&lt;/p&gt;
-&lt;h3 id=&quot;《概率论与数理统计》-陈希孺&quot;&gt;&lt;a href=&quot;#《概率论与数理统计》-陈希孺&quot; class=&quot;headerlink&quot; title=&quot;《概率论与数理统计》 陈希孺&quot;&gt;&lt;/a&gt;《概率论与数理统计》 陈希孺&lt;/h3&gt;&lt;p&gt;陈希孺老先生的著作之一，看了以后不得不感慨，中科大的数学是厉害，，包括整个合肥的学校好像都是这样。这本书最大的优点是并不是作为一本教科书那样严格的一个定理到另一个定理然后给点例题，它对很多概率论上的基本原理以一种通俗易懂的方式揭开来，让读者能够体会到一些概率论上的基本思想方法上的东西，要读完收获不会小，可惜也没有读完，但是这本书现在就离我一米之内（桌上）。。&lt;/p&gt;
-&lt;p&gt;注： 除了上面的，还有机器学习和统计学习方法那段时间也一直在读。&lt;/p&gt;
-&lt;h3 id=&quot;《叔本华美学随笔》&quot;&gt;&lt;a href=&quot;#《叔本华美学随笔》&quot; class=&quot;headerlink&quot; title=&quot;《叔本华美学随笔》&quot;&gt;&lt;/a&gt;《叔本华美学随笔》&lt;/h3&gt;&lt;p&gt;叔本华是我非常喜欢的一个哲学家，他的文字思想很对我的胃口。这本书名为美学随笔，但是我不知道为什么叫美学随笔，书中阐述了叔本华自己对很多问题的看法，直指人心，读来怡人心脾。喜欢叔本华的话推荐，不过如果是这样的话很可能你已经看过了。。&lt;/p&gt;
-&lt;h2 id=&quot;研一入学之后&quot;&gt;&lt;a href=&quot;#研一入学之后&quot; class=&quot;headerlink&quot; title=&quot;研一入学之后&quot;&gt;&lt;/a&gt;研一入学之后&lt;/h2&gt;&lt;h3 id=&quot;《深入理解大数据》&quot;&gt;&lt;a href=&quot;#《深入理解大数据》&quot; class=&quot;headerlink&quot; title=&quot;《深入理解大数据》&quot;&gt;&lt;/a&gt;《深入理解大数据》&lt;/h3&gt;&lt;p&gt;本门派的武功秘籍。。讲了Mapreduce编程框架，HBase，Hive，基础分布式算法设计，机器学习并行化算法设计，整体来讲内容是不错的，可是大数据的东西变化太快了，现在Hadoop已经2.7.x了，书的速度难免不能精准地跟上，不过绝大多数内容是很有意义的，学习Mapreduce推荐！&lt;/p&gt;
-&lt;h3 id=&quot;《The-Elements-of-Statistic-Learning》&quot;&gt;&lt;a href=&quot;#《The-Elements-of-Statistic-Learning》&quot; class=&quot;headerlink&quot; title=&quot;《The Elements of Statistic Learning》&quot;&gt;&lt;/a&gt;《The Elements of Statistic Learning》&lt;/h3&gt;&lt;p&gt;中文名叫《统计学习基础》，看这本书是因为看见《统计学习方法》中老是引用这本书的内容，所以找到了这本书的中文版，然后看中文版，翻译惨不忍睹，，就搞了一个英文版来看。写的还是不错的，做数据挖掘，机器学习方面工作的时候需要哪部分知识就去翻阅一下，收获是有的，但是不能说非常大，整体来说，从统计学的角度讲了统计学习的很多方法，挺全面的。现在担心不做数据挖掘这方面的事情的时候，是不是又会荒废这本书。。&lt;/p&gt;
-&lt;h3 id=&quot;《王小波文集》&quot;&gt;&lt;a href=&quot;#《王小波文集》&quot; class=&quot;headerlink&quot; title=&quot;《王小波文集》&quot;&gt;&lt;/a&gt;《王小波文集》&lt;/h3&gt;&lt;p&gt;这本就是课外书了，之前在UESTC图书馆没有找到王小波《思维的乐趣》，这次来南大马上去搜刮了一下，也没找到，不过找到了这本《王小波文集》，里面就包括了《思维的乐趣》。恩，没事就翻翻，看的很爽，小波哥的文字总是经常逗我发笑，又经常说一些那个年代的各种各样的事情，透出一个知识分子的严肃思考，很喜欢。&lt;/p&gt;
-&lt;h3 id=&quot;《红楼梦》&quot;&gt;&lt;a href=&quot;#《红楼梦》&quot; class=&quot;headerlink&quot; title=&quot;《红楼梦》&quot;&gt;&lt;/a&gt;《红楼梦》&lt;/h3&gt;&lt;p&gt;这学期上了一个讲红楼梦的课，教课的是苗怀明老师，苗老师讲课风趣幽默，每次上完他的课都意犹未尽，所以也一直坚持在上，既然上红楼梦的课，就难免要去读一读《红楼梦》，最终选中了人民文学出版社的庚辰本红楼梦来读，也是前一段时间比较闲的时候读了一些，读了不到二十来回，后来就没空看了，想想也真难，从高中开始，先后读了3回红楼梦，回回都是读个一二十回就因为各种原因放到了一边，什么时候能够痛痛快快读完一次呢？&lt;/p&gt;
-&lt;h3 id=&quot;《小站》-海子&quot;&gt;&lt;a href=&quot;#《小站》-海子&quot; class=&quot;headerlink&quot; title=&quot;《小站》 海子&quot;&gt;&lt;/a&gt;《小站》 海子&lt;/h3&gt;&lt;p&gt;最近看的，海子的第一部诗集，海子的诗读起来就是一种美妙而不可言的享受，即使是他早年的诗，那就摘录一首《小站》（《黑夜的献诗（献给黑夜的女儿）》 1983）吧，这是这本诗集中我最喜欢的一首诗。&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;我年纪很轻&lt;br&gt;不用向谁告别&lt;br&gt;有点感伤&lt;br&gt;我让自己静静地坐了一会儿&lt;br&gt;然后我出发&lt;br&gt;背上黄挎包&lt;br&gt;装有一本本薄薄的诗集&lt;br&gt;书名是一个僻静的小站名&lt;br&gt;小站到了&lt;br&gt;一盏灯淡得亲切&lt;br&gt;大家在熟睡&lt;br&gt;这样&lt;br&gt;我是唯一的人&lt;br&gt;拥有这声车鸣&lt;br&gt;它在深山散开&lt;br&gt;唤醒一两位敏感的山民&lt;br&gt;并得到隐约的回声&lt;br&gt;不用问&lt;br&gt;我们已相识&lt;br&gt;对话中成为真挚的朋友&lt;br&gt;向你们诉愿&lt;br&gt;是自自然然的事&lt;br&gt;我要到草原去&lt;br&gt;去晒黑自己&lt;br&gt;晒黑日记蓝色的封皮&lt;br&gt;去吧，朋友&lt;br&gt;那片美丽的牧场属于你&lt;br&gt;朋友，去吧&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h2 id=&quot;最后&quot;&gt;&lt;a href=&quot;#最后&quot; class=&quot;headerlink&quot; title=&quot;最后&quot;&gt;&lt;/a&gt;最后&lt;/h2&gt;&lt;p&gt;先总结这些，虽然可能漏掉了一些没写，但是这些是主要的，简要的谈了一些对这些书的看法，虽然都没读完，不过，继续吧，有收获就好啦，没有收获开心就好啦^_^。&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;有几个月没有写读书笔记了，一是没抽出时间，二是读的书基本都没有读完，都不是短时间能够读完的书，但是要是必得等到读完才写，那今年都别写了，但是这样不好，虽然没有读完，但多少算读了一点，有些心得就得记下来，不然后面就忘了，所以才有此文。&lt;/p&gt;
-&lt;p&gt;这几个月读的书很杂，一路读
-    
-    </summary>
-    
-      <category term="读书 | Reading" scheme="http://whatbeg.com/categories/%E8%AF%BB%E4%B9%A6-Reading/"/>
-    
-    
-      <category term="读书" scheme="http://whatbeg.com/tags/%E8%AF%BB%E4%B9%A6/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Training Classifiers via Stochastic Gradient Descent</title>
-    <link href="http://whatbeg.com/2016/11/18/trainclassifiersviaSGD.html"/>
-    <id>http://whatbeg.com/2016/11/18/trainclassifiersviaSGD.html</id>
-    <published>2016-11-18T07:33:51.000Z</published>
-    <updated>2016-11-19T02:53:16.033Z</updated>
-    
-    <content type="html">&lt;h2 id=&quot;Abstract&quot;&gt;&lt;a href=&quot;#Abstract&quot; class=&quot;headerlink&quot; title=&quot;Abstract&quot;&gt;&lt;/a&gt;Abstract&lt;/h2&gt;&lt;p&gt;This report states how I implements two algorithm: Logistic Regression and Ridge Regression(Classifier) which are tailored to large-scale classification. Given the datasets with a large number of examples, we will train classifiers via stochastic gradient descent(SGD) in order to make training phase more efficient. &lt;/p&gt;
-&lt;h2 id=&quot;Introduction-to-Datasets&quot;&gt;&lt;a href=&quot;#Introduction-to-Datasets&quot; class=&quot;headerlink&quot; title=&quot;Introduction to Datasets&quot;&gt;&lt;/a&gt;Introduction to Datasets&lt;/h2&gt;&lt;p&gt;There are two datasets which come from LIBSVM, Dataset 1(Training) contains 32561 rows and 124 columns, and dataset 1(Testing) contains 16281 rows and 124 columns; Dataset 2 (Training) contains 290507 rows and 54 columns, and dataset 2 (Testing) contains 290505 rows and 54 columns. Each row represents an example. The last column represents the label of the corresponding example, and the remaining columns represent the features of the corresponding example. For each dataset, label $\mathcal{Y} = {-1, +1}$. After carefully observing the datasets, I find Dataset 1 contains only 0 or 1, but Dataset 2 contains both float numbers between 0 and 1 and integer 0 or 1, indicating that Dataset 2 may not be scaled, so I scaled then to [0, 1], using Min-Max scaling, fortunately Dataset 1 was immune to the scaling because of above description.&lt;/p&gt;
-&lt;h2 id=&quot;Logistic-Regression-via-SGD-with-L1-Regularization&quot;&gt;&lt;a href=&quot;#Logistic-Regression-via-SGD-with-L1-Regularization&quot; class=&quot;headerlink&quot; title=&quot;Logistic Regression via SGD with L1-Regularization&quot;&gt;&lt;/a&gt;Logistic Regression via SGD with L1-Regularization&lt;/h2&gt;&lt;p&gt;Logistic Regression is one of most popular classification algorithm in our daily life and industrial application. In this section, I will show you a profile of Logistic Regression at first, and then give the pseudo code of my implementation, then I will show results in two datasets after run my code, and compare it to a python machine learning library Scikit-Learn’s results, and at last show some figures of results for you understanding the whole process.&lt;/p&gt;
-&lt;h3 id=&quot;What-is-Logistic-Regression&quot;&gt;&lt;a href=&quot;#What-is-Logistic-Regression&quot; class=&quot;headerlink&quot; title=&quot;What is Logistic Regression?&quot;&gt;&lt;/a&gt;What is Logistic Regression?&lt;/h3&gt;&lt;p&gt;In linear regression, we note the model as $$y = w^Tx + b$$ but can we let predictions approach some thing derive from y ? Answer is absolutely yes, for example we can use log of y as objective that linear models should approach to, which is called log-linear regression.&lt;br&gt;$$\log{y} = w^Tx + b$$ Generally, consider a differentiable monotone function $ g(\cdot) $, let $$y = g^{-1}(w^Tx+b)$$ models like above form is called generalized linear model. Logistic regression can be seen as a special case of the generalized linear model and thus analogous to&lt;br&gt;linear regression. The binary logistic model is used to estimate the probability of a binary response based on one or more predictor (or independent) variables (features),[@wiki] it’s $ g^{-1}(\cdot) $ is $$y = \frac {1} {1 + e^{-w^Tx+b} }$$ above equation is actually using prediction results of linear regression model to approach logit probability of true label, thus, the corresponding model is called “Logistic Regression”, although it’s name contains “Regression”, it is truly a classifier. Logistic regression have many advantages in classification task, including that it directly modeling on the real data, unnecessary to make hypothesis of data distribution, which avoided problems with inaccurate hypothesis of data distribution, moreover, it not only predict “categories”, but approximation of categories’ probability, last but not least, logistic function is a convex function which have many merits.&lt;br&gt;We can do some conversion Eq.4 that: $$\ln{\frac {y} {1-y} } = w^Tx+b$$ and we can see y as posterior probability estimates $ p(y=1|x) $, so Eq.5 can be rewrite as $$\ln{\frac {p(y=1|x)} {p(y=-1|x)} } = w^Tx+b$$ absolutely we can infer following two equation:&lt;br&gt;$$p(y=1|x) = \frac{e^{w^Tx+b} } {1+e^{w^Tx+b} } = \frac{1}{1+e^{-(w^Tx+b)} }$$&lt;br&gt;$$p(y=1|x) = \frac{1}{1+e^{w^Tx+b} }$$ thus we can use maximum likelihood&lt;br&gt;method to estimate $w$ and $b$, and for convenience, we note $ \beta = (b;w) $ and $ x = (1;x) $, and we add L1-regularization to our loss function, so our loss function can be written as&lt;/p&gt;
-&lt;p&gt;$$ {Loss = \frac{1}{N} \sum_{i=1}^N {\log(1+e^{-y_i\beta^Tx_i}) }  + \lambda||\beta||_1} $$&lt;/p&gt;
-&lt;p&gt;after add L1-regularization, we note the final goal is to&lt;/p&gt;
-&lt;p&gt;$$ min {\frac{1}{N} \sum_{i=1}^N {\log(1+e^{-y_i\beta^Tx_i}) }  + \lambda||\beta||_1} $$&lt;/p&gt;
-&lt;p&gt;Stochastic Gradient Descent method usually used to solve the above optimization problem, which from Gradient Descent, because of GD’s low efficiency in large scale dataset, people want to speed up the rate of&lt;br&gt;convergence, at the same time without losing accuracy, so, they use a randomly selected every time to update parameters, that is to say, the batch size(the number of training examples) used for approximation of Eq.10 is 1. Using SGD to solve Eq.10, we first calculate the gradient of Eq.10 for a&lt;br&gt;sample $x_i$:&lt;br&gt;$$\frac {\partial{loss(\beta, x_i)} }{ {\partial\beta} } = \frac{-y_ix_i} {1+e^{y_i\beta^Tx_i} } + \lambda sign(\beta) $$&lt;/p&gt;
-&lt;p&gt;so we can update weights $\beta$ with every iteration and every data&lt;/p&gt;
-&lt;p&gt;sample using following equation:&lt;/p&gt;
-&lt;p&gt;$$\beta_{k+1} = \beta_k - \gamma \frac {\partial{loss(\beta, x_i)} } {\partial\beta}&lt;br&gt;                = \beta_k + \gamma\frac{y_ix_i} {1+e^{y_i\beta^Tx_i} } - \gamma\lambda sign(\beta) $$&lt;/p&gt;
-&lt;p&gt;where $sign(x) = 1$ if x &amp;gt; 0, $sign(x) = -1$, and $sign(x) = 0$ if x = 0. This update equation was called “SGD-L1(Naive)”[@cumulative], and this naive method will cause two problems, one is that at each update, we need to perform the application of L1 penalty to all features, including the features that are not used in current training sample, and it does not produce a compact model, that is, when a dimension of $\beta$ is very small and we can neglect it’s impact, but we will update that dimension as 1 or -1 times regularization lambda and learning rate, regardless of it’s size, at next update, this will cause appearance of many non-zero value in $\beta$, but we want that with the same effect, the less features the better.&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;Occam’s Razor: Entities should not be multiplied unnecessarily.&lt;/strong&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;For this reason, I tried some methods in Yoshimasa’s paper, including Clipping, which clip the weight that crosses zero, and the update function can refer his paper, and finally I used L1 regularization with cumulative penalty to apply L1 penalty to object function, any details can be find in his paper.[@cumulative]&lt;/p&gt;
-&lt;h3 id=&quot;Implementation&quot;&gt;&lt;a href=&quot;#Implementation&quot; class=&quot;headerlink&quot; title=&quot;Implementation&quot;&gt;&lt;/a&gt;Implementation&lt;/h3&gt;&lt;p&gt;After above analysis and derivation, we can easily write the algorithm using SGD to solve logistic regression with L1 regularization,($wh$ is a temporary variable). &lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xsl28.com1.z0.glb.clouddn.com/SGDalgorithm1.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;In order to evaluate effectiveness of my algorithm implementation, I written a implementation using&lt;br&gt;Scikit-Learn, a python machine learning library, and you can see the comparison in Table.2. After conduct a simple Cross Validation and adopted some tricks[@leonbottou] on dataset, I set hyperparameters as following values:&lt;/p&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th style=&quot;text-align:center&quot;&gt;Hypermeters&lt;/th&gt;
-&lt;th style=&quot;text-align:center&quot;&gt;Value&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;Learning Rate $\gamma$&lt;/td&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;0.001&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;Regularization Lambda $\lambda$&lt;/td&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;0.0001&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;Max Iteration Times on Dataset&lt;/td&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;200(Dataset1), 30(Dataset2)&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;h3 id=&quot;Results-of-Experiment&quot;&gt;&lt;a href=&quot;#Results-of-Experiment&quot; class=&quot;headerlink&quot; title=&quot;Results of Experiment&quot;&gt;&lt;/a&gt;Results of Experiment&lt;/h3&gt;&lt;p&gt;After the programming, I evaluated the effectiveness and accuracy of my training algorithm on all 2 datasets, Figure.1 and Figure.2 show the change of key dependent variable including Train set error rate, Test error rate, Objective function and Sparsity in training process.&lt;br&gt;Figure.1 shows results of logistic regression with L1-regularization on dataset 1 that with increasing value of iteration times of training, the training error rate and test set error rate decrease, like one line, after nearly 500000 times of iteration, the training error and test set&lt;br&gt;error keep stable and smooth, only have some small fluctuations, indicating the loss function converged. Objective function has the same trend. See the red line indicating that with the increasing of training iteration, sparsity of weights vector increasing continually, final results after more than 6000000+ iterations, weights vector have sparsity of 31 dimension of 124 dimension, holding a quarter, that is to say, we just need use 3/4 of origin features to predict class labels of data sample, without loss of accuracy of prediction, see, we did a feature selection unconsciously.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xsl28.com1.z0.glb.clouddn.com/LRfig1.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;Figure.2 shows results of conducting algorithm on dataset 2, and we can see almost the same trend on Figure.1, training error rate, test set error rate and objective function decrease with increasing of iteration times, and sparsity increase. What different is that test set error rate on data set 2 is about 0.45, more than stable training error rate, 0.1879, and following form is the final results of logistic regression with L1 regularization on two Dataset.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xsl28.com1.z0.glb.clouddn.com/LRfig2.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th style=&quot;text-align:center&quot;&gt;Dataset&lt;/th&gt;
-&lt;th style=&quot;text-align:center&quot;&gt;Training error rate&lt;/th&gt;
-&lt;th style=&quot;text-align:center&quot;&gt;Test error rate&lt;/th&gt;
-&lt;th style=&quot;text-align:center&quot;&gt;Sparsity&lt;/th&gt;
-&lt;th style=&quot;text-align:center&quot;&gt;Scikit-Learn Test error rate&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;Dataset 1&lt;/td&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;0.1504&lt;/td&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;0.1501&lt;/td&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;31/124&lt;/td&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;0.1500&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;Dataset 2&lt;/td&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;0.1879&lt;/td&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;0.4475&lt;/td&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;9/55&lt;/td&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;0.4100&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;h3 id=&quot;Comparison-of-Naive-and-Cumulative-Penalty-L1-regularization-in-LR&quot;&gt;&lt;a href=&quot;#Comparison-of-Naive-and-Cumulative-Penalty-L1-regularization-in-LR&quot; class=&quot;headerlink&quot; title=&quot;Comparison of Naive and Cumulative Penalty L1 regularization in LR&quot;&gt;&lt;/a&gt;Comparison of Naive and Cumulative Penalty L1 regularization in LR&lt;/h3&gt;&lt;p&gt;As I stated, there are many approach to apply L1 penalty to our logistic regression’s loss function, one of that is so-called “Naive” method[@cumulative], which directly use absolute value of $sign(\beta)$ as it’s sub-gradient for weight update, but I used the cumulative penalty method, and following is the comparison of this two method. From Table.3 and Table.4, we can see that two methods have nearly the same performance, but cumulative penalty method has large sparsity and Naive method has 0 sparsity. See figures of the performance of Naive method in&lt;br&gt;Appendix.&lt;/p&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th style=&quot;text-align:center&quot;&gt;Methods&lt;/th&gt;
-&lt;th style=&quot;text-align:center&quot;&gt;Training error rate&lt;/th&gt;
-&lt;th style=&quot;text-align:center&quot;&gt;Test error rate&lt;/th&gt;
-&lt;th style=&quot;text-align:center&quot;&gt;Sparsity&lt;/th&gt;
-&lt;th style=&quot;text-align:center&quot;&gt;Scikit-Learn Test error rate&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;Naive&lt;/td&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;0.1507&lt;/td&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;0.1493&lt;/td&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;0/124&lt;/td&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;0.1500&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;Cumulative&lt;/td&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;0.1504&lt;/td&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;0.1501&lt;/td&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;31/124&lt;/td&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;0.1500&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;p&gt;Table. Comparison of Naive and Cumulative method in Dataset 1&lt;/p&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th style=&quot;text-align:center&quot;&gt;Methods&lt;/th&gt;
-&lt;th style=&quot;text-align:center&quot;&gt;Training error rate&lt;/th&gt;
-&lt;th style=&quot;text-align:center&quot;&gt;Test error rate&lt;/th&gt;
-&lt;th style=&quot;text-align:center&quot;&gt;Sparsity&lt;/th&gt;
-&lt;th style=&quot;text-align:center&quot;&gt;Scikit-Learn Test error rate&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;Naive&lt;/td&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;0.1878&lt;/td&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;0.4467&lt;/td&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;0/55&lt;/td&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;0.4100&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;Cumulative&lt;/td&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;0.1879&lt;/td&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;0.4475&lt;/td&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;9/55&lt;/td&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;0.4100&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;p&gt;Table. Comparison of Naive and Cumulative method in Dataset2&lt;/p&gt;
-&lt;h2 id=&quot;Ridge-Regression-via-SGD-with-L2-regularization&quot;&gt;&lt;a href=&quot;#Ridge-Regression-via-SGD-with-L2-regularization&quot; class=&quot;headerlink&quot; title=&quot;Ridge Regression via SGD with L2-regularization&quot;&gt;&lt;/a&gt;Ridge Regression via SGD with L2-regularization&lt;/h2&gt;&lt;p&gt;Ridge Regression is a variant of Linear Regression, as we all know, there are many different methods to fit the linear model to a set of training data, but by far the most popular is the method of $least~squares$, in this approach, we pick the coefficients $w$ to minimize the residual sum of squares[@elmml] &lt;/p&gt;
-&lt;p&gt;$$RSS(w) = \sum_{i=1}^N {(y_i - w^Tx_i)^2}$$ &lt;/p&gt;
-&lt;p&gt;because $RSS(w)$ is a quadratic function of the parameters, its’ minimum always exists, we can use many numerical optimization algorithm to optimize the function, like SGD. But what’s ridge regression, actually it’s very simple, ridge regression shrinks the regression coefficients by imposing a penalty on their size, the ridge coefficients minimize a penalized residual sum of squares &lt;/p&gt;
-&lt;p&gt;$$min {\frac{1}{N} \sum_{i=1}^N{ (y_i-w^Tx_i)^2 } + \lambda|w|_2^2} $$ &lt;/p&gt;
-&lt;p&gt;and that, is our objective. Using SGD to solve this optimization problem, we just need to get the gradient of objective in one training sample, which is&lt;/p&gt;
-&lt;p&gt;$$\nabla loss(w, x_i) = -2x_i(y_i-w^Tx_i) + 2\lambda w$$ So, according Eq.15, we can easily write update function of weights by one iteration and one training example as:&lt;/p&gt;
-&lt;p&gt;$$w_{k+1} = w_k - \gamma \frac {\partial{loss(w, x_i)} }{ {\partial w} }&lt;br&gt;                = w_k + 2\gamma {x_i(y_i-w^Tx_i)} - 2 \gamma\lambda w$$&lt;/p&gt;
-&lt;h3 id=&quot;Implementation-1&quot;&gt;&lt;a href=&quot;#Implementation-1&quot; class=&quot;headerlink&quot; title=&quot;Implementation&quot;&gt;&lt;/a&gt;Implementation&lt;/h3&gt;&lt;p&gt;As we have the update function of ridge coefficient, we write it’s pseudo-code easily in Algorithm 2. &lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xsl28.com1.z0.glb.clouddn.com/SGDalgorithm2.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;In order to evaluate effectiveness of my algorithm implementation, I also written a implementation using Scikit-Learn, a python machine learning library, and you can see the comparison in Table.6. And after conduct a simple Cross Validation and use some tricks[@leonbottou]on dataset, I set hyperparameters as following values: ($t$ is iteration times)&lt;/p&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th style=&quot;text-align:center&quot;&gt;Hyperparameters&lt;/th&gt;
-&lt;th style=&quot;text-align:center&quot;&gt;Values&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;Learning Rate $\gamma$&lt;/td&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;0.001 / (1.0 + 0.001&lt;em&gt;t&lt;/em&gt;0.003)&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;Regularization Lambda $\lambda$&lt;/td&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;0.0001&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;Max Iteration Times on Dataset&lt;/td&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;200(Dataset1), 30(Dataset2)&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;h3 id=&quot;Results-of-Experiment-1&quot;&gt;&lt;a href=&quot;#Results-of-Experiment-1&quot; class=&quot;headerlink&quot; title=&quot;Results of Experiment&quot;&gt;&lt;/a&gt;Results of Experiment&lt;/h3&gt;&lt;p&gt;After the programming, I evaluated the effectiveness and accuracy of my training algorithm on all 2 datasets, Figure.3 and Figure.4 show the change of key dependent variable including Train set error rate, Test error rate, Objective function and Sparsity in training process. Figure.3 shows results of ridge regression with L2-regularization on dataset 1 that with increasing value of iteration times of training, the training error rate and test set error rate decrease, like one line, after nearly 350000 times of iteration, the training error and test set error keep stable and smooth, only have some small fluctuations, indicating the loss function converged. Objective function has the same trend. Because of algorithm applying L2 regularization on loss function,&lt;br&gt;so there will be no sparsity, because of the property of L2 regularization. From here we can know that, L1 regularization will cause more sparsity of weights vector than L2 regularization, which is the main reason of L1 regularization has been adopted/used in many scenarios, no matter in industry or academia. Figure.4 shows results of conducting algorithm on dataset 2, and we can see almost the same trend on Figure.1, training error rate, test set error rate and objective function decrease with increasing of iteration times, and sparsity increase. What different is that test set error rate on data set 2 is about 0.45, more than stable training error rate, 0.1921, and following form is the final results of ridge regression with L2 regularization on two Dataset.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xsl28.com1.z0.glb.clouddn.com/RRfig3.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xsl28.com1.z0.glb.clouddn.com/RRfig4.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;h2 id=&quot;Results-Appendix&quot;&gt;&lt;a href=&quot;#Results-Appendix&quot; class=&quot;headerlink&quot; title=&quot;Results Appendix&quot;&gt;&lt;/a&gt;Results Appendix&lt;/h2&gt;&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th style=&quot;text-align:center&quot;&gt;Dataset&lt;/th&gt;
-&lt;th style=&quot;text-align:center&quot;&gt;Training error rate&lt;/th&gt;
-&lt;th style=&quot;text-align:center&quot;&gt;Test error rate&lt;/th&gt;
-&lt;th style=&quot;text-align:center&quot;&gt;Scikit-Learn Test error rate&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;Dataset 1&lt;/td&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;0.1547&lt;/td&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;0.1548&lt;/td&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;0.1500&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;Dataset 2&lt;/td&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;0.1921&lt;/td&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;0.4449&lt;/td&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;0.4100&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xsl28.com1.z0.glb.clouddn.com/LRfig5.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xsl28.com1.z0.glb.clouddn.com/LRfig6.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;h2 id=&quot;Reference&quot;&gt;&lt;a href=&quot;#Reference&quot; class=&quot;headerlink&quot; title=&quot;Reference&quot;&gt;&lt;/a&gt;Reference&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;http://7xsl28.com1.z0.glb.clouddn.com/refernce1.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;Abstract&quot;&gt;&lt;a href=&quot;#Abstract&quot; class=&quot;headerlink&quot; title=&quot;Abstract&quot;&gt;&lt;/a&gt;Abstract&lt;/h2&gt;&lt;p&gt;This report states how I implements two algori
     
     </summary>
     
