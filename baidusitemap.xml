@@ -4,6 +4,48 @@
 
     
   <url>
+    <loc>http://whatbeg.com/2017/04/13/deeplearningbook-02.html</loc>
+    <lastmod>2017-04-13T08:13:48.114Z</lastmod>
+    <data>
+        <display>
+        <title>Deep Learning读书笔记（2）【深度学习的数学基础摘要】(未竟稿)</title>
+        <pubTime>2017-04-13T08:12:46.000Z</pubTime>
+        
+        <tag>深度学习</tag>
+         
+        <tag>Deep Learning</tag>
+         
+         
+           
+             
+              <breadCrumb title="深度学习 | Deep Learning" url="http://whatbeg.com/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0-Deep-Learning/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://whatbeg.com/2017/04/13/hexosomeopt.html</loc>
+    <lastmod>2017-04-13T08:13:13.787Z</lastmod>
+    <data>
+        <display>
+        <title>Hexo新的一些优化</title>
+        <pubTime>2017-04-13T08:10:39.000Z</pubTime>
+        
+        <tag>Hexo</tag>
+         
+         
+           
+             
+              <breadCrumb title="错误解决与优化 | Err&amp;Opt" url="http://whatbeg.com/categories/%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3%E4%B8%8E%E4%BC%98%E5%8C%96-Err-Opt/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://whatbeg.com/2017/03/11/linuxmemo.html</loc>
     <lastmod>2017-04-03T10:33:24.093Z</lastmod>
     <data>
@@ -32,48 +74,6 @@
         <pubTime>2017-04-01T12:38:53.000Z</pubTime>
         
         <tag>Linux</tag>
-         
-         
-           
-             
-              <breadCrumb title="错误解决与优化 | Err&amp;Opt" url="http://whatbeg.com/categories/%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3%E4%B8%8E%E4%BC%98%E5%8C%96-Err-Opt/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://whatbeg.com/2017/04/01/deeplearningbook-02.html</loc>
-    <lastmod>2017-04-01T14:12:39.043Z</lastmod>
-    <data>
-        <display>
-        <title>Deep Learning读书笔记（2）【深度学习的数学基础摘要】</title>
-        <pubTime>2017-04-01T13:16:46.000Z</pubTime>
-        
-        <tag>深度学习</tag>
-         
-        <tag>Deep Learning</tag>
-         
-         
-           
-             
-              <breadCrumb title="深度学习 | Deep Learning" url="http://whatbeg.com/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0-Deep-Learning/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://whatbeg.com/2017/04/01/hexosomeopt.html</loc>
-    <lastmod>2017-04-01T13:56:24.708Z</lastmod>
-    <data>
-        <display>
-        <title>Hexo新的一些优化</title>
-        <pubTime>2017-04-01T13:55:39.000Z</pubTime>
-        
-        <tag>Hexo</tag>
          
          
            
@@ -1128,9 +1128,9 @@
         <title>快速学会Git基本操作</title>
         <pubTime>2016-04-07T15:35:15.000Z</pubTime>
         
-        <tag>Git</tag>
-         
         <tag>CS</tag>
+         
+        <tag>Git</tag>
          
          
            

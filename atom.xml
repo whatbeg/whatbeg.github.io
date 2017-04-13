@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://whatbeg.com/"/>
-  <updated>2017-04-01T13:56:24.708Z</updated>
+  <updated>2017-04-13T08:13:48.114Z</updated>
   <id>http://whatbeg.com/</id>
   
   <author>
@@ -16,38 +16,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Hexo新的一些优化</title>
-    <link href="http://whatbeg.com/2017/04/01/hexosomeopt.html"/>
-    <id>http://whatbeg.com/2017/04/01/hexosomeopt.html</id>
-    <published>2017-04-01T13:55:39.000Z</published>
-    <updated>2017-04-01T13:56:24.708Z</updated>
-    
-    <content type="html">&lt;h2 id=&quot;Hexo-Mathjax下划线-的渲染问题&quot;&gt;&lt;a href=&quot;#Hexo-Mathjax下划线-的渲染问题&quot; class=&quot;headerlink&quot; title=&quot;Hexo Mathjax下划线_的渲染问题&quot;&gt;&lt;/a&gt;Hexo Mathjax下划线&lt;code&gt;_&lt;/code&gt;的渲染问题&lt;/h2&gt;&lt;p&gt;以前Hexo渲染数学公式的时候有时候下划线会渲染成&lt;code&gt;&amp;lt;em&amp;gt;&lt;/code&gt;，导致渲染不出公式的情况。&lt;br&gt;比如下面这种情况：&lt;br&gt;&lt;img src=&quot;http://7xsl28.com1.z0.glb.clouddn.com/hexosomeopt1.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;但是在其他markdown中又能够正确显示，这时候其实是Hexo的锅，它渲染的时候把&lt;code&gt;_&lt;/code&gt;渲染成&lt;code&gt;&amp;lt;em&amp;gt;&lt;/code&gt;    ，可以修改渲染规则来使之渲染正常。&lt;br&gt;打开：&lt;code&gt;hexo\node_modules\marked\lib\marked.js&lt;/code&gt;&lt;br&gt;找到：&lt;br&gt;&lt;img src=&quot;http://7xsl28.com1.z0.glb.clouddn.com/hexosomeopt3.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;&lt;img src=&quot;http://7xsl28.com1.z0.glb.clouddn.com/hexosomeopt2.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;删去选中的部分，即删除对&lt;code&gt;_&lt;/code&gt;的渲染转换，重新生成即可。&lt;br&gt;当然还有其它方式，不过这种比较简便有效。&lt;/p&gt;
-&lt;h2 id=&quot;References&quot;&gt;&lt;a href=&quot;#References&quot; class=&quot;headerlink&quot; title=&quot;References&quot;&gt;&lt;/a&gt;References&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;http://kubicode.me/2016/03/16/Hexo/Fix-Hexo-Bug-In-Mathjax/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;修复Hexo写Mathjax公式多个下标失效的问题&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;http://2wildkids.com/2016/10/06/%E5%A6%82%E4%BD%95%E5%A4%84%E7%90%86Hexo%E5%92%8CMathJax%E7%9A%84%E5%85%BC%E5%AE%B9%E9%97%AE%E9%A2%98/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;如何处理Hexo和MathJax的兼容问题&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;Hexo-Mathjax下划线-的渲染问题&quot;&gt;&lt;a href=&quot;#Hexo-Mathjax下划线-的渲染问题&quot; class=&quot;headerlink&quot; title=&quot;Hexo Mathjax下划线_的渲染问题&quot;&gt;&lt;/a&gt;Hexo Mathjax下划线&lt;code&gt;_&lt;
-    
-    </summary>
-    
-      <category term="错误解决与优化 | Err&Opt" scheme="http://whatbeg.com/categories/%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3%E4%B8%8E%E4%BC%98%E5%8C%96-Err-Opt/"/>
-    
-    
-      <category term="Hexo" scheme="http://whatbeg.com/tags/Hexo/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Deep Learning读书笔记（2）【深度学习的数学基础摘要】</title>
-    <link href="http://whatbeg.com/2017/04/01/deeplearningbook-02.html"/>
-    <id>http://whatbeg.com/2017/04/01/deeplearningbook-02.html</id>
-    <published>2017-04-01T13:16:46.000Z</published>
-    <updated>2017-04-01T14:12:39.043Z</updated>
+    <title>Deep Learning读书笔记（2）【深度学习的数学基础摘要】(未竟稿)</title>
+    <link href="http://whatbeg.com/2017/04/13/deeplearningbook-02.html"/>
+    <id>http://whatbeg.com/2017/04/13/deeplearningbook-02.html</id>
+    <published>2017-04-13T08:12:46.000Z</published>
+    <updated>2017-04-13T08:13:48.114Z</updated>
     
     <content type="html">&lt;p&gt;深度学习需要的数学基础同机器学习所需的数学基础类似，包括三大块：&lt;/p&gt;
 &lt;ul&gt;
@@ -120,6 +93,33 @@
       <category term="深度学习" scheme="http://whatbeg.com/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
     
       <category term="Deep Learning" scheme="http://whatbeg.com/tags/Deep-Learning/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hexo新的一些优化</title>
+    <link href="http://whatbeg.com/2017/04/13/hexosomeopt.html"/>
+    <id>http://whatbeg.com/2017/04/13/hexosomeopt.html</id>
+    <published>2017-04-13T08:10:39.000Z</published>
+    <updated>2017-04-13T08:13:13.787Z</updated>
+    
+    <content type="html">&lt;h2 id=&quot;Hexo-Mathjax下划线-的渲染问题&quot;&gt;&lt;a href=&quot;#Hexo-Mathjax下划线-的渲染问题&quot; class=&quot;headerlink&quot; title=&quot;Hexo Mathjax下划线_的渲染问题&quot;&gt;&lt;/a&gt;Hexo Mathjax下划线&lt;code&gt;_&lt;/code&gt;的渲染问题&lt;/h2&gt;&lt;p&gt;以前Hexo渲染数学公式的时候有时候下划线会渲染成&lt;code&gt;&amp;lt;em&amp;gt;&lt;/code&gt;，导致渲染不出公式的情况。&lt;br&gt;比如下面这种情况：&lt;br&gt;&lt;img src=&quot;http://7xsl28.com1.z0.glb.clouddn.com/hexosomeopt1.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;但是在其他markdown中又能够正确显示，这时候其实是Hexo的锅，它渲染的时候把&lt;code&gt;_&lt;/code&gt;渲染成&lt;code&gt;&amp;lt;em&amp;gt;&lt;/code&gt;    ，可以修改渲染规则来使之渲染正常。&lt;br&gt;打开：&lt;code&gt;hexo\node_modules\marked\lib\marked.js&lt;/code&gt;&lt;br&gt;找到：&lt;br&gt;&lt;img src=&quot;http://7xsl28.com1.z0.glb.clouddn.com/hexosomeopt3.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;&lt;img src=&quot;http://7xsl28.com1.z0.glb.clouddn.com/hexosomeopt2.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;删去选中的部分，即删除对&lt;code&gt;_&lt;/code&gt;的渲染转换，重新生成即可。&lt;br&gt;当然还有其它方式，不过这种比较简便有效。&lt;/p&gt;
+&lt;h2 id=&quot;References&quot;&gt;&lt;a href=&quot;#References&quot; class=&quot;headerlink&quot; title=&quot;References&quot;&gt;&lt;/a&gt;References&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://kubicode.me/2016/03/16/Hexo/Fix-Hexo-Bug-In-Mathjax/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;修复Hexo写Mathjax公式多个下标失效的问题&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://2wildkids.com/2016/10/06/%E5%A6%82%E4%BD%95%E5%A4%84%E7%90%86Hexo%E5%92%8CMathJax%E7%9A%84%E5%85%BC%E5%AE%B9%E9%97%AE%E9%A2%98/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;如何处理Hexo和MathJax的兼容问题&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;Hexo-Mathjax下划线-的渲染问题&quot;&gt;&lt;a href=&quot;#Hexo-Mathjax下划线-的渲染问题&quot; class=&quot;headerlink&quot; title=&quot;Hexo Mathjax下划线_的渲染问题&quot;&gt;&lt;/a&gt;Hexo Mathjax下划线&lt;code&gt;_&lt;
+    
+    </summary>
+    
+      <category term="错误解决与优化 | Err&Opt" scheme="http://whatbeg.com/categories/%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3%E4%B8%8E%E4%BC%98%E5%8C%96-Err-Opt/"/>
+    
+    
+      <category term="Hexo" scheme="http://whatbeg.com/tags/Hexo/"/>
     
   </entry>
   
