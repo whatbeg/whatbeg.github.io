@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://whatbeg.com/"/>
-  <updated>2017-04-13T08:13:48.114Z</updated>
+  <updated>2017-04-13T13:12:08.942Z</updated>
   <id>http://whatbeg.com/</id>
   
   <author>
@@ -14,6 +14,55 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>SVM推导过程中的三个疑问</title>
+    <link href="http://whatbeg.com/2017/04/13/svmlearning.html"/>
+    <id>http://whatbeg.com/2017/04/13/svmlearning.html</id>
+    <published>2017-04-13T13:10:06.000Z</published>
+    <updated>2017-04-13T13:12:08.942Z</updated>
+    
+    <content type="html">&lt;p&gt;在形式化推导硬间隔（不允许分错）SVM分类器的时候，会做一些简化和转换，初看时并不那么好懂。最近又接触到SVM，所以从头到尾又学习了一遍。写下关于几个以前不太懂的疑问以及疑问的回答。&lt;/p&gt;
+&lt;h2 id=&quot;为何令间隔为1？&quot;&gt;&lt;a href=&quot;#为何令间隔为1？&quot; class=&quot;headerlink&quot; title=&quot;为何令间隔为1？&quot;&gt;&lt;/a&gt;为何令间隔为1？&lt;/h2&gt;&lt;p&gt;在SVM中是以最大化分类间隔为目标的，间隔又分函数间隔和几何间隔。&lt;br&gt;函数间隔为： $\hat\gamma=y_if(x_i)=y_i(w^Tx_i+b)$&lt;br&gt;几何间隔为： $\gamma=\frac {y_if(x_i)} {||w||}$&lt;br&gt;函数间隔可以表征样本被分到某一类的置信度，比如说$y_i=+1$时，如果$w^Tx_i+b &amp;gt; 0$且很大，说明离分类边界越远，越有理由相信$x_i$真的是正类。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;成倍的增长$w,b$，分类超平面不变，几何间隔也不改变&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;而我们优化通常是优化几何间隔，因为几何间隔在$w,b$成倍增长时，是不变的。&lt;br&gt;即优化问题转化为：$$max_{w,b} \frac {\hat\gamma} {||w||} \&lt;br&gt;s.t. y_i(w^Tx_i+b) = \hat\gamma_i \ge \hat\gamma$$&lt;/p&gt;
+&lt;p&gt;设$\hat\gamma$为最小函数间隔,约束条件是任意给一个点，其函数间隔一定大于等于$\hat\gamma$，即最小函数间隔。&lt;br&gt;做一个变量替换$w’=w/{\hat\gamma}, b’=b/{\hat\gamma}$，代入原来的优化问题可得新的优化问题：&lt;br&gt;$$max_{w’,b’} \frac {1} {||w’||} \&lt;br&gt;s.t. y_i({w’}^Tx_i+b’) \ge 1$$&lt;br&gt;此时关于$w,b$的原问题等价成了新的$w’,b’$的新问题。能够这样转化的原因在于函数间隔的取值并不影响最优化问题的解。&lt;/p&gt;
+&lt;h2 id=&quot;什么是拉格朗日对偶？&quot;&gt;&lt;a href=&quot;#什么是拉格朗日对偶？&quot; class=&quot;headerlink&quot; title=&quot;什么是拉格朗日对偶？&quot;&gt;&lt;/a&gt;什么是拉格朗日对偶？&lt;/h2&gt;&lt;p&gt;上述优化问题可以写为：&lt;br&gt;$$min \frac {1} {2}||w||^2 \&lt;br&gt;s.t. y_i({w’}^Tx_i+b’) \ge 1,i=1,2,..,m$$&lt;/p&gt;
+&lt;p&gt;目标函数是二次的，约束是是线性的，这是一个凸二次规划问题，可以用QP求解。但是还可以通过拉格朗日对偶来解。&lt;br&gt;拉格朗日对偶解法即求解与原问题等价的对偶问题得到原问题的最优解。&lt;br&gt;采用拉格朗日乘子法，写出拉格朗日乘子式：&lt;br&gt;$$\mathcal{L}(w,b,\alpha)=\frac {1} {2}||w||^2 - \sum_{i=1}^n \alpha_i(y_i(w^Tx_i+b)-1)$$&lt;br&gt;令$$\theta(w)=max_{\alpha_i \ge 0}\mathcal{L}(w,b,\alpha)$$&lt;br&gt;可以看出，当$(y_i(w^Tx_i+b)-1)&amp;lt;0$时，即条件不满足时，由于$\alpha_i \ge 0$，所以后面一半（包括负号）是正的，当$\alpha_i$取得很大的时候，$\theta(w)$甚至可以取到无穷大；当条件满足时，后面一项是负的，所以$\theta(w)=max_{\alpha_i \ge 0}\mathcal{L}(w,b,\alpha)$最大就是$\frac {1} {2}||w||^2$。&lt;br&gt;所以做$\theta(w)$的目的就出来了，即&lt;br&gt;$\theta(w)=f(w) $ if w满足条件&lt;br&gt;$\theta(w)=\infty $ 否则&lt;br&gt;所以原问题$$min \frac {1} {2}||w||^2 \&lt;br&gt;s.t. y_i({w’}^Tx_i+b’) \ge 1,i=1,2,..,m$$&lt;br&gt;就可以通过拉格朗日乘子法换成无约束的等价的另一种表示&lt;br&gt;$$min_{w,b}\theta(w)=min_{w,b} max_{\alpha_i \ge 0}\mathcal{L}(w,b,\alpha)$$&lt;br&gt;设$p^&lt;em&gt;$为上述问题的最优解。&lt;br&gt;上述问题直接求解很难，所以交换一下min，max的顺序将其变成对偶问题&lt;br&gt;$$max_{\alpha_i \ge 0} min_{w,b} \mathcal{L}(w,b,\alpha)$$&lt;br&gt;最优解用$d^&lt;/em&gt;$来表示。&lt;br&gt;转换为对偶问题后相对容易求解，要注意此时$d^&lt;em&gt;$并不一定等于$p^&lt;/em&gt;$，(且&lt;br&gt;其实$d^&lt;em&gt; \le p^&lt;/em&gt;$，直观的说就是“胖子里面最瘦的通常比瘦子里面最胖的要胖”，这也是有证明的)。即原问题的解并不一定等于对偶问题的解，如果等于，我们称之为强对偶(strong duality)，在满足一定条件的情况下，是可以达到强对偶的。&lt;br&gt;Slater条件： 存在严格满足约束条件的点。&lt;br&gt;如果原始问题是Convex的并且满足Slater条件的话，我们说它是强对偶的。Slater条件只是使强对偶成立的一种情况，事实上，非凸优化也可以是强对偶的。&lt;br&gt;通过强对偶成立时的一些性质，我们可以推出一些条件，比如&lt;/p&gt;
+&lt;center&gt; &lt;img src=&quot;http://7xsl28.com1.z0.glb.clouddn.com/SVM5.png&quot; alt=&quot;&quot;&gt; &lt;/center&gt;
+
+&lt;h2 id=&quot;什么是KKT条件？&quot;&gt;&lt;a href=&quot;#什么是KKT条件？&quot; class=&quot;headerlink&quot; title=&quot;什么是KKT条件？&quot;&gt;&lt;/a&gt;什么是KKT条件？&lt;/h2&gt;&lt;p&gt;上述这些就是所谓的KKT条件。&lt;br&gt;任何强对偶问题都满足KKT条件。&lt;br&gt;当原始问题可微且是凸优化问题时，KKT条件升级成充分必要条件。&lt;br&gt;前两条说明达到最优解时，拉格朗日函数对w,b求偏导为0&lt;br&gt;第三条称为complementary slackness（互补松弛），即我们的&lt;br&gt;$$\alpha_i(y_i(w^Tx_i+b)-1)=0$$&lt;br&gt;那么为什么呢？做下列推导，假设$x^&lt;em&gt;,\alpha^&lt;/em&gt;$分别为原问题和对偶问题的极值点：&lt;br&gt;$$f_0(x^&lt;em&gt;)=min_{w,b} \mathcal{L}(w,b,\alpha) \&lt;br&gt;=min_x (f_0(x) - \sum_{i=1}^n \alpha_i(y_i(w^Tx_i+b)-1)) \&lt;br&gt;\le f_0(x^&lt;/em&gt;)-\sum_{i=1}^n \alpha_i^&lt;em&gt;(y_i(w^Tx^&lt;/em&gt;_i+b)-1) \&lt;br&gt;\le f_0(x^&lt;em&gt;)$$&lt;br&gt;由于等式两遍相等，所以可以换成等号，由于第三行，且$\sum_{i=1}^n \alpha_i^&lt;/em&gt;(y_i(w^Tx^&lt;em&gt;_i+b)-1)$非负，所以推出$ \alpha_i^&lt;/em&gt;(y_i(w^Tx^&lt;em&gt;_i+b)-1)=0, i=1,2,…,m$&lt;br&gt;即当$\alpha_i&amp;gt;0$时，$x_i$正在分类间隔上，称为支持向量，而不在分类间隔上的样本有$\alpha_i=0$&lt;br&gt;后两条为原来的约束条件。图中的$g_i(w^&lt;/em&gt;)$即我们的$(1-y_i({w^&lt;em&gt;}^Tx_i+b^&lt;/em&gt;))$。&lt;/p&gt;
+&lt;p&gt;满足了KKT条件，就可以认为对偶问题的最优解就是原问题的最优解，这样我们就可以通过求解对偶问题来求解原来的优化问题。&lt;br&gt;By the way，SVM的对偶问题为：&lt;/p&gt;
+&lt;center&gt; &lt;img src=&quot;http://7xsl28.com1.z0.glb.clouddn.com/SVM6.png&quot; alt=&quot;来自July&quot;&gt; &lt;/center&gt;
+
+&lt;h2 id=&quot;总结&quot;&gt;&lt;a href=&quot;#总结&quot; class=&quot;headerlink&quot; title=&quot;总结&quot;&gt;&lt;/a&gt;总结&lt;/h2&gt;&lt;p&gt;所以总结一下，令几何间隔为1是为了保证优化问题等价的情况下，尽可能地简化问题。使用拉格朗日对偶是因为原问题不好解，所以转化成对偶问题，而当问题满足KKT条件的时候，这个对偶问题的解就是原问题的解，从而更好地得到最优解。&lt;br&gt;简单梳理了一下这三个问题，知识浅薄，如果有不对的希读者不吝指出。&lt;/p&gt;
+&lt;h2 id=&quot;References&quot;&gt;&lt;a href=&quot;#References&quot; class=&quot;headerlink&quot; title=&quot;References&quot;&gt;&lt;/a&gt;References&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://www2.isye.gatech.edu/~nemirovs/Lect_ModConvOpt.pdf&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Lectures on Modern Convex Optimization &lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://cs229.stanford.edu/notes/cs229-notes3.pdf&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Andrew Ng. CS229. Note3&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.cnblogs.com/90zeng/p/Lagrange_duality.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;简易解说拉格朗日对偶（Lagrange duality）&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.cnblogs.com/liqizhou/archive/2012/05/11/2495689.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;SVM(二）拉格朗日对偶问题&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://blog.pluskid.org/?p=702&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;支持向量机：Duality&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://blog.csdn.net/v_july_v/article/details/7624837&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;支持向量机通俗导论（理解SVM的三层境界）&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;《机器学习》&lt;/li&gt;
+&lt;li&gt;《统计学习方法》&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;在形式化推导硬间隔（不允许分错）SVM分类器的时候，会做一些简化和转换，初看时并不那么好懂。最近又接触到SVM，所以从头到尾又学习了一遍。写下关于几个以前不太懂的疑问以及疑问的回答。&lt;/p&gt;
+&lt;h2 id=&quot;为何令间隔为1？&quot;&gt;&lt;a href=&quot;#为何令间隔为1？&quot; cla
+    
+    </summary>
+    
+      <category term="机器学习 | Mac.Learning" scheme="http://whatbeg.com/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-Mac-Learning/"/>
+    
+    
+      <category term="机器学习" scheme="http://whatbeg.com/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
   
   <entry>
     <title>Deep Learning读书笔记（2）【深度学习的数学基础摘要】(未竟稿)</title>
@@ -1282,40 +1331,6 @@
     
     
       <category term="Hadoop" scheme="http://whatbeg.com/tags/Hadoop/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>谈一谈朴素贝叶斯作为基分类器的Adaboost算法 （Naive Bayes Based Adaboost）</title>
-    <link href="http://whatbeg.com/2016/12/01/naivebayesboosting.html"/>
-    <id>http://whatbeg.com/2016/12/01/naivebayesboosting.html</id>
-    <published>2016-12-01T08:58:03.000Z</published>
-    <updated>2016-12-01T09:12:42.173Z</updated>
-    
-    <content type="html">&lt;h2 id=&quot;Abstract&quot;&gt;&lt;a href=&quot;#Abstract&quot; class=&quot;headerlink&quot; title=&quot;Abstract&quot;&gt;&lt;/a&gt;Abstract&lt;/h2&gt;&lt;p&gt;Adaboost大家很熟了，是比较经典的一个提升方法，这次实现一下以朴素贝叶斯为基分类器的Adaboost，首先实现一个朴素贝叶斯分类器，然后以朴素贝叶斯作为基分类器，实现Adaboost算法，并在两个数据集上进行测试。在实现朴素贝叶斯分类器时，同时处理了离散值属性和连续值属性，在结果表中给出了Adaboost算法应用在两个数据集上分别的准确率均值和方差。很少看到网上有NB作为基分类器的boosting，自己实现了一下，如果有什么错漏或者不对的地方欢迎指出。&lt;/p&gt;
-&lt;p&gt;关键词:    朴素贝叶斯; 集成学习; Adaboost; 提升方法; 交叉验证&lt;/p&gt;
-&lt;h2 id=&quot;朴素贝叶斯算法简介&quot;&gt;&lt;a href=&quot;#朴素贝叶斯算法简介&quot; class=&quot;headerlink&quot; title=&quot;朴素贝叶斯算法简介&quot;&gt;&lt;/a&gt;朴素贝叶斯算法简介&lt;/h2&gt;&lt;p&gt;朴素贝叶斯算法(Naïve Bayes)算法是基于贝叶斯定理和特征条件独立的假设的一种分类方法。对于给定的训练数据集，首先基于特征条件独立假设学习输入/输出的联合概率分布，然后基于此模型，对给定的输入x，利用贝叶斯定理求出后验概率最大的输出y. 朴素贝叶斯法实现简单，并且也有不俗的学习与预测的效率，是一种常用的方法，也被列入“机器学习十大算法”之一。&lt;/p&gt;
-&lt;h2 id=&quot;离散特征和连续特征&quot;&gt;&lt;a href=&quot;#离散特征和连续特征&quot; class=&quot;headerlink&quot; title=&quot;离散特征和连续特征&quot;&gt;&lt;/a&gt;离散特征和连续特征&lt;/h2&gt;&lt;p&gt;利用朴素贝叶斯法进行分类我们采用极大似然法对条件概率和先验概率进行估计，然后利用此条件概率和先验概率对测试集样本进行预测，所以我们需要得到$P(Y=ck)$和$P(Xj=a_{jl} | Y=ck)$，然而，对于离散值和连续值而言两个条件概率的处理方法是不同的。&lt;/p&gt;
-&lt;h3 id=&quot;离散值特征的处理&quot;&gt;&lt;a href=&quot;#离散值特征的处理&quot; class=&quot;headerlink&quot; title=&quot;离散值特征的处理&quot;&gt;&lt;/a&gt;离散值特征的处理&lt;/h3&gt;&lt;p&gt;在离散特征中，由于属性的取值情况总数固定，我们可以采用频数进行估计，并做一定的拉普拉斯平滑，即有&lt;br&gt;&lt;img src=&quot;http://7xsl28.com1.z0.glb.clouddn.com/adanb1.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;进行拉普拉斯平滑后，先验概率的贝叶斯估计为&lt;br&gt;&lt;img src=&quot;http://7xsl28.com1.z0.glb.clouddn.com/adanb2.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;h3 id=&quot;连续值特征的处理&quot;&gt;&lt;a href=&quot;#连续值特征的处理&quot; class=&quot;headerlink&quot; title=&quot;连续值特征的处理&quot;&gt;&lt;/a&gt;连续值特征的处理&lt;/h3&gt;&lt;p&gt;在处理连续值特征时，假定连续值属性服从均值为μ，标准差为σ的高斯分布，由下式定义&lt;br&gt;&lt;img src=&quot;http://7xsl28.com1.z0.glb.clouddn.com/adanb3.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;则$P(x_k | C_i) = g(x_k, {\mu}_C, {\sigma}_C)$&lt;br&gt;只要计算出训练样本中连续值属性属于各个类别的数据样本的均值和标准差，我们就可以利用上述公式算得一个相对的概率，虽然上式的P可能不在0到1之间，但是并不影响最后后验概率的比较结果。&lt;/p&gt;
-&lt;h2 id=&quot;朴素贝叶斯以及提升方法的实现&quot;&gt;&lt;a href=&quot;#朴素贝叶斯以及提升方法的实现&quot; class=&quot;headerlink&quot; title=&quot;朴素贝叶斯以及提升方法的实现&quot;&gt;&lt;/a&gt;朴素贝叶斯以及提升方法的实现&lt;/h2&gt;&lt;h3 id=&quot;提升方法&quot;&gt;&lt;a href=&quot;#提升方法&quot; class=&quot;headerlink&quot; title=&quot;提升方法&quot;&gt;&lt;/a&gt;提升方法&lt;/h3&gt;&lt;p&gt;提升方法的基本思想是提高前一个弱分类器分错的样本的权重，使接下来的弱分类器能够学习到这个“残差”，相当于把分类问题交给多个弱分类器分而治之，每个分类器把前面分类器不擅长的数据学好，最后大家一起表决，表决时错误率低的分类器的分类结果应该占以更大的比重，通过这种方式，得到“三个臭皮匠赛过诸葛亮”的效果。Adaboost也是一直以来被使用最广泛的提升算法。其他的boosting方法还有gradient boost，boosting tree等。&lt;br&gt;Adaboost算法的伪代码如下&lt;br&gt;&lt;img src=&quot;http://7xsl28.com1.z0.glb.clouddn.com/adanb4.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;h3 id=&quot;提升方法权重调整&quot;&gt;&lt;a href=&quot;#提升方法权重调整&quot; class=&quot;headerlink&quot; title=&quot;提升方法权重调整&quot;&gt;&lt;/a&gt;提升方法权重调整&lt;/h3&gt;&lt;p&gt;由于提升方法有一个数据样本的权重调整过程，我们需要探索如何将权重对模型的训练的作用体现出来，有如下两种方法可以达到效果。&lt;br&gt;一是重采样法，对于一些无法接受带权样本的及学习算法，适合用“重采样法”进行处理。方法大致过程是，根据各个样本的权重，对训练数据进行重采样，初始时样本权重一样，每个样本被采样到的概率一致，每次从N个原始的训练样本中按照权重采样N个样本作为训练集，然后计算训练集错误率，然后调整权重，重复采样，集成多个基学习器。&lt;br&gt;二是重赋权法，对每个样本附加一个权重，对离散值来说，在计算条件概率的贝叶斯估计时，不再是简单将其出现次数相加，而是带有各个样本权重的相加；对于连续值来说，样本权重的增大表现为均值向该样本做更多的偏移，实际上可以直接提高该样本该属性该连续值的数值大小来实现。&lt;br&gt;笔者开始采用的是重采样法实现Adaboost训练，因为这种方式简单，不需要改变数据的值，但是后来发现，这种方式做出来效果并不好，甚至随着基分类器的增多，Adaboost的效果呈下降趋势！仔细检查过代码，应该没有问题，翻阅资料得知，两种方法除了有固定的可使用的场景外，还有各自的适用场景，样本集重采样法(resampling)对于不稳定的算法能够取得很好的效果，不稳定算法指的是样本集的微小变动就能够对结果有很大的影响的算法，很遗憾，朴素贝叶斯是稳定的算法，并且其估计的参数少，对缺失数据都不是很敏感。还有一些算法如Linear Model, SVM, kNN等都是稳定的算法，而不稳定算法的代表是决策树和神经网络两位。&lt;br&gt;最后，迫于效果太差，于是又转用了重新赋权的方式，将权重嵌入到数据中，最终结果显示还好，Adaboost较单个朴素贝叶斯基分类器有提升，虽然提升并不是很大。&lt;br&gt;代码中两种实现方式都有，最终测试使用的adaboost_weight(), get_model_weight(),get_err_rate_weight()等方法，即重赋权的方法。&lt;/p&gt;
-&lt;h2 id=&quot;结果&quot;&gt;&lt;a href=&quot;#结果&quot; class=&quot;headerlink&quot; title=&quot;结果&quot;&gt;&lt;/a&gt;结果&lt;/h2&gt;&lt;p&gt;最终在两个数据集上都做了10折交叉验证实验，实施交叉验证前程序都将整个数据集顺序打乱，所以每次运行程序的结果都会有变化，但是总体上还是能够体现结果，选取某次实验结果如下表&lt;br&gt;&lt;img src=&quot;http://7xsl28.com1.z0.glb.clouddn.com/adanb5.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;为了更加直观地观察Adaboost的提升效果，将准确率随Adaboost基分类器数的增加呈现的趋势通过图像展示出来，方便观察，下面图1，图2分别给出在两个数据集上的提升情况&lt;br&gt;&lt;img src=&quot;http://7xsl28.com1.z0.glb.clouddn.com/adanb6.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;&lt;img src=&quot;http://7xsl28.com1.z0.glb.clouddn.com/adanb7.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;h2 id=&quot;后记&quot;&gt;&lt;a href=&quot;#后记&quot; class=&quot;headerlink&quot; title=&quot;后记&quot;&gt;&lt;/a&gt;后记&lt;/h2&gt;&lt;p&gt;交叉验证实验结果证明Adaboost能够以朴素贝叶斯分类器进行集成学习，并提升单个朴素贝叶斯分类器的效果，但是由于朴素贝叶斯已经是一个不错的分类器，单个朴素贝叶斯分类器的交叉验证平均准确率已经能够达到0.74-0.75，尤其是第二个数据集，由于数据集较大，所以概率估计和分类效率都较为稳定，使得单个NB Classifier准确率能够达到很高，所以提升效果显得不那么明显，Adaboost可能更适合于提升较弱的分类器的效果。&lt;br&gt;另外，虽然朴素贝叶斯的准确率很高，但是他是有瓶颈的，它的模型完全是根据数据集而得来，所以感觉没有什么需要学习的，完全是统计的方法，并且它有一个固有的弱点就是做了属性独立性假设，而现实条件往往不能满足属性独立性，尤其是数据属性冗余性大的时候，朴素贝叶斯的效果不会太好。&lt;/p&gt;
-&lt;h2 id=&quot;Reference-and-Links&quot;&gt;&lt;a href=&quot;#Reference-and-Links&quot; class=&quot;headerlink&quot; title=&quot;Reference and Links&quot;&gt;&lt;/a&gt;Reference and Links&lt;/h2&gt;&lt;p&gt;[1] &lt;a href=&quot;http://cmp.felk.cvut.cz/~sochmj1/adaboost_talk.pdf&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Adaboost Introduction Slides&lt;/a&gt;&lt;br&gt;[2]  李航.统计学习方法.&lt;br&gt;[3]     Jiawei Han et. al.数据挖掘：概念与技术.&lt;br&gt;[4]  周志华.机器学习.&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;Abstract&quot;&gt;&lt;a href=&quot;#Abstract&quot; class=&quot;headerlink&quot; title=&quot;Abstract&quot;&gt;&lt;/a&gt;Abstract&lt;/h2&gt;&lt;p&gt;Adaboost大家很熟了，是比较经典的一个提升方法，这次实现一下以朴素贝叶斯为基分类器的A
-    
-    </summary>
-    
-      <category term="机器学习 | Mac.Learning" scheme="http://whatbeg.com/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-Mac-Learning/"/>
-    
-    
-      <category term="机器学习" scheme="http://whatbeg.com/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
     
   </entry>
   

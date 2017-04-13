@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>http://whatbeg.com/2017/04/13/svmlearning.html</loc>
+    <lastmod>2017-04-13T13:12:08.942Z</lastmod>
+    <data>
+        <display>
+        <title>SVM推导过程中的三个疑问</title>
+        <pubTime>2017-04-13T13:10:06.000Z</pubTime>
+        
+        <tag>机器学习</tag>
+         
+         
+           
+             
+              <breadCrumb title="机器学习 | Mac.Learning" url="http://whatbeg.com/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-Mac-Learning/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://whatbeg.com/2017/04/13/deeplearningbook-02.html</loc>
     <lastmod>2017-04-13T08:13:48.114Z</lastmod>
     <data>
@@ -1128,9 +1148,9 @@
         <title>快速学会Git基本操作</title>
         <pubTime>2016-04-07T15:35:15.000Z</pubTime>
         
-        <tag>CS</tag>
-         
         <tag>Git</tag>
+         
+        <tag>CS</tag>
          
          
            

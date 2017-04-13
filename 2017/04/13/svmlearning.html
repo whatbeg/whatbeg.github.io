@@ -4,26 +4,29 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>给静态博客加上邮件订阅功能 | Whatbeg&#39;s blog</title>
+    <title>SVM推导过程中的三个疑问 | Whatbeg&#39;s blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="whatbeg">
     
 
     
-    <meta name="description" content="平时工作中常常会订阅一些业界日报，周报等，俨然已经成为了每天、每周获取业界消息的重要来源。于是突发奇想，想能不能自己的博客加上邮件订阅功能呢。
-一搜，发现有很多工具，也没多比较，根据这篇文章选择了MailChimp这个工具。功能比较强大比较老牌，界面也很炫酷，就是访问体验差了一些，不知道是不是网络的原因，有时候加载的延迟比较长，但是也在可接受范围内啦。鉴于上面的文章介绍的不是太详尽，这里介绍下自己">
+    <meta name="description" content="在形式化推导硬间隔（不允许分错）SVM分类器的时候，会做一些简化和转换，初看时并不那么好懂。最近又接触到SVM，所以从头到尾又学习了一遍。写下关于几个以前不太懂的疑问以及疑问的回答。
+为何令间隔为1？在SVM中是以最大化分类间隔为目标的，间隔又分函数间隔和几何间隔。函数间隔为： $\hat\gamma=y_if(x_i)=y_i(w^Tx_i+b)$几何间隔为： $\gamma=\frac {y_">
 <meta property="og:type" content="article">
-<meta property="og:title" content="给静态博客加上邮件订阅功能">
-<meta property="og:url" content="http://whatbeg.com/2017/03/23/addemailsubscribe.html">
+<meta property="og:title" content="SVM推导过程中的三个疑问">
+<meta property="og:url" content="http://whatbeg.com/2017/04/13/svmlearning.html">
 <meta property="og:site_name" content="Whatbeg's blog">
-<meta property="og:description" content="平时工作中常常会订阅一些业界日报，周报等，俨然已经成为了每天、每周获取业界消息的重要来源。于是突发奇想，想能不能自己的博客加上邮件订阅功能呢。
-一搜，发现有很多工具，也没多比较，根据这篇文章选择了MailChimp这个工具。功能比较强大比较老牌，界面也很炫酷，就是访问体验差了一些，不知道是不是网络的原因，有时候加载的延迟比较长，但是也在可接受范围内啦。鉴于上面的文章介绍的不是太详尽，这里介绍下自己">
-<meta property="og:updated_time" content="2017-03-23T13:02:23.321Z">
+<meta property="og:description" content="在形式化推导硬间隔（不允许分错）SVM分类器的时候，会做一些简化和转换，初看时并不那么好懂。最近又接触到SVM，所以从头到尾又学习了一遍。写下关于几个以前不太懂的疑问以及疑问的回答。
+为何令间隔为1？在SVM中是以最大化分类间隔为目标的，间隔又分函数间隔和几何间隔。函数间隔为： $\hat\gamma=y_if(x_i)=y_i(w^Tx_i+b)$几何间隔为： $\gamma=\frac {y_">
+<meta property="og:image" content="http://7xsl28.com1.z0.glb.clouddn.com/SVM5.png">
+<meta property="og:image" content="http://7xsl28.com1.z0.glb.clouddn.com/SVM6.png">
+<meta property="og:updated_time" content="2017-04-13T13:12:08.942Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="给静态博客加上邮件订阅功能">
-<meta name="twitter:description" content="平时工作中常常会订阅一些业界日报，周报等，俨然已经成为了每天、每周获取业界消息的重要来源。于是突发奇想，想能不能自己的博客加上邮件订阅功能呢。
-一搜，发现有很多工具，也没多比较，根据这篇文章选择了MailChimp这个工具。功能比较强大比较老牌，界面也很炫酷，就是访问体验差了一些，不知道是不是网络的原因，有时候加载的延迟比较长，但是也在可接受范围内啦。鉴于上面的文章介绍的不是太详尽，这里介绍下自己">
+<meta name="twitter:title" content="SVM推导过程中的三个疑问">
+<meta name="twitter:description" content="在形式化推导硬间隔（不允许分错）SVM分类器的时候，会做一些简化和转换，初看时并不那么好懂。最近又接触到SVM，所以从头到尾又学习了一遍。写下关于几个以前不太懂的疑问以及疑问的回答。
+为何令间隔为1？在SVM中是以最大化分类间隔为目标的，间隔又分函数间隔和几何间隔。函数间隔为： $\hat\gamma=y_if(x_i)=y_i(w^Tx_i+b)$几何间隔为： $\gamma=\frac {y_">
+<meta name="twitter:image" content="http://7xsl28.com1.z0.glb.clouddn.com/SVM5.png">
 
     
     <link rel="alternative" href="/atom.xml" title="Whatbeg&#39;s blog" type="application/atom+xml">
@@ -72,14 +75,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2017/03/23/addemailsubscribe.html" title="给静态博客加上邮件订阅功能" itemprop="url">给静态博客加上邮件订阅功能</a>
+      <a href="/2017/04/13/svmlearning.html" title="SVM推导过程中的三个疑问" itemprop="url">SVM推导过程中的三个疑问</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="whatbeg" target="_blank" itemprop="author">whatbeg</a>
 		
   <p class="article-time">
-    <time datetime="2017-03-23T12:54:09.000Z" itemprop="datePublished"> 发表于 2017-03-23</time>
+    <time datetime="2017-04-13T13:10:06.000Z" itemprop="datePublished"> 发表于 2017-04-13</time>
     <span id="busuanzi_container_page_pv">
     总阅读<span id="busuanzi_value_page_pv"></span>次
     </span>
@@ -91,27 +94,36 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#注册账号"><span class="toc-number">1.</span> <span class="toc-text">注册账号</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建一个邮件列表"><span class="toc-number">2.</span> <span class="toc-text">创建一个邮件列表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设定订阅点击栏"><span class="toc-number">3.</span> <span class="toc-text">设定订阅点击栏</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建邮件订阅活动Campaign及制定邮件格式"><span class="toc-number">4.</span> <span class="toc-text">创建邮件订阅活动Campaign及制定邮件格式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#添加到hexo博客组件"><span class="toc-number">5.</span> <span class="toc-text">添加到hexo博客组件</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#为何令间隔为1？"><span class="toc-number">1.</span> <span class="toc-text">为何令间隔为1？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#什么是拉格朗日对偶？"><span class="toc-number">2.</span> <span class="toc-text">什么是拉格朗日对偶？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#什么是KKT条件？"><span class="toc-number">3.</span> <span class="toc-text">什么是KKT条件？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-number">4.</span> <span class="toc-text">总结</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#References"><span class="toc-number">5.</span> <span class="toc-text">References</span></a></li></ol>
 		
 		</div>
 		
-		<p>平时工作中常常会订阅一些业界日报，周报等，俨然已经成为了每天、每周获取业界消息的重要来源。于是突发奇想，想能不能自己的博客加上邮件订阅功能呢。</p>
-<p>一搜，发现有很多工具，也没多比较，根据<a href="http://www.race604.com/add-email-subscribe" target="_blank" rel="external">这篇文章</a>选择了<a href="https://mailchimp.com/" target="_blank" rel="external">MailChimp</a>这个工具。功能比较强大比较老牌，界面也很炫酷，就是访问体验差了一些，不知道是不是网络的原因，有时候加载的延迟比较长，但是也在可接受范围内啦。鉴于上面的文章介绍的不是太详尽，这里介绍下自己做的一个流程。</p>
-<p>流程大概分以下几步：</p>
-<ul>
-<li>注册账号</li>
-<li>创建初始邮件列表</li>
-<li>设定订阅点击栏</li>
-<li>创建邮件订阅活动Campaign及制定邮件格式</li>
+		<p>在形式化推导硬间隔（不允许分错）SVM分类器的时候，会做一些简化和转换，初看时并不那么好懂。最近又接触到SVM，所以从头到尾又学习了一遍。写下关于几个以前不太懂的疑问以及疑问的回答。</p>
+<h2 id="为何令间隔为1？"><a href="#为何令间隔为1？" class="headerlink" title="为何令间隔为1？"></a>为何令间隔为1？</h2><p>在SVM中是以最大化分类间隔为目标的，间隔又分函数间隔和几何间隔。<br>函数间隔为： $\hat\gamma=y_if(x_i)=y_i(w^Tx_i+b)$<br>几何间隔为： $\gamma=\frac {y_if(x_i)} {||w||}$<br>函数间隔可以表征样本被分到某一类的置信度，比如说$y_i=+1$时，如果$w^Tx_i+b &gt; 0$且很大，说明离分类边界越远，越有理由相信$x_i$真的是正类。</p>
+<blockquote>
+<p>成倍的增长$w,b$，分类超平面不变，几何间隔也不改变</p>
+</blockquote>
+<p>而我们优化通常是优化几何间隔，因为几何间隔在$w,b$成倍增长时，是不变的。<br>即优化问题转化为：$$max_{w,b} \frac {\hat\gamma} {||w||} \<br>s.t. y_i(w^Tx_i+b) = \hat\gamma_i \ge \hat\gamma$$</p>
+<p>设$\hat\gamma$为最小函数间隔,约束条件是任意给一个点，其函数间隔一定大于等于$\hat\gamma$，即最小函数间隔。<br>做一个变量替换$w’=w/{\hat\gamma}, b’=b/{\hat\gamma}$，代入原来的优化问题可得新的优化问题：<br>$$max_{w’,b’} \frac {1} {||w’||} \<br>s.t. y_i({w’}^Tx_i+b’) \ge 1$$<br>此时关于$w,b$的原问题等价成了新的$w’,b’$的新问题。能够这样转化的原因在于函数间隔的取值并不影响最优化问题的解。</p>
+<h2 id="什么是拉格朗日对偶？"><a href="#什么是拉格朗日对偶？" class="headerlink" title="什么是拉格朗日对偶？"></a>什么是拉格朗日对偶？</h2><p>上述优化问题可以写为：<br>$$min \frac {1} {2}||w||^2 \<br>s.t. y_i({w’}^Tx_i+b’) \ge 1,i=1,2,..,m$$</p>
+<p>目标函数是二次的，约束是是线性的，这是一个凸二次规划问题，可以用QP求解。但是还可以通过拉格朗日对偶来解。<br>拉格朗日对偶解法即求解与原问题等价的对偶问题得到原问题的最优解。<br>采用拉格朗日乘子法，写出拉格朗日乘子式：<br>$$\mathcal{L}(w,b,\alpha)=\frac {1} {2}||w||^2 - \sum_{i=1}^n \alpha_i(y_i(w^Tx_i+b)-1)$$<br>令$$\theta(w)=max_{\alpha_i \ge 0}\mathcal{L}(w,b,\alpha)$$<br>可以看出，当$(y_i(w^Tx_i+b)-1)&lt;0$时，即条件不满足时，由于$\alpha_i \ge 0$，所以后面一半（包括负号）是正的，当$\alpha_i$取得很大的时候，$\theta(w)$甚至可以取到无穷大；当条件满足时，后面一项是负的，所以$\theta(w)=max_{\alpha_i \ge 0}\mathcal{L}(w,b,\alpha)$最大就是$\frac {1} {2}||w||^2$。<br>所以做$\theta(w)$的目的就出来了，即<br>$\theta(w)=f(w) $ if w满足条件<br>$\theta(w)=\infty $ 否则<br>所以原问题$$min \frac {1} {2}||w||^2 \<br>s.t. y_i({w’}^Tx_i+b’) \ge 1,i=1,2,..,m$$<br>就可以通过拉格朗日乘子法换成无约束的等价的另一种表示<br>$$min_{w,b}\theta(w)=min_{w,b} max_{\alpha_i \ge 0}\mathcal{L}(w,b,\alpha)$$<br>设$p^<em>$为上述问题的最优解。<br>上述问题直接求解很难，所以交换一下min，max的顺序将其变成对偶问题<br>$$max_{\alpha_i \ge 0} min_{w,b} \mathcal{L}(w,b,\alpha)$$<br>最优解用$d^</em>$来表示。<br>转换为对偶问题后相对容易求解，要注意此时$d^<em>$并不一定等于$p^</em>$，(且<br>其实$d^<em> \le p^</em>$，直观的说就是“胖子里面最瘦的通常比瘦子里面最胖的要胖”，这也是有证明的)。即原问题的解并不一定等于对偶问题的解，如果等于，我们称之为强对偶(strong duality)，在满足一定条件的情况下，是可以达到强对偶的。<br>Slater条件： 存在严格满足约束条件的点。<br>如果原始问题是Convex的并且满足Slater条件的话，我们说它是强对偶的。Slater条件只是使强对偶成立的一种情况，事实上，非凸优化也可以是强对偶的。<br>通过强对偶成立时的一些性质，我们可以推出一些条件，比如</p>
+<center> <img src="http://7xsl28.com1.z0.glb.clouddn.com/SVM5.png" alt=""> </center>
+
+<h2 id="什么是KKT条件？"><a href="#什么是KKT条件？" class="headerlink" title="什么是KKT条件？"></a>什么是KKT条件？</h2><p>上述这些就是所谓的KKT条件。<br>任何强对偶问题都满足KKT条件。<br>当原始问题可微且是凸优化问题时，KKT条件升级成充分必要条件。<br>前两条说明达到最优解时，拉格朗日函数对w,b求偏导为0<br>第三条称为complementary slackness（互补松弛），即我们的<br>$$\alpha_i(y_i(w^Tx_i+b)-1)=0$$<br>那么为什么呢？做下列推导，假设$x^<em>,\alpha^</em>$分别为原问题和对偶问题的极值点：<br>$$f_0(x^<em>)=min_{w,b} \mathcal{L}(w,b,\alpha) \<br>=min_x (f_0(x) - \sum_{i=1}^n \alpha_i(y_i(w^Tx_i+b)-1)) \<br>\le f_0(x^</em>)-\sum_{i=1}^n \alpha_i^<em>(y_i(w^Tx^</em>_i+b)-1) \<br>\le f_0(x^<em>)$$<br>由于等式两遍相等，所以可以换成等号，由于第三行，且$\sum_{i=1}^n \alpha_i^</em>(y_i(w^Tx^<em>_i+b)-1)$非负，所以推出$ \alpha_i^</em>(y_i(w^Tx^<em>_i+b)-1)=0, i=1,2,…,m$<br>即当$\alpha_i&gt;0$时，$x_i$正在分类间隔上，称为支持向量，而不在分类间隔上的样本有$\alpha_i=0$<br>后两条为原来的约束条件。图中的$g_i(w^</em>)$即我们的$(1-y_i({w^<em>}^Tx_i+b^</em>))$。</p>
+<p>满足了KKT条件，就可以认为对偶问题的最优解就是原问题的最优解，这样我们就可以通过求解对偶问题来求解原来的优化问题。<br>By the way，SVM的对偶问题为：</p>
+<center> <img src="http://7xsl28.com1.z0.glb.clouddn.com/SVM6.png" alt="来自July"> </center>
+
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>所以总结一下，令几何间隔为1是为了保证优化问题等价的情况下，尽可能地简化问题。使用拉格朗日对偶是因为原问题不好解，所以转化成对偶问题，而当问题满足KKT条件的时候，这个对偶问题的解就是原问题的解，从而更好地得到最优解。<br>简单梳理了一下这三个问题，知识浅薄，如果有不对的希读者不吝指出。</p>
+<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ul>
+<li><a href="http://www2.isye.gatech.edu/~nemirovs/Lect_ModConvOpt.pdf" target="_blank" rel="external">Lectures on Modern Convex Optimization </a></li>
+<li><a href="http://cs229.stanford.edu/notes/cs229-notes3.pdf" target="_blank" rel="external">Andrew Ng. CS229. Note3</a></li>
+<li><a href="http://www.cnblogs.com/90zeng/p/Lagrange_duality.html" target="_blank" rel="external">简易解说拉格朗日对偶（Lagrange duality）</a></li>
+<li><a href="http://www.cnblogs.com/liqizhou/archive/2012/05/11/2495689.html" target="_blank" rel="external">SVM(二）拉格朗日对偶问题</a></li>
+<li><a href="http://blog.pluskid.org/?p=702" target="_blank" rel="external">支持向量机：Duality</a></li>
+<li><a href="http://blog.csdn.net/v_july_v/article/details/7624837" target="_blank" rel="external">支持向量机通俗导论（理解SVM的三层境界）</a></li>
+<li>《机器学习》</li>
+<li>《统计学习方法》</li>
 </ul>
-<h3 id="注册账号"><a href="#注册账号" class="headerlink" title="注册账号"></a>注册账号</h3><p>首先注册MailChimp账号，在<a href="https://login.mailchimp.com/signup/" target="_blank" rel="external">这里</a>注册。一般每个月2000个订阅者以下免费。要注意的是，邮件地址（住址/公司地址，非email）后面会出现在订阅者订阅的时候的信息里，以及默认的邮件模板里，所以好好填为好，不要乱填。</p>
-<h3 id="创建一个邮件列表"><a href="#创建一个邮件列表" class="headerlink" title="创建一个邮件列表"></a>创建一个邮件列表</h3><p>我们是最终需要向邮件列表中所有用户发送订阅邮件，所以需要新建邮件列表，点面板上的List，然后Create List，然后填入一些必要信息，保存。填写发送邮箱的时候需要认证一下邮箱，点击Verify即可。</p>
-<h3 id="设定订阅点击栏"><a href="#设定订阅点击栏" class="headerlink" title="设定订阅点击栏"></a>设定订阅点击栏</h3><p>然后我们需要确定在你的网站/博客上做一个什么样的订阅入口，有直接显式的表单，也可以是重定向到一个专门填写信息表单的网址，我采用的是后者。<br>到刚刚创建的List的主界面，点击工具栏的”Signup forms”，选择一种表单形式，<br>如果是重定向的表单的话，选择”General forms”<br>如果是嵌入形式的直接填写提交的表单，选择”Embedded forms”<br>其他两种不太了解。</p>
-<p>然后就是修改相应你想显示的信息，保存完成。</p>
-<h3 id="创建邮件订阅活动Campaign及制定邮件格式"><a href="#创建邮件订阅活动Campaign及制定邮件格式" class="headerlink" title="创建邮件订阅活动Campaign及制定邮件格式"></a>创建邮件订阅活动Campaign及制定邮件格式</h3><p>设定了邮件列表之后，我们需要创建邮件订阅服务了，即创建自动发送邮件的服务。点击主面板Campaigns，创建活动，填写相应信息，期间要填写发送邮件的邮箱，建议注册一个新的邮箱，比如说<code>xx_noreply@some.com</code>格式的。<br>MailChimp提供了集中Campaign类型，由于博客的话一般是RSS订阅，我们可以直接利用RSS的内容来发送给Subscribers，所以我们选择RSS-Driven Campaign，填入博客RSS地址，然后设置频率，发送时间，接收者，一直点右下角的Next，然后选一个邮件模板，我选的是1 Column - Full Width。然后做一番设计，由于我们是发送RSS信息，所以需拖入一个RSS Items模块，然后可以做一些修改，比如修改对齐，字体等。期间有些信息是不能预览的，可以点击Preview and Test发送测试邮件看看效果。<br>最后Next到Confirm，确认后点击Start RSS，跳到Done And Done界面，表示一切完成，你的订阅List中的订阅者就会按时收到邮件了。</p>
-<h3 id="添加到hexo博客组件"><a href="#添加到hexo博客组件" class="headerlink" title="添加到hexo博客组件"></a>添加到hexo博客组件</h3><p>这里演示如何添加到你的hexo博客的侧边栏。<br>到hexo主目录的<code>\themes\YOUR_THEMES\layout\_widget</code>下添加emailist.ejs文件，写入<br><figure class="highlight erb"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"rsspart"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"http://eepurl.com/cHO5An"</span> <span class="attr">target</span>=<span class="string">"_blank"</span> <span class="attr">title</span>=<span class="string">"email"</span>&gt;</span><span class="tag">&lt;<span class="name">%=</span></span></span><span class="ruby"> _<span class="number">_</span>(<span class="string">'Email 订阅'</span>) </span><span class="xml"><span class="tag">%&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br></pre></td></tr></table></figure></p>
-<p>这里我直接做成了和RSS订阅相同的形式，所以直接利用class=”rsspart”，具体可以根据自己的主题设置自己想要的格式。</p>
-<p>最后，欢迎订阅本博客，由于更新并不是太频繁，只做了月报，订阅地址：<br><a href="http://eepurl.com/cHO5An" target="_blank" rel="external">http://eepurl.com/cHO5An</a><br>或点击侧边栏订阅。</p>
   
 	</div>
 
@@ -228,13 +240,13 @@
 
 <div class="article-categories">
   
-  <span></span> <a href="/categories/错误解决与优化-Err-Opt/">错误解决与优化 | Err&Opt</a>
+  <span></span> <a href="/categories/机器学习-Mac-Learning/">机器学习 | Mac.Learning</a>
   </div>
 
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/hexo/">hexo</a><a href="/tags/Web/">Web</a>
+  <span></span> <a href="/tags/机器学习/">机器学习</a>
   </div>
 
 </div>
@@ -278,19 +290,11 @@
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2017/03/29/deeplearningbook-01.html" title="Deep Learning读书笔记（1）【开篇】">
-  <strong>上一篇：</strong><br/>
-  <span>
-  Deep Learning读书笔记（1）【开篇】</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/2017/03/11/linuxmemo.html"  title="Linux备忘命令">
+<a href="/2017/04/13/deeplearningbook-02.html"  title="Deep Learning读书笔记（2）【深度学习的数学基础摘要】(未竟稿)">
  <strong>下一篇：</strong><br/> 
- <span>Linux备忘命令
+ <span>Deep Learning读书笔记（2）【深度学习的数学基础摘要】(未竟稿)
 </span>
 </a>
 </div>
@@ -312,7 +316,7 @@
   <aside class="clearfix">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#注册账号"><span class="toc-number">1.</span> <span class="toc-text">注册账号</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建一个邮件列表"><span class="toc-number">2.</span> <span class="toc-text">创建一个邮件列表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设定订阅点击栏"><span class="toc-number">3.</span> <span class="toc-text">设定订阅点击栏</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建邮件订阅活动Campaign及制定邮件格式"><span class="toc-number">4.</span> <span class="toc-text">创建邮件订阅活动Campaign及制定邮件格式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#添加到hexo博客组件"><span class="toc-number">5.</span> <span class="toc-text">添加到hexo博客组件</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#为何令间隔为1？"><span class="toc-number">1.</span> <span class="toc-text">为何令间隔为1？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#什么是拉格朗日对偶？"><span class="toc-number">2.</span> <span class="toc-text">什么是拉格朗日对偶？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#什么是KKT条件？"><span class="toc-number">3.</span> <span class="toc-text">什么是KKT条件？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-number">4.</span> <span class="toc-text">总结</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#References"><span class="toc-number">5.</span> <span class="toc-text">References</span></a></li></ol>
  
  </aside>
   </div>
