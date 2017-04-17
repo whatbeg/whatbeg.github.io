@@ -4,6 +4,30 @@
 
     
   <url>
+    <loc>http://whatbeg.com/2017/04/17/bigdlclusterbuild.html</loc>
+    <lastmod>2017-04-17T14:50:07.562Z</lastmod>
+    <data>
+        <display>
+        <title>在服务器集群上搭建BigDL环境</title>
+        <pubTime>2017-04-17T14:42:38.000Z</pubTime>
+        
+        <tag>Deep Learning</tag>
+         
+        <tag>大数据</tag>
+         
+        <tag>深度学习</tag>
+         
+         
+           
+             
+              <breadCrumb title="大数据系统与技术 | Big Data" url="http://whatbeg.com/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE%E7%B3%BB%E7%BB%9F%E4%B8%8E%E6%8A%80%E6%9C%AF-Big-Data/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://whatbeg.com/2017/04/13/svmlearning.html</loc>
     <lastmod>2017-04-14T11:48:40.996Z</lastmod>
     <data>
@@ -31,9 +55,9 @@
         <title>Deep Learning读书笔记（2）【深度学习的数学基础摘要】(未竟稿)</title>
         <pubTime>2017-04-13T08:12:46.000Z</pubTime>
         
-        <tag>深度学习</tag>
-         
         <tag>Deep Learning</tag>
+         
+        <tag>深度学习</tag>
          
          
            
@@ -134,9 +158,9 @@
         <title>Deep Learning读书笔记（1）【开篇】</title>
         <pubTime>2017-03-29T14:39:32.000Z</pubTime>
         
-        <tag>深度学习</tag>
-         
         <tag>Deep Learning</tag>
+         
+        <tag>深度学习</tag>
          
          
            
@@ -1356,9 +1380,9 @@
         <title>怎样写出优秀的研究论文？</title>
         <pubTime>2016-05-10T07:44:54.000Z</pubTime>
         
-        <tag>译文</tag>
-         
         <tag>CS</tag>
+         
+        <tag>译文</tag>
          
          
            
