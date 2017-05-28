@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://whatbeg.com/"/>
-  <updated>2017-04-17T14:50:07.562Z</updated>
+  <updated>2017-05-28T02:10:26.495Z</updated>
   <id>http://whatbeg.com/</id>
   
   <author>
@@ -14,6 +14,43 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Spark一些问题集锦【持续更新】</title>
+    <link href="http://whatbeg.com/2017/05/28/sparkerror.html"/>
+    <id>http://whatbeg.com/2017/05/28/sparkerror.html</id>
+    <published>2017-05-28T02:04:35.000Z</published>
+    <updated>2017-05-28T02:10:26.495Z</updated>
+    
+    <content type="html">&lt;p&gt;最近常跑Spark程序，主要是分布式机器学习和分布式深度学习这块，因为模型经常很大，比如VGG等，集群空余节点又不是很多，跑起来有时候会吃力，也遇到很多问题，积累一下以备后查。&lt;/p&gt;
+&lt;h2 id=&quot;错误集锦&quot;&gt;&lt;a href=&quot;#错误集锦&quot; class=&quot;headerlink&quot; title=&quot;错误集锦&quot;&gt;&lt;/a&gt;错误集锦&lt;/h2&gt;&lt;h3 id=&quot;ClosedChannelException&quot;&gt;&lt;a href=&quot;#ClosedChannelException&quot; class=&quot;headerlink&quot; title=&quot;ClosedChannelException&quot;&gt;&lt;/a&gt;ClosedChannelException&lt;/h3&gt;&lt;figure class=&quot;highlight stylus&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt; ERROR YarnClientSchedulerBackend:&lt;span class=&quot;number&quot;&gt;70&lt;/span&gt; - Yarn application has already exited with state FINISHED!&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;number&quot;&gt;2&lt;/span&gt; ERROR SparkContext:&lt;span class=&quot;number&quot;&gt;91&lt;/span&gt; - Error initializing SparkContext.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;java&lt;span class=&quot;selector-class&quot;&gt;.lang&lt;/span&gt;&lt;span class=&quot;selector-class&quot;&gt;.IllegalStateException&lt;/span&gt;: Spark context stopped while waiting &lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt; backend&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;number&quot;&gt;3&lt;/span&gt; ERROR TransportClient:&lt;span class=&quot;number&quot;&gt;245&lt;/span&gt; - Failed to send RPC &lt;span class=&quot;number&quot;&gt;7202466410763583466&lt;/span&gt; to /xx&lt;span class=&quot;selector-class&quot;&gt;.xx&lt;/span&gt;&lt;span class=&quot;selector-class&quot;&gt;.xx&lt;/span&gt;&lt;span class=&quot;selector-class&quot;&gt;.xx&lt;/span&gt;:&lt;span class=&quot;number&quot;&gt;54864&lt;/span&gt;: java&lt;span class=&quot;selector-class&quot;&gt;.nio&lt;/span&gt;&lt;span class=&quot;selector-class&quot;&gt;.channels&lt;/span&gt;&lt;span class=&quot;selector-class&quot;&gt;.ClosedChannelException&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;number&quot;&gt;4&lt;/span&gt; ERROR YarnSchedulerBackend&lt;span class=&quot;variable&quot;&gt;$YarnSchedulerEndpoint&lt;/span&gt;:&lt;span class=&quot;number&quot;&gt;91&lt;/span&gt; - Sending RequestExecutors(&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;,Map()) to AM was unsuccessful&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;上面这几个错误通常一起爆出。&lt;br&gt;【原因分析】&lt;br&gt;可能是分配给node的内存太小，Spark默认启动两个executor，使用每个executor的内存为1G，而数据太大，导致yarn直接Kill掉了executor，IO也一并关闭，所以出现了&lt;code&gt;ClosedChannelException&lt;/code&gt;异常。&lt;br&gt;&lt;a href=&quot;http://stackoverflow.com/questions/27792839/spark-fail-when-running-pi-py-example-with-yarn-client-mode&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;这里的错误&lt;/a&gt;分析[错误1]也有可能是由于Java 8的excessive memory allocation strategy&lt;br&gt;【解决方案】&lt;br&gt;根据&lt;a href=&quot;http://demo.aosustudio.com/12FAFEE6E5BE1F55356029F01C3AEEE1.AHtml&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;这篇文章&lt;/a&gt;在&lt;code&gt;yarn-site.xml&lt;/code&gt;中添加如下配置：&lt;br&gt;&lt;figure class=&quot;highlight xml&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;property&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;name&lt;/span&gt;&amp;gt;&lt;/span&gt;yarn.nodemanager.pmem-check-enabled&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;name&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;value&lt;/span&gt;&amp;gt;&lt;/span&gt;false&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;value&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;property&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;property&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;name&lt;/span&gt;&amp;gt;&lt;/span&gt;yarn.nodemanager.vmem-check-enabled&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;name&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;value&lt;/span&gt;&amp;gt;&lt;/span&gt;false&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;value&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;property&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;或者在执行命令时附带参数： &lt;code&gt;--driver-memory 5g --executor-memory 5g&lt;/code&gt;，将Job可用内存显式地增大。&lt;br&gt;或者在&lt;code&gt;spark/conf/spark-defaults.conf&lt;/code&gt;添加如下Poperty：&lt;br&gt;&lt;figure class=&quot;highlight stylus&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;spark&lt;span class=&quot;selector-class&quot;&gt;.driver&lt;/span&gt;&lt;span class=&quot;selector-class&quot;&gt;.memory&lt;/span&gt;              &lt;span class=&quot;number&quot;&gt;5&lt;/span&gt;g&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;spark&lt;span class=&quot;selector-class&quot;&gt;.executor&lt;/span&gt;&lt;span class=&quot;selector-class&quot;&gt;.memory&lt;/span&gt;            &lt;span class=&quot;number&quot;&gt;5&lt;/span&gt;g&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;甚至可以继续添加如下Property：&lt;br&gt;&lt;figure class=&quot;highlight stylus&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;spark&lt;span class=&quot;selector-class&quot;&gt;.yarn&lt;/span&gt;&lt;span class=&quot;selector-class&quot;&gt;.executor&lt;/span&gt;&lt;span class=&quot;selector-class&quot;&gt;.memoryOverhead&lt;/span&gt;          &lt;span class=&quot;number&quot;&gt;4096&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;spark&lt;span class=&quot;selector-class&quot;&gt;.yarn&lt;/span&gt;&lt;span class=&quot;selector-class&quot;&gt;.driver&lt;/span&gt;&lt;span class=&quot;selector-class&quot;&gt;.memoryOverhead&lt;/span&gt;            &lt;span class=&quot;number&quot;&gt;8192&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;spark&lt;span class=&quot;selector-class&quot;&gt;.akka&lt;/span&gt;&lt;span class=&quot;selector-class&quot;&gt;.frameSize&lt;/span&gt;                        &lt;span class=&quot;number&quot;&gt;700&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;h3 id=&quot;Lost-Executors-et-al&quot;&gt;&lt;a href=&quot;#Lost-Executors-et-al&quot; class=&quot;headerlink&quot; title=&quot;Lost Executors et. al.&quot;&gt;&lt;/a&gt;Lost Executors et. al.&lt;/h3&gt;&lt;figure class=&quot;highlight qml&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;number&quot;&gt;5.&lt;/span&gt; ERROR &lt;span class=&quot;attribute&quot;&gt;YarnScheduler&lt;/span&gt;:&lt;span class=&quot;number&quot;&gt;70&lt;/span&gt; - Lost executor &lt;span class=&quot;number&quot;&gt;3&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;on&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;simple23&lt;/span&gt;: Container marked &lt;span class=&quot;keyword&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;failed&lt;/span&gt;: container_1490797147995_0000004 &lt;span class=&quot;keyword&quot;&gt;on&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;host&lt;/span&gt;: simple23. Exit &lt;span class=&quot;attribute&quot;&gt;status&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;143.&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;Diagnostics&lt;/span&gt;: Container killed &lt;span class=&quot;keyword&quot;&gt;on&lt;/span&gt; request. Exit code is &lt;span class=&quot;number&quot;&gt;143&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Container exited &lt;span class=&quot;keyword&quot;&gt;with&lt;/span&gt; a non-zero exit code &lt;span class=&quot;number&quot;&gt;143&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Killed by external &lt;span class=&quot;keyword&quot;&gt;signal&lt;/span&gt;&lt;span class=&quot;string&quot;&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;[Stage &lt;span class=&quot;number&quot;&gt;16&lt;/span&gt;:===========================================&amp;gt;              (&lt;span class=&quot;number&quot;&gt;6&lt;/span&gt; + &lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;) / &lt;span class=&quot;number&quot;&gt;8&lt;/span&gt;]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;number&quot;&gt;6.&lt;/span&gt; ERROR &lt;span class=&quot;attribute&quot;&gt;TaskSetManager&lt;/span&gt;:&lt;span class=&quot;number&quot;&gt;70&lt;/span&gt; - Task stage &lt;span class=&quot;number&quot;&gt;17.2&lt;/span&gt; failed &lt;span class=&quot;number&quot;&gt;4&lt;/span&gt; times; aborting job&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;number&quot;&gt;7.&lt;/span&gt; ERROR DistriOptimizer$:&lt;span class=&quot;number&quot;&gt;655&lt;/span&gt; - &lt;span class=&quot;attribute&quot;&gt;Error&lt;/span&gt;: &lt;span class=&quot;attribute&quot;&gt;org.apache.spark.SparkException&lt;/span&gt;: Job aborted due to stage &lt;span class=&quot;attribute&quot;&gt;failure&lt;/span&gt;: Task age &lt;span class=&quot;number&quot;&gt;17.2&lt;/span&gt; failed &lt;span class=&quot;number&quot;&gt;4&lt;/span&gt; times, most recent &lt;span class=&quot;attribute&quot;&gt;failure&lt;/span&gt;: Lost task &lt;span class=&quot;number&quot;&gt;0.3&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;in&lt;/span&gt; stage &lt;span class=&quot;number&quot;&gt;17.2&lt;/span&gt; (TID &lt;span class=&quot;number&quot;&gt;90&lt;/span&gt;, simple21, executor &lt;span class=&quot;number&quot;&gt;4&lt;/span&gt;): &lt;span class=&quot;attribute&quot;&gt;java.util.concurrent.EnException&lt;/span&gt;: &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;[Stage &lt;span class=&quot;number&quot;&gt;23&lt;/span&gt;:&amp;gt;                                                         (&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt; + &lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;) / &lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;number&quot;&gt;8.&lt;/span&gt; ERROR &lt;span class=&quot;attribute&quot;&gt;YarnScheduler&lt;/span&gt;:&lt;span class=&quot;number&quot;&gt;70&lt;/span&gt; - Lost executor &lt;span class=&quot;number&quot;&gt;4&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;on&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;simple21&lt;/span&gt;: Container marked &lt;span class=&quot;keyword&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;failed&lt;/span&gt;: container_1490797147995_0004_01_000005 &lt;span class=&quot;keyword&quot;&gt;on&lt;/span&gt; &lt;span class=&quot;attribute&quot;&gt;host&lt;/span&gt;: simple21. Exit &lt;span class=&quot;attribute&quot;&gt;status&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;143.&lt;/span&gt; Diagn Container killed &lt;span class=&quot;keyword&quot;&gt;on&lt;/span&gt; request. Exit code is &lt;span class=&quot;number&quot;&gt;143&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Container exited &lt;span class=&quot;keyword&quot;&gt;with&lt;/span&gt; a non-zero exit code &lt;span class=&quot;number&quot;&gt;143&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Killed by external &lt;span class=&quot;keyword&quot;&gt;signal&lt;/span&gt;&lt;span class=&quot;string&quot;&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;[Stage &lt;span class=&quot;number&quot;&gt;23&lt;/span&gt;:&amp;gt;                                                         (&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt; + &lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;) / &lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;number&quot;&gt;9.&lt;/span&gt; ERROR TransportResponseHandl- Still have &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt; requests outstanding when connection from /&lt;span class=&quot;attribute&quot;&gt;xx.xx.xx.22&lt;/span&gt;:&lt;span class=&quot;number&quot;&gt;51442&lt;/span&gt; is closed&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;【原因分析】&lt;br&gt;由报错信息可以看出，yarn丢失了executor，极有可能还是因为executor被关闭了，所以还是要检查一下自己的driver-memory和executor-memory是不是够大。&lt;br&gt;【解决方案】&lt;br&gt;如上一个&lt;/p&gt;
+&lt;h2 id=&quot;References&quot;&gt;&lt;a href=&quot;#References&quot; class=&quot;headerlink&quot; title=&quot;References&quot;&gt;&lt;/a&gt;References&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.jianshu.com/p/a0c38dc46b89&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;搭建Spark所遇过的坑&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://jeyke.iteye.com/blog/2074345?utm_source=tuicool&amp;amp;utm_medium=referral&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;YARN内存使用优化配置&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://blog.cloudera.com/blog/2015/03/how-to-tune-your-apache-spark-jobs-part-2/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;How-to: Tune Your Apache Spark Jobs (Part 2)&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;最近常跑Spark程序，主要是分布式机器学习和分布式深度学习这块，因为模型经常很大，比如VGG等，集群空余节点又不是很多，跑起来有时候会吃力，也遇到很多问题，积累一下以备后查。&lt;/p&gt;
+&lt;h2 id=&quot;错误集锦&quot;&gt;&lt;a href=&quot;#错误集锦&quot; class=&quot;headerl
+    
+    </summary>
+    
+      <category term="大数据系统与技术 | Big Data" scheme="http://whatbeg.com/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE%E7%B3%BB%E7%BB%9F%E4%B8%8E%E6%8A%80%E6%9C%AF-Big-Data/"/>
+    
+    
+      <category term="大数据" scheme="http://whatbeg.com/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
+    
+      <category term="Spark" scheme="http://whatbeg.com/tags/Spark/"/>
+    
+  </entry>
   
   <entry>
     <title>在服务器集群上搭建BigDL环境</title>
@@ -995,9 +1032,9 @@
       <category term="深度学习 | Deep Learning" scheme="http://whatbeg.com/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0-Deep-Learning/"/>
     
     
-      <category term="机器学习" scheme="http://whatbeg.com/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
-    
       <category term="Summary" scheme="http://whatbeg.com/tags/Summary/"/>
+    
+      <category term="机器学习" scheme="http://whatbeg.com/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
     
   </entry>
   
@@ -1132,121 +1169,6 @@
     
     
       <category term="Summary" scheme="http://whatbeg.com/tags/Summary/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>数据挖掘综合实践</title>
-    <link href="http://whatbeg.com/2016/12/29/dataminingsynthesize.html"/>
-    <id>http://whatbeg.com/2016/12/29/dataminingsynthesize.html</id>
-    <published>2016-12-29T06:08:18.000Z</published>
-    <updated>2016-12-29T06:17:49.637Z</updated>
-    
-    <content type="html">&lt;p&gt;本文描述了几个月以来所做的一些数据挖掘实践，综合总结一下，形成此文，也对本学期数据挖掘课程做一个总结。&lt;br&gt;代码Github地址： &lt;a href=&quot;https://github.com/whatbeg/DataMiningTasks&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://github.com/whatbeg/DataMiningTasks&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&quot;TF-IDF-Feature-Extraction-TF-IDF特征提取）&quot;&gt;&lt;a href=&quot;#TF-IDF-Feature-Extraction-TF-IDF特征提取）&quot; class=&quot;headerlink&quot; title=&quot;TF-IDF Feature Extraction (TF-IDF特征提取）&quot;&gt;&lt;/a&gt;TF-IDF Feature Extraction (TF-IDF特征提取）&lt;/h2&gt;&lt;h3 id=&quot;数据&quot;&gt;&lt;a href=&quot;#数据&quot; class=&quot;headerlink&quot; title=&quot;数据&quot;&gt;&lt;/a&gt;数据&lt;/h3&gt;&lt;ol&gt;
-&lt;li&gt;数据为数据集 ICML&lt;/li&gt;
-&lt;li&gt;采用 Python 2.7.10 和 Windows10 系统 作为编程环境&lt;/li&gt;
-&lt;li&gt;输出的结果名为 “类名_RESULT.txt”，位于与类目录同级的目录下。&lt;/li&gt;
-&lt;li&gt;结果数据包含 N 条， N 为此类中文章数目，在每条输出结果中，第一行为文章名字，然后紧跟着的是词的 TF-IDF 值向量，由于值向量稀疏，所以做了压缩，即以“序号： TF-IDF 值”的表示方法。&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h3 id=&quot;步骤&quot;&gt;&lt;a href=&quot;#步骤&quot; class=&quot;headerlink&quot; title=&quot;步骤&quot;&gt;&lt;/a&gt;步骤&lt;/h3&gt;&lt;ol&gt;
-&lt;li&gt;首先集合所有文章，得到他们的路径&lt;/li&gt;
-&lt;li&gt;然后将所有文章分词，将无关或者非法字符用空格替换，然后采用 NLTK 的 word_tokenize 方法进行&lt;br&gt;分词， 然后用 NLTK 的 SnowballStemmer 进行词干提取，然后将单词进行小写化， 通过字典去重（存&lt;br&gt;成字典 key），然后去除一些无关词，数字以及停用词，停用词选用了网上一个版本的停用词，约 900&lt;br&gt;个停用词。&lt;/li&gt;
-&lt;li&gt;然后将所有词排序，编号，后续输出时以编号代替词，而不需写出词。&lt;/li&gt;
-&lt;li&gt;然后循环处理每个类（每种论文的目录），对这个目录下的所有文章，对每篇文章的词算出他们的TF 和 IDF 值，得到 TF-IDF 值，存储到这个类这篇文章的结果数据中。&lt;/li&gt;
-&lt;li&gt;TF 词频采用的计算方法为： TF = 词在文章中出现次数 / 文章总词数&lt;/li&gt;
-&lt;li&gt;IDF 计算方法为： IDF = log(总文章数 / 此词出现的文章数目)&lt;/li&gt;
-&lt;li&gt;处理完每个类，结束。&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h3 id=&quot;结果&quot;&gt;&lt;a href=&quot;#结果&quot; class=&quot;headerlink&quot; title=&quot;结果&quot;&gt;&lt;/a&gt;结果&lt;/h3&gt;&lt;center&gt; &lt;img src=&quot;http://7xsl28.com1.z0.glb.clouddn.com/dataminingtask1-1.png&quot; alt=&quot;&quot;&gt; &lt;/center&gt;
-
-
-&lt;h3 id=&quot;思考&quot;&gt;&lt;a href=&quot;#思考&quot; class=&quot;headerlink&quot; title=&quot;思考&quot;&gt;&lt;/a&gt;思考&lt;/h3&gt;&lt;p&gt;TF，IDF 的计算方法多种多样，本文采用的方法中，最终结果的TF-IDF数值上偏小，在保证含义的情况下可以采用其他方法，使 TF-IDF大致为一个正常值，以便更好地比较。用NLTK包的stemmer提取词干的时候难免会有一些提取的错误，这是由于词干提取并非完美的缘故，由于这个缘故，可以不进行词干提取，这样可以保持所有的信息，但是缺点就是会有多种变形词，单词数会增加 1/4到1/3，导致矩阵增大。&lt;/p&gt;
-&lt;h2 id=&quot;Dimensionality-Reduction-（降维方法）&quot;&gt;&lt;a href=&quot;#Dimensionality-Reduction-（降维方法）&quot; class=&quot;headerlink&quot; title=&quot;Dimensionality Reduction （降维方法）&quot;&gt;&lt;/a&gt;Dimensionality Reduction （降维方法）&lt;/h2&gt;&lt;h3 id=&quot;任务&quot;&gt;&lt;a href=&quot;#任务&quot; class=&quot;headerlink&quot; title=&quot;任务&quot;&gt;&lt;/a&gt;任务&lt;/h3&gt;&lt;p&gt;本部分描述实现降维的三种方法，分别是 PCA， SVD 以及流形学习中的 ISOMAP 算法，其中 ISOMAP 算法还需调用 MDS（ Multiple Dimensional Scaling 多维缩放），并且对这三种算法在两个不同规模的数据集上进行了测试。&lt;/p&gt;
-&lt;h3 id=&quot;PCA&quot;&gt;&lt;a href=&quot;#PCA&quot; class=&quot;headerlink&quot; title=&quot;PCA&quot;&gt;&lt;/a&gt;PCA&lt;/h3&gt;&lt;p&gt;PCA 算法的原理这里不做详细描述，只写明实现过程，首先将训练数据集中心化，然后计算训练数据集的协方差矩阵，对此协方差矩阵 C 做特征值分解，可以得出 C 的所有特征值和对应的特征向量，选取最大的k（降维后的维度数）个特征值和其对应的特征向量，即可得到高维到低维的映射矩阵 W。&lt;br&gt;PCA 算法伪代码如下：&lt;/p&gt;
-&lt;center&gt; &lt;img src=&quot;http://7xsl28.com1.z0.glb.clouddn.com/PCA1.png&quot; alt=&quot;&quot;&gt; &lt;/center&gt;
-
-&lt;h3 id=&quot;SVD&quot;&gt;&lt;a href=&quot;#SVD&quot; class=&quot;headerlink&quot; title=&quot;SVD&quot;&gt;&lt;/a&gt;SVD&lt;/h3&gt;&lt;p&gt;SVD 算法与 PCA 算法很相似，并且可以使用SVD来计算PCA，它们的唯一区别就是SVD并不对训练样本集进行中心化，使各个维度的均值为 0，而是直接对训练集样本矩阵做 SVD分解，得出排序后的特征值和特征向量矩阵，取前k个特征值对应的特征向量即可组成高维到低维的映射矩阵。&lt;br&gt;SVD 算法伪代码如下：&lt;/p&gt;
-&lt;center&gt; &lt;img src=&quot;http://7xsl28.com1.z0.glb.clouddn.com/SVD1.png&quot; alt=&quot;&quot;&gt; &lt;/center&gt;
-
-
-&lt;h3 id=&quot;ISOMAP&quot;&gt;&lt;a href=&quot;#ISOMAP&quot; class=&quot;headerlink&quot; title=&quot;ISOMAP&quot;&gt;&lt;/a&gt;ISOMAP&lt;/h3&gt;&lt;p&gt;ISOMAP 是一个非线性降维算法，全称 Isometric Mapping，等度量映射，重点在于高维空间的测地线距离在低维空间的保持。算法流程如下：&lt;br&gt;（a） 计算样本集（测试集和训练集）的欧式距离&lt;br&gt;（b） 对于每个样本，取 4 个最近的样本，建立连边&lt;br&gt;（c） 用最短路算法算出两两点间的最短距离，这里会出现一个整个图可能形成多个&lt;br&gt;连通分量而导致不连通的问题，这样的话令不连通点间的距离为 0。&lt;br&gt;（d） 将整个图的距离矩阵作为 MDS 的输入，直接得出低维空间的样本表示，包括&lt;br&gt;测试集和训练集。&lt;br&gt;ISOMAP 算法伪代码如下：&lt;/p&gt;
-&lt;center&gt; &lt;img src=&quot;http://7xsl28.com1.z0.glb.clouddn.com/ISOMAP1.png&quot; alt=&quot;&quot;&gt; &lt;/center&gt;
-
-&lt;p&gt;最后的测试是讲高维样本映射到低维空间，然后运行 1-NN 算法对测试数据进行分类。&lt;/p&gt;
-&lt;h3 id=&quot;数据-1&quot;&gt;&lt;a href=&quot;#数据-1&quot; class=&quot;headerlink&quot; title=&quot;数据&quot;&gt;&lt;/a&gt;数据&lt;/h3&gt;&lt;ol&gt;
-&lt;li&gt;数据 sonar 和 splice 数据集， sonar 是小数据集， splice 是较大的数据集。&lt;/li&gt;
-&lt;li&gt;采用 Python 2.7.10 和 Windows10 系统 作为编程环境&lt;/li&gt;
-&lt;li&gt;输出的结果将会被组成一个表格在下文给出。&lt;/li&gt;
-&lt;li&gt;结果数据包括在不同数据集下和不同的降维后维度数 k 的条件下，得到的最后 1NN 分类结果的准确率。&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h3 id=&quot;几点细节&quot;&gt;&lt;a href=&quot;#几点细节&quot; class=&quot;headerlink&quot; title=&quot;几点细节&quot;&gt;&lt;/a&gt;几点细节&lt;/h3&gt;&lt;p&gt;（a） 在实现 ISOMAP 的时候， 4NN 地建立邻接图很有可能会形成多个联通分量，这时候有两种解决方法，一种是增大 Nearest Neighbor 的数量，直到联通，但是这种方法有所不妥， NN 越大，越有可能形成“短路”的现象，即明明两个点距离很远（他们的连边跨越了不可达区域），还是会将它们连起来，距离为其欧氏距离，这样破坏了流形的性质，可能造成结果的偏差；另一种方法使不连通的两两联通分量，各自取一个点使这两点距离最近，将这两点连边，这样就可以使这两个连通分量联通，这种方式大大降低了“短路”的概率，小小的不足就是会有一笔计算开销，不过经过测试，这种开销的增加可以近乎忽略。&lt;/p&gt;
-&lt;p&gt;详细过程如下：&lt;/p&gt;
-&lt;figure class=&quot;highlight markdown&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;bullet&quot;&gt;1. &lt;/span&gt;得到 4NN 图，通过 dfs 对图中点进行着色，两点之间如果可以连通则着同一色，最后得到的颜色数就是联通分量数。&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;bullet&quot;&gt;2. &lt;/span&gt;找两个距离最近的联通分量合并，将颜色赋为相同颜色&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;bullet&quot;&gt;3. &lt;/span&gt;重复 2 直到全部为一个联通分量&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;使用了贪心的思想，在算法的正确性上，可以在保证“短路”概率最小的前提下将非连通图变成连通图。&lt;/p&gt;
-&lt;p&gt;（b） ISOMAP 计算任意两点之间的最短距离时，在大数据集 splice（ 3000+条）下，python计算效率明显低下， 测试下发现需要 8 个小时左右！ 于是在代码中嵌入了 C 程序的执行，将时间缩短到百秒级别，传参采用文件形式。&lt;/p&gt;
-&lt;h3 id=&quot;结果-1&quot;&gt;&lt;a href=&quot;#结果-1&quot; class=&quot;headerlink&quot; title=&quot;结果&quot;&gt;&lt;/a&gt;结果&lt;/h3&gt;&lt;p&gt;测试结果如下，不同数据集，不同维度 k 下不同算法进行 1NN 分类的准确率见下图。&lt;/p&gt;
-&lt;center&gt; &lt;img src=&quot;http://7xsl28.com1.z0.glb.clouddn.com/dataminingtask2-1.png&quot; alt=&quot;&quot;&gt; &lt;/center&gt;
-
-&lt;h3 id=&quot;代码解释&quot;&gt;&lt;a href=&quot;#代码解释&quot; class=&quot;headerlink&quot; title=&quot;代码解释&quot;&gt;&lt;/a&gt;代码解释&lt;/h3&gt;&lt;p&gt;其中 DimensionalityReduction.py 实现三种降维算法，floyd.c, floyd.exe, floyd.o 为 C 语言实现的 Floyd 算法，供 python 调用，graph.txt 为 python 往 C 传的参数。graph_floyded.txt 为 C 对图运行完 floyd 算法后传回的图参数。然后接下来是 4 个数据集和测试集。最后是 Test.py 测试程序。&lt;/p&gt;
-&lt;h3 id=&quot;思考-1&quot;&gt;&lt;a href=&quot;#思考-1&quot; class=&quot;headerlink&quot; title=&quot;思考&quot;&gt;&lt;/a&gt;思考&lt;/h3&gt;&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;python 调用 C 有一套接口，如 ctypes, cython 等，可以将 floyd 算法或者 dijkstra 算法直接嵌入到 python 程序中，可以免去文件传参的开销，加快运行速度。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;MDS 中，对内积矩阵 B 进行特征分解的时候，明明 B 是实对称矩阵， 采用numpy.linalg.eig()函数计算还是会出现复数特征值的情况，尽管他们的虚部或正或负都很小，即使 B = 0.5(B+B’)这样的处理之后还是会出现，后来采用了eigh()函数，即计算埃尔米特矩阵或者对称矩阵特征值和特征向量的专用函数，则分解出来的都是实数。所以可能是函数的问题，因为我们已经知道B是实对称的，所以直接可以用 eigh 函数。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;在处理 ISOMAP 邻接图不连通的情况时，不知道有没有更好的方法，在网上基本鲜有这方面的资料，不知道看到这里的读者有没有建议呢？&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;最后由于能够保证联通，所以测试了建立近邻连接图的邻接个数（这里是 4）对测试结果的影响， 选了 3NN， 4NN， 5NN， 6NN 四种， 最后在发现 3NN 最差，在大数据集 splice 上， 5NN 取得了很好的效果， 6NN 次之， 4NN 再次之，但是在小数据集上，4NN 是最好的， 5NN 和 6NN 的表现就大大的变差了。&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;所以来说，最后选择了用 4NN（近邻连接图）来测试小数据集， 5NN 来测试大数据集。&lt;/p&gt;
-&lt;p&gt;取得效果如下：&lt;/p&gt;
-&lt;center&gt; &lt;img src=&quot;http://7xsl28.com1.z0.glb.clouddn.com/dataminingtask2-2.png&quot; alt=&quot;&quot;&gt; &lt;/center&gt;
-
-&lt;p&gt;总的来说， NN 太小容易使本来很近的点却要在图中绕很远才能到，给距离带来了误&lt;br&gt;差， NN 越大则“短路”可能性又提高。&lt;/p&gt;
-&lt;h2 id=&quot;Clustering-（聚类）&quot;&gt;&lt;a href=&quot;#Clustering-（聚类）&quot; class=&quot;headerlink&quot; title=&quot;Clustering （聚类）&quot;&gt;&lt;/a&gt;Clustering （聚类）&lt;/h2&gt;&lt;h3 id=&quot;任务-1&quot;&gt;&lt;a href=&quot;#任务-1&quot; class=&quot;headerlink&quot; title=&quot;任务&quot;&gt;&lt;/a&gt;任务&lt;/h3&gt;&lt;p&gt;本部分描述实现两种聚类算法，其一为K-medoids（K-中心点）算法，其二为基于谱图理论的谱聚类算法。数据集有两个，一个是小数据集 german.txt，其中有1000个样本，每个样本有24个特征，每个样本占一行，最后为该样本的标签，标签分两类，1和-1，标签用作Gini系数和Purity的计算。另一个是大数据集mnist.txt，其中包括10000个样本，每个样本有784个特征，每个样本占一行，最后为该样本的标签，标签分 10&lt;br&gt;类， 0-9。&lt;br&gt;下面简要说明两种聚类算法的流程。&lt;/p&gt;
-&lt;h3 id=&quot;K-medoids-算法&quot;&gt;&lt;a href=&quot;#K-medoids-算法&quot; class=&quot;headerlink&quot; title=&quot;K-medoids 算法&quot;&gt;&lt;/a&gt;K-medoids 算法&lt;/h3&gt;&lt;p&gt;类似 K-means 算法的原理，只是聚类的中心不是所有该类所有样本的特征平均值，而是限制聚类的中心必须是该类的某一个样本，这样做的好处是可以有效避免离群点的影响，适用于异构数据等。初始找 k 个中心点，然后将每个点分到离它最近的中心点代表的类中，然后对每一类更新中心点，这样循环往复直到中心点不再变化。&lt;/p&gt;
-&lt;p&gt;算法伪代码如下：&lt;/p&gt;
-&lt;center&gt; &lt;img src=&quot;http://7xsl28.com1.z0.glb.clouddn.com/KMEDOIDS1.png&quot; alt=&quot;&quot;&gt; &lt;/center&gt;
-
-
-&lt;h3 id=&quot;谱聚类算法&quot;&gt;&lt;a href=&quot;#谱聚类算法&quot; class=&quot;headerlink&quot; title=&quot;谱聚类算法&quot;&gt;&lt;/a&gt;谱聚类算法&lt;/h3&gt;&lt;p&gt;基于谱图理论，适用于数据是非凸的或者类似于嵌入高维空间的低维流形时。基本思路是对每个样本点，与跟它最相似的多个样本点之间连边，边的权值可以赋为相似度或者 1（两种方式），然后计算拉普拉斯矩阵 L=D-W，其中 D 为每个样本点的度2作为对角元素组成的对角矩阵，W就是刚才的距离矩阵。然后对拉普拉斯矩阵 L 进行特征分解，取最小的 k 个特征值对应的特征向量作为新的样本表示，然后对这个样本表示进行K-medoids 聚类或者 K-means 聚类等即可得到聚类结果。&lt;/p&gt;
-&lt;p&gt;算法伪代码如下：&lt;/p&gt;
-&lt;center&gt; &lt;img src=&quot;http://7xsl28.com1.z0.glb.clouddn.com/SPECTUALCLUSTRING.png&quot; alt=&quot;&quot;&gt; &lt;/center&gt;
-
-&lt;h3 id=&quot;数据与环境&quot;&gt;&lt;a href=&quot;#数据与环境&quot; class=&quot;headerlink&quot; title=&quot;数据与环境&quot;&gt;&lt;/a&gt;数据与环境&lt;/h3&gt;&lt;ol&gt;
-&lt;li&gt;数据为 german 和 mnist 数据集， german 是小数据集， mnist 是较大的数据集，数据说明见上一节。&lt;/li&gt;
-&lt;li&gt;采用 Python 2.7.12 和 Ubuntu16.04 系统 作为编程环境&lt;/li&gt;
-&lt;li&gt;输出的结果将会被组成一个表格在下文给出。&lt;/li&gt;
-&lt;li&gt;结果数据包括在不同数据集下k-medoids算法聚类的效果，以Gini系数和Purity作为衡量依据，以及在不同数据集下和不同近邻数下 Spectral Clustering 聚类的效果，结果也以 Gini系数和 Purity 作为依据。&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h3 id=&quot;结果-2&quot;&gt;&lt;a href=&quot;#结果-2&quot; class=&quot;headerlink&quot; title=&quot;结果&quot;&gt;&lt;/a&gt;结果&lt;/h3&gt;&lt;p&gt;测试结果如下，不同数据集下，不同算法下进行聚类的 Purity 见图 1。&lt;/p&gt;
-&lt;center&gt; &lt;img src=&quot;http://7xsl28.com1.z0.glb.clouddn.com/dataminingtask3-1.png&quot; alt=&quot;&quot;&gt; &lt;/center&gt;
-
-
-&lt;p&gt;不同数据集下，不同算法下进行聚类的 Gini 系数见图 2。&lt;/p&gt;
-&lt;center&gt; &lt;img src=&quot;http://7xsl28.com1.z0.glb.clouddn.com/dataminingtask3-2.png&quot; alt=&quot;&quot;&gt; &lt;/center&gt;
-
-
-&lt;center&gt; &lt;img src=&quot;http://7xsl28.com1.z0.glb.clouddn.com/dataminingtask3-3.png&quot; alt=&quot;&quot;&gt; &lt;/center&gt;
-
-&lt;h3 id=&quot;思考-2&quot;&gt;&lt;a href=&quot;#思考-2&quot; class=&quot;headerlink&quot; title=&quot;思考&quot;&gt;&lt;/a&gt;思考&lt;/h3&gt;&lt;p&gt;纯枚举中心点替换的方法虽然说准确度高，但是速度太慢，在更大的数据集下必然很低效，可以考虑采用随机选取 r 个点对进行替换的方式，损失一点准确度，来对算法进行加速。或者也可以采用其他优化算法优化效率&lt;/p&gt;
-&lt;h2 id=&quot;Training-Classifers-via-Stochastic-Gradient-Descent-（随机梯度下降）&quot;&gt;&lt;a href=&quot;#Training-Classifers-via-Stochastic-Gradient-Descent-（随机梯度下降）&quot; class=&quot;headerlink&quot; title=&quot;Training Classifers via Stochastic Gradient Descent （随机梯度下降）&quot;&gt;&lt;/a&gt;Training Classifers via Stochastic Gradient Descent （随机梯度下降）&lt;/h2&gt;&lt;p&gt;这部分详见文章： &lt;a href=&quot;http://whatbeg.com/2016/11/18/trainclassifiersviaSGD.html&quot;&gt;Training Classifers via Stochastic Gradient Descent&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&quot;Ensemble-Learning-（集成学习）&quot;&gt;&lt;a href=&quot;#Ensemble-Learning-（集成学习）&quot; class=&quot;headerlink&quot; title=&quot;Ensemble Learning （集成学习）&quot;&gt;&lt;/a&gt;Ensemble Learning （集成学习）&lt;/h2&gt;&lt;p&gt;这部分详见文章： &lt;a href=&quot;http://whatbeg.com/2016/12/01/naivebayesboosting.html&quot;&gt;谈一谈朴素贝叶斯作为基分类器的Adaboost算法 （Naive Bayes Based Adaboost）&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&quot;Association-rule-mining-（关联规则挖掘）&quot;&gt;&lt;a href=&quot;#Association-rule-mining-（关联规则挖掘）&quot; class=&quot;headerlink&quot; title=&quot;Association rule mining （关联规则挖掘）&quot;&gt;&lt;/a&gt;Association rule mining （关联规则挖掘）&lt;/h2&gt;&lt;p&gt;这部分源码见AprioriTest，实现了一下Apriori算法，具体流程不细述。&lt;/p&gt;
-&lt;h2 id=&quot;总结&quot;&gt;&lt;a href=&quot;#总结&quot; class=&quot;headerlink&quot; title=&quot;总结&quot;&gt;&lt;/a&gt;总结&lt;/h2&gt;&lt;p&gt;本文简要总结了一下数据挖掘的几个实践project，其中包括最基本的TF-IDF统计，以及降维，聚类，分类，集成学习，随机梯度下降等等，简要实现了几个数据挖掘上的基本算法，实现的比较简单，当做进一步理解算法之用，机器学习的方面远远不止这些，比如降维方法除了上述三种之外还有LLE，LE，LTSA，KPCA等等，聚类还包括层次聚类，AGNES等，以及kmeans，CLARANS等基于代表的算法，还有基于密度的方法，包括DENCLUE,DBSCAN等等，以及基于网格的方法(grid-based)包括CLIQUE等。分类方法那就更多了，SVM，LR，DT，，，一些数据挖掘比赛中用的比较多的是XGBoost，GBDT等，有时间要好好了解一下，最后集成学习中主要包括两大类算法，一种叫Bagging（Bootstrapped Aggregating）,主要通过多次采样平均，来降低variance，另一种Boosting，通过多个分类器的集成，降低bias。总之，数据挖掘课程的学习到这里就告一段落了，接下来的学习就要靠自己了，慢慢的运用，慢慢的学习吧，数据挖掘这条路，还是有很远要走的。&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;本文描述了几个月以来所做的一些数据挖掘实践，综合总结一下，形成此文，也对本学期数据挖掘课程做一个总结。&lt;br&gt;代码Github地址： &lt;a href=&quot;https://github.com/whatbeg/DataMiningTasks&quot; target=&quot;_blank&quot; r
-    
-    </summary>
-    
-      <category term="数据科学 | Data Science" scheme="http://whatbeg.com/categories/%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6-Data-Science/"/>
-    
-    
-      <category term="机器学习" scheme="http://whatbeg.com/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
     
   </entry>
   

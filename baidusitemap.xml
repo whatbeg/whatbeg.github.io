@@ -4,6 +4,28 @@
 
     
   <url>
+    <loc>http://whatbeg.com/2017/05/28/sparkerror.html</loc>
+    <lastmod>2017-05-28T02:10:26.495Z</lastmod>
+    <data>
+        <display>
+        <title>Spark一些问题集锦【持续更新】</title>
+        <pubTime>2017-05-28T02:04:35.000Z</pubTime>
+        
+        <tag>大数据</tag>
+         
+        <tag>Spark</tag>
+         
+         
+           
+             
+              <breadCrumb title="大数据系统与技术 | Big Data" url="http://whatbeg.com/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE%E7%B3%BB%E7%BB%9F%E4%B8%8E%E6%8A%80%E6%9C%AF-Big-Data/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://whatbeg.com/2017/04/17/bigdlclusterbuild.html</loc>
     <lastmod>2017-04-17T14:50:07.562Z</lastmod>
     <data>
@@ -284,9 +306,9 @@
         <title>2016CCF大数据与计算智能大赛总结</title>
         <pubTime>2017-01-01T02:08:42.000Z</pubTime>
         
-        <tag>机器学习</tag>
-         
         <tag>Summary</tag>
+         
+        <tag>机器学习</tag>
          
          
            
@@ -1172,9 +1194,9 @@
         <title>快速学会Git基本操作</title>
         <pubTime>2016-04-07T15:35:15.000Z</pubTime>
         
-        <tag>Git</tag>
-         
         <tag>CS</tag>
+         
+        <tag>Git</tag>
          
          
            
@@ -1402,9 +1424,9 @@
         <title>《HTTP权威指南》书评</title>
         <pubTime>2016-04-06T03:09:46.000Z</pubTime>
         
-        <tag>Web</tag>
-         
         <tag>读书</tag>
+         
+        <tag>Web</tag>
          
          
            
