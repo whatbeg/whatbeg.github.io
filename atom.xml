@@ -212,9 +212,9 @@
       <category term="大数据系统与技术 | Big Data" scheme="http://whatbeg.com/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE%E7%B3%BB%E7%BB%9F%E4%B8%8E%E6%8A%80%E6%9C%AF-Big-Data/"/>
     
     
-      <category term="大数据" scheme="http://whatbeg.com/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
-    
       <category term="Spark" scheme="http://whatbeg.com/tags/Spark/"/>
+    
+      <category term="大数据" scheme="http://whatbeg.com/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
     
   </entry>
   
@@ -286,9 +286,9 @@
     
       <category term="Deep Learning" scheme="http://whatbeg.com/tags/Deep-Learning/"/>
     
-      <category term="大数据" scheme="http://whatbeg.com/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
-    
       <category term="深度学习" scheme="http://whatbeg.com/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="大数据" scheme="http://whatbeg.com/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
     
   </entry>
   
@@ -517,7 +517,7 @@
     <link href="http://whatbeg.com/2017/03/23/addemailsubscribe.html"/>
     <id>http://whatbeg.com/2017/03/23/addemailsubscribe.html</id>
     <published>2017-03-23T12:54:09.000Z</published>
-    <updated>2017-06-16T01:45:59.747Z</updated>
+    <updated>2017-06-16T01:57:17.619Z</updated>
     
     <content type="html">&lt;p&gt;平时工作中常常会订阅一些业界日报，周报等，俨然已经成为了每天、每周获取业界消息的重要来源。于是突发奇想，想能不能自己的博客加上邮件订阅功能呢。&lt;/p&gt;
 &lt;p&gt;一搜，发现有很多工具，也没多比较，根据&lt;a href=&quot;http://www.race604.com/add-email-subscribe&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;这篇文章&lt;/a&gt;选择了&lt;a href=&quot;https://mailchimp.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;MailChimp&lt;/a&gt;这个工具。功能比较强大比较老牌，界面也很炫酷，就是访问体验差了一些，不知道是不是网络的原因，有时候加载的延迟比较长，但是也在可接受范围内啦。鉴于上面的文章介绍的不是太详尽，这里介绍下自己做的一个流程。&lt;/p&gt;
@@ -532,7 +532,7 @@
 &lt;h3 id=&quot;创建一个邮件列表&quot;&gt;&lt;a href=&quot;#创建一个邮件列表&quot; class=&quot;headerlink&quot; title=&quot;创建一个邮件列表&quot;&gt;&lt;/a&gt;创建一个邮件列表&lt;/h3&gt;&lt;p&gt;我们是最终需要向邮件列表中所有用户发送订阅邮件，所以需要新建邮件列表，点面板上的List，然后Create List，然后填入一些必要信息，保存。填写发送邮箱的时候需要认证一下邮箱，点击Verify即可。&lt;/p&gt;
 &lt;h3 id=&quot;设定订阅点击栏&quot;&gt;&lt;a href=&quot;#设定订阅点击栏&quot; class=&quot;headerlink&quot; title=&quot;设定订阅点击栏&quot;&gt;&lt;/a&gt;设定订阅点击栏&lt;/h3&gt;&lt;p&gt;然后我们需要确定在你的网站/博客上做一个什么样的订阅入口，有直接显式的表单，也可以是重定向到一个专门填写信息表单的网址，我采用的是后者。&lt;br&gt;到刚刚创建的List的主界面，点击工具栏的”Signup forms”，选择一种表单形式，&lt;br&gt;如果是重定向的表单的话，选择”General forms”&lt;br&gt;如果是嵌入形式的直接填写提交的表单，选择”Embedded forms”&lt;br&gt;其他两种不太了解。&lt;/p&gt;
 &lt;p&gt;然后就是修改相应你想显示的信息，保存完成。&lt;/p&gt;
-&lt;h3 id=&quot;创建邮件订阅活动Campaign及制定邮件格式&quot;&gt;&lt;a href=&quot;#创建邮件订阅活动Campaign及制定邮件格式&quot; class=&quot;headerlink&quot; title=&quot;创建邮件订阅活动Campaign及制定邮件格式&quot;&gt;&lt;/a&gt;创建邮件订阅活动Campaign及制定邮件格式&lt;/h3&gt;&lt;p&gt;设定了邮件列表之后，我们需要创建邮件订阅服务了，即创建自动发送邮件的服务。点击主面板Campaigns，创建活动，填写相应信息，期间要填写发送邮件的邮箱，建议注册一个新的邮箱，比如说&lt;code&gt;xx_noreply@some.com&lt;/code&gt;格式的。&lt;br&gt;MailChimp提供了集中Campaign类型，由于博客的话一般是RSS订阅，我们可以直接利用RSS的内容来发送给Subscribers，所以我们选择RSS-Driven Campaign，填入博客RSS地址，然后设置频率，发送时间，接收者，一直点右下角的Next，然后选一个邮件模板，我选的是1 Column - Full Width。然后做一番设计，由于我们是发送RSS信息，所以需拖入一个RSS Items模块，然后可以做一些修改，比如修改对齐，字体等。期间有些信息是不能预览的，可以点击Preview and Test发送测试邮件看看效果。&lt;br&gt;最后Next到Confirm，确认后点击Start RSS，跳到Done And Done界面，表示一切完成，你的订阅List中的订阅者就会按时收到邮件了。&lt;/p&gt;
+&lt;h3 id=&quot;创建邮件订阅活动Campaign及制定邮件格式&quot;&gt;&lt;a href=&quot;#创建邮件订阅活动Campaign及制定邮件格式&quot; class=&quot;headerlink&quot; title=&quot;创建邮件订阅活动Campaign及制定邮件格式&quot;&gt;&lt;/a&gt;创建邮件订阅活动Campaign及制定邮件格式&lt;/h3&gt;&lt;p&gt;设定了邮件列表之后，我们需要创建邮件订阅服务了，即创建自动发送邮件的服务。点击主面板Campaigns，创建活动，填写相应信息，期间要填写发送邮件的邮箱，建议注册一个新的邮箱，比如说&lt;code&gt;xx_noreply@some.com&lt;/code&gt;格式的。&lt;br&gt;MailChimp提供了集中Campaign类型，由于博客的话一般是RSS订阅，我们可以直接利用RSS的内容来发送给Subscribers，所以我们选择RSS-Driven Campaign，填入博客RSS地址，然后设置频率，发送时间，接收者，一直点右下角的Next，然后选一个邮件模板，我选的是1 Column - Full Width。然后做一番设计，由于我们是发送RSS信息，所以需拖入一个RSS Items模块，然后可以做一些修改，比如修改对齐，字体等。期间有些信息是不能预览的，可以点击Preview and Test发送测试邮件看看效果。&lt;br&gt;最后Next到Confirm，确认后点击Start RSS，跳到Done And Done界面，表示一切完成，你的订阅List中的订阅者就会按时收到邮件了。&lt;br&gt;&lt;img src=&quot;http://7xsl28.com1.z0.glb.clouddn.com/mailchimp.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
 &lt;h3 id=&quot;添加到hexo博客组件&quot;&gt;&lt;a href=&quot;#添加到hexo博客组件&quot; class=&quot;headerlink&quot; title=&quot;添加到hexo博客组件&quot;&gt;&lt;/a&gt;添加到hexo博客组件&lt;/h3&gt;&lt;p&gt;这里演示如何添加到你的hexo博客的侧边栏。&lt;br&gt;到hexo主目录的&lt;code&gt;\themes\YOUR_THEMES\layout\_widget&lt;/code&gt;下添加emailist.ejs文件，写入&lt;br&gt;&lt;figure class=&quot;highlight erb&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;xml&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;div&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;class&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;rsspart&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;href&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;http://eepurl.com/cHO5An&quot;&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;target&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;_blank&quot;&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;title&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;email&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;%=&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;ruby&quot;&gt; _&lt;span class=&quot;number&quot;&gt;_&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&#39;Email 订阅&#39;&lt;/span&gt;) &lt;/span&gt;&lt;span class=&quot;xml&quot;&gt;&lt;span class=&quot;tag&quot;&gt;%&amp;gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;a&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;div&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
 &lt;p&gt;这里我直接做成了和RSS订阅相同的形式，所以直接利用class=”rsspart”，具体可以根据自己的主题设置自己想要的格式。&lt;/p&gt;
 &lt;p&gt;最后，欢迎订阅本博客，由于更新并不是太频繁，只做了月报，订阅地址：&lt;br&gt;&lt;a href=&quot;http://eepurl.com/cHO5An&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://eepurl.com/cHO5An&lt;/a&gt;&lt;br&gt;或点击侧边栏订阅。&lt;/p&gt;
@@ -758,9 +758,9 @@
       <category term="深度学习 | Deep Learning" scheme="http://whatbeg.com/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0-Deep-Learning/"/>
     
     
-      <category term="机器学习" scheme="http://whatbeg.com/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
-    
       <category term="深度学习" scheme="http://whatbeg.com/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="机器学习" scheme="http://whatbeg.com/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
     
   </entry>
   
@@ -962,9 +962,9 @@
       <category term="大数据系统与技术 | Big Data" scheme="http://whatbeg.com/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE%E7%B3%BB%E7%BB%9F%E4%B8%8E%E6%8A%80%E6%9C%AF-Big-Data/"/>
     
     
-      <category term="大数据" scheme="http://whatbeg.com/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
-    
       <category term="深度学习" scheme="http://whatbeg.com/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="大数据" scheme="http://whatbeg.com/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
     
       <category term="TensorFlow" scheme="http://whatbeg.com/tags/TensorFlow/"/>
     

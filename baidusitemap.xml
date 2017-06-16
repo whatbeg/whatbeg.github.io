@@ -4,14 +4,16 @@
 
     
   <url>
-    <loc>http://whatbeg.com/2016/05/18/hexo-donate.html</loc>
-    <lastmod>2017-06-16T01:46:04.360Z</lastmod>
+    <loc>http://whatbeg.com/2017/03/23/addemailsubscribe.html</loc>
+    <lastmod>2017-06-16T01:57:17.619Z</lastmod>
     <data>
         <display>
-        <title>Hexo博客Jacman主题优化(二)--打赏功能</title>
-        <pubTime>2016-05-18T15:26:29.000Z</pubTime>
+        <title>给静态博客加上邮件订阅功能</title>
+        <pubTime>2017-03-23T12:54:09.000Z</pubTime>
         
         <tag>hexo</tag>
+         
+        <tag>Web</tag>
          
          
            
@@ -24,16 +26,14 @@
 
     
   <url>
-    <loc>http://whatbeg.com/2017/03/23/addemailsubscribe.html</loc>
-    <lastmod>2017-06-16T01:45:59.747Z</lastmod>
+    <loc>http://whatbeg.com/2016/05/18/hexo-donate.html</loc>
+    <lastmod>2017-06-16T01:46:04.360Z</lastmod>
     <data>
         <display>
-        <title>给静态博客加上邮件订阅功能</title>
-        <pubTime>2017-03-23T12:54:09.000Z</pubTime>
+        <title>Hexo博客Jacman主题优化(二)--打赏功能</title>
+        <pubTime>2016-05-18T15:26:29.000Z</pubTime>
         
         <tag>hexo</tag>
-         
-        <tag>Web</tag>
          
          
            
@@ -215,9 +215,9 @@
         <title>Spark一些问题集锦【持续更新】</title>
         <pubTime>2017-05-28T02:04:35.000Z</pubTime>
         
-        <tag>大数据</tag>
-         
         <tag>Spark</tag>
+         
+        <tag>大数据</tag>
          
          
            
@@ -239,9 +239,9 @@
         
         <tag>Deep Learning</tag>
          
-        <tag>大数据</tag>
-         
         <tag>深度学习</tag>
+         
+        <tag>大数据</tag>
          
          
            
@@ -324,9 +324,9 @@
         <title>Deep Learning读书笔记系列 写作计划</title>
         <pubTime>2017-02-27T14:48:25.000Z</pubTime>
         
-        <tag>机器学习</tag>
-         
         <tag>深度学习</tag>
+         
+        <tag>机器学习</tag>
          
          
            
@@ -468,9 +468,9 @@
         <title>TensorFlow白皮书阅读笔记</title>
         <pubTime>2017-01-11T06:48:19.000Z</pubTime>
         
-        <tag>大数据</tag>
-         
         <tag>深度学习</tag>
+         
+        <tag>大数据</tag>
          
         <tag>TensorFlow</tag>
          
@@ -1214,9 +1214,9 @@
         <title>快速学会Git基本操作</title>
         <pubTime>2016-04-07T15:35:15.000Z</pubTime>
         
-        <tag>Git</tag>
-         
         <tag>CS</tag>
+         
+        <tag>Git</tag>
          
          
            
