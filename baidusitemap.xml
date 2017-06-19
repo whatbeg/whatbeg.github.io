@@ -4,6 +4,28 @@
 
     
   <url>
+    <loc>http://whatbeg.com/2017/05/28/sparkerror.html</loc>
+    <lastmod>2017-06-19T11:42:07.881Z</lastmod>
+    <data>
+        <display>
+        <title>Spark一些问题集锦【持续更新】</title>
+        <pubTime>2017-05-28T02:04:35.000Z</pubTime>
+        
+        <tag>Spark</tag>
+         
+        <tag>大数据</tag>
+         
+         
+           
+             
+              <breadCrumb title="大数据系统与技术 | Big Data" url="http://whatbeg.com/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE%E7%B3%BB%E7%BB%9F%E4%B8%8E%E6%8A%80%E6%9C%AF-Big-Data/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://whatbeg.com/2017/03/23/addemailsubscribe.html</loc>
     <lastmod>2017-06-16T01:57:17.619Z</lastmod>
     <data>
@@ -201,28 +223,6 @@
            
              
               <breadCrumb title="深度学习 | Deep Learning" url="http://whatbeg.com/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0-Deep-Learning/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://whatbeg.com/2017/05/28/sparkerror.html</loc>
-    <lastmod>2017-05-28T02:10:26.495Z</lastmod>
-    <data>
-        <display>
-        <title>Spark一些问题集锦【持续更新】</title>
-        <pubTime>2017-05-28T02:04:35.000Z</pubTime>
-        
-        <tag>Spark</tag>
-         
-        <tag>大数据</tag>
-         
-         
-           
-             
-              <breadCrumb title="大数据系统与技术 | Big Data" url="http://whatbeg.com/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE%E7%B3%BB%E7%BB%9F%E4%B8%8E%E6%8A%80%E6%9C%AF-Big-Data/"/>
           
         </display>
     </data>
@@ -1214,9 +1214,9 @@
         <title>快速学会Git基本操作</title>
         <pubTime>2016-04-07T15:35:15.000Z</pubTime>
         
-        <tag>CS</tag>
-         
         <tag>Git</tag>
+         
+        <tag>CS</tag>
          
          
            
