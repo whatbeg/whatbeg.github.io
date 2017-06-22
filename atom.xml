@@ -216,9 +216,9 @@
       <category term="大数据系统与技术 | Big Data" scheme="http://whatbeg.com/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE%E7%B3%BB%E7%BB%9F%E4%B8%8E%E6%8A%80%E6%9C%AF-Big-Data/"/>
     
     
-      <category term="Spark" scheme="http://whatbeg.com/tags/Spark/"/>
-    
       <category term="大数据" scheme="http://whatbeg.com/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
+    
+      <category term="Spark" scheme="http://whatbeg.com/tags/Spark/"/>
     
   </entry>
   
@@ -288,11 +288,11 @@
       <category term="大数据系统与技术 | Big Data" scheme="http://whatbeg.com/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE%E7%B3%BB%E7%BB%9F%E4%B8%8E%E6%8A%80%E6%9C%AF-Big-Data/"/>
     
     
+      <category term="大数据" scheme="http://whatbeg.com/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
+    
       <category term="Deep Learning" scheme="http://whatbeg.com/tags/Deep-Learning/"/>
     
       <category term="深度学习" scheme="http://whatbeg.com/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
-    
-      <category term="大数据" scheme="http://whatbeg.com/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
     
   </entry>
   
@@ -563,7 +563,7 @@
     <link href="http://whatbeg.com/2017/03/11/linuxmemo.html"/>
     <id>http://whatbeg.com/2017/03/11/linuxmemo.html</id>
     <published>2017-03-11T04:42:52.000Z</published>
-    <updated>2017-06-06T03:16:50.068Z</updated>
+    <updated>2017-06-22T15:18:34.125Z</updated>
     
     <content type="html">&lt;h5 id=&quot;图片压缩&quot;&gt;&lt;a href=&quot;#图片压缩&quot; class=&quot;headerlink&quot; title=&quot;图片压缩&quot;&gt;&lt;/a&gt;图片压缩&lt;/h5&gt;&lt;figure class=&quot;highlight livecodeserver&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;sudo apt-&lt;span class=&quot;built_in&quot;&gt;get&lt;/span&gt; imagemagick&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;convert&lt;/span&gt; -resize &lt;span class=&quot;number&quot;&gt;100&lt;/span&gt;x100 &lt;span class=&quot;built_in&quot;&gt;from&lt;/span&gt;.jpg &lt;span class=&quot;built_in&quot;&gt;to&lt;/span&gt;.jpg&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;convert&lt;/span&gt; -resize &lt;span class=&quot;number&quot;&gt;50&lt;/span&gt;%x50% &lt;span class=&quot;built_in&quot;&gt;from&lt;/span&gt;.jpg &lt;span class=&quot;built_in&quot;&gt;to&lt;/span&gt;.jpg&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;h5 id=&quot;Neural-Artistic-Style&quot;&gt;&lt;a href=&quot;#Neural-Artistic-Style&quot; class=&quot;headerlink&quot; title=&quot;Neural Artistic Style&quot;&gt;&lt;/a&gt;Neural Artistic Style&lt;/h5&gt;&lt;figure class=&quot;highlight brainfuck&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;python&lt;/span&gt; &lt;span class=&quot;comment&quot;&gt;neural_style&lt;/span&gt;&lt;span class=&quot;string&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;comment&quot;&gt;py&lt;/span&gt; &lt;span class=&quot;literal&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;literal&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;comment&quot;&gt;checkpoint&lt;/span&gt;&lt;span class=&quot;literal&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;comment&quot;&gt;output&lt;/span&gt; &lt;span class=&quot;comment&quot;&gt;400out/out%s&lt;/span&gt;&lt;span class=&quot;string&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;comment&quot;&gt;jpg&lt;/span&gt; &lt;span class=&quot;literal&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;literal&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;comment&quot;&gt;checkpoint&lt;/span&gt;&lt;span class=&quot;literal&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;comment&quot;&gt;iterations&lt;/span&gt; &lt;span class=&quot;comment&quot;&gt;50&lt;/span&gt; &lt;span class=&quot;literal&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;literal&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;comment&quot;&gt;iterations&lt;/span&gt; &lt;span class=&quot;comment&quot;&gt;1000&lt;/span&gt; &lt;span class=&quot;literal&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;literal&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;comment&quot;&gt;content&lt;/span&gt; &amp;lt;&lt;span class=&quot;comment&quot;&gt;content&lt;/span&gt; &lt;span class=&quot;comment&quot;&gt;file&lt;/span&gt;&amp;gt; &lt;span class=&quot;literal&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;literal&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;comment&quot;&gt;styles&lt;/span&gt; &amp;lt;&lt;span class=&quot;comment&quot;&gt;style&lt;/span&gt; &lt;span class=&quot;comment&quot;&gt;file&lt;/span&gt;&amp;gt; &lt;span class=&quot;literal&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;literal&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;comment&quot;&gt;output&lt;/span&gt; &amp;lt;&lt;span class=&quot;comment&quot;&gt;output&lt;/span&gt; &lt;span class=&quot;comment&quot;&gt;file&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
@@ -573,6 +573,8 @@
 &lt;h5 id=&quot;查找一个或多个文件中是否含有某字符串&quot;&gt;&lt;a href=&quot;#查找一个或多个文件中是否含有某字符串&quot; class=&quot;headerlink&quot; title=&quot;查找一个或多个文件中是否含有某字符串&quot;&gt;&lt;/a&gt;查找一个或多个文件中是否含有某字符串&lt;/h5&gt;&lt;figure class=&quot;highlight vim&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;strings ./xx.&lt;span class=&quot;keyword&quot;&gt;sh&lt;/span&gt; | &lt;span class=&quot;keyword&quot;&gt;grep&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&quot;STR*&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;h5 id=&quot;yarn-终结application&quot;&gt;&lt;a href=&quot;#yarn-终结application&quot; class=&quot;headerlink&quot; title=&quot;yarn 终结application&quot;&gt;&lt;/a&gt;yarn 终结application&lt;/h5&gt;&lt;figure class=&quot;highlight applescript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;yarn &lt;span class=&quot;built_in&quot;&gt;application&lt;/span&gt; -kill &amp;lt;application_ID&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;h5 id=&quot;vim字符串查找与替换&quot;&gt;&lt;a href=&quot;#vim字符串查找与替换&quot; class=&quot;headerlink&quot; title=&quot;vim字符串查找与替换&quot;&gt;&lt;/a&gt;vim字符串查找与替换&lt;/h5&gt;&lt;figure class=&quot;highlight elixir&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;/A          &lt;span class=&quot;comment&quot;&gt;# 查找A （从上往下）&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;?A          &lt;span class=&quot;comment&quot;&gt;# 查找A （从下往上）  &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;symbol&quot;&gt;:%s/A/B/g&lt;/span&gt;   &lt;span class=&quot;comment&quot;&gt;# 将所有行的A替换为B&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;symbol&quot;&gt;:%s/A/B/&lt;/span&gt;    &lt;span class=&quot;comment&quot;&gt;# 将所有行的第一个A替换为B&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;symbol&quot;&gt;:s/A/B/g&lt;/span&gt;    &lt;span class=&quot;comment&quot;&gt;# 替换当前行所有A为B&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h5 id=&quot;shell中source命令不存在的问题&quot;&gt;&lt;a href=&quot;#shell中source命令不存在的问题&quot; class=&quot;headerlink&quot; title=&quot;shell中source命令不存在的问题&quot;&gt;&lt;/a&gt;shell中source命令不存在的问题&lt;/h5&gt;&lt;p&gt;shell脚本中使用source命令可能会报&lt;br&gt;&lt;figure class=&quot;highlight applescript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;source &lt;span class=&quot;keyword&quot;&gt;not&lt;/span&gt; found&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;错误，这是因为几种shell的不同导致，许多版本使用&lt;code&gt;/bin/bash&lt;/code&gt;做&lt;code&gt;sh&lt;/code&gt;，但是Ubuntu和另一些系统、版本中已逐渐使用&lt;code&gt;/bin/dash&lt;/code&gt;，后者不支持&lt;code&gt;source&lt;/code&gt;。&lt;br&gt;解决方法：&lt;br&gt;（1）使用 &lt;code&gt;.&lt;/code&gt; 替换 &lt;code&gt;source&lt;/code&gt; 命令&lt;br&gt;（2）使用如下命令变更shell，从&lt;code&gt;dash&lt;/code&gt;变更到&lt;code&gt;bash&lt;/code&gt;&lt;br&gt;&lt;figure class=&quot;highlight stata&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;variable&quot;&gt;$ls&lt;/span&gt; -&lt;span class=&quot;keyword&quot;&gt;l&lt;/span&gt; `&lt;span class=&quot;keyword&quot;&gt;which&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;sh&lt;/span&gt;`&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;/bin/&lt;span class=&quot;keyword&quot;&gt;sh&lt;/span&gt; -&amp;gt; &lt;span class=&quot;keyword&quot;&gt;sh&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;variable&quot;&gt;$sudo&lt;/span&gt; dpkg-reconfigure dash&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;# 选择[&lt;span class=&quot;keyword&quot;&gt;no&lt;/span&gt;]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;variable&quot;&gt;$ls&lt;/span&gt; -&lt;span class=&quot;keyword&quot;&gt;l&lt;/span&gt; `&lt;span class=&quot;keyword&quot;&gt;which&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;sh&lt;/span&gt;`&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;/bin/&lt;span class=&quot;keyword&quot;&gt;sh&lt;/span&gt; -&amp;gt; bash&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
 </content>
     
     <summary type="html">
@@ -762,9 +764,9 @@
       <category term="深度学习 | Deep Learning" scheme="http://whatbeg.com/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0-Deep-Learning/"/>
     
     
-      <category term="深度学习" scheme="http://whatbeg.com/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
-    
       <category term="机器学习" scheme="http://whatbeg.com/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="深度学习" scheme="http://whatbeg.com/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
     
   </entry>
   
@@ -966,9 +968,9 @@
       <category term="大数据系统与技术 | Big Data" scheme="http://whatbeg.com/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE%E7%B3%BB%E7%BB%9F%E4%B8%8E%E6%8A%80%E6%9C%AF-Big-Data/"/>
     
     
-      <category term="深度学习" scheme="http://whatbeg.com/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
-    
       <category term="大数据" scheme="http://whatbeg.com/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
+    
+      <category term="深度学习" scheme="http://whatbeg.com/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
     
       <category term="TensorFlow" scheme="http://whatbeg.com/tags/TensorFlow/"/>
     

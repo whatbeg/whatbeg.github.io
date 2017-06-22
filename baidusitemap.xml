@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>http://whatbeg.com/2017/03/11/linuxmemo.html</loc>
+    <lastmod>2017-06-22T15:18:34.125Z</lastmod>
+    <data>
+        <display>
+        <title>Linux备忘命令</title>
+        <pubTime>2017-03-11T04:42:52.000Z</pubTime>
+        
+        <tag>Linux</tag>
+         
+         
+           
+             
+              <breadCrumb title="计算机相关 | CS.Related" url="http://whatbeg.com/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9B%B8%E5%85%B3-CS-Related/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://whatbeg.com/2017/05/28/sparkerror.html</loc>
     <lastmod>2017-06-19T11:42:07.881Z</lastmod>
     <data>
@@ -11,9 +31,9 @@
         <title>Spark一些问题集锦【持续更新】</title>
         <pubTime>2017-05-28T02:04:35.000Z</pubTime>
         
-        <tag>Spark</tag>
-         
         <tag>大数据</tag>
+         
+        <tag>Spark</tag>
          
          
            
@@ -188,26 +208,6 @@
 
     
   <url>
-    <loc>http://whatbeg.com/2017/03/11/linuxmemo.html</loc>
-    <lastmod>2017-06-06T03:16:50.068Z</lastmod>
-    <data>
-        <display>
-        <title>Linux备忘命令</title>
-        <pubTime>2017-03-11T04:42:52.000Z</pubTime>
-        
-        <tag>Linux</tag>
-         
-         
-           
-             
-              <breadCrumb title="计算机相关 | CS.Related" url="http://whatbeg.com/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9B%B8%E5%85%B3-CS-Related/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://whatbeg.com/2017/05/28/deeplearningbook-02.html</loc>
     <lastmod>2017-05-29T02:59:16.824Z</lastmod>
     <data>
@@ -237,11 +237,11 @@
         <title>在服务器集群上搭建BigDL环境</title>
         <pubTime>2017-04-17T14:42:38.000Z</pubTime>
         
+        <tag>大数据</tag>
+         
         <tag>Deep Learning</tag>
          
         <tag>深度学习</tag>
-         
-        <tag>大数据</tag>
          
          
            
@@ -324,9 +324,9 @@
         <title>Deep Learning读书笔记系列 写作计划</title>
         <pubTime>2017-02-27T14:48:25.000Z</pubTime>
         
-        <tag>深度学习</tag>
-         
         <tag>机器学习</tag>
+         
+        <tag>深度学习</tag>
          
          
            
@@ -468,9 +468,9 @@
         <title>TensorFlow白皮书阅读笔记</title>
         <pubTime>2017-01-11T06:48:19.000Z</pubTime>
         
-        <tag>深度学习</tag>
-         
         <tag>大数据</tag>
+         
+        <tag>深度学习</tag>
          
         <tag>TensorFlow</tag>
          
@@ -1214,9 +1214,9 @@
         <title>快速学会Git基本操作</title>
         <pubTime>2016-04-07T15:35:15.000Z</pubTime>
         
-        <tag>Git</tag>
-         
         <tag>CS</tag>
+         
+        <tag>Git</tag>
          
          
            
