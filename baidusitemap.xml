@@ -4,8 +4,28 @@
 
     
   <url>
+    <loc>http://whatbeg.com/2017/04/01/ubuntuproblems.html</loc>
+    <lastmod>2017-06-23T03:55:17.163Z</lastmod>
+    <data>
+        <display>
+        <title>Ubuntu 使用中的问题集锦</title>
+        <pubTime>2017-04-01T12:38:53.000Z</pubTime>
+        
+        <tag>Linux</tag>
+         
+         
+           
+             
+              <breadCrumb title="错误解决与优化 | Err_n_Opt" url="http://whatbeg.com/categories/%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3%E4%B8%8E%E4%BC%98%E5%8C%96-Err-n-Opt/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://whatbeg.com/2017/03/11/linuxmemo.html</loc>
-    <lastmod>2017-06-22T15:18:34.125Z</lastmod>
+    <lastmod>2017-06-23T03:54:55.878Z</lastmod>
     <data>
         <display>
         <title>Linux备忘命令</title>
@@ -31,9 +51,9 @@
         <title>Spark一些问题集锦【持续更新】</title>
         <pubTime>2017-05-28T02:04:35.000Z</pubTime>
         
-        <tag>大数据</tag>
-         
         <tag>Spark</tag>
+         
+        <tag>大数据</tag>
          
          
            
@@ -168,26 +188,6 @@
 
     
   <url>
-    <loc>http://whatbeg.com/2017/04/01/ubuntuproblems.html</loc>
-    <lastmod>2017-06-16T01:45:13.398Z</lastmod>
-    <data>
-        <display>
-        <title>Ubuntu 使用中的问题集锦</title>
-        <pubTime>2017-04-01T12:38:53.000Z</pubTime>
-        
-        <tag>Linux</tag>
-         
-         
-           
-             
-              <breadCrumb title="错误解决与优化 | Err_n_Opt" url="http://whatbeg.com/categories/%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3%E4%B8%8E%E4%BC%98%E5%8C%96-Err-n-Opt/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://whatbeg.com/2017/06/07/artofresearch.html</loc>
     <lastmod>2017-06-07T08:41:23.120Z</lastmod>
     <data>
@@ -237,11 +237,11 @@
         <title>在服务器集群上搭建BigDL环境</title>
         <pubTime>2017-04-17T14:42:38.000Z</pubTime>
         
-        <tag>大数据</tag>
-         
         <tag>Deep Learning</tag>
          
         <tag>深度学习</tag>
+         
+        <tag>大数据</tag>
          
          
            
@@ -324,9 +324,9 @@
         <title>Deep Learning读书笔记系列 写作计划</title>
         <pubTime>2017-02-27T14:48:25.000Z</pubTime>
         
-        <tag>机器学习</tag>
-         
         <tag>深度学习</tag>
+         
+        <tag>机器学习</tag>
          
          
            
@@ -468,9 +468,9 @@
         <title>TensorFlow白皮书阅读笔记</title>
         <pubTime>2017-01-11T06:48:19.000Z</pubTime>
         
-        <tag>大数据</tag>
-         
         <tag>深度学习</tag>
+         
+        <tag>大数据</tag>
          
         <tag>TensorFlow</tag>
          
