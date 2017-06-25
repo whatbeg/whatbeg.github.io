@@ -19,7 +19,7 @@
 <meta property="og:site_name" content="Whatbeg's blog">
 <meta property="og:description" content="最近常跑Spark程序，主要是分布式机器学习和分布式深度学习这块，因为模型经常很大，比如VGG等，集群空余节点又不是很多，跑起来有时候会吃力，也遇到很多问题，积累一下以备后查。
 错误集锦ClosedChannelException123451 ERROR YarnClientSchedulerBackend:70 - Yarn application has already exited with">
-<meta property="og:updated_time" content="2017-06-19T11:42:07.881Z">
+<meta property="og:updated_time" content="2017-06-25T03:22:31.038Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Spark一些问题集锦【持续更新】">
 <meta name="twitter:description" content="最近常跑Spark程序，主要是分布式机器学习和分布式深度学习这块，因为模型经常很大，比如VGG等，集群空余节点又不是很多，跑起来有时候会吃力，也遇到很多问题，积累一下以备后查。
@@ -91,7 +91,7 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#错误集锦"><span class="toc-number">1.</span> <span class="toc-text">错误集锦</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#ClosedChannelException"><span class="toc-number">1.1.</span> <span class="toc-text">ClosedChannelException</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Lost-Executors-et-al"><span class="toc-number">1.2.</span> <span class="toc-text">Lost Executors et. al.</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#运行自带例子SparkPi时，NumberException"><span class="toc-number">1.3.</span> <span class="toc-text">运行自带例子SparkPi时，NumberException</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#References"><span class="toc-number">2.</span> <span class="toc-text">References</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#错误集锦"><span class="toc-number">1.</span> <span class="toc-text">错误集锦</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#ClosedChannelException"><span class="toc-number">1.1.</span> <span class="toc-text">ClosedChannelException</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Lost-Executors-et-al"><span class="toc-number">1.2.</span> <span class="toc-text">Lost Executors et. al.</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#运行自带例子SparkPi时，NumberException"><span class="toc-number">1.3.</span> <span class="toc-text">运行自带例子SparkPi时，NumberException</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HDFS端口错误"><span class="toc-number">1.4.</span> <span class="toc-text">HDFS端口错误</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#References"><span class="toc-number">2.</span> <span class="toc-text">References</span></a></li></ol>
 		
 		</div>
 		
@@ -106,6 +106,8 @@
 <p>出现错误：<code>Exception in thread &quot;main&quot; Java.lang.NumberFormatException: For input string: &quot;spark://10.39.2.31:7077&quot;</code></p>
 <p>【原因分析】<br>原因是SparkPi的参数错误，运行时第一个参数要么为核数，要么不加参数。<br>【解决方案】<br>按如下方式运行：<br><figure class="highlight autoit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">./bin/<span class="built_in">run</span>-example org.apache.Spark.examples.SparkPi <span class="number">2</span> spark://<span class="number">10.39</span><span class="number">.2</span><span class="number">.31</span>:<span class="number">7077</span>     <span class="meta"># Standalone运行</span></span><br><span class="line">./bin/<span class="built_in">run</span>-example org.apache.Spark.examples.SparkPi <span class="number">2</span> <span class="keyword">local</span>                       <span class="meta"># 本地运行</span></span><br></pre></td></tr></table></figure></p>
 <p>或<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./bin/run-example org<span class="selector-class">.apache</span><span class="selector-class">.Spark</span><span class="selector-class">.examples</span><span class="selector-class">.SparkPi</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="HDFS端口错误"><a href="#HDFS端口错误" class="headerlink" title="HDFS端口错误"></a>HDFS端口错误</h3><p>程序中读取HDFS文件，地址设为<code>hdfs://122.3.2.20:2320/data</code>，2320是hadoop client的端口，报错：<br><figure class="highlight qml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">java.io.IOException</span>: Failed <span class="keyword">on</span> local <span class="attribute">exception</span>: <span class="attribute">com.google.protobuf.InvalidProtocolBufferException</span>: Protocol message tag had invalid wire type.; Host <span class="attribute">Details</span> : local host <span class="attribute">is</span>: <span class="string">"Server-020/122.3.2.20"</span>; destination host <span class="attribute">is</span>: <span class="string">"Server-020"</span>:<span class="number">2320</span>;</span><br></pre></td></tr></table></figure></p>
+<p>【原因分析】<br>hdfs在配置中的<code>defaultFS</code>地址为<code>hdfs://122.3.2.20:9000</code>，所以读取数据时端口不应为2320，应为9000。<br>【解决方案】<br>程序中读取数据语句改为；<code>hdfs://122.3.2.20:9000/data</code></p>
 <h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ul>
 <li><a href="http://www.jianshu.com/p/a0c38dc46b89" target="_blank" rel="external">搭建Spark所遇过的坑</a></li>
 <li><a href="http://jeyke.iteye.com/blog/2074345?utm_source=tuicool&amp;utm_medium=referral" target="_blank" rel="external">YARN内存使用优化配置</a></li>
@@ -311,7 +313,7 @@
   <aside class="clearfix">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#错误集锦"><span class="toc-number">1.</span> <span class="toc-text">错误集锦</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#ClosedChannelException"><span class="toc-number">1.1.</span> <span class="toc-text">ClosedChannelException</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Lost-Executors-et-al"><span class="toc-number">1.2.</span> <span class="toc-text">Lost Executors et. al.</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#运行自带例子SparkPi时，NumberException"><span class="toc-number">1.3.</span> <span class="toc-text">运行自带例子SparkPi时，NumberException</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#References"><span class="toc-number">2.</span> <span class="toc-text">References</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#错误集锦"><span class="toc-number">1.</span> <span class="toc-text">错误集锦</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#ClosedChannelException"><span class="toc-number">1.1.</span> <span class="toc-text">ClosedChannelException</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Lost-Executors-et-al"><span class="toc-number">1.2.</span> <span class="toc-text">Lost Executors et. al.</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#运行自带例子SparkPi时，NumberException"><span class="toc-number">1.3.</span> <span class="toc-text">运行自带例子SparkPi时，NumberException</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HDFS端口错误"><span class="toc-number">1.4.</span> <span class="toc-text">HDFS端口错误</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#References"><span class="toc-number">2.</span> <span class="toc-text">References</span></a></li></ol>
  
  </aside>
   </div>
@@ -519,7 +521,7 @@
 		<a href="/about" target="_blank" title="whatbeg">whatbeg</a>
 		
 		<br>
-		<span class="post-count">Total words: <span style="color:orange">231.3k</span></span>
+		<span class="post-count">Total words: <span style="color:orange">231.6k</span></span>
         <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
         <span id="busuanzi_container_site_pv">
         &nbsp;&nbsp;Total visits:&nbsp;<span style="color:orange" id="busuanzi_value_site_pv"></span>
