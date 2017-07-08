@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>http://whatbeg.com/2017/07/08/vim.html</loc>
+    <lastmod>2017-07-08T06:53:03.392Z</lastmod>
+    <data>
+        <display>
+        <title>Linux vim技巧大观</title>
+        <pubTime>2017-07-08T06:38:15.000Z</pubTime>
+        
+        <tag>Linux</tag>
+         
+         
+           
+             
+              <breadCrumb title="计算机相关 | CS.Related" url="http://whatbeg.com/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9B%B8%E5%85%B3-CS-Related/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://whatbeg.com/2017/04/01/ubuntuproblems.html</loc>
     <lastmod>2017-06-26T08:55:24.402Z</lastmod>
     <data>
@@ -51,9 +71,9 @@
         <title>Spark一些问题集锦【持续更新】</title>
         <pubTime>2017-05-28T02:04:35.000Z</pubTime>
         
-        <tag>Spark</tag>
-         
         <tag>大数据</tag>
+         
+        <tag>Spark</tag>
          
          
            
@@ -215,9 +235,9 @@
         <title>Deep Learning读书笔记（2）【深度学习的数学基础摘要】(未竟稿)</title>
         <pubTime>2017-05-28T03:12:46.000Z</pubTime>
         
-        <tag>Deep Learning</tag>
-         
         <tag>深度学习</tag>
+         
+        <tag>Deep Learning</tag>
          
          
            
@@ -237,11 +257,11 @@
         <title>在服务器集群上搭建BigDL环境</title>
         <pubTime>2017-04-17T14:42:38.000Z</pubTime>
         
-        <tag>Deep Learning</tag>
+        <tag>大数据</tag>
          
         <tag>深度学习</tag>
          
-        <tag>大数据</tag>
+        <tag>Deep Learning</tag>
          
          
            
@@ -302,9 +322,9 @@
         <title>Deep Learning读书笔记（1）【开篇】</title>
         <pubTime>2017-03-29T14:39:32.000Z</pubTime>
         
-        <tag>Deep Learning</tag>
-         
         <tag>深度学习</tag>
+         
+        <tag>Deep Learning</tag>
          
          
            
@@ -324,9 +344,9 @@
         <title>Deep Learning读书笔记系列 写作计划</title>
         <pubTime>2017-02-27T14:48:25.000Z</pubTime>
         
-        <tag>深度学习</tag>
-         
         <tag>机器学习</tag>
+         
+        <tag>深度学习</tag>
          
          
            
@@ -468,9 +488,9 @@
         <title>TensorFlow白皮书阅读笔记</title>
         <pubTime>2017-01-11T06:48:19.000Z</pubTime>
         
-        <tag>深度学习</tag>
-         
         <tag>大数据</tag>
+         
+        <tag>深度学习</tag>
          
         <tag>TensorFlow</tag>
          
@@ -1444,9 +1464,9 @@
         <title>《HTTP权威指南》书评</title>
         <pubTime>2016-04-06T03:09:46.000Z</pubTime>
         
-        <tag>读书</tag>
-         
         <tag>Web</tag>
+         
+        <tag>读书</tag>
          
          
            
