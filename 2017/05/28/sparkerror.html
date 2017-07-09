@@ -11,19 +11,19 @@
     
 
     
-    <meta name="description" content="最近常跑Spark程序，主要是分布式机器学习和分布式深度学习这块，因为模型经常很大，比如VGG等，集群空余节点又不是很多，跑起来有时候会吃力，也遇到很多问题，积累一下以备后查。
-错误集锦ClosedChannelException123451 ERROR YarnClientSchedulerBackend:70 - Yarn application has already exited with">
+    <meta name="description" content="最近常跑Spark程序，主要是分布式机器学习和分布式深度学习这块，因为模型经常很大，比如VGG等，集群空余节点又不是很多，跑起来有时候会吃力，以及各种莫名其妙的安装问题，配置问题，运行问题，运行中问题，等等等等，所以特地积累一下以备后查。
+错误集锦ClosedChannelException123451 ERROR YarnClientSchedulerBackend:70 - Yarn appl">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Spark一些问题集锦【持续更新】">
 <meta property="og:url" content="http://whatbeg.com/2017/05/28/sparkerror.html">
 <meta property="og:site_name" content="Whatbeg's blog">
-<meta property="og:description" content="最近常跑Spark程序，主要是分布式机器学习和分布式深度学习这块，因为模型经常很大，比如VGG等，集群空余节点又不是很多，跑起来有时候会吃力，也遇到很多问题，积累一下以备后查。
-错误集锦ClosedChannelException123451 ERROR YarnClientSchedulerBackend:70 - Yarn application has already exited with">
-<meta property="og:updated_time" content="2017-07-09T13:20:48.814Z">
+<meta property="og:description" content="最近常跑Spark程序，主要是分布式机器学习和分布式深度学习这块，因为模型经常很大，比如VGG等，集群空余节点又不是很多，跑起来有时候会吃力，以及各种莫名其妙的安装问题，配置问题，运行问题，运行中问题，等等等等，所以特地积累一下以备后查。
+错误集锦ClosedChannelException123451 ERROR YarnClientSchedulerBackend:70 - Yarn appl">
+<meta property="og:updated_time" content="2017-07-09T14:11:00.287Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Spark一些问题集锦【持续更新】">
-<meta name="twitter:description" content="最近常跑Spark程序，主要是分布式机器学习和分布式深度学习这块，因为模型经常很大，比如VGG等，集群空余节点又不是很多，跑起来有时候会吃力，也遇到很多问题，积累一下以备后查。
-错误集锦ClosedChannelException123451 ERROR YarnClientSchedulerBackend:70 - Yarn application has already exited with">
+<meta name="twitter:description" content="最近常跑Spark程序，主要是分布式机器学习和分布式深度学习这块，因为模型经常很大，比如VGG等，集群空余节点又不是很多，跑起来有时候会吃力，以及各种莫名其妙的安装问题，配置问题，运行问题，运行中问题，等等等等，所以特地积累一下以备后查。
+错误集锦ClosedChannelException123451 ERROR YarnClientSchedulerBackend:70 - Yarn appl">
 
     
     <link rel="alternative" href="/atom.xml" title="Whatbeg&#39;s blog" type="application/atom+xml">
@@ -95,7 +95,7 @@
 		
 		</div>
 		
-		<p>最近常跑Spark程序，主要是分布式机器学习和分布式深度学习这块，因为模型经常很大，比如VGG等，集群空余节点又不是很多，跑起来有时候会吃力，也遇到很多问题，积累一下以备后查。</p>
+		<p>最近常跑Spark程序，<br>主要是分布式机器学习<br>和分布式深度学习这块，<br>因为模型经常很大，比如VGG等，<br>集群空余节点又不是很多，<br>跑起来有时候会吃力，<br>以及各种莫名其妙的安装问题，<br>配置问题，<br>运行问题，<br>运行中问题，<br>等等等等，<br>所以特地积累一下以备后查。</p>
 <h2 id="错误集锦"><a href="#错误集锦" class="headerlink" title="错误集锦"></a>错误集锦</h2><h3 id="ClosedChannelException"><a href="#ClosedChannelException" class="headerlink" title="ClosedChannelException"></a>ClosedChannelException</h3><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span> ERROR YarnClientSchedulerBackend:<span class="number">70</span> - Yarn application has already exited with state FINISHED!</span><br><span class="line"><span class="number">2</span> ERROR SparkContext:<span class="number">91</span> - Error initializing SparkContext.</span><br><span class="line">java<span class="selector-class">.lang</span><span class="selector-class">.IllegalStateException</span>: Spark context stopped while waiting <span class="keyword">for</span> backend</span><br><span class="line"><span class="number">3</span> ERROR TransportClient:<span class="number">245</span> - Failed to send RPC <span class="number">7202466410763583466</span> to /xx<span class="selector-class">.xx</span><span class="selector-class">.xx</span><span class="selector-class">.xx</span>:<span class="number">54864</span>: java<span class="selector-class">.nio</span><span class="selector-class">.channels</span><span class="selector-class">.ClosedChannelException</span></span><br><span class="line"><span class="number">4</span> ERROR YarnSchedulerBackend<span class="variable">$YarnSchedulerEndpoint</span>:<span class="number">91</span> - Sending RequestExecutors(<span class="number">0</span>,<span class="number">0</span>,Map()) to AM was unsuccessful</span><br></pre></td></tr></table></figure>
 <p>上面这几个错误通常一起爆出。<br>【原因分析】<br>可能是分配给node的内存太小，Spark默认启动两个executor，使用每个executor的内存为1G，而数据太大，导致yarn直接Kill掉了executor，IO也一并关闭，所以出现了<code>ClosedChannelException</code>异常。<br><a href="http://stackoverflow.com/questions/27792839/spark-fail-when-running-pi-py-example-with-yarn-client-mode" target="_blank" rel="external">这里的错误</a>分析[错误1]也有可能是由于Java 8的excessive memory allocation strategy<br>【解决方案】<br>根据<a href="http://demo.aosustudio.com/12FAFEE6E5BE1F55356029F01C3AEEE1.AHtml" target="_blank" rel="external">这篇文章</a>在<code>yarn-site.xml</code>中添加如下配置：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>yarn.nodemanager.pmem-check-enabled<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">value</span>&gt;</span>false<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>yarn.nodemanager.vmem-check-enabled<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">value</span>&gt;</span>false<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
 <p>或者在执行命令时附带参数： <code>--driver-memory 5g --executor-memory 5g</code>，将Job可用内存显式地增大。<br>或者在<code>spark/conf/spark-defaults.conf</code>添加如下Poperty：<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">spark<span class="selector-class">.driver</span><span class="selector-class">.memory</span>              <span class="number">5</span>g</span><br><span class="line">spark<span class="selector-class">.executor</span><span class="selector-class">.memory</span>            <span class="number">5</span>g</span><br></pre></td></tr></table></figure></p>
@@ -125,7 +125,9 @@
 <p>【原因分析】<br>这是由于master，slaves互相之间系统时间差距过大（超过10分钟），所以会出现token过期的错误，导致任务无法继续进行。</p>
 <p>【解决方案】<br>1）过期时间由<code>yarn.resourcemanager.rm.container-allocation.expiry-interval-ms</code>参数决定，默认是10分钟。我们可以增大此过期时间。如下<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">name</span>&gt;</span>yarn.resourcemanager.rm.container-allocation.expiry-interval-ms<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">value</span>&gt;</span>1000000<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
 <p>2）其实更好的一种方式就是同步集群机器的系统时间，这个需要系统root权限，同步方式可以为设置每台机器的时间。<br>命令为：<code>date -s &quot;2017-09-08 20:00:00&quot;</code> 相同格式。</p>
-<h3 id="Yarn资源分配小结"><a href="#Yarn资源分配小结" class="headerlink" title="Yarn资源分配小结"></a>Yarn资源分配小结</h3><h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ul>
+<h3 id="Yarn资源分配小结"><a href="#Yarn资源分配小结" class="headerlink" title="Yarn资源分配小结"></a>Yarn资源分配小结</h3><p>【TODO】<br>见《Apache Spark Jobs 性能调优（二）》调试资源分配，</p>
+<p>我们开始觉得<br><figure class="highlight brainfuck"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="literal">-</span><span class="literal">-</span><span class="comment">driver</span><span class="literal">-</span><span class="comment">memory</span> <span class="comment">12g</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">driver</span><span class="literal">-</span><span class="comment">cores</span> <span class="comment">12</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">executor</span><span class="literal">-</span><span class="comment">memory</span> <span class="comment">12g</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">num</span><span class="literal">-</span><span class="comment">executors</span> <span class="comment">4</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">executor</span><span class="literal">-</span><span class="comment">cores</span> <span class="comment">16</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ul>
 <li><a href="http://www.jianshu.com/p/a0c38dc46b89" target="_blank" rel="external">搭建Spark所遇过的坑</a></li>
 <li><a href="http://jeyke.iteye.com/blog/2074345?utm_source=tuicool&amp;utm_medium=referral" target="_blank" rel="external">YARN内存使用优化配置</a></li>
 <li><a href="http://blog.cloudera.com/blog/2015/03/how-to-tune-your-apache-spark-jobs-part-2/" target="_blank" rel="external">How-to: Tune Your Apache Spark Jobs (Part 2)</a></li>
@@ -541,7 +543,7 @@
 		<a href="/about" target="_blank" title="whatbeg">whatbeg</a>
 		
 		<br>
-		<span class="post-count">Total words: <span style="color:orange">237.1k</span></span>
+		<span class="post-count">Total words: <span style="color:orange">237.3k</span></span>
         <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
         <span id="busuanzi_container_site_pv">
         &nbsp;&nbsp;Total visits:&nbsp;<span style="color:orange" id="busuanzi_value_site_pv"></span>
