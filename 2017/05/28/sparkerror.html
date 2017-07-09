@@ -19,7 +19,7 @@
 <meta property="og:site_name" content="Whatbeg's blog">
 <meta property="og:description" content="最近常跑Spark程序，主要是分布式机器学习和分布式深度学习这块，因为模型经常很大，比如VGG等，集群空余节点又不是很多，跑起来有时候会吃力，也遇到很多问题，积累一下以备后查。
 错误集锦ClosedChannelException123451 ERROR YarnClientSchedulerBackend:70 - Yarn application has already exited with">
-<meta property="og:updated_time" content="2017-07-09T13:15:20.035Z">
+<meta property="og:updated_time" content="2017-07-09T13:20:48.814Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Spark一些问题集锦【持续更新】">
 <meta name="twitter:description" content="最近常跑Spark程序，主要是分布式机器学习和分布式深度学习这块，因为模型经常很大，比如VGG等，集群空余节点又不是很多，跑起来有时候会吃力，也遇到很多问题，积累一下以备后查。
@@ -124,7 +124,7 @@
 <p>查看日志：<code>yarn-experiment-nodemanager-slave029.log</code>文件：<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">2017</span>-<span class="number">07</span>-<span class="number">09</span> <span class="number">19</span>:<span class="number">54</span>:<span class="number">49</span>,<span class="number">434</span> ERROR org<span class="selector-class">.apache</span><span class="selector-class">.hadoop</span><span class="selector-class">.yarn</span><span class="selector-class">.server</span><span class="selector-class">.nodemanager</span><span class="selector-class">.containermanager</span><span class="selector-class">.ContainerManagerImpl</span>: Unauthorized request to start container.</span><br><span class="line">This token is expired. current <span class="selector-tag">time</span> is <span class="number">1499601289434</span> found <span class="number">1499601228024</span></span><br></pre></td></tr></table></figure></p>
 <p>【原因分析】<br>这是由于master，slaves互相之间系统时间差距过大（超过10分钟），所以会出现token过期的错误，导致任务无法继续进行。</p>
 <p>【解决方案】<br>1）过期时间由<code>yarn.resourcemanager.rm.container-allocation.expiry-interval-ms</code>参数决定，默认是10分钟。我们可以增大此过期时间。如下<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">name</span>&gt;</span>yarn.resourcemanager.rm.container-allocation.expiry-interval-ms<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">value</span>&gt;</span>1000000<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
-<p>2）其实更好的一种方式就是同步集群机器的系统时间，这个需要系统root权限，同步方式可以为设置每台机器的时间。<br>命令为：<code>date -s &quot;2017-09-08 20:00:00&quot;</code> 相同格式。<br>```</p>
+<p>2）其实更好的一种方式就是同步集群机器的系统时间，这个需要系统root权限，同步方式可以为设置每台机器的时间。<br>命令为：<code>date -s &quot;2017-09-08 20:00:00&quot;</code> 相同格式。</p>
 <h3 id="Yarn资源分配小结"><a href="#Yarn资源分配小结" class="headerlink" title="Yarn资源分配小结"></a>Yarn资源分配小结</h3><h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ul>
 <li><a href="http://www.jianshu.com/p/a0c38dc46b89" target="_blank" rel="external">搭建Spark所遇过的坑</a></li>
 <li><a href="http://jeyke.iteye.com/blog/2074345?utm_source=tuicool&amp;utm_medium=referral" target="_blank" rel="external">YARN内存使用优化配置</a></li>
@@ -255,7 +255,7 @@
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/大数据/">大数据</a><a href="/tags/Spark/">Spark</a>
+  <span></span> <a href="/tags/Spark/">Spark</a><a href="/tags/大数据/">大数据</a>
   </div>
 
 </div>

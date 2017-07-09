@@ -225,7 +225,7 @@
     <link href="http://whatbeg.com/2017/05/28/sparkerror.html"/>
     <id>http://whatbeg.com/2017/05/28/sparkerror.html</id>
     <published>2017-05-28T02:04:35.000Z</published>
-    <updated>2017-07-09T13:15:20.035Z</updated>
+    <updated>2017-07-09T13:20:48.814Z</updated>
     
     <content type="html">&lt;p&gt;最近常跑Spark程序，主要是分布式机器学习和分布式深度学习这块，因为模型经常很大，比如VGG等，集群空余节点又不是很多，跑起来有时候会吃力，也遇到很多问题，积累一下以备后查。&lt;/p&gt;
 &lt;h2 id=&quot;错误集锦&quot;&gt;&lt;a href=&quot;#错误集锦&quot; class=&quot;headerlink&quot; title=&quot;错误集锦&quot;&gt;&lt;/a&gt;错误集锦&lt;/h2&gt;&lt;h3 id=&quot;ClosedChannelException&quot;&gt;&lt;a href=&quot;#ClosedChannelException&quot; class=&quot;headerlink&quot; title=&quot;ClosedChannelException&quot;&gt;&lt;/a&gt;ClosedChannelException&lt;/h3&gt;&lt;figure class=&quot;highlight stylus&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt; ERROR YarnClientSchedulerBackend:&lt;span class=&quot;number&quot;&gt;70&lt;/span&gt; - Yarn application has already exited with state FINISHED!&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;number&quot;&gt;2&lt;/span&gt; ERROR SparkContext:&lt;span class=&quot;number&quot;&gt;91&lt;/span&gt; - Error initializing SparkContext.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;java&lt;span class=&quot;selector-class&quot;&gt;.lang&lt;/span&gt;&lt;span class=&quot;selector-class&quot;&gt;.IllegalStateException&lt;/span&gt;: Spark context stopped while waiting &lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt; backend&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;number&quot;&gt;3&lt;/span&gt; ERROR TransportClient:&lt;span class=&quot;number&quot;&gt;245&lt;/span&gt; - Failed to send RPC &lt;span class=&quot;number&quot;&gt;7202466410763583466&lt;/span&gt; to /xx&lt;span class=&quot;selector-class&quot;&gt;.xx&lt;/span&gt;&lt;span class=&quot;selector-class&quot;&gt;.xx&lt;/span&gt;&lt;span class=&quot;selector-class&quot;&gt;.xx&lt;/span&gt;:&lt;span class=&quot;number&quot;&gt;54864&lt;/span&gt;: java&lt;span class=&quot;selector-class&quot;&gt;.nio&lt;/span&gt;&lt;span class=&quot;selector-class&quot;&gt;.channels&lt;/span&gt;&lt;span class=&quot;selector-class&quot;&gt;.ClosedChannelException&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;number&quot;&gt;4&lt;/span&gt; ERROR YarnSchedulerBackend&lt;span class=&quot;variable&quot;&gt;$YarnSchedulerEndpoint&lt;/span&gt;:&lt;span class=&quot;number&quot;&gt;91&lt;/span&gt; - Sending RequestExecutors(&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;,Map()) to AM was unsuccessful&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
@@ -256,7 +256,7 @@
 &lt;p&gt;查看日志：&lt;code&gt;yarn-experiment-nodemanager-slave029.log&lt;/code&gt;文件：&lt;br&gt;&lt;figure class=&quot;highlight stylus&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;number&quot;&gt;2017&lt;/span&gt;-&lt;span class=&quot;number&quot;&gt;07&lt;/span&gt;-&lt;span class=&quot;number&quot;&gt;09&lt;/span&gt; &lt;span class=&quot;number&quot;&gt;19&lt;/span&gt;:&lt;span class=&quot;number&quot;&gt;54&lt;/span&gt;:&lt;span class=&quot;number&quot;&gt;49&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;434&lt;/span&gt; ERROR org&lt;span class=&quot;selector-class&quot;&gt;.apache&lt;/span&gt;&lt;span class=&quot;selector-class&quot;&gt;.hadoop&lt;/span&gt;&lt;span class=&quot;selector-class&quot;&gt;.yarn&lt;/span&gt;&lt;span class=&quot;selector-class&quot;&gt;.server&lt;/span&gt;&lt;span class=&quot;selector-class&quot;&gt;.nodemanager&lt;/span&gt;&lt;span class=&quot;selector-class&quot;&gt;.containermanager&lt;/span&gt;&lt;span class=&quot;selector-class&quot;&gt;.ContainerManagerImpl&lt;/span&gt;: Unauthorized request to start container.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;This token is expired. current &lt;span class=&quot;selector-tag&quot;&gt;time&lt;/span&gt; is &lt;span class=&quot;number&quot;&gt;1499601289434&lt;/span&gt; found &lt;span class=&quot;number&quot;&gt;1499601228024&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
 &lt;p&gt;【原因分析】&lt;br&gt;这是由于master，slaves互相之间系统时间差距过大（超过10分钟），所以会出现token过期的错误，导致任务无法继续进行。&lt;/p&gt;
 &lt;p&gt;【解决方案】&lt;br&gt;1）过期时间由&lt;code&gt;yarn.resourcemanager.rm.container-allocation.expiry-interval-ms&lt;/code&gt;参数决定，默认是10分钟。我们可以增大此过期时间。如下&lt;br&gt;&lt;figure class=&quot;highlight xml&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;property&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;name&lt;/span&gt;&amp;gt;&lt;/span&gt;yarn.resourcemanager.rm.container-allocation.expiry-interval-ms&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;name&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;value&lt;/span&gt;&amp;gt;&lt;/span&gt;1000000&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;value&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;property&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;2）其实更好的一种方式就是同步集群机器的系统时间，这个需要系统root权限，同步方式可以为设置每台机器的时间。&lt;br&gt;命令为：&lt;code&gt;date -s &amp;quot;2017-09-08 20:00:00&amp;quot;&lt;/code&gt; 相同格式。&lt;br&gt;```&lt;/p&gt;
+&lt;p&gt;2）其实更好的一种方式就是同步集群机器的系统时间，这个需要系统root权限，同步方式可以为设置每台机器的时间。&lt;br&gt;命令为：&lt;code&gt;date -s &amp;quot;2017-09-08 20:00:00&amp;quot;&lt;/code&gt; 相同格式。&lt;/p&gt;
 &lt;h3 id=&quot;Yarn资源分配小结&quot;&gt;&lt;a href=&quot;#Yarn资源分配小结&quot; class=&quot;headerlink&quot; title=&quot;Yarn资源分配小结&quot;&gt;&lt;/a&gt;Yarn资源分配小结&lt;/h3&gt;&lt;h2 id=&quot;References&quot;&gt;&lt;a href=&quot;#References&quot; class=&quot;headerlink&quot; title=&quot;References&quot;&gt;&lt;/a&gt;References&lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;http://www.jianshu.com/p/a0c38dc46b89&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;搭建Spark所遇过的坑&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;http://jeyke.iteye.com/blog/2074345?utm_source=tuicool&amp;amp;utm_medium=referral&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;YARN内存使用优化配置&lt;/a&gt;&lt;/li&gt;
@@ -277,9 +277,9 @@
       <category term="大数据系统与技术 | Big Data" scheme="http://whatbeg.com/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE%E7%B3%BB%E7%BB%9F%E4%B8%8E%E6%8A%80%E6%9C%AF-Big-Data/"/>
     
     
-      <category term="大数据" scheme="http://whatbeg.com/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
-    
       <category term="Spark" scheme="http://whatbeg.com/tags/Spark/"/>
+    
+      <category term="大数据" scheme="http://whatbeg.com/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
     
   </entry>
   
@@ -349,11 +349,11 @@
       <category term="大数据系统与技术 | Big Data" scheme="http://whatbeg.com/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE%E7%B3%BB%E7%BB%9F%E4%B8%8E%E6%8A%80%E6%9C%AF-Big-Data/"/>
     
     
-      <category term="大数据" scheme="http://whatbeg.com/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
-    
       <category term="Deep Learning" scheme="http://whatbeg.com/tags/Deep-Learning/"/>
     
       <category term="深度学习" scheme="http://whatbeg.com/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="大数据" scheme="http://whatbeg.com/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
     
   </entry>
   
@@ -849,9 +849,9 @@
       <category term="深度学习 | Deep Learning" scheme="http://whatbeg.com/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0-Deep-Learning/"/>
     
     
-      <category term="机器学习" scheme="http://whatbeg.com/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
-    
       <category term="深度学习" scheme="http://whatbeg.com/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="机器学习" scheme="http://whatbeg.com/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
     
   </entry>
   
@@ -1053,9 +1053,9 @@
       <category term="大数据系统与技术 | Big Data" scheme="http://whatbeg.com/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE%E7%B3%BB%E7%BB%9F%E4%B8%8E%E6%8A%80%E6%9C%AF-Big-Data/"/>
     
     
-      <category term="大数据" scheme="http://whatbeg.com/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
-    
       <category term="深度学习" scheme="http://whatbeg.com/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="大数据" scheme="http://whatbeg.com/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
     
       <category term="TensorFlow" scheme="http://whatbeg.com/tags/TensorFlow/"/>
     
