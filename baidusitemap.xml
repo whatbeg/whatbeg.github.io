@@ -4,6 +4,28 @@
 
     
   <url>
+    <loc>http://whatbeg.com/2017/05/28/sparkerror.html</loc>
+    <lastmod>2017-07-09T13:15:20.035Z</lastmod>
+    <data>
+        <display>
+        <title>Spark一些问题集锦【持续更新】</title>
+        <pubTime>2017-05-28T02:04:35.000Z</pubTime>
+        
+        <tag>大数据</tag>
+         
+        <tag>Spark</tag>
+         
+         
+           
+             
+              <breadCrumb title="大数据系统与技术 | Big Data" url="http://whatbeg.com/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE%E7%B3%BB%E7%BB%9F%E4%B8%8E%E6%8A%80%E6%9C%AF-Big-Data/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://whatbeg.com/2017/07/08/vim.html</loc>
     <lastmod>2017-07-08T06:53:03.392Z</lastmod>
     <data>
@@ -57,28 +79,6 @@
            
              
               <breadCrumb title="计算机相关 | CS.Related" url="http://whatbeg.com/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9B%B8%E5%85%B3-CS-Related/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://whatbeg.com/2017/05/28/sparkerror.html</loc>
-    <lastmod>2017-06-25T03:30:10.847Z</lastmod>
-    <data>
-        <display>
-        <title>Spark一些问题集锦【持续更新】</title>
-        <pubTime>2017-05-28T02:04:35.000Z</pubTime>
-        
-        <tag>大数据</tag>
-         
-        <tag>Spark</tag>
-         
-         
-           
-             
-              <breadCrumb title="大数据系统与技术 | Big Data" url="http://whatbeg.com/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE%E7%B3%BB%E7%BB%9F%E4%B8%8E%E6%8A%80%E6%9C%AF-Big-Data/"/>
           
         </display>
     </data>
@@ -235,9 +235,9 @@
         <title>Deep Learning读书笔记（2）【深度学习的数学基础摘要】(未竟稿)</title>
         <pubTime>2017-05-28T03:12:46.000Z</pubTime>
         
-        <tag>深度学习</tag>
-         
         <tag>Deep Learning</tag>
+         
+        <tag>深度学习</tag>
          
          
            
@@ -259,9 +259,9 @@
         
         <tag>大数据</tag>
          
-        <tag>深度学习</tag>
-         
         <tag>Deep Learning</tag>
+         
+        <tag>深度学习</tag>
          
          
            
@@ -322,9 +322,9 @@
         <title>Deep Learning读书笔记（1）【开篇】</title>
         <pubTime>2017-03-29T14:39:32.000Z</pubTime>
         
-        <tag>深度学习</tag>
-         
         <tag>Deep Learning</tag>
+         
+        <tag>深度学习</tag>
          
          
            
@@ -1464,9 +1464,9 @@
         <title>《HTTP权威指南》书评</title>
         <pubTime>2016-04-06T03:09:46.000Z</pubTime>
         
-        <tag>Web</tag>
-         
         <tag>读书</tag>
+         
+        <tag>Web</tag>
          
          
            
