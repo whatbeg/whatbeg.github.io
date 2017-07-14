@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>http://whatbeg.com/2017/04/13/hexosomeopt.html</loc>
+    <lastmod>2017-07-14T01:57:40.207Z</lastmod>
+    <data>
+        <display>
+        <title>Hexo新的一些优化</title>
+        <pubTime>2017-04-13T08:10:39.000Z</pubTime>
+        
+        <tag>hexo</tag>
+         
+         
+           
+             
+              <breadCrumb title="错误解决与优化 | Err_n_Opt" url="http://whatbeg.com/categories/%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3%E4%B8%8E%E4%BC%98%E5%8C%96-Err-n-Opt/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://whatbeg.com/2017/05/28/sparkerror.html</loc>
     <lastmod>2017-07-09T14:11:00.287Z</lastmod>
     <data>
@@ -136,26 +156,6 @@
         <pubTime>2016-04-20T05:37:17.000Z</pubTime>
         
         <tag>hexo</tag>
-         
-         
-           
-             
-              <breadCrumb title="错误解决与优化 | Err_n_Opt" url="http://whatbeg.com/categories/%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3%E4%B8%8E%E4%BC%98%E5%8C%96-Err-n-Opt/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://whatbeg.com/2017/04/13/hexosomeopt.html</loc>
-    <lastmod>2017-06-16T01:45:51.416Z</lastmod>
-    <data>
-        <display>
-        <title>Hexo新的一些优化</title>
-        <pubTime>2017-04-13T08:10:39.000Z</pubTime>
-        
-        <tag>Hexo</tag>
          
          
            
