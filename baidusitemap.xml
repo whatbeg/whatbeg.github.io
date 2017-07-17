@@ -5,7 +5,7 @@
     
   <url>
     <loc>http://whatbeg.com/2016/04/25/latexsyntax.html</loc>
-    <lastmod>2017-07-16T08:36:20.441Z</lastmod>
+    <lastmod>2017-07-17T15:05:22.124Z</lastmod>
     <data>
         <display>
         <title>Latex/MathJax公式的一些语法</title>
@@ -53,9 +53,9 @@
         <title>Spark一些问题集锦【持续更新】</title>
         <pubTime>2017-05-28T02:04:35.000Z</pubTime>
         
-        <tag>Spark</tag>
-         
         <tag>大数据</tag>
+         
+        <tag>Spark</tag>
          
          
            
@@ -281,9 +281,9 @@
         
         <tag>Deep Learning</tag>
          
-        <tag>深度学习</tag>
-         
         <tag>大数据</tag>
+         
+        <tag>深度学习</tag>
          
          
            
@@ -366,9 +366,9 @@
         <title>Deep Learning读书笔记系列 写作计划</title>
         <pubTime>2017-02-27T14:48:25.000Z</pubTime>
         
-        <tag>深度学习</tag>
-         
         <tag>机器学习</tag>
+         
+        <tag>深度学习</tag>
          
          
            
@@ -448,9 +448,9 @@
         <title>2016CCF大数据与计算智能大赛总结</title>
         <pubTime>2017-01-01T02:08:42.000Z</pubTime>
         
-        <tag>机器学习</tag>
-         
         <tag>Summary</tag>
+         
+        <tag>机器学习</tag>
          
          
            
@@ -510,9 +510,9 @@
         <title>TensorFlow白皮书阅读笔记</title>
         <pubTime>2017-01-11T06:48:19.000Z</pubTime>
         
-        <tag>深度学习</tag>
-         
         <tag>大数据</tag>
+         
+        <tag>深度学习</tag>
          
         <tag>TensorFlow</tag>
          
@@ -1146,11 +1146,11 @@
         <title>【模拟登录】(二) 加密与重放方式登录 -以模拟登录博客园为例</title>
         <pubTime>2016-04-14T07:37:53.000Z</pubTime>
         
-        <tag>Web</tag>
-         
         <tag>Python</tag>
          
         <tag>数据分析</tag>
+         
+        <tag>Web</tag>
          
          
            
