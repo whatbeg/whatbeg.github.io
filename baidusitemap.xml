@@ -5,7 +5,7 @@
     
   <url>
     <loc>http://whatbeg.com/2016/04/25/latexsyntax.html</loc>
-    <lastmod>2017-07-17T15:05:22.124Z</lastmod>
+    <lastmod>2017-07-25T12:00:13.551Z</lastmod>
     <data>
         <display>
         <title>Latex/MathJax公式的一些语法</title>
@@ -279,9 +279,9 @@
         <title>在服务器集群上搭建BigDL环境</title>
         <pubTime>2017-04-17T14:42:38.000Z</pubTime>
         
-        <tag>Deep Learning</tag>
-         
         <tag>大数据</tag>
+         
+        <tag>Deep Learning</tag>
          
         <tag>深度学习</tag>
          
@@ -1146,11 +1146,11 @@
         <title>【模拟登录】(二) 加密与重放方式登录 -以模拟登录博客园为例</title>
         <pubTime>2016-04-14T07:37:53.000Z</pubTime>
         
+        <tag>Web</tag>
+         
         <tag>Python</tag>
          
         <tag>数据分析</tag>
-         
-        <tag>Web</tag>
          
          
            
@@ -1442,9 +1442,9 @@
         <title>怎样写出优秀的研究论文？</title>
         <pubTime>2016-05-10T07:44:54.000Z</pubTime>
         
-        <tag>译文</tag>
-         
         <tag>CS</tag>
+         
+        <tag>译文</tag>
          
          
            
