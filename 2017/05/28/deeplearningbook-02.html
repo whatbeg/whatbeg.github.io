@@ -33,7 +33,7 @@
 分三部分摘要如下，
 线性代数Scalar, Vectors, Matrices, Tensors的概念Scalar: 标量，可以看成一个数Vector: 向量，可以看成一个一维数组Matrix: 矩阵，可以看成二维数组Tensor: 张量，三维或三维以上的数组的统称，维度不定
 很多时候我们">
-<meta property="og:updated_time" content="2017-05-29T02:59:16.824Z">
+<meta property="og:updated_time" content="2017-08-12T12:23:27.808Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Deep Learning读书笔记（2）【深度学习的数学基础摘要】(未竟稿)">
 <meta name="twitter:description" content="深度学习需要的数学基础同机器学习所需的数学基础类似，包括三大块：
@@ -153,8 +153,23 @@
 <li>离散随机变量的概率分布称为概率质量函数(PMF, Probablity Mass Function)</li>
 <li>连续随机变量的概率分布称为概率密度函数(PDF, Probablity Density Function)</li>
 </ul>
-<h3 id="边缘概率"><a href="#边缘概率" class="headerlink" title="边缘概率"></a>边缘概率</h3><p>原来变量集合的一个子集上的概率分布。</p>
-<h3 id="条件概率及其链式法则"><a href="#条件概率及其链式法则" class="headerlink" title="条件概率及其链式法则"></a>条件概率及其链式法则</h3><h3 id="独立和条件独立"><a href="#独立和条件独立" class="headerlink" title="独立和条件独立"></a>独立和条件独立</h3><h3 id="期望，方差与协方差"><a href="#期望，方差与协方差" class="headerlink" title="期望，方差与协方差"></a>期望，方差与协方差</h3><h3 id="常用概率分布"><a href="#常用概率分布" class="headerlink" title="常用概率分布"></a>常用概率分布</h3><ul>
+<h3 id="边缘概率"><a href="#边缘概率" class="headerlink" title="边缘概率"></a>边缘概率</h3><p>原来变量集合的一个子集上的概率分布。<br>假设有离散型随机变量X,Y，在知道P(X,Y)的情况下，计算边缘分布如下：<br>$$<br>\forall x \in X, P(X=x) = \sum_y {P(X=x, Y=y)}<br>$$<br>连续的话就是求积分的方式：<br>$$<br>p(x)=\int p(x,y)dy<br>$$</p>
+<h3 id="条件概率及其链式法则"><a href="#条件概率及其链式法则" class="headerlink" title="条件概率及其链式法则"></a>条件概率及其链式法则</h3><p>条件概率：<br>给定某个事件发生时，事件A发生的概率称为条件概率。<br>$$<br>P(Y=y | X=x) = \frac {P(Y=y,X=x)} {P(X=x)}  \ \ \ \ \ \ \ \ \ \ (P(X=x) &gt; 0)<br>$$</p>
+<p>条件概率的链式法则：<br>多维随机变量联合概率分布分解成单变量条件概率相乘：<br>$$<br>P(x^{(1)}, x^{(2)}, …, x^{(n)}) = P(x^{(1)})\prod_{i=2}^n P(x^{(i)} | x^{(1)}, x^{(2)}, …, x^{(i-1)})<br>$$<br>这个式子比较重要，典型的应用出现在NLP中句子的n-gram模型。</p>
+<h3 id="独立和条件独立"><a href="#独立和条件独立" class="headerlink" title="独立和条件独立"></a>独立和条件独立</h3><p>独立意味着联合概率等于各个变量的边缘概率的乘积。<br>$$<br>\forall x \in X, y \in Y, p(X=x, Y=y)=P(X=x)P(Y=y)<br>$$<br>两个随机变量在给定随机变量z是<strong>条件独立</strong>的，是指<br>$$<br>\forall x \in X, y \in Y, z \in Z, p(X=x, Y=y | Z=z)=P(X=x | Z=z)P(Y=y | Z=z)<br>$$</p>
+<h3 id="期望，方差与协方差"><a href="#期望，方差与协方差" class="headerlink" title="期望，方差与协方差"></a>期望，方差与协方差</h3><p>这几个概念是深度学习乃至机器学习中非常常用的概念，需要重点掌握。</p>
+<p>随机变量X的期望值，直觉的来说，是指<code>X的可能值与其概率值之积的累加和</code>。<br>数学上来说，函数f(x)关于某分布P(x)的期望，指的是x由分布P产生时，f(x)的平均值。<br>对于离散型随机变量，<br>$$<br>\mathbb{E}[f(x)] = \sum_x P(x)f(x)<br>$$</p>
+<p>对于连续性随机变量则求积分得到：<br>$$<br>\mathbb{E}[f(x)] = \int p(x)f(x)dx<br>$$<br>当然这里有一个前提，就是当随机变量X取无穷个值的时候，离散型变量的期望满足<br>$$E(X)=\sum_{x}|f(x)|P(x) &lt; \infty$$<br>积分也是类似。<br>只有满足这个条件，即级数收敛的条件，我们才说此随机变量的期望E存在。</p>
+<p>一般来说，数学期望其实是由随机变量的分布决定的，所以我们一般可以说某某分布的期望。</p>
+<p>期望E满足几个性质：</p>
+<blockquote>
+<p>若干个随机变量的期望之和等于各变量的期望之和<br>若干个独立随机变量之积的期望等于各变量的期望之积</p>
+</blockquote>
+<p>方差衡量随机变量偏离均值的程度，即随机变量函数值呈现的差异大小。<br>$$<br>Var(X) = \mathbb{E}[(X-\mathbb{E}[X])^2]<br>$$<br>当方差很小时，X的值形成的簇比较接近他们的期望值。</p>
+<p>协方差给出的是两个变量线性相关性的一个度量。<br>$$<br>Cov(X,Y) = \mathbb{E}[(X-EX)(Y-EY)]<br>$$</p>
+<p>协方差的绝对值 $|Cov(X,Y)|$ 如果很大，说明变量值变化很大，并且他们同时距离各自的均值很远。<br>如果协方差是正的，那么两个变量都倾向于同时取得较大的值。<br>如果协方差是负的，那么两个变量倾向于在某一个取大值的时候，另一个取小值。</p>
+<p>随机向量${\bf{x}} \in \mathbb{R}^n$的协方差矩阵是一个$\mathbb{R}^{n \times n}$，并且满足<br>$$<br>Cov({\bf{x}})_{i,j} = Cov(x_i, x_j)<br>$$<br>协方差矩阵对角元是方差$Var(x_i)=Cov(x_i,x_i)$</p>
+<h3 id="常用概率分布"><a href="#常用概率分布" class="headerlink" title="常用概率分布"></a>常用概率分布</h3><ul>
 <li>贝努利分布</li>
 <li>多贝努利分布/多类分布</li>
 <li>高斯分布</li>
@@ -575,7 +590,7 @@
 		<a href="/about" target="_blank" title="whatbeg">whatbeg</a>
 		
 		<br>
-		<span class="post-count">Total words: <span style="color:orange">244.4k</span></span>
+		<span class="post-count">Total words: <span style="color:orange">245.3k</span></span>
         <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
         <span id="busuanzi_container_site_pv">
         &nbsp;&nbsp;Total visits:&nbsp;<span style="color:orange" id="busuanzi_value_site_pv"></span>

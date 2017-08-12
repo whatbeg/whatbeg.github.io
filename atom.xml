@@ -677,7 +677,7 @@ table th:first-of-type {
     <link href="http://whatbeg.com/2017/05/28/deeplearningbook-02.html"/>
     <id>http://whatbeg.com/2017/05/28/deeplearningbook-02.html</id>
     <published>2017-05-28T03:12:46.000Z</published>
-    <updated>2017-05-29T02:59:16.824Z</updated>
+    <updated>2017-08-12T12:23:27.808Z</updated>
     
     <content type="html">&lt;p&gt;深度学习需要的数学基础同机器学习所需的数学基础类似，包括三大块：&lt;/p&gt;
 &lt;ul&gt;
@@ -716,8 +716,23 @@ table th:first-of-type {
 &lt;li&gt;离散随机变量的概率分布称为概率质量函数(PMF, Probablity Mass Function)&lt;/li&gt;
 &lt;li&gt;连续随机变量的概率分布称为概率密度函数(PDF, Probablity Density Function)&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&quot;边缘概率&quot;&gt;&lt;a href=&quot;#边缘概率&quot; class=&quot;headerlink&quot; title=&quot;边缘概率&quot;&gt;&lt;/a&gt;边缘概率&lt;/h3&gt;&lt;p&gt;原来变量集合的一个子集上的概率分布。&lt;/p&gt;
-&lt;h3 id=&quot;条件概率及其链式法则&quot;&gt;&lt;a href=&quot;#条件概率及其链式法则&quot; class=&quot;headerlink&quot; title=&quot;条件概率及其链式法则&quot;&gt;&lt;/a&gt;条件概率及其链式法则&lt;/h3&gt;&lt;h3 id=&quot;独立和条件独立&quot;&gt;&lt;a href=&quot;#独立和条件独立&quot; class=&quot;headerlink&quot; title=&quot;独立和条件独立&quot;&gt;&lt;/a&gt;独立和条件独立&lt;/h3&gt;&lt;h3 id=&quot;期望，方差与协方差&quot;&gt;&lt;a href=&quot;#期望，方差与协方差&quot; class=&quot;headerlink&quot; title=&quot;期望，方差与协方差&quot;&gt;&lt;/a&gt;期望，方差与协方差&lt;/h3&gt;&lt;h3 id=&quot;常用概率分布&quot;&gt;&lt;a href=&quot;#常用概率分布&quot; class=&quot;headerlink&quot; title=&quot;常用概率分布&quot;&gt;&lt;/a&gt;常用概率分布&lt;/h3&gt;&lt;ul&gt;
+&lt;h3 id=&quot;边缘概率&quot;&gt;&lt;a href=&quot;#边缘概率&quot; class=&quot;headerlink&quot; title=&quot;边缘概率&quot;&gt;&lt;/a&gt;边缘概率&lt;/h3&gt;&lt;p&gt;原来变量集合的一个子集上的概率分布。&lt;br&gt;假设有离散型随机变量X,Y，在知道P(X,Y)的情况下，计算边缘分布如下：&lt;br&gt;$$&lt;br&gt;\forall x \in X, P(X=x) = \sum_y {P(X=x, Y=y)}&lt;br&gt;$$&lt;br&gt;连续的话就是求积分的方式：&lt;br&gt;$$&lt;br&gt;p(x)=\int p(x,y)dy&lt;br&gt;$$&lt;/p&gt;
+&lt;h3 id=&quot;条件概率及其链式法则&quot;&gt;&lt;a href=&quot;#条件概率及其链式法则&quot; class=&quot;headerlink&quot; title=&quot;条件概率及其链式法则&quot;&gt;&lt;/a&gt;条件概率及其链式法则&lt;/h3&gt;&lt;p&gt;条件概率：&lt;br&gt;给定某个事件发生时，事件A发生的概率称为条件概率。&lt;br&gt;$$&lt;br&gt;P(Y=y | X=x) = \frac {P(Y=y,X=x)} {P(X=x)}  \ \ \ \ \ \ \ \ \ \ (P(X=x) &amp;gt; 0)&lt;br&gt;$$&lt;/p&gt;
+&lt;p&gt;条件概率的链式法则：&lt;br&gt;多维随机变量联合概率分布分解成单变量条件概率相乘：&lt;br&gt;$$&lt;br&gt;P(x^{(1)}, x^{(2)}, …, x^{(n)}) = P(x^{(1)})\prod_{i=2}^n P(x^{(i)} | x^{(1)}, x^{(2)}, …, x^{(i-1)})&lt;br&gt;$$&lt;br&gt;这个式子比较重要，典型的应用出现在NLP中句子的n-gram模型。&lt;/p&gt;
+&lt;h3 id=&quot;独立和条件独立&quot;&gt;&lt;a href=&quot;#独立和条件独立&quot; class=&quot;headerlink&quot; title=&quot;独立和条件独立&quot;&gt;&lt;/a&gt;独立和条件独立&lt;/h3&gt;&lt;p&gt;独立意味着联合概率等于各个变量的边缘概率的乘积。&lt;br&gt;$$&lt;br&gt;\forall x \in X, y \in Y, p(X=x, Y=y)=P(X=x)P(Y=y)&lt;br&gt;$$&lt;br&gt;两个随机变量在给定随机变量z是&lt;strong&gt;条件独立&lt;/strong&gt;的，是指&lt;br&gt;$$&lt;br&gt;\forall x \in X, y \in Y, z \in Z, p(X=x, Y=y | Z=z)=P(X=x | Z=z)P(Y=y | Z=z)&lt;br&gt;$$&lt;/p&gt;
+&lt;h3 id=&quot;期望，方差与协方差&quot;&gt;&lt;a href=&quot;#期望，方差与协方差&quot; class=&quot;headerlink&quot; title=&quot;期望，方差与协方差&quot;&gt;&lt;/a&gt;期望，方差与协方差&lt;/h3&gt;&lt;p&gt;这几个概念是深度学习乃至机器学习中非常常用的概念，需要重点掌握。&lt;/p&gt;
+&lt;p&gt;随机变量X的期望值，直觉的来说，是指&lt;code&gt;X的可能值与其概率值之积的累加和&lt;/code&gt;。&lt;br&gt;数学上来说，函数f(x)关于某分布P(x)的期望，指的是x由分布P产生时，f(x)的平均值。&lt;br&gt;对于离散型随机变量，&lt;br&gt;$$&lt;br&gt;\mathbb{E}[f(x)] = \sum_x P(x)f(x)&lt;br&gt;$$&lt;/p&gt;
+&lt;p&gt;对于连续性随机变量则求积分得到：&lt;br&gt;$$&lt;br&gt;\mathbb{E}[f(x)] = \int p(x)f(x)dx&lt;br&gt;$$&lt;br&gt;当然这里有一个前提，就是当随机变量X取无穷个值的时候，离散型变量的期望满足&lt;br&gt;$$E(X)=\sum_{x}|f(x)|P(x) &amp;lt; \infty$$&lt;br&gt;积分也是类似。&lt;br&gt;只有满足这个条件，即级数收敛的条件，我们才说此随机变量的期望E存在。&lt;/p&gt;
+&lt;p&gt;一般来说，数学期望其实是由随机变量的分布决定的，所以我们一般可以说某某分布的期望。&lt;/p&gt;
+&lt;p&gt;期望E满足几个性质：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;若干个随机变量的期望之和等于各变量的期望之和&lt;br&gt;若干个独立随机变量之积的期望等于各变量的期望之积&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;方差衡量随机变量偏离均值的程度，即随机变量函数值呈现的差异大小。&lt;br&gt;$$&lt;br&gt;Var(X) = \mathbb{E}[(X-\mathbb{E}[X])^2]&lt;br&gt;$$&lt;br&gt;当方差很小时，X的值形成的簇比较接近他们的期望值。&lt;/p&gt;
+&lt;p&gt;协方差给出的是两个变量线性相关性的一个度量。&lt;br&gt;$$&lt;br&gt;Cov(X,Y) = \mathbb{E}[(X-EX)(Y-EY)]&lt;br&gt;$$&lt;/p&gt;
+&lt;p&gt;协方差的绝对值 $|Cov(X,Y)|$ 如果很大，说明变量值变化很大，并且他们同时距离各自的均值很远。&lt;br&gt;如果协方差是正的，那么两个变量都倾向于同时取得较大的值。&lt;br&gt;如果协方差是负的，那么两个变量倾向于在某一个取大值的时候，另一个取小值。&lt;/p&gt;
+&lt;p&gt;随机向量${\bf{x}} \in \mathbb{R}^n$的协方差矩阵是一个$\mathbb{R}^{n \times n}$，并且满足&lt;br&gt;$$&lt;br&gt;Cov({\bf{x}})_{i,j} = Cov(x_i, x_j)&lt;br&gt;$$&lt;br&gt;协方差矩阵对角元是方差$Var(x_i)=Cov(x_i,x_i)$&lt;/p&gt;
+&lt;h3 id=&quot;常用概率分布&quot;&gt;&lt;a href=&quot;#常用概率分布&quot; class=&quot;headerlink&quot; title=&quot;常用概率分布&quot;&gt;&lt;/a&gt;常用概率分布&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;贝努利分布&lt;/li&gt;
 &lt;li&gt;多贝努利分布/多类分布&lt;/li&gt;
 &lt;li&gt;高斯分布&lt;/li&gt;
@@ -812,9 +827,9 @@ table th:first-of-type {
       <category term="大数据系统与技术 | Big Data" scheme="http://whatbeg.com/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE%E7%B3%BB%E7%BB%9F%E4%B8%8E%E6%8A%80%E6%9C%AF-Big-Data/"/>
     
     
-      <category term="Spark" scheme="http://whatbeg.com/tags/Spark/"/>
-    
       <category term="大数据" scheme="http://whatbeg.com/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
+    
+      <category term="Spark" scheme="http://whatbeg.com/tags/Spark/"/>
     
   </entry>
   
@@ -884,11 +899,11 @@ table th:first-of-type {
       <category term="大数据系统与技术 | Big Data" scheme="http://whatbeg.com/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE%E7%B3%BB%E7%BB%9F%E4%B8%8E%E6%8A%80%E6%9C%AF-Big-Data/"/>
     
     
+      <category term="大数据" scheme="http://whatbeg.com/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
+    
       <category term="Deep Learning" scheme="http://whatbeg.com/tags/Deep-Learning/"/>
     
       <category term="深度学习" scheme="http://whatbeg.com/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
-    
-      <category term="大数据" scheme="http://whatbeg.com/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
     
   </entry>
   
@@ -1384,9 +1399,9 @@ table th:first-of-type {
       <category term="深度学习 | Deep Learning" scheme="http://whatbeg.com/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0-Deep-Learning/"/>
     
     
-      <category term="深度学习" scheme="http://whatbeg.com/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
-    
       <category term="机器学习" scheme="http://whatbeg.com/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="深度学习" scheme="http://whatbeg.com/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
     
   </entry>
   
@@ -1588,9 +1603,9 @@ table th:first-of-type {
       <category term="大数据系统与技术 | Big Data" scheme="http://whatbeg.com/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE%E7%B3%BB%E7%BB%9F%E4%B8%8E%E6%8A%80%E6%9C%AF-Big-Data/"/>
     
     
-      <category term="深度学习" scheme="http://whatbeg.com/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
-    
       <category term="大数据" scheme="http://whatbeg.com/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
+    
+      <category term="深度学习" scheme="http://whatbeg.com/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
     
       <category term="TensorFlow" scheme="http://whatbeg.com/tags/TensorFlow/"/>
     

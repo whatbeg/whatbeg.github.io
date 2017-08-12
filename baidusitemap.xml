@@ -3,6 +3,50 @@
 
 
     
+  <url>
+    <loc>http://whatbeg.com/2017/05/28/deeplearningbook-02.html</loc>
+    <lastmod>2017-08-12T12:23:27.808Z</lastmod>
+    <data>
+        <display>
+        <title>Deep Learning读书笔记（2）【深度学习的数学基础摘要】(未竟稿)</title>
+        <pubTime>2017-05-28T03:12:46.000Z</pubTime>
+        
+        <tag>Deep Learning</tag>
+         
+        <tag>深度学习</tag>
+         
+         
+           
+             
+              <breadCrumb title="深度学习 | Deep Learning" url="http://whatbeg.com/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0-Deep-Learning/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://whatbeg.com/2016/04/25/latexsyntax.html</loc>
+    <lastmod>2017-08-12T12:23:24.715Z</lastmod>
+    <data>
+        <display>
+        <title>Latex/MathJax公式的一些语法</title>
+        <pubTime>2016-04-25T04:53:28.000Z</pubTime>
+        
+        <tag>CS</tag>
+         
+        <tag>Latex</tag>
+         
+         
+           
+             
+              <breadCrumb title="计算机相关 | CS.Related" url="http://whatbeg.com/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9B%B8%E5%85%B3-CS-Related/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
     
   <url>
     <loc>http://whatbeg.com/2017/08/01/threekingdomlist.html</loc>
@@ -18,28 +62,6 @@
            
              
               <breadCrumb title="读书 | Reading" url="http://whatbeg.com/categories/%E8%AF%BB%E4%B9%A6-Reading/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://whatbeg.com/2016/04/25/latexsyntax.html</loc>
-    <lastmod>2017-07-30T05:56:15.050Z</lastmod>
-    <data>
-        <display>
-        <title>Latex/MathJax公式的一些语法</title>
-        <pubTime>2016-04-25T04:53:28.000Z</pubTime>
-        
-        <tag>CS</tag>
-         
-        <tag>Latex</tag>
-         
-         
-           
-             
-              <breadCrumb title="计算机相关 | CS.Related" url="http://whatbeg.com/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9B%B8%E5%85%B3-CS-Related/"/>
           
         </display>
     </data>
@@ -74,9 +96,9 @@
         <title>Spark一些问题集锦【持续更新】</title>
         <pubTime>2017-05-28T02:04:35.000Z</pubTime>
         
-        <tag>Spark</tag>
-         
         <tag>大数据</tag>
+         
+        <tag>Spark</tag>
          
          
            
@@ -271,28 +293,6 @@
 
     
   <url>
-    <loc>http://whatbeg.com/2017/05/28/deeplearningbook-02.html</loc>
-    <lastmod>2017-05-29T02:59:16.824Z</lastmod>
-    <data>
-        <display>
-        <title>Deep Learning读书笔记（2）【深度学习的数学基础摘要】(未竟稿)</title>
-        <pubTime>2017-05-28T03:12:46.000Z</pubTime>
-        
-        <tag>Deep Learning</tag>
-         
-        <tag>深度学习</tag>
-         
-         
-           
-             
-              <breadCrumb title="深度学习 | Deep Learning" url="http://whatbeg.com/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0-Deep-Learning/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://whatbeg.com/2017/04/17/bigdlclusterbuild.html</loc>
     <lastmod>2017-04-17T14:50:07.562Z</lastmod>
     <data>
@@ -300,11 +300,11 @@
         <title>在服务器集群上搭建BigDL环境</title>
         <pubTime>2017-04-17T14:42:38.000Z</pubTime>
         
+        <tag>大数据</tag>
+         
         <tag>Deep Learning</tag>
          
         <tag>深度学习</tag>
-         
-        <tag>大数据</tag>
          
          
            
@@ -386,9 +386,9 @@
         <title>Deep Learning读书笔记系列 写作计划</title>
         <pubTime>2017-02-27T14:48:25.000Z</pubTime>
         
-        <tag>深度学习</tag>
-         
         <tag>机器学习</tag>
+         
+        <tag>深度学习</tag>
          
          
            
@@ -530,9 +530,9 @@
         <title>TensorFlow白皮书阅读笔记</title>
         <pubTime>2017-01-11T06:48:19.000Z</pubTime>
         
-        <tag>深度学习</tag>
-         
         <tag>大数据</tag>
+         
+        <tag>深度学习</tag>
          
         <tag>TensorFlow</tag>
          
@@ -1276,9 +1276,9 @@
         <title>快速学会Git基本操作</title>
         <pubTime>2016-04-07T15:35:15.000Z</pubTime>
         
-        <tag>CS</tag>
-         
         <tag>Git</tag>
+         
+        <tag>CS</tag>
          
          
            
