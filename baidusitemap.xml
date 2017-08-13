@@ -5,7 +5,7 @@
     
   <url>
     <loc>http://whatbeg.com/2017/05/28/deeplearningbook-02.html</loc>
-    <lastmod>2017-08-12T12:23:27.808Z</lastmod>
+    <lastmod>2017-08-13T02:40:33.200Z</lastmod>
     <data>
         <display>
         <title>Deep Learning读书笔记（2）【深度学习的数学基础摘要】(未竟稿)</title>
@@ -300,9 +300,9 @@
         <title>在服务器集群上搭建BigDL环境</title>
         <pubTime>2017-04-17T14:42:38.000Z</pubTime>
         
-        <tag>大数据</tag>
-         
         <tag>Deep Learning</tag>
+         
+        <tag>大数据</tag>
          
         <tag>深度学习</tag>
          
@@ -1276,9 +1276,9 @@
         <title>快速学会Git基本操作</title>
         <pubTime>2016-04-07T15:35:15.000Z</pubTime>
         
-        <tag>Git</tag>
-         
         <tag>CS</tag>
+         
+        <tag>Git</tag>
          
          
            

@@ -677,7 +677,7 @@ table th:first-of-type {
     <link href="http://whatbeg.com/2017/05/28/deeplearningbook-02.html"/>
     <id>http://whatbeg.com/2017/05/28/deeplearningbook-02.html</id>
     <published>2017-05-28T03:12:46.000Z</published>
-    <updated>2017-08-12T12:23:27.808Z</updated>
+    <updated>2017-08-13T02:40:33.200Z</updated>
     
     <content type="html">&lt;p&gt;深度学习需要的数学基础同机器学习所需的数学基础类似，包括三大块：&lt;/p&gt;
 &lt;ul&gt;
@@ -736,14 +736,48 @@ table th:first-of-type {
 &lt;li&gt;贝努利分布&lt;/li&gt;
 &lt;li&gt;多贝努利分布/多类分布&lt;/li&gt;
 &lt;li&gt;高斯分布&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;高斯分布&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://image-whatbegblog.oss-cn-shanghai.aliyuncs.com/images/dlbook_02_gauss.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;多元高斯分布&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://image-whatbegblog.oss-cn-shanghai.aliyuncs.com/images/dlbook_02_multi_gauss.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;ul&gt;
 &lt;li&gt;指数分布&lt;/li&gt;
 &lt;li&gt;拉普拉斯分布&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&quot;http://image-whatbegblog.oss-cn-shanghai.aliyuncs.com/images/dlbook_02_laplace.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;ul&gt;
 &lt;li&gt;狄拉克分布(Dirac)与经验分布&lt;/li&gt;
 &lt;li&gt;混合分布&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&quot;一些有用的性质和通用函数&quot;&gt;&lt;a href=&quot;#一些有用的性质和通用函数&quot; class=&quot;headerlink&quot; title=&quot;一些有用的性质和通用函数&quot;&gt;&lt;/a&gt;一些有用的性质和通用函数&lt;/h3&gt;&lt;h3 id=&quot;贝叶斯规则&quot;&gt;&lt;a href=&quot;#贝叶斯规则&quot; class=&quot;headerlink&quot; title=&quot;贝叶斯规则&quot;&gt;&lt;/a&gt;贝叶斯规则&lt;/h3&gt;&lt;h3 id=&quot;连续变量的一些技术细节&quot;&gt;&lt;a href=&quot;#连续变量的一些技术细节&quot; class=&quot;headerlink&quot; title=&quot;连续变量的一些技术细节&quot;&gt;&lt;/a&gt;连续变量的一些技术细节&lt;/h3&gt;&lt;h2 id=&quot;信息论&quot;&gt;&lt;a href=&quot;#信息论&quot; class=&quot;headerlink&quot; title=&quot;信息论&quot;&gt;&lt;/a&gt;信息论&lt;/h2&gt;&lt;h2 id=&quot;结构化概率模型&quot;&gt;&lt;a href=&quot;#结构化概率模型&quot; class=&quot;headerlink&quot; title=&quot;结构化概率模型&quot;&gt;&lt;/a&gt;结构化概率模型&lt;/h2&gt;&lt;h2 id=&quot;References&quot;&gt;&lt;a href=&quot;#References&quot; class=&quot;headerlink&quot; title=&quot;References&quot;&gt;&lt;/a&gt;References&lt;/h2&gt;&lt;ul&gt;
+&lt;h3 id=&quot;一些有用的性质和通用函数&quot;&gt;&lt;a href=&quot;#一些有用的性质和通用函数&quot; class=&quot;headerlink&quot; title=&quot;一些有用的性质和通用函数&quot;&gt;&lt;/a&gt;一些有用的性质和通用函数&lt;/h3&gt;&lt;p&gt;深度模型常用两个函数：&lt;/p&gt;
+&lt;p&gt;Sigmoid函数：&lt;br&gt;&lt;img src=&quot;http://image-whatbegblog.oss-cn-shanghai.aliyuncs.com/images/dlbook_02_sigmoid.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;图像如下：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://image-whatbegblog.oss-cn-shanghai.aliyuncs.com/images/dlbook_02_sigmoid_graph.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;Softplus函数：&lt;br&gt;&lt;img src=&quot;http://image-whatbegblog.oss-cn-shanghai.aliyuncs.com/images/dlbook_02_softplus.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;图像如下：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://image-whatbegblog.oss-cn-shanghai.aliyuncs.com/images/dlbook_02_softplus_graph.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;关于这两个函数需要记住的一些性质：&lt;/p&gt;
+&lt;center&gt; &lt;img src=&quot;http://image-whatbegblog.oss-cn-shanghai.aliyuncs.com/images/dlbook_02_remember01.png&quot; alt=&quot;&quot;&gt; &lt;/center&gt;
+
+&lt;center&gt; &lt;img src=&quot;http://image-whatbegblog.oss-cn-shanghai.aliyuncs.com/images/dlbook_02_remember02.png&quot; alt=&quot;&quot;&gt; &lt;/center&gt;
+
+&lt;h3 id=&quot;贝叶斯规则&quot;&gt;&lt;a href=&quot;#贝叶斯规则&quot; class=&quot;headerlink&quot; title=&quot;贝叶斯规则&quot;&gt;&lt;/a&gt;贝叶斯规则&lt;/h3&gt;&lt;p&gt;贝叶斯规则&lt;br&gt;也称为贝叶斯后验概率。&lt;br&gt;当我们知道$P(x)$和$P(y | x)$的信息的时候，我们如何知道$P(x | y)$呢？&lt;br&gt;比如说，我们知道糖尿病人发病率$P(x)$和糖尿病人以前喜欢吃甜食的概率$P(y|x)$，那么如何估算喜欢吃甜食的人将来患糖尿病的概率呢？&lt;br&gt;Reverend Thomas Bayes发明了贝叶斯公式，现在一般写成：&lt;br&gt;$$&lt;br&gt;P(x | y) = \frac {P(x)P(y | x)} {P(y)}&lt;br&gt;$$&lt;br&gt;$P(y)$如果不知道的话，可以以$P(y)=\sum_x P(y|x)P(x)$计算。&lt;/p&gt;
+&lt;h2 id=&quot;信息论&quot;&gt;&lt;a href=&quot;#信息论&quot; class=&quot;headerlink&quot; title=&quot;信息论&quot;&gt;&lt;/a&gt;信息论&lt;/h2&gt;&lt;p&gt;信息论是应用数学的一个分支，主要研究对一个信号能够提供信息的多少。&lt;/p&gt;
+&lt;p&gt;信息论的基本思想是，一个不太可能的事件发生比非常可能的事件发生，能提供更多的信息。&lt;/p&gt;
+&lt;p&gt;量化信息的三个性质：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;非常可能的事件信息量比较少，更不可能发生的事件具有更高的信息量&lt;/li&gt;
+&lt;li&gt;独立事件应具有增量的信息。比如投两次硬币正面向上的信息，应该是投掷一次正面朝上的信息量的2倍。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;香农熵用来对整个概率分布中的不确定性总量进行量化。&lt;br&gt;$$&lt;br&gt;H(x) = \mathbb{E}_{x - P}[I(x)] = -\mathbb{E}_{x - P}[\log P(x)]&lt;br&gt;$$&lt;/p&gt;
+&lt;p&gt;KL散度&lt;/p&gt;
+&lt;p&gt;如果我们对于同一随机变量$\mathbb{x}$有两个单独的概率分布$P(x)$和$Q(x)$，我们使用KL散度(Kullback-Leibler divergence)来衡量分布的差异。&lt;br&gt;$$&lt;br&gt;D_{KL}(P||Q) = \mathbb{E}_{x - P}[\log {\frac {P(x)} {Q(x)}}] = \mathbb{E}_{x - P}[\log P(x) - \log Q(x)]&lt;br&gt;$$&lt;/p&gt;
+&lt;p&gt;KL散度非负。在离散型变量情况下，KL散度为0当且仅当P,Q为相同分布。在连续型变量情况下，KL散度为0当且仅当P,Q“几乎处处相同”。&lt;br&gt;但KL散度不是真的距离因为它不是对称的，对于某两个分布P,Q，$D_{KL}(P||Q) \neq D_{KL}(Q||P)$。&lt;/p&gt;
+&lt;p&gt;交叉熵$H(P,Q) = H(P) + D_{KL}(P||Q)$，也可以描述两个分布的差异。&lt;br&gt;$$&lt;br&gt;H(P,Q) = -\mathbb{E}_{x - P} {\log Q(x)}&lt;br&gt;$$&lt;/p&gt;
+&lt;h2 id=&quot;References&quot;&gt;&lt;a href=&quot;#References&quot; class=&quot;headerlink&quot; title=&quot;References&quot;&gt;&lt;/a&gt;References&lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;http://ogbh7uglm.bkt.clouddn.com/MatrixCookBook.pdf&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Matrix Cook Book&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;&quot;&gt;Deep Learning book&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </content>
     
@@ -899,9 +933,9 @@ table th:first-of-type {
       <category term="大数据系统与技术 | Big Data" scheme="http://whatbeg.com/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE%E7%B3%BB%E7%BB%9F%E4%B8%8E%E6%8A%80%E6%9C%AF-Big-Data/"/>
     
     
-      <category term="大数据" scheme="http://whatbeg.com/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
-    
       <category term="Deep Learning" scheme="http://whatbeg.com/tags/Deep-Learning/"/>
+    
+      <category term="大数据" scheme="http://whatbeg.com/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
     
       <category term="深度学习" scheme="http://whatbeg.com/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
     
