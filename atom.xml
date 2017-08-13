@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://whatbeg.com/"/>
-  <updated>2017-08-01T07:20:55.724Z</updated>
+  <updated>2017-08-13T02:50:08.704Z</updated>
   <id>http://whatbeg.com/</id>
   
   <author>
@@ -14,6 +14,138 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Deep Learning读书笔记（2）【深度学习的数学基础摘要】</title>
+    <link href="http://whatbeg.com/2017/08/13/deeplearningbook-02.html"/>
+    <id>http://whatbeg.com/2017/08/13/deeplearningbook-02.html</id>
+    <published>2017-08-13T02:49:46.000Z</published>
+    <updated>2017-08-13T02:50:08.704Z</updated>
+    
+    <content type="html">&lt;p&gt;深度学习需要的数学基础同机器学习所需的数学基础类似，包括三大块：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;线性代数&lt;/li&gt;
+&lt;li&gt;概率论与数理统计&lt;/li&gt;
+&lt;li&gt;信息论基础&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;分三部分摘要如下，&lt;/p&gt;
+&lt;h2 id=&quot;线性代数&quot;&gt;&lt;a href=&quot;#线性代数&quot; class=&quot;headerlink&quot; title=&quot;线性代数&quot;&gt;&lt;/a&gt;线性代数&lt;/h2&gt;&lt;h3 id=&quot;Scalar-Vectors-Matrices-Tensors的概念&quot;&gt;&lt;a href=&quot;#Scalar-Vectors-Matrices-Tensors的概念&quot; class=&quot;headerlink&quot; title=&quot;Scalar, Vectors, Matrices, Tensors的概念&quot;&gt;&lt;/a&gt;Scalar, Vectors, Matrices, Tensors的概念&lt;/h3&gt;&lt;p&gt;Scalar: 标量，可以看成一个数&lt;br&gt;Vector: 向量，可以看成一个一维数组&lt;br&gt;Matrix: 矩阵，可以看成二维数组&lt;br&gt;Tensor: 张量，三维或三维以上的数组的统称，维度不定&lt;/p&gt;
+&lt;p&gt;很多时候我们处理的都是超过2维的数组，这时候叫矩阵(Matrix)又不太合适，因为一般提到矩阵都会想到二维的矩阵，所以采用Tensor来统一表示不定维的数组。这也是几乎所有深度学习框架的基本数据结构。”Tensorflow”名字中就包含了”Tensor”，于是向量可以称为1-D Tensor，一维张量，矩阵可以称为二维张量。&lt;/p&gt;
+&lt;p&gt;这样，深度学习中包括数据，梯度，权重等等都可以用某维度的Tensor来表示了，底层数据结构的统一为上层编程带来了极大的方便。&lt;/p&gt;
+&lt;h3 id=&quot;矩阵的基本操作&quot;&gt;&lt;a href=&quot;#矩阵的基本操作&quot; class=&quot;headerlink&quot; title=&quot;矩阵的基本操作&quot;&gt;&lt;/a&gt;矩阵的基本操作&lt;/h3&gt;&lt;p&gt;矩阵转置，相乘，矩阵与向量相乘&lt;br&gt;单位矩阵与逆矩阵&lt;br&gt;线性相关性&lt;br&gt;展开(Span)，一个向量集的展开定义为向量集中通过向量的线性组合能够得到的点&lt;/p&gt;
+&lt;h3 id=&quot;奇异-Singular-矩阵和非奇异矩阵&quot;&gt;&lt;a href=&quot;#奇异-Singular-矩阵和非奇异矩阵&quot; class=&quot;headerlink&quot; title=&quot;奇异(Singular)矩阵和非奇异矩阵&quot;&gt;&lt;/a&gt;奇异(Singular)矩阵和非奇异矩阵&lt;/h3&gt;&lt;p&gt;奇异矩阵：存在线性相关的列的方阵或者行列式为0的方阵称为奇异矩阵&lt;br&gt;奇异矩阵不可逆&lt;br&gt;若n阶方阵A的行列式不为零，即$|A|≠0$，则称A为非奇异矩阵或满秩矩阵，存在逆矩阵&lt;/p&gt;
+&lt;p&gt;要注意的是，即使A不是方阵或者A是方阵但是奇异，也是有可能解方程$Ax=b$的，只是不能通过求逆矩阵$A^{-1}$从而$x=A^{-1}b$来解而已。&lt;br&gt;线性方程组$Ax=b$有解的充分必要条件是: 增广矩阵的秩等于系数矩阵的秩，即$r(A,b) = r(A)$&lt;/p&gt;
+&lt;h3 id=&quot;范数-Norm&quot;&gt;&lt;a href=&quot;#范数-Norm&quot; class=&quot;headerlink&quot; title=&quot;范数(Norm)&quot;&gt;&lt;/a&gt;范数(Norm)&lt;/h3&gt;&lt;p&gt;范数的作用是度量向量的大小，将向量映射为非负实数&lt;br&gt;$L^p$范数定义为：&lt;br&gt;$$||x||_p=(\Sigma_i {|x_i|^p})^{\frac 1 p}$$&lt;/p&gt;
+&lt;p&gt;在正则化中常常用到范数，主要用到1-范数和2-范数。&lt;/p&gt;
+&lt;p&gt;$x^{\top}x=||x||_2^2$&lt;/p&gt;
+&lt;p&gt;Frobenius Norms:  $||A||_{F}=\sqrt{\Sigma_{i,j}A_{i,j}^2}$&lt;/p&gt;
+&lt;p&gt;向量点积： $x^{\top}y=||x||_2||y||_2cos\theta$&lt;/p&gt;
+&lt;h3 id=&quot;特殊矩阵&quot;&gt;&lt;a href=&quot;#特殊矩阵&quot; class=&quot;headerlink&quot; title=&quot;特殊矩阵&quot;&gt;&lt;/a&gt;特殊矩阵&lt;/h3&gt;&lt;p&gt;对角矩阵&lt;br&gt;实对称矩阵及其性质：&lt;br&gt;（1）A的特征值为实数，且其特征向量为实向量&lt;br&gt;（2）A的不同特征值对应的特征向量必定正交&lt;br&gt;（3）A一定有n个线性无关的特征向量，从而A相似于对角矩阵&lt;br&gt;正交矩阵的性质： $A^{-1}=A^{\top}$&lt;/p&gt;
+&lt;h3 id=&quot;特征值分解&quot;&gt;&lt;a href=&quot;#特征值分解&quot; class=&quot;headerlink&quot; title=&quot;特征值分解&quot;&gt;&lt;/a&gt;特征值分解&lt;/h3&gt;&lt;p&gt;特征值分解的思想类似于因式分解的思想，对于一个数，我们想要分析它的性质，可能直接看看不出什么来，但是可以把它因式分解一下，再来分析。比如180，$180 = 2 \times 2 \times 3 \times 3 \times 5=2^2 \times 3^2 \times 5^1$，这样我们可以知道，180是2,3,5的倍数，也是6的倍数，15的倍数，等等，进而分析其它性质。&lt;br&gt;矩阵分解也是如此，面对一个复杂的矩阵，我们可能毫无头绪，但是将其分解为两个或者多个矩阵的乘积，我们可能就能收获很多的性质。&lt;br&gt;特征值分解 $A=Q \Lambda Q^{\top}$，将矩阵分解为特征值和特征向量，Q是由A的特征向量组成的正交矩阵，而$\Lambda$则为特征值组成的对角矩阵，$\Lambda_{i,i}$ 对应着 $Q_{:,i}$。&lt;/p&gt;
+&lt;h3 id=&quot;奇异值分解-Singular-Value-Decomposition&quot;&gt;&lt;a href=&quot;#奇异值分解-Singular-Value-Decomposition&quot; class=&quot;headerlink&quot; title=&quot;奇异值分解(Singular Value Decomposition)&quot;&gt;&lt;/a&gt;奇异值分解(Singular Value Decomposition)&lt;/h3&gt;&lt;p&gt;$A=UDV^{-1}$，U称为左奇异向量，为$AA^{\top}$的特征向量，V称为右奇异向量，为$A^{\top}A$的特征向量。&lt;br&gt;非0奇异值是$A^{\top}A$的特征值的开根号&lt;/p&gt;
+&lt;h3 id=&quot;Moore-Penrose-Pseudoinverse&quot;&gt;&lt;a href=&quot;#Moore-Penrose-Pseudoinverse&quot; class=&quot;headerlink&quot; title=&quot;Moore-Penrose Pseudoinverse&quot;&gt;&lt;/a&gt;Moore-Penrose Pseudoinverse&lt;/h3&gt;&lt;p&gt;通常意义上的逆矩阵只有在当A为n阶方阵，并且行列式不为0时才存在，但是有时候这个条件显得太苛刻了，于是人们将条件做一些放松，使得能够推广到不可逆的矩阵或者长方的矩阵上，Penrose给出了四个矩阵方程，即放松后的条件，满足所有或者部分这些条件的逆矩阵称之为广义逆矩阵。满足所有者四个条件的称之为Moore-Penrose伪逆。&lt;br&gt;四个方程分别为：&lt;br&gt;(1) $AXA = A$&lt;br&gt;(2) $XAX = X$&lt;br&gt;(3) $(AH)^H = AX$&lt;br&gt;(4) $(XA)^H = XA$&lt;br&gt;（$A^H$为共轭转置，即$\bar{A} ^ T$）&lt;br&gt;对于$A \in C^{m \times n}$，如果有$X \in C^{n \times m}$满足这四个方程的某几个或者全部，那么X就称为A的广义逆。&lt;br&gt;满足这四个方程则称为M-P伪逆。&lt;/p&gt;
+&lt;h3 id=&quot;迹运算符-Trace&quot;&gt;&lt;a href=&quot;#迹运算符-Trace&quot; class=&quot;headerlink&quot; title=&quot;迹运算符(Trace)&quot;&gt;&lt;/a&gt;迹运算符(Trace)&lt;/h3&gt;&lt;p&gt;$ Tr(A) = {\Sigma}_i A_{i,i} $&lt;br&gt;迹运算符有许多性质，比如循环不变性等等&lt;/p&gt;
+&lt;h3 id=&quot;行列式&quot;&gt;&lt;a href=&quot;#行列式&quot; class=&quot;headerlink&quot; title=&quot;行列式&quot;&gt;&lt;/a&gt;行列式&lt;/h3&gt;&lt;p&gt;行列式的绝对值度量了矩阵扩展或者空间收缩所包含的操作多少的度量。&lt;/p&gt;
+&lt;h2 id=&quot;概率论&quot;&gt;&lt;a href=&quot;#概率论&quot; class=&quot;headerlink&quot; title=&quot;概率论&quot;&gt;&lt;/a&gt;概率论&lt;/h2&gt;&lt;p&gt;概率论也是很多领域包括计算机科学尤其是机器学习这块的基础学科。一般的计算机程序或者问题的求解是没有随机性的，按照一个确定的算法来即可。但是在机器学习中，经常会遇到不确定的量，比如说数据的采集，可能是随机采集的，或者说数据中包含随机噪声等等，而概率论则是量化各种不确定性的手段。&lt;br&gt;可以说，几乎所有的活动都要求参与者具有分析不确定性的出现的一些能力。&lt;br&gt;不确定性有三种可能的来源：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;系统固有的随机性&lt;br&gt;比如说打牌的游戏，我们都会假设洗牌确实是能够将牌的顺序变的随机。&lt;/li&gt;
+&lt;li&gt;不完备的观察&lt;br&gt;即使是一个确定的系统，当我们不能够观察到系统中所有驱动系统行为的变量时，也是会呈现出随机性的。&lt;/li&gt;
+&lt;li&gt;不完备的建模&lt;br&gt;我们有时候建模时无法完美地使用所有信息，从而必须丢弃一些观察到的信息，丢弃的信息就会造成模型预测的不确定性。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;在概率论领域，有两种学派，一种是频率学派，一种是贝叶斯学派。关于这两个学派的观点，可以参看&lt;a href=&quot;https://www.zhihu.com/question/20587681&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;贝叶斯学派与频率学派有何不同？&lt;/a&gt;等。&lt;/p&gt;
+&lt;h3 id=&quot;随机变量&quot;&gt;&lt;a href=&quot;#随机变量&quot; class=&quot;headerlink&quot; title=&quot;随机变量&quot;&gt;&lt;/a&gt;随机变量&lt;/h3&gt;&lt;p&gt;简单来说，随机变量就是&lt;strong&gt;能够随机的取不同值的变量&lt;/strong&gt;，又分为连续随机变量和离散随机变量，离散随机变量包含有限个或者可数无穷个状态，状态不必是整数。而连续随机变量则与一个实值相关联。&lt;/p&gt;
+&lt;h3 id=&quot;概率分布&quot;&gt;&lt;a href=&quot;#概率分布&quot; class=&quot;headerlink&quot; title=&quot;概率分布&quot;&gt;&lt;/a&gt;概率分布&lt;/h3&gt;&lt;p&gt;一个或一组随机变量取到每个可能状态的可能性的描述即为概率分布。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;离散随机变量的概率分布称为概率质量函数(PMF, Probablity Mass Function)&lt;/li&gt;
+&lt;li&gt;连续随机变量的概率分布称为概率密度函数(PDF, Probablity Density Function)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;边缘概率&quot;&gt;&lt;a href=&quot;#边缘概率&quot; class=&quot;headerlink&quot; title=&quot;边缘概率&quot;&gt;&lt;/a&gt;边缘概率&lt;/h3&gt;&lt;p&gt;原来变量集合的一个子集上的概率分布。&lt;br&gt;假设有离散型随机变量X,Y，在知道P(X,Y)的情况下，计算边缘分布如下：&lt;br&gt;$$&lt;br&gt;\forall x \in X, P(X=x) = \sum_y {P(X=x, Y=y)}&lt;br&gt;$$&lt;br&gt;连续的话就是求积分的方式：&lt;br&gt;$$&lt;br&gt;p(x)=\int p(x,y)dy&lt;br&gt;$$&lt;/p&gt;
+&lt;h3 id=&quot;条件概率及其链式法则&quot;&gt;&lt;a href=&quot;#条件概率及其链式法则&quot; class=&quot;headerlink&quot; title=&quot;条件概率及其链式法则&quot;&gt;&lt;/a&gt;条件概率及其链式法则&lt;/h3&gt;&lt;p&gt;条件概率：&lt;br&gt;给定某个事件发生时，事件A发生的概率称为条件概率。&lt;br&gt;$$&lt;br&gt;P(Y=y | X=x) = \frac {P(Y=y,X=x)} {P(X=x)}  \ \ \ \ \ \ \ \ \ \ (P(X=x) &amp;gt; 0)&lt;br&gt;$$&lt;/p&gt;
+&lt;p&gt;条件概率的链式法则：&lt;br&gt;多维随机变量联合概率分布分解成单变量条件概率相乘：&lt;br&gt;$$&lt;br&gt;P(x^{(1)}, x^{(2)}, …, x^{(n)}) = P(x^{(1)})\prod_{i=2}^n P(x^{(i)} | x^{(1)}, x^{(2)}, …, x^{(i-1)})&lt;br&gt;$$&lt;br&gt;这个式子比较重要，典型的应用出现在NLP中句子的n-gram模型。&lt;/p&gt;
+&lt;h3 id=&quot;独立和条件独立&quot;&gt;&lt;a href=&quot;#独立和条件独立&quot; class=&quot;headerlink&quot; title=&quot;独立和条件独立&quot;&gt;&lt;/a&gt;独立和条件独立&lt;/h3&gt;&lt;p&gt;独立意味着联合概率等于各个变量的边缘概率的乘积。&lt;br&gt;$$&lt;br&gt;\forall x \in X, y \in Y, p(X=x, Y=y)=P(X=x)P(Y=y)&lt;br&gt;$$&lt;br&gt;两个随机变量在给定随机变量z是&lt;strong&gt;条件独立&lt;/strong&gt;的，是指&lt;br&gt;$$&lt;br&gt;\forall x \in X, y \in Y, z \in Z, p(X=x, Y=y | Z=z)=P(X=x | Z=z)P(Y=y | Z=z)&lt;br&gt;$$&lt;/p&gt;
+&lt;h3 id=&quot;期望，方差与协方差&quot;&gt;&lt;a href=&quot;#期望，方差与协方差&quot; class=&quot;headerlink&quot; title=&quot;期望，方差与协方差&quot;&gt;&lt;/a&gt;期望，方差与协方差&lt;/h3&gt;&lt;p&gt;这几个概念是深度学习乃至机器学习中非常常用的概念，需要重点掌握。&lt;/p&gt;
+&lt;p&gt;随机变量X的期望值，直觉的来说，是指&lt;code&gt;X的可能值与其概率值之积的累加和&lt;/code&gt;。&lt;br&gt;数学上来说，函数f(x)关于某分布P(x)的期望，指的是x由分布P产生时，f(x)的平均值。&lt;br&gt;对于离散型随机变量，&lt;br&gt;$$&lt;br&gt;\mathbb{E}[f(x)] = \sum_x P(x)f(x)&lt;br&gt;$$&lt;/p&gt;
+&lt;p&gt;对于连续性随机变量则求积分得到：&lt;br&gt;$$&lt;br&gt;\mathbb{E}[f(x)] = \int p(x)f(x)dx&lt;br&gt;$$&lt;br&gt;当然这里有一个前提，就是当随机变量X取无穷个值的时候，离散型变量的期望满足&lt;br&gt;$$E(X)=\sum_{x}|f(x)|P(x) &amp;lt; \infty$$&lt;br&gt;积分也是类似。&lt;br&gt;只有满足这个条件，即级数收敛的条件，我们才说此随机变量的期望E存在。&lt;/p&gt;
+&lt;p&gt;一般来说，数学期望其实是由随机变量的分布决定的，所以我们一般可以说某某分布的期望。&lt;/p&gt;
+&lt;p&gt;期望E满足几个性质：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;若干个随机变量的期望之和等于各变量的期望之和&lt;br&gt;若干个独立随机变量之积的期望等于各变量的期望之积&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;方差衡量随机变量偏离均值的程度，即随机变量函数值呈现的差异大小。&lt;br&gt;$$&lt;br&gt;Var(X) = \mathbb{E}[(X-\mathbb{E}[X])^2]&lt;br&gt;$$&lt;br&gt;当方差很小时，X的值形成的簇比较接近他们的期望值。&lt;/p&gt;
+&lt;p&gt;协方差给出的是两个变量线性相关性的一个度量。&lt;br&gt;$$&lt;br&gt;Cov(X,Y) = \mathbb{E}[(X-EX)(Y-EY)]&lt;br&gt;$$&lt;/p&gt;
+&lt;p&gt;协方差的绝对值 $|Cov(X,Y)|$ 如果很大，说明变量值变化很大，并且他们同时距离各自的均值很远。&lt;br&gt;如果协方差是正的，那么两个变量都倾向于同时取得较大的值。&lt;br&gt;如果协方差是负的，那么两个变量倾向于在某一个取大值的时候，另一个取小值。&lt;/p&gt;
+&lt;p&gt;随机向量${\bf{x}} \in \mathbb{R}^n$的协方差矩阵是一个$\mathbb{R}^{n \times n}$，并且满足&lt;br&gt;$$&lt;br&gt;Cov({\bf{x}})_{i,j} = Cov(x_i, x_j)&lt;br&gt;$$&lt;br&gt;协方差矩阵对角元是方差$Var(x_i)=Cov(x_i,x_i)$&lt;/p&gt;
+&lt;h3 id=&quot;常用概率分布&quot;&gt;&lt;a href=&quot;#常用概率分布&quot; class=&quot;headerlink&quot; title=&quot;常用概率分布&quot;&gt;&lt;/a&gt;常用概率分布&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;贝努利分布&lt;/li&gt;
+&lt;li&gt;多贝努利分布/多类分布&lt;/li&gt;
+&lt;li&gt;高斯分布&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;高斯分布&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://image-whatbegblog.oss-cn-shanghai.aliyuncs.com/images/dlbook_02_gauss.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;多元高斯分布&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://image-whatbegblog.oss-cn-shanghai.aliyuncs.com/images/dlbook_02_multi_gauss.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;指数分布&lt;/li&gt;
+&lt;li&gt;拉普拉斯分布&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&quot;http://image-whatbegblog.oss-cn-shanghai.aliyuncs.com/images/dlbook_02_laplace.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;狄拉克分布(Dirac)与经验分布&lt;/li&gt;
+&lt;li&gt;混合分布&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;一些有用的性质和通用函数&quot;&gt;&lt;a href=&quot;#一些有用的性质和通用函数&quot; class=&quot;headerlink&quot; title=&quot;一些有用的性质和通用函数&quot;&gt;&lt;/a&gt;一些有用的性质和通用函数&lt;/h3&gt;&lt;p&gt;深度模型常用两个函数：&lt;/p&gt;
+&lt;p&gt;Sigmoid函数：&lt;br&gt;&lt;img src=&quot;http://image-whatbegblog.oss-cn-shanghai.aliyuncs.com/images/dlbook_02_sigmoid.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;图像如下：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://image-whatbegblog.oss-cn-shanghai.aliyuncs.com/images/dlbook_02_sigmoid_graph.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;Softplus函数：&lt;br&gt;&lt;img src=&quot;http://image-whatbegblog.oss-cn-shanghai.aliyuncs.com/images/dlbook_02_softplus.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;图像如下：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://image-whatbegblog.oss-cn-shanghai.aliyuncs.com/images/dlbook_02_softplus_graph.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;关于这两个函数需要记住的一些性质：&lt;/p&gt;
+&lt;center&gt; &lt;img src=&quot;http://image-whatbegblog.oss-cn-shanghai.aliyuncs.com/images/dlbook_02_remember01.png&quot; alt=&quot;&quot;&gt; &lt;/center&gt;
+
+&lt;center&gt; &lt;img src=&quot;http://image-whatbegblog.oss-cn-shanghai.aliyuncs.com/images/dlbook_02_remember02.png&quot; alt=&quot;&quot;&gt; &lt;/center&gt;
+
+&lt;h3 id=&quot;贝叶斯规则&quot;&gt;&lt;a href=&quot;#贝叶斯规则&quot; class=&quot;headerlink&quot; title=&quot;贝叶斯规则&quot;&gt;&lt;/a&gt;贝叶斯规则&lt;/h3&gt;&lt;p&gt;贝叶斯规则&lt;br&gt;也称为贝叶斯后验概率。&lt;br&gt;当我们知道$P(x)$和$P(y | x)$的信息的时候，我们如何知道$P(x | y)$呢？&lt;br&gt;比如说，我们知道糖尿病人发病率$P(x)$和糖尿病人以前喜欢吃甜食的概率$P(y|x)$，那么如何估算喜欢吃甜食的人将来患糖尿病的概率呢？&lt;br&gt;Reverend Thomas Bayes发明了贝叶斯公式，现在一般写成：&lt;br&gt;$$&lt;br&gt;P(x | y) = \frac {P(x)P(y | x)} {P(y)}&lt;br&gt;$$&lt;br&gt;$P(y)$如果不知道的话，可以以$P(y)=\sum_x P(y|x)P(x)$计算。&lt;/p&gt;
+&lt;h2 id=&quot;信息论&quot;&gt;&lt;a href=&quot;#信息论&quot; class=&quot;headerlink&quot; title=&quot;信息论&quot;&gt;&lt;/a&gt;信息论&lt;/h2&gt;&lt;p&gt;信息论是应用数学的一个分支，主要研究对一个信号能够提供信息的多少。&lt;/p&gt;
+&lt;p&gt;信息论的基本思想是，一个不太可能的事件发生比非常可能的事件发生，能提供更多的信息。&lt;/p&gt;
+&lt;p&gt;量化信息的三个性质：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;非常可能的事件信息量比较少，更不可能发生的事件具有更高的信息量&lt;/li&gt;
+&lt;li&gt;独立事件应具有增量的信息。比如投两次硬币正面向上的信息，应该是投掷一次正面朝上的信息量的2倍。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;香农熵用来对整个概率分布中的不确定性总量进行量化。&lt;br&gt;$$&lt;br&gt;H(x) = \mathbb{E}_{x - P}[I(x)] = -\mathbb{E}_{x - P}[\log P(x)]&lt;br&gt;$$&lt;/p&gt;
+&lt;p&gt;KL散度&lt;/p&gt;
+&lt;p&gt;如果我们对于同一随机变量$\mathbb{x}$有两个单独的概率分布$P(x)$和$Q(x)$，我们使用KL散度(Kullback-Leibler divergence)来衡量分布的差异。&lt;br&gt;$$&lt;br&gt;D_{KL}(P||Q) = \mathbb{E}_{x - P}[\log {\frac {P(x)} {Q(x)}}] = \mathbb{E}_{x - P}[\log P(x) - \log Q(x)]&lt;br&gt;$$&lt;/p&gt;
+&lt;p&gt;KL散度非负。在离散型变量情况下，KL散度为0当且仅当P,Q为相同分布。在连续型变量情况下，KL散度为0当且仅当P,Q“几乎处处相同”。&lt;br&gt;但KL散度不是真的距离因为它不是对称的，对于某两个分布P,Q，$D_{KL}(P||Q) \neq D_{KL}(Q||P)$。&lt;/p&gt;
+&lt;p&gt;交叉熵$H(P,Q) = H(P) + D_{KL}(P||Q)$，也可以描述两个分布的差异。&lt;br&gt;$$&lt;br&gt;H(P,Q) = -\mathbb{E}_{x - P} {\log Q(x)}&lt;br&gt;$$&lt;/p&gt;
+&lt;h2 id=&quot;Summary&quot;&gt;&lt;a href=&quot;#Summary&quot; class=&quot;headerlink&quot; title=&quot;Summary&quot;&gt;&lt;/a&gt;Summary&lt;/h2&gt;&lt;p&gt;深度学习需要掌握的数学基础主要包括线性代数，概率论，其他的包括微积分也是必不可少的，信息论则是计算机科学的基础之一。&lt;/p&gt;
+&lt;h2 id=&quot;References&quot;&gt;&lt;a href=&quot;#References&quot; class=&quot;headerlink&quot; title=&quot;References&quot;&gt;&lt;/a&gt;References&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://ogbh7uglm.bkt.clouddn.com/MatrixCookBook.pdf&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Matrix Cook Book&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://pdf-whatbegblog.oss-cn-beijing.aliyuncs.com/DeepLearningBook.pdf&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Deep Learning book&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;深度学习需要的数学基础同机器学习所需的数学基础类似，包括三大块：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;线性代数&lt;/li&gt;
+&lt;li&gt;概率论与数理统计&lt;/li&gt;
+&lt;li&gt;信息论基础&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;分三部分摘要如下，&lt;/p&gt;
+&lt;h2 id=&quot;线性代数&quot;&gt;&lt;a href=&quot;#线
+    
+    </summary>
+    
+      <category term="深度学习 | Deep Learning" scheme="http://whatbeg.com/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0-Deep-Learning/"/>
+    
+    
+      <category term="Deep Learning" scheme="http://whatbeg.com/tags/Deep-Learning/"/>
+    
+      <category term="深度学习" scheme="http://whatbeg.com/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
   
   <entry>
     <title>三国大事年表</title>
@@ -673,137 +805,6 @@ table th:first-of-type {
   </entry>
   
   <entry>
-    <title>Deep Learning读书笔记（2）【深度学习的数学基础摘要】(未竟稿)</title>
-    <link href="http://whatbeg.com/2017/05/28/deeplearningbook-02.html"/>
-    <id>http://whatbeg.com/2017/05/28/deeplearningbook-02.html</id>
-    <published>2017-05-28T03:12:46.000Z</published>
-    <updated>2017-08-13T02:40:33.200Z</updated>
-    
-    <content type="html">&lt;p&gt;深度学习需要的数学基础同机器学习所需的数学基础类似，包括三大块：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;线性代数&lt;/li&gt;
-&lt;li&gt;概率论与数理统计&lt;/li&gt;
-&lt;li&gt;信息论基础&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;分三部分摘要如下，&lt;/p&gt;
-&lt;h2 id=&quot;线性代数&quot;&gt;&lt;a href=&quot;#线性代数&quot; class=&quot;headerlink&quot; title=&quot;线性代数&quot;&gt;&lt;/a&gt;线性代数&lt;/h2&gt;&lt;h3 id=&quot;Scalar-Vectors-Matrices-Tensors的概念&quot;&gt;&lt;a href=&quot;#Scalar-Vectors-Matrices-Tensors的概念&quot; class=&quot;headerlink&quot; title=&quot;Scalar, Vectors, Matrices, Tensors的概念&quot;&gt;&lt;/a&gt;Scalar, Vectors, Matrices, Tensors的概念&lt;/h3&gt;&lt;p&gt;Scalar: 标量，可以看成一个数&lt;br&gt;Vector: 向量，可以看成一个一维数组&lt;br&gt;Matrix: 矩阵，可以看成二维数组&lt;br&gt;Tensor: 张量，三维或三维以上的数组的统称，维度不定&lt;/p&gt;
-&lt;p&gt;很多时候我们处理的都是超过2维的数组，这时候叫矩阵(Matrix)又不太合适，因为一般提到矩阵都会想到二维的矩阵，所以采用Tensor来统一表示不定维的数组。这也是几乎所有深度学习框架的基本数据结构。”Tensorflow”名字中就包含了”Tensor”，于是向量可以称为1-D Tensor，一维张量，矩阵可以称为二维张量。&lt;/p&gt;
-&lt;p&gt;这样，深度学习中包括数据，梯度，权重等等都可以用某维度的Tensor来表示了，底层数据结构的统一为上层编程带来了极大的方便。&lt;/p&gt;
-&lt;h3 id=&quot;矩阵的基本操作&quot;&gt;&lt;a href=&quot;#矩阵的基本操作&quot; class=&quot;headerlink&quot; title=&quot;矩阵的基本操作&quot;&gt;&lt;/a&gt;矩阵的基本操作&lt;/h3&gt;&lt;p&gt;矩阵转置，相乘，矩阵与向量相乘&lt;br&gt;单位矩阵与逆矩阵&lt;br&gt;线性相关性&lt;br&gt;展开(Span)，一个向量集的展开定义为向量集中通过向量的线性组合能够得到的点&lt;/p&gt;
-&lt;h3 id=&quot;奇异-Singular-矩阵和非奇异矩阵&quot;&gt;&lt;a href=&quot;#奇异-Singular-矩阵和非奇异矩阵&quot; class=&quot;headerlink&quot; title=&quot;奇异(Singular)矩阵和非奇异矩阵&quot;&gt;&lt;/a&gt;奇异(Singular)矩阵和非奇异矩阵&lt;/h3&gt;&lt;p&gt;奇异矩阵：存在线性相关的列的方阵或者行列式为0的方阵称为奇异矩阵&lt;br&gt;奇异矩阵不可逆&lt;br&gt;若n阶方阵A的行列式不为零，即$|A|≠0$，则称A为非奇异矩阵或满秩矩阵，存在逆矩阵&lt;/p&gt;
-&lt;p&gt;要注意的是，即使A不是方阵或者A是方阵但是奇异，也是有可能解方程$Ax=b$的，只是不能通过求逆矩阵$A^{-1}$从而$x=A^{-1}b$来解而已。&lt;br&gt;线性方程组$Ax=b$有解的充分必要条件是: 增广矩阵的秩等于系数矩阵的秩，即$r(A,b) = r(A)$&lt;/p&gt;
-&lt;h3 id=&quot;范数-Norm&quot;&gt;&lt;a href=&quot;#范数-Norm&quot; class=&quot;headerlink&quot; title=&quot;范数(Norm)&quot;&gt;&lt;/a&gt;范数(Norm)&lt;/h3&gt;&lt;p&gt;范数的作用是度量向量的大小，将向量映射为非负实数&lt;br&gt;$L^p$范数定义为：&lt;br&gt;$$||x||_p=(\Sigma_i {|x_i|^p})^{\frac 1 p}$$&lt;/p&gt;
-&lt;p&gt;在正则化中常常用到范数，主要用到1-范数和2-范数。&lt;/p&gt;
-&lt;p&gt;$x^{\top}x=||x||_2^2$&lt;/p&gt;
-&lt;p&gt;Frobenius Norms:  $||A||_{F}=\sqrt{\Sigma_{i,j}A_{i,j}^2}$&lt;/p&gt;
-&lt;p&gt;向量点积： $x^{\top}y=||x||_2||y||_2cos\theta$&lt;/p&gt;
-&lt;h3 id=&quot;特殊矩阵&quot;&gt;&lt;a href=&quot;#特殊矩阵&quot; class=&quot;headerlink&quot; title=&quot;特殊矩阵&quot;&gt;&lt;/a&gt;特殊矩阵&lt;/h3&gt;&lt;p&gt;对角矩阵&lt;br&gt;实对称矩阵及其性质：&lt;br&gt;（1）A的特征值为实数，且其特征向量为实向量&lt;br&gt;（2）A的不同特征值对应的特征向量必定正交&lt;br&gt;（3）A一定有n个线性无关的特征向量，从而A相似于对角矩阵&lt;br&gt;正交矩阵的性质： $A^{-1}=A^{\top}$&lt;/p&gt;
-&lt;h3 id=&quot;特征值分解&quot;&gt;&lt;a href=&quot;#特征值分解&quot; class=&quot;headerlink&quot; title=&quot;特征值分解&quot;&gt;&lt;/a&gt;特征值分解&lt;/h3&gt;&lt;p&gt;特征值分解的思想类似于因式分解的思想，对于一个数，我们想要分析它的性质，可能直接看看不出什么来，但是可以把它因式分解一下，再来分析。比如180，$180 = 2 \times 2 \times 3 \times 3 \times 5=2^2 \times 3^2 \times 5^1$，这样我们可以知道，180是2,3,5的倍数，也是6的倍数，15的倍数，等等，进而分析其它性质。&lt;br&gt;矩阵分解也是如此，面对一个复杂的矩阵，我们可能毫无头绪，但是将其分解为两个或者多个矩阵的乘积，我们可能就能收获很多的性质。&lt;br&gt;特征值分解 $A=Q \Lambda Q^{\top}$，将矩阵分解为特征值和特征向量，Q是由A的特征向量组成的正交矩阵，而$\Lambda$则为特征值组成的对角矩阵，$\Lambda_{i,i}$ 对应着 $Q_{:,i}$。&lt;/p&gt;
-&lt;h3 id=&quot;奇异值分解-Singular-Value-Decomposition&quot;&gt;&lt;a href=&quot;#奇异值分解-Singular-Value-Decomposition&quot; class=&quot;headerlink&quot; title=&quot;奇异值分解(Singular Value Decomposition)&quot;&gt;&lt;/a&gt;奇异值分解(Singular Value Decomposition)&lt;/h3&gt;&lt;p&gt;$A=UDV^{-1}$，U称为左奇异向量，为$AA^{\top}$的特征向量，V称为右奇异向量，为$A^{\top}A$的特征向量。&lt;br&gt;非0奇异值是$A^{\top}A$的特征值的开根号&lt;/p&gt;
-&lt;h3 id=&quot;Moore-Penrose-Pseudoinverse&quot;&gt;&lt;a href=&quot;#Moore-Penrose-Pseudoinverse&quot; class=&quot;headerlink&quot; title=&quot;Moore-Penrose Pseudoinverse&quot;&gt;&lt;/a&gt;Moore-Penrose Pseudoinverse&lt;/h3&gt;&lt;p&gt;通常意义上的逆矩阵只有在当A为n阶方阵，并且行列式不为0时才存在，但是有时候这个条件显得太苛刻了，于是人们将条件做一些放松，使得能够推广到不可逆的矩阵或者长方的矩阵上，Penrose给出了四个矩阵方程，即放松后的条件，满足所有或者部分这些条件的逆矩阵称之为广义逆矩阵。满足所有者四个条件的称之为Moore-Penrose伪逆。&lt;br&gt;四个方程分别为：&lt;br&gt;(1) $AXA = A$&lt;br&gt;(2) $XAX = X$&lt;br&gt;(3) $(AH)^H = AX$&lt;br&gt;(4) $(XA)^H = XA$&lt;br&gt;（$A^H$为共轭转置，即$\bar{A} ^ T$）&lt;br&gt;对于$A \in C^{m \times n}$，如果有$X \in C^{n \times m}$满足这四个方程的某几个或者全部，那么X就称为A的广义逆。&lt;br&gt;满足这四个方程则称为M-P伪逆。&lt;/p&gt;
-&lt;h3 id=&quot;迹运算符-Trace&quot;&gt;&lt;a href=&quot;#迹运算符-Trace&quot; class=&quot;headerlink&quot; title=&quot;迹运算符(Trace)&quot;&gt;&lt;/a&gt;迹运算符(Trace)&lt;/h3&gt;&lt;p&gt;$ Tr(A) = {\Sigma}_i A_{i,i} $&lt;br&gt;迹运算符有许多性质，比如循环不变性等等&lt;/p&gt;
-&lt;h3 id=&quot;行列式&quot;&gt;&lt;a href=&quot;#行列式&quot; class=&quot;headerlink&quot; title=&quot;行列式&quot;&gt;&lt;/a&gt;行列式&lt;/h3&gt;&lt;p&gt;行列式的绝对值度量了矩阵扩展或者空间收缩所包含的操作多少的度量。&lt;/p&gt;
-&lt;h2 id=&quot;概率论&quot;&gt;&lt;a href=&quot;#概率论&quot; class=&quot;headerlink&quot; title=&quot;概率论&quot;&gt;&lt;/a&gt;概率论&lt;/h2&gt;&lt;p&gt;概率论也是很多领域包括计算机科学尤其是机器学习这块的基础学科。一般的计算机程序或者问题的求解是没有随机性的，按照一个确定的算法来即可。但是在机器学习中，经常会遇到不确定的量，比如说数据的采集，可能是随机采集的，或者说数据中包含随机噪声等等，而概率论则是量化各种不确定性的手段。&lt;br&gt;可以说，几乎所有的活动都要求参与者具有分析不确定性的出现的一些能力。&lt;br&gt;不确定性有三种可能的来源：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;系统固有的随机性&lt;br&gt;比如说打牌的游戏，我们都会假设洗牌确实是能够将牌的顺序变的随机。&lt;/li&gt;
-&lt;li&gt;不完备的观察&lt;br&gt;即使是一个确定的系统，当我们不能够观察到系统中所有驱动系统行为的变量时，也是会呈现出随机性的。&lt;/li&gt;
-&lt;li&gt;不完备的建模&lt;br&gt;我们有时候建模时无法完美地使用所有信息，从而必须丢弃一些观察到的信息，丢弃的信息就会造成模型预测的不确定性。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;在概率论领域，有两种学派，一种是频率学派，一种是贝叶斯学派。关于这两个学派的观点，可以参看&lt;a href=&quot;https://www.zhihu.com/question/20587681&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;贝叶斯学派与频率学派有何不同？&lt;/a&gt;等。&lt;/p&gt;
-&lt;h3 id=&quot;随机变量&quot;&gt;&lt;a href=&quot;#随机变量&quot; class=&quot;headerlink&quot; title=&quot;随机变量&quot;&gt;&lt;/a&gt;随机变量&lt;/h3&gt;&lt;p&gt;简单来说，随机变量就是&lt;strong&gt;能够随机的取不同值的变量&lt;/strong&gt;，又分为连续随机变量和离散随机变量，离散随机变量包含有限个或者可数无穷个状态，状态不必是整数。而连续随机变量则与一个实值相关联。&lt;/p&gt;
-&lt;h3 id=&quot;概率分布&quot;&gt;&lt;a href=&quot;#概率分布&quot; class=&quot;headerlink&quot; title=&quot;概率分布&quot;&gt;&lt;/a&gt;概率分布&lt;/h3&gt;&lt;p&gt;一个或一组随机变量取到每个可能状态的可能性的描述即为概率分布。&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;离散随机变量的概率分布称为概率质量函数(PMF, Probablity Mass Function)&lt;/li&gt;
-&lt;li&gt;连续随机变量的概率分布称为概率密度函数(PDF, Probablity Density Function)&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&quot;边缘概率&quot;&gt;&lt;a href=&quot;#边缘概率&quot; class=&quot;headerlink&quot; title=&quot;边缘概率&quot;&gt;&lt;/a&gt;边缘概率&lt;/h3&gt;&lt;p&gt;原来变量集合的一个子集上的概率分布。&lt;br&gt;假设有离散型随机变量X,Y，在知道P(X,Y)的情况下，计算边缘分布如下：&lt;br&gt;$$&lt;br&gt;\forall x \in X, P(X=x) = \sum_y {P(X=x, Y=y)}&lt;br&gt;$$&lt;br&gt;连续的话就是求积分的方式：&lt;br&gt;$$&lt;br&gt;p(x)=\int p(x,y)dy&lt;br&gt;$$&lt;/p&gt;
-&lt;h3 id=&quot;条件概率及其链式法则&quot;&gt;&lt;a href=&quot;#条件概率及其链式法则&quot; class=&quot;headerlink&quot; title=&quot;条件概率及其链式法则&quot;&gt;&lt;/a&gt;条件概率及其链式法则&lt;/h3&gt;&lt;p&gt;条件概率：&lt;br&gt;给定某个事件发生时，事件A发生的概率称为条件概率。&lt;br&gt;$$&lt;br&gt;P(Y=y | X=x) = \frac {P(Y=y,X=x)} {P(X=x)}  \ \ \ \ \ \ \ \ \ \ (P(X=x) &amp;gt; 0)&lt;br&gt;$$&lt;/p&gt;
-&lt;p&gt;条件概率的链式法则：&lt;br&gt;多维随机变量联合概率分布分解成单变量条件概率相乘：&lt;br&gt;$$&lt;br&gt;P(x^{(1)}, x^{(2)}, …, x^{(n)}) = P(x^{(1)})\prod_{i=2}^n P(x^{(i)} | x^{(1)}, x^{(2)}, …, x^{(i-1)})&lt;br&gt;$$&lt;br&gt;这个式子比较重要，典型的应用出现在NLP中句子的n-gram模型。&lt;/p&gt;
-&lt;h3 id=&quot;独立和条件独立&quot;&gt;&lt;a href=&quot;#独立和条件独立&quot; class=&quot;headerlink&quot; title=&quot;独立和条件独立&quot;&gt;&lt;/a&gt;独立和条件独立&lt;/h3&gt;&lt;p&gt;独立意味着联合概率等于各个变量的边缘概率的乘积。&lt;br&gt;$$&lt;br&gt;\forall x \in X, y \in Y, p(X=x, Y=y)=P(X=x)P(Y=y)&lt;br&gt;$$&lt;br&gt;两个随机变量在给定随机变量z是&lt;strong&gt;条件独立&lt;/strong&gt;的，是指&lt;br&gt;$$&lt;br&gt;\forall x \in X, y \in Y, z \in Z, p(X=x, Y=y | Z=z)=P(X=x | Z=z)P(Y=y | Z=z)&lt;br&gt;$$&lt;/p&gt;
-&lt;h3 id=&quot;期望，方差与协方差&quot;&gt;&lt;a href=&quot;#期望，方差与协方差&quot; class=&quot;headerlink&quot; title=&quot;期望，方差与协方差&quot;&gt;&lt;/a&gt;期望，方差与协方差&lt;/h3&gt;&lt;p&gt;这几个概念是深度学习乃至机器学习中非常常用的概念，需要重点掌握。&lt;/p&gt;
-&lt;p&gt;随机变量X的期望值，直觉的来说，是指&lt;code&gt;X的可能值与其概率值之积的累加和&lt;/code&gt;。&lt;br&gt;数学上来说，函数f(x)关于某分布P(x)的期望，指的是x由分布P产生时，f(x)的平均值。&lt;br&gt;对于离散型随机变量，&lt;br&gt;$$&lt;br&gt;\mathbb{E}[f(x)] = \sum_x P(x)f(x)&lt;br&gt;$$&lt;/p&gt;
-&lt;p&gt;对于连续性随机变量则求积分得到：&lt;br&gt;$$&lt;br&gt;\mathbb{E}[f(x)] = \int p(x)f(x)dx&lt;br&gt;$$&lt;br&gt;当然这里有一个前提，就是当随机变量X取无穷个值的时候，离散型变量的期望满足&lt;br&gt;$$E(X)=\sum_{x}|f(x)|P(x) &amp;lt; \infty$$&lt;br&gt;积分也是类似。&lt;br&gt;只有满足这个条件，即级数收敛的条件，我们才说此随机变量的期望E存在。&lt;/p&gt;
-&lt;p&gt;一般来说，数学期望其实是由随机变量的分布决定的，所以我们一般可以说某某分布的期望。&lt;/p&gt;
-&lt;p&gt;期望E满足几个性质：&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;若干个随机变量的期望之和等于各变量的期望之和&lt;br&gt;若干个独立随机变量之积的期望等于各变量的期望之积&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;方差衡量随机变量偏离均值的程度，即随机变量函数值呈现的差异大小。&lt;br&gt;$$&lt;br&gt;Var(X) = \mathbb{E}[(X-\mathbb{E}[X])^2]&lt;br&gt;$$&lt;br&gt;当方差很小时，X的值形成的簇比较接近他们的期望值。&lt;/p&gt;
-&lt;p&gt;协方差给出的是两个变量线性相关性的一个度量。&lt;br&gt;$$&lt;br&gt;Cov(X,Y) = \mathbb{E}[(X-EX)(Y-EY)]&lt;br&gt;$$&lt;/p&gt;
-&lt;p&gt;协方差的绝对值 $|Cov(X,Y)|$ 如果很大，说明变量值变化很大，并且他们同时距离各自的均值很远。&lt;br&gt;如果协方差是正的，那么两个变量都倾向于同时取得较大的值。&lt;br&gt;如果协方差是负的，那么两个变量倾向于在某一个取大值的时候，另一个取小值。&lt;/p&gt;
-&lt;p&gt;随机向量${\bf{x}} \in \mathbb{R}^n$的协方差矩阵是一个$\mathbb{R}^{n \times n}$，并且满足&lt;br&gt;$$&lt;br&gt;Cov({\bf{x}})_{i,j} = Cov(x_i, x_j)&lt;br&gt;$$&lt;br&gt;协方差矩阵对角元是方差$Var(x_i)=Cov(x_i,x_i)$&lt;/p&gt;
-&lt;h3 id=&quot;常用概率分布&quot;&gt;&lt;a href=&quot;#常用概率分布&quot; class=&quot;headerlink&quot; title=&quot;常用概率分布&quot;&gt;&lt;/a&gt;常用概率分布&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;贝努利分布&lt;/li&gt;
-&lt;li&gt;多贝努利分布/多类分布&lt;/li&gt;
-&lt;li&gt;高斯分布&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;高斯分布&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://image-whatbegblog.oss-cn-shanghai.aliyuncs.com/images/dlbook_02_gauss.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;多元高斯分布&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://image-whatbegblog.oss-cn-shanghai.aliyuncs.com/images/dlbook_02_multi_gauss.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;指数分布&lt;/li&gt;
-&lt;li&gt;拉普拉斯分布&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;img src=&quot;http://image-whatbegblog.oss-cn-shanghai.aliyuncs.com/images/dlbook_02_laplace.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;狄拉克分布(Dirac)与经验分布&lt;/li&gt;
-&lt;li&gt;混合分布&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&quot;一些有用的性质和通用函数&quot;&gt;&lt;a href=&quot;#一些有用的性质和通用函数&quot; class=&quot;headerlink&quot; title=&quot;一些有用的性质和通用函数&quot;&gt;&lt;/a&gt;一些有用的性质和通用函数&lt;/h3&gt;&lt;p&gt;深度模型常用两个函数：&lt;/p&gt;
-&lt;p&gt;Sigmoid函数：&lt;br&gt;&lt;img src=&quot;http://image-whatbegblog.oss-cn-shanghai.aliyuncs.com/images/dlbook_02_sigmoid.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;图像如下：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://image-whatbegblog.oss-cn-shanghai.aliyuncs.com/images/dlbook_02_sigmoid_graph.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;Softplus函数：&lt;br&gt;&lt;img src=&quot;http://image-whatbegblog.oss-cn-shanghai.aliyuncs.com/images/dlbook_02_softplus.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;图像如下：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://image-whatbegblog.oss-cn-shanghai.aliyuncs.com/images/dlbook_02_softplus_graph.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;关于这两个函数需要记住的一些性质：&lt;/p&gt;
-&lt;center&gt; &lt;img src=&quot;http://image-whatbegblog.oss-cn-shanghai.aliyuncs.com/images/dlbook_02_remember01.png&quot; alt=&quot;&quot;&gt; &lt;/center&gt;
-
-&lt;center&gt; &lt;img src=&quot;http://image-whatbegblog.oss-cn-shanghai.aliyuncs.com/images/dlbook_02_remember02.png&quot; alt=&quot;&quot;&gt; &lt;/center&gt;
-
-&lt;h3 id=&quot;贝叶斯规则&quot;&gt;&lt;a href=&quot;#贝叶斯规则&quot; class=&quot;headerlink&quot; title=&quot;贝叶斯规则&quot;&gt;&lt;/a&gt;贝叶斯规则&lt;/h3&gt;&lt;p&gt;贝叶斯规则&lt;br&gt;也称为贝叶斯后验概率。&lt;br&gt;当我们知道$P(x)$和$P(y | x)$的信息的时候，我们如何知道$P(x | y)$呢？&lt;br&gt;比如说，我们知道糖尿病人发病率$P(x)$和糖尿病人以前喜欢吃甜食的概率$P(y|x)$，那么如何估算喜欢吃甜食的人将来患糖尿病的概率呢？&lt;br&gt;Reverend Thomas Bayes发明了贝叶斯公式，现在一般写成：&lt;br&gt;$$&lt;br&gt;P(x | y) = \frac {P(x)P(y | x)} {P(y)}&lt;br&gt;$$&lt;br&gt;$P(y)$如果不知道的话，可以以$P(y)=\sum_x P(y|x)P(x)$计算。&lt;/p&gt;
-&lt;h2 id=&quot;信息论&quot;&gt;&lt;a href=&quot;#信息论&quot; class=&quot;headerlink&quot; title=&quot;信息论&quot;&gt;&lt;/a&gt;信息论&lt;/h2&gt;&lt;p&gt;信息论是应用数学的一个分支，主要研究对一个信号能够提供信息的多少。&lt;/p&gt;
-&lt;p&gt;信息论的基本思想是，一个不太可能的事件发生比非常可能的事件发生，能提供更多的信息。&lt;/p&gt;
-&lt;p&gt;量化信息的三个性质：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;非常可能的事件信息量比较少，更不可能发生的事件具有更高的信息量&lt;/li&gt;
-&lt;li&gt;独立事件应具有增量的信息。比如投两次硬币正面向上的信息，应该是投掷一次正面朝上的信息量的2倍。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;香农熵用来对整个概率分布中的不确定性总量进行量化。&lt;br&gt;$$&lt;br&gt;H(x) = \mathbb{E}_{x - P}[I(x)] = -\mathbb{E}_{x - P}[\log P(x)]&lt;br&gt;$$&lt;/p&gt;
-&lt;p&gt;KL散度&lt;/p&gt;
-&lt;p&gt;如果我们对于同一随机变量$\mathbb{x}$有两个单独的概率分布$P(x)$和$Q(x)$，我们使用KL散度(Kullback-Leibler divergence)来衡量分布的差异。&lt;br&gt;$$&lt;br&gt;D_{KL}(P||Q) = \mathbb{E}_{x - P}[\log {\frac {P(x)} {Q(x)}}] = \mathbb{E}_{x - P}[\log P(x) - \log Q(x)]&lt;br&gt;$$&lt;/p&gt;
-&lt;p&gt;KL散度非负。在离散型变量情况下，KL散度为0当且仅当P,Q为相同分布。在连续型变量情况下，KL散度为0当且仅当P,Q“几乎处处相同”。&lt;br&gt;但KL散度不是真的距离因为它不是对称的，对于某两个分布P,Q，$D_{KL}(P||Q) \neq D_{KL}(Q||P)$。&lt;/p&gt;
-&lt;p&gt;交叉熵$H(P,Q) = H(P) + D_{KL}(P||Q)$，也可以描述两个分布的差异。&lt;br&gt;$$&lt;br&gt;H(P,Q) = -\mathbb{E}_{x - P} {\log Q(x)}&lt;br&gt;$$&lt;/p&gt;
-&lt;h2 id=&quot;References&quot;&gt;&lt;a href=&quot;#References&quot; class=&quot;headerlink&quot; title=&quot;References&quot;&gt;&lt;/a&gt;References&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;http://ogbh7uglm.bkt.clouddn.com/MatrixCookBook.pdf&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Matrix Cook Book&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;&quot;&gt;Deep Learning book&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;深度学习需要的数学基础同机器学习所需的数学基础类似，包括三大块：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;线性代数&lt;/li&gt;
-&lt;li&gt;概率论与数理统计&lt;/li&gt;
-&lt;li&gt;信息论基础&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;分三部分摘要如下，&lt;/p&gt;
-&lt;h2 id=&quot;线性代数&quot;&gt;&lt;a href=&quot;#线
-    
-    </summary>
-    
-      <category term="深度学习 | Deep Learning" scheme="http://whatbeg.com/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0-Deep-Learning/"/>
-    
-    
-      <category term="Deep Learning" scheme="http://whatbeg.com/tags/Deep-Learning/"/>
-    
-      <category term="深度学习" scheme="http://whatbeg.com/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Spark一些问题集锦【持续更新】</title>
     <link href="http://whatbeg.com/2017/05/28/sparkerror.html"/>
     <id>http://whatbeg.com/2017/05/28/sparkerror.html</id>
@@ -861,9 +862,9 @@ table th:first-of-type {
       <category term="大数据系统与技术 | Big Data" scheme="http://whatbeg.com/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE%E7%B3%BB%E7%BB%9F%E4%B8%8E%E6%8A%80%E6%9C%AF-Big-Data/"/>
     
     
-      <category term="大数据" scheme="http://whatbeg.com/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
-    
       <category term="Spark" scheme="http://whatbeg.com/tags/Spark/"/>
+    
+      <category term="大数据" scheme="http://whatbeg.com/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
     
   </entry>
   
@@ -935,9 +936,9 @@ table th:first-of-type {
     
       <category term="Deep Learning" scheme="http://whatbeg.com/tags/Deep-Learning/"/>
     
-      <category term="大数据" scheme="http://whatbeg.com/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
-    
       <category term="深度学习" scheme="http://whatbeg.com/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="大数据" scheme="http://whatbeg.com/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
     
   </entry>
   
@@ -1433,9 +1434,9 @@ table th:first-of-type {
       <category term="深度学习 | Deep Learning" scheme="http://whatbeg.com/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0-Deep-Learning/"/>
     
     
-      <category term="机器学习" scheme="http://whatbeg.com/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
-    
       <category term="深度学习" scheme="http://whatbeg.com/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="机器学习" scheme="http://whatbeg.com/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
     
   </entry>
   
@@ -1637,9 +1638,9 @@ table th:first-of-type {
       <category term="大数据系统与技术 | Big Data" scheme="http://whatbeg.com/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE%E7%B3%BB%E7%BB%9F%E4%B8%8E%E6%8A%80%E6%9C%AF-Big-Data/"/>
     
     
-      <category term="大数据" scheme="http://whatbeg.com/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
-    
       <category term="深度学习" scheme="http://whatbeg.com/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="大数据" scheme="http://whatbeg.com/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
     
       <category term="TensorFlow" scheme="http://whatbeg.com/tags/TensorFlow/"/>
     

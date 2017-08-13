@@ -4,12 +4,12 @@
 
     
   <url>
-    <loc>http://whatbeg.com/2017/05/28/deeplearningbook-02.html</loc>
-    <lastmod>2017-08-13T02:40:33.200Z</lastmod>
+    <loc>http://whatbeg.com/2017/08/13/deeplearningbook-02.html</loc>
+    <lastmod>2017-08-13T02:50:08.704Z</lastmod>
     <data>
         <display>
-        <title>Deep Learning读书笔记（2）【深度学习的数学基础摘要】(未竟稿)</title>
-        <pubTime>2017-05-28T03:12:46.000Z</pubTime>
+        <title>Deep Learning读书笔记（2）【深度学习的数学基础摘要】</title>
+        <pubTime>2017-08-13T02:49:46.000Z</pubTime>
         
         <tag>Deep Learning</tag>
          
@@ -27,7 +27,7 @@
     
   <url>
     <loc>http://whatbeg.com/2016/04/25/latexsyntax.html</loc>
-    <lastmod>2017-08-12T12:23:24.715Z</lastmod>
+    <lastmod>2017-08-13T02:45:55.388Z</lastmod>
     <data>
         <display>
         <title>Latex/MathJax公式的一些语法</title>
@@ -96,9 +96,9 @@
         <title>Spark一些问题集锦【持续更新】</title>
         <pubTime>2017-05-28T02:04:35.000Z</pubTime>
         
-        <tag>大数据</tag>
-         
         <tag>Spark</tag>
+         
+        <tag>大数据</tag>
          
          
            
@@ -302,9 +302,9 @@
         
         <tag>Deep Learning</tag>
          
-        <tag>大数据</tag>
-         
         <tag>深度学习</tag>
+         
+        <tag>大数据</tag>
          
          
            
@@ -386,9 +386,9 @@
         <title>Deep Learning读书笔记系列 写作计划</title>
         <pubTime>2017-02-27T14:48:25.000Z</pubTime>
         
-        <tag>机器学习</tag>
-         
         <tag>深度学习</tag>
+         
+        <tag>机器学习</tag>
          
          
            
@@ -530,9 +530,9 @@
         <title>TensorFlow白皮书阅读笔记</title>
         <pubTime>2017-01-11T06:48:19.000Z</pubTime>
         
-        <tag>大数据</tag>
-         
         <tag>深度学习</tag>
+         
+        <tag>大数据</tag>
          
         <tag>TensorFlow</tag>
          
