@@ -14,9 +14,7 @@
     <meta name="description" content="本文缘起于一次CNN作业中的一道题，这道题涉及到了基本的CNN网络搭建，在MNIST数据集上的分类结果，Batch Normalization的影响，Dropout的影响，卷积核大小的影响，数据集大小的影响，不同部分数据集的影响，随机数种子的影响，以及不同激活单元的影响等，能够让人比较全面地对CNN有一个了解，所以想做一下，于是有了本文。
 工具
 开源深度学习库： PyTorch
-
-实现初始要求
-首">
+数据集：MNIST">
 <meta property="og:type" content="article">
 <meta property="og:title" content="利用Pytorch进行CNN详细剖析">
 <meta property="og:url" content="http://whatbeg.com/2017/08/14/mnistCNN.html">
@@ -24,9 +22,7 @@
 <meta property="og:description" content="本文缘起于一次CNN作业中的一道题，这道题涉及到了基本的CNN网络搭建，在MNIST数据集上的分类结果，Batch Normalization的影响，Dropout的影响，卷积核大小的影响，数据集大小的影响，不同部分数据集的影响，随机数种子的影响，以及不同激活单元的影响等，能够让人比较全面地对CNN有一个了解，所以想做一下，于是有了本文。
 工具
 开源深度学习库： PyTorch
-
-实现初始要求
-首">
+数据集：MNIST">
 <meta property="og:image" content="http://image-whatbegblog.oss-cn-shanghai.aliyuncs.com/images/PRCNN0.jpg">
 <meta property="og:image" content="http://image-whatbegblog.oss-cn-shanghai.aliyuncs.com/images/PRCNN1.jpg">
 <meta property="og:image" content="http://image-whatbegblog.oss-cn-shanghai.aliyuncs.com/images/PRCNN2.jpg">
@@ -39,15 +35,13 @@
 <meta property="og:image" content="http://image-whatbegblog.oss-cn-shanghai.aliyuncs.com/images/PRCNN8.jpg">
 <meta property="og:image" content="http://image-whatbegblog.oss-cn-shanghai.aliyuncs.com/images/PRCNN9.jpg">
 <meta property="og:image" content="http://image-whatbegblog.oss-cn-shanghai.aliyuncs.com/images/PRCNN10.jpg">
-<meta property="og:updated_time" content="2017-08-14T14:40:29.374Z">
+<meta property="og:updated_time" content="2017-08-14T14:43:43.870Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="利用Pytorch进行CNN详细剖析">
 <meta name="twitter:description" content="本文缘起于一次CNN作业中的一道题，这道题涉及到了基本的CNN网络搭建，在MNIST数据集上的分类结果，Batch Normalization的影响，Dropout的影响，卷积核大小的影响，数据集大小的影响，不同部分数据集的影响，随机数种子的影响，以及不同激活单元的影响等，能够让人比较全面地对CNN有一个了解，所以想做一下，于是有了本文。
 工具
 开源深度学习库： PyTorch
-
-实现初始要求
-首">
+数据集：MNIST">
 <meta name="twitter:image" content="http://image-whatbegblog.oss-cn-shanghai.aliyuncs.com/images/PRCNN0.jpg">
 
     
@@ -123,6 +117,7 @@
 		<p>本文缘起于一次CNN作业中的一道题，这道题涉及到了基本的CNN网络搭建，在MNIST数据集上的分类结果，Batch Normalization的影响，Dropout的影响，卷积核大小的影响，数据集大小的影响，不同部分数据集的影响，随机数种子的影响，以及不同激活单元的影响等，能够让人比较全面地对CNN有一个了解，所以想做一下，于是有了本文。</p>
 <h2 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h2><ul>
 <li>开源深度学习库： <a href="http://pytorch.org" target="_blank" rel="external">PyTorch</a></li>
+<li>数据集：<a href="http://yann.lecun.com/exdb/mnist/" target="_blank" rel="external">MNIST</a></li>
 </ul>
 <h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><h3 id="初始要求"><a href="#初始要求" class="headerlink" title="初始要求"></a>初始要求</h3><p><img src="http://image-whatbegblog.oss-cn-shanghai.aliyuncs.com/images/PRCNN0.jpg" alt=""></p>
 <p>首先建立基本的BASE网络，在Pytorch中有如下code：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Net</span><span class="params">(nn.Module)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        super(Net, self).__init__()</span><br><span class="line">        self.conv1 = nn.Conv2d(<span class="number">1</span>, <span class="number">20</span>, kernel_size=(<span class="number">5</span>, <span class="number">5</span>), stride=(<span class="number">1</span>, <span class="number">1</span>), padding=<span class="number">0</span>)</span><br><span class="line">        self.conv2 = nn.Conv2d(<span class="number">20</span>, <span class="number">50</span>, kernel_size=(<span class="number">5</span>, <span class="number">5</span>), stride=(<span class="number">1</span>, <span class="number">1</span>), padding=<span class="number">0</span>)</span><br><span class="line">        self.fc1 = nn.Linear(<span class="number">4</span>*<span class="number">4</span>*<span class="number">50</span>, <span class="number">500</span>)</span><br><span class="line">        self.fc2 = nn.Linear(<span class="number">500</span>, <span class="number">10</span>)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">forward</span><span class="params">(self, x)</span>:</span></span><br><span class="line">        x = F.max_pool2d(self.conv1(x), <span class="number">2</span>)</span><br><span class="line">        x = F.max_pool2d(self.conv2(x), <span class="number">2</span>)</span><br><span class="line">        x = x.view(<span class="number">-1</span>, <span class="number">4</span>*<span class="number">4</span>*<span class="number">50</span>)</span><br><span class="line">        x = F.relu(self.fc1(x))</span><br><span class="line">        x = self.fc2(x)</span><br><span class="line">        <span class="keyword">return</span> F.log_softmax(x)</span><br></pre></td></tr></table></figure></p>
