@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>http://whatbeg.com/2017/08/14/mnistCNN.html</loc>
+    <lastmod>2017-08-14T14:18:13.116Z</lastmod>
+    <data>
+        <display>
+        <title>利用Pytorch做一份CNN实战套餐</title>
+        <pubTime>2017-08-14T14:11:01.000Z</pubTime>
+        
+        <tag>Deep Learning</tag>
+         
+         
+           
+             
+              <breadCrumb title="深度学习 | Deep Learning" url="http://whatbeg.com/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0-Deep-Learning/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://whatbeg.com/2017/08/13/deeplearningbook-02.html</loc>
     <lastmod>2017-08-14T13:22:02.752Z</lastmod>
     <data>
@@ -386,9 +406,9 @@
         <title>Deep Learning读书笔记系列 写作计划</title>
         <pubTime>2017-02-27T14:48:25.000Z</pubTime>
         
-        <tag>机器学习</tag>
-         
         <tag>深度学习</tag>
+         
+        <tag>机器学习</tag>
          
          
            

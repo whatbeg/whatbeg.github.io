@@ -1,0 +1,793 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>利用Pytorch做一份CNN实战套餐 | Whatbeg&#39;s blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="whatbeg">
+    
+
+    
+    <meta name="description" content="本文缘起于一次CNN作业中的一道题，这道题涉及到了基本的CNN网络搭建，在MNIST数据集上的分类结果，Batch Normalization的影响，Dropout的影响，卷积核大小的影响，数据集大小的影响，不同部分数据集的影响，随机数种子的影响，以及不同激活单元的影响等，能够让人比较全面地对CNN有一个了解，所以想做一下，于是有了本文。
+由于笔者对CNN（卷积神经网络）研究不太深入，所以每个结果">
+<meta property="og:type" content="article">
+<meta property="og:title" content="利用Pytorch做一份CNN实战套餐">
+<meta property="og:url" content="http://whatbeg.com/2017/08/14/mnistCNN.html">
+<meta property="og:site_name" content="Whatbeg's blog">
+<meta property="og:description" content="本文缘起于一次CNN作业中的一道题，这道题涉及到了基本的CNN网络搭建，在MNIST数据集上的分类结果，Batch Normalization的影响，Dropout的影响，卷积核大小的影响，数据集大小的影响，不同部分数据集的影响，随机数种子的影响，以及不同激活单元的影响等，能够让人比较全面地对CNN有一个了解，所以想做一下，于是有了本文。
+由于笔者对CNN（卷积神经网络）研究不太深入，所以每个结果">
+<meta property="og:image" content="http://image-whatbegblog.oss-cn-shanghai.aliyuncs.com/images/PRCNN0.jpg">
+<meta property="og:image" content="http://image-whatbegblog.oss-cn-shanghai.aliyuncs.com/images/PRCNN1.jpg">
+<meta property="og:image" content="http://image-whatbegblog.oss-cn-shanghai.aliyuncs.com/images/PRCNN2.jpg">
+<meta property="og:image" content="http://image-whatbegblog.oss-cn-shanghai.aliyuncs.com/images/PRCNN3.jpg">
+<meta property="og:image" content="http://image-whatbegblog.oss-cn-shanghai.aliyuncs.com/images/PRCNN4.jpg">
+<meta property="og:image" content="http://image-whatbegblog.oss-cn-shanghai.aliyuncs.com/images/PRCNN5-1.jpg">
+<meta property="og:image" content="http://image-whatbegblog.oss-cn-shanghai.aliyuncs.com/images/PRCNN5-2.jpg">
+<meta property="og:image" content="http://image-whatbegblog.oss-cn-shanghai.aliyuncs.com/images/PRCNN6.jpg">
+<meta property="og:image" content="http://image-whatbegblog.oss-cn-shanghai.aliyuncs.com/images/PRCNN7.jpg">
+<meta property="og:image" content="http://image-whatbegblog.oss-cn-shanghai.aliyuncs.com/images/PRCNN8.jpg">
+<meta property="og:image" content="http://image-whatbegblog.oss-cn-shanghai.aliyuncs.com/images/PRCNN9.jpg">
+<meta property="og:image" content="http://image-whatbegblog.oss-cn-shanghai.aliyuncs.com/images/PRCNN10.jpg">
+<meta property="og:updated_time" content="2017-08-14T14:18:13.116Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="利用Pytorch做一份CNN实战套餐">
+<meta name="twitter:description" content="本文缘起于一次CNN作业中的一道题，这道题涉及到了基本的CNN网络搭建，在MNIST数据集上的分类结果，Batch Normalization的影响，Dropout的影响，卷积核大小的影响，数据集大小的影响，不同部分数据集的影响，随机数种子的影响，以及不同激活单元的影响等，能够让人比较全面地对CNN有一个了解，所以想做一下，于是有了本文。
+由于笔者对CNN（卷积神经网络）研究不太深入，所以每个结果">
+<meta name="twitter:image" content="http://image-whatbegblog.oss-cn-shanghai.aliyuncs.com/images/PRCNN0.jpg">
+
+    
+    <link rel="alternative" href="/atom.xml" title="Whatbeg&#39;s blog" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/w.ico">
+    
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Whatbeg&#39;s blog">Whatbeg&#39;s blog</a></h1>
+				<h2 class="blog-motto">当你的才华撑不起你的野心时，就应该静下心来好好学习。</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">首页(Home)</a></li>
+					
+						<li><a href="/archives">归档(Archives)</a></li>
+					
+						<li><a href="/tags">标签(Tags)</a></li>
+					
+						<li><a href="/categories">分类(Categories)</a></li>
+					
+						<li><a href="/about">关于(About)</a></li>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2017/08/14/mnistCNN.html" title="利用Pytorch做一份CNN实战套餐" itemprop="url">利用Pytorch做一份CNN实战套餐</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="whatbeg" target="_blank" itemprop="author">whatbeg</a>
+		
+  <p class="article-time">
+    <time datetime="2017-08-14T14:11:01.000Z" itemprop="datePublished"> 发表于 2017-08-14</time>
+    <span id="busuanzi_container_page_pv">
+    总阅读<span id="busuanzi_value_page_pv"></span>次
+    </span>
+  </p>
+
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#工具"><span class="toc-number">1.</span> <span class="toc-text">工具</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实现"><span class="toc-number">2.</span> <span class="toc-text">实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#初始要求"><span class="toc-number">2.1.</span> <span class="toc-text">初始要求</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#问题A：预处理"><span class="toc-number">2.2.</span> <span class="toc-text">问题A：预处理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#问题B：BASE模型"><span class="toc-number">2.3.</span> <span class="toc-text">问题B：BASE模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#问题C：Batch-Normalization-v-s-BASE"><span class="toc-number">2.4.</span> <span class="toc-text">问题C：Batch Normalization v.s BASE</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#问题D：-Dropout-Layer"><span class="toc-number">2.5.</span> <span class="toc-text">问题D： Dropout Layer</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#问题E：SK-model-Stacking-two-3x3-conv-layers-to-replace-5x5-conv-layer"><span class="toc-number">2.6.</span> <span class="toc-text">问题E：SK model: Stacking two 3x3 conv. layers to replace 5x5 conv. layer</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#问题F：Change-Number-of-channels"><span class="toc-number">2.7.</span> <span class="toc-text">问题F：Change Number of channels</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#问题G：Use-different-training-set-sizes"><span class="toc-number">2.8.</span> <span class="toc-text">问题G：Use different training set sizes</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#问题H：Use-different-training-sets"><span class="toc-number">2.9.</span> <span class="toc-text">问题H：Use different training sets</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#问题I：Random-Seed’s-effects"><span class="toc-number">2.10.</span> <span class="toc-text">问题I：Random Seed’s effects</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#问题J：ReLU-or-Sigmoid"><span class="toc-number">2.11.</span> <span class="toc-text">问题J：ReLU or Sigmoid?</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#References"><span class="toc-number">3.</span> <span class="toc-text">References</span></a></li></ol>
+		
+		</div>
+		
+		<p>本文缘起于一次CNN作业中的一道题，这道题涉及到了基本的CNN网络搭建，在MNIST数据集上的分类结果，Batch Normalization的影响，Dropout的影响，卷积核大小的影响，数据集大小的影响，不同部分数据集的影响，随机数种子的影响，以及不同激活单元的影响等，能够让人比较全面地对CNN有一个了解，所以想做一下，于是有了本文。</p>
+<p>由于笔者对CNN（卷积神经网络）研究不太深入，所以每个结果后的解释或有失偏颇，读者批判阅读即可。</p>
+<h2 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h2><ul>
+<li>开源深度学习库： <a href="http://pytorch.org" target="_blank" rel="external">PyTorch</a></li>
+</ul>
+<h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><h3 id="初始要求"><a href="#初始要求" class="headerlink" title="初始要求"></a>初始要求</h3><p><img src="http://image-whatbegblog.oss-cn-shanghai.aliyuncs.com/images/PRCNN0.jpg" alt=""></p>
+<p>首先建立基本的BASE网络，在Pytorch中有如下code：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Net</span><span class="params">(nn.Module)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        super(Net, self).__init__()</span><br><span class="line">        self.conv1 = nn.Conv2d(<span class="number">1</span>, <span class="number">20</span>, kernel_size=(<span class="number">5</span>, <span class="number">5</span>), stride=(<span class="number">1</span>, <span class="number">1</span>), padding=<span class="number">0</span>)</span><br><span class="line">        self.conv2 = nn.Conv2d(<span class="number">20</span>, <span class="number">50</span>, kernel_size=(<span class="number">5</span>, <span class="number">5</span>), stride=(<span class="number">1</span>, <span class="number">1</span>), padding=<span class="number">0</span>)</span><br><span class="line">        self.fc1 = nn.Linear(<span class="number">4</span>*<span class="number">4</span>*<span class="number">50</span>, <span class="number">500</span>)</span><br><span class="line">        self.fc2 = nn.Linear(<span class="number">500</span>, <span class="number">10</span>)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">forward</span><span class="params">(self, x)</span>:</span></span><br><span class="line">        x = F.max_pool2d(self.conv1(x), <span class="number">2</span>)</span><br><span class="line">        x = F.max_pool2d(self.conv2(x), <span class="number">2</span>)</span><br><span class="line">        x = x.view(<span class="number">-1</span>, <span class="number">4</span>*<span class="number">4</span>*<span class="number">50</span>)</span><br><span class="line">        x = F.relu(self.fc1(x))</span><br><span class="line">        x = self.fc2(x)</span><br><span class="line">        <span class="keyword">return</span> F.log_softmax(x)</span><br></pre></td></tr></table></figure></p>
+<p>这部分代码见<code>base.py</code>。</p>
+<h3 id="问题A：预处理"><a href="#问题A：预处理" class="headerlink" title="问题A：预处理"></a>问题A：预处理</h3><p><img src="http://image-whatbegblog.oss-cn-shanghai.aliyuncs.com/images/PRCNN1.jpg" alt=""></p>
+<p>即要求将MNIST数据集按照规则读取并且tranform到适合处理的格式。这里读取的代码沿用了BigDL Python Support的读取方式，无需细说，根据MNIST主页上的数据格式可以很快读出，关键block有读取32位比特的函数：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">_read32</span><span class="params">(bytestream)</span>:</span></span><br><span class="line">    dt = numpy.dtype(numpy.uint32).newbyteorder(<span class="string">'&gt;'</span>)    <span class="comment"># 大端模式读取，最高字节在前(MSB first)</span></span><br><span class="line">    <span class="keyword">return</span> numpy.frombuffer(bytestream.read(<span class="number">4</span>), dtype=dt)[<span class="number">0</span>]</span><br></pre></td></tr></table></figure>
+<p>读出后是(N, 1, 28, 28)的tensor，每个像素是0-255的值，首先做一下归一化，将所有值除以255，得到一个0-1的值，然后再Normalize，训练集和测试集的均值方差都已知，直接做即可。由于训练集和测试集的均值方差都是针对归一化后的数据来说的，所以刚开始没做归一化，所以forward输出和grad很离谱，后来才发现是这里出了问题。</p>
+<p>这部分代码见<code>preprocessing.py</code>。</p>
+<h3 id="问题B：BASE模型"><a href="#问题B：BASE模型" class="headerlink" title="问题B：BASE模型"></a>问题B：BASE模型</h3><p><img src="http://image-whatbegblog.oss-cn-shanghai.aliyuncs.com/images/PRCNN2.jpg" alt=""></p>
+<p>将random seed设置为0，在前10000个训练样本上学习参数，最后看20个epochs之后的测试集错误率。最后结果为：</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Test <span class="string">set:</span> Average <span class="string">loss:</span> <span class="number">0.0014</span>, <span class="string">Accuracy:</span> <span class="number">9732</span>/<span class="number">10000</span> (<span class="number">97.3</span>%)</span><br></pre></td></tr></table></figure>
+<p>可以看到，BASE模型准确率并不是那么的高。</p>
+<h3 id="问题C：Batch-Normalization-v-s-BASE"><a href="#问题C：Batch-Normalization-v-s-BASE" class="headerlink" title="问题C：Batch Normalization v.s BASE"></a>问题C：Batch Normalization v.s BASE</h3><p><img src="http://image-whatbegblog.oss-cn-shanghai.aliyuncs.com/images/PRCNN3.jpg" alt=""></p>
+<p>在前三个block的卷积层之后加上Batch Normalization层，简单修改网络结构如下即可：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Net</span><span class="params">(nn.Module)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        super(Net, self).__init__()</span><br><span class="line">        self.conv1 = nn.Conv2d(<span class="number">1</span>, <span class="number">20</span>, kernel_size=(<span class="number">5</span>, <span class="number">5</span>), stride=(<span class="number">1</span>, <span class="number">1</span>), padding=<span class="number">0</span>)</span><br><span class="line">        self.conv2 = nn.Conv2d(<span class="number">20</span>, <span class="number">50</span>, kernel_size=(<span class="number">5</span>, <span class="number">5</span>), stride=(<span class="number">1</span>, <span class="number">1</span>), padding=<span class="number">0</span>)</span><br><span class="line">        self.fc1 = nn.Linear(<span class="number">4</span>*<span class="number">4</span>*<span class="number">50</span>, <span class="number">500</span>)</span><br><span class="line">        self.fc2 = nn.Linear(<span class="number">500</span>, <span class="number">10</span>)</span><br><span class="line">        self.bn1 = nn.BatchNorm2d(<span class="number">20</span>)</span><br><span class="line">        self.bn2 = nn.BatchNorm2d(<span class="number">50</span>)</span><br><span class="line">        self.bn3 = nn.BatchNorm1d(<span class="number">500</span>)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">forward</span><span class="params">(self, x)</span>:</span></span><br><span class="line">        x = self.conv1(x)</span><br><span class="line">        x = F.max_pool2d(self.bn1(x), <span class="number">2</span>)</span><br><span class="line">        x = self.conv2(x)</span><br><span class="line">        x = F.max_pool2d(self.bn2(x), <span class="number">2</span>)</span><br><span class="line">        x = x.view(<span class="number">-1</span>, <span class="number">4</span>*<span class="number">4</span>*<span class="number">50</span>)</span><br><span class="line">        x = self.fc1(x)</span><br><span class="line">        x = F.relu(self.bn3(x))</span><br><span class="line">        x = self.fc2(x)</span><br><span class="line">        <span class="keyword">return</span> F.log_softmax(x)</span><br></pre></td></tr></table></figure></p>
+<p>同样的参数run一下，得出加了BN的结果为：<br><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Test <span class="string">set:</span> Average <span class="string">loss:</span> <span class="number">0.0009</span>, <span class="string">Accuracy:</span> <span class="number">9817</span>/<span class="number">10000</span> (<span class="number">98.2</span>%)</span><br></pre></td></tr></table></figure></p>
+<p>由此可见，有明显的效果提升。<br>关于Batch Normalization的更多资料参见[2],[5]。</p>
+<h3 id="问题D：-Dropout-Layer"><a href="#问题D：-Dropout-Layer" class="headerlink" title="问题D： Dropout Layer"></a>问题D： Dropout Layer</h3><p><img src="http://image-whatbegblog.oss-cn-shanghai.aliyuncs.com/images/PRCNN4.jpg" alt=""></p>
+<p>在最后一层即<code>fc2</code>层后加一个<code>Dropout(p=0.5)</code>后，在BASE和BN上的结果分别为：</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">BASE：Test <span class="string">set:</span> Average <span class="string">loss:</span> <span class="number">0.0011</span>, <span class="string">Accuracy:</span> <span class="number">9769</span>/<span class="number">10000</span> (<span class="number">97.7</span>%)</span><br><span class="line">BN：  Test <span class="string">set:</span> Average <span class="string">loss:</span> <span class="number">0.0014</span>, <span class="string">Accuracy:</span> <span class="number">9789</span>/<span class="number">10000</span> (<span class="number">97.9</span>%)</span><br></pre></td></tr></table></figure>
+<p>观察得知，dropout能够对BASE模型起到一定提升作用，但是对BN模型却效果不明显反而降低了。<br>原因可能在于，BN模型中本身即包含了正则化的效果，再加一层Dropout显得没有必要反而可能影响结果。</p>
+<h3 id="问题E：SK-model-Stacking-two-3x3-conv-layers-to-replace-5x5-conv-layer"><a href="#问题E：SK-model-Stacking-two-3x3-conv-layers-to-replace-5x5-conv-layer" class="headerlink" title="问题E：SK model: Stacking two 3x3 conv. layers to replace 5x5 conv. layer"></a>问题E：SK model: Stacking two 3x3 conv. layers to replace 5x5 conv. layer</h3><p><img src="http://image-whatbegblog.oss-cn-shanghai.aliyuncs.com/images/PRCNN5-1.jpg" alt=""><br><img src="http://image-whatbegblog.oss-cn-shanghai.aliyuncs.com/images/PRCNN5-2.jpg" alt=""></p>
+<p>如此一番改动后，搭建的SK模型如下：<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Net</span>(<span class="title">nn</span>.<span class="title">Module</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(<span class="keyword">self</span>)</span></span><span class="symbol">:</span></span><br><span class="line">        <span class="keyword">super</span>(Net, <span class="keyword">self</span>).__init_<span class="number">_</span>()</span><br><span class="line">        <span class="keyword">self</span>.conv1_1 = nn.Conv2d(<span class="number">1</span>, <span class="number">20</span>, kernel_size=(<span class="number">3</span>, <span class="number">3</span>), stride=(<span class="number">1</span>, <span class="number">1</span>), padding=<span class="number">0</span>)</span><br><span class="line">        <span class="keyword">self</span>.conv1_2 = nn.Conv2d(<span class="number">20</span>, <span class="number">20</span>, kernel_size=(<span class="number">3</span>, <span class="number">3</span>), stride=(<span class="number">1</span>, <span class="number">1</span>), padding=<span class="number">0</span>)</span><br><span class="line">        <span class="keyword">self</span>.conv2 = nn.Conv2d(<span class="number">20</span>, <span class="number">50</span>, kernel_size=(<span class="number">3</span>, <span class="number">3</span>), stride=(<span class="number">1</span>, <span class="number">1</span>), padding=<span class="number">0</span>)</span><br><span class="line">        <span class="keyword">self</span>.fc1 = nn.Linear(<span class="number">5</span>*<span class="number">5</span>*<span class="number">50</span>, <span class="number">500</span>)</span><br><span class="line">        <span class="keyword">self</span>.fc2 = nn.Linear(<span class="number">500</span>, <span class="number">10</span>)</span><br><span class="line">        <span class="keyword">self</span>.bn1_1 = nn.BatchNorm2d(<span class="number">20</span>)</span><br><span class="line">        <span class="keyword">self</span>.bn1_2 = nn.BatchNorm2d(<span class="number">20</span>)</span><br><span class="line">        <span class="keyword">self</span>.bn2 = nn.BatchNorm2d(<span class="number">50</span>)</span><br><span class="line">        <span class="keyword">self</span>.bn3 = nn.BatchNorm1d(<span class="number">500</span>)</span><br><span class="line">        <span class="keyword">self</span>.drop = nn.Dropout(p=<span class="number">0</span>.<span class="number">5</span>)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">forward</span><span class="params">(<span class="keyword">self</span>, x)</span></span><span class="symbol">:</span></span><br><span class="line">        x = F.relu(<span class="keyword">self</span>.bn1_1(<span class="keyword">self</span>.conv1_1(x)))</span><br><span class="line">        x = F.relu(<span class="keyword">self</span>.bn1_2(<span class="keyword">self</span>.conv1_2(x)))</span><br><span class="line">        x = F.max_pool2d(x, <span class="number">2</span>)</span><br><span class="line">        x = <span class="keyword">self</span>.conv2(x)</span><br><span class="line">        x = F.max_pool2d(<span class="keyword">self</span>.bn2(x), <span class="number">2</span>)</span><br><span class="line">        x = x.view(-<span class="number">1</span>, <span class="number">5</span>*<span class="number">5</span>*<span class="number">50</span>)</span><br><span class="line">        x = <span class="keyword">self</span>.fc1(x)</span><br><span class="line">        x = F.relu(<span class="keyword">self</span>.bn3(x))</span><br><span class="line">        x = <span class="keyword">self</span>.fc2(x)</span><br><span class="line">        <span class="keyword">return</span> F.log_softmax(x)</span><br></pre></td></tr></table></figure></p>
+<p>在20个epoch后，结果如下，<br><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SK： Test <span class="string">set:</span> Average <span class="string">loss:</span> <span class="number">0.0008</span>, <span class="string">Accuracy:</span> <span class="number">9848</span>/<span class="number">10000</span> (<span class="number">98.5</span>%)</span><br></pre></td></tr></table></figure></p>
+<p>测试集准确率得到了少许的提高。<br>这里利用2个3x3的卷积核来代替大的5x5卷积核，参数个数由5x5=25变为了2x3x3=18。实践表明，这样使得计算更快了，并且小的卷积层之间的ReLU也很有帮助。<br>VGG中就使用了这种方法。</p>
+<h3 id="问题F：Change-Number-of-channels"><a href="#问题F：Change-Number-of-channels" class="headerlink" title="问题F：Change Number of channels"></a>问题F：Change Number of channels</h3><p><img src="http://image-whatbegblog.oss-cn-shanghai.aliyuncs.com/images/PRCNN6.jpg" alt=""></p>
+<p>通过将特征图大小乘上一个倍数，再通过shell程序执行，得到如下结果：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">SK0</span><span class="selector-class">.2</span>：  97<span class="selector-class">.7</span>%</span><br><span class="line"><span class="selector-tag">SK0</span><span class="selector-class">.5</span>：  98<span class="selector-class">.2</span>%</span><br><span class="line"><span class="selector-tag">SK1</span>：    98<span class="selector-class">.5</span>%</span><br><span class="line"><span class="selector-tag">SK1</span><span class="selector-class">.5</span>：  98<span class="selector-class">.6</span>%</span><br><span class="line"><span class="selector-tag">SK2</span>：    98<span class="selector-class">.5</span>%  (<span class="selector-tag">max</span> 98<span class="selector-class">.7</span>%)</span><br></pre></td></tr></table></figure></p>
+<p>在特征图分别为4，10, 30, 40时，最终的准确度基本是往上提升的。这在一定程度上说明，在没有达到过拟合前，增大特征图的个数，即相当于提取了更多的特征，提取特征数的增加有助于精度的提高。<br>这部分代码见<code>SK_s.py</code>和<code>runSK.sh</code>。</p>
+<h3 id="问题G：Use-different-training-set-sizes"><a href="#问题G：Use-different-training-set-sizes" class="headerlink" title="问题G：Use different training set sizes"></a>问题G：Use different training set sizes</h3><p><img src="http://image-whatbegblog.oss-cn-shanghai.aliyuncs.com/images/PRCNN7.jpg" alt=""></p>
+<p>同样通过脚本运行，增加参数<br><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">parser.add_argument(<span class="string">'--usedatasize'</span>, <span class="keyword">type</span>=<span class="keyword">int</span>, <span class="keyword">default</span>=<span class="number">60000</span>, metavar=<span class="string">'SZ'</span>,</span><br><span class="line">                    help=<span class="string">'use how many training data to train network'</span>)</span><br></pre></td></tr></table></figure></p>
+<p>表示使用的数据大小，从前往后取<code>usebatchsize</code>个数据。<br>这部分程序见<code>SK_s.py</code>和<code>runTrainingSize.sh</code>。<br>运行的结果如下：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">500：   84<span class="selector-class">.2</span>%</span><br><span class="line">1000：  92<span class="selector-class">.0</span>%</span><br><span class="line">2000：  94<span class="selector-class">.3</span>%</span><br><span class="line">5000：  95<span class="selector-class">.5</span>%</span><br><span class="line">10000： 96<span class="selector-class">.6</span>%</span><br><span class="line">20000： 98<span class="selector-class">.4</span>%</span><br><span class="line">60000： 99<span class="selector-class">.1</span>%</span><br></pre></td></tr></table></figure></p>
+<p>由此可以明显地看出，数据越多，结果的精度越大。<br>太少的数据无法准确反映数据的整体分布情况，而且容易过拟合，数据多到一定程度效果也会不明显，不过，大多数时候我们总还是嫌数据太少，而且更多的数据获取起来也有一定难度。</p>
+<h3 id="问题H：Use-different-training-sets"><a href="#问题H：Use-different-training-sets" class="headerlink" title="问题H：Use different training sets"></a>问题H：Use different training sets</h3><p><img src="http://image-whatbegblog.oss-cn-shanghai.aliyuncs.com/images/PRCNN8.jpg" alt=""></p>
+<p>采用脚本完成，这部分程序见<code>SK_0.2.py</code>和<code>diffTrainingSets.sh</code>。<br>运行结果如下：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">    0<span class="selector-tag">-10000</span>： 98<span class="selector-class">.0</span>%</span><br><span class="line">10000<span class="selector-tag">-20000</span>： 97<span class="selector-class">.8</span>%</span><br><span class="line">20000<span class="selector-tag">-30000</span>： 97<span class="selector-class">.8</span>%</span><br><span class="line">30000<span class="selector-tag">-40000</span>： 97<span class="selector-class">.4</span>%</span><br><span class="line">40000<span class="selector-tag">-50000</span>： 97<span class="selector-class">.5</span>%</span><br><span class="line">50000<span class="selector-tag">-60000</span>： 97<span class="selector-class">.7</span>%</span><br></pre></td></tr></table></figure></p>
+<p>由此可见，采用不同的训练样本集合训练出来的网络有一定的差异，虽不是很大，但是毕竟显示出了不稳定的结果。</p>
+<h3 id="问题I：Random-Seed’s-effects"><a href="#问题I：Random-Seed’s-effects" class="headerlink" title="问题I：Random Seed’s effects"></a>问题I：Random Seed’s effects</h3><p><img src="http://image-whatbegblog.oss-cn-shanghai.aliyuncs.com/images/PRCNN9.jpg" alt=""></p>
+<p>采用<code>runSeed.sh</code>脚本完成，用到了全部60000个训练集。<br>运行的结果如下：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">Seed</span>      0：  98<span class="selector-class">.9</span>%</span><br><span class="line"><span class="selector-tag">Seed</span>      1：  99<span class="selector-class">.0</span>%</span><br><span class="line"><span class="selector-tag">Seed</span>     12：  99<span class="selector-class">.1</span>%</span><br><span class="line"><span class="selector-tag">Seed</span>    123：  99<span class="selector-class">.0</span>%</span><br><span class="line"><span class="selector-tag">Seed</span>   1234：  99<span class="selector-class">.1</span>%</span><br><span class="line"><span class="selector-tag">Seed</span>  12345：  99<span class="selector-class">.0</span>%</span><br><span class="line"><span class="selector-tag">Seed</span> 123456：  98<span class="selector-class">.9</span>%</span><br></pre></td></tr></table></figure></p>
+<p>事实上在用上整个训练集的时候，随机数生成器的种子设置对于最后结果的影响不大。</p>
+<h3 id="问题J：ReLU-or-Sigmoid"><a href="#问题J：ReLU-or-Sigmoid" class="headerlink" title="问题J：ReLU or Sigmoid?"></a>问题J：ReLU or Sigmoid?</h3><p><img src="http://image-whatbegblog.oss-cn-shanghai.aliyuncs.com/images/PRCNN10.jpg" alt=""></p>
+<p>将ReLU全部换成Sigmoid后，用全部60000个训练集训练，有对比结果如下：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">   <span class="selector-tag">ReLU</span> <span class="selector-tag">SK_0</span><span class="selector-class">.2</span>:  99<span class="selector-class">.0</span>%</span><br><span class="line"><span class="selector-tag">Sigmoid</span> <span class="selector-tag">SK_0</span><span class="selector-class">.2</span>:  98<span class="selector-class">.6</span>%</span><br></pre></td></tr></table></figure></p>
+<p>由此可以看出，在训练CNN时，使用ReLU激活单元比Sigmoid激活单元要更好一些。原因可能在于二者机制的差别，sigmoid在神经元输入值较大或者较小时，输出值会近乎0或者1，这使得许多地方的梯度几乎为0，权重几乎得不到更新。而ReLU虽然增加了计算的负担，但是它能够显著加速收敛过程，并且也不会有梯度饱和问题。</p>
+<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ul>
+<li>[1] <a href="https://cs.nju.edu.cn/wujx/paper/CNN.pdf" target="_blank" rel="external">Introduction to Convolutional Neural Networks</a></li>
+<li>[2] <a href="http://proceedings.mlr.press/v37/ioffe15.pdf" target="_blank" rel="external">Batch Normalization</a></li>
+<li>[3] <a href="http://pytorch.org/docs/index.html" target="_blank" rel="external">PyTorch Doc</a></li>
+<li>[4] <a href="http://www.vlfeat.org/matconvnet/" target="_blank" rel="external">MatConvNet</a></li>
+<li>[5] <a href="https://www.zhihu.com/question/38102762" target="_blank" rel="external">知乎-深度学习中 Batch Normalization为什么效果好？</a></li>
+<li>[6] <a href="http://jmlr.org/papers/volume15/srivastava14a/srivastava14a.pdf" target="_blank" rel="external">Dropout</a></li>
+</ul>
+  
+	</div>
+
+
+    
+	<!-- css -->
+	<style type="text/css">
+	    .center {
+	        text-align: center;
+	    }
+	    .hidden {
+	        display: none;
+	    }
+		.donate_bar a.btn_donate{
+			display: inline-block;
+			width: 82px;
+			height: 82px;
+			background: url("http://7xsl28.com1.z0.glb.clouddn.com/btn_reward.gif") no-repeat;
+			_background: url("http://7xsl28.com1.z0.glb.clouddn.com/btn_reward.gif") no-repeat;
+
+			<!-- http://img.t.sinajs.cn/t5/style/images/apps_PRF/e_media/btn_reward.gif
+			     因为本 hexo 生成的博客所用的 theme 的 a:hover 带动画效果，
+				 为了在让打赏按钮显示效果正常 而 添加了以下几行 css，
+				 嵌入其它博客时不一定要它们。 -->
+			-webkit-transition: background 0s;
+			-moz-transition: background 0s;
+			-o-transition: background 0s;
+			-ms-transition: background 0s;
+			transition: background 0s;
+			<!-- /让打赏按钮的效果显示正常 而 添加的几行 css 到此结束 -->
+		}
+
+		.donate_bar a.btn_donate:hover{ background-position: 0px -82px;}
+		.donate_bar .donate_txt {
+			display: block;
+			color: #9d9d9d;
+			font: 14px/2 "Microsoft Yahei";
+		}
+		.bold{ font-weight: bold; }
+	</style>
+	<!-- /css -->
+
+    <!-- Donate Module -->
+    <div id="donate_module">
+
+	<!-- btn_donate & tips -->
+	<div id="donate_board" class="donate_bar center">
+	    <br>
+	    ------------------------------------------------------------------------------------------------------------------------------
+	    <br>
+		<a id="btn_donate" class="btn_donate" target="_self" href="javascript:;" title="Donate 打赏"></a>
+		<span class="donate_txt">
+			听说，打赏我的人最后都找到了真爱。
+		</span>
+			
+		
+	</div>
+	<!-- /btn_donate & tips -->
+
+	<!-- donate guide -->
+    
+	<div id="donate_guide" class="donate_bar center hidden">
+        <br>
+	    ------------------------------------------------------------------------------------------------------------------------------
+	    <br>
+	    
+	    <div width="100%" align="center"><div name="dashmain" id="dash-main-id-87895f" class="dash-main-3 87895f-0.99"></div></div>
+		<script type="text/javascript" charset="utf-8" src="http://www.dashangcloud.com/static/ds.js"></script>
+		
+
+		<a href="http://7xsl28.com1.z0.glb.clouddn.com/wechatpay.png" title="用微信扫一扫哦~" class="fancybox" rel="article0">
+			<img src="http://7xsl28.com1.z0.glb.clouddn.com/wechatpay.png" title="微信打赏 Donate" height="190px" width="auto"/>
+		</a>
+        
+        &nbsp;&nbsp;
+
+		<a href="http://7xsl28.com1.z0.glb.clouddn.com/alipay.jpg" title="用支付宝扫一扫即可~" class="fancybox" rel="article0">
+			<img src="http://7xsl28.com1.z0.glb.clouddn.com/alipay.jpg" title="支付宝打赏 Donate" height="190px" width="auto"/>
+		</a>
+
+		<span class="donate_txt">
+			听说，打赏我的人最后都找到了真爱。
+		</span>
+
+	</div>
+	<!-- /donate guide -->
+
+	<!-- donate script -->
+	<script type="text/javascript">
+		document.getElementById('btn_donate').onclick = function() {
+			$('#donate_board').addClass('hidden');
+			$('#donate_guide').removeClass('hidden');
+		}
+
+		function donate_on_web(){
+			$('#donate').submit();
+        }
+
+		var original_window_onload = window.onload;
+        window.onload = function () {
+            if (original_window_onload) {
+                original_window_onload();
+            }
+            document.getElementById('donate_board_wdg').className = 'hidden';
+		}
+	</script>
+	<!-- /donate script -->
+</div>
+<!-- /Donate Module -->
+   
+
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  
+  <span></span> <a href="/categories/深度学习-Deep-Learning/">深度学习 | Deep Learning</a>
+  </div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/Deep-Learning/">Deep Learning</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	<div class="share-jiathis">
+	  
+<div class="jiathis_style_24x24">
+	<a class="jiathis_button_tsina"></a>
+	<a class="jiathis_button_weixin"></a>
+	<a class="jiathis_button_tqq"></a>
+	<a class="jiathis_button_qzone"></a>
+	<a class="jiathis_button_douban"></a>
+	<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+    var jiathis_config={
+    data_track_clickback:true,
+    sm:"copy,renren,cqq",
+    pic:"",
+    summary:"",
+     ralateuid:{"tsina":"husuche## e.g. 2176287895 Your weibo id,It will be used in share button."},hideMore:false}
+    
+  </script> 
+<script type="text/javascript" src="//v3.jiathis.com/code/jia.js?uid=2094149
+2094149" charset="utf-8"></script>      
+
+	 </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/2017/08/13/deeplearningbook-02.html"  title="Deep Learning读书笔记（2）【深度学习的数学基础摘要】">
+ <strong>下一篇：</strong><br/> 
+ <span>Deep Learning读书笔记（2）【深度学习的数学基础摘要】
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+<section id="comments" class="comment">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <aside class="clearfix">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#工具"><span class="toc-number">1.</span> <span class="toc-text">工具</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实现"><span class="toc-number">2.</span> <span class="toc-text">实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#初始要求"><span class="toc-number">2.1.</span> <span class="toc-text">初始要求</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#问题A：预处理"><span class="toc-number">2.2.</span> <span class="toc-text">问题A：预处理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#问题B：BASE模型"><span class="toc-number">2.3.</span> <span class="toc-text">问题B：BASE模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#问题C：Batch-Normalization-v-s-BASE"><span class="toc-number">2.4.</span> <span class="toc-text">问题C：Batch Normalization v.s BASE</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#问题D：-Dropout-Layer"><span class="toc-number">2.5.</span> <span class="toc-text">问题D： Dropout Layer</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#问题E：SK-model-Stacking-two-3x3-conv-layers-to-replace-5x5-conv-layer"><span class="toc-number">2.6.</span> <span class="toc-text">问题E：SK model: Stacking two 3x3 conv. layers to replace 5x5 conv. layer</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#问题F：Change-Number-of-channels"><span class="toc-number">2.7.</span> <span class="toc-text">问题F：Change Number of channels</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#问题G：Use-different-training-set-sizes"><span class="toc-number">2.8.</span> <span class="toc-text">问题G：Use different training set sizes</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#问题H：Use-different-training-sets"><span class="toc-number">2.9.</span> <span class="toc-text">问题H：Use different training sets</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#问题I：Random-Seed’s-effects"><span class="toc-number">2.10.</span> <span class="toc-text">问题I：Random Seed’s effects</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#问题J：ReLU-or-Sigmoid"><span class="toc-number">2.11.</span> <span class="toc-text">问题J：ReLU or Sigmoid?</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#References"><span class="toc-number">3.</span> <span class="toc-text">References</span></a></li></ol>
+ 
+ </aside>
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+<div class="about">
+    <p class="asidetitle">Short bio</p>
+    <div class="clearfix">
+        <!-- <img src="http://7xsl28.com1.z0.glb.clouddn.com/niuzai.jpg" height="74px" width="74px" id="about-image" alt> -->
+        <span style="font-size: medium; font-family: Calibri Light, Open Sans, Microsoft YaHei Light">
+        whatbeg.com is written by Qiu Hu. Now Qiu Hu is a master candidate living in Nanjing, P.R. China.
+        <br>
+        You can contact me with email.
+        <br>
+        Just enjoy your reading here!
+        <br>
+        Comments are always welcome:)
+        </span>
+    </div>
+</div>
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/大数据系统与技术-Big-Data/" title="大数据系统与技术 | Big Data">大数据系统与技术 | Big Data<sup>8</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/成长之路-Biography/" title="成长之路 | Biography">成长之路 | Biography<sup>8</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/数据科学-Data-Science/" title="数据科学 | Data Science">数据科学 | Data Science<sup>8</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/机器学习-Mac-Learning/" title="机器学习 | Mac.Learning">机器学习 | Mac.Learning<sup>8</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/深度学习-Deep-Learning/" title="深度学习 | Deep Learning">深度学习 | Deep Learning<sup>6</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/算法-Algorithm/" title="算法 | Algorithm">算法 | Algorithm<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/编程语言-Program-Lang/" title="编程语言 | Program Lang.">编程语言 | Program Lang.<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/计算机相关-CS-Related/" title="计算机相关 | CS.Related">计算机相关 | CS.Related<sup>7</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/译文-Translation/" title="译文 | Translation">译文 | Translation<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/读书-Reading/" title="读书 | Reading">读书 | Reading<sup>8</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/错误解决与优化-Err-n-Opt/" title="错误解决与优化 | Err_n_Opt">错误解决与优化 | Err_n_Opt<sup>7</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/随笔-Essays/" title="随笔 | Essays">随笔 | Essays<sup>6</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+  <div class="archiveslist">
+    <p class="asidetitle"><a href="/archives">归档</a></p>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">23</span></li></ul>
+  </div>
+
+
+  
+  <div class="tagcloudlist">
+    <p class="asidetitle">标签云</p>
+    <div class="tagcloudlist clearfix">
+       <a href="/tags/CS/" style="font-size: 16.67px;">CS</a> <a href="/tags/Deep-Learning/" style="font-size: 13.33px;">Deep Learning</a> <a href="/tags/Git/" style="font-size: 11.11px;">Git</a> <a href="/tags/Hadoop/" style="font-size: 13.33px;">Hadoop</a> <a href="/tags/Latex/" style="font-size: 10px;">Latex</a> <a href="/tags/Linux/" style="font-size: 12.22px;">Linux</a> <a href="/tags/Python/" style="font-size: 18.89px;">Python</a> <a href="/tags/Spark/" style="font-size: 10px;">Spark</a> <a href="/tags/Summary/" style="font-size: 14.44px;">Summary</a> <a href="/tags/TensorFlow/" style="font-size: 10px;">TensorFlow</a> <a href="/tags/Web/" style="font-size: 12.22px;">Web</a> <a href="/tags/hexo/" style="font-size: 15.56px;">hexo</a> <a href="/tags/三国/" style="font-size: 10px;">三国</a> <a href="/tags/吃喝玩乐/" style="font-size: 10px;">吃喝玩乐</a> <a href="/tags/大数据/" style="font-size: 13.33px;">大数据</a> <a href="/tags/影视/" style="font-size: 11.11px;">影视</a> <a href="/tags/数据分析/" style="font-size: 16.67px;">数据分析</a> <a href="/tags/机器学习/" style="font-size: 20px;">机器学习</a> <a href="/tags/深度学习/" style="font-size: 15.56px;">深度学习</a> <a href="/tags/算法/" style="font-size: 12.22px;">算法</a> <a href="/tags/论文阅读/" style="font-size: 10px;">论文阅读</a> <a href="/tags/译文/" style="font-size: 11.11px;">译文</a> <a href="/tags/读书/" style="font-size: 17.78px;">读书</a> <a href="/tags/随笔/" style="font-size: 14.44px;">随笔</a>
+    </div>
+  </div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="http://www.cnblogs.com/whatbeg/" target="_blank" title="Old Blog">Old Blog</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://github.com/whatbeg" target="_blank" title="My Github">My Github</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.matrix67.com/blog/" target="_blank" title="Matrix67">Matrix67</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.liaoxuefeng.com/" target="_blank" title="廖雪峰">廖雪峰</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.ruanyifeng.com/blog/" target="_blank" title="阮一峰">阮一峰</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://mindhacks.cn/" target="_blank" title="刘未鹏">刘未鹏</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://machinelearningmastery.com/blog/" target="_blank" title="ML MYSTERY">ML MYSTERY</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://freemind.pluskid.org/" target="_blank" title="Free Mind">Free Mind</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://blog.csdn.net/zouxy09/" target="_blank" title="zouxy机器学习">zouxy机器学习</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://coolshell.cn" target="_blank" title="酷壳">酷壳</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  <table height=30 cellSpacing=0 cellPadding=0 width=180 border=0>
+<form action="http://www.sogou.com/web" target="_blank">
+<tr style='font-size:12px;color:#000000'>
+<td align="center" width=100><input type="text" name="query" size=14 style='BORDER-RIGHT: #999 1px solid; BORDER-TOP: #999 1px solid; BORDER-LEFT: #999	1px	solid; BORDER-BOTTOM: #999 1px solid; HEIGHT: 19px; BACKGROUND-COLOR: #fff'>
+<input type="hidden" name="insite" value="whatbeg.com">
+<input type="hidden" name="insite2" value="whatbeg.com"></td>
+<td align="left" width=45><input type="submit" name="sogou_submit" value="搜索">
+</td></tr></form>
+</table>
+
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+  <div class="rsspart">
+	<a href="http://eepurl.com/cHO5An" target="_blank" title="email">Email 订阅</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+        
+
+	    
+		
+				<div class="cc-license">
+          <a href="http://creativecommons.org/licenses/by-nc-nd/4.0" class="cc-opacity" target="_blank">
+            <img src="/img/cc-by-nc-nd.svg" alt="Creative Commons" />
+          </a>
+        </div>
+    
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2016-2017 
+		
+		<a href="/about" target="_blank" title="whatbeg">whatbeg</a>
+		
+		<br>
+		<span class="post-count">Total words: <span style="color:orange">251.6k</span></span>
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+        <span id="busuanzi_container_site_pv">
+        &nbsp;&nbsp;Total visits:&nbsp;<span style="color:orange" id="busuanzi_value_site_pv"></span>
+        </span>
+        <span id="busuanzi_container_site_uv">
+        &nbsp;&nbsp;You are Visitor No.<span style="color:orange" id="busuanzi_value_site_uv"></span>
+        </span>
+        </br>
+		</p>
+		
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    $('#toc.toc-aside').css('display', 'block').addClass('fadeIn');  //侧边栏显示文章目录
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');   //侧边栏显示widget
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+        getSize();
+        if (myWidth >= 1024) {
+          c.click();
+        }
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+
+
+
+<script type="text/javascript">
+
+var disqus_shortname = 'whatbeg';
+
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+</script>
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1258390595'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s95.cnzz.com/z_stat.php%3Fid%3D1258390595%26online%3D1%26show%3Dline' type='text/javascript'%3E%3C/script%3E"));</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    bp.src = '//push.zhanzhang.baidu.com/push.js';
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+  </body>
+</html>
+
+
