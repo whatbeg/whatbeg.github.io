@@ -12,13 +12,21 @@
 
     
     <meta name="description" content="本文缘起于一次CNN作业中的一道题，这道题涉及到了基本的CNN网络搭建，在MNIST数据集上的分类结果，Batch Normalization的影响，Dropout的影响，卷积核大小的影响，数据集大小的影响，不同部分数据集的影响，随机数种子的影响，以及不同激活单元的影响等，能够让人比较全面地对CNN有一个了解，所以想做一下，于是有了本文。
-由于笔者对CNN（卷积神经网络）研究不太深入，所以每个结果">
+工具
+开源深度学习库： PyTorch
+
+实现初始要求
+首">
 <meta property="og:type" content="article">
 <meta property="og:title" content="利用Pytorch进行CNN详细剖析">
 <meta property="og:url" content="http://whatbeg.com/2017/08/14/mnistCNN.html">
 <meta property="og:site_name" content="Whatbeg's blog">
 <meta property="og:description" content="本文缘起于一次CNN作业中的一道题，这道题涉及到了基本的CNN网络搭建，在MNIST数据集上的分类结果，Batch Normalization的影响，Dropout的影响，卷积核大小的影响，数据集大小的影响，不同部分数据集的影响，随机数种子的影响，以及不同激活单元的影响等，能够让人比较全面地对CNN有一个了解，所以想做一下，于是有了本文。
-由于笔者对CNN（卷积神经网络）研究不太深入，所以每个结果">
+工具
+开源深度学习库： PyTorch
+
+实现初始要求
+首">
 <meta property="og:image" content="http://image-whatbegblog.oss-cn-shanghai.aliyuncs.com/images/PRCNN0.jpg">
 <meta property="og:image" content="http://image-whatbegblog.oss-cn-shanghai.aliyuncs.com/images/PRCNN1.jpg">
 <meta property="og:image" content="http://image-whatbegblog.oss-cn-shanghai.aliyuncs.com/images/PRCNN2.jpg">
@@ -31,11 +39,15 @@
 <meta property="og:image" content="http://image-whatbegblog.oss-cn-shanghai.aliyuncs.com/images/PRCNN8.jpg">
 <meta property="og:image" content="http://image-whatbegblog.oss-cn-shanghai.aliyuncs.com/images/PRCNN9.jpg">
 <meta property="og:image" content="http://image-whatbegblog.oss-cn-shanghai.aliyuncs.com/images/PRCNN10.jpg">
-<meta property="og:updated_time" content="2017-08-14T14:30:02.537Z">
+<meta property="og:updated_time" content="2017-08-14T14:40:29.374Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="利用Pytorch进行CNN详细剖析">
 <meta name="twitter:description" content="本文缘起于一次CNN作业中的一道题，这道题涉及到了基本的CNN网络搭建，在MNIST数据集上的分类结果，Batch Normalization的影响，Dropout的影响，卷积核大小的影响，数据集大小的影响，不同部分数据集的影响，随机数种子的影响，以及不同激活单元的影响等，能够让人比较全面地对CNN有一个了解，所以想做一下，于是有了本文。
-由于笔者对CNN（卷积神经网络）研究不太深入，所以每个结果">
+工具
+开源深度学习库： PyTorch
+
+实现初始要求
+首">
 <meta name="twitter:image" content="http://image-whatbegblog.oss-cn-shanghai.aliyuncs.com/images/PRCNN0.jpg">
 
     
@@ -104,12 +116,11 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#工具"><span class="toc-number">1.</span> <span class="toc-text">工具</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实现"><span class="toc-number">2.</span> <span class="toc-text">实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#初始要求"><span class="toc-number">2.1.</span> <span class="toc-text">初始要求</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#问题A：预处理"><span class="toc-number">2.2.</span> <span class="toc-text">问题A：预处理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#问题B：BASE模型"><span class="toc-number">2.3.</span> <span class="toc-text">问题B：BASE模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#问题C：Batch-Normalization-v-s-BASE"><span class="toc-number">2.4.</span> <span class="toc-text">问题C：Batch Normalization v.s BASE</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#问题D：-Dropout-Layer"><span class="toc-number">2.5.</span> <span class="toc-text">问题D： Dropout Layer</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#问题E：SK-model"><span class="toc-number">2.6.</span> <span class="toc-text">问题E：SK model</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#问题F：Change-Number-of-channels"><span class="toc-number">2.7.</span> <span class="toc-text">问题F：Change Number of channels</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#问题G：Use-different-training-set-sizes"><span class="toc-number">2.8.</span> <span class="toc-text">问题G：Use different training set sizes</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#问题H：Use-different-training-sets"><span class="toc-number">2.9.</span> <span class="toc-text">问题H：Use different training sets</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#问题I：Random-Seed’s-effects"><span class="toc-number">2.10.</span> <span class="toc-text">问题I：Random Seed’s effects</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#问题J：ReLU-or-Sigmoid"><span class="toc-number">2.11.</span> <span class="toc-text">问题J：ReLU or Sigmoid?</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#References"><span class="toc-number">3.</span> <span class="toc-text">References</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#工具"><span class="toc-number">1.</span> <span class="toc-text">工具</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实现"><span class="toc-number">2.</span> <span class="toc-text">实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#初始要求"><span class="toc-number">2.1.</span> <span class="toc-text">初始要求</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#问题A：预处理"><span class="toc-number">2.2.</span> <span class="toc-text">问题A：预处理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#问题B：BASE模型"><span class="toc-number">2.3.</span> <span class="toc-text">问题B：BASE模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#问题C：Batch-Normalization-v-s-BASE"><span class="toc-number">2.4.</span> <span class="toc-text">问题C：Batch Normalization v.s BASE</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#问题D：-Dropout-Layer"><span class="toc-number">2.5.</span> <span class="toc-text">问题D： Dropout Layer</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#问题E：SK-model"><span class="toc-number">2.6.</span> <span class="toc-text">问题E：SK model</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#问题F：Change-Number-of-channels"><span class="toc-number">2.7.</span> <span class="toc-text">问题F：Change Number of channels</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#问题G：Use-different-training-set-sizes"><span class="toc-number">2.8.</span> <span class="toc-text">问题G：Use different training set sizes</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#问题H：Use-different-training-sets"><span class="toc-number">2.9.</span> <span class="toc-text">问题H：Use different training sets</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#问题I：Random-Seed’s-effects"><span class="toc-number">2.10.</span> <span class="toc-text">问题I：Random Seed’s effects</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#问题J：ReLU-or-Sigmoid"><span class="toc-number">2.11.</span> <span class="toc-text">问题J：ReLU or Sigmoid?</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-number">3.</span> <span class="toc-text">总结</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#References"><span class="toc-number">4.</span> <span class="toc-text">References</span></a></li></ol>
 		
 		</div>
 		
 		<p>本文缘起于一次CNN作业中的一道题，这道题涉及到了基本的CNN网络搭建，在MNIST数据集上的分类结果，Batch Normalization的影响，Dropout的影响，卷积核大小的影响，数据集大小的影响，不同部分数据集的影响，随机数种子的影响，以及不同激活单元的影响等，能够让人比较全面地对CNN有一个了解，所以想做一下，于是有了本文。</p>
-<p>由于笔者对CNN（卷积神经网络）研究不太深入，所以每个结果后的解释或有失偏颇，读者批判阅读即可。</p>
 <h2 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h2><ul>
 <li>开源深度学习库： <a href="http://pytorch.org" target="_blank" rel="external">PyTorch</a></li>
 </ul>
@@ -154,6 +165,7 @@
 <h3 id="问题J：ReLU-or-Sigmoid"><a href="#问题J：ReLU-or-Sigmoid" class="headerlink" title="问题J：ReLU or Sigmoid?"></a>问题J：ReLU or Sigmoid?</h3><p><img src="http://image-whatbegblog.oss-cn-shanghai.aliyuncs.com/images/PRCNN10.jpg" alt=""></p>
 <p>将ReLU全部换成Sigmoid后，用全部60000个训练集训练，有对比结果如下：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">   <span class="selector-tag">ReLU</span> <span class="selector-tag">SK_0</span><span class="selector-class">.2</span>:  99<span class="selector-class">.0</span>%</span><br><span class="line"><span class="selector-tag">Sigmoid</span> <span class="selector-tag">SK_0</span><span class="selector-class">.2</span>:  98<span class="selector-class">.6</span>%</span><br></pre></td></tr></table></figure></p>
 <p>由此可以看出，在训练CNN时，使用ReLU激活单元比Sigmoid激活单元要更好一些。原因可能在于二者机制的差别，sigmoid在神经元输入值较大或者较小时，输出值会近乎0或者1，这使得许多地方的梯度几乎为0，权重几乎得不到更新。而ReLU虽然增加了计算的负担，但是它能够显著加速收敛过程，并且也不会有梯度饱和问题。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>本文利用PyTorch对几个CNN模型在MNIST数据集上的比较，以及一些参数的设置对模型效果的影响，从而对CNN的许多方面进行了一些详细的评估。<br>用过这么一次觉得PyTorch还是挺好用的，比较简单，其他模型不知道，反正卷积神经网络模型是如此。<br>项目具体代码见[7]。<br>由于笔者对CNN（卷积神经网络）研究不太深入，所以每个结果后的解释或有失偏颇，读者批判阅读即可。</p>
 <h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ul>
 <li>[1] <a href="https://cs.nju.edu.cn/wujx/paper/CNN.pdf" target="_blank" rel="external">Introduction to Convolutional Neural Networks</a></li>
 <li>[2] <a href="http://proceedings.mlr.press/v37/ioffe15.pdf" target="_blank" rel="external">Batch Normalization</a></li>
@@ -161,6 +173,7 @@
 <li>[4] <a href="http://www.vlfeat.org/matconvnet/" target="_blank" rel="external">MatConvNet</a></li>
 <li>[5] <a href="https://www.zhihu.com/question/38102762" target="_blank" rel="external">知乎-深度学习中 Batch Normalization为什么效果好？</a></li>
 <li>[6] <a href="http://jmlr.org/papers/volume15/srivastava14a/srivastava14a.pdf" target="_blank" rel="external">Dropout</a></li>
+<li>[7] <a href="https://github.com/whatbeg/Data-Analysis-and-Mining/tree/master/CNN_for_Mnist" target="_blank" rel="external">Github上的代码</a></li>
 </ul>
   
 	</div>
@@ -354,7 +367,7 @@
   <aside class="clearfix">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#工具"><span class="toc-number">1.</span> <span class="toc-text">工具</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实现"><span class="toc-number">2.</span> <span class="toc-text">实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#初始要求"><span class="toc-number">2.1.</span> <span class="toc-text">初始要求</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#问题A：预处理"><span class="toc-number">2.2.</span> <span class="toc-text">问题A：预处理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#问题B：BASE模型"><span class="toc-number">2.3.</span> <span class="toc-text">问题B：BASE模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#问题C：Batch-Normalization-v-s-BASE"><span class="toc-number">2.4.</span> <span class="toc-text">问题C：Batch Normalization v.s BASE</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#问题D：-Dropout-Layer"><span class="toc-number">2.5.</span> <span class="toc-text">问题D： Dropout Layer</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#问题E：SK-model"><span class="toc-number">2.6.</span> <span class="toc-text">问题E：SK model</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#问题F：Change-Number-of-channels"><span class="toc-number">2.7.</span> <span class="toc-text">问题F：Change Number of channels</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#问题G：Use-different-training-set-sizes"><span class="toc-number">2.8.</span> <span class="toc-text">问题G：Use different training set sizes</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#问题H：Use-different-training-sets"><span class="toc-number">2.9.</span> <span class="toc-text">问题H：Use different training sets</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#问题I：Random-Seed’s-effects"><span class="toc-number">2.10.</span> <span class="toc-text">问题I：Random Seed’s effects</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#问题J：ReLU-or-Sigmoid"><span class="toc-number">2.11.</span> <span class="toc-text">问题J：ReLU or Sigmoid?</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#References"><span class="toc-number">3.</span> <span class="toc-text">References</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#工具"><span class="toc-number">1.</span> <span class="toc-text">工具</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实现"><span class="toc-number">2.</span> <span class="toc-text">实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#初始要求"><span class="toc-number">2.1.</span> <span class="toc-text">初始要求</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#问题A：预处理"><span class="toc-number">2.2.</span> <span class="toc-text">问题A：预处理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#问题B：BASE模型"><span class="toc-number">2.3.</span> <span class="toc-text">问题B：BASE模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#问题C：Batch-Normalization-v-s-BASE"><span class="toc-number">2.4.</span> <span class="toc-text">问题C：Batch Normalization v.s BASE</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#问题D：-Dropout-Layer"><span class="toc-number">2.5.</span> <span class="toc-text">问题D： Dropout Layer</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#问题E：SK-model"><span class="toc-number">2.6.</span> <span class="toc-text">问题E：SK model</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#问题F：Change-Number-of-channels"><span class="toc-number">2.7.</span> <span class="toc-text">问题F：Change Number of channels</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#问题G：Use-different-training-set-sizes"><span class="toc-number">2.8.</span> <span class="toc-text">问题G：Use different training set sizes</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#问题H：Use-different-training-sets"><span class="toc-number">2.9.</span> <span class="toc-text">问题H：Use different training sets</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#问题I：Random-Seed’s-effects"><span class="toc-number">2.10.</span> <span class="toc-text">问题I：Random Seed’s effects</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#问题J：ReLU-or-Sigmoid"><span class="toc-number">2.11.</span> <span class="toc-text">问题J：ReLU or Sigmoid?</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-number">3.</span> <span class="toc-text">总结</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#References"><span class="toc-number">4.</span> <span class="toc-text">References</span></a></li></ol>
  
  </aside>
   </div>
@@ -562,7 +575,7 @@
 		<a href="/about" target="_blank" title="whatbeg">whatbeg</a>
 		
 		<br>
-		<span class="post-count">Total words: <span style="color:orange">251.6k</span></span>
+		<span class="post-count">Total words: <span style="color:orange">251.8k</span></span>
         <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
         <span id="busuanzi_container_site_pv">
         &nbsp;&nbsp;Total visits:&nbsp;<span style="color:orange" id="busuanzi_value_site_pv"></span>
