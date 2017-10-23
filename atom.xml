@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://whatbeg.com/"/>
-  <updated>2017-10-23T05:23:53.201Z</updated>
+  <updated>2017-10-23T15:38:18.567Z</updated>
   <id>http://whatbeg.com/</id>
   
   <author>
@@ -14,6 +14,75 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Revisiting Java</title>
+    <link href="http://whatbeg.com/2017/10/23/revisitingjava.html"/>
+    <id>http://whatbeg.com/2017/10/23/revisitingjava.html</id>
+    <published>2017-10-23T15:33:48.000Z</published>
+    <updated>2017-10-23T15:38:18.567Z</updated>
+    
+    <content type="html">&lt;p&gt;最近在看一些工程代码，于是看了看设计模式，看设计模式之前发现Java是先修知识，又重新补了一遍Java，温故知新，获得一些新的体会。&lt;br&gt;本文不打算作为“Java知识点详细梳理”，“10分钟学会Java”之类的文章，仅作为博主自己的一个回顾，涉及的内容也无定法。&lt;/p&gt;
+&lt;p&gt;Java应该是目前用的最多的编程语言，以前觉得Java老要点点点（调用方法），变量名也很长，C++/Python很少代码写完的东西Java可能要写很多行……&lt;br&gt;觉得挺麻烦的，不过Java风靡自有其风靡的理由，在面向对象语言中她是一个标杆，虽然繁琐，但比较清晰，比较简单。&lt;/p&gt;
+&lt;p&gt;拿变量类型来说，Java只有两种变量类型，primitive主数据类型和引用数据类型。&lt;/p&gt;
+&lt;p&gt;Java中最关键的概念是面向对象，面向对象最关键的东西就是类和对象，所有的Java程序都定义在类中，你不能像python那样，打开.py文件就开始写东西，就可以执行了，也不像C++，定义一个main函数即可运行。在Java中即使main函数也要包括在类中。&lt;/p&gt;
+&lt;p&gt;为什么面向对象是核心内容？它的好处在哪呢？可以说，OO(面向对象)无处不在，OO使得我们很方便的扩展功能，而不需要重复写很多代码！另外，OO的设计思想其实是抽象思维的一种体现，它改变了我们设计程序的方式，我们不再是根据程序需要什么功能就开始从头到尾实现什么功能，我们更多考虑的是类和对象，程序包含几种类型的实体？有什么共同点？可以进行怎样的抽象？用继承还是接口？……&lt;/p&gt;
+&lt;p&gt;说说类和对象，类是对象的模板，类定义好“像我这样的人应该有什么状态，特征，能够做到那些事”，而对象具体化了类，真正获得了具体的状态，具体的特征，以及做某些事的方法。&lt;/p&gt;
+&lt;p&gt;我们说到，Java只有两种变量，primitive主数据类型和引用数据类型。主数据类型包括我们所指的int,double,float等等，这些不是对象。而引用变量是一个到对象的引用，相当于一个遥控器，指向堆上的某个对象，通过此引用可以获得对象，重新赋值此引用并不改变对象，只是引用指到了另一个对象上而已。没有对象变量，只有指向对象的引用变量。&lt;br&gt;==:  比较primitive主数据类型是否相同，或两个引用是否指向同一对象&lt;/p&gt;
+&lt;p&gt;话题回到面向对象，提到面向对象，不得不提其三大特性，这也是面试中经常会问到的，即封装，继承和多态。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;封装(encapsulation)，即隐藏对象的属性和实现细节，仅对外公开接口，控制在程序中属性的读和修改的访问级别；&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;多态(polymorphism)，一句话，“接口的多种不同的实现方式即为多态”，但是这个不太好理解，甚至我觉得它不够准确，因为光说接口是不是有点不够？换一种说法，多态即允许将子类对象的引用赋值给父类对象的引用，赋值之后，父对象就可以根据当前赋值给它的子对象的特性以不同的方式运作。因为：编译器根据引用类型来判断可以调用哪些方法，而不是根据确实的类型。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;继承(inheritance) 是指一个对象直接使用另一对象的属性和方法，很简单，父类是球，子类是足球，那么足球可以直接使用“滚动”这个方法，如果需要特殊的“滚”，那子类自己实现就好了。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;之所以继承放在最后讲，是因为我们关于继承有更多要说的。&lt;/p&gt;
+&lt;p&gt;【继承方法调用时的最近原则】调用对象引用的方法时，会调用到与该对象类型最接近的方法，就是说如果子类实现了某继承的方法，那就调用子类的，如果没有实现，那就往上找最近的实现的类的方法。&lt;/p&gt;
+&lt;p&gt;继承的IS-A测试，即“足球”IS-A“球”，总得满足这样的关系才好说继承，就像你不太好意思继承隔壁王叔叔财产。&lt;/p&gt;
+&lt;p&gt;继承的意义何在？这是显然的，首先避免了大量重复的程序代码，其次可以定义出一组共同的协议，所有继承者都需要满足这个协议，你知道，在很多时候大家遵守一些共同的规则是很重要的。&lt;/p&gt;
+&lt;p&gt;继承的一些使用建议：&lt;br&gt;1） 当某个类会比其父类更具有特定意义时使用继承&lt;br&gt;2）行为程序需要被多个相同基本类型的类共享时，考虑使用继承&lt;br&gt;3）集成并不一定是达成重用行为程序的最佳方式，具体可参见设计模式&lt;br&gt;4）继承结构并不匹配两者的关系，不要用继承&lt;br&gt;5）不能通过IS-A测试一定不要用继承&lt;/p&gt;
+&lt;p&gt;如果最高的父类不能抽象出一些对所有族类都使用的方法，或者不太好初始化，比如你不好新建一个“球”对象，它是啥球呢？地球还是足球？这样一些情况我们可以定义抽象类，它不能被初始化，只能被继承。。抽象类中可以定义抽象方法，抽象方法只存在于抽象类中，一个类只要有一个抽象方法，那他必是抽象类。&lt;/p&gt;
+&lt;p&gt;有时候，你会想要继承多个父类，以便使用更多的已有代码，但是不幸的是Java并不支持多重继承，要多重继承请关闭本文，搜索”C++”关键词谢谢。&lt;/p&gt;
+&lt;p&gt;为啥不支持多重继承呢？因为存在多重继承（继承多个类）的“致命方块”问题，即如果两个父类继承自同一个祖父类，都实现了某个方法，那么子类（如果没有实现该方法）该调用那个版本？&lt;/p&gt;
+&lt;p&gt;解决“致命方块”问题？接口！&lt;/p&gt;
+&lt;p&gt;接口是100%纯抽象类，每个方法都是抽象的，必须被实现。&lt;/p&gt;
+&lt;p&gt;如果想要定义出类可以扮演的角色，使用接口。&lt;/p&gt;
+&lt;p&gt;接下来从生物学的角度谈谈对象？什么是生物学角度？？即生老病死~&lt;/p&gt;
+&lt;p&gt;对象生存在堆上（可以理解为垃圾堆，随时可能有人来回收…），引用变量或局部变量生存在栈上。&lt;/p&gt;
+&lt;p&gt;一旦一个对象，它的引用没有了或者离弃了它，那么他就可以等待被回收了。Java有一套垃圾回收机制(GC)保证对象的回收来腾出堆空间，有时候，GC又常常被人诟病，在大数据应用中常常面临这大量的shuffle，大量的对象，有时候需要花费大量的时间来做GC，体验不佳。&lt;/p&gt;
+&lt;p&gt;总的来说，对象的出生靠调用构造函数，生存在堆上，一旦没了引用，就向生命的终点走去，直到GC（黑白无常）带走了它。。&lt;/p&gt;
+&lt;p&gt;新建对象时，父类的构造函数先于子类被调用，以此类推，Object的构造函数先被执行，然后往下推，直到目标对象类型&lt;br&gt;（先有父母才有你）&lt;br&gt;只有当完全没写构造函数时，Java才会自动帮你写一个无参构造函数。&lt;br&gt;super()调用父类的构造函数，this是对对象本身的引用&lt;/p&gt;
+&lt;p&gt;谈谈实例变量，实例变量即对象的成员变量。&lt;/p&gt;
+&lt;p&gt;JAVA的实例变量具有如下特点：&lt;br&gt;1）实例变量声明在一个类中，但在方法、构造方法和语句块之外；&lt;br&gt;2）当一个对象被实例化之后，每个实例变量的值就跟着确定；&lt;br&gt;3）实例变量在对象创建的时候创建，在对象被销毁的时候销毁；&lt;br&gt;4）实例变量的值应该至少被一个方法、构造方法或者语句块引用，使得外部能够通过这些方式获取实例变量信息；&lt;br&gt;5）实例变量可以声明在使用前或者使用后；&lt;br&gt;6）访问修饰符可以修饰实例变量；&lt;br&gt;7）实例变量对于类中的方法、构造方法或者语句块是可见的。一般情况下应该把实例变量设为私有。通过使用访问修饰符可以使实例变量对子类可见；&lt;br&gt;8）实例变量具有默认值。数值型变量的默认值是0，布尔型变量的默认值是false，引用类型变量的默认值是null。变量的值可以在声明时指定，也可以在构造方法中指定；实例变量可以直接通过变量名访问。但在静态方法以及其他类中，就应该使用完全限定名：ObejectReference.VariableName。&lt;/p&gt;
+&lt;p&gt;你可能想问，如果Java中只有对象和primitive主数据类型，那么我想定义全局变量或者常量怎么办？比如PI=3.141592653589..(后面忘了)&lt;br&gt;这时候，静态变量可以帮你。静态变量定义在类中，它属于类，不属于任何对象，但对象可以获得它。&lt;br&gt;类的静态变量由（该类的）所有对象所共享。&lt;br&gt;静态方法通过类名调用，静态变量通过类名存取 。&lt;br&gt;如果类只有静态方法，则可以将构造函数标记为private的，以免被初始化&lt;/p&gt;
+&lt;p&gt;Java常量 = final static 的变量&lt;br&gt;final意味着不能被改变，static意味着是静态变量。&lt;/p&gt;
+&lt;p&gt;插一句字符串的格式化：&lt;br&gt;String.format(格式化说明)&lt;br&gt;格式化说明包括5部分，%和type是必要的&lt;br&gt;%[argument number] [flags] [width] [.precision] type&lt;br&gt;如： %,6.1f 为6位逗号分隔，1位小数的浮点数&lt;/p&gt;
+&lt;p&gt;谈谈异常吧，谁能保证自己的程序不出问题呢？与其系统运行的时候报一大堆乱七八糟的错误trace，早早地预见并处理一下，以自己的方式处理或者打印它，总要漂亮些吧？甚至可以在抓到异常后，给出“没关系，一个小错误，已经报告给开发者~”这样温和的语句，是不是显得b格很高？……&lt;br&gt;异常中要注意的点有：&lt;br&gt;可能会抛出异常的方法必须声明成throws Exception&lt;br&gt;catch捕获多个异常时，要从小排到大，因为大异常后面的小异常根本没有被catch的机会&lt;br&gt;在方法后加上throws xxException，没有try/catch块，表示可能会抛出异常，自己并不处理，需要调用方自己处理异常&lt;br&gt;所以&amp;gt;&amp;gt;&amp;gt;要么处理，要么声明（异常）&lt;/p&gt;
+&lt;p&gt;序列化对象：有时候需要保存一下对象，以便于恢复，被调用，而不用重新生成，因为生成过程可能很麻烦。&lt;br&gt;要序列化的话，对象必须可序列化，且对象中实例变量所引用的对象甚至对象引用的对象…都必须可以序列化，简而言之，整个对象版图都必须可以序列化&lt;br&gt;如果某实例变量不需要或者不能被序列化，那可以把它标记为transient（瞬时）的。&lt;br&gt;解序列化时，transient变量会恢复成null对象引用或者0,false等primitive默认值&lt;br&gt;静态变量不会被序列化，对象被还原时，静态变量会维持类中原本的样子。因为所有对象共用一份静态变量。&lt;br&gt;读取对象的顺序必须与写入的顺序相同&lt;/p&gt;
+&lt;p&gt;序列化对象：&lt;br&gt;&lt;figure class=&quot;highlight cos&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;FileOutputStream fileStream = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; FileOutputStream(&lt;span class=&quot;string&quot;&gt;&quot;MySer.ser&quot;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;ObjectOutputStream os = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; ObjectOutputStream(fileStream)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;os.writeObject(obj)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;os.&lt;span class=&quot;keyword&quot;&gt;close&lt;/span&gt;()&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;或者不序列化，而是将信息写入文本文件：&lt;br&gt;&lt;figure class=&quot;highlight gauss&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;BufferedWriter &lt;span class=&quot;built_in&quot;&gt;writer&lt;/span&gt; = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; BufferedWriter(&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; FileWriter(file))  &lt;span class=&quot;comment&quot;&gt;// file is a File object&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;writer&lt;/span&gt;.write(...)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;可以把File想象成文件的路径，代表磁盘上的某个文件，但并不是文件内容&lt;br&gt;&lt;figure class=&quot;highlight vhdl&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;BufferedWriter writer = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; BufferedWriter(&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; FileWriter(&lt;span class=&quot;keyword&quot;&gt;file&lt;/span&gt;))  // &lt;span class=&quot;keyword&quot;&gt;file&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;is&lt;/span&gt; a &lt;span class=&quot;keyword&quot;&gt;File&lt;/span&gt; object&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;这句代码形成如下链接：&lt;br&gt;&lt;figure class=&quot;highlight xl&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;字符串 --&amp;gt; B&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;title&quot;&gt;ufferedWriter&lt;/span&gt; --&amp;gt;&lt;/span&gt; F&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;title&quot;&gt;ileWriter&lt;/span&gt; --&amp;gt;&lt;/span&gt; File&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;对象序列化以后，类继续演进，这时会出现无法还原的情况。通过将serialVersionUID放在class中，让类在演化过程中维持同样的ID，可以保证还原的时候能够识别，从而正确还原出对象。但要注意有些修改会损害解序列化。&lt;/p&gt;
+&lt;p&gt;好吧，先说到这，其实还有一些内容，网络，集合与泛型，以及许多高级特性，反射，虚拟机的深入理解等等，后面再说吧。&lt;/p&gt;
+&lt;p&gt;Reference&lt;br&gt;*《Head First Java》&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;最近在看一些工程代码，于是看了看设计模式，看设计模式之前发现Java是先修知识，又重新补了一遍Java，温故知新，获得一些新的体会。&lt;br&gt;本文不打算作为“Java知识点详细梳理”，“10分钟学会Java”之类的文章，仅作为博主自己的一个回顾，涉及的内容也无定法。&lt;/p&gt;
+
+    
+    </summary>
+    
+      <category term="编程语言 | Program Lang." scheme="http://whatbeg.com/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80-Program-Lang/"/>
+    
+    
+      <category term="Java" scheme="http://whatbeg.com/tags/Java/"/>
+    
+  </entry>
   
   <entry>
     <title>Hadoop一些问题集锦【持续更新】</title>
@@ -1006,9 +1075,9 @@ table th:first-of-type {
       <category term="错误解决与优化 | Err_n_Opt" scheme="http://whatbeg.com/categories/%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3%E4%B8%8E%E4%BC%98%E5%8C%96-Err-n-Opt/"/>
     
     
-      <category term="Spark" scheme="http://whatbeg.com/tags/Spark/"/>
-    
       <category term="大数据" scheme="http://whatbeg.com/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
+    
+      <category term="Spark" scheme="http://whatbeg.com/tags/Spark/"/>
     
       <category term="错误解决" scheme="http://whatbeg.com/tags/%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3/"/>
     
@@ -1082,9 +1151,9 @@ table th:first-of-type {
     
       <category term="Deep Learning" scheme="http://whatbeg.com/tags/Deep-Learning/"/>
     
-      <category term="深度学习" scheme="http://whatbeg.com/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
-    
       <category term="大数据" scheme="http://whatbeg.com/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
+    
+      <category term="深度学习" scheme="http://whatbeg.com/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
     
   </entry>
   
@@ -1584,9 +1653,9 @@ table th:first-of-type {
       <category term="深度学习 | Deep Learning" scheme="http://whatbeg.com/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0-Deep-Learning/"/>
     
     
-      <category term="深度学习" scheme="http://whatbeg.com/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
-    
       <category term="机器学习" scheme="http://whatbeg.com/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="深度学习" scheme="http://whatbeg.com/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
     
   </entry>
   
@@ -1642,46 +1711,6 @@ table th:first-of-type {
     
     
       <category term="读书" scheme="http://whatbeg.com/tags/%E8%AF%BB%E4%B9%A6/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>关于KMP算法的本质之思考</title>
-    <link href="http://whatbeg.com/2017/02/18/kmpreview.html"/>
-    <id>http://whatbeg.com/2017/02/18/kmpreview.html</id>
-    <published>2017-02-18T09:47:43.000Z</published>
-    <updated>2017-02-18T09:51:41.659Z</updated>
-    
-    <content type="html">&lt;p&gt;以前看KMP算法的时候，总是无法理解next函数以及next函数的求法以及匹配时j=next[j]的做法的直观意义。这次看《暗时间》这本书的时候谈到一个知识的本质问题，有提到KMP，于是就想着能不能够从本质的角度出发去重新理解下KMP呢？&lt;/p&gt;
-&lt;p&gt;KMP的本质是什么？或者说，这个算法做了什么？以前的确从来没有问过自己这个问题。或许是习惯于在书上扫一眼KMP是干嘛的，具体怎么操作，怎么用，下次做字符串匹配时套一下模板就好了。但是现在，我要试着探寻一下KMP的内在本质。&lt;/p&gt;
-&lt;p&gt;上面的问题不难回答，KMP是用来做字符串匹配的，但是，这个答案还不够完善，应该说KMP是能够在O(n+m)时间内完成字符串匹配的一个算法。后者强调了KMP的高效性，相比于朴素的字符串匹配中O(nm)的复杂度，这是一个巨大的提升。&lt;/p&gt;
-&lt;p&gt;这里我不打算详述KMP算法过程，&lt;a href=&quot;http://www.ruanyifeng.com/blog/2013/05/Knuth%E2%80%93Morris%E2%80%93Pratt_algorithm.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;字符串匹配的KMP算法. 阮一峰&lt;/a&gt;这篇文章讲解得非常清楚，其实这篇文章是我认为所有的网上博文中解释最通俗易懂的。当然，我在这次的理解中配合了&lt;a href=&quot;http://blog.csdn.net/u011564456/article/details/20862555?utm_source=tuicool&amp;amp;utm_medium=referral&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;文章1&lt;/a&gt;和&lt;a href=&quot;http://blog.csdn.net/yutianzuijin/article/details/11954939/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;文章2&lt;/a&gt;来完成理解。&lt;/p&gt;
-&lt;p&gt;假设原串为S，长度为n，我们需要看字符串f（长度为m）是否在S中。&lt;br&gt;总的来说，当我们朴素地去进行字符串匹配时，首先将S和f对齐，从头开始匹配过去，我们是发现到哪里不匹配了，就把f右移一位再从头开始一个一个匹配，这样每次移动一位是完全正确的但是不够快，事实上，如果匹配了一些，假如f的前m-1位与S中的一段完全匹配(m-1长)，这是一个很好的消息！但最后一位不匹配，如果朴素地右移一位再重新匹配的话，前面m-1位完全匹配的喜人消息会被完全抛弃，那么为什么不利用起来呢？所以说，KMP最本质的思想就在于，&lt;strong&gt;利用已有的一些信息，来加快解空间的搜索&lt;/strong&gt;。说起来很简单，但是大道至简，简单的道理却蕴含着巨大的能量。&lt;/p&gt;
-&lt;p&gt;如何利用呢？盗一张图来说，我们希望找到如图所示的结构：&lt;/p&gt;
-&lt;center&gt; &lt;img src=&quot;http://7xsl28.com1.z0.glb.clouddn.com/KMP1.png&quot; alt=&quot;&quot;&gt; &lt;/center&gt;
-
-&lt;p&gt;两块绿色的完全相等，这样的话我们移动f时就没必要一步一步移动了，可以直接像下面这样移动，&lt;/p&gt;
-&lt;center&gt; &lt;img src=&quot;http://7xsl28.com1.z0.glb.clouddn.com/KMP2.png&quot; alt=&quot;&quot;&gt; &lt;/center&gt;
-
-&lt;p&gt;这样大大节省了时间。而next数组就是来找出这样的结构的。&lt;br&gt;比如f串为&lt;code&gt;ABCDABD&lt;/code&gt;，它的next数组如下：&lt;br&gt;&lt;figure class=&quot;highlight dns&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;f    |  &lt;span class=&quot;keyword&quot;&gt;A&lt;/span&gt; B C D &lt;span class=&quot;keyword&quot;&gt;A&lt;/span&gt; B D&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;next | -&lt;span class=&quot;number&quot;&gt;1 0 0 0&lt;/span&gt; &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;找出了两个对称的&lt;code&gt;AB&lt;/code&gt;，即如果匹配到最后的&lt;code&gt;D&lt;/code&gt;不匹配了，说明需要移动了，又因为&lt;code&gt;D&lt;/code&gt;之前的串有长度为2的后缀等于前缀，我们可以直接吧f的前缀移到后缀对齐的地方继续走，即&lt;br&gt;&lt;figure class=&quot;highlight autohotkey&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;移动长度=已匹配总长度-后缀的长度=已匹配长度-`D`对应的next值=&lt;span class=&quot;number&quot;&gt;4&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;&lt;center&gt; &lt;img src=&quot;http://7xsl28.com1.z0.glb.clouddn.com/KMP3.png&quot; alt=&quot;&quot;&gt; &lt;/center&gt;&lt;br&gt;这也是代码中&lt;code&gt;j=next[j]&lt;/code&gt;的原因，上面那个例子中j=6，j=next[6]=2，说明下面一步就是，现在的i(i处为&lt;code&gt;C&lt;/code&gt;)和f的下标为j=2处的字符比较，即相当于右移了4位。&lt;/p&gt;
-&lt;p&gt;一般的KMP核心算法包括以下两个部分：&lt;br&gt;&lt;figure class=&quot;highlight hsp&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;27&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;void getnext()&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;next&lt;/span&gt;[&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;] = &lt;span class=&quot;number&quot;&gt;-1&lt;/span&gt;&lt;span class=&quot;comment&quot;&gt;;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; i = &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;,j = &lt;span class=&quot;number&quot;&gt;-1&lt;/span&gt;&lt;span class=&quot;comment&quot;&gt;;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;while&lt;/span&gt;(i&amp;lt;m&lt;span class=&quot;number&quot;&gt;-1&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt;(j == &lt;span class=&quot;number&quot;&gt;-1&lt;/span&gt; || b[i] == b[j])&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &lt;span class=&quot;keyword&quot;&gt;next&lt;/span&gt;[++i] = ++j&lt;span class=&quot;comment&quot;&gt;;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;else&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            j = &lt;span class=&quot;keyword&quot;&gt;next&lt;/span&gt;[j]&lt;span class=&quot;comment&quot;&gt;;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; kmp()&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; i = &lt;span class=&quot;number&quot;&gt;-1&lt;/span&gt;,j = &lt;span class=&quot;number&quot;&gt;-1&lt;/span&gt;&lt;span class=&quot;comment&quot;&gt;;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;while&lt;/span&gt;(i&amp;lt;n &amp;amp;&amp;amp; j&amp;lt;m)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt;(j == &lt;span class=&quot;number&quot;&gt;-1&lt;/span&gt; || a[i] == b[j])&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            i++,j++&lt;span class=&quot;comment&quot;&gt;;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;else&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            j = &lt;span class=&quot;keyword&quot;&gt;next&lt;/span&gt;[j]&lt;span class=&quot;comment&quot;&gt;;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt;(j == m)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; i-j+&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;comment&quot;&gt;;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;comment&quot;&gt;;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;按照上面的思路，就不难理解了。&lt;/p&gt;
-&lt;p&gt;归根结底一句话，我们要充分利用已经做过的工作中的一些收获和经验，来促进现有问题的解决。抽象到最顶端，KMP就不仅仅是一种算法，更意味着一种解决问题的方式方法了。&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;以前看KMP算法的时候，总是无法理解next函数以及next函数的求法以及匹配时j=next[j]的做法的直观意义。这次看《暗时间》这本书的时候谈到一个知识的本质问题，有提到KMP，于是就想着能不能够从本质的角度出发去重新理解下KMP呢？&lt;/p&gt;
-&lt;p&gt;KMP的本质是什么？
-    
-    </summary>
-    
-      <category term="算法 | Algorithm" scheme="http://whatbeg.com/categories/%E7%AE%97%E6%B3%95-Algorithm/"/>
-    
-    
-      <category term="算法" scheme="http://whatbeg.com/tags/%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   

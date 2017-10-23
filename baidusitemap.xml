@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>http://whatbeg.com/2017/10/23/revisitingjava.html</loc>
+    <lastmod>2017-10-23T15:38:18.567Z</lastmod>
+    <data>
+        <display>
+        <title>Revisiting Java</title>
+        <pubTime>2017-10-23T15:33:48.000Z</pubTime>
+        
+        <tag>Java</tag>
+         
+         
+           
+             
+              <breadCrumb title="编程语言 | Program Lang." url="http://whatbeg.com/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80-Program-Lang/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://whatbeg.com/2017/10/23/hadooperror.html</loc>
     <lastmod>2017-10-23T05:23:53.201Z</lastmod>
     <data>
@@ -35,9 +55,9 @@
         <title>Spark一些问题集锦【持续更新】</title>
         <pubTime>2017-05-28T02:04:35.000Z</pubTime>
         
-        <tag>Spark</tag>
-         
         <tag>大数据</tag>
+         
+        <tag>Spark</tag>
          
         <tag>错误解决</tag>
          
@@ -348,9 +368,9 @@
         
         <tag>Deep Learning</tag>
          
-        <tag>深度学习</tag>
-         
         <tag>大数据</tag>
+         
+        <tag>深度学习</tag>
          
          
            
@@ -432,9 +452,9 @@
         <title>Deep Learning读书笔记系列 写作计划</title>
         <pubTime>2017-02-27T14:48:25.000Z</pubTime>
         
-        <tag>深度学习</tag>
-         
         <tag>机器学习</tag>
+         
+        <tag>深度学习</tag>
          
          
            
@@ -576,9 +596,9 @@
         <title>TensorFlow白皮书阅读笔记</title>
         <pubTime>2017-01-11T06:48:19.000Z</pubTime>
         
-        <tag>深度学习</tag>
-         
         <tag>大数据</tag>
+         
+        <tag>深度学习</tag>
          
         <tag>TensorFlow</tag>
          
@@ -1302,9 +1322,9 @@
         <title>快速学会Git基本操作</title>
         <pubTime>2016-04-07T15:35:15.000Z</pubTime>
         
-        <tag>Git</tag>
-         
         <tag>CS</tag>
+         
+        <tag>Git</tag>
          
          
            
