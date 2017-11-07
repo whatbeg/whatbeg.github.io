@@ -118,7 +118,7 @@ a img {
   -webkit-margin-after: 0;
 }
 body {
-  background: #fffafa;
+  background: #fff;
 /*background-image url('/img/scene.jpg')  主题背景色*/
   font-family: Lato, "PingFang SC", Consolas, Georgia, "Microsoft YaHei", sans-serif;
   font-size: 100%;
@@ -625,7 +625,7 @@ header nav ul li a:hover {
   }
 }
 #main section.post {
-  background: #fffafa;
+  background: #fff;
   margin-bottom: 0.125em;
 }
 #main section.post a {
@@ -660,7 +660,7 @@ header nav ul li a:hover {
   font-size: 0.9em;
 }
 #main article.post-expand {
-  background: #fffafa;
+  background: #fff;
   margin-bottom: 3.5em;
 }
 #main article.post-expand .img-logo {
@@ -717,7 +717,7 @@ header nav ul li a:hover {
   border-left: 0.5em solid #6a005f;
 }
 #page-nav {
-  background: #fffafa;
+  background: #fff;
   text-align: center;
   overflow: hidden;
 }
@@ -802,7 +802,7 @@ header nav ul li a:hover {
 .archive-title {
   margin: 1em 0;
   padding: 2em;
-  background: #fffafa;
+  background: #fff;
   border-left: 0.5em solid #ccc;
 }
 @media only screen and (min-width: 1024px) {
@@ -892,7 +892,7 @@ header nav ul li a:hover {
 .page,
 .link,
 .photo {
-  background: #fffafa;
+  background: #fff;
 }
 .post a,
 .page a,
@@ -1049,7 +1049,7 @@ article .article-content blockquote {
   color: #808080;
 }
 article .article-content blockquote footer {
-  background: #fffafa;
+  background: #fff;
   padding: 0;
   margin: 0;
   font-size: 80%;
@@ -1205,7 +1205,7 @@ article .article-content .right {
   float: right;
 }
 footer.article-footer {
-  background: #fffafa;
+  background: #fff;
   padding: 0 4%;
   margin: 0;
   border-top: 1px solid #dbdbdb;
@@ -1750,7 +1750,7 @@ section.comment {
 }
 .rsspart a:hover {
   color: #6a005f;
-  background: #fffafa;
+  background: #fff;
 }
 .rsspart a::before {
   font-family: "FontAwesome";

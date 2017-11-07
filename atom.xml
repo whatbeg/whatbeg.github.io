@@ -1077,9 +1077,9 @@ table th:first-of-type {
     
       <category term="大数据" scheme="http://whatbeg.com/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
     
-      <category term="Spark" scheme="http://whatbeg.com/tags/Spark/"/>
-    
       <category term="错误解决" scheme="http://whatbeg.com/tags/%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3/"/>
+    
+      <category term="Spark" scheme="http://whatbeg.com/tags/Spark/"/>
     
   </entry>
   
