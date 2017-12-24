@@ -3,6 +3,69 @@
 
 
     
+    
+  <url>
+    <loc>http://whatbeg.com/2017/12/24/mavenaccident.html</loc>
+    <lastmod>2017-12-24T07:52:46.239Z</lastmod>
+    <data>
+        <display>
+        <title>一次MAVEN事故</title>
+        <pubTime>2017-12-24T07:49:59.000Z</pubTime>
+        
+        <tag>Spark</tag>
+         
+        <tag>错误解决</tag>
+         
+         
+           
+             
+              <breadCrumb title="错误解决与优化 | Err_n_Opt" url="http://whatbeg.com/categories/%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3%E4%B8%8E%E4%BC%98%E5%8C%96-Err-n-Opt/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://whatbeg.com/2017/03/11/linuxmemo.html</loc>
+    <lastmod>2017-12-24T07:43:55.870Z</lastmod>
+    <data>
+        <display>
+        <title>Linux备忘命令</title>
+        <pubTime>2017-03-11T04:42:52.000Z</pubTime>
+        
+        <tag>Linux</tag>
+         
+         
+           
+             
+              <breadCrumb title="计算机相关 | CS.Related" url="http://whatbeg.com/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9B%B8%E5%85%B3-CS-Related/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://whatbeg.com/2017/12/24/ideplay.html</loc>
+    <lastmod>2017-12-24T07:43:55.091Z</lastmod>
+    <data>
+        <display>
+        <title>IDE各种操作和玩法备忘</title>
+        <pubTime>2017-12-24T07:39:59.000Z</pubTime>
+        
+        <tag>CS</tag>
+         
+         
+           
+             
+              <breadCrumb title="计算机相关 | CS.Related" url="http://whatbeg.com/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9B%B8%E5%85%B3-CS-Related/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
   <url>
     <loc>http://whatbeg.com/2017/06/07/artofresearch.html</loc>
     <lastmod>2017-12-11T13:31:11.701Z</lastmod>
@@ -44,26 +107,6 @@
 
     
   <url>
-    <loc>http://whatbeg.com/2017/03/11/linuxmemo.html</loc>
-    <lastmod>2017-11-20T11:20:21.104Z</lastmod>
-    <data>
-        <display>
-        <title>Linux备忘命令</title>
-        <pubTime>2017-03-11T04:42:52.000Z</pubTime>
-        
-        <tag>Linux</tag>
-         
-         
-           
-             
-              <breadCrumb title="计算机相关 | CS.Related" url="http://whatbeg.com/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9B%B8%E5%85%B3-CS-Related/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://whatbeg.com/2017/07/08/vim.html</loc>
     <lastmod>2017-11-20T11:20:09.313Z</lastmod>
     <data>
@@ -82,7 +125,6 @@
     </data>
     </url>
 
-    
     
   <url>
     <loc>http://whatbeg.com/2017/10/23/revisitingjava.html</loc>

@@ -2,6 +2,34 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://whatbeg.com/about/index.html</loc>
+    
+    <lastmod>2017-12-24T07:57:13.950Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://whatbeg.com/2017/12/24/mavenaccident.html</loc>
+    
+    <lastmod>2017-12-24T07:52:46.239Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://whatbeg.com/2017/03/11/linuxmemo.html</loc>
+    
+    <lastmod>2017-12-24T07:43:55.870Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://whatbeg.com/2017/12/24/ideplay.html</loc>
+    
+    <lastmod>2017-12-24T07:43:55.091Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://whatbeg.com/2017/06/07/artofresearch.html</loc>
     
     <lastmod>2017-12-11T13:31:11.701Z</lastmod>
@@ -16,23 +44,9 @@
   </url>
   
   <url>
-    <loc>http://whatbeg.com/2017/03/11/linuxmemo.html</loc>
-    
-    <lastmod>2017-11-20T11:20:21.104Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://whatbeg.com/2017/07/08/vim.html</loc>
     
     <lastmod>2017-11-20T11:20:09.313Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://whatbeg.com/about/index.html</loc>
-    
-    <lastmod>2017-11-19T02:28:40.582Z</lastmod>
     
   </url>
   

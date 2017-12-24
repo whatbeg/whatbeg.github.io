@@ -4,34 +4,26 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>Deep Learning论文阅读纪要（一） | Whatbeg&#39;s blog</title>
+    <title>IDE各种操作和玩法备忘 | Whatbeg&#39;s blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="whatbeg">
     
 
     
-    <meta name="description" content="Deep Learning ReviewLeCun, Yann, Yoshua Bengio, and Geoffrey Hinton. “Deep learning.” Nature 521.7553 (2015): 436-444. PDF
-
-传统机器学习方法在处理原始形式的自然数据时受限，需要繁杂的特征工程和大量的领域专家知识
-深度学习的核心在于它们用一个通用目标的学习过程来从数据中学习，无">
+    <meta name="description" content="Codeblocks 批量注释12Ctl + Shift + C  # 批量注释Ctl + Shift + X  # 批量取消
+IDEA Intellij 快捷键IDEA快捷键">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Deep Learning论文阅读纪要（一）">
-<meta property="og:url" content="http://whatbeg.com/2017/01/07/paperreading01.html">
+<meta property="og:title" content="IDE各种操作和玩法备忘">
+<meta property="og:url" content="http://whatbeg.com/2017/12/24/ideplay.html">
 <meta property="og:site_name" content="Whatbeg's blog">
-<meta property="og:description" content="Deep Learning ReviewLeCun, Yann, Yoshua Bengio, and Geoffrey Hinton. “Deep learning.” Nature 521.7553 (2015): 436-444. PDF
-
-传统机器学习方法在处理原始形式的自然数据时受限，需要繁杂的特征工程和大量的领域专家知识
-深度学习的核心在于它们用一个通用目标的学习过程来从数据中学习，无">
-<meta property="og:image" content="http://7xsl28.com1.z0.glb.clouddn.com/downpoursgd.png">
-<meta property="og:updated_time" content="2017-01-10T08:18:27.701Z">
+<meta property="og:description" content="Codeblocks 批量注释12Ctl + Shift + C  # 批量注释Ctl + Shift + X  # 批量取消
+IDEA Intellij 快捷键IDEA快捷键">
+<meta property="og:updated_time" content="2017-12-24T07:43:55.091Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Deep Learning论文阅读纪要（一）">
-<meta name="twitter:description" content="Deep Learning ReviewLeCun, Yann, Yoshua Bengio, and Geoffrey Hinton. “Deep learning.” Nature 521.7553 (2015): 436-444. PDF
-
-传统机器学习方法在处理原始形式的自然数据时受限，需要繁杂的特征工程和大量的领域专家知识
-深度学习的核心在于它们用一个通用目标的学习过程来从数据中学习，无">
-<meta name="twitter:image" content="http://7xsl28.com1.z0.glb.clouddn.com/downpoursgd.png">
+<meta name="twitter:title" content="IDE各种操作和玩法备忘">
+<meta name="twitter:description" content="Codeblocks 批量注释12Ctl + Shift + C  # 批量注释Ctl + Shift + X  # 批量取消
+IDEA Intellij 快捷键IDEA快捷键">
 
     
     <link rel="alternative" href="/atom.xml" title="Whatbeg&#39;s blog" type="application/atom+xml">
@@ -80,14 +72,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2017/01/07/paperreading01.html" title="Deep Learning论文阅读纪要（一）" itemprop="url">Deep Learning论文阅读纪要（一）</a>
+      <a href="/2017/12/24/ideplay.html" title="IDE各种操作和玩法备忘" itemprop="url">IDE各种操作和玩法备忘</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="whatbeg" target="_blank" itemprop="author">whatbeg</a>
 		
   <p class="article-time">
-    <time datetime="2017-01-07T14:02:04.000Z" itemprop="datePublished"> 发表于 2017-01-07</time>
+    <time datetime="2017-12-24T07:39:59.000Z" itemprop="datePublished"> 发表于 2017-12-24</time>
     <span id="busuanzi_container_page_pv">
     总阅读<span id="busuanzi_value_page_pv"></span>次
     </span>
@@ -99,81 +91,12 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Deep-Learning-Review"><span class="toc-number">1.</span> <span class="toc-text">Deep Learning Review</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Large-Scale-Distributed-Deep-Networks"><span class="toc-number">2.</span> <span class="toc-text">Large Scale Distributed Deep Networks</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#A-Brief-Overview-of-Deep-Learning"><span class="toc-number">3.</span> <span class="toc-text">A Brief Overview of Deep Learning</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#小小总结"><span class="toc-number">4.</span> <span class="toc-text">小小总结</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#Codeblocks-批量注释"><span class="toc-number">1.</span> <span class="toc-text">Codeblocks 批量注释</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#IDEA-Intellij-快捷键"><span class="toc-number">2.</span> <span class="toc-text">IDEA Intellij 快捷键</span></a></li></ol>
 		
 		</div>
 		
-		<h2 id="Deep-Learning-Review"><a href="#Deep-Learning-Review" class="headerlink" title="Deep Learning Review"></a>Deep Learning Review</h2><p>LeCun, Yann, Yoshua Bengio, and Geoffrey Hinton. “Deep learning.” Nature 521.7553 (2015): 436-444. <a href="http://www.cs.toronto.edu/~hinton/absps/NatureDeepReview.pdf" target="_blank" rel="external">PDF</a></p>
-<ul>
-<li>传统机器学习方法在处理原始形式的自然数据时受限，需要繁杂的特征工程和大量的领域专家知识</li>
-<li>深度学习的核心在于它们用一个通用目标的学习过程来从数据中学习，无需手工做特征工程</li>
-<li>深度学习在发现高维数据的复杂结构上有一套</li>
-<li>应用方面，深度卷积网络在图像，视频，语音，音频方面，循环网络在序列数据比如文本，语音上取得了巨大突破</li>
-<li>虽然只需少量特征工程，但是需要计算能力和数据</li>
-<li>用小部分样本做SGD，这些小部分样本给出的（平均梯度）是整个样本集的平均梯度的噪声估计(noisy estimate)</li>
-<li>深度的增加使得对大量无关变量（比如图像中的背景，物体的位置等等）逐渐变得不敏感</li>
-<li>在实践中，“差的局部最小”(poor local minima)在大规模网络中一般不是问题。被困在哪个鞍点并不重要，因为他们离目标都很接近</li>
-<li>卷积神经网络的4个核心思想：局部连接，权值共享，池化和多层次</li>
-<li>共享参数是由于，在图像中，物体不论出现在哪个位置，都应该一样的看待，所以一种滤波器（卷积核）使用同样的权值来检测一种模式</li>
-<li>卷积网络(ConvNet)现在是几乎所有识别和检测任务中的最主要方法</li>
-<li>许多公司也在研发ConvNet芯片以实现视觉应用的实时处理，并且嵌入到设备中</li>
-<li>Neutral Turing Machine / Memory Network：用于需要推理和符号操作的任务，核心是推理！</li>
-<li>无监督学习，增强学习等是未来的趋势</li>
-<li>将深度学习与增强学习结合的系统正处于萌芽期，不过他们已经在分类任务中表现出了令人印象深刻的效果</li>
-<li>人工智能的巨大进步考表示学习与复杂推理的结合来推动</li>
-</ul>
-<p>文章讲述了深度学习中的一些关键性主题，包括监督学习，后向传播，卷积神经网络及其在图像理解上的应用，分布式表示和语言处理，以及循环神经网络，最后对深度学习的未来进行了探讨。<br>文章提交于2015年2月，距今约2年了，深度学习的江湖又发生了巨大的变化，单看这篇综述还不能够了解深度学习的方方面面，还需要更多的资料。</p>
-<h2 id="Large-Scale-Distributed-Deep-Networks"><a href="#Large-Scale-Distributed-Deep-Networks" class="headerlink" title="Large Scale Distributed Deep Networks"></a>Large Scale Distributed Deep Networks</h2><p>Large Scale Distributed Deep Networks. Jeffrey Dean et al. <a href="http://www.cs.toronto.edu/~ranzato/publications/DistBeliefNIPS2012_withAppendix.pdf" target="_blank" rel="external">PDF</a> <a href="http://wxwidget.github.io/blog/2014/08/17/large-scale-deep-network/" target="_blank" rel="external">中文译版</a></p>
-<ul>
-<li>分布式训练或者优化的一个难点在于各机器处理时间各异，有时候需要等最慢的机器运行完成</li>
-<li>SGD是训练深度神经网络最常用的优化过程了，但是在非凸的情况下就略显颓势了</li>
-<li>一种深度学习规模扩展的方法使，用一些GPU来训练许多小模型，将这些模型应用在数据是，将它们的预测结果平均<br>这篇文章对大规模分布式深度网络的训练框架内，提出了两个算法： Downpour SGD，一个支持大量模型副本的异步随机梯度下降过程，和Sandblaster L-BFGS，一个支持各种分布式批优化过程的框架，但是后者好像没什么大用，后面提到，“Sandblaster L-BFGS或许在30000个处理器的时候能够最后胜出”，暂时都用不到那么多的核，所以后面性能也没有测试结果，所以就不知道了，重点在于前面一个算法。</li>
-</ul>
-<p>Downpour SGD的主要思想是，将训练集划分若干子集，并对每个子集运行一个单独的模型副本。模型副本之间的通信均通过中心参数服务器(parameter server, ps)组，该参数服务器组维护了模型参数的当前状态，并分割到多台机器上（例如，如果我们参数服务器组有10个节点，那么每个节点将负责存储和更新模型参数的1/10，如图1所示）。</p>
-<center> <img src="http://7xsl28.com1.z0.glb.clouddn.com/downpoursgd.png" alt="图1"> </center>
-
-<p>该方法在两个方面体现异步性：</p>
-<ol>
-<li>模型副本之间运行独立，在各自负责的数据集（子集）上独立运行</li>
-<li>参数服务器(parameter server)组各节点之间同样是独立的，PS片独立运行</li>
-</ol>
-<p>考虑Downpour SGD的一个最简单的实现，在处理每个mini-batch（译者注：小型批量）之前，模型副本都会向参数服务器请求最新的模型参数。因为DistBelief框架也是分布在多台机器上，所以其框架的每个节点只需和参数服务器组中包含和该节点有关的模型参数的那部分节点进行通信。在DistBelief副本获得更新后的模型参数后，运行一次mini-batch样本来计算参数的梯度，并推送到参数服务器，以用于更新当前的模型参数值。更新的频度也可以设置，在处理机器失效方面，Downpour SGD比标准（同步）SGD要鲁棒。对于同步SGD来讲，如果一台机器失效，整个训练过程将会延时；但是对于异步SGD来讲，如果某个模型副本的一台机器失效，其他模型副本仍然继续处理样本并更新参数服务器中的模型参数。<br>但是由于每个参数服务器只更新互斥的一部分参数，副本之间不会进行通信，因此可能会导致参数发散而不利于收敛。<br>另外一项能极大提高Downpour SGD鲁棒性的技术是使用Adagrad自适应学习速率方法。<br>通过这种结合，达到了最好的效果（最短的时间内达到了规定的准确率）。<br>Adagrad方法参见:<br>J. C. Duchi, E. Hazan, and Y. Singer. Adaptive subgradient methods for online learning and stochastic optimization. Journal of Machine Learning Research, 12:2121–2159, 2011.<br>中文版的论文翻译中有更详细的内容。</p>
-<h2 id="A-Brief-Overview-of-Deep-Learning"><a href="#A-Brief-Overview-of-Deep-Learning" class="headerlink" title="A Brief Overview of Deep Learning"></a>A Brief Overview of Deep Learning</h2><p><a href="http://yyue.blogspot.jp/2015/01/a-brief-overview-of-deep-learning.html" target="_blank" rel="external">WEB</a> by Ilya Sutskever. Jan 13, 2015</p>
-<p>文章论述了为什么深度学习是有效的并且强力的，以及深度学习模型的学习和泛化，然后给出了13条实践中训练深度学习模型的建议，摘其要点如下，作者用LDNN这个词来代替Deep Learning</p>
-<ul>
-<li>解决复杂问题我们需要强力的，可训练的模型，LDNN(Large Deep Neutral Network)满足这两个条件</li>
-<li>LDNNs learn computation, albeit a massively parallel computation with a modest number of steps</li>
-<li>有了指数级别的数据，任何模型都能够解决问题，但是不现实</li>
-<li>学习（Learning）意味着将有标记数据的信息表现在训练后的参数中</li>
-<li>作者提出了一个假设，neural network start their learning process by noticing the most blatant correlations between the input and the output(神经网络通过注意输入和输出之间最明显的相关性来开始他们的学习过程)</li>
-<li>Tip01: 获取大规模高质量的数据集</li>
-<li>Tip02: 处理成0均值，小方差，效果更佳</li>
-<li>Tip03: 采用minibatchs有效提高性能，降低过拟合，但是batch size不要太大(32,64,128)</li>
-<li>Tip04: gradient的正则化（gradient / batchsize）</li>
-<li>Tip05: 学习率的规划<ul>
-<li>0.1是学习率的一个经典值</li>
-<li>用验证集来决定何时降低LR(Learning Rate)和何时早停</li>
-<li>如果验证集error不再降低，减小LR，可以降低过拟合（在这个标准上）</li>
-</ul>
-</li>
-<li>Tip06: 监控update norm 和 weight norm之间的比率</li>
-<li>Tip07: 权值初始化<ul>
-<li>随机初始化</li>
-<li>随机初始化对深度网络和循环网络非常重要</li>
-<li>浅层网络可以不考虑随机初始化问题，但深度网络需要</li>
-<li>尝试多种初始化方法，这份努力会得到回报</li>
-</ul>
-</li>
-<li>Tip08: 当训练LSTM或者RNN时，对梯度的norm采取硬约束，即对梯度的norm进行修剪</li>
-<li>Tip09: 数值梯度检验(Numerical gradient checking)，主要在Theano,Torch等自定义梯度计算的场景</li>
-<li>Tip10: 使用LSTM处理超长期依赖的时候，应将forget gate的bias设成较大的值</li>
-<li>Tip11: 数据增强，巧妙增加数据集样本，旋转，加噪声等</li>
-<li>Tip12: dropout有效提升性能，且训练越久变得越来越好</li>
-<li>Tip13: 训练多个模型，将它们的预测取平均</li>
-</ul>
-<p>这些Tips还期待日后在实践过程中的运用检验，希望能够对深度模型的训练起到一些指导的作用。<br>最后，作者总结，LDNNs是强力的，切实可训练的，如果我们有高质量的大量数据，我们可以找到最好的LDNNs来解决问题。对未来做出预测很难，不过，通常来说，通过大量计算得出的模型更好的可能性更大，神经图灵机是这个方向上的重要进步，无监督学习也是未来的一大方向，期待进一步的突破。</p>
-<h2 id="小小总结"><a href="#小小总结" class="headerlink" title="小小总结"></a>小小总结</h2><p>综合这几篇文章，看到他们都对深度学习的整个脉络，现在的发展和未来的预测进行了梳理。结合自己的看法，我把他们总结成以下几点，</p>
-<p>第一，深度模型在现今许多复杂任务中取得了良好的效果，在图像，视频，音频，语音，自然语言处理方面都取得了start-of-art的效果，这些也是深度学习拿手的几个方向<br>第二，深度学习模型只是一种有别于传统机器学习方法的模型，它大大简化了特征工程的部分，但本质上是神经网络，也即一种机器学习的方法，我们不知道深度学习的未来如何，但是机器学习的未来一定是明朗的<br>第三，未来的大方向在于无监督学习，增强学习，迁移学习等领域，因为无标记的样本比有标记的高质量数据来的多得多，如何有效利用这些无标签样本是需要重点研究的课题<br>第四，在计算能力得到根本性突破之前（比如量子计算机投入使用并且发挥所谓的强大计算能力之前），多机并行以增加计算能力，来训练更加复杂的模型是不可阻挡的趋势，分布式机器学习，分布式深度学习模型训练也是可以做的方向</p>
+		<h5 id="Codeblocks-批量注释"><a href="#Codeblocks-批量注释" class="headerlink" title="Codeblocks 批量注释"></a>Codeblocks 批量注释</h5><figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Ctl + <span class="keyword">Shift </span>+ C  <span class="comment"># 批量注释</span></span><br><span class="line">Ctl + <span class="keyword">Shift </span>+ X  <span class="comment"># 批量取消</span></span><br></pre></td></tr></table></figure>
+<h5 id="IDEA-Intellij-快捷键"><a href="#IDEA-Intellij-快捷键" class="headerlink" title="IDEA Intellij 快捷键"></a>IDEA Intellij 快捷键</h5><p><a href="https://www.cnblogs.com/bluestorm/archive/2013/05/20/3087889.html" target="_blank" rel="external">IDEA快捷键</a></p>
   
 	</div>
 
@@ -290,13 +213,13 @@
 
 <div class="article-categories">
   
-  <span></span> <a href="/categories/深度学习-Deep-Learning/">深度学习 | Deep Learning</a>
+  <span></span> <a href="/categories/计算机相关-CS-Related/">计算机相关 | CS.Related</a>
   </div>
 
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/深度学习/">深度学习</a><a href="/tags/论文阅读/">论文阅读</a>
+  <span></span> <a href="/tags/CS/">CS</a>
   </div>
 
 </div>
@@ -341,18 +264,18 @@
 <nav class="article-nav clearfix">
  
  <div class="prev" >
- <a href="/2017/01/11/tensorflowwhitepaper.html" title="TensorFlow白皮书阅读笔记">
+ <a href="/2017/12/24/mavenaccident.html" title="一次MAVEN事故">
   <strong>上一篇：</strong><br/>
   <span>
-  TensorFlow白皮书阅读笔记</span>
+  一次MAVEN事故</span>
 </a>
 </div>
 
 
 <div class="next">
-<a href="/2017/01/01/2016ccfcontest.html"  title="2016CCF大数据与计算智能大赛总结">
+<a href="/2017/10/23/revisitingjava.html"  title="Revisiting Java">
  <strong>下一篇：</strong><br/> 
- <span>2016CCF大数据与计算智能大赛总结
+ <span>Revisiting Java
 </span>
 </a>
 </div>
@@ -374,7 +297,7 @@
   <aside class="clearfix">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Deep-Learning-Review"><span class="toc-number">1.</span> <span class="toc-text">Deep Learning Review</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Large-Scale-Distributed-Deep-Networks"><span class="toc-number">2.</span> <span class="toc-text">Large Scale Distributed Deep Networks</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#A-Brief-Overview-of-Deep-Learning"><span class="toc-number">3.</span> <span class="toc-text">A Brief Overview of Deep Learning</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#小小总结"><span class="toc-number">4.</span> <span class="toc-text">小小总结</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#Codeblocks-批量注释"><span class="toc-number">1.</span> <span class="toc-text">Codeblocks 批量注释</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#IDEA-Intellij-快捷键"><span class="toc-number">2.</span> <span class="toc-text">IDEA Intellij 快捷键</span></a></li></ol>
  
  </aside>
   </div>

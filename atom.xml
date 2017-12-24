@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://whatbeg.com/"/>
-  <updated>2017-10-23T15:38:18.567Z</updated>
+  <updated>2017-12-24T07:52:46.239Z</updated>
   <id>http://whatbeg.com/</id>
   
   <author>
@@ -14,6 +14,69 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>一次MAVEN事故</title>
+    <link href="http://whatbeg.com/2017/12/24/mavenaccident.html"/>
+    <id>http://whatbeg.com/2017/12/24/mavenaccident.html</id>
+    <published>2017-12-24T07:49:59.000Z</published>
+    <updated>2017-12-24T07:52:46.239Z</updated>
+    
+    <content type="html">&lt;p&gt;改动mllib中的&lt;code&gt;org.apache.spark.ml.tree.impl.DTStatsAggregator&lt;/code&gt;源码，加了一个原来没有的&lt;code&gt;allStats(): Array[Double] = ..&lt;/code&gt;的方法，然后打成MLlib包，替换maven库中的mllib包。&lt;/p&gt;
+&lt;p&gt;报&lt;code&gt;IllegalAccessError&lt;/code&gt;：&lt;br&gt;&lt;figure class=&quot;highlight stylus&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;Caused by: java&lt;span class=&quot;selector-class&quot;&gt;.lang&lt;/span&gt;&lt;span class=&quot;selector-class&quot;&gt;.IllegalAccessError&lt;/span&gt;: tried to access method org&lt;span class=&quot;selector-class&quot;&gt;.apache&lt;/span&gt;&lt;span class=&quot;selector-class&quot;&gt;.spark&lt;/span&gt;&lt;span class=&quot;selector-class&quot;&gt;.ml&lt;/span&gt;&lt;span class=&quot;selector-class&quot;&gt;.tree&lt;/span&gt;&lt;span class=&quot;selector-class&quot;&gt;.impl&lt;/span&gt;&lt;span class=&quot;selector-class&quot;&gt;.DTStatsAggregator&lt;/span&gt;&lt;span class=&quot;selector-class&quot;&gt;.allStats&lt;/span&gt;()[D from class org&lt;span class=&quot;selector-class&quot;&gt;.apache&lt;/span&gt;&lt;span class=&quot;selector-class&quot;&gt;.spark&lt;/span&gt;&lt;span class=&quot;selector-class&quot;&gt;.ml&lt;/span&gt;&lt;span class=&quot;selector-class&quot;&gt;.tree&lt;/span&gt;&lt;span class=&quot;selector-class&quot;&gt;.impl&lt;/span&gt;&lt;span class=&quot;selector-class&quot;&gt;.RandomForestImpl&lt;/span&gt;$&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;figure class=&quot;highlight markdown&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;private[ml] val allStatSize&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;val allStats = new Array[&lt;span class=&quot;string&quot;&gt;Double&lt;/span&gt;](&lt;span class=&quot;link&quot;&gt;allStatSize&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;应该要能访问到&lt;/p&gt;
+&lt;p&gt;是不是用的不是我的jar，或者用的不是我的jar中的class？&lt;/p&gt;
+&lt;p&gt;运行jar包时设置&lt;br&gt;&lt;figure class=&quot;highlight vim&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;--&lt;span class=&quot;keyword&quot;&gt;conf&lt;/span&gt; &lt;span class=&quot;comment&quot;&gt;&quot;spark.driver.extraJavaOptions=-XX:+TraceClassLoading -XX:+TraceClassUnloading&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;监测类的加载情况，果然发现有一条&lt;br&gt;&lt;figure class=&quot;highlight gradle&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;[Loaded xxx &lt;span class=&quot;keyword&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;file&lt;/span&gt;:&lt;span class=&quot;regexp&quot;&gt;/home/&lt;/span&gt;huqiu&lt;span class=&quot;regexp&quot;&gt;/programs/&lt;/span&gt;spark&lt;span class=&quot;regexp&quot;&gt;/jars/&lt;/span&gt;spark-mllib_2.&lt;span class=&quot;number&quot;&gt;11&lt;/span&gt;-&lt;span class=&quot;number&quot;&gt;2.1&lt;/span&gt;.&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;.jar&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;这说明程序不从我打好的jar包中加载class，而从spark安装目录中的jars目录中读取了。&lt;/p&gt;
+&lt;p&gt;为什么从spark本地读而不从打好的jar包中读？&lt;/p&gt;
+&lt;p&gt;为了先解决问题，我把mllib包复制到SPARK_HOME的jars目录中，这下总能读到我的jar了吧。&lt;/p&gt;
+&lt;p&gt;但是又出现一个问题：&lt;br&gt;&lt;figure class=&quot;highlight stylus&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;java&lt;span class=&quot;selector-class&quot;&gt;.lang&lt;/span&gt;&lt;span class=&quot;selector-class&quot;&gt;.NoClassDefFoundError&lt;/span&gt;: Could not initialize class org&lt;span class=&quot;selector-class&quot;&gt;.apache&lt;/span&gt;&lt;span class=&quot;selector-class&quot;&gt;.spark&lt;/span&gt;&lt;span class=&quot;selector-class&quot;&gt;.ml&lt;/span&gt;&lt;span class=&quot;selector-class&quot;&gt;.core&lt;/span&gt;&lt;span class=&quot;selector-class&quot;&gt;.JNAScala&lt;/span&gt;$&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Caused by: java&lt;span class=&quot;selector-class&quot;&gt;.lang&lt;/span&gt;&lt;span class=&quot;selector-class&quot;&gt;.ClassNotFoundException&lt;/span&gt;: com&lt;span class=&quot;selector-class&quot;&gt;.sun&lt;/span&gt;&lt;span class=&quot;selector-class&quot;&gt;.jna&lt;/span&gt;&lt;span class=&quot;selector-class&quot;&gt;.Native&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;原来是没找到jna的Native class，一看，确实没有打入mllib包中，那是什么原因呢？难道是谁把它exclude掉了？&lt;br&gt;重新编译一下，发现这么一条：&lt;br&gt;&lt;figure class=&quot;highlight css&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;selector-attr&quot;&gt;[INFO]&lt;/span&gt; &lt;span class=&quot;selector-tag&quot;&gt;Excluding&lt;/span&gt; &lt;span class=&quot;selector-tag&quot;&gt;net&lt;/span&gt;&lt;span class=&quot;selector-class&quot;&gt;.java&lt;/span&gt;&lt;span class=&quot;selector-class&quot;&gt;.dev&lt;/span&gt;&lt;span class=&quot;selector-class&quot;&gt;.jna&lt;/span&gt;&lt;span class=&quot;selector-pseudo&quot;&gt;:jna&lt;/span&gt;&lt;span class=&quot;selector-pseudo&quot;&gt;:jar&lt;/span&gt;&lt;span class=&quot;selector-pseudo&quot;&gt;:4.2.2&lt;/span&gt; &lt;span class=&quot;selector-tag&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;selector-tag&quot;&gt;the&lt;/span&gt; &lt;span class=&quot;selector-tag&quot;&gt;shared&lt;/span&gt; &lt;span class=&quot;selector-tag&quot;&gt;jar&lt;/span&gt;.&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;说白了就是排除了net.java.dev.jna:jna:jar，所以写的代码中用到Native的都会找不到类。&lt;br&gt;后来发现是spark-parent排除的，且删掉spark-parent的exclude的语句也没用，根本原因在于mllib的打包方式不会把其依赖打入mllib的jar包中。&lt;/p&gt;
+&lt;p&gt;解决的方法就是将此依赖打入mllib中，但是这样就会变成mllib-jar-with-dependencies，肯定不是我们想要的结果。&lt;/p&gt;
+&lt;p&gt;这就涉及到了代码设计的层面了，一般情况下，不建议直接修改Mllib源码，更不要说在Mllib源码中还加入外部包了，这样太紧耦合了，比较建议的方法是自己建立一个project，建立于spark mllib同样的包路径即可，然后修改需要修改的文件，但缺点是改动文件需要改名字，不然系统会读取底层Mllib的同名文件而不会读取你项目中的。但是这样确是松耦合的。&lt;br&gt;目前还没有找到好的方法，最小程度上改动代码，增加或删除一些东西。&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;改动mllib中的&lt;code&gt;org.apache.spark.ml.tree.impl.DTStatsAggregator&lt;/code&gt;源码，加了一个原来没有的&lt;code&gt;allStats(): Array[Double] = ..&lt;/code&gt;的方法，然后打成MLlib
+    
+    </summary>
+    
+      <category term="错误解决与优化 | Err_n_Opt" scheme="http://whatbeg.com/categories/%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3%E4%B8%8E%E4%BC%98%E5%8C%96-Err-n-Opt/"/>
+    
+    
+      <category term="Spark" scheme="http://whatbeg.com/tags/Spark/"/>
+    
+      <category term="错误解决" scheme="http://whatbeg.com/tags/%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>IDE各种操作和玩法备忘</title>
+    <link href="http://whatbeg.com/2017/12/24/ideplay.html"/>
+    <id>http://whatbeg.com/2017/12/24/ideplay.html</id>
+    <published>2017-12-24T07:39:59.000Z</published>
+    <updated>2017-12-24T07:43:55.091Z</updated>
+    
+    <content type="html">&lt;h5 id=&quot;Codeblocks-批量注释&quot;&gt;&lt;a href=&quot;#Codeblocks-批量注释&quot; class=&quot;headerlink&quot; title=&quot;Codeblocks 批量注释&quot;&gt;&lt;/a&gt;Codeblocks 批量注释&lt;/h5&gt;&lt;figure class=&quot;highlight mipsasm&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;Ctl + &lt;span class=&quot;keyword&quot;&gt;Shift &lt;/span&gt;+ C  &lt;span class=&quot;comment&quot;&gt;# 批量注释&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Ctl + &lt;span class=&quot;keyword&quot;&gt;Shift &lt;/span&gt;+ X  &lt;span class=&quot;comment&quot;&gt;# 批量取消&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h5 id=&quot;IDEA-Intellij-快捷键&quot;&gt;&lt;a href=&quot;#IDEA-Intellij-快捷键&quot; class=&quot;headerlink&quot; title=&quot;IDEA Intellij 快捷键&quot;&gt;&lt;/a&gt;IDEA Intellij 快捷键&lt;/h5&gt;&lt;p&gt;&lt;a href=&quot;https://www.cnblogs.com/bluestorm/archive/2013/05/20/3087889.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;IDEA快捷键&lt;/a&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h5 id=&quot;Codeblocks-批量注释&quot;&gt;&lt;a href=&quot;#Codeblocks-批量注释&quot; class=&quot;headerlink&quot; title=&quot;Codeblocks 批量注释&quot;&gt;&lt;/a&gt;Codeblocks 批量注释&lt;/h5&gt;&lt;figure class=&quot;highli
+    
+    </summary>
+    
+      <category term="计算机相关 | CS.Related" scheme="http://whatbeg.com/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9B%B8%E5%85%B3-CS-Related/"/>
+    
+    
+      <category term="CS" scheme="http://whatbeg.com/tags/CS/"/>
+    
+  </entry>
   
   <entry>
     <title>Revisiting Java</title>
@@ -1433,7 +1496,7 @@ table th:first-of-type {
     <link href="http://whatbeg.com/2017/03/11/linuxmemo.html"/>
     <id>http://whatbeg.com/2017/03/11/linuxmemo.html</id>
     <published>2017-03-11T04:42:52.000Z</published>
-    <updated>2017-11-20T11:20:21.104Z</updated>
+    <updated>2017-12-24T07:43:55.870Z</updated>
     
     <content type="html">&lt;h5 id=&quot;图片压缩&quot;&gt;&lt;a href=&quot;#图片压缩&quot; class=&quot;headerlink&quot; title=&quot;图片压缩&quot;&gt;&lt;/a&gt;图片压缩&lt;/h5&gt;&lt;figure class=&quot;highlight livecodeserver&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;sudo apt-&lt;span class=&quot;built_in&quot;&gt;get&lt;/span&gt; imagemagick&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;convert&lt;/span&gt; -resize &lt;span class=&quot;number&quot;&gt;100&lt;/span&gt;x100 &lt;span class=&quot;built_in&quot;&gt;from&lt;/span&gt;.jpg &lt;span class=&quot;built_in&quot;&gt;to&lt;/span&gt;.jpg&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;convert&lt;/span&gt; -resize &lt;span class=&quot;number&quot;&gt;50&lt;/span&gt;%x50% &lt;span class=&quot;built_in&quot;&gt;from&lt;/span&gt;.jpg &lt;span class=&quot;built_in&quot;&gt;to&lt;/span&gt;.jpg&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;h5 id=&quot;Neural-Artistic-Style&quot;&gt;&lt;a href=&quot;#Neural-Artistic-Style&quot; class=&quot;headerlink&quot; title=&quot;Neural Artistic Style&quot;&gt;&lt;/a&gt;Neural Artistic Style&lt;/h5&gt;&lt;figure class=&quot;highlight brainfuck&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;python&lt;/span&gt; &lt;span class=&quot;comment&quot;&gt;neural_style&lt;/span&gt;&lt;span class=&quot;string&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;comment&quot;&gt;py&lt;/span&gt; &lt;span class=&quot;literal&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;literal&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;comment&quot;&gt;checkpoint&lt;/span&gt;&lt;span class=&quot;literal&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;comment&quot;&gt;output&lt;/span&gt; &lt;span class=&quot;comment&quot;&gt;400out/out%s&lt;/span&gt;&lt;span class=&quot;string&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;comment&quot;&gt;jpg&lt;/span&gt; &lt;span class=&quot;literal&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;literal&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;comment&quot;&gt;checkpoint&lt;/span&gt;&lt;span class=&quot;literal&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;comment&quot;&gt;iterations&lt;/span&gt; &lt;span class=&quot;comment&quot;&gt;50&lt;/span&gt; &lt;span class=&quot;literal&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;literal&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;comment&quot;&gt;iterations&lt;/span&gt; &lt;span class=&quot;comment&quot;&gt;1000&lt;/span&gt; &lt;span class=&quot;literal&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;literal&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;comment&quot;&gt;content&lt;/span&gt; &amp;lt;&lt;span class=&quot;comment&quot;&gt;content&lt;/span&gt; &lt;span class=&quot;comment&quot;&gt;file&lt;/span&gt;&amp;gt; &lt;span class=&quot;literal&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;literal&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;comment&quot;&gt;styles&lt;/span&gt; &amp;lt;&lt;span class=&quot;comment&quot;&gt;style&lt;/span&gt; &lt;span class=&quot;comment&quot;&gt;file&lt;/span&gt;&amp;gt; &lt;span class=&quot;literal&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;literal&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;comment&quot;&gt;output&lt;/span&gt; &amp;lt;&lt;span class=&quot;comment&quot;&gt;output&lt;/span&gt; &lt;span class=&quot;comment&quot;&gt;file&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
@@ -1473,7 +1536,9 @@ table th:first-of-type {
 &lt;figure class=&quot;highlight haml&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;-&lt;span class=&quot;ruby&quot;&gt;d  指定分隔符，如：按照“：”分割，-&lt;span class=&quot;symbol&quot;&gt;d:&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;-&lt;span class=&quot;ruby&quot;&gt;c  提取第n个字节，如：-c5,表示提取每行的第&lt;span class=&quot;number&quot;&gt;5&lt;/span&gt;个字节，-c5-&lt;span class=&quot;number&quot;&gt;14&lt;/span&gt;,表示提取每行的第&lt;span class=&quot;number&quot;&gt;5&lt;/span&gt;-&lt;span class=&quot;number&quot;&gt;14&lt;/span&gt;个字节，-c1,&lt;span class=&quot;number&quot;&gt;5&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;14&lt;/span&gt;，表示提取第&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;、&lt;span class=&quot;number&quot;&gt;5&lt;/span&gt;、&lt;span class=&quot;number&quot;&gt;14&lt;/span&gt;个字节。&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;-&lt;span class=&quot;ruby&quot;&gt;f  指定输出的域&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;cut –d: -f1,2   //按照”:”来分割，并输出第1和2段&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;h5 id=&quot;GC分析，虚拟机分析，调优常用命令&quot;&gt;&lt;a href=&quot;#GC分析，虚拟机分析，调优常用命令&quot; class=&quot;headerlink&quot; title=&quot;GC分析，虚拟机分析，调优常用命令&quot;&gt;&lt;/a&gt;GC分析，虚拟机分析，调优常用命令&lt;/h5&gt;&lt;p&gt;打印出GC Log信息&lt;br&gt;&lt;figure class=&quot;highlight haml&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;-&lt;span class=&quot;ruby&quot;&gt;-conf &lt;span class=&quot;string&quot;&gt;&quot;spark.driver.extraJavaOptions=-verbose:gc -XX:+PrintGCDetails -XX:+PrintGCTimeStamps -Xloggc:gc.log&quot;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
 &lt;p&gt;一些常用的GC，Heap堆分析的命令&lt;br&gt;&lt;figure class=&quot;highlight mipsasm&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;jstat &lt;/span&gt;-gcutil pid [&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;s]  GC用量及总量，可设置定时统计打印一次&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;jstat &lt;/span&gt;-class pid        类加载时间和量&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;jstat &lt;/span&gt;-gccause pid      最后一次GC的原因&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;jinfo &lt;/span&gt;-flags pid        查看vm的所有设置参数&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;jmap &lt;/span&gt;-histo pid         查看当前对象及其个数，内存用量&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-</content>
+&lt;h5 id=&quot;为JNI-JNA编译C文件&quot;&gt;&lt;a href=&quot;#为JNI-JNA编译C文件&quot; class=&quot;headerlink&quot; title=&quot;为JNI/JNA编译C文件&quot;&gt;&lt;/a&gt;为JNI/JNA编译C文件&lt;/h5&gt;&lt;figure class=&quot;highlight stylus&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;gcc -fpic -c test&lt;span class=&quot;selector-class&quot;&gt;.c&lt;/span&gt;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;gcc -shared -o libtest&lt;span class=&quot;selector-class&quot;&gt;.so&lt;/span&gt; test.o&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;a href=&quot;http://blog.csdn.net/withiter/article/details/8077470&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Linux JNA调用&lt;/a&gt;&lt;/p&gt;
+&lt;h5 id=&quot;查看各目录大小&quot;&gt;&lt;a href=&quot;#查看各目录大小&quot; class=&quot;headerlink&quot; title=&quot;查看各目录大小&quot;&gt;&lt;/a&gt;查看各目录大小&lt;/h5&gt;&lt;figure class=&quot;highlight rsl&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;du -h --&lt;span class=&quot;built_in&quot;&gt;max&lt;/span&gt;-&lt;span class=&quot;built_in&quot;&gt;depth&lt;/span&gt;=&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;  &lt;span class=&quot;meta&quot;&gt;# -h表示按MB显示，maxdepth=1表示只查看一层&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</content>
     
     <summary type="html">
     
@@ -1626,100 +1691,6 @@ table th:first-of-type {
     
     
       <category term="CS" scheme="http://whatbeg.com/tags/CS/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Deep Learning读书笔记系列 写作计划</title>
-    <link href="http://whatbeg.com/2017/02/27/deeplearning0.html"/>
-    <id>http://whatbeg.com/2017/02/27/deeplearning0.html</id>
-    <published>2017-02-27T14:48:25.000Z</published>
-    <updated>2017-03-30T12:01:05.083Z</updated>
-    
-    <content type="html">&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;之前看了一些Bengio的《Deep Learning》，有许多收获和感触，但是由于缺乏回顾，反思与实践加以消化，许多东西已经忘记了，借这个契机，想写一套专门阐述自己阅读Deep Learning及Machine Learning相关资料的阅读心得或者读书笔记的文章，文章不拘深浅，不拘长短，只求能够阐述出自己的心得收获，便于加深理解，如果能够把一件事情讲明白，那就不会那么轻易地忘记了，知识在脑子里也会更加成系统，不然老是东一点西一点，拣了芝麻丢了西瓜，或是狗熊掰棒子，一路掰一路扔。&lt;br&gt;其次，实践也很重要，光看书始终是纸上谈兵，只有实实在在地利用深度学习去做一些事情，实现了某些效果，那样的感受才会更深切。总而言之，知行合一很重要。&lt;br&gt;当然，文章也不仅仅局限于对Bengio的《Deep Learning》的读书笔记，也包括相关书籍，文章，论文，也不必局限于DL这一个子领域，适当拓展到Machine Learning也是可以的。&lt;br&gt;虽然计划着，却仍有两个忧虑，一是怕没有时间，二是实在才疏学浅，写的浅不要紧，怕就怕出错，闹出笑话还误了读者朋友们，那可是要被骂惨的。但是反过来又提醒自己，“怕什么真理无穷，进一寸有进一寸的欢喜”，没时间不要紧，一点一滴慢慢做就是了，二一个实在有不妥之处相比读者们也会提出来的，所以就不要脸【捂脸】的先忽略这两个问题。&lt;/p&gt;
-&lt;h2 id=&quot;写作计划&quot;&gt;&lt;a href=&quot;#写作计划&quot; class=&quot;headerlink&quot; title=&quot;写作计划&quot;&gt;&lt;/a&gt;写作计划&lt;/h2&gt;&lt;p&gt;写作计划暂时包括但不限于：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;http://whatbeg.com/2017/03/29/deeplearningbook-01.html&quot;&gt;Deep Learning读书笔记（1）【开篇】&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Deep Learning读书笔记（2）–数学基础简摘&lt;/li&gt;
-&lt;li&gt;Deep Learning读书笔记（3）–数值计算&lt;/li&gt;
-&lt;li&gt;Deep Learning读书笔记（4）–机器学习基础&lt;/li&gt;
-&lt;li&gt;Deep Learning读书笔记（5）–关于机器学习的提纲（或机器学习总论）&lt;/li&gt;
-&lt;li&gt;Deep Learning读书笔记（6）–神经网络&lt;/li&gt;
-&lt;li&gt;Deep Learning读书笔记（7）–DL的优化&lt;/li&gt;
-&lt;li&gt;Deep Learning读书笔记（8）–DL的正则化&lt;/li&gt;
-&lt;li&gt;Deep Learning读书笔记（9）–实践方法论&lt;/li&gt;
-&lt;li&gt;Deep Learning读书笔记（10）–DL前沿&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;计划1年时间完成，即2018年3月1日前完成，希望能够有始有终，千万不要烂尾。。&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;之前看了一些Bengio的《Deep Learning》，有许多收获和感触，但是由于缺乏回顾，反思与实践加以消化，许多东西已经忘记了，借这个
-    
-    </summary>
-    
-      <category term="深度学习 | Deep Learning" scheme="http://whatbeg.com/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0-Deep-Learning/"/>
-    
-    
-      <category term="深度学习" scheme="http://whatbeg.com/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
-    
-      <category term="机器学习" scheme="http://whatbeg.com/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>《暗时间》读书笔记</title>
-    <link href="http://whatbeg.com/2017/02/20/darktime.html"/>
-    <id>http://whatbeg.com/2017/02/20/darktime.html</id>
-    <published>2017-02-20T07:57:39.000Z</published>
-    <updated>2017-02-20T08:02:51.020Z</updated>
-    
-    <content type="html">&lt;p&gt;去年冬天在机缘巧合之下，开始阅读刘未鹏老师的这本《暗时间》，受益良多，得到了很多启发，觉得应该做做读书笔记，方不枉费读书的功夫。&lt;/p&gt;
-&lt;p&gt;总的来说，《暗时间》是一本关于思维，学习的本质知识以及解题，如何解题等的一些想法，第一原则就是为了帮助读者提高思维能力，培养思考的习惯，从而能够充分利用我们身边的“暗时间”，在同样的生命中获得更多的收获。&lt;/p&gt;
-&lt;p&gt;书中一些要点摘录如下，并做了自己的一些思考总结，以备翻看。&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;说到对某件事投入时间，实际投入的是时间与效率的乘积&lt;/strong&gt;&lt;br&gt;不是说投入的绝对时间越多，收获就越多，进步就越大。即使程序员有时整天面对着电脑，但是如果心没有静下来，这里翻翻那里看看，这样的时间的效率就很低，基本上就算浪费了。所以说，专注地做1个小时事情可能比得上在那盲目地坐一下午强得多，这就是为什么有些人看似很努力，却得不到很好地效果的原因之一吧。记得有位大师说过，一个人一天只能够全神贯注的工作最多4个小时，这一天的绝大部分收获也在这4个小时，所以，并不是“显得很努力”就是最好的，与其在“无效时间”里面耗费精力做着各种“无聊”的事，倒不如对睡觉养足精神来的好。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;把要做的事情，要学习的东西，常驻脑中，利用“暗时间”（即我们做很多琐事的时间）去反刍与消化。&lt;/strong&gt;&lt;br&gt;书中指的暗时间包括吃饭，睡前，行走，上厕所等等琐碎的时间，在这段时间如果有一个问题在脑中，利用这些时间去思考这个问题，这些知识，就相当于有了比别人更加“充足”的时间，并且也增加了对该问题，该知识的深入，多角度思考，一举两得。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;任务切换是有开销的，所以专注很重要。能不能做到高效学习，关键在于能不能够迅速进入专注状态以及能够保持专注状态多久。&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;设计自己的进度条，避免看不到尽头而产生放弃的心理。&lt;/strong&gt;&lt;br&gt;我们生活中很多事情都是三分钟热度，一个重要原因就是，我们在开始做某件事情后，发现“啥时候是个头啊”，看不到完成的希望，看不到达成目标的激励，让我们萌生放弃的想法。举个例子来说，去年我有一段很长的空闲时间，正好那时候有个很火的韩剧播出，于是我就决定去学学韩语，也坚持了一段时间，也享受过一点点进步的喜悦，看到电视剧中的很多句子居然能够听懂一些了，非常兴奋，但是当那个韩剧播完的时候，我渐渐的就提不起精神去学了，一大原因就是缺少了直接的激励，也没有什么明确地目标，或者进度条的概念，总觉得还有好多要学啊，加之别的事情又来了，于是就渐渐地扔下了。如果说真的确定要学，并且学好的话，我就可以定一个目标，比如说多久以后达到TOPIK多少级，然后定期地测试自己的学习成果，那么应该在这条路上会走的更远吧。归根结底，人类看不到激励的时候总是容易放弃，这是人的本性之一，所以说没有坚持有时候不是你自制力的问题，而是知识的问题，即你是否知道这一人类的本性，并且采取办法去抵抗这一本性，引导你的本性的问题。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;过早退出是一切失败的根源。&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;兴趣遍地都是，真正稀缺的是专注和持之以恒。&lt;/strong&gt;&lt;br&gt;世界上有趣的东西很多，有好奇心的人也非常多，所有有很多兴趣是很正常的，也是很好的，这至少说明你对这个世界还抱有很多好奇心，可是只有一定的持之以恒才能真正把一份兴趣变成爱好，再加上一份专注，才能使之真正变成一份技能。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;饿死在干草堆中的驴子。&lt;/strong&gt;&lt;br&gt;我们常常会进入一种焦虑状态，有时间，可以做的也很多，可是难以选择，做这个有这个的好处，做那个有那个的好处，然而两个没法兼顾，所以我们会一直纠结，然后时间过去了。。就像一只驴子，有很多干草，它却一直在纠结吃哪堆，结果饿死了。这时候唯一的方法就是通过自己的判断，迅速选择一件事，做下去再说，即使最后发现并不是你最想做的，或者说走了弯路，也不会白做，总会比在纠结焦虑中把时间消耗掉要强得多。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;记忆时，抽象出来得到范围更广的知识，来理解记忆，解决问题是，抽象出本质，便于找到解决方法。&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;经常回顾所学知识，不管什么方式，最好能够抽象，推广和举一反三。&lt;/strong&gt;&lt;br&gt;常常回顾才能够逐渐融入到自己的知识结构中去，不然学完很快就忘了，就失去了这个知识的联想，遇到这方面问题时便想不起来学过的那个知识了，只有不断地捡起来，捡的多了，慢慢就内化了。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;让思考成为习惯，时刻有一个问题在脑中。&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;趁着有热情，一股脑儿把开头熬过去。&lt;/strong&gt;&lt;br&gt;万事开头难，结束似乎也不容易。就算把开头熬过去，也不见得会将这件事坚持下去，但是熬过这段最难的开头，似乎对接下来的“熬”有帮助作用。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;重要的事情优先，无关紧要的琐事能不做就不做。&lt;/strong&gt;&lt;br&gt;节省精力，节省精力，节省精力，重说三，把精力花费在真正重要的事情上，产生更大的价值，当然，适当的娱乐和消遣也是必要。听老人们说，长寿的秘诀在于少操心。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;根据主题来查阅资料，而非反之。&lt;/strong&gt;&lt;br&gt;有两种解决问题或者学习的方式，一种是先把书过一遍，再看是否应用在这个问题上，一个问题可能关联很多知识，所以可能要看的书很多；另一种是先去做，遇到不会的才去看书，找这方面的知识帮助解决问题。第一种对于解决特定问题来说时间消耗有点大，除非是希望在这方面精通的，这时可以广泛地涉猎这方面的书籍，否则，为了解决一个问题要从基本理论学期也太慢了。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;带着问题学习。&lt;/strong&gt;&lt;br&gt;不错的学习方式，值得尝试。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;有选择的阅读，而不是逐字逐句。&lt;/strong&gt;&lt;br&gt;不要做读书的强迫症，有些时候并不需要逐字逐句看完，生命宝贵。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;失败即成功，成功即失败。&lt;/strong&gt;&lt;br&gt;即使失败，却能够带来不少的信息，带来经验与教训，有利于下一次的实践。&lt;br&gt;而有时候太顺利的成功却会让我们忽略掉过程中的许多重要的点，并不是一件特别好的事。&lt;br&gt;把这个“成功”放到世俗意义上来讲，成功者在成功之后可能获得了丰厚的财富或者名誉或者权力，但是他背负的东西也更多了，责任也更多了，手脚逐渐被束缚起来，于是，许多成功者在成功之后也就逐渐变得“平庸”，所以也可以说，“成功即失败”。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;从别人的错误中学习。&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;客观意味着承认存在未知信息的可能性，理性意味着能够从对立面的视角去看问题和思考。&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;改变即有的习惯，依靠的不是自制力，而是知识。&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;持续学习和思考，只写你真正思考和总结之后的产物，其他的一切都会随之而来。（博客）&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;困难的路越走越容易，容易的路越走越困难，遇到问题不必急着找捷径，在自己解决的过程中可能会有意想不到的收获。&lt;/strong&gt;&lt;br&gt;就像做题不会不要急着看答案，自己找找方法，多琢磨琢磨，收获可能比较大。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;个人核心竞争力是指自己独特的个性，背景，知识和经验的组合，如果这种组合 1)绝无仅有 2)在实践中有价值 3)具有可持续发展性，那么这就是核心竞争力。&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;专业技能，跨领域技能，学习能力，性格要素（专注，持之以恒，好奇心，自省，自信，谦卑）。&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;“我是不是已经掌握了这个知识最深刻最本质的东西？”。&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;手中有锤，心中无锤。&lt;/strong&gt;&lt;br&gt;看到问题，分析问题，再找解决问题的“锤子”（方法），而不是方法去套问题。**&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;理解本质才能做到难以忘却。&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;已知-&amp;gt;可知， 结论-&amp;gt;须知， 寻找可知与须知的结合点，就能实现成功解决问题。&lt;/strong&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;去年冬天在机缘巧合之下，开始阅读刘未鹏老师的这本《暗时间》，受益良多，得到了很多启发，觉得应该做做读书笔记，方不枉费读书的功夫。&lt;/p&gt;
-&lt;p&gt;总的来说，《暗时间》是一本关于思维，学习的本质知识以及解题，如何解题等的一些想法，第一原则就是为了帮助读者提高思维能力，培养思考的
-    
-    </summary>
-    
-      <category term="读书 | Reading" scheme="http://whatbeg.com/categories/%E8%AF%BB%E4%B9%A6-Reading/"/>
-    
-    
-      <category term="读书" scheme="http://whatbeg.com/tags/%E8%AF%BB%E4%B9%A6/"/>
     
   </entry>
   
