@@ -3,6 +3,26 @@
 
 
     
+  <url>
+    <loc>http://whatbeg.com/2016/11/18/trainclassifiersviaSGD.html</loc>
+    <lastmod>2017-12-27T13:11:04.232Z</lastmod>
+    <data>
+        <display>
+        <title>Training Classifiers via Stochastic Gradient Descent</title>
+        <pubTime>2016-11-18T07:33:51.000Z</pubTime>
+        
+        <tag>机器学习</tag>
+         
+         
+           
+             
+              <breadCrumb title="机器学习 | Mac.Learning" url="http://whatbeg.com/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-Mac-Learning/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
     
   <url>
     <loc>http://whatbeg.com/2017/12/24/mavenaccident.html</loc>
@@ -12,9 +32,9 @@
         <title>一次MAVEN事故</title>
         <pubTime>2017-12-24T07:49:59.000Z</pubTime>
         
-        <tag>Spark</tag>
-         
         <tag>错误解决</tag>
+         
+        <tag>Spark</tag>
          
          
            
@@ -178,11 +198,11 @@
         <title>Spark一些问题集锦【持续更新】</title>
         <pubTime>2017-05-28T02:04:35.000Z</pubTime>
         
-        <tag>Spark</tag>
-         
         <tag>大数据</tag>
          
         <tag>错误解决</tag>
+         
+        <tag>Spark</tag>
          
          
            
@@ -428,11 +448,11 @@
         <title>在服务器集群上搭建BigDL环境</title>
         <pubTime>2017-04-17T14:42:38.000Z</pubTime>
         
+        <tag>大数据</tag>
+         
         <tag>Deep Learning</tag>
          
         <tag>深度学习</tag>
-         
-        <tag>大数据</tag>
          
          
            
@@ -514,9 +534,9 @@
         <title>Deep Learning读书笔记系列 写作计划</title>
         <pubTime>2017-02-27T14:48:25.000Z</pubTime>
         
-        <tag>深度学习</tag>
-         
         <tag>机器学习</tag>
+         
+        <tag>深度学习</tag>
          
          
            
@@ -658,9 +678,9 @@
         <title>TensorFlow白皮书阅读笔记</title>
         <pubTime>2017-01-11T06:48:19.000Z</pubTime>
         
-        <tag>深度学习</tag>
-         
         <tag>大数据</tag>
+         
+        <tag>深度学习</tag>
          
         <tag>TensorFlow</tag>
          
@@ -932,26 +952,6 @@
            
              
               <breadCrumb title="算法 | Algorithm" url="http://whatbeg.com/categories/%E7%AE%97%E6%B3%95-Algorithm/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://whatbeg.com/2016/11/18/trainclassifiersviaSGD.html</loc>
-    <lastmod>2016-11-19T02:53:16.033Z</lastmod>
-    <data>
-        <display>
-        <title>Training Classifiers via Stochastic Gradient Descent</title>
-        <pubTime>2016-11-18T07:33:51.000Z</pubTime>
-        
-        <tag>机器学习</tag>
-         
-         
-           
-             
-              <breadCrumb title="机器学习 | Mac.Learning" url="http://whatbeg.com/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-Mac-Learning/"/>
           
         </display>
     </data>
