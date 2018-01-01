@@ -4,6 +4,46 @@
 
     
   <url>
+    <loc>http://whatbeg.com/2018/01/01/annualsummary2017.html</loc>
+    <lastmod>2018-01-01T07:56:09.940Z</lastmod>
+    <data>
+        <display>
+        <title>2017这一年</title>
+        <pubTime>2018-01-01T06:36:05.000Z</pubTime>
+        
+        <tag>Summary</tag>
+         
+         
+           
+             
+              <breadCrumb title="成长之路 | Biography" url="http://whatbeg.com/categories/%E6%88%90%E9%95%BF%E4%B9%8B%E8%B7%AF-Biography/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://whatbeg.com/2016/12/31/annualsummary2016.html</loc>
+    <lastmod>2018-01-01T06:37:30.032Z</lastmod>
+    <data>
+        <display>
+        <title>那不平凡的2016</title>
+        <pubTime>2016-12-31T02:09:52.000Z</pubTime>
+        
+        <tag>Summary</tag>
+         
+         
+           
+             
+              <breadCrumb title="成长之路 | Biography" url="http://whatbeg.com/categories/%E6%88%90%E9%95%BF%E4%B9%8B%E8%B7%AF-Biography/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://whatbeg.com/2016/11/18/trainclassifiersviaSGD.html</loc>
     <lastmod>2017-12-27T13:11:04.232Z</lastmod>
     <data>
@@ -32,9 +72,9 @@
         <title>一次MAVEN事故</title>
         <pubTime>2017-12-24T07:49:59.000Z</pubTime>
         
-        <tag>错误解决</tag>
-         
         <tag>Spark</tag>
+         
+        <tag>错误解决</tag>
          
          
            
@@ -198,11 +238,11 @@
         <title>Spark一些问题集锦【持续更新】</title>
         <pubTime>2017-05-28T02:04:35.000Z</pubTime>
         
+        <tag>Spark</tag>
+         
         <tag>大数据</tag>
          
         <tag>错误解决</tag>
-         
-        <tag>Spark</tag>
          
          
            
@@ -448,11 +488,11 @@
         <title>在服务器集群上搭建BigDL环境</title>
         <pubTime>2017-04-17T14:42:38.000Z</pubTime>
         
-        <tag>大数据</tag>
-         
         <tag>Deep Learning</tag>
          
         <tag>深度学习</tag>
+         
+        <tag>大数据</tag>
          
          
            
@@ -534,9 +574,9 @@
         <title>Deep Learning读书笔记系列 写作计划</title>
         <pubTime>2017-02-27T14:48:25.000Z</pubTime>
         
-        <tag>机器学习</tag>
-         
         <tag>深度学习</tag>
+         
+        <tag>机器学习</tag>
          
          
            
@@ -678,9 +718,9 @@
         <title>TensorFlow白皮书阅读笔记</title>
         <pubTime>2017-01-11T06:48:19.000Z</pubTime>
         
-        <tag>大数据</tag>
-         
         <tag>深度学习</tag>
+         
+        <tag>大数据</tag>
          
         <tag>TensorFlow</tag>
          
@@ -790,26 +830,6 @@
            
              
               <breadCrumb title="深度学习 | Deep Learning" url="http://whatbeg.com/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0-Deep-Learning/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://whatbeg.com/2016/12/31/annualsummary2016.html</loc>
-    <lastmod>2017-01-02T06:22:49.828Z</lastmod>
-    <data>
-        <display>
-        <title>那不平凡的2016</title>
-        <pubTime>2016-12-31T02:09:52.000Z</pubTime>
-        
-        <tag>Summary</tag>
-         
-         
-           
-             
-              <breadCrumb title="成长之路 | Biography" url="http://whatbeg.com/categories/%E6%88%90%E9%95%BF%E4%B9%8B%E8%B7%AF-Biography/"/>
           
         </display>
     </data>
