@@ -4,6 +4,50 @@
 
     
   <url>
+    <loc>http://whatbeg.com/2018/01/02/jupyternotebook.html</loc>
+    <lastmod>2018-01-02T14:36:49.602Z</lastmod>
+    <data>
+        <display>
+        <title>用Jupyter Notebook编写、运行集群程序</title>
+        <pubTime>2018-01-02T14:21:49.000Z</pubTime>
+        
+        <tag>大数据</tag>
+         
+        <tag>Spark</tag>
+         
+         
+           
+             
+              <breadCrumb title="大数据系统与技术 | Big Data" url="http://whatbeg.com/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE%E7%B3%BB%E7%BB%9F%E4%B8%8E%E6%8A%80%E6%9C%AF-Big-Data/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://whatbeg.com/2016/04/07/git.html</loc>
+    <lastmod>2018-01-02T14:21:06.174Z</lastmod>
+    <data>
+        <display>
+        <title>快速学会Git基本操作</title>
+        <pubTime>2016-04-07T15:35:15.000Z</pubTime>
+        
+        <tag>CS</tag>
+         
+        <tag>Git</tag>
+         
+         
+           
+             
+              <breadCrumb title="计算机相关 | CS.Related" url="http://whatbeg.com/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9B%B8%E5%85%B3-CS-Related/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://whatbeg.com/2018/01/01/annualsummary2017.html</loc>
     <lastmod>2018-01-01T07:56:09.940Z</lastmod>
     <data>
@@ -72,9 +116,9 @@
         <title>一次MAVEN事故</title>
         <pubTime>2017-12-24T07:49:59.000Z</pubTime>
         
-        <tag>Spark</tag>
-         
         <tag>错误解决</tag>
+         
+        <tag>Spark</tag>
          
          
            
@@ -238,11 +282,11 @@
         <title>Spark一些问题集锦【持续更新】</title>
         <pubTime>2017-05-28T02:04:35.000Z</pubTime>
         
-        <tag>Spark</tag>
-         
         <tag>大数据</tag>
          
         <tag>错误解决</tag>
+         
+        <tag>Spark</tag>
          
          
            
@@ -488,11 +532,11 @@
         <title>在服务器集群上搭建BigDL环境</title>
         <pubTime>2017-04-17T14:42:38.000Z</pubTime>
         
+        <tag>大数据</tag>
+         
         <tag>Deep Learning</tag>
          
         <tag>深度学习</tag>
-         
-        <tag>大数据</tag>
          
          
            
@@ -574,9 +618,9 @@
         <title>Deep Learning读书笔记系列 写作计划</title>
         <pubTime>2017-02-27T14:48:25.000Z</pubTime>
         
-        <tag>深度学习</tag>
-         
         <tag>机器学习</tag>
+         
+        <tag>深度学习</tag>
          
          
            
@@ -718,9 +762,9 @@
         <title>TensorFlow白皮书阅读笔记</title>
         <pubTime>2017-01-11T06:48:19.000Z</pubTime>
         
-        <tag>深度学习</tag>
-         
         <tag>大数据</tag>
+         
+        <tag>深度学习</tag>
          
         <tag>TensorFlow</tag>
          
@@ -1390,28 +1434,6 @@
            
              
               <breadCrumb title="机器学习 | Mac.Learning" url="http://whatbeg.com/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-Mac-Learning/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://whatbeg.com/2016/04/07/git.html</loc>
-    <lastmod>2016-05-12T03:16:23.098Z</lastmod>
-    <data>
-        <display>
-        <title>快速学会Git基本操作</title>
-        <pubTime>2016-04-07T15:35:15.000Z</pubTime>
-        
-        <tag>CS</tag>
-         
-        <tag>Git</tag>
-         
-         
-           
-             
-              <breadCrumb title="计算机相关 | CS.Related" url="http://whatbeg.com/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9B%B8%E5%85%B3-CS-Related/"/>
           
         </display>
     </data>
