@@ -4,6 +4,70 @@
 
     
   <url>
+    <loc>http://whatbeg.com/2017/03/11/linuxmemo.html</loc>
+    <lastmod>2018-01-30T05:54:50.868Z</lastmod>
+    <data>
+        <display>
+        <title>Linux备忘命令</title>
+        <pubTime>2017-03-11T04:42:52.000Z</pubTime>
+        
+        <tag>Linux</tag>
+         
+         
+           
+             
+              <breadCrumb title="计算机相关 | CS.Related" url="http://whatbeg.com/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9B%B8%E5%85%B3-CS-Related/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://whatbeg.com/2017/07/08/vim.html</loc>
+    <lastmod>2018-01-30T05:51:40.649Z</lastmod>
+    <data>
+        <display>
+        <title>Linux vim技巧大观</title>
+        <pubTime>2017-07-08T06:38:15.000Z</pubTime>
+        
+        <tag>Linux</tag>
+         
+         
+           
+             
+              <breadCrumb title="计算机相关 | CS.Related" url="http://whatbeg.com/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9B%B8%E5%85%B3-CS-Related/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://whatbeg.com/2017/10/23/hadooperror.html</loc>
+    <lastmod>2018-01-30T05:44:43.861Z</lastmod>
+    <data>
+        <display>
+        <title>Hadoop一些问题集锦【持续更新】</title>
+        <pubTime>2017-10-23T02:47:34.000Z</pubTime>
+        
+        <tag>大数据</tag>
+         
+        <tag>Hadoop</tag>
+         
+        <tag>错误解决</tag>
+         
+         
+           
+             
+              <breadCrumb title="错误解决与优化 | Err_n_Opt" url="http://whatbeg.com/categories/%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3%E4%B8%8E%E4%BC%98%E5%8C%96-Err-n-Opt/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://whatbeg.com/2018/01/02/jupyternotebook.html</loc>
     <lastmod>2018-01-02T14:36:49.602Z</lastmod>
     <data>
@@ -33,9 +97,9 @@
         <title>快速学会Git基本操作</title>
         <pubTime>2016-04-07T15:35:15.000Z</pubTime>
         
-        <tag>CS</tag>
-         
         <tag>Git</tag>
+         
+        <tag>CS</tag>
          
          
            
@@ -116,34 +180,14 @@
         <title>一次MAVEN事故</title>
         <pubTime>2017-12-24T07:49:59.000Z</pubTime>
         
-        <tag>错误解决</tag>
-         
         <tag>Spark</tag>
+         
+        <tag>错误解决</tag>
          
          
            
              
               <breadCrumb title="错误解决与优化 | Err_n_Opt" url="http://whatbeg.com/categories/%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3%E4%B8%8E%E4%BC%98%E5%8C%96-Err-n-Opt/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://whatbeg.com/2017/03/11/linuxmemo.html</loc>
-    <lastmod>2017-12-24T07:43:55.870Z</lastmod>
-    <data>
-        <display>
-        <title>Linux备忘命令</title>
-        <pubTime>2017-03-11T04:42:52.000Z</pubTime>
-        
-        <tag>Linux</tag>
-         
-         
-           
-             
-              <breadCrumb title="计算机相关 | CS.Related" url="http://whatbeg.com/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9B%B8%E5%85%B3-CS-Related/"/>
           
         </display>
     </data>
@@ -211,26 +255,6 @@
 
     
   <url>
-    <loc>http://whatbeg.com/2017/07/08/vim.html</loc>
-    <lastmod>2017-11-20T11:20:09.313Z</lastmod>
-    <data>
-        <display>
-        <title>Linux vim技巧大观</title>
-        <pubTime>2017-07-08T06:38:15.000Z</pubTime>
-        
-        <tag>Linux</tag>
-         
-         
-           
-             
-              <breadCrumb title="计算机相关 | CS.Related" url="http://whatbeg.com/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9B%B8%E5%85%B3-CS-Related/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://whatbeg.com/2017/10/23/revisitingjava.html</loc>
     <lastmod>2017-10-23T15:38:18.567Z</lastmod>
     <data>
@@ -251,30 +275,6 @@
 
     
   <url>
-    <loc>http://whatbeg.com/2017/10/23/hadooperror.html</loc>
-    <lastmod>2017-10-23T05:23:53.201Z</lastmod>
-    <data>
-        <display>
-        <title>Hadoop一些问题集锦【持续更新】</title>
-        <pubTime>2017-10-23T02:47:34.000Z</pubTime>
-        
-        <tag>大数据</tag>
-         
-        <tag>Hadoop</tag>
-         
-        <tag>错误解决</tag>
-         
-         
-           
-             
-              <breadCrumb title="错误解决与优化 | Err_n_Opt" url="http://whatbeg.com/categories/%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3%E4%B8%8E%E4%BC%98%E5%8C%96-Err-n-Opt/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://whatbeg.com/2017/05/28/sparkerror.html</loc>
     <lastmod>2017-10-23T05:19:56.284Z</lastmod>
     <data>
@@ -284,9 +284,9 @@
         
         <tag>大数据</tag>
          
-        <tag>错误解决</tag>
-         
         <tag>Spark</tag>
+         
+        <tag>错误解决</tag>
          
          
            
