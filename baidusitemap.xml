@@ -4,6 +4,72 @@
 
     
   <url>
+    <loc>http://whatbeg.com/2017/10/23/hadooperror.html</loc>
+    <lastmod>2018-02-09T13:56:37.379Z</lastmod>
+    <data>
+        <display>
+        <title>Hadoop一些问题集锦【持续更新】</title>
+        <pubTime>2017-10-23T02:47:34.000Z</pubTime>
+        
+        <tag>大数据</tag>
+         
+        <tag>Hadoop</tag>
+         
+        <tag>错误解决</tag>
+         
+         
+           
+             
+              <breadCrumb title="错误解决与优化 | Err_n_Opt" url="http://whatbeg.com/categories/%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3%E4%B8%8E%E4%BC%98%E5%8C%96-Err-n-Opt/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://whatbeg.com/2018/01/01/annualsummary2017.html</loc>
+    <lastmod>2018-02-04T03:29:40.183Z</lastmod>
+    <data>
+        <display>
+        <title>2017这一年</title>
+        <pubTime>2018-01-01T06:36:05.000Z</pubTime>
+        
+        <tag>Summary</tag>
+         
+         
+           
+             
+              <breadCrumb title="成长之路 | Biography" url="http://whatbeg.com/categories/%E6%88%90%E9%95%BF%E4%B9%8B%E8%B7%AF-Biography/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://whatbeg.com/2018/02/04/writefirstpaper.html</loc>
+    <lastmod>2018-02-04T03:28:55.246Z</lastmod>
+    <data>
+        <display>
+        <title>如何着手你的第一篇paper</title>
+        <pubTime>2018-02-04T03:25:11.000Z</pubTime>
+        
+        <tag>译文</tag>
+         
+        <tag>论文阅读</tag>
+         
+         
+           
+             
+              <breadCrumb title="译文 | Translation" url="http://whatbeg.com/categories/%E8%AF%91%E6%96%87-Translation/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://whatbeg.com/2017/03/11/linuxmemo.html</loc>
     <lastmod>2018-01-30T05:54:50.868Z</lastmod>
     <data>
@@ -44,30 +110,6 @@
 
     
   <url>
-    <loc>http://whatbeg.com/2017/10/23/hadooperror.html</loc>
-    <lastmod>2018-01-30T05:44:43.861Z</lastmod>
-    <data>
-        <display>
-        <title>Hadoop一些问题集锦【持续更新】</title>
-        <pubTime>2017-10-23T02:47:34.000Z</pubTime>
-        
-        <tag>大数据</tag>
-         
-        <tag>Hadoop</tag>
-         
-        <tag>错误解决</tag>
-         
-         
-           
-             
-              <breadCrumb title="错误解决与优化 | Err_n_Opt" url="http://whatbeg.com/categories/%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3%E4%B8%8E%E4%BC%98%E5%8C%96-Err-n-Opt/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://whatbeg.com/2018/01/02/jupyternotebook.html</loc>
     <lastmod>2018-01-02T14:36:49.602Z</lastmod>
     <data>
@@ -97,34 +139,14 @@
         <title>快速学会Git基本操作</title>
         <pubTime>2016-04-07T15:35:15.000Z</pubTime>
         
-        <tag>Git</tag>
-         
         <tag>CS</tag>
+         
+        <tag>Git</tag>
          
          
            
              
               <breadCrumb title="计算机相关 | CS.Related" url="http://whatbeg.com/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9B%B8%E5%85%B3-CS-Related/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://whatbeg.com/2018/01/01/annualsummary2017.html</loc>
-    <lastmod>2018-01-01T07:56:09.940Z</lastmod>
-    <data>
-        <display>
-        <title>2017这一年</title>
-        <pubTime>2018-01-01T06:36:05.000Z</pubTime>
-        
-        <tag>Summary</tag>
-         
-         
-           
-             
-              <breadCrumb title="成长之路 | Biography" url="http://whatbeg.com/categories/%E6%88%90%E9%95%BF%E4%B9%8B%E8%B7%AF-Biography/"/>
           
         </display>
     </data>
@@ -180,9 +202,9 @@
         <title>一次MAVEN事故</title>
         <pubTime>2017-12-24T07:49:59.000Z</pubTime>
         
-        <tag>Spark</tag>
-         
         <tag>错误解决</tag>
+         
+        <tag>Spark</tag>
          
          
            
@@ -284,9 +306,9 @@
         
         <tag>大数据</tag>
          
-        <tag>Spark</tag>
-         
         <tag>错误解决</tag>
+         
+        <tag>Spark</tag>
          
          
            
