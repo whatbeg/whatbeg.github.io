@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://whatbeg.com/"/>
-  <updated>2018-03-01T02:05:35.255Z</updated>
+  <updated>2018-03-07T08:37:21.022Z</updated>
   <id>http://whatbeg.com/</id>
   
   <author>
@@ -14,6 +14,57 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Deep Learning读书笔记（6）--【卷积神经网络】</title>
+    <link href="http://whatbeg.com/2018/03/07/deeplearningbook-06.html"/>
+    <id>http://whatbeg.com/2018/03/07/deeplearningbook-06.html</id>
+    <published>2018-03-07T08:36:20.000Z</published>
+    <updated>2018-03-07T08:37:21.022Z</updated>
+    
+    <content type="html">&lt;p&gt;本章写卷积神经网络，本文摘其中的要点稍作梳理。&lt;/p&gt;
+&lt;p&gt;个人觉得，看完本章应该获得如下的take home message：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;卷积和卷积神经网络的基本概念&lt;/li&gt;
+&lt;li&gt;卷积网络背后的三个重要概念：稀疏交互，参数共享，等变表示&lt;/li&gt;
+&lt;li&gt;池化及其背后的idea和意义&lt;/li&gt;
+&lt;li&gt;随机/无监督特征&lt;/li&gt;
+&lt;li&gt;神经科学基础与卷积网络的密切关系&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;卷积和卷积神经网络的基本概念&quot;&gt;&lt;a href=&quot;#卷积和卷积神经网络的基本概念&quot; class=&quot;headerlink&quot; title=&quot;卷积和卷积神经网络的基本概念&quot;&gt;&lt;/a&gt;卷积和卷积神经网络的基本概念&lt;/h2&gt;&lt;p&gt;卷积网络的基本概念默认本文读者已知。&lt;br&gt;“卷积”这个词笔者第一次听到是在《信号与系统》课程中，在计算机领域主要是离散的卷积。&lt;br&gt;卷积网络的工作过程网上已经讲的很多了，众多资料中又数July写的&lt;a href=&quot;http://blog.csdn.net/v_july_v/article/details/51812459&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;《通俗理解卷积神经网络（cs231n与5月dl班课程笔记）》&lt;/a&gt;尤为通俗易懂，推荐阅读。&lt;br&gt;总的来说，卷积网络尤其适合处理具有类似网格结构的数据，如具有序列结构的时间序列数据，就可以看做一维网格，具有空间结构的图像数据等即可看做二维网格。&lt;/p&gt;
+&lt;h2 id=&quot;卷积网络背后的三个重要概念：稀疏交互，参数共享，等变表示&quot;&gt;&lt;a href=&quot;#卷积网络背后的三个重要概念：稀疏交互，参数共享，等变表示&quot; class=&quot;headerlink&quot; title=&quot;卷积网络背后的三个重要概念：稀疏交互，参数共享，等变表示&quot;&gt;&lt;/a&gt;卷积网络背后的三个重要概念：稀疏交互，参数共享，等变表示&lt;/h2&gt;&lt;p&gt;重点在于此节。此节的三种重要概念是卷积网络能够发挥现在如此大作用的内在原因。&lt;br&gt;讲述以图片数据为例。&lt;/p&gt;
+&lt;p&gt;稀疏交互，指的是在处理图像时，卷积网络上层每个神经元的状态并不取决于整张图片，而是取决于一个局部感受野（如一张人脸图片，某个神经元的状态取决于下巴的那一小块区域），对局部感受野进行提取的小矩阵称为卷积核。&lt;br&gt;原来对图片进行处理，通常是通过稠密矩阵相乘等方法来做，即图像矩阵乘以一个权重矩阵，然后预测，训练此权重矩阵，这样的方式和全连接相差无几，效率不高，且分类预测效果不佳。&lt;br&gt;所以，“稀疏”是指相对于全连接来说，用比原来小得多的卷积核矩阵来代替全连接矩阵，相当于除卷积核之外的连接权重全为0.&lt;br&gt;通过卷积核可以对一些小的特征进行提取，比如检测图像边缘信息。通过多个卷积核可以提取多种图像特征信息。&lt;br&gt;稀疏的交互大大减小了存储开销，提高计算效率，从而也推进了算法的研究，使得卷积网络可以往更深层次走。&lt;/p&gt;
+&lt;p&gt;参数共享，指的是，比如对于100x100的图像，一个大小10x10的卷积核，固定具有10x10=100个参数，不管这个卷积核在与图像的哪一部分进行卷积，这些参数都是相对一致的。不同于全连接，会有100x100=10000个参数，整个神经网络的参数量瞬间缩减了100倍。当然这也导致了一个卷积核只能提取一种特征，为了提取多种特征，我们需要采用多个卷积核，这多个卷积核的参数就通常不会相同了。参数共享，也使得存储开销，计算效率提高，硬件压力越小，从而推进算法研究。&lt;/p&gt;
+&lt;p&gt;等变表示，指的是，图像中某一元素/成分的移动，在上层神经元中也表现为一定的移动。这是由参数共享直接带来的，因为移动过程中卷积核的参数不变。这种等变表示使得图像的平移不会对分类预测结果产生太大的影响，使得学习算法能够对相同内容不同位置的图像较为准确的识别。&lt;/p&gt;
+&lt;h2 id=&quot;池化及其背后的idea和意义&quot;&gt;&lt;a href=&quot;#池化及其背后的idea和意义&quot; class=&quot;headerlink&quot; title=&quot;池化及其背后的idea和意义&quot;&gt;&lt;/a&gt;池化及其背后的idea和意义&lt;/h2&gt;&lt;p&gt;池化函数使用某一位置的相邻输出的总体统计特征来代替网络在该位置的输出。&lt;br&gt;池化操作有点类似于降低图像分辨率，最大池化用最突出的像素表示该像素周围一小块像素区域的总体。除此之外还有平均池化。&lt;br&gt;在生活中，池化类似于通常的“代表”，通常话语权细化到每个人会非常的繁琐，低效，从而从一个群体中选取一个“代表”来为整个群体说话就成为意见很自然的事情。&lt;br&gt;池化具有局部平移不变性，由于最后局部的像素会聚集，所以图像微小的平移有时并不会对池化的结果产生影响。通常当我们只关心某些特征是否出现而不关心其出现在何位置时池化显得非常有用。因为池化过后存储需求又进一步降低了，计算效率再次提升。&lt;/p&gt;
+&lt;p&gt;卷积和池化可以理解为两个无限强的先验。&lt;br&gt;卷积是这样的先验：该层应该学得的函数只包含局部连接关系且对平移具有等变性。&lt;br&gt;池化则是这样的先验：每一个单元都具有对少量平移的不变性。&lt;/p&gt;
+&lt;h2 id=&quot;随机-无监督特征&quot;&gt;&lt;a href=&quot;#随机-无监督特征&quot; class=&quot;headerlink&quot; title=&quot;随机/无监督特征&quot;&gt;&lt;/a&gt;随机/无监督特征&lt;/h2&gt;&lt;p&gt;卷积核的确定有几种方式，一种是随机确定，一种是手动指定，另一种是采用无监督的标准来学习到一个卷积核。&lt;br&gt;通常允许底层的特征确定和上层的分类相分离，即底层采用无监督方法来学习特征，构造供高层使用的训练集，然后高层采用一个分类算法（可非神经网络）来进行分类。&lt;/p&gt;
+&lt;h2 id=&quot;神经科学基础与卷积网络的密切关系&quot;&gt;&lt;a href=&quot;#神经科学基础与卷积网络的密切关系&quot; class=&quot;headerlink&quot; title=&quot;神经科学基础与卷积网络的密切关系&quot;&gt;&lt;/a&gt;神经科学基础与卷积网络的密切关系&lt;/h2&gt;&lt;p&gt;卷积网络是受神经科学启发，成功应用于机器学习领域一个范例。&lt;br&gt;卷积网络有其神经科学的基础在。&lt;br&gt;比如卷积即使模拟初级视觉皮层的简单细胞，其活动可概括为在一个小的空间位置感受野内的图像的线性函数。&lt;br&gt;池化则启发自初级视觉皮层的复杂细胞，其对特征位置的微小偏移具有不变性。&lt;/p&gt;
+&lt;p&gt;类似从神经科学中启发出来的还有注意力机制，目前在NLP领域应用比较成功，在视觉领域则未见大成。卷积网络目前仍然主要集中于视觉。&lt;/p&gt;
+&lt;p&gt;Hinton在1988年提出了基于反向传播的时延神经网络(time delay neural network, TDNN)，主要用于一维的时间序列分析，此后LeCun在1998年左右将反向传播应用到二维图像的识别，成功发明了LeNet并开启了现代卷积网络的大门。&lt;/p&gt;
+&lt;p&gt;卷积网络也是第一批能使用反向传播进行有效训练的深度网络之一。&lt;br&gt;一般的反向传播网络被认为是失败的，但是卷积网络加上反向传播奇迹般的发挥了很好的效果。&lt;br&gt;本书作者认为，可能是卷积网络的计算效率更高，能够快速运行实验并进行调参的原因。。&lt;/p&gt;
+&lt;p&gt;总的来说，卷积网络是神经网络的一种特化，这种特化在具有空间/序列等网格结构拓扑上表现良好，实际上，卷积网络的杀手级应用还是在二维图像方面。一维的序列处理（时间序列，文本序列等）主要被另一种神经网络的特化–循环神经网络所占领。&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;本章写卷积神经网络，本文摘其中的要点稍作梳理。&lt;/p&gt;
+&lt;p&gt;个人觉得，看完本章应该获得如下的take home message：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;卷积和卷积神经网络的基本概念&lt;/li&gt;
+&lt;li&gt;卷积网络背后的三个重要概念：稀疏交互，参数共享，等变表示&lt;/li&gt;
+
+    
+    </summary>
+    
+      <category term="深度学习 | Deep Learning" scheme="http://whatbeg.com/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0-Deep-Learning/"/>
+    
+    
+      <category term="机器学习" scheme="http://whatbeg.com/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="深度学习" scheme="http://whatbeg.com/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
   
   <entry>
     <title>湖南农村个体经营所面临的形势变迁考（2008-2018）</title>
@@ -1673,77 +1724,6 @@ table th:first-of-type {
     
     
       <category term="Git" scheme="http://whatbeg.com/tags/Git/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Deep Learning读书笔记（1）【开篇】</title>
-    <link href="http://whatbeg.com/2017/03/29/deeplearningbook-01.html"/>
-    <id>http://whatbeg.com/2017/03/29/deeplearningbook-01.html</id>
-    <published>2017-03-29T14:39:32.000Z</published>
-    <updated>2017-03-30T12:01:25.924Z</updated>
-    
-    <content type="html">&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;“深度学习”的概念萌芽于2006年，2010年以后逐渐兴起，到2015,2016年达到顶峰，尤其是2016年，感觉各种IT网站，业界公号，微博等等都充斥着”深度学习”这个词语，论文数量急剧增加，盛况空前。到现在，2017年上半年，火热之势不减，诸多meetup，讨论会，交流会，分享会此起彼伏，人头攒动，业界大牛则在展望未来，规划前程或是默默做着前沿探索。&lt;br&gt;初次接触深度学习是在去年做一个NLP比赛的时候，尝试了深度学习的方法，效果确实不错，未加集成，融合的单模型就能表现出很好的效果，于是入坑，，直至遇到Bengio,Goodfellow,Courville合著的这本《Deep Learning》，想把它啃下来，陆陆续续看了一些，前几章还好，越到后面会难一些，借着这个机会，分享下自己的阅读心得，也督促自己继续把它啃完。&lt;/p&gt;
-&lt;h2 id=&quot;智能机器&quot;&gt;&lt;a href=&quot;#智能机器&quot; class=&quot;headerlink&quot; title=&quot;智能机器&quot;&gt;&lt;/a&gt;智能机器&lt;/h2&gt;&lt;p&gt;人类一直以来都有一个梦想，就是制造出能够思考的机器。可是一直到近代，计算机的发明，才使得这一梦想有了巨大的推进。再到今天，人工智能(Artificial Intelligence)，起源于1956年夏季”达特茅斯会议”的这门学科，经过1997年IBM DeepBlue战胜国际象棋大师卡斯帕罗夫，再到2016年3月AlphaGo战胜李世石，到最近的Master，已经成为了最蓬勃发展的一个领域之一，此时，我们重新问自己这个问题: “人类能否制造出有智能的机器？”。诚然，”智能”的定义又有许多种，有人说，通过图灵测试的机器就具有智能，有人说，有自我意识，会思考的机器才算具有智能，总的来说没有一致公认的定义。于是观点逐渐分为两派，一个是强AI观点，一个是弱AI观点，强AI观点认为人类有可能制造出能推理和解决问题，并具有自我意识和直觉的机器，弱AI观点则认为不能。&lt;/p&gt;
-&lt;p&gt;但是，纠结于智能的标准，以及能不能使机器达到智能对我们并无太大助益，我们现在所希望的是制造出更加”聪明”一点的机器，帮我们做很多事情。这是好的，但是”人工智能威胁论”也随之应运而生，客观来说，人工智能真正能够对人类产生威胁还有很长的路要走，但是不得不承认，很多机械性的工作，机器拿手的问题很可能会逐渐被机器人取代，从而会加高工作的知识壁垒，也会使一些工人失业，这是大势，阻挡不了。&lt;/p&gt;
-&lt;h2 id=&quot;深度学习&quot;&gt;&lt;a href=&quot;#深度学习&quot; class=&quot;headerlink&quot; title=&quot;深度学习&quot;&gt;&lt;/a&gt;深度学习&lt;/h2&gt;&lt;p&gt;那么哪些问题是机器拿手的，哪些问题又是人类拿手的呢？&lt;/p&gt;
-&lt;p&gt;我们知道，早期计算机在处理问题时，需要人类把问题，规则，策略描述给它，硬编码到系统中，然后交给计算机去做，但是人们逐渐遇到了依赖硬编码的系统带来的许多困难与问题，也让人们意识到，必须要让AI系统具有获得他们自己知识的能力。计算机在复杂计算，规则明确的策略搜索(如棋类)，大规模存储记忆等方面的处理能力远超人类，这些问题对于机器来说，无非是执行规则而已，但是人的直觉是很难被机器学到的，包括物体识别，观察判断和听说读写等等，这些问题很难形式化地描述给计算机，但是这些问题我们仍想去解决，仍然需要被解决。&lt;/p&gt;
-&lt;p&gt;本书就集中描述一种解决方案，它让计算机从经验中学习，按照概念的层级(Hierarchy of Concepts)来理解世界，其中每个概念定义在比它更简单的概念之上，从而避免让人类去指定计算机需要的知识。这种方法我们称之为深度学习。深度学习只是机器学习领域的一个很小的课题，从下图可以看出，但是由于它解决了许多以前无法解决的问题，提升了以前解决得不好的问题，从而名声大噪，进入了大众的视野。&lt;/p&gt;
-&lt;center&gt; &lt;img src=&quot;http://7xsl28.com1.z0.glb.clouddn.com/dl_001.png&quot; alt=&quot;&quot;&gt; &lt;/center&gt;
-
-&lt;p&gt;给一个较明确的定义如下：&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;“深度学习是一种表示学习方法,把原始数据通过一些简单的非线性模型转变为更高层次的,更加抽象的表达。通过足够多的转换的组合,非常复杂的函数也可以被学习。”&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h2 id=&quot;深度学习处在什么位置？&quot;&gt;&lt;a href=&quot;#深度学习处在什么位置？&quot; class=&quot;headerlink&quot; title=&quot;深度学习处在什么位置？&quot;&gt;&lt;/a&gt;深度学习处在什么位置？&lt;/h2&gt;&lt;p&gt;从上图我们看出，我们首先聚焦AI领域，AI包括基于知识的AI(类似以前的专家系统)，另外还包括机器学习，机器学习又分为几类，一类如SVM，LR等传统的分类回归方法，另一类即表示学习，传统的机器学习方法意图学习一个表示-&amp;gt;输出的映射$\mathcal F$，其中表示往往需要做特征工程，人工指定数据的表示方法，表示的选择对机器学习的性能有着巨大的影响，而表示学习的精髓在于，它不仅学习表示-&amp;gt;输出的映射，还学习表示本身，即学习更好的对输入数据的表示，表示学习就像一个端到端的过程，直接得出输入到输出的一系列映射关系，表示学习包括浅层的自动编码器(autoencoders)，意在学习出输入到另一个表示的尽可能降低信息损失的映射，意在得到一个具有输入不具有的良好性质的表示。表示学习的另一大类就是深度学习，深度学习，在于一个深字，也称为深度神经网络，因为这种深度通过多层的神经网络来组成，比如多层感知机(MLP)就属于深度学习范畴。说白一点就是，深度学习就是很多层神经网络组合而成，利用深度和非线性单元的一起作用，更多的学习函数或者概念的组合，使得机器能够学习到更加复杂的映射，解决那些更加复杂的问题，一般认为，有某些因素在背后影响着我们具体问题中的观察数据，深度学习的目的就是学习出这种因素及这种因素是如何变化的。至于多深才算深，也没有统一的意见。&lt;br&gt;书上这张图更加清晰地阐明了深度学习的方法。&lt;/p&gt;
-&lt;center&gt; &lt;img src=&quot;http://7xsl28.com1.z0.glb.clouddn.com/dl_002.png&quot; alt=&quot;&quot;&gt; &lt;/center&gt;
-
-&lt;h2 id=&quot;历史与趋势&quot;&gt;&lt;a href=&quot;#历史与趋势&quot; class=&quot;headerlink&quot; title=&quot;历史与趋势&quot;&gt;&lt;/a&gt;历史与趋势&lt;/h2&gt;&lt;p&gt;深度学习在历史进程中总的来说有几大趋势：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;深度学习有着很长很丰富的历史，但是许多反映着不同哲学观点的人的名字已经消逝，不被人记起&lt;/li&gt;
-&lt;li&gt;随着训练数据的增多，深度学习的效果变得更好了&lt;/li&gt;
-&lt;li&gt;软件和硬件的迅速提升给深度学习提供了物质基础&lt;/li&gt;
-&lt;li&gt;深度学习有了更高的准确率，逐渐在解决日益复杂的问题。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;可能有很多人认为神经科学是对大脑的模拟，确实，脑神经科学的研究给予了神经网络重大的启示，但是深度学习，或者神经网络，更多的是受到多个其他领域的启发，比如应用数学基础，信息论和数值优化等等，我们甚至可以直接说，神经网络是一个数学问题。&lt;/p&gt;
-&lt;p&gt;深度学习的历史要追溯到上个世纪40年代，40年代是神经网络的萌芽期，1943年McCulloch-Pitts Neuron的发明，控制论(Cybernetics)的兴起，和1945年Hebb学习规则的提出，逐渐萌生了神经网络这门学科。到后来，1950年代到60年代末，期间有1958年感知机的提出，1960年ADALINE(Adaptive Linear Element)的提出，促使了这段时间的逐渐繁荣。但是，以上模型终究只是线性模型，无法解决更复杂的问题，甚至无法学习异或(XOR)操作，这让人们很失望，于是知道70年代末期，整个领域陷入了一片沉寂。到80年代，联结主义和并行分布式计算的浪潮掀起，1986年著名的后向传播算法(BP, Back Propagation)的发明，分布式表示(Distributed Representation)的提出，以及序列建模，LSTM都相继提出，构成了另一波的繁荣期。联结主义是统合了认知心理学、人工智能和心理哲学领域的一种理论，认为”大量的简单计算单元相互联结时能够达到智能行为”。繁荣了不久(很可能当时也是如现在一般火热)，许多创业者纷纷涌入，为了获得投资，鼓吹之风逐渐升起，导致最后许诺的效果无法兑现，投资者逐渐丧失信心，加之当时数据少，层数浅，训练慢，很容易造成过拟合或者欠拟合的问题，以及SVM和图模型的巨大成功，使得神经网络再次被压了下去，陷入沉寂，而此事，有一个名为CIFAR(Canadian Institute for Advanced Research)的学术组织，成员包括现在大家耳熟能详的LeCun，Bengio，Hinton等人，没错，就是本书作者Bengio，他们一直在坚持神经网络的研究。到了2006年，Hinton发表著名论文，表明深度信念网络可以采用Greedy Layer-wise Pretraining的策略高效地训练，后来人发现这种方法在其他深度网络上作用也很大，从此以后，深度学习开始在各领域大放异彩，2006年也因此被称为”深度学习元年”。&lt;/p&gt;
-&lt;p&gt;目前深度学习作用最为显著的领域当属计算机视觉，语音识别和自然语言处理了。&lt;/p&gt;
-&lt;h2 id=&quot;为什么是深度学习？&quot;&gt;&lt;a href=&quot;#为什么是深度学习？&quot; class=&quot;headerlink&quot; title=&quot;为什么是深度学习？&quot;&gt;&lt;/a&gt;为什么是深度学习？&lt;/h2&gt;&lt;p&gt;很简单，从以下几个方面可以一窥究竟&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;数据集规模：如今越来越数字化，数据量成爆炸式增长，使得人们想从巨量的数据中挖掘各种各样的模式和价值&lt;/li&gt;
-&lt;li&gt;计算能力和模型大小：计算能力的提升使得我们能够训练越来越大的模型，提高了模型大小，也就增加了能解决的问题的复杂度&lt;/li&gt;
-&lt;li&gt;准确率，问题复杂性：深度学习在诸多领域表现出色，在某些识别问题上甚至超过人类，解决着越来越复杂的问题&lt;/li&gt;
-&lt;li&gt;实际应用：深度学习的落地，解决了人们很多需求，带来了很多价值，让人们逐渐对他倾心。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&quot;弱点？&quot;&gt;&lt;a href=&quot;#弱点？&quot; class=&quot;headerlink&quot; title=&quot;弱点？&quot;&gt;&lt;/a&gt;弱点？&lt;/h2&gt;&lt;p&gt;可是，深度学习就没有一点缺陷么？不是的，辩证法来说，事物总是具有两面性，深度学习的一些弱点如下：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;很多时候,初始数据表示就已经很合适了&lt;/li&gt;
-&lt;li&gt;需要大量的数据&lt;/li&gt;
-&lt;li&gt;巨大的计算开销,小的机构有点虚&lt;/li&gt;
-&lt;li&gt;容易陷入局部最优&lt;/li&gt;
-&lt;li&gt;难以解释，“玄乎”&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&quot;最后&quot;&gt;&lt;a href=&quot;#最后&quot; class=&quot;headerlink&quot; title=&quot;最后&quot;&gt;&lt;/a&gt;最后&lt;/h2&gt;&lt;p&gt;本文取材自本书第一章导引部分，第一章介绍了深度学习的概念，以及深度学习在整个领域中所处的位置，然后交代了深度学习的历史发展与趋势，以及能够站上如此高的舞台的内在外在原因。再加上自己的一些理解，促成了本文。笔者才疏学浅，如果不妥之处，还望不吝指出，感谢阅读到最后的朋友们。&lt;br&gt;另附上笔者在一次Talk中的演讲PPT，也有很大一部分取材于本书第一章，可以尝试下载观看。&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;http://ogbh7uglm.bkt.clouddn.com/%E6%B5%85%E8%B0%88%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%20.pdf&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;浅谈深度学习.PDF&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&quot;References&quot;&gt;&lt;a href=&quot;#References&quot; class=&quot;headerlink&quot; title=&quot;References&quot;&gt;&lt;/a&gt;References&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;《Deep Learning》GoodFellow, Bengio etc.&lt;/li&gt;
-&lt;li&gt;《Deep Learning Revew》LeCun, Bengio, Hinton&lt;/li&gt;
-&lt;li&gt;《Deep Learning学习笔记整理系列》zouxy&lt;/li&gt;
-&lt;/ul&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;“深度学习”的概念萌芽于2006年，2010年以后逐渐兴起，到2015,2016年达到顶峰，尤其是2016年，感觉各种IT网站，业界公号，微
-    
-    </summary>
-    
-      <category term="深度学习 | Deep Learning" scheme="http://whatbeg.com/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0-Deep-Learning/"/>
-    
-    
-      <category term="Deep Learning" scheme="http://whatbeg.com/tags/Deep-Learning/"/>
-    
-      <category term="深度学习" scheme="http://whatbeg.com/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
     
   </entry>
   
