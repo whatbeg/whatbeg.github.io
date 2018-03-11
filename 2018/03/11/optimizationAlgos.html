@@ -4,50 +4,28 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>Deep Learning读书笔记（6）--【卷积神经网络】 | Whatbeg&#39;s blog</title>
+    <title>神经网络一阶优化算法手记 | Whatbeg&#39;s blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="whatbeg">
     
 
     
-    <meta name="description" content="本章写卷积神经网络，本文摘其中的要点稍作梳理。
-个人觉得，看完本章应该获得如下的take home message：
-
-卷积和卷积神经网络的基本概念
-卷积网络背后的三个重要概念：稀疏交互，参数共享，等变表示
-池化及其背后的idea和意义
-随机/无监督特征
-神经科学基础与卷积网络的密切关系
-
-卷积和卷积神经网络的基本概念卷积网络的基本概念默认本文读者已知。“卷积”这个词笔者第一次听到是在《信号与系统">
+    <meta name="description" content="关于神经网络一阶优化算法，网上已经有很多资料了，本文为笔者很久之前做的一份梳理，整理了一下一些popular的一阶优化算法及他们的逻辑线，优缺点等。读者自行甄别，自取所需，大神直接过即可。
+Notations$\theta$ : parameters$J$ : objective function$\nabla J(\theta) = J’$ w.r.t parameter$\eta$ : lea">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Deep Learning读书笔记（6）--【卷积神经网络】">
-<meta property="og:url" content="http://whatbeg.com/2018/03/07/deeplearningbook-06.html">
+<meta property="og:title" content="神经网络一阶优化算法手记">
+<meta property="og:url" content="http://whatbeg.com/2018/03/11/optimizationAlgos.html">
 <meta property="og:site_name" content="Whatbeg's blog">
-<meta property="og:description" content="本章写卷积神经网络，本文摘其中的要点稍作梳理。
-个人觉得，看完本章应该获得如下的take home message：
-
-卷积和卷积神经网络的基本概念
-卷积网络背后的三个重要概念：稀疏交互，参数共享，等变表示
-池化及其背后的idea和意义
-随机/无监督特征
-神经科学基础与卷积网络的密切关系
-
-卷积和卷积神经网络的基本概念卷积网络的基本概念默认本文读者已知。“卷积”这个词笔者第一次听到是在《信号与系统">
-<meta property="og:updated_time" content="2018-03-07T08:37:21.022Z">
+<meta property="og:description" content="关于神经网络一阶优化算法，网上已经有很多资料了，本文为笔者很久之前做的一份梳理，整理了一下一些popular的一阶优化算法及他们的逻辑线，优缺点等。读者自行甄别，自取所需，大神直接过即可。
+Notations$\theta$ : parameters$J$ : objective function$\nabla J(\theta) = J’$ w.r.t parameter$\eta$ : lea">
+<meta property="og:image" content="https://blog-image-1256228880.cos.ap-beijing.myqcloud.com/optimization.jpg">
+<meta property="og:updated_time" content="2018-03-11T09:13:24.715Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Deep Learning读书笔记（6）--【卷积神经网络】">
-<meta name="twitter:description" content="本章写卷积神经网络，本文摘其中的要点稍作梳理。
-个人觉得，看完本章应该获得如下的take home message：
-
-卷积和卷积神经网络的基本概念
-卷积网络背后的三个重要概念：稀疏交互，参数共享，等变表示
-池化及其背后的idea和意义
-随机/无监督特征
-神经科学基础与卷积网络的密切关系
-
-卷积和卷积神经网络的基本概念卷积网络的基本概念默认本文读者已知。“卷积”这个词笔者第一次听到是在《信号与系统">
+<meta name="twitter:title" content="神经网络一阶优化算法手记">
+<meta name="twitter:description" content="关于神经网络一阶优化算法，网上已经有很多资料了，本文为笔者很久之前做的一份梳理，整理了一下一些popular的一阶优化算法及他们的逻辑线，优缺点等。读者自行甄别，自取所需，大神直接过即可。
+Notations$\theta$ : parameters$J$ : objective function$\nabla J(\theta) = J’$ w.r.t parameter$\eta$ : lea">
+<meta name="twitter:image" content="https://blog-image-1256228880.cos.ap-beijing.myqcloud.com/optimization.jpg">
 
     
     <link rel="alternative" href="/atom.xml" title="Whatbeg&#39;s blog" type="application/atom+xml">
@@ -96,14 +74,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2018/03/07/deeplearningbook-06.html" title="Deep Learning读书笔记（6）--【卷积神经网络】" itemprop="url">Deep Learning读书笔记（6）--【卷积神经网络】</a>
+      <a href="/2018/03/11/optimizationAlgos.html" title="神经网络一阶优化算法手记" itemprop="url">神经网络一阶优化算法手记</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="whatbeg" target="_blank" itemprop="author">whatbeg</a>
 		
   <p class="article-time">
-    <time datetime="2018-03-07T08:36:20.000Z" itemprop="datePublished"> 发表于 2018-03-07</time>
+    <time datetime="2018-03-11T09:03:38.000Z" itemprop="datePublished"> 发表于 2018-03-11</time>
     <span id="busuanzi_container_page_pv">
     总阅读<span id="busuanzi_value_page_pv"></span>次
     </span>
@@ -115,32 +93,33 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#卷积和卷积神经网络的基本概念"><span class="toc-number">1.</span> <span class="toc-text">卷积和卷积神经网络的基本概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#卷积网络背后的三个重要概念：稀疏交互，参数共享，等变表示"><span class="toc-number">2.</span> <span class="toc-text">卷积网络背后的三个重要概念：稀疏交互，参数共享，等变表示</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#池化及其背后的idea和意义"><span class="toc-number">3.</span> <span class="toc-text">池化及其背后的idea和意义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#随机-无监督特征"><span class="toc-number">4.</span> <span class="toc-text">随机/无监督特征</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#神经科学基础与卷积网络的密切关系"><span class="toc-number">5.</span> <span class="toc-text">神经科学基础与卷积网络的密切关系</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Notations"><span class="toc-number">1.</span> <span class="toc-text">Notations</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#从SGD说起"><span class="toc-number">2.</span> <span class="toc-text">从SGD说起</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Momentum"><span class="toc-number">3.</span> <span class="toc-text">Momentum</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Nesterov-Accelerated-Gradient-NAG"><span class="toc-number">4.</span> <span class="toc-text">Nesterov Accelerated Gradient(NAG)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Adagrad"><span class="toc-number">5.</span> <span class="toc-text">Adagrad</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RMSprop"><span class="toc-number">6.</span> <span class="toc-text">RMSprop</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Adadelta"><span class="toc-number">7.</span> <span class="toc-text">Adadelta</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Adam"><span class="toc-number">8.</span> <span class="toc-text">Adam</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Optimization-Algorithms-Relationship"><span class="toc-number">9.</span> <span class="toc-text">Optimization Algorithms Relationship</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#References"><span class="toc-number">10.</span> <span class="toc-text">References</span></a></li></ol>
 		
 		</div>
 		
-		<p>本章写卷积神经网络，本文摘其中的要点稍作梳理。</p>
-<p>个人觉得，看完本章应该获得如下的take home message：</p>
-<ul>
-<li>卷积和卷积神经网络的基本概念</li>
-<li>卷积网络背后的三个重要概念：稀疏交互，参数共享，等变表示</li>
-<li>池化及其背后的idea和意义</li>
-<li>随机/无监督特征</li>
-<li>神经科学基础与卷积网络的密切关系</li>
-</ul>
-<h2 id="卷积和卷积神经网络的基本概念"><a href="#卷积和卷积神经网络的基本概念" class="headerlink" title="卷积和卷积神经网络的基本概念"></a>卷积和卷积神经网络的基本概念</h2><p>卷积网络的基本概念默认本文读者已知。<br>“卷积”这个词笔者第一次听到是在《信号与系统》课程中，在计算机领域主要是离散的卷积。<br>卷积网络的工作过程网上已经讲的很多了，众多资料中又数July写的<a href="http://blog.csdn.net/v_july_v/article/details/51812459" target="_blank" rel="external">《通俗理解卷积神经网络（cs231n与5月dl班课程笔记）》</a>尤为通俗易懂，推荐阅读。<br>总的来说，卷积网络尤其适合处理具有类似网格结构的数据，如具有序列结构的时间序列数据，就可以看做一维网格，具有空间结构的图像数据等即可看做二维网格。</p>
-<h2 id="卷积网络背后的三个重要概念：稀疏交互，参数共享，等变表示"><a href="#卷积网络背后的三个重要概念：稀疏交互，参数共享，等变表示" class="headerlink" title="卷积网络背后的三个重要概念：稀疏交互，参数共享，等变表示"></a>卷积网络背后的三个重要概念：稀疏交互，参数共享，等变表示</h2><p>重点在于此节。此节的三种重要概念是卷积网络能够发挥现在如此大作用的内在原因。<br>讲述以图片数据为例。</p>
-<p>稀疏交互，指的是在处理图像时，卷积网络上层每个神经元的状态并不取决于整张图片，而是取决于一个局部感受野（如一张人脸图片，某个神经元的状态取决于下巴的那一小块区域），对局部感受野进行提取的小矩阵称为卷积核。<br>原来对图片进行处理，通常是通过稠密矩阵相乘等方法来做，即图像矩阵乘以一个权重矩阵，然后预测，训练此权重矩阵，这样的方式和全连接相差无几，效率不高，且分类预测效果不佳。<br>所以，“稀疏”是指相对于全连接来说，用比原来小得多的卷积核矩阵来代替全连接矩阵，相当于除卷积核之外的连接权重全为0.<br>通过卷积核可以对一些小的特征进行提取，比如检测图像边缘信息。通过多个卷积核可以提取多种图像特征信息。<br>稀疏的交互大大减小了存储开销，提高计算效率，从而也推进了算法的研究，使得卷积网络可以往更深层次走。</p>
-<p>参数共享，指的是，比如对于100x100的图像，一个大小10x10的卷积核，固定具有10x10=100个参数，不管这个卷积核在与图像的哪一部分进行卷积，这些参数都是相对一致的。不同于全连接，会有100x100=10000个参数，整个神经网络的参数量瞬间缩减了100倍。当然这也导致了一个卷积核只能提取一种特征，为了提取多种特征，我们需要采用多个卷积核，这多个卷积核的参数就通常不会相同了。参数共享，也使得存储开销，计算效率提高，硬件压力越小，从而推进算法研究。</p>
-<p>等变表示，指的是，图像中某一元素/成分的移动，在上层神经元中也表现为一定的移动。这是由参数共享直接带来的，因为移动过程中卷积核的参数不变。这种等变表示使得图像的平移不会对分类预测结果产生太大的影响，使得学习算法能够对相同内容不同位置的图像较为准确的识别。</p>
-<h2 id="池化及其背后的idea和意义"><a href="#池化及其背后的idea和意义" class="headerlink" title="池化及其背后的idea和意义"></a>池化及其背后的idea和意义</h2><p>池化函数使用某一位置的相邻输出的总体统计特征来代替网络在该位置的输出。<br>池化操作有点类似于降低图像分辨率，最大池化用最突出的像素表示该像素周围一小块像素区域的总体。除此之外还有平均池化。<br>在生活中，池化类似于通常的“代表”，通常话语权细化到每个人会非常的繁琐，低效，从而从一个群体中选取一个“代表”来为整个群体说话就成为意见很自然的事情。<br>池化具有局部平移不变性，由于最后局部的像素会聚集，所以图像微小的平移有时并不会对池化的结果产生影响。通常当我们只关心某些特征是否出现而不关心其出现在何位置时池化显得非常有用。因为池化过后存储需求又进一步降低了，计算效率再次提升。</p>
-<p>卷积和池化可以理解为两个无限强的先验。<br>卷积是这样的先验：该层应该学得的函数只包含局部连接关系且对平移具有等变性。<br>池化则是这样的先验：每一个单元都具有对少量平移的不变性。</p>
-<h2 id="随机-无监督特征"><a href="#随机-无监督特征" class="headerlink" title="随机/无监督特征"></a>随机/无监督特征</h2><p>卷积核的确定有几种方式，一种是随机确定，一种是手动指定，另一种是采用无监督的标准来学习到一个卷积核。<br>通常允许底层的特征确定和上层的分类相分离，即底层采用无监督方法来学习特征，构造供高层使用的训练集，然后高层采用一个分类算法（可非神经网络）来进行分类。</p>
-<h2 id="神经科学基础与卷积网络的密切关系"><a href="#神经科学基础与卷积网络的密切关系" class="headerlink" title="神经科学基础与卷积网络的密切关系"></a>神经科学基础与卷积网络的密切关系</h2><p>卷积网络是受神经科学启发，成功应用于机器学习领域一个范例。<br>卷积网络有其神经科学的基础在。<br>比如卷积即使模拟初级视觉皮层的简单细胞，其活动可概括为在一个小的空间位置感受野内的图像的线性函数。<br>池化则启发自初级视觉皮层的复杂细胞，其对特征位置的微小偏移具有不变性。</p>
-<p>类似从神经科学中启发出来的还有注意力机制，目前在NLP领域应用比较成功，在视觉领域则未见大成。卷积网络目前仍然主要集中于视觉。</p>
-<p>Hinton在1988年提出了基于反向传播的时延神经网络(time delay neural network, TDNN)，主要用于一维的时间序列分析，此后LeCun在1998年左右将反向传播应用到二维图像的识别，成功发明了LeNet并开启了现代卷积网络的大门。</p>
-<p>卷积网络也是第一批能使用反向传播进行有效训练的深度网络之一。<br>一般的反向传播网络被认为是失败的，但是卷积网络加上反向传播奇迹般的发挥了很好的效果。<br>本书作者认为，可能是卷积网络的计算效率更高，能够快速运行实验并进行调参的原因。。</p>
-<p>总的来说，卷积网络是神经网络的一种特化，这种特化在具有空间/序列等网格结构拓扑上表现良好，实际上，卷积网络的杀手级应用还是在二维图像方面。一维的序列处理（时间序列，文本序列等）主要被另一种神经网络的特化–循环神经网络所占领。</p>
+		<p>关于神经网络一阶优化算法，网上已经有很多资料了，本文为笔者很久之前做的一份梳理，整理了一下一些popular的一阶优化算法及他们的逻辑线，优缺点等。读者自行甄别，自取所需，大神直接过即可。</p>
+<h2 id="Notations"><a href="#Notations" class="headerlink" title="Notations"></a>Notations</h2><p>$\theta$ : parameters<br>$J$ : objective function<br>$\nabla J(\theta) = J’$ w.r.t parameter<br>$\eta$ : learning rate</p>
+<h2 id="从SGD说起"><a href="#从SGD说起" class="headerlink" title="从SGD说起"></a>从SGD说起</h2><p>SGD(Stochastic Gradient Descent)是目前最流行的机器学习，深度学习优化算法之一，现在通常所说的SGD指的是Mini-batch gradient descent，更新规则如下，<br>$$\theta_{t+1} = \theta_{t} - \eta \nabla J(\theta_{t}; x_{i:i+m}; y_{i:i+m})$$</p>
+<p>每次采用一小批数据计算梯度来更新paramter，既能够缓解每次单个样本的SGD带来的剧烈波动问题，又能够加快训练速度，所以受到了machine learning和neural network训练的喜爱。</p>
+<p>但是SGD有如下几个不足[1]：<br>1）learning rate很难选取<br>2）schedule策略需要预先选定，无法自适应<br>3）参数的每一维使用相同的学习率<br>4）SGD在鞍点或者pleatu区域容易陷入困境，难以逃离</p>
+<p>根据这些不足，人们设计了许多SGD的改进算法。</p>
+<h2 id="Momentum"><a href="#Momentum" class="headerlink" title="Momentum"></a>Momentum</h2><p>为了加速SGD的训练，以及改善面对“峡谷”型目标函数的鲁棒性，人们将物理学中的Momentum概念加入优化中。实验证明，Momentum SGD[2]能够有效地抑制函数值震荡的现象。<br>Momentum的更新公式如下：<br>$$v_t = \rho v_{t-1} + \eta \nabla J(\theta)<br>\<br>\theta = \theta - v_t$$<br>where $\rho$ 控制着前面诸参数更新的衰减率。<br>有了Momentum，SGD能够收敛的更快，并且震荡会减弱。</p>
+<h2 id="Nesterov-Accelerated-Gradient-NAG"><a href="#Nesterov-Accelerated-Gradient-NAG" class="headerlink" title="Nesterov Accelerated Gradient(NAG)"></a>Nesterov Accelerated Gradient(NAG)</h2><p>接着，Nesterov提出了一种无约束凸优化方法，称为Nesterov accelerated gradient(NAG)[3]，这种方法预先估计下一个位置，然后看看该位置的梯度，根据对该“未来”梯度的判断，来调整自己的预期步长，使得更加智能的往局部最优点走去。NAG的更新式与Momentum只有一丝细微的差别：<br>$$v_t = \rho v_{t-1} + \eta \nabla J(\theta-\rho v_{t-1})<br>\<br>\theta = \theta - v_t$$</p>
+<h2 id="Adagrad"><a href="#Adagrad" class="headerlink" title="Adagrad"></a>Adagrad</h2><p>虽然我们对SGD进行了加速，并且非常智能地调整好了方向，我们的参数向量各个维度更新幅度仍然是一样的，（在有些时候，尤其是稀疏场景中，对于出现极少次数的特征维，我们不会想只更新一个很小的幅度，这样会使得这个维度学习很差。）</p>
+<p>另一种思路是使得参数向量$\theta$的各个维以不同步调来差异化地调整。<br>Adagrad就是其中一种，由Duchi et. al[4]在2011年提出。Ada means Adaptive，代表着它能够自适应地为参数调整学习率，非常适合稀疏数据，这种方法将梯度平方的累积值加入梯度更新中，更新方式如下：<br>$$g_{t,i} = \nabla J(\theta_i) \<br>\theta_{t+1, i} = \theta_{t, i} - \frac {\eta} {\sqrt{G_{t,ii} + \epsilon}} \cdot g_{t,i}$$<br>$G_t \in {\mathbb R}^{d \times d}$ is a diagonal matrix that each diagonal element is sum of the squares of the gradient w.r.t $w_i$ up to time step t [4].<br>$\epsilon$ is just a smoothing term avoiding division by zero, usually 1e-8.<br>我们也可以写成向量形式：<br>$$\theta_{t+1} = \theta_{t} - \frac {\eta} {\sqrt{G_{t} + \epsilon}} \odot g_{t}$$<br>$\odot$ means element-wise matrix-vector multiplication.</p>
+<h2 id="RMSprop"><a href="#RMSprop" class="headerlink" title="RMSprop"></a>RMSprop</h2><p>随着梯度平方的累积，Adagrad会自适应地降低频繁更新的参数的学习率，使得你无需去手动指定learning rate schedule策略来调试学习率，但是Adagrad的一大缺点就是它的学习率会随着训练中不断增长的累计梯度平方和而单调下降到任意小，甚至导致学习的停滞。</p>
+<p>RMSprop[5]和Adadelta[6]是提出来解决上述Adagrad学习率降到任意小问题的，RMSprop的基本思想是，instead of 除以所有梯度平方的累积，RMSprop将学习率除以梯度平方的指数衰减平均$E[g^2]$，梯度平方的指数衰减平均$E[g^2]$可以表示前w个平方梯度的累积，又避免了直接存储前w个平方梯度的存储开销，这样能够有效防止无限小的，单调下降的，diminishing的learning rate问题，RMSprop更新规则如下：<br>$g_t$代表time step t时刻的梯度向量。</p>
+<p>$$E[g^2]_t = \rho E[g^2]_{t-1} + (1-\rho)g_t^2 \<br>\theta_{t+1} = \theta_t - \frac {\eta} {\sqrt{E[g^2]_t + \epsilon}} \cdot g_{t,i} = \theta_t - \frac {\eta} {RMS[g]_t} \cdot g_{t,i}$$</p>
+<h2 id="Adadelta"><a href="#Adadelta" class="headerlink" title="Adadelta"></a>Adadelta</h2><p>Adadelta[6]为与RMSprop几乎同一时间提出来的，可以看做在RMSprop的基础上做了进一步的改进的版本。其与RMSprop的关键区别就在于Adadelta统一了$\Delta \theta$与$\theta$的单位(unit)。<br>作者指出，在原来的$$\Delta \theta = - \frac {\eta} {\sqrt{E[g^2]_t + \epsilon}} \cdot g_{t,i}$$中，$\Delta \theta$的单位与$\theta$是不匹配的，在SGD，Momentum或者Adagrad中也是如此，所以Adadelta通过引入$\Delta \theta^2$的指数衰减平均，来使得单位统一。故Adadelta的更新式为：<br>$$E[g^2]_t = \rho E[g^2]_{t-1} + (1-\rho)g_t^2 \<br>\theta_{t+1} = \theta_t - \frac {\sqrt {E[\Delta \theta^2]_{t-1} + \epsilon}} {\sqrt{E[g^2]_t + \epsilon}} \cdot g_t \<br>E[\Delta \theta^2]_t = \rho E[\Delta \theta^2]_{t-1} + (1-\rho)\Delta \theta_t^2$$</p>
+<p>where $\rho$ 是类似于Momentum中的衰减率常数。<br>Adadelta有两个重要的优点，1) 解决了学习率随着训练持续减小的问题 2) 无需预先设置学习率超参<br>[6]指出，在MNIST数据集上，Adadelta的参数敏感性好于SGD,Momentum和Adagrad等算法。</p>
+<h2 id="Adam"><a href="#Adam" class="headerlink" title="Adam"></a>Adam</h2><p>另一个现在用的较多的自适应学习率方法是Adam(Adaptive Moment Estimation)[7]，Adam结合了RMSprop和Momentum的思想，不过Adam不仅维护过去一阶梯度的指数衰减平均$m_t$(exponentially decaying average of past gradients)，而且还维护二阶梯度的指数衰减平均$v_t$，并且加入了bias-correction步骤，以纠正$m_t, v_t$初始化为0带来的偏差(bias)，由是可得到Adam的更新规则如下：</p>
+<p>$$m_t = \beta_1 m_{t-1} + (1-\beta_1)g_t \<br>v_t = \beta_2 v_{t-1} + (1-\beta_2)g_t^2 \<br>\hat{m}_t = \frac {m_t} {1-\beta_1^t} \<br>\hat{v}_t = \frac {v_t} {1-\beta_2^t} \<br>\theta_{t+1} = \theta_t - \frac {\eta} {\sqrt{\hat{v}_t} + \epsilon} \cdot \hat{m}_t$$</p>
+<p>where $\beta_1, \beta_2$ is exponential decay rates of moment estimates.<br>[7]中推荐参数设置为$\eta = 0.001, \beta_1 = 0.9, \beta_2 = 0.999 \<br> and \ \epsilon = 1e-8$</p>
+<blockquote>
+<p>Actually, Adam algorithm works well in practice, not only in acedemia but industry. Empirical results show that Adam consistantly outperforms other methods for a variety of models and datasets, and it’s a versatile algorithm that scales to large-scale high-dimensional machine learning problems.</p>
+</blockquote>
+<h2 id="Optimization-Algorithms-Relationship"><a href="#Optimization-Algorithms-Relationship" class="headerlink" title="Optimization Algorithms Relationship"></a>Optimization Algorithms Relationship</h2><p><img src="https://blog-image-1256228880.cos.ap-beijing.myqcloud.com/optimization.jpg" alt=""></p>
+<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><p>[1] <a href="https://arxiv.org/pdf/1609.04747.pdf" target="_blank" rel="external">Sebastian Ruder. An overview of gradient descent optimization algorithms</a><br>[2] <a href="http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.57.5612&amp;rep=rep1&amp;type=pdf" target="_blank" rel="external">Ning Qian. On the Momentum Term in Gradient Descent Learning Algorithms</a><br>[3] <a href="https://scholar.google.com/citations?user=DJ8Ep8YAAAAJ" target="_blank" rel="external">Y. Nestrov. A method of solving a convex programming problem with convergence rate O (1/k2)</a><br>[4] <a href="http://www.jmlr.org/papers/volume12/duchi11a/duchi11a.pdf" target="_blank" rel="external">John Duchi et.al. Adaptive Subgradient Methods for Online Learning and Stochastic Optimization</a><br>[5] <a href="http://www.cs.toronto.edu/~tijmen/csc321/slides/lecture_slides_lec6.pdf" target="_blank" rel="external">Geoffrey Hinton et.al Lecture 6. RMSprop</a><br>[6] <a href="http://www.matthewzeiler.com/pubs/googleTR2012/googleTR2012.pdf" target="_blank" rel="external">Matthew D. Zeiler. ADADELTA: AN ADAPTIVE LEARNING RATE METHOD</a><br>[7] <a href="https://arxiv.org/pdf/1412.6980.pdf" target="_blank" rel="external">Diederik P. Kingma et.al. ADAM: A METHOD FOR STOCHASTIC OPTIMIZATION</a></p>
   
 	</div>
 
@@ -257,13 +236,13 @@
 
 <div class="article-categories">
   
-  <span></span> <a href="/categories/深度学习-Deep-Learning/">深度学习 | Deep Learning</a>
+  <span></span> <a href="/categories/机器学习-Mac-Learning/">机器学习 | Mac.Learning</a>
   </div>
 
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/机器学习/">机器学习</a><a href="/tags/深度学习/">深度学习</a>
+  <span></span> <a href="/tags/Deep-Learning/">Deep Learning</a><a href="/tags/优化/">优化</a>
   </div>
 
 </div>
@@ -307,19 +286,11 @@
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2018/03/11/optimizationAlgos.html" title="神经网络一阶优化算法手记">
-  <strong>上一篇：</strong><br/>
-  <span>
-  神经网络一阶优化算法手记</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/2018/03/01/countrysideretail.html"  title="湖南农村个体经营所面临的形势变迁考（2008-2018）">
+<a href="/2018/03/07/deeplearningbook-06.html"  title="Deep Learning读书笔记（6）--【卷积神经网络】">
  <strong>下一篇：</strong><br/> 
- <span>湖南农村个体经营所面临的形势变迁考（2008-2018）
+ <span>Deep Learning读书笔记（6）--【卷积神经网络】
 </span>
 </a>
 </div>
@@ -341,7 +312,7 @@
   <aside class="clearfix">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#卷积和卷积神经网络的基本概念"><span class="toc-number">1.</span> <span class="toc-text">卷积和卷积神经网络的基本概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#卷积网络背后的三个重要概念：稀疏交互，参数共享，等变表示"><span class="toc-number">2.</span> <span class="toc-text">卷积网络背后的三个重要概念：稀疏交互，参数共享，等变表示</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#池化及其背后的idea和意义"><span class="toc-number">3.</span> <span class="toc-text">池化及其背后的idea和意义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#随机-无监督特征"><span class="toc-number">4.</span> <span class="toc-text">随机/无监督特征</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#神经科学基础与卷积网络的密切关系"><span class="toc-number">5.</span> <span class="toc-text">神经科学基础与卷积网络的密切关系</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Notations"><span class="toc-number">1.</span> <span class="toc-text">Notations</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#从SGD说起"><span class="toc-number">2.</span> <span class="toc-text">从SGD说起</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Momentum"><span class="toc-number">3.</span> <span class="toc-text">Momentum</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Nesterov-Accelerated-Gradient-NAG"><span class="toc-number">4.</span> <span class="toc-text">Nesterov Accelerated Gradient(NAG)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Adagrad"><span class="toc-number">5.</span> <span class="toc-text">Adagrad</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RMSprop"><span class="toc-number">6.</span> <span class="toc-text">RMSprop</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Adadelta"><span class="toc-number">7.</span> <span class="toc-text">Adadelta</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Adam"><span class="toc-number">8.</span> <span class="toc-text">Adam</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Optimization-Algorithms-Relationship"><span class="toc-number">9.</span> <span class="toc-text">Optimization Algorithms Relationship</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#References"><span class="toc-number">10.</span> <span class="toc-text">References</span></a></li></ol>
  
  </aside>
   </div>

@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://whatbeg.com/"/>
-  <updated>2018-03-07T08:37:21.022Z</updated>
+  <updated>2018-03-11T09:13:24.715Z</updated>
   <id>http://whatbeg.com/</id>
   
   <author>
@@ -14,6 +14,54 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>神经网络一阶优化算法手记</title>
+    <link href="http://whatbeg.com/2018/03/11/optimizationAlgos.html"/>
+    <id>http://whatbeg.com/2018/03/11/optimizationAlgos.html</id>
+    <published>2018-03-11T09:03:38.000Z</published>
+    <updated>2018-03-11T09:13:24.715Z</updated>
+    
+    <content type="html">&lt;p&gt;关于神经网络一阶优化算法，网上已经有很多资料了，本文为笔者很久之前做的一份梳理，整理了一下一些popular的一阶优化算法及他们的逻辑线，优缺点等。读者自行甄别，自取所需，大神直接过即可。&lt;/p&gt;
+&lt;h2 id=&quot;Notations&quot;&gt;&lt;a href=&quot;#Notations&quot; class=&quot;headerlink&quot; title=&quot;Notations&quot;&gt;&lt;/a&gt;Notations&lt;/h2&gt;&lt;p&gt;$\theta$ : parameters&lt;br&gt;$J$ : objective function&lt;br&gt;$\nabla J(\theta) = J’$ w.r.t parameter&lt;br&gt;$\eta$ : learning rate&lt;/p&gt;
+&lt;h2 id=&quot;从SGD说起&quot;&gt;&lt;a href=&quot;#从SGD说起&quot; class=&quot;headerlink&quot; title=&quot;从SGD说起&quot;&gt;&lt;/a&gt;从SGD说起&lt;/h2&gt;&lt;p&gt;SGD(Stochastic Gradient Descent)是目前最流行的机器学习，深度学习优化算法之一，现在通常所说的SGD指的是Mini-batch gradient descent，更新规则如下，&lt;br&gt;$$\theta_{t+1} = \theta_{t} - \eta \nabla J(\theta_{t}; x_{i:i+m}; y_{i:i+m})$$&lt;/p&gt;
+&lt;p&gt;每次采用一小批数据计算梯度来更新paramter，既能够缓解每次单个样本的SGD带来的剧烈波动问题，又能够加快训练速度，所以受到了machine learning和neural network训练的喜爱。&lt;/p&gt;
+&lt;p&gt;但是SGD有如下几个不足[1]：&lt;br&gt;1）learning rate很难选取&lt;br&gt;2）schedule策略需要预先选定，无法自适应&lt;br&gt;3）参数的每一维使用相同的学习率&lt;br&gt;4）SGD在鞍点或者pleatu区域容易陷入困境，难以逃离&lt;/p&gt;
+&lt;p&gt;根据这些不足，人们设计了许多SGD的改进算法。&lt;/p&gt;
+&lt;h2 id=&quot;Momentum&quot;&gt;&lt;a href=&quot;#Momentum&quot; class=&quot;headerlink&quot; title=&quot;Momentum&quot;&gt;&lt;/a&gt;Momentum&lt;/h2&gt;&lt;p&gt;为了加速SGD的训练，以及改善面对“峡谷”型目标函数的鲁棒性，人们将物理学中的Momentum概念加入优化中。实验证明，Momentum SGD[2]能够有效地抑制函数值震荡的现象。&lt;br&gt;Momentum的更新公式如下：&lt;br&gt;$$v_t = \rho v_{t-1} + \eta \nabla J(\theta)&lt;br&gt;\&lt;br&gt;\theta = \theta - v_t$$&lt;br&gt;where $\rho$ 控制着前面诸参数更新的衰减率。&lt;br&gt;有了Momentum，SGD能够收敛的更快，并且震荡会减弱。&lt;/p&gt;
+&lt;h2 id=&quot;Nesterov-Accelerated-Gradient-NAG&quot;&gt;&lt;a href=&quot;#Nesterov-Accelerated-Gradient-NAG&quot; class=&quot;headerlink&quot; title=&quot;Nesterov Accelerated Gradient(NAG)&quot;&gt;&lt;/a&gt;Nesterov Accelerated Gradient(NAG)&lt;/h2&gt;&lt;p&gt;接着，Nesterov提出了一种无约束凸优化方法，称为Nesterov accelerated gradient(NAG)[3]，这种方法预先估计下一个位置，然后看看该位置的梯度，根据对该“未来”梯度的判断，来调整自己的预期步长，使得更加智能的往局部最优点走去。NAG的更新式与Momentum只有一丝细微的差别：&lt;br&gt;$$v_t = \rho v_{t-1} + \eta \nabla J(\theta-\rho v_{t-1})&lt;br&gt;\&lt;br&gt;\theta = \theta - v_t$$&lt;/p&gt;
+&lt;h2 id=&quot;Adagrad&quot;&gt;&lt;a href=&quot;#Adagrad&quot; class=&quot;headerlink&quot; title=&quot;Adagrad&quot;&gt;&lt;/a&gt;Adagrad&lt;/h2&gt;&lt;p&gt;虽然我们对SGD进行了加速，并且非常智能地调整好了方向，我们的参数向量各个维度更新幅度仍然是一样的，（在有些时候，尤其是稀疏场景中，对于出现极少次数的特征维，我们不会想只更新一个很小的幅度，这样会使得这个维度学习很差。）&lt;/p&gt;
+&lt;p&gt;另一种思路是使得参数向量$\theta$的各个维以不同步调来差异化地调整。&lt;br&gt;Adagrad就是其中一种，由Duchi et. al[4]在2011年提出。Ada means Adaptive，代表着它能够自适应地为参数调整学习率，非常适合稀疏数据，这种方法将梯度平方的累积值加入梯度更新中，更新方式如下：&lt;br&gt;$$g_{t,i} = \nabla J(\theta_i) \&lt;br&gt;\theta_{t+1, i} = \theta_{t, i} - \frac {\eta} {\sqrt{G_{t,ii} + \epsilon}} \cdot g_{t,i}$$&lt;br&gt;$G_t \in {\mathbb R}^{d \times d}$ is a diagonal matrix that each diagonal element is sum of the squares of the gradient w.r.t $w_i$ up to time step t [4].&lt;br&gt;$\epsilon$ is just a smoothing term avoiding division by zero, usually 1e-8.&lt;br&gt;我们也可以写成向量形式：&lt;br&gt;$$\theta_{t+1} = \theta_{t} - \frac {\eta} {\sqrt{G_{t} + \epsilon}} \odot g_{t}$$&lt;br&gt;$\odot$ means element-wise matrix-vector multiplication.&lt;/p&gt;
+&lt;h2 id=&quot;RMSprop&quot;&gt;&lt;a href=&quot;#RMSprop&quot; class=&quot;headerlink&quot; title=&quot;RMSprop&quot;&gt;&lt;/a&gt;RMSprop&lt;/h2&gt;&lt;p&gt;随着梯度平方的累积，Adagrad会自适应地降低频繁更新的参数的学习率，使得你无需去手动指定learning rate schedule策略来调试学习率，但是Adagrad的一大缺点就是它的学习率会随着训练中不断增长的累计梯度平方和而单调下降到任意小，甚至导致学习的停滞。&lt;/p&gt;
+&lt;p&gt;RMSprop[5]和Adadelta[6]是提出来解决上述Adagrad学习率降到任意小问题的，RMSprop的基本思想是，instead of 除以所有梯度平方的累积，RMSprop将学习率除以梯度平方的指数衰减平均$E[g^2]$，梯度平方的指数衰减平均$E[g^2]$可以表示前w个平方梯度的累积，又避免了直接存储前w个平方梯度的存储开销，这样能够有效防止无限小的，单调下降的，diminishing的learning rate问题，RMSprop更新规则如下：&lt;br&gt;$g_t$代表time step t时刻的梯度向量。&lt;/p&gt;
+&lt;p&gt;$$E[g^2]_t = \rho E[g^2]_{t-1} + (1-\rho)g_t^2 \&lt;br&gt;\theta_{t+1} = \theta_t - \frac {\eta} {\sqrt{E[g^2]_t + \epsilon}} \cdot g_{t,i} = \theta_t - \frac {\eta} {RMS[g]_t} \cdot g_{t,i}$$&lt;/p&gt;
+&lt;h2 id=&quot;Adadelta&quot;&gt;&lt;a href=&quot;#Adadelta&quot; class=&quot;headerlink&quot; title=&quot;Adadelta&quot;&gt;&lt;/a&gt;Adadelta&lt;/h2&gt;&lt;p&gt;Adadelta[6]为与RMSprop几乎同一时间提出来的，可以看做在RMSprop的基础上做了进一步的改进的版本。其与RMSprop的关键区别就在于Adadelta统一了$\Delta \theta$与$\theta$的单位(unit)。&lt;br&gt;作者指出，在原来的$$\Delta \theta = - \frac {\eta} {\sqrt{E[g^2]_t + \epsilon}} \cdot g_{t,i}$$中，$\Delta \theta$的单位与$\theta$是不匹配的，在SGD，Momentum或者Adagrad中也是如此，所以Adadelta通过引入$\Delta \theta^2$的指数衰减平均，来使得单位统一。故Adadelta的更新式为：&lt;br&gt;$$E[g^2]_t = \rho E[g^2]_{t-1} + (1-\rho)g_t^2 \&lt;br&gt;\theta_{t+1} = \theta_t - \frac {\sqrt {E[\Delta \theta^2]_{t-1} + \epsilon}} {\sqrt{E[g^2]_t + \epsilon}} \cdot g_t \&lt;br&gt;E[\Delta \theta^2]_t = \rho E[\Delta \theta^2]_{t-1} + (1-\rho)\Delta \theta_t^2$$&lt;/p&gt;
+&lt;p&gt;where $\rho$ 是类似于Momentum中的衰减率常数。&lt;br&gt;Adadelta有两个重要的优点，1) 解决了学习率随着训练持续减小的问题 2) 无需预先设置学习率超参&lt;br&gt;[6]指出，在MNIST数据集上，Adadelta的参数敏感性好于SGD,Momentum和Adagrad等算法。&lt;/p&gt;
+&lt;h2 id=&quot;Adam&quot;&gt;&lt;a href=&quot;#Adam&quot; class=&quot;headerlink&quot; title=&quot;Adam&quot;&gt;&lt;/a&gt;Adam&lt;/h2&gt;&lt;p&gt;另一个现在用的较多的自适应学习率方法是Adam(Adaptive Moment Estimation)[7]，Adam结合了RMSprop和Momentum的思想，不过Adam不仅维护过去一阶梯度的指数衰减平均$m_t$(exponentially decaying average of past gradients)，而且还维护二阶梯度的指数衰减平均$v_t$，并且加入了bias-correction步骤，以纠正$m_t, v_t$初始化为0带来的偏差(bias)，由是可得到Adam的更新规则如下：&lt;/p&gt;
+&lt;p&gt;$$m_t = \beta_1 m_{t-1} + (1-\beta_1)g_t \&lt;br&gt;v_t = \beta_2 v_{t-1} + (1-\beta_2)g_t^2 \&lt;br&gt;\hat{m}_t = \frac {m_t} {1-\beta_1^t} \&lt;br&gt;\hat{v}_t = \frac {v_t} {1-\beta_2^t} \&lt;br&gt;\theta_{t+1} = \theta_t - \frac {\eta} {\sqrt{\hat{v}_t} + \epsilon} \cdot \hat{m}_t$$&lt;/p&gt;
+&lt;p&gt;where $\beta_1, \beta_2$ is exponential decay rates of moment estimates.&lt;br&gt;[7]中推荐参数设置为$\eta = 0.001, \beta_1 = 0.9, \beta_2 = 0.999 \&lt;br&gt; and \ \epsilon = 1e-8$&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Actually, Adam algorithm works well in practice, not only in acedemia but industry. Empirical results show that Adam consistantly outperforms other methods for a variety of models and datasets, and it’s a versatile algorithm that scales to large-scale high-dimensional machine learning problems.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;Optimization-Algorithms-Relationship&quot;&gt;&lt;a href=&quot;#Optimization-Algorithms-Relationship&quot; class=&quot;headerlink&quot; title=&quot;Optimization Algorithms Relationship&quot;&gt;&lt;/a&gt;Optimization Algorithms Relationship&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;https://blog-image-1256228880.cos.ap-beijing.myqcloud.com/optimization.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;References&quot;&gt;&lt;a href=&quot;#References&quot; class=&quot;headerlink&quot; title=&quot;References&quot;&gt;&lt;/a&gt;References&lt;/h2&gt;&lt;p&gt;[1] &lt;a href=&quot;https://arxiv.org/pdf/1609.04747.pdf&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Sebastian Ruder. An overview of gradient descent optimization algorithms&lt;/a&gt;&lt;br&gt;[2] &lt;a href=&quot;http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.57.5612&amp;amp;rep=rep1&amp;amp;type=pdf&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Ning Qian. On the Momentum Term in Gradient Descent Learning Algorithms&lt;/a&gt;&lt;br&gt;[3] &lt;a href=&quot;https://scholar.google.com/citations?user=DJ8Ep8YAAAAJ&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Y. Nestrov. A method of solving a convex programming problem with convergence rate O (1/k2)&lt;/a&gt;&lt;br&gt;[4] &lt;a href=&quot;http://www.jmlr.org/papers/volume12/duchi11a/duchi11a.pdf&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;John Duchi et.al. Adaptive Subgradient Methods for Online Learning and Stochastic Optimization&lt;/a&gt;&lt;br&gt;[5] &lt;a href=&quot;http://www.cs.toronto.edu/~tijmen/csc321/slides/lecture_slides_lec6.pdf&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Geoffrey Hinton et.al Lecture 6. RMSprop&lt;/a&gt;&lt;br&gt;[6] &lt;a href=&quot;http://www.matthewzeiler.com/pubs/googleTR2012/googleTR2012.pdf&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Matthew D. Zeiler. ADADELTA: AN ADAPTIVE LEARNING RATE METHOD&lt;/a&gt;&lt;br&gt;[7] &lt;a href=&quot;https://arxiv.org/pdf/1412.6980.pdf&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Diederik P. Kingma et.al. ADAM: A METHOD FOR STOCHASTIC OPTIMIZATION&lt;/a&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;关于神经网络一阶优化算法，网上已经有很多资料了，本文为笔者很久之前做的一份梳理，整理了一下一些popular的一阶优化算法及他们的逻辑线，优缺点等。读者自行甄别，自取所需，大神直接过即可。&lt;/p&gt;
+&lt;h2 id=&quot;Notations&quot;&gt;&lt;a href=&quot;#Notations
+    
+    </summary>
+    
+      <category term="机器学习 | Mac.Learning" scheme="http://whatbeg.com/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-Mac-Learning/"/>
+    
+    
+      <category term="Deep Learning" scheme="http://whatbeg.com/tags/Deep-Learning/"/>
+    
+      <category term="优化" scheme="http://whatbeg.com/tags/%E4%BC%98%E5%8C%96/"/>
+    
+  </entry>
   
   <entry>
     <title>Deep Learning读书笔记（6）--【卷积神经网络】</title>
@@ -256,9 +304,9 @@
       <category term="大数据系统与技术 | Big Data" scheme="http://whatbeg.com/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE%E7%B3%BB%E7%BB%9F%E4%B8%8E%E6%8A%80%E6%9C%AF-Big-Data/"/>
     
     
-      <category term="Spark" scheme="http://whatbeg.com/tags/Spark/"/>
-    
       <category term="大数据" scheme="http://whatbeg.com/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
+    
+      <category term="Spark" scheme="http://whatbeg.com/tags/Spark/"/>
     
   </entry>
   
@@ -1489,9 +1537,9 @@ table th:first-of-type {
       <category term="错误解决与优化 | Err_n_Opt" scheme="http://whatbeg.com/categories/%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3%E4%B8%8E%E4%BC%98%E5%8C%96-Err-n-Opt/"/>
     
     
-      <category term="Spark" scheme="http://whatbeg.com/tags/Spark/"/>
-    
       <category term="大数据" scheme="http://whatbeg.com/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
+    
+      <category term="Spark" scheme="http://whatbeg.com/tags/Spark/"/>
     
       <category term="错误解决" scheme="http://whatbeg.com/tags/%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3/"/>
     
@@ -1563,11 +1611,11 @@ table th:first-of-type {
       <category term="大数据系统与技术 | Big Data" scheme="http://whatbeg.com/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE%E7%B3%BB%E7%BB%9F%E4%B8%8E%E6%8A%80%E6%9C%AF-Big-Data/"/>
     
     
+      <category term="大数据" scheme="http://whatbeg.com/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
+    
       <category term="Deep Learning" scheme="http://whatbeg.com/tags/Deep-Learning/"/>
     
       <category term="深度学习" scheme="http://whatbeg.com/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
-    
-      <category term="大数据" scheme="http://whatbeg.com/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
     
   </entry>
   
@@ -1679,51 +1727,6 @@ table th:first-of-type {
     
     
       <category term="Linux" scheme="http://whatbeg.com/tags/Linux/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>合并多个Commits，请注意！</title>
-    <link href="http://whatbeg.com/2017/04/01/combinecommits.html"/>
-    <id>http://whatbeg.com/2017/04/01/combinecommits.html</id>
-    <published>2017-04-01T11:47:16.000Z</published>
-    <updated>2017-04-01T11:48:28.282Z</updated>
-    
-    <content type="html">&lt;h2 id=&quot;合并多个Commits&quot;&gt;&lt;a href=&quot;#合并多个Commits&quot; class=&quot;headerlink&quot; title=&quot;合并多个Commits&quot;&gt;&lt;/a&gt;合并多个Commits&lt;/h2&gt;&lt;p&gt;我们提交Pull Request的时候有时候并不是一个Commit就完成的，往往会做一些修改，然后再提交Commit，通常会走多轮，到最后就可能会有多个Commit，这时候往往需要合并这些Commits为一个，然后Manager帮你Merge。&lt;br&gt;这时候我们就需要使用git rebase了。&lt;br&gt;这里我并不打算详解rebase，这是Git book做的事，这里只是记录一下自己做的一个过程。&lt;/p&gt;
-&lt;p&gt;关于rebase可以参看这几篇文章：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;https://git-scm.com/book/zh/v2/Git-%E5%88%86%E6%94%AF-%E5%8F%98%E5%9F%BA&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;3.6 Git 分支 - 变基&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;http://zerodie.github.io/blog/2012/01/19/git-rebase-i/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;如何合併多個commits&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;http://www.jianshu.com/p/964de879904a&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;「Git」合并多个 Commit&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;首先&lt;code&gt;git log&lt;/code&gt;查看需要合并的Commits，比如如下形式：&lt;/p&gt;
-&lt;figure class=&quot;highlight sql&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;commit&lt;/span&gt; &lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;ade56efc466c093d7e8e25c520293cesedc96cc&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Author: xxx&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;Date&lt;/span&gt;:   Wed Mar &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;number&quot;&gt;12&lt;/span&gt;:&lt;span class=&quot;number&quot;&gt;31&lt;/span&gt;:&lt;span class=&quot;number&quot;&gt;10&lt;/span&gt; &lt;span class=&quot;number&quot;&gt;2017&lt;/span&gt; +&lt;span class=&quot;number&quot;&gt;0800&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;Commit&lt;/span&gt; Message &lt;span class=&quot;number&quot;&gt;4&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;commit&lt;/span&gt; &lt;span class=&quot;number&quot;&gt;546&lt;/span&gt;ffc32692d3f935feb9b04d6ecb66feda9560b&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Author: xxx&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;Date&lt;/span&gt;:   Mon Feb &lt;span class=&quot;number&quot;&gt;20&lt;/span&gt; &lt;span class=&quot;number&quot;&gt;15&lt;/span&gt;:&lt;span class=&quot;number&quot;&gt;28&lt;/span&gt;:&lt;span class=&quot;number&quot;&gt;40&lt;/span&gt; &lt;span class=&quot;number&quot;&gt;2017&lt;/span&gt; +&lt;span class=&quot;number&quot;&gt;0800&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;Commit&lt;/span&gt; Message &lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;commit&lt;/span&gt; f48b8644013c23f132c3fe72f8cc38ea288e6f3d&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Author: xxx&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;Date&lt;/span&gt;:   Thu Feb &lt;span class=&quot;number&quot;&gt;9&lt;/span&gt; &lt;span class=&quot;number&quot;&gt;13&lt;/span&gt;:&lt;span class=&quot;number&quot;&gt;52&lt;/span&gt;:&lt;span class=&quot;number&quot;&gt;39&lt;/span&gt; &lt;span class=&quot;number&quot;&gt;2017&lt;/span&gt; +&lt;span class=&quot;number&quot;&gt;0800&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;Commit&lt;/span&gt; Message &lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;commit&lt;/span&gt; fe72f8cc38ea288e6c3fe72f8cc38ea288e6f3de&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Author: xxx&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;Date&lt;/span&gt;:   Thu Feb &lt;span class=&quot;number&quot;&gt;9&lt;/span&gt; &lt;span class=&quot;number&quot;&gt;10&lt;/span&gt;:&lt;span class=&quot;number&quot;&gt;12&lt;/span&gt;:&lt;span class=&quot;number&quot;&gt;39&lt;/span&gt; &lt;span class=&quot;number&quot;&gt;2017&lt;/span&gt; +&lt;span class=&quot;number&quot;&gt;0800&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;Commit&lt;/span&gt; Message &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;比如说我们需要合并Commit 2-4这三个提交，我们运行&lt;br&gt;&lt;figure class=&quot;highlight applescript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;git rebase -i &amp;lt;SHA&lt;span class=&quot;number&quot;&gt;-1&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;of&lt;/span&gt; Commit &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;&amp;gt;  &lt;span class=&quot;comment&quot;&gt;# -i后面的参数为最后一个不需要合并的Commit，这里为Commit 1&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;然后出现交互框，出现三个pick&lt;br&gt;&lt;figure class=&quot;highlight cmake&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;pick ... Commit &lt;span class=&quot;keyword&quot;&gt;Message&lt;/span&gt; &lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;pick ... Commit &lt;span class=&quot;keyword&quot;&gt;Message&lt;/span&gt; &lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;pick ... Commit &lt;span class=&quot;keyword&quot;&gt;Message&lt;/span&gt; &lt;span class=&quot;number&quot;&gt;4&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;我们将后两个pick改成squash，即：&lt;br&gt;&lt;figure class=&quot;highlight cmake&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;pick ... Commit &lt;span class=&quot;keyword&quot;&gt;Message&lt;/span&gt; &lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;squash ... Commit &lt;span class=&quot;keyword&quot;&gt;Message&lt;/span&gt; &lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;squash ... Commit &lt;span class=&quot;keyword&quot;&gt;Message&lt;/span&gt; &lt;span class=&quot;number&quot;&gt;4&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;这里两个操作的区别是：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;pick的意思是要会选择合并到这个commit&lt;/li&gt;
-&lt;li&gt;squash(挤压)的意思是这个commit会被合并到前一个commit&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;然后输入新的Commit Message，保存，即合并成功，最后看只剩一个Commit了。&lt;br&gt;最后Push到remote，这时会提示版本不合，因为本地这个进行了合并后，已经比remote老了，这时只需强推即可：&lt;br&gt;&lt;figure class=&quot;highlight xml&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;git push -f &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;upstream&lt;/span&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;localbranch&lt;/span&gt;&amp;gt;&lt;/span&gt;:&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;remotebranch&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;最后，多个提交就变成了一个提交，可以被merge了。&lt;/p&gt;
-&lt;h2 id=&quot;后悔药&quot;&gt;&lt;a href=&quot;#后悔药&quot; class=&quot;headerlink&quot; title=&quot;后悔药&quot;&gt;&lt;/a&gt;后悔药&lt;/h2&gt;&lt;p&gt;注意，如果出现了什么不想看到的结果或者操作错误，可以使用&lt;br&gt;&lt;figure class=&quot;highlight applescript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;git rebase &lt;span class=&quot;comment&quot;&gt;--abort&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;进行挽救，即可恢复到rebase之前的状态。&lt;/p&gt;
-&lt;h2 id=&quot;简易方法&quot;&gt;&lt;a href=&quot;#简易方法&quot; class=&quot;headerlink&quot; title=&quot;简易方法&quot;&gt;&lt;/a&gt;简易方法&lt;/h2&gt;&lt;p&gt;如果只需合并两个Commit，且又是最近的两个Commit，其实可以更简单地使用：&lt;br&gt;&lt;figure class=&quot;highlight sql&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;git &lt;span class=&quot;keyword&quot;&gt;reset&lt;/span&gt; &lt;span class=&quot;comment&quot;&gt;--soft HEAD^1&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;git &lt;span class=&quot;keyword&quot;&gt;commit&lt;/span&gt; &lt;span class=&quot;comment&quot;&gt;--amend&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;来解决。&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;合并多个Commits&quot;&gt;&lt;a href=&quot;#合并多个Commits&quot; class=&quot;headerlink&quot; title=&quot;合并多个Commits&quot;&gt;&lt;/a&gt;合并多个Commits&lt;/h2&gt;&lt;p&gt;我们提交Pull Request的时候有时候并不是一个Commit就
-    
-    </summary>
-    
-      <category term="计算机相关 | CS.Related" scheme="http://whatbeg.com/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9B%B8%E5%85%B3-CS-Related/"/>
-    
-    
-      <category term="Git" scheme="http://whatbeg.com/tags/Git/"/>
     
   </entry>
   
