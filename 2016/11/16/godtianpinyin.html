@@ -109,21 +109,27 @@
 </ul>
 <h2 id="技术路线"><a href="#技术路线" class="headerlink" title="技术路线"></a>技术路线</h2><p>在中文拼音输入法中，我们需要完成拼音序列到汉字序列的转换，比如输入“nihao”，输入法会给出我们想输入的字“你好”，到这里我们就可以问出几个问题：</p>
 <ul>
-<li><strong>如何切分拼音？ </strong><br>如： 用户输入”xiana”， 输入法应该判断用户想输入”xian a”（闲啊） 还是”xia na”（夏娜） 还是”xi an a”（西安啊）？</li>
+<li><strong>如何切分拼音？ </strong>
+如： 用户输入”xiana”， 输入法应该判断用户想输入”xian a”（闲啊） 还是”xia na”（夏娜） 还是”xi an a”（西安啊）？</li>
 <li><strong>如何实时给用户以反馈？</strong></li>
 <li><strong>对于切分好的拼音，怎样找出用户最想输入的一串中文显示给用户？</strong></li>
 <li><strong>用户输入的拼音是错的的情况下，如何容忍这种错误？该如何显示？</strong></li>
 </ul>
-<p>也许我们还能问出更多的问题，中文拼音输入法就是这样，总有可以继续抠下去的细节。<br>那么我们如何解决上面的问题？我们的方案如下：</p>
-<h3 id="如何切分拼音？"><a href="#如何切分拼音？" class="headerlink" title="如何切分拼音？"></a>如何切分拼音？</h3><p>这里我们暂时采用最长匹配的方式，也就是说，如果用户输入的首个串是拼音或者是某个合法拼音的前缀，那么我们会继续向后发现，等待用户输入，直到用户输完后发现这个字符（假设是第n个）与原来n-1个不是合法的拼音也不是合法的拼音的前缀，那么此时将前面n-1串切分成拼音，这就完成了一个拼音的发现，比如说输入”xiant”（想输xiantian），则我们会扫描这个串，一直到”xian”，到”xiant”的时候发现既不是合法拼音的前缀也不是合法拼音，那么从t前面划分开，得到”xian’t”，同样的道理发现后续的拼音。<br>在实时任务中，用户即使没有输完我们仍应该显示东西，那么我们先切分拼音，最多只会有最后一个是不完整的拼音前缀，那么我们将完整的和不完整的分开处理。假设是”xian’t”的情况，我们将”xian”放入viterbi算法中，通过HMM得出概率最大的一个输出串，然后将最后的”t”在训练过的Trie树中搜索出所有以”t”为前缀的字，以及他们出现的频率，取频率最高的若干个，作为viterbi算法的下一个状态的可能集合，然后得到他们的拼音，与前面n-1个拼音组合起来跑Viterbi算法，得到最可能的一个中文串，由于这些频率最高的字的拼音（即我们可能的观测值）可能不相同，我们只能将相同音的字作为一次viterbi算法运行的下一状态，这样viterbi跑的次数就是这些字里面不同音的个数，但是由于总数固定，异音越多，每个音对应的越少，所以总时间是没有差别的。<br>具体Trie树会在后面讲解。</p>
+<p>也许我们还能问出更多的问题，中文拼音输入法就是这样，总有可以继续抠下去的细节。
+那么我们如何解决上面的问题？我们的方案如下：</p>
+<h3 id="如何切分拼音？"><a href="#如何切分拼音？" class="headerlink" title="如何切分拼音？"></a>如何切分拼音？</h3><p>这里我们暂时采用最长匹配的方式，也就是说，如果用户输入的首个串是拼音或者是某个合法拼音的前缀，那么我们会继续向后发现，等待用户输入，直到用户输完后发现这个字符（假设是第n个）与原来n-1个不是合法的拼音也不是合法的拼音的前缀，那么此时将前面n-1串切分成拼音，这就完成了一个拼音的发现，比如说输入”xiant”（想输xiantian），则我们会扫描这个串，一直到”xian”，到”xiant”的时候发现既不是合法拼音的前缀也不是合法拼音，那么从t前面划分开，得到”xian’t”，同样的道理发现后续的拼音。
+在实时任务中，用户即使没有输完我们仍应该显示东西，那么我们先切分拼音，最多只会有最后一个是不完整的拼音前缀，那么我们将完整的和不完整的分开处理。假设是”xian’t”的情况，我们将”xian”放入viterbi算法中，通过HMM得出概率最大的一个输出串，然后将最后的”t”在训练过的Trie树中搜索出所有以”t”为前缀的字，以及他们出现的频率，取频率最高的若干个，作为viterbi算法的下一个状态的可能集合，然后得到他们的拼音，与前面n-1个拼音组合起来跑Viterbi算法，得到最可能的一个中文串，由于这些频率最高的字的拼音（即我们可能的观测值）可能不相同，我们只能将相同音的字作为一次viterbi算法运行的下一状态，这样viterbi跑的次数就是这些字里面不同音的个数，但是由于总数固定，异音越多，每个音对应的越少，所以总时间是没有差别的。
+具体Trie树会在后面讲解。</p>
 <h3 id="如何实时给用户以反馈？"><a href="#如何实时给用户以反馈？" class="headerlink" title="如何实时给用户以反馈？"></a>如何实时给用户以反馈？</h3><p>上面其实已经初步解释了如何实时反馈，实时反馈我们要做的就是用户每输一个字母，我们就能够显示出用户可能想要打的字，那么，以一个字母开头的拼音有很多，每个拼音对应的字也可能有很多，也即结果有很多，但是我们又不能漏掉，所以只能考虑所有的字，比较选出概率最大的若干个字，这时候我们可以采用Trie树来解决。Trie树就是前缀树，说白了就是将拼音的字母按顺序顺着根插入到树中，每个叶子节点就是一个拼音，这个拼音就是顺着根一路走下来取的字母的顺序组合，这样我们就可以找出以任意字符串为前缀的所有拼音，方法就是dfs遍历每一个以其为前缀的子树的叶子节点，这时候我们叶子节点存的其实是一个字典，key为这个拼音对应的可能的字，value为这个字出现的频率，以作为比较。</p>
 <h3 id="对于切分好的拼音，怎样找出用户最想输入的一串中文显示给用户？"><a href="#对于切分好的拼音，怎样找出用户最想输入的一串中文显示给用户？" class="headerlink" title="对于切分好的拼音，怎样找出用户最想输入的一串中文显示给用户？"></a>对于切分好的拼音，怎样找出用户最想输入的一串中文显示给用户？</h3><p>这里我们使用隐马尔可夫模型，将用户想输入的中文字作为隐状态，用户输入的拼音为显状态，通过最大似然估计即频率估计出HMM的三个矩阵的值，最后通过viterbi算法找出概率最大的若干个中文字串显示出来。</p>
 <h3 id="用户输入的拼音是错的的情况下，如何容忍这种错误？该如何显示？"><a href="#用户输入的拼音是错的的情况下，如何容忍这种错误？该如何显示？" class="headerlink" title="用户输入的拼音是错的的情况下，如何容忍这种错误？该如何显示？"></a>用户输入的拼音是错的的情况下，如何容忍这种错误？该如何显示？</h3><p>由于考虑到实现高度容错的复杂性，我们假设用户会输入正确的拼音，在想分割的时候会自行添加分隔符”‘“，由于大部分输入法用户绝大部分时间都会输入正确的拼音，所以，这样一个假设既简化了实现的过程，又没有损失太大的用户体验。</p>
-<h2 id="用到的数据"><a href="#用到的数据" class="headerlink" title="用到的数据"></a>用到的数据</h2><p>由于训练HMM模型的需要，我们从搜狗实验室找到了SogouQ用户查询数据集，预处理成合法的句子之后大约有360M，且为了避免查询句太短，我们也增加了将近30M的搜狐新闻数据作为训练语料，这里面包含了很多的长句子。<br>通过这两个语料的训练，我们得到了长句和短句皆可表现较好效果的HMM模型。并且我们还可以继续拓展语料，以增加我们HMM模型的准确性，这是后话，不提。</p>
+<h2 id="用到的数据"><a href="#用到的数据" class="headerlink" title="用到的数据"></a>用到的数据</h2><p>由于训练HMM模型的需要，我们从搜狗实验室找到了SogouQ用户查询数据集，预处理成合法的句子之后大约有360M，且为了避免查询句太短，我们也增加了将近30M的搜狐新闻数据作为训练语料，这里面包含了很多的长句子。
+通过这两个语料的训练，我们得到了长句和短句皆可表现较好效果的HMM模型。并且我们还可以继续拓展语料，以增加我们HMM模型的准确性，这是后话，不提。</p>
 <h2 id="遇到的问题及解决方案，"><a href="#遇到的问题及解决方案，" class="headerlink" title="遇到的问题及解决方案，"></a>遇到的问题及解决方案，</h2><ol>
 <li><p>UI界面的问题，由于UI设计的复杂性与不同系统的考虑，出现了许多莫名其妙的BUG，这使得我们花了许多时间。</p>
 </li>
-<li><p>viterbi算法的效率问题，由于以某个字母开头的拼音对应的字有很多个，假设我们取最优的K个，我们需要将这K个与前面已有的拼音组合，然后跑一遍Viterbi算法，由于Viterbi算法从一个状态转移到另一个状态的计算量很大，我们使用了记忆（cache）的方法来加速，具体方法就是记录下某一个完整拼音串所对应的viterbi算法的最后一个状态的相关情况，这样如果我们再次遇到这个拼音串（A） 加上另一个拼音（B）跑viterbi的情况，我们就不需要从这个组合串的开头开始跑viterbi算法了，而是直接从A 串跑完viterbi的最后一个状态（从记忆单元读取）开始，向B进行转移。<br>这个记忆单元会随着程序而一直存在，并且我们对这个对象做了持久化，在输入法启动时我们会读取这个文件（记忆单元），这也就意味着，如果我们曾经输入过某个拼音串，那么我们以后再输入同样的拼音串的时候，不再需要跑核心算法，而是直接显示结果，这样在速度上就取得了显著的提高，就会出现，输入法越用越好用，越用越快的好处，当然这牺牲了一些存储空间，但是如今我们都不缺存储空间。</p>
+<li><p>viterbi算法的效率问题，由于以某个字母开头的拼音对应的字有很多个，假设我们取最优的K个，我们需要将这K个与前面已有的拼音组合，然后跑一遍Viterbi算法，由于Viterbi算法从一个状态转移到另一个状态的计算量很大，我们使用了记忆（cache）的方法来加速，具体方法就是记录下某一个完整拼音串所对应的viterbi算法的最后一个状态的相关情况，这样如果我们再次遇到这个拼音串（A） 加上另一个拼音（B）跑viterbi的情况，我们就不需要从这个组合串的开头开始跑viterbi算法了，而是直接从A 串跑完viterbi的最后一个状态（从记忆单元读取）开始，向B进行转移。
+这个记忆单元会随着程序而一直存在，并且我们对这个对象做了持久化，在输入法启动时我们会读取这个文件（记忆单元），这也就意味着，如果我们曾经输入过某个拼音串，那么我们以后再输入同样的拼音串的时候，不再需要跑核心算法，而是直接显示结果，这样在速度上就取得了显著的提高，就会出现，输入法越用越好用，越用越快的好处，当然这牺牲了一些存储空间，但是如今我们都不缺存储空间。</p>
 </li>
 <li><p>重复计算的问题，比如在用户觉得打错了的时候，往后退格，这时就会退到某一个前缀，但是其实这个前缀我们是算过了的，也显示过了的，就是说我们退回到我们以前显示过的内容的时候，如果不加优化，那么又会重新跑一遍核心的viterbi算法，这样就会很慢，那么我们还是利用cache思想，将输入的拼音串以及对应的显示结果相对应并且存起来，这样我们就做到了飞速的退格操作。</p>
 </li>
@@ -135,8 +141,10 @@
 <li>Python 2.7</li>
 <li>需要安装的Python包： Tkinter, cPickle, pypinyin等模块</li>
 </ol>
-<h2 id="执行方法及参数"><a href="#执行方法及参数" class="headerlink" title="执行方法及参数"></a>执行方法及参数</h2><p>在项目Project目录下，运行<br><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="keyword">python</span> <span class="keyword">gui</span>.<span class="keyword">py</span></span><br></pre></td></tr></table></figure></p>
-<p>即可。<br><img src="http://7xsl28.com1.z0.glb.clouddn.com/GodTian_Pinyin.png" alt=""></p>
+<h2 id="执行方法及参数"><a href="#执行方法及参数" class="headerlink" title="执行方法及参数"></a>执行方法及参数</h2><p>在项目Project目录下，运行
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="keyword">python</span> <span class="keyword">gui</span>.<span class="keyword">py</span></span><br></pre></td></tr></table></figure></p>
+<p>即可。
+<img src="http://7xsl28.com1.z0.glb.clouddn.com/GodTian_Pinyin.png" alt=""></p>
 <h2 id="Future-Works"><a href="#Future-Works" class="headerlink" title="Future Works"></a>Future Works</h2><p>由上面我们可以看到其实可以做的工作还很多，比如</p>
 <ul>
 <li>改换编译型语言，如C++，大幅减小计算开销</li>
@@ -390,7 +398,7 @@
 		<ul>
 		
 		  
-			<li><a href="/categories/大数据系统与技术-Big-Data/" title="大数据系统与技术 | Big Data">大数据系统与技术 | Big Data<sup>8</sup></a></li>
+			<li><a href="/categories/大数据系统与技术-Big-Data/" title="大数据系统与技术 | Big Data">大数据系统与技术 | Big Data<sup>9</sup></a></li>
 		  
 		
 		  
@@ -430,7 +438,11 @@
 		  
 		
 		  
-			<li><a href="/categories/错误解决与优化-Err-n-Opt/" title="错误解决与优化 | Err_n_Opt">错误解决与优化 | Err_n_Opt<sup>10</sup></a></li>
+			<li><a href="/categories/错误解决与优化-Err-Opt/" title="错误解决与优化 | Err&amp;Opt">错误解决与优化 | Err&amp;Opt<sup>12</sup></a></li>
+		  
+		
+		  
+		
 		  
 		
 		  
@@ -444,7 +456,7 @@
   
   <div class="archiveslist">
     <p class="asidetitle"><a href="/archives">归档</a></p>
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">23</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">23</span></li></ul>
   </div>
 
 
@@ -452,7 +464,7 @@
   <div class="tagcloudlist">
     <p class="asidetitle">标签云</p>
     <div class="tagcloudlist clearfix">
-       <a href="/tags/CS/" style="font-size: 16.67px;">CS</a> <a href="/tags/Deep-Learning/" style="font-size: 13.33px;">Deep Learning</a> <a href="/tags/Git/" style="font-size: 11.11px;">Git</a> <a href="/tags/Hadoop/" style="font-size: 13.33px;">Hadoop</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/Latex/" style="font-size: 10px;">Latex</a> <a href="/tags/Linux/" style="font-size: 12.22px;">Linux</a> <a href="/tags/Python/" style="font-size: 18.89px;">Python</a> <a href="/tags/Spark/" style="font-size: 12.22px;">Spark</a> <a href="/tags/Summary/" style="font-size: 14.44px;">Summary</a> <a href="/tags/TensorFlow/" style="font-size: 10px;">TensorFlow</a> <a href="/tags/Web/" style="font-size: 12.22px;">Web</a> <a href="/tags/hexo/" style="font-size: 14.44px;">hexo</a> <a href="/tags/三国/" style="font-size: 10px;">三国</a> <a href="/tags/人文社科/" style="font-size: 10px;">人文社科</a> <a href="/tags/优化/" style="font-size: 10px;">优化</a> <a href="/tags/吃喝玩乐/" style="font-size: 10px;">吃喝玩乐</a> <a href="/tags/大数据/" style="font-size: 14.44px;">大数据</a> <a href="/tags/影视/" style="font-size: 11.11px;">影视</a> <a href="/tags/数据分析/" style="font-size: 15.56px;">数据分析</a> <a href="/tags/机器学习/" style="font-size: 20px;">机器学习</a> <a href="/tags/深度学习/" style="font-size: 15.56px;">深度学习</a> <a href="/tags/算法/" style="font-size: 12.22px;">算法</a> <a href="/tags/论文阅读/" style="font-size: 11.11px;">论文阅读</a> <a href="/tags/译文/" style="font-size: 12.22px;">译文</a> <a href="/tags/读书/" style="font-size: 17.78px;">读书</a> <a href="/tags/错误解决/" style="font-size: 12.22px;">错误解决</a> <a href="/tags/随笔/" style="font-size: 14.44px;">随笔</a>
+       <a href="/tags/CS/" style="font-size: 17px;">CS</a> <a href="/tags/Deep-Learning/" style="font-size: 17px;">Deep Learning</a> <a href="/tags/GPU/" style="font-size: 10px;">GPU</a> <a href="/tags/Git/" style="font-size: 11px;">Git</a> <a href="/tags/Hadoop/" style="font-size: 14px;">Hadoop</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/Latex/" style="font-size: 10px;">Latex</a> <a href="/tags/Linux/" style="font-size: 13px;">Linux</a> <a href="/tags/Python/" style="font-size: 19px;">Python</a> <a href="/tags/Spark/" style="font-size: 12px;">Spark</a> <a href="/tags/Summary/" style="font-size: 15px;">Summary</a> <a href="/tags/TensorFlow/" style="font-size: 11px;">TensorFlow</a> <a href="/tags/Web/" style="font-size: 12px;">Web</a> <a href="/tags/hexo/" style="font-size: 15px;">hexo</a> <a href="/tags/三国/" style="font-size: 10px;">三国</a> <a href="/tags/人文社科/" style="font-size: 10px;">人文社科</a> <a href="/tags/优化/" style="font-size: 10px;">优化</a> <a href="/tags/吃喝玩乐/" style="font-size: 10px;">吃喝玩乐</a> <a href="/tags/大数据/" style="font-size: 15px;">大数据</a> <a href="/tags/影视/" style="font-size: 11px;">影视</a> <a href="/tags/数据分析/" style="font-size: 16px;">数据分析</a> <a href="/tags/机器学习/" style="font-size: 20px;">机器学习</a> <a href="/tags/深度学习/" style="font-size: 17px;">深度学习</a> <a href="/tags/算法/" style="font-size: 12px;">算法</a> <a href="/tags/系统/" style="font-size: 10px;">系统</a> <a href="/tags/论文阅读/" style="font-size: 12px;">论文阅读</a> <a href="/tags/译文/" style="font-size: 12px;">译文</a> <a href="/tags/读书/" style="font-size: 18px;">读书</a> <a href="/tags/错误解决/" style="font-size: 12px;">错误解决</a> <a href="/tags/随笔/" style="font-size: 15px;">随笔</a>
     </div>
   </div>
 
@@ -565,7 +577,7 @@
 		<a href="/about" target="_blank" title="whatbeg">whatbeg</a>
 		
 		<br>
-		<span class="post-count">Total words: <span style="color:orange">287.9k</span></span>
+		<span class="post-count">Total words: <span style="color:orange">304.1k</span></span>
         <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
         <span id="busuanzi_container_site_pv">
         &nbsp;&nbsp;Total visits:&nbsp;<span style="color:orange" id="busuanzi_value_site_pv"></span>

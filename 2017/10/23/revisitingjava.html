@@ -11,19 +11,22 @@
     
 
     
-    <meta name="description" content="最近在看一些工程代码，于是看了看设计模式，看设计模式之前发现Java是先修知识，又重新补了一遍Java，温故知新，获得一些新的体会。本文不打算作为“Java知识点详细梳理”，“10分钟学会Java”之类的文章，仅作为博主自己的一个回顾，涉及的内容也无定法。
-Java应该是目前用的最多的编程语言，以前觉得Java老要点点点（调用方法），变量名也很长，C++/Python很少代码写完的东西Java可能">
+    <meta name="description" content="最近在看一些工程代码，于是看了看设计模式，看设计模式之前发现Java是先修知识，又重新补了一遍Java，温故知新，获得一些新的体会。
+本文不打算作为“Java知识点详细梳理”，“10分钟学会Java”之类的文章，仅作为博主自己的一个回顾，涉及的内容也无定法。
+Java应该是目前用的最多的编程语言，以前觉得Java老要点点点（调用方法），变量名也很长，C++/Python很少代码写完的东西Java可">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Revisiting Java">
 <meta property="og:url" content="http://whatbeg.com/2017/10/23/revisitingjava.html">
 <meta property="og:site_name" content="Whatbeg's blog">
-<meta property="og:description" content="最近在看一些工程代码，于是看了看设计模式，看设计模式之前发现Java是先修知识，又重新补了一遍Java，温故知新，获得一些新的体会。本文不打算作为“Java知识点详细梳理”，“10分钟学会Java”之类的文章，仅作为博主自己的一个回顾，涉及的内容也无定法。
-Java应该是目前用的最多的编程语言，以前觉得Java老要点点点（调用方法），变量名也很长，C++/Python很少代码写完的东西Java可能">
+<meta property="og:description" content="最近在看一些工程代码，于是看了看设计模式，看设计模式之前发现Java是先修知识，又重新补了一遍Java，温故知新，获得一些新的体会。
+本文不打算作为“Java知识点详细梳理”，“10分钟学会Java”之类的文章，仅作为博主自己的一个回顾，涉及的内容也无定法。
+Java应该是目前用的最多的编程语言，以前觉得Java老要点点点（调用方法），变量名也很长，C++/Python很少代码写完的东西Java可">
 <meta property="og:updated_time" content="2017-10-23T15:38:18.567Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Revisiting Java">
-<meta name="twitter:description" content="最近在看一些工程代码，于是看了看设计模式，看设计模式之前发现Java是先修知识，又重新补了一遍Java，温故知新，获得一些新的体会。本文不打算作为“Java知识点详细梳理”，“10分钟学会Java”之类的文章，仅作为博主自己的一个回顾，涉及的内容也无定法。
-Java应该是目前用的最多的编程语言，以前觉得Java老要点点点（调用方法），变量名也很长，C++/Python很少代码写完的东西Java可能">
+<meta name="twitter:description" content="最近在看一些工程代码，于是看了看设计模式，看设计模式之前发现Java是先修知识，又重新补了一遍Java，温故知新，获得一些新的体会。
+本文不打算作为“Java知识点详细梳理”，“10分钟学会Java”之类的文章，仅作为博主自己的一个回顾，涉及的内容也无定法。
+Java应该是目前用的最多的编程语言，以前觉得Java老要点点点（调用方法），变量名也很长，C++/Python很少代码写完的东西Java可">
 
     
     <link rel="alternative" href="/atom.xml" title="Whatbeg&#39;s blog" type="application/atom+xml">
@@ -95,13 +98,16 @@ Java应该是目前用的最多的编程语言，以前觉得Java老要点点点
 		
 		</div>
 		
-		<p>最近在看一些工程代码，于是看了看设计模式，看设计模式之前发现Java是先修知识，又重新补了一遍Java，温故知新，获得一些新的体会。<br>本文不打算作为“Java知识点详细梳理”，“10分钟学会Java”之类的文章，仅作为博主自己的一个回顾，涉及的内容也无定法。</p>
-<p>Java应该是目前用的最多的编程语言，以前觉得Java老要点点点（调用方法），变量名也很长，C++/Python很少代码写完的东西Java可能要写很多行……<br>觉得挺麻烦的，不过Java风靡自有其风靡的理由，在面向对象语言中她是一个标杆，虽然繁琐，但比较清晰，比较简单。</p>
+		<p>最近在看一些工程代码，于是看了看设计模式，看设计模式之前发现Java是先修知识，又重新补了一遍Java，温故知新，获得一些新的体会。
+本文不打算作为“Java知识点详细梳理”，“10分钟学会Java”之类的文章，仅作为博主自己的一个回顾，涉及的内容也无定法。</p>
+<p>Java应该是目前用的最多的编程语言，以前觉得Java老要点点点（调用方法），变量名也很长，C++/Python很少代码写完的东西Java可能要写很多行……
+觉得挺麻烦的，不过Java风靡自有其风靡的理由，在面向对象语言中她是一个标杆，虽然繁琐，但比较清晰，比较简单。</p>
 <p>拿变量类型来说，Java只有两种变量类型，primitive主数据类型和引用数据类型。</p>
 <p>Java中最关键的概念是面向对象，面向对象最关键的东西就是类和对象，所有的Java程序都定义在类中，你不能像python那样，打开.py文件就开始写东西，就可以执行了，也不像C++，定义一个main函数即可运行。在Java中即使main函数也要包括在类中。</p>
 <p>为什么面向对象是核心内容？它的好处在哪呢？可以说，OO(面向对象)无处不在，OO使得我们很方便的扩展功能，而不需要重复写很多代码！另外，OO的设计思想其实是抽象思维的一种体现，它改变了我们设计程序的方式，我们不再是根据程序需要什么功能就开始从头到尾实现什么功能，我们更多考虑的是类和对象，程序包含几种类型的实体？有什么共同点？可以进行怎样的抽象？用继承还是接口？……</p>
 <p>说说类和对象，类是对象的模板，类定义好“像我这样的人应该有什么状态，特征，能够做到那些事”，而对象具体化了类，真正获得了具体的状态，具体的特征，以及做某些事的方法。</p>
-<p>我们说到，Java只有两种变量，primitive主数据类型和引用数据类型。主数据类型包括我们所指的int,double,float等等，这些不是对象。而引用变量是一个到对象的引用，相当于一个遥控器，指向堆上的某个对象，通过此引用可以获得对象，重新赋值此引用并不改变对象，只是引用指到了另一个对象上而已。没有对象变量，只有指向对象的引用变量。<br>==:  比较primitive主数据类型是否相同，或两个引用是否指向同一对象</p>
+<p>我们说到，Java只有两种变量，primitive主数据类型和引用数据类型。主数据类型包括我们所指的int,double,float等等，这些不是对象。而引用变量是一个到对象的引用，相当于一个遥控器，指向堆上的某个对象，通过此引用可以获得对象，重新赋值此引用并不改变对象，只是引用指到了另一个对象上而已。没有对象变量，只有指向对象的引用变量。
+==:  比较primitive主数据类型是否相同，或两个引用是否指向同一对象</p>
 <p>话题回到面向对象，提到面向对象，不得不提其三大特性，这也是面试中经常会问到的，即封装，继承和多态。</p>
 <ul>
 <li><p>封装(encapsulation)，即隐藏对象的属性和实现细节，仅对外公开接口，控制在程序中属性的读和修改的访问级别；</p>
@@ -115,7 +121,12 @@ Java应该是目前用的最多的编程语言，以前觉得Java老要点点点
 <p>【继承方法调用时的最近原则】调用对象引用的方法时，会调用到与该对象类型最接近的方法，就是说如果子类实现了某继承的方法，那就调用子类的，如果没有实现，那就往上找最近的实现的类的方法。</p>
 <p>继承的IS-A测试，即“足球”IS-A“球”，总得满足这样的关系才好说继承，就像你不太好意思继承隔壁王叔叔财产。</p>
 <p>继承的意义何在？这是显然的，首先避免了大量重复的程序代码，其次可以定义出一组共同的协议，所有继承者都需要满足这个协议，你知道，在很多时候大家遵守一些共同的规则是很重要的。</p>
-<p>继承的一些使用建议：<br>1） 当某个类会比其父类更具有特定意义时使用继承<br>2）行为程序需要被多个相同基本类型的类共享时，考虑使用继承<br>3）集成并不一定是达成重用行为程序的最佳方式，具体可参见设计模式<br>4）继承结构并不匹配两者的关系，不要用继承<br>5）不能通过IS-A测试一定不要用继承</p>
+<p>继承的一些使用建议：
+1） 当某个类会比其父类更具有特定意义时使用继承
+2）行为程序需要被多个相同基本类型的类共享时，考虑使用继承
+3）集成并不一定是达成重用行为程序的最佳方式，具体可参见设计模式
+4）继承结构并不匹配两者的关系，不要用继承
+5）不能通过IS-A测试一定不要用继承</p>
 <p>如果最高的父类不能抽象出一些对所有族类都使用的方法，或者不太好初始化，比如你不好新建一个“球”对象，它是啥球呢？地球还是足球？这样一些情况我们可以定义抽象类，它不能被初始化，只能被继承。。抽象类中可以定义抽象方法，抽象方法只存在于抽象类中，一个类只要有一个抽象方法，那他必是抽象类。</p>
 <p>有时候，你会想要继承多个父类，以便使用更多的已有代码，但是不幸的是Java并不支持多重继承，要多重继承请关闭本文，搜索”C++”关键词谢谢。</p>
 <p>为啥不支持多重继承呢？因为存在多重继承（继承多个类）的“致命方块”问题，即如果两个父类继承自同一个祖父类，都实现了某个方法，那么子类（如果没有实现该方法）该调用那个版本？</p>
@@ -126,21 +137,56 @@ Java应该是目前用的最多的编程语言，以前觉得Java老要点点点
 <p>对象生存在堆上（可以理解为垃圾堆，随时可能有人来回收…），引用变量或局部变量生存在栈上。</p>
 <p>一旦一个对象，它的引用没有了或者离弃了它，那么他就可以等待被回收了。Java有一套垃圾回收机制(GC)保证对象的回收来腾出堆空间，有时候，GC又常常被人诟病，在大数据应用中常常面临这大量的shuffle，大量的对象，有时候需要花费大量的时间来做GC，体验不佳。</p>
 <p>总的来说，对象的出生靠调用构造函数，生存在堆上，一旦没了引用，就向生命的终点走去，直到GC（黑白无常）带走了它。。</p>
-<p>新建对象时，父类的构造函数先于子类被调用，以此类推，Object的构造函数先被执行，然后往下推，直到目标对象类型<br>（先有父母才有你）<br>只有当完全没写构造函数时，Java才会自动帮你写一个无参构造函数。<br>super()调用父类的构造函数，this是对对象本身的引用</p>
+<p>新建对象时，父类的构造函数先于子类被调用，以此类推，Object的构造函数先被执行，然后往下推，直到目标对象类型
+（先有父母才有你）
+只有当完全没写构造函数时，Java才会自动帮你写一个无参构造函数。
+super()调用父类的构造函数，this是对对象本身的引用</p>
 <p>谈谈实例变量，实例变量即对象的成员变量。</p>
-<p>JAVA的实例变量具有如下特点：<br>1）实例变量声明在一个类中，但在方法、构造方法和语句块之外；<br>2）当一个对象被实例化之后，每个实例变量的值就跟着确定；<br>3）实例变量在对象创建的时候创建，在对象被销毁的时候销毁；<br>4）实例变量的值应该至少被一个方法、构造方法或者语句块引用，使得外部能够通过这些方式获取实例变量信息；<br>5）实例变量可以声明在使用前或者使用后；<br>6）访问修饰符可以修饰实例变量；<br>7）实例变量对于类中的方法、构造方法或者语句块是可见的。一般情况下应该把实例变量设为私有。通过使用访问修饰符可以使实例变量对子类可见；<br>8）实例变量具有默认值。数值型变量的默认值是0，布尔型变量的默认值是false，引用类型变量的默认值是null。变量的值可以在声明时指定，也可以在构造方法中指定；实例变量可以直接通过变量名访问。但在静态方法以及其他类中，就应该使用完全限定名：ObejectReference.VariableName。</p>
-<p>你可能想问，如果Java中只有对象和primitive主数据类型，那么我想定义全局变量或者常量怎么办？比如PI=3.141592653589..(后面忘了)<br>这时候，静态变量可以帮你。静态变量定义在类中，它属于类，不属于任何对象，但对象可以获得它。<br>类的静态变量由（该类的）所有对象所共享。<br>静态方法通过类名调用，静态变量通过类名存取 。<br>如果类只有静态方法，则可以将构造函数标记为private的，以免被初始化</p>
-<p>Java常量 = final static 的变量<br>final意味着不能被改变，static意味着是静态变量。</p>
-<p>插一句字符串的格式化：<br>String.format(格式化说明)<br>格式化说明包括5部分，%和type是必要的<br>%[argument number] [flags] [width] [.precision] type<br>如： %,6.1f 为6位逗号分隔，1位小数的浮点数</p>
-<p>谈谈异常吧，谁能保证自己的程序不出问题呢？与其系统运行的时候报一大堆乱七八糟的错误trace，早早地预见并处理一下，以自己的方式处理或者打印它，总要漂亮些吧？甚至可以在抓到异常后，给出“没关系，一个小错误，已经报告给开发者~”这样温和的语句，是不是显得b格很高？……<br>异常中要注意的点有：<br>可能会抛出异常的方法必须声明成throws Exception<br>catch捕获多个异常时，要从小排到大，因为大异常后面的小异常根本没有被catch的机会<br>在方法后加上throws xxException，没有try/catch块，表示可能会抛出异常，自己并不处理，需要调用方自己处理异常<br>所以&gt;&gt;&gt;要么处理，要么声明（异常）</p>
-<p>序列化对象：有时候需要保存一下对象，以便于恢复，被调用，而不用重新生成，因为生成过程可能很麻烦。<br>要序列化的话，对象必须可序列化，且对象中实例变量所引用的对象甚至对象引用的对象…都必须可以序列化，简而言之，整个对象版图都必须可以序列化<br>如果某实例变量不需要或者不能被序列化，那可以把它标记为transient（瞬时）的。<br>解序列化时，transient变量会恢复成null对象引用或者0,false等primitive默认值<br>静态变量不会被序列化，对象被还原时，静态变量会维持类中原本的样子。因为所有对象共用一份静态变量。<br>读取对象的顺序必须与写入的顺序相同</p>
-<p>序列化对象：<br><figure class="highlight cos"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">FileOutputStream fileStream = <span class="keyword">new</span> FileOutputStream(<span class="string">"MySer.ser"</span>)</span><br><span class="line">ObjectOutputStream os = <span class="keyword">new</span> ObjectOutputStream(fileStream)</span><br><span class="line">os.writeObject(obj)</span><br><span class="line">os.<span class="keyword">close</span>()</span><br></pre></td></tr></table></figure></p>
-<p>或者不序列化，而是将信息写入文本文件：<br><figure class="highlight gauss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">BufferedWriter <span class="built_in">writer</span> = <span class="keyword">new</span> BufferedWriter(<span class="keyword">new</span> FileWriter(file))  <span class="comment">// file is a File object</span></span><br><span class="line"><span class="built_in">writer</span>.write(...)</span><br></pre></td></tr></table></figure></p>
-<p>可以把File想象成文件的路径，代表磁盘上的某个文件，但并不是文件内容<br><figure class="highlight vhdl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">BufferedWriter writer = <span class="keyword">new</span> BufferedWriter(<span class="keyword">new</span> FileWriter(<span class="keyword">file</span>))  // <span class="keyword">file</span> <span class="keyword">is</span> a <span class="keyword">File</span> object</span><br></pre></td></tr></table></figure></p>
-<p>这句代码形成如下链接：<br><figure class="highlight xl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">字符串 --&gt; B<span class="function"><span class="title">ufferedWriter</span> --&gt;</span> F<span class="function"><span class="title">ileWriter</span> --&gt;</span> File</span><br></pre></td></tr></table></figure></p>
+<p>JAVA的实例变量具有如下特点：
+1）实例变量声明在一个类中，但在方法、构造方法和语句块之外；
+2）当一个对象被实例化之后，每个实例变量的值就跟着确定；
+3）实例变量在对象创建的时候创建，在对象被销毁的时候销毁；
+4）实例变量的值应该至少被一个方法、构造方法或者语句块引用，使得外部能够通过这些方式获取实例变量信息；
+5）实例变量可以声明在使用前或者使用后；
+6）访问修饰符可以修饰实例变量；
+7）实例变量对于类中的方法、构造方法或者语句块是可见的。一般情况下应该把实例变量设为私有。通过使用访问修饰符可以使实例变量对子类可见；
+8）实例变量具有默认值。数值型变量的默认值是0，布尔型变量的默认值是false，引用类型变量的默认值是null。变量的值可以在声明时指定，也可以在构造方法中指定；实例变量可以直接通过变量名访问。但在静态方法以及其他类中，就应该使用完全限定名：ObejectReference.VariableName。</p>
+<p>你可能想问，如果Java中只有对象和primitive主数据类型，那么我想定义全局变量或者常量怎么办？比如PI=3.141592653589..(后面忘了)
+这时候，静态变量可以帮你。静态变量定义在类中，它属于类，不属于任何对象，但对象可以获得它。
+类的静态变量由（该类的）所有对象所共享。
+静态方法通过类名调用，静态变量通过类名存取 。
+如果类只有静态方法，则可以将构造函数标记为private的，以免被初始化</p>
+<p>Java常量 = final static 的变量
+final意味着不能被改变，static意味着是静态变量。</p>
+<p>插一句字符串的格式化：
+String.format(格式化说明)
+格式化说明包括5部分，%和type是必要的
+%[argument number] [flags] [width] [.precision] type
+如： %,6.1f 为6位逗号分隔，1位小数的浮点数</p>
+<p>谈谈异常吧，谁能保证自己的程序不出问题呢？与其系统运行的时候报一大堆乱七八糟的错误trace，早早地预见并处理一下，以自己的方式处理或者打印它，总要漂亮些吧？甚至可以在抓到异常后，给出“没关系，一个小错误，已经报告给开发者~”这样温和的语句，是不是显得b格很高？……
+异常中要注意的点有：
+可能会抛出异常的方法必须声明成throws Exception
+catch捕获多个异常时，要从小排到大，因为大异常后面的小异常根本没有被catch的机会
+在方法后加上throws xxException，没有try/catch块，表示可能会抛出异常，自己并不处理，需要调用方自己处理异常
+所以&gt;&gt;&gt;要么处理，要么声明（异常）</p>
+<p>序列化对象：有时候需要保存一下对象，以便于恢复，被调用，而不用重新生成，因为生成过程可能很麻烦。
+要序列化的话，对象必须可序列化，且对象中实例变量所引用的对象甚至对象引用的对象…都必须可以序列化，简而言之，整个对象版图都必须可以序列化
+如果某实例变量不需要或者不能被序列化，那可以把它标记为transient（瞬时）的。
+解序列化时，transient变量会恢复成null对象引用或者0,false等primitive默认值
+静态变量不会被序列化，对象被还原时，静态变量会维持类中原本的样子。因为所有对象共用一份静态变量。
+读取对象的顺序必须与写入的顺序相同</p>
+<p>序列化对象：
+<figure class="highlight cos"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">FileOutputStream fileStream = <span class="keyword">new</span> FileOutputStream(<span class="string">"MySer.ser"</span>)</span><br><span class="line">ObjectOutputStream os = <span class="keyword">new</span> ObjectOutputStream(fileStream)</span><br><span class="line">os.writeObject(obj)</span><br><span class="line">os.<span class="keyword">close</span>()</span><br></pre></td></tr></table></figure></p>
+<p>或者不序列化，而是将信息写入文本文件：
+<figure class="highlight gauss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">BufferedWriter <span class="built_in">writer</span> = <span class="keyword">new</span> BufferedWriter(<span class="keyword">new</span> FileWriter(file))  <span class="comment">// file is a File object</span></span><br><span class="line"><span class="built_in">writer</span>.write(...)</span><br></pre></td></tr></table></figure></p>
+<p>可以把File想象成文件的路径，代表磁盘上的某个文件，但并不是文件内容
+<figure class="highlight vhdl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">BufferedWriter writer = <span class="keyword">new</span> BufferedWriter(<span class="keyword">new</span> FileWriter(<span class="keyword">file</span>))  // <span class="keyword">file</span> <span class="keyword">is</span> a <span class="keyword">File</span> object</span><br></pre></td></tr></table></figure></p>
+<p>这句代码形成如下链接：
+<figure class="highlight xl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">字符串 --&gt; B<span class="function"><span class="title">ufferedWriter</span> --&gt;</span> F<span class="function"><span class="title">ileWriter</span> --&gt;</span> File</span><br></pre></td></tr></table></figure></p>
 <p>对象序列化以后，类继续演进，这时会出现无法还原的情况。通过将serialVersionUID放在class中，让类在演化过程中维持同样的ID，可以保证还原的时候能够识别，从而正确还原出对象。但要注意有些修改会损害解序列化。</p>
 <p>好吧，先说到这，其实还有一些内容，网络，集合与泛型，以及许多高级特性，反射，虚拟机的深入理解等等，后面再说吧。</p>
-<p>Reference<br>*《Head First Java》</p>
+<p>Reference
+*《Head First Java》</p>
   
 	</div>
 
@@ -374,7 +420,7 @@ Java应该是目前用的最多的编程语言，以前觉得Java老要点点点
 		<ul>
 		
 		  
-			<li><a href="/categories/大数据系统与技术-Big-Data/" title="大数据系统与技术 | Big Data">大数据系统与技术 | Big Data<sup>8</sup></a></li>
+			<li><a href="/categories/大数据系统与技术-Big-Data/" title="大数据系统与技术 | Big Data">大数据系统与技术 | Big Data<sup>9</sup></a></li>
 		  
 		
 		  
@@ -414,7 +460,11 @@ Java应该是目前用的最多的编程语言，以前觉得Java老要点点点
 		  
 		
 		  
-			<li><a href="/categories/错误解决与优化-Err-n-Opt/" title="错误解决与优化 | Err_n_Opt">错误解决与优化 | Err_n_Opt<sup>10</sup></a></li>
+			<li><a href="/categories/错误解决与优化-Err-Opt/" title="错误解决与优化 | Err&amp;Opt">错误解决与优化 | Err&amp;Opt<sup>12</sup></a></li>
+		  
+		
+		  
+		
 		  
 		
 		  
@@ -428,7 +478,7 @@ Java应该是目前用的最多的编程语言，以前觉得Java老要点点点
   
   <div class="archiveslist">
     <p class="asidetitle"><a href="/archives">归档</a></p>
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">23</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">23</span></li></ul>
   </div>
 
 
@@ -436,7 +486,7 @@ Java应该是目前用的最多的编程语言，以前觉得Java老要点点点
   <div class="tagcloudlist">
     <p class="asidetitle">标签云</p>
     <div class="tagcloudlist clearfix">
-       <a href="/tags/CS/" style="font-size: 16.67px;">CS</a> <a href="/tags/Deep-Learning/" style="font-size: 13.33px;">Deep Learning</a> <a href="/tags/Git/" style="font-size: 11.11px;">Git</a> <a href="/tags/Hadoop/" style="font-size: 13.33px;">Hadoop</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/Latex/" style="font-size: 10px;">Latex</a> <a href="/tags/Linux/" style="font-size: 12.22px;">Linux</a> <a href="/tags/Python/" style="font-size: 18.89px;">Python</a> <a href="/tags/Spark/" style="font-size: 12.22px;">Spark</a> <a href="/tags/Summary/" style="font-size: 14.44px;">Summary</a> <a href="/tags/TensorFlow/" style="font-size: 10px;">TensorFlow</a> <a href="/tags/Web/" style="font-size: 12.22px;">Web</a> <a href="/tags/hexo/" style="font-size: 14.44px;">hexo</a> <a href="/tags/三国/" style="font-size: 10px;">三国</a> <a href="/tags/人文社科/" style="font-size: 10px;">人文社科</a> <a href="/tags/优化/" style="font-size: 10px;">优化</a> <a href="/tags/吃喝玩乐/" style="font-size: 10px;">吃喝玩乐</a> <a href="/tags/大数据/" style="font-size: 14.44px;">大数据</a> <a href="/tags/影视/" style="font-size: 11.11px;">影视</a> <a href="/tags/数据分析/" style="font-size: 15.56px;">数据分析</a> <a href="/tags/机器学习/" style="font-size: 20px;">机器学习</a> <a href="/tags/深度学习/" style="font-size: 15.56px;">深度学习</a> <a href="/tags/算法/" style="font-size: 12.22px;">算法</a> <a href="/tags/论文阅读/" style="font-size: 11.11px;">论文阅读</a> <a href="/tags/译文/" style="font-size: 12.22px;">译文</a> <a href="/tags/读书/" style="font-size: 17.78px;">读书</a> <a href="/tags/错误解决/" style="font-size: 12.22px;">错误解决</a> <a href="/tags/随笔/" style="font-size: 14.44px;">随笔</a>
+       <a href="/tags/CS/" style="font-size: 17px;">CS</a> <a href="/tags/Deep-Learning/" style="font-size: 17px;">Deep Learning</a> <a href="/tags/GPU/" style="font-size: 10px;">GPU</a> <a href="/tags/Git/" style="font-size: 11px;">Git</a> <a href="/tags/Hadoop/" style="font-size: 14px;">Hadoop</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/Latex/" style="font-size: 10px;">Latex</a> <a href="/tags/Linux/" style="font-size: 13px;">Linux</a> <a href="/tags/Python/" style="font-size: 19px;">Python</a> <a href="/tags/Spark/" style="font-size: 12px;">Spark</a> <a href="/tags/Summary/" style="font-size: 15px;">Summary</a> <a href="/tags/TensorFlow/" style="font-size: 11px;">TensorFlow</a> <a href="/tags/Web/" style="font-size: 12px;">Web</a> <a href="/tags/hexo/" style="font-size: 15px;">hexo</a> <a href="/tags/三国/" style="font-size: 10px;">三国</a> <a href="/tags/人文社科/" style="font-size: 10px;">人文社科</a> <a href="/tags/优化/" style="font-size: 10px;">优化</a> <a href="/tags/吃喝玩乐/" style="font-size: 10px;">吃喝玩乐</a> <a href="/tags/大数据/" style="font-size: 15px;">大数据</a> <a href="/tags/影视/" style="font-size: 11px;">影视</a> <a href="/tags/数据分析/" style="font-size: 16px;">数据分析</a> <a href="/tags/机器学习/" style="font-size: 20px;">机器学习</a> <a href="/tags/深度学习/" style="font-size: 17px;">深度学习</a> <a href="/tags/算法/" style="font-size: 12px;">算法</a> <a href="/tags/系统/" style="font-size: 10px;">系统</a> <a href="/tags/论文阅读/" style="font-size: 12px;">论文阅读</a> <a href="/tags/译文/" style="font-size: 12px;">译文</a> <a href="/tags/读书/" style="font-size: 18px;">读书</a> <a href="/tags/错误解决/" style="font-size: 12px;">错误解决</a> <a href="/tags/随笔/" style="font-size: 15px;">随笔</a>
     </div>
   </div>
 
@@ -549,7 +599,7 @@ Java应该是目前用的最多的编程语言，以前觉得Java老要点点点
 		<a href="/about" target="_blank" title="whatbeg">whatbeg</a>
 		
 		<br>
-		<span class="post-count">Total words: <span style="color:orange">287.9k</span></span>
+		<span class="post-count">Total words: <span style="color:orange">304.1k</span></span>
         <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
         <span id="busuanzi_container_site_pv">
         &nbsp;&nbsp;Total visits:&nbsp;<span style="color:orange" id="busuanzi_value_site_pv"></span>

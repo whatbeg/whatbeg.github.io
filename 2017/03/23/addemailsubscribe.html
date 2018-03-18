@@ -20,7 +20,7 @@
 <meta property="og:description" content="平时工作中常常会订阅一些业界日报，周报等，俨然已经成为了每天、每周获取业界消息的重要来源。于是突发奇想，想能不能自己的博客加上邮件订阅功能呢。
 一搜，发现有很多工具，也没多比较，根据这篇文章选择了MailChimp这个工具。功能比较强大比较老牌，界面也很炫酷，就是访问体验差了一些，不知道是不是网络的原因，有时候加载的延迟比较长，但是也在可接受范围内啦。鉴于上面的文章介绍的不是太详尽，这里介绍下自己">
 <meta property="og:image" content="http://7xsl28.com1.z0.glb.clouddn.com/mailchimp.png">
-<meta property="og:updated_time" content="2017-06-16T01:57:17.619Z">
+<meta property="og:updated_time" content="2018-03-17T09:17:42.477Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="给静态博客加上邮件订阅功能">
 <meta name="twitter:description" content="平时工作中常常会订阅一些业界日报，周报等，俨然已经成为了每天、每周获取业界消息的重要来源。于是突发奇想，想能不能自己的博客加上邮件订阅功能呢。
@@ -108,12 +108,23 @@
 </ul>
 <h3 id="注册账号"><a href="#注册账号" class="headerlink" title="注册账号"></a>注册账号</h3><p>首先注册MailChimp账号，在<a href="https://login.mailchimp.com/signup/" target="_blank" rel="external">这里</a>注册。一般每个月2000个订阅者以下免费。要注意的是，邮件地址（住址/公司地址，非email）后面会出现在订阅者订阅的时候的信息里，以及默认的邮件模板里，所以好好填为好，不要乱填。</p>
 <h3 id="创建一个邮件列表"><a href="#创建一个邮件列表" class="headerlink" title="创建一个邮件列表"></a>创建一个邮件列表</h3><p>我们是最终需要向邮件列表中所有用户发送订阅邮件，所以需要新建邮件列表，点面板上的List，然后Create List，然后填入一些必要信息，保存。填写发送邮箱的时候需要认证一下邮箱，点击Verify即可。</p>
-<h3 id="设定订阅点击栏"><a href="#设定订阅点击栏" class="headerlink" title="设定订阅点击栏"></a>设定订阅点击栏</h3><p>然后我们需要确定在你的网站/博客上做一个什么样的订阅入口，有直接显式的表单，也可以是重定向到一个专门填写信息表单的网址，我采用的是后者。<br>到刚刚创建的List的主界面，点击工具栏的”Signup forms”，选择一种表单形式，<br>如果是重定向的表单的话，选择”General forms”<br>如果是嵌入形式的直接填写提交的表单，选择”Embedded forms”<br>其他两种不太了解。</p>
+<h3 id="设定订阅点击栏"><a href="#设定订阅点击栏" class="headerlink" title="设定订阅点击栏"></a>设定订阅点击栏</h3><p>然后我们需要确定在你的网站/博客上做一个什么样的订阅入口，有直接显式的表单，也可以是重定向到一个专门填写信息表单的网址，我采用的是后者。
+到刚刚创建的List的主界面，点击工具栏的”Signup forms”，选择一种表单形式，
+如果是重定向的表单的话，选择”General forms”
+如果是嵌入形式的直接填写提交的表单，选择”Embedded forms”
+其他两种不太了解。</p>
 <p>然后就是修改相应你想显示的信息，保存完成。</p>
-<h3 id="创建邮件订阅活动Campaign及制定邮件格式"><a href="#创建邮件订阅活动Campaign及制定邮件格式" class="headerlink" title="创建邮件订阅活动Campaign及制定邮件格式"></a>创建邮件订阅活动Campaign及制定邮件格式</h3><p>设定了邮件列表之后，我们需要创建邮件订阅服务了，即创建自动发送邮件的服务。点击主面板Campaigns，创建活动，填写相应信息，期间要填写发送邮件的邮箱，建议注册一个新的邮箱，比如说<code>xx_noreply@some.com</code>格式的。<br>MailChimp提供了集中Campaign类型，由于博客的话一般是RSS订阅，我们可以直接利用RSS的内容来发送给Subscribers，所以我们选择RSS-Driven Campaign，填入博客RSS地址，然后设置频率，发送时间，接收者，一直点右下角的Next，然后选一个邮件模板，我选的是1 Column - Full Width。然后做一番设计，由于我们是发送RSS信息，所以需拖入一个RSS Items模块，然后可以做一些修改，比如修改对齐，字体等。期间有些信息是不能预览的，可以点击Preview and Test发送测试邮件看看效果。<br>最后Next到Confirm，确认后点击Start RSS，跳到Done And Done界面，表示一切完成，你的订阅List中的订阅者就会按时收到邮件了。<br><img src="http://7xsl28.com1.z0.glb.clouddn.com/mailchimp.png" alt=""></p>
-<h3 id="添加到hexo博客组件"><a href="#添加到hexo博客组件" class="headerlink" title="添加到hexo博客组件"></a>添加到hexo博客组件</h3><p>这里演示如何添加到你的hexo博客的侧边栏。<br>到hexo主目录的<code>\themes\YOUR_THEMES\layout\_widget</code>下添加emailist.ejs文件，写入<br><figure class="highlight erb"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"rsspart"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"http://eepurl.com/cHO5An"</span> <span class="attr">target</span>=<span class="string">"_blank"</span> <span class="attr">title</span>=<span class="string">"email"</span>&gt;</span><span class="tag">&lt;<span class="name">%=</span></span></span><span class="ruby"> _<span class="number">_</span>(<span class="string">'Email 订阅'</span>) </span><span class="xml"><span class="tag">%&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br></pre></td></tr></table></figure></p>
+<h3 id="创建邮件订阅活动Campaign及制定邮件格式"><a href="#创建邮件订阅活动Campaign及制定邮件格式" class="headerlink" title="创建邮件订阅活动Campaign及制定邮件格式"></a>创建邮件订阅活动Campaign及制定邮件格式</h3><p>设定了邮件列表之后，我们需要创建邮件订阅服务了，即创建自动发送邮件的服务。点击主面板Campaigns，创建活动，填写相应信息，期间要填写发送邮件的邮箱，建议注册一个新的邮箱，比如说<code>xx_noreply@some.com</code>格式的。
+MailChimp提供了集中Campaign类型，由于博客的话一般是RSS订阅，我们可以直接利用RSS的内容来发送给Subscribers，所以我们选择RSS-Driven Campaign，填入博客RSS地址，然后设置频率，发送时间，接收者，一直点右下角的Next，然后选一个邮件模板，我选的是1 Column - Full Width。然后做一番设计，由于我们是发送RSS信息，所以需拖入一个RSS Items模块，然后可以做一些修改，比如修改对齐，字体等。期间有些信息是不能预览的，可以点击Preview and Test发送测试邮件看看效果。
+最后Next到Confirm，确认后点击Start RSS，跳到Done And Done界面，表示一切完成，你的订阅List中的订阅者就会按时收到邮件了。
+<img src="http://7xsl28.com1.z0.glb.clouddn.com/mailchimp.png" alt=""></p>
+<h3 id="添加到hexo博客组件"><a href="#添加到hexo博客组件" class="headerlink" title="添加到hexo博客组件"></a>添加到hexo博客组件</h3><p>这里演示如何添加到你的hexo博客的侧边栏。
+到hexo主目录的<code>\themes\YOUR_THEMES\layout\_widget</code>下添加emailist.ejs文件，写入
+<figure class="highlight erb"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"rsspart"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"http://eepurl.com/cHO5An"</span> <span class="attr">target</span>=<span class="string">"_blank"</span> <span class="attr">title</span>=<span class="string">"email"</span>&gt;</span><span class="tag">&lt;<span class="name">%=</span></span></span><span class="ruby"> _<span class="number">_</span>(<span class="string">'Email 订阅'</span>) </span><span class="xml"><span class="tag">%&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br></pre></td></tr></table></figure></p>
 <p>这里我直接做成了和RSS订阅相同的形式，所以直接利用class=”rsspart”，具体可以根据自己的主题设置自己想要的格式。</p>
-<p>最后，欢迎订阅本博客，由于更新并不是太频繁，只做了月报，订阅地址：<br><a href="http://eepurl.com/cHO5An" target="_blank" rel="external">http://eepurl.com/cHO5An</a><br>或点击侧边栏订阅。</p>
+<p>最后，欢迎订阅本博客，由于更新并不是太频繁，只做了月报，订阅地址：
+<a href="http://eepurl.com/cHO5An" target="_blank" rel="external">http://eepurl.com/cHO5An</a>
+或点击侧边栏订阅。</p>
   
 	</div>
 
@@ -230,7 +241,7 @@
 
 <div class="article-categories">
   
-  <span></span> <a href="/categories/错误解决与优化-Err-n-Opt/">错误解决与优化 | Err_n_Opt</a>
+  <span></span> <a href="/categories/错误解决与优化-Err-Opt/">错误解决与优化 | Err&Opt</a>
   </div>
 
 
@@ -347,7 +358,7 @@
 		<ul>
 		
 		  
-			<li><a href="/categories/大数据系统与技术-Big-Data/" title="大数据系统与技术 | Big Data">大数据系统与技术 | Big Data<sup>8</sup></a></li>
+			<li><a href="/categories/大数据系统与技术-Big-Data/" title="大数据系统与技术 | Big Data">大数据系统与技术 | Big Data<sup>9</sup></a></li>
 		  
 		
 		  
@@ -387,7 +398,11 @@
 		  
 		
 		  
-			<li><a href="/categories/错误解决与优化-Err-n-Opt/" title="错误解决与优化 | Err_n_Opt">错误解决与优化 | Err_n_Opt<sup>10</sup></a></li>
+			<li><a href="/categories/错误解决与优化-Err-Opt/" title="错误解决与优化 | Err&amp;Opt">错误解决与优化 | Err&amp;Opt<sup>12</sup></a></li>
+		  
+		
+		  
+		
 		  
 		
 		  
@@ -401,7 +416,7 @@
   
   <div class="archiveslist">
     <p class="asidetitle"><a href="/archives">归档</a></p>
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">23</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">23</span></li></ul>
   </div>
 
 
@@ -409,7 +424,7 @@
   <div class="tagcloudlist">
     <p class="asidetitle">标签云</p>
     <div class="tagcloudlist clearfix">
-       <a href="/tags/CS/" style="font-size: 16.67px;">CS</a> <a href="/tags/Deep-Learning/" style="font-size: 13.33px;">Deep Learning</a> <a href="/tags/Git/" style="font-size: 11.11px;">Git</a> <a href="/tags/Hadoop/" style="font-size: 13.33px;">Hadoop</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/Latex/" style="font-size: 10px;">Latex</a> <a href="/tags/Linux/" style="font-size: 12.22px;">Linux</a> <a href="/tags/Python/" style="font-size: 18.89px;">Python</a> <a href="/tags/Spark/" style="font-size: 12.22px;">Spark</a> <a href="/tags/Summary/" style="font-size: 14.44px;">Summary</a> <a href="/tags/TensorFlow/" style="font-size: 10px;">TensorFlow</a> <a href="/tags/Web/" style="font-size: 12.22px;">Web</a> <a href="/tags/hexo/" style="font-size: 14.44px;">hexo</a> <a href="/tags/三国/" style="font-size: 10px;">三国</a> <a href="/tags/人文社科/" style="font-size: 10px;">人文社科</a> <a href="/tags/优化/" style="font-size: 10px;">优化</a> <a href="/tags/吃喝玩乐/" style="font-size: 10px;">吃喝玩乐</a> <a href="/tags/大数据/" style="font-size: 14.44px;">大数据</a> <a href="/tags/影视/" style="font-size: 11.11px;">影视</a> <a href="/tags/数据分析/" style="font-size: 15.56px;">数据分析</a> <a href="/tags/机器学习/" style="font-size: 20px;">机器学习</a> <a href="/tags/深度学习/" style="font-size: 15.56px;">深度学习</a> <a href="/tags/算法/" style="font-size: 12.22px;">算法</a> <a href="/tags/论文阅读/" style="font-size: 11.11px;">论文阅读</a> <a href="/tags/译文/" style="font-size: 12.22px;">译文</a> <a href="/tags/读书/" style="font-size: 17.78px;">读书</a> <a href="/tags/错误解决/" style="font-size: 12.22px;">错误解决</a> <a href="/tags/随笔/" style="font-size: 14.44px;">随笔</a>
+       <a href="/tags/CS/" style="font-size: 17px;">CS</a> <a href="/tags/Deep-Learning/" style="font-size: 17px;">Deep Learning</a> <a href="/tags/GPU/" style="font-size: 10px;">GPU</a> <a href="/tags/Git/" style="font-size: 11px;">Git</a> <a href="/tags/Hadoop/" style="font-size: 14px;">Hadoop</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/Latex/" style="font-size: 10px;">Latex</a> <a href="/tags/Linux/" style="font-size: 13px;">Linux</a> <a href="/tags/Python/" style="font-size: 19px;">Python</a> <a href="/tags/Spark/" style="font-size: 12px;">Spark</a> <a href="/tags/Summary/" style="font-size: 15px;">Summary</a> <a href="/tags/TensorFlow/" style="font-size: 11px;">TensorFlow</a> <a href="/tags/Web/" style="font-size: 12px;">Web</a> <a href="/tags/hexo/" style="font-size: 15px;">hexo</a> <a href="/tags/三国/" style="font-size: 10px;">三国</a> <a href="/tags/人文社科/" style="font-size: 10px;">人文社科</a> <a href="/tags/优化/" style="font-size: 10px;">优化</a> <a href="/tags/吃喝玩乐/" style="font-size: 10px;">吃喝玩乐</a> <a href="/tags/大数据/" style="font-size: 15px;">大数据</a> <a href="/tags/影视/" style="font-size: 11px;">影视</a> <a href="/tags/数据分析/" style="font-size: 16px;">数据分析</a> <a href="/tags/机器学习/" style="font-size: 20px;">机器学习</a> <a href="/tags/深度学习/" style="font-size: 17px;">深度学习</a> <a href="/tags/算法/" style="font-size: 12px;">算法</a> <a href="/tags/系统/" style="font-size: 10px;">系统</a> <a href="/tags/论文阅读/" style="font-size: 12px;">论文阅读</a> <a href="/tags/译文/" style="font-size: 12px;">译文</a> <a href="/tags/读书/" style="font-size: 18px;">读书</a> <a href="/tags/错误解决/" style="font-size: 12px;">错误解决</a> <a href="/tags/随笔/" style="font-size: 15px;">随笔</a>
     </div>
   </div>
 
@@ -522,7 +537,7 @@
 		<a href="/about" target="_blank" title="whatbeg">whatbeg</a>
 		
 		<br>
-		<span class="post-count">Total words: <span style="color:orange">287.9k</span></span>
+		<span class="post-count">Total words: <span style="color:orange">304.1k</span></span>
         <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
         <span id="busuanzi_container_site_pv">
         &nbsp;&nbsp;Total visits:&nbsp;<span style="color:orange" id="busuanzi_value_site_pv"></span>

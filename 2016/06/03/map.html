@@ -11,7 +11,8 @@
     
 
     
-    <meta name="description" content="最近找到一个网站，http://www.pm25x.com/，发现上面有全国基本所有市的实时空气质量指数（AQI），就将它们爬了下来，存入了xlsx文件和CSV文件。又想着要利用一下才好，于是想到了描绘全国城市AQI分布图。这时就需要画包括省市的中国地图。最终找到了如下几种方式来根据数据描绘地图：
+    <meta name="description" content="最近找到一个网站，http://www.pm25x.com/，发现上面有全国基本所有市的实时空气质量指数（AQI），就将它们爬了下来，存入了xlsx文件和CSV文件。又想着要利用一下才好，于是想到了描绘全国城市AQI分布图。这时就需要画包括省市的中国地图。
+最终找到了如下几种方式来根据数据描绘地图：
 
 SVG格式处理来画图，参照《鲜活的数据》
 R语言
@@ -23,7 +24,8 @@ Excel
 <meta property="og:title" content="处理地图数据的6种方法">
 <meta property="og:url" content="http://whatbeg.com/2016/06/03/map.html">
 <meta property="og:site_name" content="Whatbeg's blog">
-<meta property="og:description" content="最近找到一个网站，http://www.pm25x.com/，发现上面有全国基本所有市的实时空气质量指数（AQI），就将它们爬了下来，存入了xlsx文件和CSV文件。又想着要利用一下才好，于是想到了描绘全国城市AQI分布图。这时就需要画包括省市的中国地图。最终找到了如下几种方式来根据数据描绘地图：
+<meta property="og:description" content="最近找到一个网站，http://www.pm25x.com/，发现上面有全国基本所有市的实时空气质量指数（AQI），就将它们爬了下来，存入了xlsx文件和CSV文件。又想着要利用一下才好，于是想到了描绘全国城市AQI分布图。这时就需要画包括省市的中国地图。
+最终找到了如下几种方式来根据数据描绘地图：
 
 SVG格式处理来画图，参照《鲜活的数据》
 R语言
@@ -35,7 +37,8 @@ Excel
 <meta property="og:updated_time" content="2016-06-03T06:56:51.593Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="处理地图数据的6种方法">
-<meta name="twitter:description" content="最近找到一个网站，http://www.pm25x.com/，发现上面有全国基本所有市的实时空气质量指数（AQI），就将它们爬了下来，存入了xlsx文件和CSV文件。又想着要利用一下才好，于是想到了描绘全国城市AQI分布图。这时就需要画包括省市的中国地图。最终找到了如下几种方式来根据数据描绘地图：
+<meta name="twitter:description" content="最近找到一个网站，http://www.pm25x.com/，发现上面有全国基本所有市的实时空气质量指数（AQI），就将它们爬了下来，存入了xlsx文件和CSV文件。又想着要利用一下才好，于是想到了描绘全国城市AQI分布图。这时就需要画包括省市的中国地图。
+最终找到了如下几种方式来根据数据描绘地图：
 
 SVG格式处理来画图，参照《鲜活的数据》
 R语言
@@ -115,7 +118,8 @@ Excel
 		
 		</div>
 		
-		<p>最近找到一个网站，<a href="http://www.pm25x.com/" target="_blank" rel="external">http://www.pm25x.com/</a>，发现上面有全国基本所有市的实时空气质量指数（AQI），就将它们爬了下来，存入了xlsx文件和CSV文件。又想着要利用一下才好，于是想到了描绘全国城市AQI分布图。这时就需要画包括省市的中国地图。<br>最终找到了如下几种方式来根据数据描绘地图：</p>
+		<p>最近找到一个网站，<a href="http://www.pm25x.com/" target="_blank" rel="external">http://www.pm25x.com/</a>，发现上面有全国基本所有市的实时空气质量指数（AQI），就将它们爬了下来，存入了xlsx文件和CSV文件。又想着要利用一下才好，于是想到了描绘全国城市AQI分布图。这时就需要画包括省市的中国地图。
+最终找到了如下几种方式来根据数据描绘地图：</p>
 <ul>
 <li>SVG格式处理来画图，参照《鲜活的数据》</li>
 <li>R语言</li>
@@ -125,15 +129,20 @@ Excel
 <li>其他画图工具</li>
 </ul>
 <h3 id="SVG"><a href="#SVG" class="headerlink" title="SVG"></a>SVG</h3><p>SVG方法在Wiki Creative Commons上没有找到市一级的svg格式的中国地图，并且他那个id我看不懂，不知道代表什么，查了一下中国行政区划编码，没有40开头的，而我下的某一个svg中国地图中有个id是’_40…’，所以排除是行政区划编码，那我就不知道是什么意思了，排除此方法。</p>
-<h3 id="R语言"><a href="#R语言" class="headerlink" title="R语言"></a>R语言</h3><p>R语言有一定的地图处理能力，相信应该可以搞定，但是此前并未接触过R语言，重新学来解决一个简单的问题似乎有点杀鸡用牛刀的感觉，划不来。排除。<br>关于R语言画地图我倒是看到这几篇文章[1],[2],[3]，收藏下。</p>
-<h3 id="地图慧"><a href="#地图慧" class="headerlink" title="地图慧"></a>地图慧</h3><p>地图慧[4]提供在线地图制作，可以精确到市县一级，提供上传xlsx和CSV格式的数据，利用收集的AQI数据做的一副全国城市AQI分布图如下：<br><img src="http://7xsl28.com1.z0.glb.clouddn.com/aqi.png" alt="全国城市AQI指数分布-5月20日晚"></p>
+<h3 id="R语言"><a href="#R语言" class="headerlink" title="R语言"></a>R语言</h3><p>R语言有一定的地图处理能力，相信应该可以搞定，但是此前并未接触过R语言，重新学来解决一个简单的问题似乎有点杀鸡用牛刀的感觉，划不来。排除。
+关于R语言画地图我倒是看到这几篇文章[1],[2],[3]，收藏下。</p>
+<h3 id="地图慧"><a href="#地图慧" class="headerlink" title="地图慧"></a>地图慧</h3><p>地图慧[4]提供在线地图制作，可以精确到市县一级，提供上传xlsx和CSV格式的数据，利用收集的AQI数据做的一副全国城市AQI分布图如下：
+<img src="http://7xsl28.com1.z0.glb.clouddn.com/aqi.png" alt="全国城市AQI指数分布-5月20日晚"></p>
 <h3 id="Excel"><a href="#Excel" class="headerlink" title="Excel"></a>Excel</h3><p>采用</p>
 <ul>
 <li>OfficeMapFree_setup(2.2007.0.2.1)</li>
-<li>Microsoft Office Excel 2007<br>可以画，没试过，见[5]，[6]<br>WPS好像不得行，在线的有Google Sheet.</li>
+<li>Microsoft Office Excel 2007
+可以画，没试过，见[5]，[6]
+WPS好像不得行，在线的有Google Sheet.</li>
 </ul>
 <h3 id="地图API"><a href="#地图API" class="headerlink" title="地图API"></a>地图API</h3><p>谷歌地图，百度地图，雅虎地图，Bing地图都有API可供调用，只是需要去了解它们的API，并具有一定的编程技能。</p>
-<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><p>其他制作软件大部分都是英文的，而且有些只能画美国地图，对中国地图来说不是很适合，可以考虑用他们分析美国数据或者世界地图数据，对此问题时间成本太高，排除。<br>不过仍然值得把它们列一下，它们基本来自《鲜活的数据》这本书。</p>
+<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><p>其他制作软件大部分都是英文的，而且有些只能画美国地图，对中国地图来说不是很适合，可以考虑用他们分析美国数据或者世界地图数据，对此问题时间成本太高，排除。
+不过仍然值得把它们列一下，它们基本来自《鲜活的数据》这本书。</p>
 <ul>
 <li>Modest Maps</li>
 <li><a href="http://www.polymaps.org/" target="_blank" rel="external">Polymaps</a></li>
@@ -141,7 +150,13 @@ Excel
 <li>Many Eyes</li>
 <li>GeoCommons</li>
 </ul>
-<h3 id="资料"><a href="#资料" class="headerlink" title="资料"></a>资料</h3><p>[1] <a href="http://cos.name/2013/01/drawing-map-in-r-era/" target="_blank" rel="external">http://cos.name/2013/01/drawing-map-in-r-era/</a><br>[2] <a href="http://cos.name/2009/07/drawing-china-map-using-r/" target="_blank" rel="external">http://cos.name/2009/07/drawing-china-map-using-r/</a><br>[3] <a href="http://xccds1977.blogspot.com/2012/07/blog-post_26.html" target="_blank" rel="external">http://xccds1977.blogspot.com/2012/07/blog-post_26.html</a><br>[4] <a href="http://www.dituhui.com/" target="_blank" rel="external">地图慧</a><br>[5] <a href="http://jingyan.baidu.com/article/91f5db1bee10e91c7f05e39d.html" target="_blank" rel="external">Excel 地图</a><br>[6] <a href="http://www.36dsj.com/archives/12053" target="_blank" rel="external">Excel 百度迁徙地图</a><br>[7] <a href="http://flowingdata.com/" target="_blank" rel="external">Flowing Data</a></p>
+<h3 id="资料"><a href="#资料" class="headerlink" title="资料"></a>资料</h3><p>[1] <a href="http://cos.name/2013/01/drawing-map-in-r-era/" target="_blank" rel="external">http://cos.name/2013/01/drawing-map-in-r-era/</a>
+[2] <a href="http://cos.name/2009/07/drawing-china-map-using-r/" target="_blank" rel="external">http://cos.name/2009/07/drawing-china-map-using-r/</a>
+[3] <a href="http://xccds1977.blogspot.com/2012/07/blog-post_26.html" target="_blank" rel="external">http://xccds1977.blogspot.com/2012/07/blog-post_26.html</a>
+[4] <a href="http://www.dituhui.com/" target="_blank" rel="external">地图慧</a>
+[5] <a href="http://jingyan.baidu.com/article/91f5db1bee10e91c7f05e39d.html" target="_blank" rel="external">Excel 地图</a>
+[6] <a href="http://www.36dsj.com/archives/12053" target="_blank" rel="external">Excel 百度迁徙地图</a>
+[7] <a href="http://flowingdata.com/" target="_blank" rel="external">Flowing Data</a></p>
   
 	</div>
 
@@ -375,7 +390,7 @@ Excel
 		<ul>
 		
 		  
-			<li><a href="/categories/大数据系统与技术-Big-Data/" title="大数据系统与技术 | Big Data">大数据系统与技术 | Big Data<sup>8</sup></a></li>
+			<li><a href="/categories/大数据系统与技术-Big-Data/" title="大数据系统与技术 | Big Data">大数据系统与技术 | Big Data<sup>9</sup></a></li>
 		  
 		
 		  
@@ -415,7 +430,11 @@ Excel
 		  
 		
 		  
-			<li><a href="/categories/错误解决与优化-Err-n-Opt/" title="错误解决与优化 | Err_n_Opt">错误解决与优化 | Err_n_Opt<sup>10</sup></a></li>
+			<li><a href="/categories/错误解决与优化-Err-Opt/" title="错误解决与优化 | Err&amp;Opt">错误解决与优化 | Err&amp;Opt<sup>12</sup></a></li>
+		  
+		
+		  
+		
 		  
 		
 		  
@@ -429,7 +448,7 @@ Excel
   
   <div class="archiveslist">
     <p class="asidetitle"><a href="/archives">归档</a></p>
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">23</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">23</span></li></ul>
   </div>
 
 
@@ -437,7 +456,7 @@ Excel
   <div class="tagcloudlist">
     <p class="asidetitle">标签云</p>
     <div class="tagcloudlist clearfix">
-       <a href="/tags/CS/" style="font-size: 16.67px;">CS</a> <a href="/tags/Deep-Learning/" style="font-size: 13.33px;">Deep Learning</a> <a href="/tags/Git/" style="font-size: 11.11px;">Git</a> <a href="/tags/Hadoop/" style="font-size: 13.33px;">Hadoop</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/Latex/" style="font-size: 10px;">Latex</a> <a href="/tags/Linux/" style="font-size: 12.22px;">Linux</a> <a href="/tags/Python/" style="font-size: 18.89px;">Python</a> <a href="/tags/Spark/" style="font-size: 12.22px;">Spark</a> <a href="/tags/Summary/" style="font-size: 14.44px;">Summary</a> <a href="/tags/TensorFlow/" style="font-size: 10px;">TensorFlow</a> <a href="/tags/Web/" style="font-size: 12.22px;">Web</a> <a href="/tags/hexo/" style="font-size: 14.44px;">hexo</a> <a href="/tags/三国/" style="font-size: 10px;">三国</a> <a href="/tags/人文社科/" style="font-size: 10px;">人文社科</a> <a href="/tags/优化/" style="font-size: 10px;">优化</a> <a href="/tags/吃喝玩乐/" style="font-size: 10px;">吃喝玩乐</a> <a href="/tags/大数据/" style="font-size: 14.44px;">大数据</a> <a href="/tags/影视/" style="font-size: 11.11px;">影视</a> <a href="/tags/数据分析/" style="font-size: 15.56px;">数据分析</a> <a href="/tags/机器学习/" style="font-size: 20px;">机器学习</a> <a href="/tags/深度学习/" style="font-size: 15.56px;">深度学习</a> <a href="/tags/算法/" style="font-size: 12.22px;">算法</a> <a href="/tags/论文阅读/" style="font-size: 11.11px;">论文阅读</a> <a href="/tags/译文/" style="font-size: 12.22px;">译文</a> <a href="/tags/读书/" style="font-size: 17.78px;">读书</a> <a href="/tags/错误解决/" style="font-size: 12.22px;">错误解决</a> <a href="/tags/随笔/" style="font-size: 14.44px;">随笔</a>
+       <a href="/tags/CS/" style="font-size: 17px;">CS</a> <a href="/tags/Deep-Learning/" style="font-size: 17px;">Deep Learning</a> <a href="/tags/GPU/" style="font-size: 10px;">GPU</a> <a href="/tags/Git/" style="font-size: 11px;">Git</a> <a href="/tags/Hadoop/" style="font-size: 14px;">Hadoop</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/Latex/" style="font-size: 10px;">Latex</a> <a href="/tags/Linux/" style="font-size: 13px;">Linux</a> <a href="/tags/Python/" style="font-size: 19px;">Python</a> <a href="/tags/Spark/" style="font-size: 12px;">Spark</a> <a href="/tags/Summary/" style="font-size: 15px;">Summary</a> <a href="/tags/TensorFlow/" style="font-size: 11px;">TensorFlow</a> <a href="/tags/Web/" style="font-size: 12px;">Web</a> <a href="/tags/hexo/" style="font-size: 15px;">hexo</a> <a href="/tags/三国/" style="font-size: 10px;">三国</a> <a href="/tags/人文社科/" style="font-size: 10px;">人文社科</a> <a href="/tags/优化/" style="font-size: 10px;">优化</a> <a href="/tags/吃喝玩乐/" style="font-size: 10px;">吃喝玩乐</a> <a href="/tags/大数据/" style="font-size: 15px;">大数据</a> <a href="/tags/影视/" style="font-size: 11px;">影视</a> <a href="/tags/数据分析/" style="font-size: 16px;">数据分析</a> <a href="/tags/机器学习/" style="font-size: 20px;">机器学习</a> <a href="/tags/深度学习/" style="font-size: 17px;">深度学习</a> <a href="/tags/算法/" style="font-size: 12px;">算法</a> <a href="/tags/系统/" style="font-size: 10px;">系统</a> <a href="/tags/论文阅读/" style="font-size: 12px;">论文阅读</a> <a href="/tags/译文/" style="font-size: 12px;">译文</a> <a href="/tags/读书/" style="font-size: 18px;">读书</a> <a href="/tags/错误解决/" style="font-size: 12px;">错误解决</a> <a href="/tags/随笔/" style="font-size: 15px;">随笔</a>
     </div>
   </div>
 
@@ -550,7 +569,7 @@ Excel
 		<a href="/about" target="_blank" title="whatbeg">whatbeg</a>
 		
 		<br>
-		<span class="post-count">Total words: <span style="color:orange">287.9k</span></span>
+		<span class="post-count">Total words: <span style="color:orange">304.1k</span></span>
         <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
         <span id="busuanzi_container_site_pv">
         &nbsp;&nbsp;Total visits:&nbsp;<span style="color:orange" id="busuanzi_value_site_pv"></span>

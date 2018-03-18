@@ -104,14 +104,34 @@
 <p>关键词:    朴素贝叶斯; 集成学习; Adaboost; 提升方法; 交叉验证</p>
 <h2 id="朴素贝叶斯算法简介"><a href="#朴素贝叶斯算法简介" class="headerlink" title="朴素贝叶斯算法简介"></a>朴素贝叶斯算法简介</h2><p>朴素贝叶斯算法(Naïve Bayes)算法是基于贝叶斯定理和特征条件独立的假设的一种分类方法。对于给定的训练数据集，首先基于特征条件独立假设学习输入/输出的联合概率分布，然后基于此模型，对给定的输入x，利用贝叶斯定理求出后验概率最大的输出y. 朴素贝叶斯法实现简单，并且也有不俗的学习与预测的效率，是一种常用的方法，也被列入“机器学习十大算法”之一。</p>
 <h2 id="离散特征和连续特征"><a href="#离散特征和连续特征" class="headerlink" title="离散特征和连续特征"></a>离散特征和连续特征</h2><p>利用朴素贝叶斯法进行分类我们采用极大似然法对条件概率和先验概率进行估计，然后利用此条件概率和先验概率对测试集样本进行预测，所以我们需要得到$P(Y=ck)$和$P(Xj=a_{jl} | Y=ck)$，然而，对于离散值和连续值而言两个条件概率的处理方法是不同的。</p>
-<h3 id="离散值特征的处理"><a href="#离散值特征的处理" class="headerlink" title="离散值特征的处理"></a>离散值特征的处理</h3><p>在离散特征中，由于属性的取值情况总数固定，我们可以采用频数进行估计，并做一定的拉普拉斯平滑，即有<br><img src="http://7xsl28.com1.z0.glb.clouddn.com/adanb1.png" alt=""><br>进行拉普拉斯平滑后，先验概率的贝叶斯估计为<br><img src="http://7xsl28.com1.z0.glb.clouddn.com/adanb2.png" alt=""></p>
-<h3 id="连续值特征的处理"><a href="#连续值特征的处理" class="headerlink" title="连续值特征的处理"></a>连续值特征的处理</h3><p>在处理连续值特征时，假定连续值属性服从均值为μ，标准差为σ的高斯分布，由下式定义<br><img src="http://7xsl28.com1.z0.glb.clouddn.com/adanb3.png" alt=""><br>则$P(x_k | C_i) = g(x_k, {\mu}_C, {\sigma}_C)$<br>只要计算出训练样本中连续值属性属于各个类别的数据样本的均值和标准差，我们就可以利用上述公式算得一个相对的概率，虽然上式的P可能不在0到1之间，但是并不影响最后后验概率的比较结果。</p>
-<h2 id="朴素贝叶斯以及提升方法的实现"><a href="#朴素贝叶斯以及提升方法的实现" class="headerlink" title="朴素贝叶斯以及提升方法的实现"></a>朴素贝叶斯以及提升方法的实现</h2><h3 id="提升方法"><a href="#提升方法" class="headerlink" title="提升方法"></a>提升方法</h3><p>提升方法的基本思想是提高前一个弱分类器分错的样本的权重，使接下来的弱分类器能够学习到这个“残差”，相当于把分类问题交给多个弱分类器分而治之，每个分类器把前面分类器不擅长的数据学好，最后大家一起表决，表决时错误率低的分类器的分类结果应该占以更大的比重，通过这种方式，得到“三个臭皮匠赛过诸葛亮”的效果。Adaboost也是一直以来被使用最广泛的提升算法。其他的boosting方法还有gradient boost，boosting tree等。<br>Adaboost算法的伪代码如下<br><img src="http://7xsl28.com1.z0.glb.clouddn.com/adanb4.png" alt=""></p>
-<h3 id="提升方法权重调整"><a href="#提升方法权重调整" class="headerlink" title="提升方法权重调整"></a>提升方法权重调整</h3><p>由于提升方法有一个数据样本的权重调整过程，我们需要探索如何将权重对模型的训练的作用体现出来，有如下两种方法可以达到效果。<br>一是重采样法，对于一些无法接受带权样本的及学习算法，适合用“重采样法”进行处理。方法大致过程是，根据各个样本的权重，对训练数据进行重采样，初始时样本权重一样，每个样本被采样到的概率一致，每次从N个原始的训练样本中按照权重采样N个样本作为训练集，然后计算训练集错误率，然后调整权重，重复采样，集成多个基学习器。<br>二是重赋权法，对每个样本附加一个权重，对离散值来说，在计算条件概率的贝叶斯估计时，不再是简单将其出现次数相加，而是带有各个样本权重的相加；对于连续值来说，样本权重的增大表现为均值向该样本做更多的偏移，实际上可以直接提高该样本该属性该连续值的数值大小来实现。<br>笔者开始采用的是重采样法实现Adaboost训练，因为这种方式简单，不需要改变数据的值，但是后来发现，这种方式做出来效果并不好，甚至随着基分类器的增多，Adaboost的效果呈下降趋势！仔细检查过代码，应该没有问题，翻阅资料得知，两种方法除了有固定的可使用的场景外，还有各自的适用场景，样本集重采样法(resampling)对于不稳定的算法能够取得很好的效果，不稳定算法指的是样本集的微小变动就能够对结果有很大的影响的算法，很遗憾，朴素贝叶斯是稳定的算法，并且其估计的参数少，对缺失数据都不是很敏感。还有一些算法如Linear Model, SVM, kNN等都是稳定的算法，而不稳定算法的代表是决策树和神经网络两位。<br>最后，迫于效果太差，于是又转用了重新赋权的方式，将权重嵌入到数据中，最终结果显示还好，Adaboost较单个朴素贝叶斯基分类器有提升，虽然提升并不是很大。<br>代码中两种实现方式都有，最终测试使用的adaboost_weight(), get_model_weight(),get_err_rate_weight()等方法，即重赋权的方法。</p>
-<h2 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h2><p>最终在两个数据集上都做了10折交叉验证实验，实施交叉验证前程序都将整个数据集顺序打乱，所以每次运行程序的结果都会有变化，但是总体上还是能够体现结果，选取某次实验结果如下表<br><img src="http://7xsl28.com1.z0.glb.clouddn.com/adanb5.png" alt=""></p>
-<p>为了更加直观地观察Adaboost的提升效果，将准确率随Adaboost基分类器数的增加呈现的趋势通过图像展示出来，方便观察，下面图1，图2分别给出在两个数据集上的提升情况<br><img src="http://7xsl28.com1.z0.glb.clouddn.com/adanb6.png" alt=""><br><img src="http://7xsl28.com1.z0.glb.clouddn.com/adanb7.png" alt=""></p>
-<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>交叉验证实验结果证明Adaboost能够以朴素贝叶斯分类器进行集成学习，并提升单个朴素贝叶斯分类器的效果，但是由于朴素贝叶斯已经是一个不错的分类器，单个朴素贝叶斯分类器的交叉验证平均准确率已经能够达到0.74-0.75，尤其是第二个数据集，由于数据集较大，所以概率估计和分类效率都较为稳定，使得单个NB Classifier准确率能够达到很高，所以提升效果显得不那么明显，Adaboost可能更适合于提升较弱的分类器的效果。<br>另外，虽然朴素贝叶斯的准确率很高，但是他是有瓶颈的，它的模型完全是根据数据集而得来，所以感觉没有什么需要学习的，完全是统计的方法，并且它有一个固有的弱点就是做了属性独立性假设，而现实条件往往不能满足属性独立性，尤其是数据属性冗余性大的时候，朴素贝叶斯的效果不会太好。</p>
-<h2 id="Reference-and-Links"><a href="#Reference-and-Links" class="headerlink" title="Reference and Links"></a>Reference and Links</h2><p>[1] <a href="http://cmp.felk.cvut.cz/~sochmj1/adaboost_talk.pdf" target="_blank" rel="external">Adaboost Introduction Slides</a><br>[2]  李航.统计学习方法.<br>[3]     Jiawei Han et. al.数据挖掘：概念与技术.<br>[4]  周志华.机器学习.</p>
+<h3 id="离散值特征的处理"><a href="#离散值特征的处理" class="headerlink" title="离散值特征的处理"></a>离散值特征的处理</h3><p>在离散特征中，由于属性的取值情况总数固定，我们可以采用频数进行估计，并做一定的拉普拉斯平滑，即有
+<img src="http://7xsl28.com1.z0.glb.clouddn.com/adanb1.png" alt="">
+进行拉普拉斯平滑后，先验概率的贝叶斯估计为
+<img src="http://7xsl28.com1.z0.glb.clouddn.com/adanb2.png" alt=""></p>
+<h3 id="连续值特征的处理"><a href="#连续值特征的处理" class="headerlink" title="连续值特征的处理"></a>连续值特征的处理</h3><p>在处理连续值特征时，假定连续值属性服从均值为μ，标准差为σ的高斯分布，由下式定义
+<img src="http://7xsl28.com1.z0.glb.clouddn.com/adanb3.png" alt="">
+则$P(x_k | C_i) = g(x_k, {\mu}_C, {\sigma}_C)$
+只要计算出训练样本中连续值属性属于各个类别的数据样本的均值和标准差，我们就可以利用上述公式算得一个相对的概率，虽然上式的P可能不在0到1之间，但是并不影响最后后验概率的比较结果。</p>
+<h2 id="朴素贝叶斯以及提升方法的实现"><a href="#朴素贝叶斯以及提升方法的实现" class="headerlink" title="朴素贝叶斯以及提升方法的实现"></a>朴素贝叶斯以及提升方法的实现</h2><h3 id="提升方法"><a href="#提升方法" class="headerlink" title="提升方法"></a>提升方法</h3><p>提升方法的基本思想是提高前一个弱分类器分错的样本的权重，使接下来的弱分类器能够学习到这个“残差”，相当于把分类问题交给多个弱分类器分而治之，每个分类器把前面分类器不擅长的数据学好，最后大家一起表决，表决时错误率低的分类器的分类结果应该占以更大的比重，通过这种方式，得到“三个臭皮匠赛过诸葛亮”的效果。Adaboost也是一直以来被使用最广泛的提升算法。其他的boosting方法还有gradient boost，boosting tree等。
+Adaboost算法的伪代码如下
+<img src="http://7xsl28.com1.z0.glb.clouddn.com/adanb4.png" alt=""></p>
+<h3 id="提升方法权重调整"><a href="#提升方法权重调整" class="headerlink" title="提升方法权重调整"></a>提升方法权重调整</h3><p>由于提升方法有一个数据样本的权重调整过程，我们需要探索如何将权重对模型的训练的作用体现出来，有如下两种方法可以达到效果。
+一是重采样法，对于一些无法接受带权样本的及学习算法，适合用“重采样法”进行处理。方法大致过程是，根据各个样本的权重，对训练数据进行重采样，初始时样本权重一样，每个样本被采样到的概率一致，每次从N个原始的训练样本中按照权重采样N个样本作为训练集，然后计算训练集错误率，然后调整权重，重复采样，集成多个基学习器。
+二是重赋权法，对每个样本附加一个权重，对离散值来说，在计算条件概率的贝叶斯估计时，不再是简单将其出现次数相加，而是带有各个样本权重的相加；对于连续值来说，样本权重的增大表现为均值向该样本做更多的偏移，实际上可以直接提高该样本该属性该连续值的数值大小来实现。
+笔者开始采用的是重采样法实现Adaboost训练，因为这种方式简单，不需要改变数据的值，但是后来发现，这种方式做出来效果并不好，甚至随着基分类器的增多，Adaboost的效果呈下降趋势！仔细检查过代码，应该没有问题，翻阅资料得知，两种方法除了有固定的可使用的场景外，还有各自的适用场景，样本集重采样法(resampling)对于不稳定的算法能够取得很好的效果，不稳定算法指的是样本集的微小变动就能够对结果有很大的影响的算法，很遗憾，朴素贝叶斯是稳定的算法，并且其估计的参数少，对缺失数据都不是很敏感。还有一些算法如Linear Model, SVM, kNN等都是稳定的算法，而不稳定算法的代表是决策树和神经网络两位。
+最后，迫于效果太差，于是又转用了重新赋权的方式，将权重嵌入到数据中，最终结果显示还好，Adaboost较单个朴素贝叶斯基分类器有提升，虽然提升并不是很大。
+代码中两种实现方式都有，最终测试使用的adaboost_weight(), get_model_weight(),get_err_rate_weight()等方法，即重赋权的方法。</p>
+<h2 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h2><p>最终在两个数据集上都做了10折交叉验证实验，实施交叉验证前程序都将整个数据集顺序打乱，所以每次运行程序的结果都会有变化，但是总体上还是能够体现结果，选取某次实验结果如下表
+<img src="http://7xsl28.com1.z0.glb.clouddn.com/adanb5.png" alt=""></p>
+<p>为了更加直观地观察Adaboost的提升效果，将准确率随Adaboost基分类器数的增加呈现的趋势通过图像展示出来，方便观察，下面图1，图2分别给出在两个数据集上的提升情况
+<img src="http://7xsl28.com1.z0.glb.clouddn.com/adanb6.png" alt="">
+<img src="http://7xsl28.com1.z0.glb.clouddn.com/adanb7.png" alt=""></p>
+<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>交叉验证实验结果证明Adaboost能够以朴素贝叶斯分类器进行集成学习，并提升单个朴素贝叶斯分类器的效果，但是由于朴素贝叶斯已经是一个不错的分类器，单个朴素贝叶斯分类器的交叉验证平均准确率已经能够达到0.74-0.75，尤其是第二个数据集，由于数据集较大，所以概率估计和分类效率都较为稳定，使得单个NB Classifier准确率能够达到很高，所以提升效果显得不那么明显，Adaboost可能更适合于提升较弱的分类器的效果。
+另外，虽然朴素贝叶斯的准确率很高，但是他是有瓶颈的，它的模型完全是根据数据集而得来，所以感觉没有什么需要学习的，完全是统计的方法，并且它有一个固有的弱点就是做了属性独立性假设，而现实条件往往不能满足属性独立性，尤其是数据属性冗余性大的时候，朴素贝叶斯的效果不会太好。</p>
+<h2 id="Reference-and-Links"><a href="#Reference-and-Links" class="headerlink" title="Reference and Links"></a>Reference and Links</h2><p>[1] <a href="http://cmp.felk.cvut.cz/~sochmj1/adaboost_talk.pdf" target="_blank" rel="external">Adaboost Introduction Slides</a>
+[2]  李航.统计学习方法.
+[3]     Jiawei Han et. al.数据挖掘：概念与技术.
+[4]  周志华.机器学习.</p>
   
 	</div>
 
@@ -345,7 +365,7 @@
 		<ul>
 		
 		  
-			<li><a href="/categories/大数据系统与技术-Big-Data/" title="大数据系统与技术 | Big Data">大数据系统与技术 | Big Data<sup>8</sup></a></li>
+			<li><a href="/categories/大数据系统与技术-Big-Data/" title="大数据系统与技术 | Big Data">大数据系统与技术 | Big Data<sup>9</sup></a></li>
 		  
 		
 		  
@@ -385,7 +405,11 @@
 		  
 		
 		  
-			<li><a href="/categories/错误解决与优化-Err-n-Opt/" title="错误解决与优化 | Err_n_Opt">错误解决与优化 | Err_n_Opt<sup>10</sup></a></li>
+			<li><a href="/categories/错误解决与优化-Err-Opt/" title="错误解决与优化 | Err&amp;Opt">错误解决与优化 | Err&amp;Opt<sup>12</sup></a></li>
+		  
+		
+		  
+		
 		  
 		
 		  
@@ -399,7 +423,7 @@
   
   <div class="archiveslist">
     <p class="asidetitle"><a href="/archives">归档</a></p>
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">23</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">23</span></li></ul>
   </div>
 
 
@@ -407,7 +431,7 @@
   <div class="tagcloudlist">
     <p class="asidetitle">标签云</p>
     <div class="tagcloudlist clearfix">
-       <a href="/tags/CS/" style="font-size: 16.67px;">CS</a> <a href="/tags/Deep-Learning/" style="font-size: 13.33px;">Deep Learning</a> <a href="/tags/Git/" style="font-size: 11.11px;">Git</a> <a href="/tags/Hadoop/" style="font-size: 13.33px;">Hadoop</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/Latex/" style="font-size: 10px;">Latex</a> <a href="/tags/Linux/" style="font-size: 12.22px;">Linux</a> <a href="/tags/Python/" style="font-size: 18.89px;">Python</a> <a href="/tags/Spark/" style="font-size: 12.22px;">Spark</a> <a href="/tags/Summary/" style="font-size: 14.44px;">Summary</a> <a href="/tags/TensorFlow/" style="font-size: 10px;">TensorFlow</a> <a href="/tags/Web/" style="font-size: 12.22px;">Web</a> <a href="/tags/hexo/" style="font-size: 14.44px;">hexo</a> <a href="/tags/三国/" style="font-size: 10px;">三国</a> <a href="/tags/人文社科/" style="font-size: 10px;">人文社科</a> <a href="/tags/优化/" style="font-size: 10px;">优化</a> <a href="/tags/吃喝玩乐/" style="font-size: 10px;">吃喝玩乐</a> <a href="/tags/大数据/" style="font-size: 14.44px;">大数据</a> <a href="/tags/影视/" style="font-size: 11.11px;">影视</a> <a href="/tags/数据分析/" style="font-size: 15.56px;">数据分析</a> <a href="/tags/机器学习/" style="font-size: 20px;">机器学习</a> <a href="/tags/深度学习/" style="font-size: 15.56px;">深度学习</a> <a href="/tags/算法/" style="font-size: 12.22px;">算法</a> <a href="/tags/论文阅读/" style="font-size: 11.11px;">论文阅读</a> <a href="/tags/译文/" style="font-size: 12.22px;">译文</a> <a href="/tags/读书/" style="font-size: 17.78px;">读书</a> <a href="/tags/错误解决/" style="font-size: 12.22px;">错误解决</a> <a href="/tags/随笔/" style="font-size: 14.44px;">随笔</a>
+       <a href="/tags/CS/" style="font-size: 17px;">CS</a> <a href="/tags/Deep-Learning/" style="font-size: 17px;">Deep Learning</a> <a href="/tags/GPU/" style="font-size: 10px;">GPU</a> <a href="/tags/Git/" style="font-size: 11px;">Git</a> <a href="/tags/Hadoop/" style="font-size: 14px;">Hadoop</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/Latex/" style="font-size: 10px;">Latex</a> <a href="/tags/Linux/" style="font-size: 13px;">Linux</a> <a href="/tags/Python/" style="font-size: 19px;">Python</a> <a href="/tags/Spark/" style="font-size: 12px;">Spark</a> <a href="/tags/Summary/" style="font-size: 15px;">Summary</a> <a href="/tags/TensorFlow/" style="font-size: 11px;">TensorFlow</a> <a href="/tags/Web/" style="font-size: 12px;">Web</a> <a href="/tags/hexo/" style="font-size: 15px;">hexo</a> <a href="/tags/三国/" style="font-size: 10px;">三国</a> <a href="/tags/人文社科/" style="font-size: 10px;">人文社科</a> <a href="/tags/优化/" style="font-size: 10px;">优化</a> <a href="/tags/吃喝玩乐/" style="font-size: 10px;">吃喝玩乐</a> <a href="/tags/大数据/" style="font-size: 15px;">大数据</a> <a href="/tags/影视/" style="font-size: 11px;">影视</a> <a href="/tags/数据分析/" style="font-size: 16px;">数据分析</a> <a href="/tags/机器学习/" style="font-size: 20px;">机器学习</a> <a href="/tags/深度学习/" style="font-size: 17px;">深度学习</a> <a href="/tags/算法/" style="font-size: 12px;">算法</a> <a href="/tags/系统/" style="font-size: 10px;">系统</a> <a href="/tags/论文阅读/" style="font-size: 12px;">论文阅读</a> <a href="/tags/译文/" style="font-size: 12px;">译文</a> <a href="/tags/读书/" style="font-size: 18px;">读书</a> <a href="/tags/错误解决/" style="font-size: 12px;">错误解决</a> <a href="/tags/随笔/" style="font-size: 15px;">随笔</a>
     </div>
   </div>
 
@@ -520,7 +544,7 @@
 		<a href="/about" target="_blank" title="whatbeg">whatbeg</a>
 		
 		<br>
-		<span class="post-count">Total words: <span style="color:orange">287.9k</span></span>
+		<span class="post-count">Total words: <span style="color:orange">304.1k</span></span>
         <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
         <span id="busuanzi_container_site_pv">
         &nbsp;&nbsp;Total visits:&nbsp;<span style="color:orange" id="busuanzi_value_site_pv"></span>

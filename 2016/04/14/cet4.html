@@ -11,30 +11,33 @@
     
 
     
-    <meta name="description" content="最近获得了一些四级成绩数据，大概500多个，于是突发奇想是否能够看看这些成绩数据是否满足所谓的正态分布呢？说干就干，于是有了这篇文章。文章顺带介绍了xlrd模块的一些用法和matplotlib画自定义数据的条形图和随机的条形图的一些方法，并且提供了一些相关链接，可作为学习matplotlib和numpy的资源，希望对读者也有帮助。
+    <meta name="description" content="最近获得了一些四级成绩数据，大概500多个，于是突发奇想是否能够看看这些成绩数据是否满足所谓的正态分布呢？说干就干，于是有了这篇文章。
+文章顺带介绍了xlrd模块的一些用法和matplotlib画自定义数据的条形图和随机的条形图的一些方法，并且提供了一些相关链接，可作为学习matplotlib和numpy的资源，希望对读者也有帮助。
 工具
 Python 3.5
 xlrd模块
-numpy模块及一些依赖">
+numpy模块及一些依">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【数据分析】四级成绩分布 -matplotlib,xlrd模块使用">
 <meta property="og:url" content="http://whatbeg.com/2016/04/14/cet4.html">
 <meta property="og:site_name" content="Whatbeg's blog">
-<meta property="og:description" content="最近获得了一些四级成绩数据，大概500多个，于是突发奇想是否能够看看这些成绩数据是否满足所谓的正态分布呢？说干就干，于是有了这篇文章。文章顺带介绍了xlrd模块的一些用法和matplotlib画自定义数据的条形图和随机的条形图的一些方法，并且提供了一些相关链接，可作为学习matplotlib和numpy的资源，希望对读者也有帮助。
+<meta property="og:description" content="最近获得了一些四级成绩数据，大概500多个，于是突发奇想是否能够看看这些成绩数据是否满足所谓的正态分布呢？说干就干，于是有了这篇文章。
+文章顺带介绍了xlrd模块的一些用法和matplotlib画自定义数据的条形图和随机的条形图的一些方法，并且提供了一些相关链接，可作为学习matplotlib和numpy的资源，希望对读者也有帮助。
 工具
 Python 3.5
 xlrd模块
-numpy模块及一些依赖">
+numpy模块及一些依">
 <meta property="og:image" content="http://7xsl28.com2.z0.glb.clouddn.com/cet4-1.png">
 <meta property="og:image" content="http://7xsl28.com2.z0.glb.clouddn.com/cet4-2.png">
 <meta property="og:updated_time" content="2016-05-21T07:19:52.333Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【数据分析】四级成绩分布 -matplotlib,xlrd模块使用">
-<meta name="twitter:description" content="最近获得了一些四级成绩数据，大概500多个，于是突发奇想是否能够看看这些成绩数据是否满足所谓的正态分布呢？说干就干，于是有了这篇文章。文章顺带介绍了xlrd模块的一些用法和matplotlib画自定义数据的条形图和随机的条形图的一些方法，并且提供了一些相关链接，可作为学习matplotlib和numpy的资源，希望对读者也有帮助。
+<meta name="twitter:description" content="最近获得了一些四级成绩数据，大概500多个，于是突发奇想是否能够看看这些成绩数据是否满足所谓的正态分布呢？说干就干，于是有了这篇文章。
+文章顺带介绍了xlrd模块的一些用法和matplotlib画自定义数据的条形图和随机的条形图的一些方法，并且提供了一些相关链接，可作为学习matplotlib和numpy的资源，希望对读者也有帮助。
 工具
 Python 3.5
 xlrd模块
-numpy模块及一些依赖">
+numpy模块及一些依">
 <meta name="twitter:image" content="http://7xsl28.com2.z0.glb.clouddn.com/cet4-1.png">
 
     
@@ -107,7 +110,8 @@ numpy模块及一些依赖">
 		
 		</div>
 		
-		<p>最近获得了一些四级成绩数据，大概500多个，于是突发奇想是否能够看看这些成绩数据是否满足所谓的正态分布呢？说干就干，于是有了这篇文章。<br>文章顺带介绍了xlrd模块的一些用法和matplotlib画自定义数据的条形图和随机的条形图的一些方法，并且提供了一些相关链接，可作为学习matplotlib和numpy的资源，希望对读者也有帮助。</p>
+		<p>最近获得了一些四级成绩数据，大概500多个，于是突发奇想是否能够看看这些成绩数据是否满足所谓的正态分布呢？说干就干，于是有了这篇文章。
+文章顺带介绍了xlrd模块的一些用法和matplotlib画自定义数据的条形图和随机的条形图的一些方法，并且提供了一些相关链接，可作为学习matplotlib和numpy的资源，希望对读者也有帮助。</p>
 <h2 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h2><ul>
 <li>Python 3.5</li>
 <li>xlrd模块</li>
@@ -139,9 +143,13 @@ numpy模块及一些依赖">
 <h2 id="画折线图"><a href="#画折线图" class="headerlink" title="画折线图"></a>画折线图</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> xlrd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">data = xlrd.open_workbook(<span class="string">'D:\\Python Workspace\\Data\\cet4.xls'</span>)</span><br><span class="line"></span><br><span class="line">table = data.sheets()[<span class="number">0</span>]   <span class="comment">#sheet 0</span></span><br><span class="line"></span><br><span class="line">col5 = table.col_values(<span class="number">5</span>)[<span class="number">1</span>:]   <span class="comment">#取第5列的成绩，并去掉列属性名称</span></span><br><span class="line"></span><br><span class="line">count = [<span class="number">0</span> <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>,<span class="number">650</span>)]  <span class="comment">#初始化count</span></span><br><span class="line">x = [i <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>,<span class="number">650</span>)]</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> col5:</span><br><span class="line">    num = int(i)</span><br><span class="line">    count[num] += <span class="number">1</span>            <span class="comment">#统计每个人数的人数</span></span><br><span class="line"></span><br><span class="line">plt.xlabel(<span class="string">'Score'</span>)</span><br><span class="line">plt.ylabel(<span class="string">'Number of people'</span>)</span><br><span class="line">plt.title(<span class="string">'Distribution of CET-4 Scores'</span>)</span><br><span class="line">plt.ylim(<span class="number">0</span>,<span class="number">8</span>)</span><br><span class="line">plt.plot([i <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">250</span>,<span class="number">650</span>) <span class="keyword">if</span> count[i] != <span class="number">0</span>],[i <span class="keyword">for</span> i <span class="keyword">in</span> count[<span class="number">250</span>:] <span class="keyword">if</span> i != <span class="number">0</span>],linewidth=<span class="number">1</span>)  <span class="comment">#画出折线图</span></span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
 <p><img src="http://7xsl28.com2.z0.glb.clouddn.com/cet4-1.png" alt="图1"></p>
 <h2 id="画直方图并与正态分布直方图对比"><a href="#画直方图并与正态分布直方图对比" class="headerlink" title="画直方图并与正态分布直方图对比"></a>画直方图并与正态分布直方图对比</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> xlrd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> math <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">import</span> pylab <span class="keyword">as</span> pl</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">data = xlrd.open_workbook(<span class="string">'D:\\Python Workspace\\Data\\cet4.xls'</span>)</span><br><span class="line"></span><br><span class="line">table = data.sheets()[<span class="number">0</span>]   <span class="comment">#sheet 0</span></span><br><span class="line"></span><br><span class="line">col5 = table.col_values(<span class="number">5</span>)[<span class="number">1</span>:]</span><br><span class="line"></span><br><span class="line">ha = [int(i) <span class="keyword">for</span> i <span class="keyword">in</span> col5]     <span class="comment">#成绩数据</span></span><br><span class="line">mu = np.mean(ha)      <span class="comment">#平均值</span></span><br><span class="line">sigma = np.std(ha)    <span class="comment">#标准差</span></span><br><span class="line">data = np.random.normal(mu,sigma,<span class="number">1000</span>)  <span class="comment">#生成正态分布随机数据</span></span><br><span class="line"></span><br><span class="line">x = np.linspace(<span class="number">0</span>,<span class="number">700</span>,<span class="number">1000</span>)</span><br><span class="line">y = (<span class="number">1.</span> / sqrt(<span class="number">2</span> * np.pi) / sigma)*np.exp( -((x-mu)**<span class="number">2</span>/(<span class="number">2</span>*sigma**<span class="number">2</span>)) )</span><br><span class="line"></span><br><span class="line">plt.hist(data,bins=<span class="number">100</span>,facecolor=<span class="string">'g'</span>,alpha=<span class="number">0.44</span>)</span><br><span class="line">plt.hist(ha,bins=<span class="number">70</span>,facecolor=<span class="string">'r'</span>,histtype=<span class="string">'stepfilled'</span>)</span><br><span class="line">plt.plot(x,y,color=<span class="string">'b'</span>)   <span class="comment">#正态分布曲线</span></span><br><span class="line"></span><br><span class="line">plt.xlabel(<span class="string">'Score'</span>)</span><br><span class="line">plt.ylabel(<span class="string">'Number of people'</span>)</span><br><span class="line">plt.title(<span class="string">'Distribution of CET-4 Scores'</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-<p><img src="http://7xsl28.com2.z0.glb.clouddn.com/cet4-2.png" alt="图2"><br>且可求得数据的均值和标准差分别为：476.743785851和104.816562585<br>由图可见，绿色条形图是$\mu$=476.743785851，$\sigma$=104.816562585的正态分布条形图，而红色是四级成绩数据的分布图，虽然由于数据较少(500多个数据），所以拟合较差，但是可以看出成绩数据还是基本满足正态分布的。<br>不知道为啥，正态曲线没有画出来，单独画正态曲线是可以画出来的，有待研究。</p>
+<p><img src="http://7xsl28.com2.z0.glb.clouddn.com/cet4-2.png" alt="图2">
+且可求得数据的均值和标准差分别为：476.743785851和104.816562585
+由图可见，绿色条形图是$\mu$=476.743785851，$\sigma$=104.816562585的正态分布条形图，而红色是四级成绩数据的分布图，虽然由于数据较少(500多个数据），所以拟合较差，但是可以看出成绩数据还是基本满足正态分布的。
+不知道为啥，正态曲线没有画出来，单独画正态曲线是可以画出来的，有待研究。</p>
 <h2 id="绘制直方图的一些参数解释"><a href="#绘制直方图的一些参数解释" class="headerlink" title="绘制直方图的一些参数解释"></a>绘制直方图的一些参数解释</h2><p>绘图都可以调用matplotlib.pyplot库来进行，其中的hist函数可以直接绘制直方图。</p>
-<p>调用方式：<br><figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">n, bins, <span class="attr">patches</span> = plt.hist(arr, <span class="attr">bins=10,</span> <span class="attr">normed=0,</span> <span class="attr">facecolor='black',</span> <span class="attr">edgecolor='black',alpha=1，histtype='bar')</span></span><br></pre></td></tr></table></figure></p>
+<p>调用方式：
+<figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">n, bins, <span class="attr">patches</span> = plt.hist(arr, <span class="attr">bins=10,</span> <span class="attr">normed=0,</span> <span class="attr">facecolor='black',</span> <span class="attr">edgecolor='black',alpha=1，histtype='bar')</span></span><br></pre></td></tr></table></figure></p>
 <p>hist的参数非常多，但常用的就这六个，只有第一个是必须的，后面四个可选</p>
 <p>arr: 需要计算直方图的一维数组</p>
 <p>bins: 直方图的柱数，可选项，默认为10</p>
@@ -155,7 +163,11 @@ numpy模块及一些依赖">
 <p>bins: 返回各个bin的区间范围</p>
 <p>patches: 返回每个bin里面包含的数据，是一个list</p>
 <p>摘自<a href="http://www.cnblogs.com/denny402/p/5124833.html" target="_blank" rel="external">这里</a> from denny</p>
-<h2 id="一些链接"><a href="#一些链接" class="headerlink" title="一些链接"></a>一些链接</h2><p><a href="http://matplotlib.org/1.5.1/index.html" target="_blank" rel="external">matplotlib</a><br><a href="http://matplotlib.org/gallery.html" target="_blank" rel="external">gallary</a><br><a href="http://old.sebug.net/paper/books/scipydoc/index.html" target="_blank" rel="external">用python做科学计算</a><br><a href="https://secure.simplistix.co.uk/svn/xlrd/trunk/xlrd/doc/xlrd.html?p=4966" target="_blank" rel="external">xlrd文档</a><br><a href="http://m.oschina.net/blog/352125" target="_blank" rel="external">numpy的一些方法</a></p>
+<h2 id="一些链接"><a href="#一些链接" class="headerlink" title="一些链接"></a>一些链接</h2><p><a href="http://matplotlib.org/1.5.1/index.html" target="_blank" rel="external">matplotlib</a>
+<a href="http://matplotlib.org/gallery.html" target="_blank" rel="external">gallary</a>
+<a href="http://old.sebug.net/paper/books/scipydoc/index.html" target="_blank" rel="external">用python做科学计算</a>
+<a href="https://secure.simplistix.co.uk/svn/xlrd/trunk/xlrd/doc/xlrd.html?p=4966" target="_blank" rel="external">xlrd文档</a>
+<a href="http://m.oschina.net/blog/352125" target="_blank" rel="external">numpy的一些方法</a></p>
   
 	</div>
 
@@ -389,7 +401,7 @@ numpy模块及一些依赖">
 		<ul>
 		
 		  
-			<li><a href="/categories/大数据系统与技术-Big-Data/" title="大数据系统与技术 | Big Data">大数据系统与技术 | Big Data<sup>8</sup></a></li>
+			<li><a href="/categories/大数据系统与技术-Big-Data/" title="大数据系统与技术 | Big Data">大数据系统与技术 | Big Data<sup>9</sup></a></li>
 		  
 		
 		  
@@ -429,7 +441,11 @@ numpy模块及一些依赖">
 		  
 		
 		  
-			<li><a href="/categories/错误解决与优化-Err-n-Opt/" title="错误解决与优化 | Err_n_Opt">错误解决与优化 | Err_n_Opt<sup>10</sup></a></li>
+			<li><a href="/categories/错误解决与优化-Err-Opt/" title="错误解决与优化 | Err&amp;Opt">错误解决与优化 | Err&amp;Opt<sup>12</sup></a></li>
+		  
+		
+		  
+		
 		  
 		
 		  
@@ -443,7 +459,7 @@ numpy模块及一些依赖">
   
   <div class="archiveslist">
     <p class="asidetitle"><a href="/archives">归档</a></p>
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">23</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">23</span></li></ul>
   </div>
 
 
@@ -451,7 +467,7 @@ numpy模块及一些依赖">
   <div class="tagcloudlist">
     <p class="asidetitle">标签云</p>
     <div class="tagcloudlist clearfix">
-       <a href="/tags/CS/" style="font-size: 16.67px;">CS</a> <a href="/tags/Deep-Learning/" style="font-size: 13.33px;">Deep Learning</a> <a href="/tags/Git/" style="font-size: 11.11px;">Git</a> <a href="/tags/Hadoop/" style="font-size: 13.33px;">Hadoop</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/Latex/" style="font-size: 10px;">Latex</a> <a href="/tags/Linux/" style="font-size: 12.22px;">Linux</a> <a href="/tags/Python/" style="font-size: 18.89px;">Python</a> <a href="/tags/Spark/" style="font-size: 12.22px;">Spark</a> <a href="/tags/Summary/" style="font-size: 14.44px;">Summary</a> <a href="/tags/TensorFlow/" style="font-size: 10px;">TensorFlow</a> <a href="/tags/Web/" style="font-size: 12.22px;">Web</a> <a href="/tags/hexo/" style="font-size: 14.44px;">hexo</a> <a href="/tags/三国/" style="font-size: 10px;">三国</a> <a href="/tags/人文社科/" style="font-size: 10px;">人文社科</a> <a href="/tags/优化/" style="font-size: 10px;">优化</a> <a href="/tags/吃喝玩乐/" style="font-size: 10px;">吃喝玩乐</a> <a href="/tags/大数据/" style="font-size: 14.44px;">大数据</a> <a href="/tags/影视/" style="font-size: 11.11px;">影视</a> <a href="/tags/数据分析/" style="font-size: 15.56px;">数据分析</a> <a href="/tags/机器学习/" style="font-size: 20px;">机器学习</a> <a href="/tags/深度学习/" style="font-size: 15.56px;">深度学习</a> <a href="/tags/算法/" style="font-size: 12.22px;">算法</a> <a href="/tags/论文阅读/" style="font-size: 11.11px;">论文阅读</a> <a href="/tags/译文/" style="font-size: 12.22px;">译文</a> <a href="/tags/读书/" style="font-size: 17.78px;">读书</a> <a href="/tags/错误解决/" style="font-size: 12.22px;">错误解决</a> <a href="/tags/随笔/" style="font-size: 14.44px;">随笔</a>
+       <a href="/tags/CS/" style="font-size: 17px;">CS</a> <a href="/tags/Deep-Learning/" style="font-size: 17px;">Deep Learning</a> <a href="/tags/GPU/" style="font-size: 10px;">GPU</a> <a href="/tags/Git/" style="font-size: 11px;">Git</a> <a href="/tags/Hadoop/" style="font-size: 14px;">Hadoop</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/Latex/" style="font-size: 10px;">Latex</a> <a href="/tags/Linux/" style="font-size: 13px;">Linux</a> <a href="/tags/Python/" style="font-size: 19px;">Python</a> <a href="/tags/Spark/" style="font-size: 12px;">Spark</a> <a href="/tags/Summary/" style="font-size: 15px;">Summary</a> <a href="/tags/TensorFlow/" style="font-size: 11px;">TensorFlow</a> <a href="/tags/Web/" style="font-size: 12px;">Web</a> <a href="/tags/hexo/" style="font-size: 15px;">hexo</a> <a href="/tags/三国/" style="font-size: 10px;">三国</a> <a href="/tags/人文社科/" style="font-size: 10px;">人文社科</a> <a href="/tags/优化/" style="font-size: 10px;">优化</a> <a href="/tags/吃喝玩乐/" style="font-size: 10px;">吃喝玩乐</a> <a href="/tags/大数据/" style="font-size: 15px;">大数据</a> <a href="/tags/影视/" style="font-size: 11px;">影视</a> <a href="/tags/数据分析/" style="font-size: 16px;">数据分析</a> <a href="/tags/机器学习/" style="font-size: 20px;">机器学习</a> <a href="/tags/深度学习/" style="font-size: 17px;">深度学习</a> <a href="/tags/算法/" style="font-size: 12px;">算法</a> <a href="/tags/系统/" style="font-size: 10px;">系统</a> <a href="/tags/论文阅读/" style="font-size: 12px;">论文阅读</a> <a href="/tags/译文/" style="font-size: 12px;">译文</a> <a href="/tags/读书/" style="font-size: 18px;">读书</a> <a href="/tags/错误解决/" style="font-size: 12px;">错误解决</a> <a href="/tags/随笔/" style="font-size: 15px;">随笔</a>
     </div>
   </div>
 
@@ -564,7 +580,7 @@ numpy模块及一些依赖">
 		<a href="/about" target="_blank" title="whatbeg">whatbeg</a>
 		
 		<br>
-		<span class="post-count">Total words: <span style="color:orange">287.9k</span></span>
+		<span class="post-count">Total words: <span style="color:orange">304.1k</span></span>
         <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
         <span id="busuanzi_container_site_pv">
         &nbsp;&nbsp;Total visits:&nbsp;<span style="color:orange" id="busuanzi_value_site_pv"></span>

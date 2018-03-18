@@ -11,12 +11,16 @@
     
 
     
-    <meta name="description" content="目的采用多台虚拟机在一台计算机实体上模拟一个小型的网络环境。我们采用虚拟机（ Virtual Machine）软件来模拟一个网络环境进行实验，这类软件的主要功能是利用软件来模拟出具有完整硬件系统功能的且运行在隔离环境中的完整计算机系统。这样我们可以在一台物理计算机即宿主机器（Host Machine）上模拟出一台或多台虚拟的计算机。这些虚拟机能够像真正的计算机那样进行工作，我们可以在其上安装全新的">
+    <meta name="description" content="目的采用多台虚拟机在一台计算机实体上模拟一个小型的网络环境。
+我们采用虚拟机（ Virtual Machine）软件来模拟一个网络环境进行实验，这类软件的主
+要功能是利用软件来模拟出具有完整硬件系统功能的且运行在隔离环境中的完整计算机系统。这样我们可以在一台物理计算机即宿主机器（Host Machine）上模拟出一台或多台虚拟的计算机。这些虚拟机能够像真正的计算机那样进行工作，我们可以在其上安装全">
 <meta property="og:type" content="article">
 <meta property="og:title" content="多台虚拟机搭建模拟网络环境">
 <meta property="og:url" content="http://whatbeg.com/2016/09/24/vmnetconstruction.html">
 <meta property="og:site_name" content="Whatbeg's blog">
-<meta property="og:description" content="目的采用多台虚拟机在一台计算机实体上模拟一个小型的网络环境。我们采用虚拟机（ Virtual Machine）软件来模拟一个网络环境进行实验，这类软件的主要功能是利用软件来模拟出具有完整硬件系统功能的且运行在隔离环境中的完整计算机系统。这样我们可以在一台物理计算机即宿主机器（Host Machine）上模拟出一台或多台虚拟的计算机。这些虚拟机能够像真正的计算机那样进行工作，我们可以在其上安装全新的">
+<meta property="og:description" content="目的采用多台虚拟机在一台计算机实体上模拟一个小型的网络环境。
+我们采用虚拟机（ Virtual Machine）软件来模拟一个网络环境进行实验，这类软件的主
+要功能是利用软件来模拟出具有完整硬件系统功能的且运行在隔离环境中的完整计算机系统。这样我们可以在一台物理计算机即宿主机器（Host Machine）上模拟出一台或多台虚拟的计算机。这些虚拟机能够像真正的计算机那样进行工作，我们可以在其上安装全">
 <meta property="og:image" content="http://7xsl28.com1.z0.glb.clouddn.com/network-01.png">
 <meta property="og:image" content="http://7xsl28.com1.z0.glb.clouddn.com/network-02.png">
 <meta property="og:image" content="http://7xsl28.com1.z0.glb.clouddn.com/network-0301.png">
@@ -41,7 +45,9 @@
 <meta property="og:updated_time" content="2016-09-24T07:39:41.339Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="多台虚拟机搭建模拟网络环境">
-<meta name="twitter:description" content="目的采用多台虚拟机在一台计算机实体上模拟一个小型的网络环境。我们采用虚拟机（ Virtual Machine）软件来模拟一个网络环境进行实验，这类软件的主要功能是利用软件来模拟出具有完整硬件系统功能的且运行在隔离环境中的完整计算机系统。这样我们可以在一台物理计算机即宿主机器（Host Machine）上模拟出一台或多台虚拟的计算机。这些虚拟机能够像真正的计算机那样进行工作，我们可以在其上安装全新的">
+<meta name="twitter:description" content="目的采用多台虚拟机在一台计算机实体上模拟一个小型的网络环境。
+我们采用虚拟机（ Virtual Machine）软件来模拟一个网络环境进行实验，这类软件的主
+要功能是利用软件来模拟出具有完整硬件系统功能的且运行在隔离环境中的完整计算机系统。这样我们可以在一台物理计算机即宿主机器（Host Machine）上模拟出一台或多台虚拟的计算机。这些虚拟机能够像真正的计算机那样进行工作，我们可以在其上安装全">
 <meta name="twitter:image" content="http://7xsl28.com1.z0.glb.clouddn.com/network-01.png">
 
     
@@ -114,49 +120,94 @@
 		
 		</div>
 		
-		<h2 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h2><p>采用多台虚拟机在一台计算机实体上模拟一个小型的网络环境。<br>我们采用虚拟机（ Virtual Machine）软件来模拟一个网络环境进行实验，这类软件的主<br>要功能是利用软件来模拟出具有完整硬件系统功能的且运行在隔离环境中的完整计算机系统。这样我们可以在一台物理计算机即宿主机器（Host Machine）上模拟出一台或多台虚拟的计算机。这些虚拟机能够像真正的计算机那样进行工作，我们可以在其上安装全新的操作系统和应用软件。通过虚拟机软件中的虚连接设备将各个虚拟机连接起来，我们就可以搭建出实验所需的网络环境。</p>
+		<h2 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h2><p>采用多台虚拟机在一台计算机实体上模拟一个小型的网络环境。
+我们采用虚拟机（ Virtual Machine）软件来模拟一个网络环境进行实验，这类软件的主
+要功能是利用软件来模拟出具有完整硬件系统功能的且运行在隔离环境中的完整计算机系统。这样我们可以在一台物理计算机即宿主机器（Host Machine）上模拟出一台或多台虚拟的计算机。这些虚拟机能够像真正的计算机那样进行工作，我们可以在其上安装全新的操作系统和应用软件。通过虚拟机软件中的虚连接设备将各个虚拟机连接起来，我们就可以搭建出实验所需的网络环境。</p>
 <h2 id="网络拓扑"><a href="#网络拓扑" class="headerlink" title="网络拓扑"></a>网络拓扑</h2><p>接下来给出要构建的网络拓扑结构和拓扑结构配置信息表：</p>
 <p><img src="http://7xsl28.com1.z0.glb.clouddn.com/network-01.png" alt=""></p>
 <p><img src="http://7xsl28.com1.z0.glb.clouddn.com/network-02.png" alt=""></p>
 <p>此次实验我们采用5台虚拟机，分别为UT-571~UT-575，网络拓扑中有两台路由器，分别用UT-571和UT-574来模拟，两个路由器通过网络相连，这里用虚拟网络VMnet4来模拟，两个路由器分别下辖PC0，PC1和PC2三台主机，三台主机分别用UT-572,UT-573和UT-575来模拟。</p>
-<p>由网络拓扑结构图可以看出，PC0，PC1和Route0处于同一个网段，网段为192.168.2.0/24，而PC2和Route1处于同一个网段，为192.168.3.0/24，然后为了实现两个网段的联通，我们将两个路由器设置在同一个网段192.168.4.0/24中，即需要三个虚拟网络，来实现5台机器相互的联通。<br>我们的目标是配置每台机器的网卡，IP，网关和路由器的转发表，使得此虚拟网络上的每台机器之间都可以实现通信。<br>图中正方体的图形表示局域网的交换机。<br>最后我们通过机器之间相互Ping操作来测试是否联通。</p>
-<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><h3 id="配置虚拟机"><a href="#配置虚拟机" class="headerlink" title="配置虚拟机"></a>配置虚拟机</h3><p>我们至少需要给每台虚拟机配置一个网卡以实现网络互连，并且需要给虚拟机UT-571和UT-574配置两块网卡，因为它们是路由器，分属于两个网段，配置虚拟机的过程如下所示：<br>在虚拟机开机之前选择编辑选项<br><img src="http://7xsl28.com1.z0.glb.clouddn.com/network-0301.png" alt=""></p>
-<p>如果之前没有网卡，那么点Add添加网卡，然后next：<br><img src="http://7xsl28.com1.z0.glb.clouddn.com/network-03.png" alt=""><br><img src="http://7xsl28.com1.z0.glb.clouddn.com/network-04.png" alt=""></p>
-<p>添加网卡的配置，选择Custom: Specific virtual network，将机器配置到对应的虚拟网络，如PC0和PC1配置到VMnet2，PC2配置到VMnet3，两个路由器虚拟机配置添加两块网卡分别设为两个网段。<br><img src="http://7xsl28.com1.z0.glb.clouddn.com/network-05.png" alt=""><br><img src="http://7xsl28.com1.z0.glb.clouddn.com/network-06.png" alt=""></p>
+<p>由网络拓扑结构图可以看出，PC0，PC1和Route0处于同一个网段，网段为192.168.2.0/24，而PC2和Route1处于同一个网段，为192.168.3.0/24，然后为了实现两个网段的联通，我们将两个路由器设置在同一个网段192.168.4.0/24中，即需要三个虚拟网络，来实现5台机器相互的联通。
+我们的目标是配置每台机器的网卡，IP，网关和路由器的转发表，使得此虚拟网络上的每台机器之间都可以实现通信。
+图中正方体的图形表示局域网的交换机。
+最后我们通过机器之间相互Ping操作来测试是否联通。</p>
+<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><h3 id="配置虚拟机"><a href="#配置虚拟机" class="headerlink" title="配置虚拟机"></a>配置虚拟机</h3><p>我们至少需要给每台虚拟机配置一个网卡以实现网络互连，并且需要给虚拟机UT-571和UT-574配置两块网卡，因为它们是路由器，分属于两个网段，配置虚拟机的过程如下所示：
+在虚拟机开机之前选择编辑选项
+<img src="http://7xsl28.com1.z0.glb.clouddn.com/network-0301.png" alt=""></p>
+<p>如果之前没有网卡，那么点Add添加网卡，然后next：
+<img src="http://7xsl28.com1.z0.glb.clouddn.com/network-03.png" alt="">
+<img src="http://7xsl28.com1.z0.glb.clouddn.com/network-04.png" alt=""></p>
+<p>添加网卡的配置，选择Custom: Specific virtual network，将机器配置到对应的虚拟网络，如PC0和PC1配置到VMnet2，PC2配置到VMnet3，两个路由器虚拟机配置添加两块网卡分别设为两个网段。
+<img src="http://7xsl28.com1.z0.glb.clouddn.com/network-05.png" alt="">
+<img src="http://7xsl28.com1.z0.glb.clouddn.com/network-06.png" alt=""></p>
 <h3 id="设置每个终端PC"><a href="#设置每个终端PC" class="headerlink" title="设置每个终端PC"></a>设置每个终端PC</h3><p>ip 地址是计算机进行网络通讯的基础，每一台联网计算机都至少具有一个 ip 地址。在日常使用中，我们通常能自动获取 ip，这是由于 DHCP 协议的作用。这次我们需要手动为配置好的虚拟网络分配 ip 地址。</p>
-<p>打开每台机器（PC0，PC1，PC2）的终端Terminal，输入<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ifconfig <span class="_">-a</span></span><br></pre></td></tr></table></figure></p>
-<p>将会看到如下的输出：<br><img src="http://7xsl28.com1.z0.glb.clouddn.com/network-10.png" alt=""><br>输出显示机器网卡还没有配置IPV4地址，我们将手动配置固定的IP地址。</p>
-<p>为了防止DHCP协议和Network Manager的干扰，改变我们设置的IP地址，我们输入<br><figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo service network-manager <span class="built_in">stop</span></span><br></pre></td></tr></table></figure></p>
+<p>打开每台机器（PC0，PC1，PC2）的终端Terminal，输入
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ifconfig <span class="_">-a</span></span><br></pre></td></tr></table></figure></p>
+<p>将会看到如下的输出：
+<img src="http://7xsl28.com1.z0.glb.clouddn.com/network-10.png" alt="">
+输出显示机器网卡还没有配置IPV4地址，我们将手动配置固定的IP地址。</p>
+<p>为了防止DHCP协议和Network Manager的干扰，改变我们设置的IP地址，我们输入
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo service network-manager <span class="built_in">stop</span></span><br></pre></td></tr></table></figure></p>
 <p>停用network-manager服务，这样我们设置的IP就不会被系统改变了。</p>
 <blockquote>
-<p>Network Manager是Linux系统进行网络管理的一项服务。<br>Network Manager由一个管理系统网络连接、并且将其状态通过D-BUS（是一个提供简单的应用程序互相通讯的途径的自由软件项目，它是做为freedesktoporg项目的一部分来开发的。）进行报告的后台服务，以及一个允许用户管理网络连接的客户端程序。<br>Network Manager的优点：简化网络连接的工作，让桌面本身和其他应用程序能感知网络。</p>
+<p>Network Manager是Linux系统进行网络管理的一项服务。
+Network Manager由一个管理系统网络连接、并且将其状态通过D-BUS（是一个提供简单的应用程序互相通讯的途径的自由软件项目，它是做为freedesktoporg项目的一部分来开发的。）进行报告的后台服务，以及一个允许用户管理网络连接的客户端程序。
+Network Manager的优点：简化网络连接的工作，让桌面本身和其他应用程序能感知网络。</p>
 </blockquote>
 <p>想了解network manager请自行查阅资料。</p>
-<p>然后设置各个PC的IP，PC0和PC1由于同处192.168.2.0/24网段，所以我们将它们的IP分别设置为192.168.2.2（UT-572）和192.168.2.3（UT-573），将192.168.2.1留给路由器Route0（UT-571）使用。<br>设置IP地址有如下命令：（以192.168.2.2为例）<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">sudo</span> <span class="selector-tag">ifconfig</span> <span class="selector-tag">eth0</span> 192<span class="selector-class">.168</span><span class="selector-class">.2</span><span class="selector-class">.2</span> <span class="selector-tag">netmask</span> 255<span class="selector-class">.255</span><span class="selector-class">.255</span><span class="selector-class">.0</span></span><br></pre></td></tr></table></figure></p>
-<p>然后可使用<code>ifconfig -a</code>命令查看IP情况如图。<br><img src="http://7xsl28.com1.z0.glb.clouddn.com/network-09.png" alt=""></p>
-<p>然后设置默认网关为该网段的路由器Route0的eth0的IP地址（192.168.2.1）：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">sudo</span> <span class="selector-tag">route</span> <span class="selector-tag">add</span> <span class="selector-tag">default</span> <span class="selector-tag">gw</span> 192<span class="selector-class">.168</span><span class="selector-class">.2</span><span class="selector-class">.1</span></span><br></pre></td></tr></table></figure></p>
+<p>然后设置各个PC的IP，PC0和PC1由于同处192.168.2.0/24网段，所以我们将它们的IP分别设置为192.168.2.2（UT-572）和192.168.2.3（UT-573），将192.168.2.1留给路由器Route0（UT-571）使用。
+设置IP地址有如下命令：（以192.168.2.2为例）
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">sudo</span> <span class="selector-tag">ifconfig</span> <span class="selector-tag">eth0</span> 192<span class="selector-class">.168</span><span class="selector-class">.2</span><span class="selector-class">.2</span> <span class="selector-tag">netmask</span> 255<span class="selector-class">.255</span><span class="selector-class">.255</span><span class="selector-class">.0</span></span><br></pre></td></tr></table></figure></p>
+<p>然后可使用<code>ifconfig -a</code>命令查看IP情况如图。
+<img src="http://7xsl28.com1.z0.glb.clouddn.com/network-09.png" alt=""></p>
+<p>然后设置默认网关为该网段的路由器Route0的eth0的IP地址（192.168.2.1）：
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">sudo</span> <span class="selector-tag">route</span> <span class="selector-tag">add</span> <span class="selector-tag">default</span> <span class="selector-tag">gw</span> 192<span class="selector-class">.168</span><span class="selector-class">.2</span><span class="selector-class">.1</span></span><br></pre></td></tr></table></figure></p>
 <p>这样一个终端PC就已经配置好了，它有了自己的IP地址和默认网关。</p>
 <blockquote>
 <p>大家都知道，从一个房间走到另一个房间，必然要经过一扇门。同样，从一个网络向另一个网络发送信息，也必须经过一道“关口”，这道关口就是网关。顾名思义，网关（Gateway）就是一个网络连接到另一个网络的“关口”，也就是网络关卡（–百度百科），此时PC0的网络关口就是它的路由器Route0的eth0。</p>
 </blockquote>
 <p>其它终端PC配置相似。</p>
-<h3 id="设置路由器"><a href="#设置路由器" class="headerlink" title="设置路由器"></a>设置路由器</h3><p>IP地址设置同上，<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">ifconfig</span> <span class="selector-tag">-a</span>  # 查看<span class="selector-tag">IP</span>地址情况</span><br><span class="line"><span class="selector-tag">sudo</span> <span class="selector-tag">ifconfig</span> <span class="selector-tag">eth0</span> 192<span class="selector-class">.168</span><span class="selector-class">.2</span><span class="selector-class">.1</span> <span class="selector-tag">netmask</span> 255<span class="selector-class">.255</span><span class="selector-class">.255</span><span class="selector-class">.0</span>  # 设置<span class="selector-tag">eth0</span>端<span class="selector-tag">IP</span>地址</span><br><span class="line"><span class="selector-tag">sudo</span> <span class="selector-tag">ifconfig</span> <span class="selector-tag">eth1</span> 192<span class="selector-class">.168</span><span class="selector-class">.4</span><span class="selector-class">.1</span> <span class="selector-tag">netmask</span> 255<span class="selector-class">.255</span><span class="selector-class">.255</span><span class="selector-class">.0</span>  # <span class="selector-tag">eth1</span>端</span><br></pre></td></tr></table></figure></p>
-<p>eth0是面向PC0和PC1的网卡，而eth1是面向另一个网段(192.168.4.0/24)的的网卡<br>但路由器毕竟是路由器，它还需要有一套路由转发表，以便起到路由的作用。<br>所以接下来设置Route0（UT-571）的路由表：<br><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">sudo</span> ip route add <span class="number">192.168.2.0</span>/<span class="number">24</span> via <span class="number">192.168.2.1</span></span><br><span class="line">sudo ip route add <span class="number">192.168.3.0</span>/<span class="number">24</span> via <span class="number">192.168.4.2</span></span><br><span class="line">sudo ip route add <span class="number">192.168.4.0</span>/<span class="number">24</span> via <span class="number">192.168.4.1</span></span><br></pre></td></tr></table></figure></p>
-<p>其中 ip route add 192.168.2.0/24 via 192.168.2.1 命令添加的规则，告诉路由目的 ip 在<br>192.168.2.0/24(192.168.2.1~192.168.2.255)网段内的封包经由 ip 地址为 192.168.2.1 的设备(Route0)转发出去，即下一跳的 ip 为 192.168.2.1。而 192.168.2.0/24 是 Linux 中常用的掩码表示方式。<br>24 表示掩码字长为 24 即掩码为 255.255.255.0， 192.168.2 为网络号， 1 ~ 254 为网络中的主机号。此外还有其他形式用于添加路由规则的命令。<br>而第二条规则表示告诉路由目的IP在192.168.3.0/24网段的封包要经过的下一跳IP为192.168.4.2（即VMnet4的另一端，也即Route1的eth1，因为Route1是网段192.168.3.0/24的路由器）<br>最后一条规则表示，告诉路由目的IP在192.168.4.0/24网段的封包将被转发的下一跳IP为192.168.4.1即Route0的eth1.</p>
-<p>最后我们要让虚拟路由允许转发，置虚拟机 U-571 的 <code>ip_forward</code> 标志为 1。 这里我们需要把<code>/proc/sys/net/ipv4/</code>目录下的文件<code>ip_forward</code>值置为 1。使用命令 echo，形如：<br><figure class="highlight gauss"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo <span class="number">1</span> &gt; /<span class="function"><span class="keyword">proc</span>/<span class="title">sys</span>/<span class="title">net</span>/<span class="title">ipv4</span>/<span class="title">ip_forward</span></span></span><br></pre></td></tr></table></figure></p>
-<p>这样我们的路由器Route0也就设置好了，以相同的步骤我们很快可以设置好Route1。<br>一些步骤图如下：<br><img src="http://7xsl28.com1.z0.glb.clouddn.com/network-07.png" alt=""><br><img src="http://7xsl28.com1.z0.glb.clouddn.com/network-08.png" alt=""><br><img src="http://7xsl28.com1.z0.glb.clouddn.com/network-11.png" alt=""><br><img src="http://7xsl28.com1.z0.glb.clouddn.com/network-12.png" alt=""><br><img src="http://7xsl28.com1.z0.glb.clouddn.com/network-13.png" alt=""></p>
+<h3 id="设置路由器"><a href="#设置路由器" class="headerlink" title="设置路由器"></a>设置路由器</h3><p>IP地址设置同上，
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">ifconfig</span> <span class="selector-tag">-a</span>  # 查看<span class="selector-tag">IP</span>地址情况</span><br><span class="line"><span class="selector-tag">sudo</span> <span class="selector-tag">ifconfig</span> <span class="selector-tag">eth0</span> 192<span class="selector-class">.168</span><span class="selector-class">.2</span><span class="selector-class">.1</span> <span class="selector-tag">netmask</span> 255<span class="selector-class">.255</span><span class="selector-class">.255</span><span class="selector-class">.0</span>  # 设置<span class="selector-tag">eth0</span>端<span class="selector-tag">IP</span>地址</span><br><span class="line"><span class="selector-tag">sudo</span> <span class="selector-tag">ifconfig</span> <span class="selector-tag">eth1</span> 192<span class="selector-class">.168</span><span class="selector-class">.4</span><span class="selector-class">.1</span> <span class="selector-tag">netmask</span> 255<span class="selector-class">.255</span><span class="selector-class">.255</span><span class="selector-class">.0</span>  # <span class="selector-tag">eth1</span>端</span><br></pre></td></tr></table></figure></p>
+<p>eth0是面向PC0和PC1的网卡，而eth1是面向另一个网段(192.168.4.0/24)的的网卡
+但路由器毕竟是路由器，它还需要有一套路由转发表，以便起到路由的作用。
+所以接下来设置Route0（UT-571）的路由表：
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">sudo</span> ip route add <span class="number">192.168.2.0</span>/<span class="number">24</span> via <span class="number">192.168.2.1</span></span><br><span class="line">sudo ip route add <span class="number">192.168.3.0</span>/<span class="number">24</span> via <span class="number">192.168.4.2</span></span><br><span class="line">sudo ip route add <span class="number">192.168.4.0</span>/<span class="number">24</span> via <span class="number">192.168.4.1</span></span><br></pre></td></tr></table></figure></p>
+<p>其中 ip route add 192.168.2.0/24 via 192.168.2.1 命令添加的规则，告诉路由目的 ip 在
+192.168.2.0/24(192.168.2.1~192.168.2.255)网段内的封包经由 ip 地址为 192.168.2.1 的设备(Route0)转发出去，即下一跳的 ip 为 192.168.2.1。而 192.168.2.0/24 是 Linux 中常用的掩码表示方式。
+24 表示掩码字长为 24 即掩码为 255.255.255.0， 192.168.2 为网络号， 1 ~ 254 为网络中的主机号。此外还有其他形式用于添加路由规则的命令。
+而第二条规则表示告诉路由目的IP在192.168.3.0/24网段的封包要经过的下一跳IP为192.168.4.2（即VMnet4的另一端，也即Route1的eth1，因为Route1是网段192.168.3.0/24的路由器）
+最后一条规则表示，告诉路由目的IP在192.168.4.0/24网段的封包将被转发的下一跳IP为192.168.4.1即Route0的eth1.</p>
+<p>最后我们要让虚拟路由允许转发，置虚拟机 U-571 的 <code>ip_forward</code> 标志为 1。 这里我们需要把<code>/proc/sys/net/ipv4/</code>目录下的文件<code>ip_forward</code>值置为 1。使用命令 echo，形如：
+<figure class="highlight gauss"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo <span class="number">1</span> &gt; /<span class="function"><span class="keyword">proc</span>/<span class="title">sys</span>/<span class="title">net</span>/<span class="title">ipv4</span>/<span class="title">ip_forward</span></span></span><br></pre></td></tr></table></figure></p>
+<p>这样我们的路由器Route0也就设置好了，以相同的步骤我们很快可以设置好Route1。
+一些步骤图如下：
+<img src="http://7xsl28.com1.z0.glb.clouddn.com/network-07.png" alt="">
+<img src="http://7xsl28.com1.z0.glb.clouddn.com/network-08.png" alt="">
+<img src="http://7xsl28.com1.z0.glb.clouddn.com/network-11.png" alt="">
+<img src="http://7xsl28.com1.z0.glb.clouddn.com/network-12.png" alt="">
+<img src="http://7xsl28.com1.z0.glb.clouddn.com/network-13.png" alt=""></p>
 <h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><p>最后我们可以在不同的虚拟机上ping别的虚拟机的IP，已测试是否实现互联互通。</p>
-<p>PC0 ping PC1:<br><img src="http://7xsl28.com1.z0.glb.clouddn.com/network-14.png" alt=""></p>
-<p>PC0 ping Route1 eth1 和 PC2:<br><img src="http://7xsl28.com1.z0.glb.clouddn.com/network-19.png" alt=""></p>
-<p>PC2 ping PC0, PC1:<br><img src="http://7xsl28.com1.z0.glb.clouddn.com/network-22.png" alt=""></p>
+<p>PC0 ping PC1:
+<img src="http://7xsl28.com1.z0.glb.clouddn.com/network-14.png" alt=""></p>
+<p>PC0 ping Route1 eth1 和 PC2:
+<img src="http://7xsl28.com1.z0.glb.clouddn.com/network-19.png" alt=""></p>
+<p>PC2 ping PC0, PC1:
+<img src="http://7xsl28.com1.z0.glb.clouddn.com/network-22.png" alt=""></p>
 <p>等等等等，容易看到，正确设置的情况下，都可以ping通，实现了两个局域网的互联互通。</p>
-<h3 id="wireshark抓包"><a href="#wireshark抓包" class="headerlink" title="wireshark抓包"></a>wireshark抓包</h3><p>在Terminal中输入<br><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">sudo</span> wireshark</span><br></pre></td></tr></table></figure></p>
-<p>启动wireshark，通过下图蓝框选择要监听的设备，如eth0，然后在终端中启动ping，观测数据包的来往：<br><img src="http://7xsl28.com1.z0.glb.clouddn.com/network-26.png" alt=""></p>
-<p>结果如下，PC0 ping PC1的包流动情况：<br><img src="http://7xsl28.com1.z0.glb.clouddn.com/network-24.png" alt=""></p>
-<p>PC0 ping PC2的包流动情况：<br><img src="http://7xsl28.com1.z0.glb.clouddn.com/network-25.png" alt=""></p>
-<p>点开某个包，可以看到：<br><img src="http://7xsl28.com1.z0.glb.clouddn.com/network-27.png" alt=""></p>
+<h3 id="wireshark抓包"><a href="#wireshark抓包" class="headerlink" title="wireshark抓包"></a>wireshark抓包</h3><p>在Terminal中输入
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">sudo</span> wireshark</span><br></pre></td></tr></table></figure></p>
+<p>启动wireshark，通过下图蓝框选择要监听的设备，如eth0，然后在终端中启动ping，观测数据包的来往：
+<img src="http://7xsl28.com1.z0.glb.clouddn.com/network-26.png" alt=""></p>
+<p>结果如下，PC0 ping PC1的包流动情况：
+<img src="http://7xsl28.com1.z0.glb.clouddn.com/network-24.png" alt=""></p>
+<p>PC0 ping PC2的包流动情况：
+<img src="http://7xsl28.com1.z0.glb.clouddn.com/network-25.png" alt=""></p>
+<p>点开某个包，可以看到：
+<img src="http://7xsl28.com1.z0.glb.clouddn.com/network-27.png" alt=""></p>
 <p>协议框中显示所选分组的各层协议：物理层帧、以太网帧及其首部、 IP 协议数据报及其首部， Internet控制报文协议。原始框中则显示分组中包含的数据的每个字节。从中可以观察到原始数据，其中左边显示的是十六进制的数据，右边则是 ASCII 码。在协议框中选中一个条目，在原始框中会标记出对应的原始数据，反之在原始框中选中也一样。</p>
-<h2 id="完结"><a href="#完结" class="headerlink" title="完结"></a>完结</h2><p>这样，此次虚拟网络构建就成功了。<br>总的来说，计算机网络这个东西，知道 和 会做 之间有着很大的距离，一些基础的网络理论知识，真正用起来却显得无比的生疏，终究还是太菜了罢~</p>
+<h2 id="完结"><a href="#完结" class="headerlink" title="完结"></a>完结</h2><p>这样，此次虚拟网络构建就成功了。
+总的来说，计算机网络这个东西，知道 和 会做 之间有着很大的距离，一些基础的网络理论知识，真正用起来却显得无比的生疏，终究还是太菜了罢~</p>
   
 	</div>
 
@@ -390,7 +441,7 @@
 		<ul>
 		
 		  
-			<li><a href="/categories/大数据系统与技术-Big-Data/" title="大数据系统与技术 | Big Data">大数据系统与技术 | Big Data<sup>8</sup></a></li>
+			<li><a href="/categories/大数据系统与技术-Big-Data/" title="大数据系统与技术 | Big Data">大数据系统与技术 | Big Data<sup>9</sup></a></li>
 		  
 		
 		  
@@ -430,7 +481,11 @@
 		  
 		
 		  
-			<li><a href="/categories/错误解决与优化-Err-n-Opt/" title="错误解决与优化 | Err_n_Opt">错误解决与优化 | Err_n_Opt<sup>10</sup></a></li>
+			<li><a href="/categories/错误解决与优化-Err-Opt/" title="错误解决与优化 | Err&amp;Opt">错误解决与优化 | Err&amp;Opt<sup>12</sup></a></li>
+		  
+		
+		  
+		
 		  
 		
 		  
@@ -444,7 +499,7 @@
   
   <div class="archiveslist">
     <p class="asidetitle"><a href="/archives">归档</a></p>
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">23</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">23</span></li></ul>
   </div>
 
 
@@ -452,7 +507,7 @@
   <div class="tagcloudlist">
     <p class="asidetitle">标签云</p>
     <div class="tagcloudlist clearfix">
-       <a href="/tags/CS/" style="font-size: 16.67px;">CS</a> <a href="/tags/Deep-Learning/" style="font-size: 13.33px;">Deep Learning</a> <a href="/tags/Git/" style="font-size: 11.11px;">Git</a> <a href="/tags/Hadoop/" style="font-size: 13.33px;">Hadoop</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/Latex/" style="font-size: 10px;">Latex</a> <a href="/tags/Linux/" style="font-size: 12.22px;">Linux</a> <a href="/tags/Python/" style="font-size: 18.89px;">Python</a> <a href="/tags/Spark/" style="font-size: 12.22px;">Spark</a> <a href="/tags/Summary/" style="font-size: 14.44px;">Summary</a> <a href="/tags/TensorFlow/" style="font-size: 10px;">TensorFlow</a> <a href="/tags/Web/" style="font-size: 12.22px;">Web</a> <a href="/tags/hexo/" style="font-size: 14.44px;">hexo</a> <a href="/tags/三国/" style="font-size: 10px;">三国</a> <a href="/tags/人文社科/" style="font-size: 10px;">人文社科</a> <a href="/tags/优化/" style="font-size: 10px;">优化</a> <a href="/tags/吃喝玩乐/" style="font-size: 10px;">吃喝玩乐</a> <a href="/tags/大数据/" style="font-size: 14.44px;">大数据</a> <a href="/tags/影视/" style="font-size: 11.11px;">影视</a> <a href="/tags/数据分析/" style="font-size: 15.56px;">数据分析</a> <a href="/tags/机器学习/" style="font-size: 20px;">机器学习</a> <a href="/tags/深度学习/" style="font-size: 15.56px;">深度学习</a> <a href="/tags/算法/" style="font-size: 12.22px;">算法</a> <a href="/tags/论文阅读/" style="font-size: 11.11px;">论文阅读</a> <a href="/tags/译文/" style="font-size: 12.22px;">译文</a> <a href="/tags/读书/" style="font-size: 17.78px;">读书</a> <a href="/tags/错误解决/" style="font-size: 12.22px;">错误解决</a> <a href="/tags/随笔/" style="font-size: 14.44px;">随笔</a>
+       <a href="/tags/CS/" style="font-size: 17px;">CS</a> <a href="/tags/Deep-Learning/" style="font-size: 17px;">Deep Learning</a> <a href="/tags/GPU/" style="font-size: 10px;">GPU</a> <a href="/tags/Git/" style="font-size: 11px;">Git</a> <a href="/tags/Hadoop/" style="font-size: 14px;">Hadoop</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/Latex/" style="font-size: 10px;">Latex</a> <a href="/tags/Linux/" style="font-size: 13px;">Linux</a> <a href="/tags/Python/" style="font-size: 19px;">Python</a> <a href="/tags/Spark/" style="font-size: 12px;">Spark</a> <a href="/tags/Summary/" style="font-size: 15px;">Summary</a> <a href="/tags/TensorFlow/" style="font-size: 11px;">TensorFlow</a> <a href="/tags/Web/" style="font-size: 12px;">Web</a> <a href="/tags/hexo/" style="font-size: 15px;">hexo</a> <a href="/tags/三国/" style="font-size: 10px;">三国</a> <a href="/tags/人文社科/" style="font-size: 10px;">人文社科</a> <a href="/tags/优化/" style="font-size: 10px;">优化</a> <a href="/tags/吃喝玩乐/" style="font-size: 10px;">吃喝玩乐</a> <a href="/tags/大数据/" style="font-size: 15px;">大数据</a> <a href="/tags/影视/" style="font-size: 11px;">影视</a> <a href="/tags/数据分析/" style="font-size: 16px;">数据分析</a> <a href="/tags/机器学习/" style="font-size: 20px;">机器学习</a> <a href="/tags/深度学习/" style="font-size: 17px;">深度学习</a> <a href="/tags/算法/" style="font-size: 12px;">算法</a> <a href="/tags/系统/" style="font-size: 10px;">系统</a> <a href="/tags/论文阅读/" style="font-size: 12px;">论文阅读</a> <a href="/tags/译文/" style="font-size: 12px;">译文</a> <a href="/tags/读书/" style="font-size: 18px;">读书</a> <a href="/tags/错误解决/" style="font-size: 12px;">错误解决</a> <a href="/tags/随笔/" style="font-size: 15px;">随笔</a>
     </div>
   </div>
 
@@ -565,7 +620,7 @@
 		<a href="/about" target="_blank" title="whatbeg">whatbeg</a>
 		
 		<br>
-		<span class="post-count">Total words: <span style="color:orange">287.9k</span></span>
+		<span class="post-count">Total words: <span style="color:orange">304.1k</span></span>
         <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
         <span id="busuanzi_container_site_pv">
         &nbsp;&nbsp;Total visits:&nbsp;<span style="color:orange" id="busuanzi_value_site_pv"></span>

@@ -11,20 +11,22 @@
     
 
     
-    <meta name="description" content="本文描述了几个月以来所做的一些数据挖掘实践，综合总结一下，形成此文，也对本学期数据挖掘课程做一个总结。代码Github地址： https://github.com/whatbeg/DataMiningTasks
+    <meta name="description" content="本文描述了几个月以来所做的一些数据挖掘实践，综合总结一下，形成此文，也对本学期数据挖掘课程做一个总结。
+代码Github地址： https://github.com/whatbeg/DataMiningTasks
 TF-IDF Feature Extraction (TF-IDF特征提取）数据
 数据为数据集 ICML
 采用 Python 2.7.10 和 Windows10 系统 作为编程环境
-输出">
+输">
 <meta property="og:type" content="article">
 <meta property="og:title" content="数据挖掘综合实践">
 <meta property="og:url" content="http://whatbeg.com/2016/12/29/dataminingsynthesize.html">
 <meta property="og:site_name" content="Whatbeg's blog">
-<meta property="og:description" content="本文描述了几个月以来所做的一些数据挖掘实践，综合总结一下，形成此文，也对本学期数据挖掘课程做一个总结。代码Github地址： https://github.com/whatbeg/DataMiningTasks
+<meta property="og:description" content="本文描述了几个月以来所做的一些数据挖掘实践，综合总结一下，形成此文，也对本学期数据挖掘课程做一个总结。
+代码Github地址： https://github.com/whatbeg/DataMiningTasks
 TF-IDF Feature Extraction (TF-IDF特征提取）数据
 数据为数据集 ICML
 采用 Python 2.7.10 和 Windows10 系统 作为编程环境
-输出">
+输">
 <meta property="og:image" content="http://7xsl28.com1.z0.glb.clouddn.com/dataminingtask1-1.png">
 <meta property="og:image" content="http://7xsl28.com1.z0.glb.clouddn.com/PCA1.png">
 <meta property="og:image" content="http://7xsl28.com1.z0.glb.clouddn.com/SVD1.png">
@@ -39,11 +41,12 @@ TF-IDF Feature Extraction (TF-IDF特征提取）数据
 <meta property="og:updated_time" content="2016-12-29T06:17:49.637Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据挖掘综合实践">
-<meta name="twitter:description" content="本文描述了几个月以来所做的一些数据挖掘实践，综合总结一下，形成此文，也对本学期数据挖掘课程做一个总结。代码Github地址： https://github.com/whatbeg/DataMiningTasks
+<meta name="twitter:description" content="本文描述了几个月以来所做的一些数据挖掘实践，综合总结一下，形成此文，也对本学期数据挖掘课程做一个总结。
+代码Github地址： https://github.com/whatbeg/DataMiningTasks
 TF-IDF Feature Extraction (TF-IDF特征提取）数据
 数据为数据集 ICML
 采用 Python 2.7.10 和 Windows10 系统 作为编程环境
-输出">
+输">
 <meta name="twitter:image" content="http://7xsl28.com1.z0.glb.clouddn.com/dataminingtask1-1.png">
 
     
@@ -116,7 +119,8 @@ TF-IDF Feature Extraction (TF-IDF特征提取）数据
 		
 		</div>
 		
-		<p>本文描述了几个月以来所做的一些数据挖掘实践，综合总结一下，形成此文，也对本学期数据挖掘课程做一个总结。<br>代码Github地址： <a href="https://github.com/whatbeg/DataMiningTasks" target="_blank" rel="external">https://github.com/whatbeg/DataMiningTasks</a></p>
+		<p>本文描述了几个月以来所做的一些数据挖掘实践，综合总结一下，形成此文，也对本学期数据挖掘课程做一个总结。
+代码Github地址： <a href="https://github.com/whatbeg/DataMiningTasks" target="_blank" rel="external">https://github.com/whatbeg/DataMiningTasks</a></p>
 <h2 id="TF-IDF-Feature-Extraction-TF-IDF特征提取）"><a href="#TF-IDF-Feature-Extraction-TF-IDF特征提取）" class="headerlink" title="TF-IDF Feature Extraction (TF-IDF特征提取）"></a>TF-IDF Feature Extraction (TF-IDF特征提取）</h2><h3 id="数据"><a href="#数据" class="headerlink" title="数据"></a>数据</h3><ol>
 <li>数据为数据集 ICML</li>
 <li>采用 Python 2.7.10 和 Windows10 系统 作为编程环境</li>
@@ -125,7 +129,10 @@ TF-IDF Feature Extraction (TF-IDF特征提取）数据
 </ol>
 <h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h3><ol>
 <li>首先集合所有文章，得到他们的路径</li>
-<li>然后将所有文章分词，将无关或者非法字符用空格替换，然后采用 NLTK 的 word_tokenize 方法进行<br>分词， 然后用 NLTK 的 SnowballStemmer 进行词干提取，然后将单词进行小写化， 通过字典去重（存<br>成字典 key），然后去除一些无关词，数字以及停用词，停用词选用了网上一个版本的停用词，约 900<br>个停用词。</li>
+<li>然后将所有文章分词，将无关或者非法字符用空格替换，然后采用 NLTK 的 word_tokenize 方法进行
+分词， 然后用 NLTK 的 SnowballStemmer 进行词干提取，然后将单词进行小写化， 通过字典去重（存
+成字典 key），然后去除一些无关词，数字以及停用词，停用词选用了网上一个版本的停用词，约 900
+个停用词。</li>
 <li>然后将所有词排序，编号，后续输出时以编号代替词，而不需写出词。</li>
 <li>然后循环处理每个类（每种论文的目录），对这个目录下的所有文章，对每篇文章的词算出他们的TF 和 IDF 值，得到 TF-IDF 值，存储到这个类这篇文章的结果数据中。</li>
 <li>TF 词频采用的计算方法为： TF = 词在文章中出现次数 / 文章总词数</li>
@@ -137,14 +144,23 @@ TF-IDF Feature Extraction (TF-IDF特征提取）数据
 
 <h3 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h3><p>TF，IDF 的计算方法多种多样，本文采用的方法中，最终结果的TF-IDF数值上偏小，在保证含义的情况下可以采用其他方法，使 TF-IDF大致为一个正常值，以便更好地比较。用NLTK包的stemmer提取词干的时候难免会有一些提取的错误，这是由于词干提取并非完美的缘故，由于这个缘故，可以不进行词干提取，这样可以保持所有的信息，但是缺点就是会有多种变形词，单词数会增加 1/4到1/3，导致矩阵增大。</p>
 <h2 id="Dimensionality-Reduction-（降维方法）"><a href="#Dimensionality-Reduction-（降维方法）" class="headerlink" title="Dimensionality Reduction （降维方法）"></a>Dimensionality Reduction （降维方法）</h2><h3 id="任务"><a href="#任务" class="headerlink" title="任务"></a>任务</h3><p>本部分描述实现降维的三种方法，分别是 PCA， SVD 以及流形学习中的 ISOMAP 算法，其中 ISOMAP 算法还需调用 MDS（ Multiple Dimensional Scaling 多维缩放），并且对这三种算法在两个不同规模的数据集上进行了测试。</p>
-<h3 id="PCA"><a href="#PCA" class="headerlink" title="PCA"></a>PCA</h3><p>PCA 算法的原理这里不做详细描述，只写明实现过程，首先将训练数据集中心化，然后计算训练数据集的协方差矩阵，对此协方差矩阵 C 做特征值分解，可以得出 C 的所有特征值和对应的特征向量，选取最大的k（降维后的维度数）个特征值和其对应的特征向量，即可得到高维到低维的映射矩阵 W。<br>PCA 算法伪代码如下：</p>
+<h3 id="PCA"><a href="#PCA" class="headerlink" title="PCA"></a>PCA</h3><p>PCA 算法的原理这里不做详细描述，只写明实现过程，首先将训练数据集中心化，然后计算训练数据集的协方差矩阵，对此协方差矩阵 C 做特征值分解，可以得出 C 的所有特征值和对应的特征向量，选取最大的k（降维后的维度数）个特征值和其对应的特征向量，即可得到高维到低维的映射矩阵 W。
+PCA 算法伪代码如下：</p>
 <center> <img src="http://7xsl28.com1.z0.glb.clouddn.com/PCA1.png" alt=""> </center>
 
-<h3 id="SVD"><a href="#SVD" class="headerlink" title="SVD"></a>SVD</h3><p>SVD 算法与 PCA 算法很相似，并且可以使用SVD来计算PCA，它们的唯一区别就是SVD并不对训练样本集进行中心化，使各个维度的均值为 0，而是直接对训练集样本矩阵做 SVD分解，得出排序后的特征值和特征向量矩阵，取前k个特征值对应的特征向量即可组成高维到低维的映射矩阵。<br>SVD 算法伪代码如下：</p>
+<h3 id="SVD"><a href="#SVD" class="headerlink" title="SVD"></a>SVD</h3><p>SVD 算法与 PCA 算法很相似，并且可以使用SVD来计算PCA，它们的唯一区别就是SVD并不对训练样本集进行中心化，使各个维度的均值为 0，而是直接对训练集样本矩阵做 SVD分解，得出排序后的特征值和特征向量矩阵，取前k个特征值对应的特征向量即可组成高维到低维的映射矩阵。
+SVD 算法伪代码如下：</p>
 <center> <img src="http://7xsl28.com1.z0.glb.clouddn.com/SVD1.png" alt=""> </center>
 
 
-<h3 id="ISOMAP"><a href="#ISOMAP" class="headerlink" title="ISOMAP"></a>ISOMAP</h3><p>ISOMAP 是一个非线性降维算法，全称 Isometric Mapping，等度量映射，重点在于高维空间的测地线距离在低维空间的保持。算法流程如下：<br>（a） 计算样本集（测试集和训练集）的欧式距离<br>（b） 对于每个样本，取 4 个最近的样本，建立连边<br>（c） 用最短路算法算出两两点间的最短距离，这里会出现一个整个图可能形成多个<br>连通分量而导致不连通的问题，这样的话令不连通点间的距离为 0。<br>（d） 将整个图的距离矩阵作为 MDS 的输入，直接得出低维空间的样本表示，包括<br>测试集和训练集。<br>ISOMAP 算法伪代码如下：</p>
+<h3 id="ISOMAP"><a href="#ISOMAP" class="headerlink" title="ISOMAP"></a>ISOMAP</h3><p>ISOMAP 是一个非线性降维算法，全称 Isometric Mapping，等度量映射，重点在于高维空间的测地线距离在低维空间的保持。算法流程如下：
+（a） 计算样本集（测试集和训练集）的欧式距离
+（b） 对于每个样本，取 4 个最近的样本，建立连边
+（c） 用最短路算法算出两两点间的最短距离，这里会出现一个整个图可能形成多个
+连通分量而导致不连通的问题，这样的话令不连通点间的距离为 0。
+（d） 将整个图的距离矩阵作为 MDS 的输入，直接得出低维空间的样本表示，包括
+测试集和训练集。
+ISOMAP 算法伪代码如下：</p>
 <center> <img src="http://7xsl28.com1.z0.glb.clouddn.com/ISOMAP1.png" alt=""> </center>
 
 <p>最后的测试是讲高维样本映射到低维空间，然后运行 1-NN 算法对测试数据进行分类。</p>
@@ -177,8 +193,11 @@ TF-IDF Feature Extraction (TF-IDF特征提取）数据
 <p>取得效果如下：</p>
 <center> <img src="http://7xsl28.com1.z0.glb.clouddn.com/dataminingtask2-2.png" alt=""> </center>
 
-<p>总的来说， NN 太小容易使本来很近的点却要在图中绕很远才能到，给距离带来了误<br>差， NN 越大则“短路”可能性又提高。</p>
-<h2 id="Clustering-（聚类）"><a href="#Clustering-（聚类）" class="headerlink" title="Clustering （聚类）"></a>Clustering （聚类）</h2><h3 id="任务-1"><a href="#任务-1" class="headerlink" title="任务"></a>任务</h3><p>本部分描述实现两种聚类算法，其一为K-medoids（K-中心点）算法，其二为基于谱图理论的谱聚类算法。数据集有两个，一个是小数据集 german.txt，其中有1000个样本，每个样本有24个特征，每个样本占一行，最后为该样本的标签，标签分两类，1和-1，标签用作Gini系数和Purity的计算。另一个是大数据集mnist.txt，其中包括10000个样本，每个样本有784个特征，每个样本占一行，最后为该样本的标签，标签分 10<br>类， 0-9。<br>下面简要说明两种聚类算法的流程。</p>
+<p>总的来说， NN 太小容易使本来很近的点却要在图中绕很远才能到，给距离带来了误
+差， NN 越大则“短路”可能性又提高。</p>
+<h2 id="Clustering-（聚类）"><a href="#Clustering-（聚类）" class="headerlink" title="Clustering （聚类）"></a>Clustering （聚类）</h2><h3 id="任务-1"><a href="#任务-1" class="headerlink" title="任务"></a>任务</h3><p>本部分描述实现两种聚类算法，其一为K-medoids（K-中心点）算法，其二为基于谱图理论的谱聚类算法。数据集有两个，一个是小数据集 german.txt，其中有1000个样本，每个样本有24个特征，每个样本占一行，最后为该样本的标签，标签分两类，1和-1，标签用作Gini系数和Purity的计算。另一个是大数据集mnist.txt，其中包括10000个样本，每个样本有784个特征，每个样本占一行，最后为该样本的标签，标签分 10
+类， 0-9。
+下面简要说明两种聚类算法的流程。</p>
 <h3 id="K-medoids-算法"><a href="#K-medoids-算法" class="headerlink" title="K-medoids 算法"></a>K-medoids 算法</h3><p>类似 K-means 算法的原理，只是聚类的中心不是所有该类所有样本的特征平均值，而是限制聚类的中心必须是该类的某一个样本，这样做的好处是可以有效避免离群点的影响，适用于异构数据等。初始找 k 个中心点，然后将每个点分到离它最近的中心点代表的类中，然后对每一类更新中心点，这样循环往复直到中心点不再变化。</p>
 <p>算法伪代码如下：</p>
 <center> <img src="http://7xsl28.com1.z0.glb.clouddn.com/KMEDOIDS1.png" alt=""> </center>
@@ -442,7 +461,7 @@ TF-IDF Feature Extraction (TF-IDF特征提取）数据
 		<ul>
 		
 		  
-			<li><a href="/categories/大数据系统与技术-Big-Data/" title="大数据系统与技术 | Big Data">大数据系统与技术 | Big Data<sup>8</sup></a></li>
+			<li><a href="/categories/大数据系统与技术-Big-Data/" title="大数据系统与技术 | Big Data">大数据系统与技术 | Big Data<sup>9</sup></a></li>
 		  
 		
 		  
@@ -482,7 +501,11 @@ TF-IDF Feature Extraction (TF-IDF特征提取）数据
 		  
 		
 		  
-			<li><a href="/categories/错误解决与优化-Err-n-Opt/" title="错误解决与优化 | Err_n_Opt">错误解决与优化 | Err_n_Opt<sup>10</sup></a></li>
+			<li><a href="/categories/错误解决与优化-Err-Opt/" title="错误解决与优化 | Err&amp;Opt">错误解决与优化 | Err&amp;Opt<sup>12</sup></a></li>
+		  
+		
+		  
+		
 		  
 		
 		  
@@ -496,7 +519,7 @@ TF-IDF Feature Extraction (TF-IDF特征提取）数据
   
   <div class="archiveslist">
     <p class="asidetitle"><a href="/archives">归档</a></p>
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">23</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">23</span></li></ul>
   </div>
 
 
@@ -504,7 +527,7 @@ TF-IDF Feature Extraction (TF-IDF特征提取）数据
   <div class="tagcloudlist">
     <p class="asidetitle">标签云</p>
     <div class="tagcloudlist clearfix">
-       <a href="/tags/CS/" style="font-size: 16.67px;">CS</a> <a href="/tags/Deep-Learning/" style="font-size: 13.33px;">Deep Learning</a> <a href="/tags/Git/" style="font-size: 11.11px;">Git</a> <a href="/tags/Hadoop/" style="font-size: 13.33px;">Hadoop</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/Latex/" style="font-size: 10px;">Latex</a> <a href="/tags/Linux/" style="font-size: 12.22px;">Linux</a> <a href="/tags/Python/" style="font-size: 18.89px;">Python</a> <a href="/tags/Spark/" style="font-size: 12.22px;">Spark</a> <a href="/tags/Summary/" style="font-size: 14.44px;">Summary</a> <a href="/tags/TensorFlow/" style="font-size: 10px;">TensorFlow</a> <a href="/tags/Web/" style="font-size: 12.22px;">Web</a> <a href="/tags/hexo/" style="font-size: 14.44px;">hexo</a> <a href="/tags/三国/" style="font-size: 10px;">三国</a> <a href="/tags/人文社科/" style="font-size: 10px;">人文社科</a> <a href="/tags/优化/" style="font-size: 10px;">优化</a> <a href="/tags/吃喝玩乐/" style="font-size: 10px;">吃喝玩乐</a> <a href="/tags/大数据/" style="font-size: 14.44px;">大数据</a> <a href="/tags/影视/" style="font-size: 11.11px;">影视</a> <a href="/tags/数据分析/" style="font-size: 15.56px;">数据分析</a> <a href="/tags/机器学习/" style="font-size: 20px;">机器学习</a> <a href="/tags/深度学习/" style="font-size: 15.56px;">深度学习</a> <a href="/tags/算法/" style="font-size: 12.22px;">算法</a> <a href="/tags/论文阅读/" style="font-size: 11.11px;">论文阅读</a> <a href="/tags/译文/" style="font-size: 12.22px;">译文</a> <a href="/tags/读书/" style="font-size: 17.78px;">读书</a> <a href="/tags/错误解决/" style="font-size: 12.22px;">错误解决</a> <a href="/tags/随笔/" style="font-size: 14.44px;">随笔</a>
+       <a href="/tags/CS/" style="font-size: 17px;">CS</a> <a href="/tags/Deep-Learning/" style="font-size: 17px;">Deep Learning</a> <a href="/tags/GPU/" style="font-size: 10px;">GPU</a> <a href="/tags/Git/" style="font-size: 11px;">Git</a> <a href="/tags/Hadoop/" style="font-size: 14px;">Hadoop</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/Latex/" style="font-size: 10px;">Latex</a> <a href="/tags/Linux/" style="font-size: 13px;">Linux</a> <a href="/tags/Python/" style="font-size: 19px;">Python</a> <a href="/tags/Spark/" style="font-size: 12px;">Spark</a> <a href="/tags/Summary/" style="font-size: 15px;">Summary</a> <a href="/tags/TensorFlow/" style="font-size: 11px;">TensorFlow</a> <a href="/tags/Web/" style="font-size: 12px;">Web</a> <a href="/tags/hexo/" style="font-size: 15px;">hexo</a> <a href="/tags/三国/" style="font-size: 10px;">三国</a> <a href="/tags/人文社科/" style="font-size: 10px;">人文社科</a> <a href="/tags/优化/" style="font-size: 10px;">优化</a> <a href="/tags/吃喝玩乐/" style="font-size: 10px;">吃喝玩乐</a> <a href="/tags/大数据/" style="font-size: 15px;">大数据</a> <a href="/tags/影视/" style="font-size: 11px;">影视</a> <a href="/tags/数据分析/" style="font-size: 16px;">数据分析</a> <a href="/tags/机器学习/" style="font-size: 20px;">机器学习</a> <a href="/tags/深度学习/" style="font-size: 17px;">深度学习</a> <a href="/tags/算法/" style="font-size: 12px;">算法</a> <a href="/tags/系统/" style="font-size: 10px;">系统</a> <a href="/tags/论文阅读/" style="font-size: 12px;">论文阅读</a> <a href="/tags/译文/" style="font-size: 12px;">译文</a> <a href="/tags/读书/" style="font-size: 18px;">读书</a> <a href="/tags/错误解决/" style="font-size: 12px;">错误解决</a> <a href="/tags/随笔/" style="font-size: 15px;">随笔</a>
     </div>
   </div>
 
@@ -617,7 +640,7 @@ TF-IDF Feature Extraction (TF-IDF特征提取）数据
 		<a href="/about" target="_blank" title="whatbeg">whatbeg</a>
 		
 		<br>
-		<span class="post-count">Total words: <span style="color:orange">287.9k</span></span>
+		<span class="post-count">Total words: <span style="color:orange">304.1k</span></span>
         <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
         <span id="busuanzi_container_site_pv">
         &nbsp;&nbsp;Total visits:&nbsp;<span style="color:orange" id="busuanzi_value_site_pv"></span>

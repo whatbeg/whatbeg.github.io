@@ -12,19 +12,28 @@
 
     
     <meta name="description" content="关于神经网络一阶优化算法，网上已经有很多资料了，本文为笔者很久之前做的一份梳理，整理了一下一些popular的一阶优化算法及他们的逻辑线，优缺点等。读者自行甄别，自取所需，大神直接过即可。
-Notations$\theta$ : parameters$J$ : objective function$\nabla J(\theta) = J’$ w.r.t parameter$\eta$ : lea">
+Notations$\theta$ : parameters
+$J$ : objective function
+$\nabla J(\theta) = J’$ w.r.t parameter
+$\eta$ :">
 <meta property="og:type" content="article">
 <meta property="og:title" content="神经网络一阶优化算法手记">
 <meta property="og:url" content="http://whatbeg.com/2018/03/11/optimizationAlgos.html">
 <meta property="og:site_name" content="Whatbeg's blog">
 <meta property="og:description" content="关于神经网络一阶优化算法，网上已经有很多资料了，本文为笔者很久之前做的一份梳理，整理了一下一些popular的一阶优化算法及他们的逻辑线，优缺点等。读者自行甄别，自取所需，大神直接过即可。
-Notations$\theta$ : parameters$J$ : objective function$\nabla J(\theta) = J’$ w.r.t parameter$\eta$ : lea">
+Notations$\theta$ : parameters
+$J$ : objective function
+$\nabla J(\theta) = J’$ w.r.t parameter
+$\eta$ :">
 <meta property="og:image" content="https://blog-image-1256228880.cos.ap-beijing.myqcloud.com/optimization.jpg">
-<meta property="og:updated_time" content="2018-03-11T09:13:24.715Z">
+<meta property="og:updated_time" content="2018-03-18T06:21:21.212Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="神经网络一阶优化算法手记">
 <meta name="twitter:description" content="关于神经网络一阶优化算法，网上已经有很多资料了，本文为笔者很久之前做的一份梳理，整理了一下一些popular的一阶优化算法及他们的逻辑线，优缺点等。读者自行甄别，自取所需，大神直接过即可。
-Notations$\theta$ : parameters$J$ : objective function$\nabla J(\theta) = J’$ w.r.t parameter$\eta$ : lea">
+Notations$\theta$ : parameters
+$J$ : objective function
+$\nabla J(\theta) = J’$ w.r.t parameter
+$\eta$ :">
 <meta name="twitter:image" content="https://blog-image-1256228880.cos.ap-beijing.myqcloud.com/optimization.jpg">
 
     
@@ -98,22 +107,41 @@ Notations$\theta$ : parameters$J$ : objective function$\nabla J(\theta) = J’$ 
 		</div>
 		
 		<p>关于神经网络一阶优化算法，网上已经有很多资料了，本文为笔者很久之前做的一份梳理，整理了一下一些popular的一阶优化算法及他们的逻辑线，优缺点等。读者自行甄别，自取所需，大神直接过即可。</p>
-<h2 id="Notations"><a href="#Notations" class="headerlink" title="Notations"></a>Notations</h2><p>$\theta$ : parameters<br>$J$ : objective function<br>$\nabla J(\theta) = J’$ w.r.t parameter<br>$\eta$ : learning rate</p>
-<h2 id="从SGD说起"><a href="#从SGD说起" class="headerlink" title="从SGD说起"></a>从SGD说起</h2><p>SGD(Stochastic Gradient Descent)是目前最流行的机器学习，深度学习优化算法之一，现在通常所说的SGD指的是Mini-batch gradient descent，更新规则如下，<br>$$\theta_{t+1} = \theta_{t} - \eta \nabla J(\theta_{t}; x_{i:i+m}; y_{i:i+m})$$</p>
+<h2 id="Notations"><a href="#Notations" class="headerlink" title="Notations"></a>Notations</h2><p>$\theta$ : parameters</p>
+<p>$J$ : objective function</p>
+<p>$\nabla J(\theta) = J’$ w.r.t parameter</p>
+<p>$\eta$ : learning rate</p>
+<h2 id="从SGD说起"><a href="#从SGD说起" class="headerlink" title="从SGD说起"></a>从SGD说起</h2><p>SGD(Stochastic Gradient Descent)是目前最流行的机器学习，深度学习优化算法之一，现在通常所说的SGD指的是Mini-batch gradient descent，更新规则如下，</p>
+<p>$$\theta_{t+1} = \theta_{t} - \eta \nabla J(\theta_{t}; x_{i:i+m}; y_{i:i+m})$$</p>
 <p>每次采用一小批数据计算梯度来更新paramter，既能够缓解每次单个样本的SGD带来的剧烈波动问题，又能够加快训练速度，所以受到了machine learning和neural network训练的喜爱。</p>
 <p>但是SGD有如下几个不足[1]：<br>1）learning rate很难选取<br>2）schedule策略需要预先选定，无法自适应<br>3）参数的每一维使用相同的学习率<br>4）SGD在鞍点或者pleatu区域容易陷入困境，难以逃离</p>
 <p>根据这些不足，人们设计了许多SGD的改进算法。</p>
-<h2 id="Momentum"><a href="#Momentum" class="headerlink" title="Momentum"></a>Momentum</h2><p>为了加速SGD的训练，以及改善面对“峡谷”型目标函数的鲁棒性，人们将物理学中的Momentum概念加入优化中。实验证明，Momentum SGD[2]能够有效地抑制函数值震荡的现象。<br>Momentum的更新公式如下：<br>$$v_t = \rho v_{t-1} + \eta \nabla J(\theta)<br>\<br>\theta = \theta - v_t$$<br>where $\rho$ 控制着前面诸参数更新的衰减率。<br>有了Momentum，SGD能够收敛的更快，并且震荡会减弱。</p>
-<h2 id="Nesterov-Accelerated-Gradient-NAG"><a href="#Nesterov-Accelerated-Gradient-NAG" class="headerlink" title="Nesterov Accelerated Gradient(NAG)"></a>Nesterov Accelerated Gradient(NAG)</h2><p>接着，Nesterov提出了一种无约束凸优化方法，称为Nesterov accelerated gradient(NAG)[3]，这种方法预先估计下一个位置，然后看看该位置的梯度，根据对该“未来”梯度的判断，来调整自己的预期步长，使得更加智能的往局部最优点走去。NAG的更新式与Momentum只有一丝细微的差别：<br>$$v_t = \rho v_{t-1} + \eta \nabla J(\theta-\rho v_{t-1})<br>\<br>\theta = \theta - v_t$$</p>
+<h2 id="Momentum"><a href="#Momentum" class="headerlink" title="Momentum"></a>Momentum</h2><p>为了加速SGD的训练，以及改善面对“峡谷”型目标函数的鲁棒性，人们将物理学中的Momentum概念加入优化中。实验证明，Momentum SGD[2]能够有效地抑制函数值震荡的现象。<br>Momentum的更新公式如下：</p>
+<p>$v_t = \rho v_{t-1} + \eta \nabla J(\theta)$</p>
+<p>$\theta = \theta - v_t$</p>
+<p>where $\rho$ 控制着前面诸参数更新的衰减率。<br>有了Momentum，SGD能够收敛的更快，并且震荡会减弱。</p>
+<h2 id="Nesterov-Accelerated-Gradient-NAG"><a href="#Nesterov-Accelerated-Gradient-NAG" class="headerlink" title="Nesterov Accelerated Gradient(NAG)"></a>Nesterov Accelerated Gradient(NAG)</h2><p>接着，Nesterov提出了一种无约束凸优化方法，称为Nesterov accelerated gradient(NAG)[3]，这种方法预先估计下一个位置，然后看看该位置的梯度，根据对该“未来”梯度的判断，来调整自己的预期步长，使得更加智能的往局部最优点走去。NAG的更新式与Momentum只有一丝细微的差别：</p>
+<p>$v_t = \rho v_{t-1} + \eta \nabla J(\theta-\rho v_{t-1})$</p>
+<p>$\theta = \theta - v_t$</p>
 <h2 id="Adagrad"><a href="#Adagrad" class="headerlink" title="Adagrad"></a>Adagrad</h2><p>虽然我们对SGD进行了加速，并且非常智能地调整好了方向，我们的参数向量各个维度更新幅度仍然是一样的，（在有些时候，尤其是稀疏场景中，对于出现极少次数的特征维，我们不会想只更新一个很小的幅度，这样会使得这个维度学习很差。）</p>
-<p>另一种思路是使得参数向量$\theta$的各个维以不同步调来差异化地调整。<br>Adagrad就是其中一种，由Duchi et. al[4]在2011年提出。Ada means Adaptive，代表着它能够自适应地为参数调整学习率，非常适合稀疏数据，这种方法将梯度平方的累积值加入梯度更新中，更新方式如下：<br>$$g_{t,i} = \nabla J(\theta_i) \<br>\theta_{t+1, i} = \theta_{t, i} - \frac {\eta} {\sqrt{G_{t,ii} + \epsilon}} \cdot g_{t,i}$$<br>$G_t \in {\mathbb R}^{d \times d}$ is a diagonal matrix that each diagonal element is sum of the squares of the gradient w.r.t $w_i$ up to time step t [4].<br>$\epsilon$ is just a smoothing term avoiding division by zero, usually 1e-8.<br>我们也可以写成向量形式：<br>$$\theta_{t+1} = \theta_{t} - \frac {\eta} {\sqrt{G_{t} + \epsilon}} \odot g_{t}$$<br>$\odot$ means element-wise matrix-vector multiplication.</p>
+<p>另一种思路是使得参数向量$\theta$的各个维以不同步调来差异化地调整。<br>Adagrad就是其中一种，由Duchi et. al[4]在2011年提出。Ada means Adaptive，代表着它能够自适应地为参数调整学习率，非常适合稀疏数据，这种方法将梯度平方的累积值加入梯度更新中，更新方式如下：</p>
+<p>$g_{t,i} = \nabla J(\theta_i)$</p>
+<p>$\theta_{t+1, i} = \theta_{t, i} - \frac {\eta} {\sqrt{G_{t,ii} + \epsilon}} \cdot g_{t,i}$</p>
+<p>$G_t \in {\mathbb R}^{d \times d}$ is a diagonal matrix that each diagonal element is sum of the squares of the gradient w.r.t $w_i$ up to time step t [4].<br>$\epsilon$ is just a smoothing term avoiding division by zero, usually 1e-8.<br>我们也可以写成向量形式：<br>$$\theta_{t+1} = \theta_{t} - \frac {\eta} {\sqrt{G_{t} + \epsilon}} \odot g_{t}$$<br>$\odot$ means element-wise matrix-vector multiplication.</p>
 <h2 id="RMSprop"><a href="#RMSprop" class="headerlink" title="RMSprop"></a>RMSprop</h2><p>随着梯度平方的累积，Adagrad会自适应地降低频繁更新的参数的学习率，使得你无需去手动指定learning rate schedule策略来调试学习率，但是Adagrad的一大缺点就是它的学习率会随着训练中不断增长的累计梯度平方和而单调下降到任意小，甚至导致学习的停滞。</p>
 <p>RMSprop[5]和Adadelta[6]是提出来解决上述Adagrad学习率降到任意小问题的，RMSprop的基本思想是，instead of 除以所有梯度平方的累积，RMSprop将学习率除以梯度平方的指数衰减平均$E[g^2]$，梯度平方的指数衰减平均$E[g^2]$可以表示前w个平方梯度的累积，又避免了直接存储前w个平方梯度的存储开销，这样能够有效防止无限小的，单调下降的，diminishing的learning rate问题，RMSprop更新规则如下：<br>$g_t$代表time step t时刻的梯度向量。</p>
-<p>$$E[g^2]_t = \rho E[g^2]_{t-1} + (1-\rho)g_t^2 \<br>\theta_{t+1} = \theta_t - \frac {\eta} {\sqrt{E[g^2]_t + \epsilon}} \cdot g_{t,i} = \theta_t - \frac {\eta} {RMS[g]_t} \cdot g_{t,i}$$</p>
-<h2 id="Adadelta"><a href="#Adadelta" class="headerlink" title="Adadelta"></a>Adadelta</h2><p>Adadelta[6]为与RMSprop几乎同一时间提出来的，可以看做在RMSprop的基础上做了进一步的改进的版本。其与RMSprop的关键区别就在于Adadelta统一了$\Delta \theta$与$\theta$的单位(unit)。<br>作者指出，在原来的$$\Delta \theta = - \frac {\eta} {\sqrt{E[g^2]_t + \epsilon}} \cdot g_{t,i}$$中，$\Delta \theta$的单位与$\theta$是不匹配的，在SGD，Momentum或者Adagrad中也是如此，所以Adadelta通过引入$\Delta \theta^2$的指数衰减平均，来使得单位统一。故Adadelta的更新式为：<br>$$E[g^2]_t = \rho E[g^2]_{t-1} + (1-\rho)g_t^2 \<br>\theta_{t+1} = \theta_t - \frac {\sqrt {E[\Delta \theta^2]_{t-1} + \epsilon}} {\sqrt{E[g^2]_t + \epsilon}} \cdot g_t \<br>E[\Delta \theta^2]_t = \rho E[\Delta \theta^2]_{t-1} + (1-\rho)\Delta \theta_t^2$$</p>
+<p>$E[g^2]_t = \rho E[g^2]_{t-1} + (1-\rho)g_t^2 $</p>
+<p>$\theta_{t+1} = \theta_t - \frac {\eta} {\sqrt{E[g^2]_t + \epsilon}} \cdot g_{t,i} = \theta_t - \frac {\eta} {RMS[g]_t} \cdot g_{t,i}$</p>
+<h2 id="Adadelta"><a href="#Adadelta" class="headerlink" title="Adadelta"></a>Adadelta</h2><p>Adadelta[6]为与RMSprop几乎同一时间提出来的，可以看做在RMSprop的基础上做了进一步的改进的版本。其与RMSprop的关键区别就在于Adadelta统一了$\Delta \theta$与$\theta$的单位(unit)。<br>作者指出，在原来的$$\Delta \theta = - \frac {\eta} {\sqrt{E[g^2]_t + \epsilon}} \cdot g_{t,i}$$中，$\Delta \theta$的单位与$\theta$是不匹配的，在SGD，Momentum或者Adagrad中也是如此，所以Adadelta通过引入$\Delta \theta^2$的指数衰减平均，来使得单位统一。故Adadelta的更新式为：<br>$E[g^2]_t = \rho E[g^2]_{t-1} + (1-\rho)g_t^2$</p>
+<p>$\theta_{t+1} = \theta_t - \frac {\sqrt {E[\Delta \theta^2]_{t-1} + \epsilon}} {\sqrt{E[g^2]_t + \epsilon}} \cdot g_t$</p>
+<p>$E[\Delta \theta^2]_t = \rho E[\Delta \theta^2]_{t-1} + (1-\rho)\Delta \theta_t^2$</p>
 <p>where $\rho$ 是类似于Momentum中的衰减率常数。<br>Adadelta有两个重要的优点，1) 解决了学习率随着训练持续减小的问题 2) 无需预先设置学习率超参<br>[6]指出，在MNIST数据集上，Adadelta的参数敏感性好于SGD,Momentum和Adagrad等算法。</p>
 <h2 id="Adam"><a href="#Adam" class="headerlink" title="Adam"></a>Adam</h2><p>另一个现在用的较多的自适应学习率方法是Adam(Adaptive Moment Estimation)[7]，Adam结合了RMSprop和Momentum的思想，不过Adam不仅维护过去一阶梯度的指数衰减平均$m_t$(exponentially decaying average of past gradients)，而且还维护二阶梯度的指数衰减平均$v_t$，并且加入了bias-correction步骤，以纠正$m_t, v_t$初始化为0带来的偏差(bias)，由是可得到Adam的更新规则如下：</p>
-<p>$$m_t = \beta_1 m_{t-1} + (1-\beta_1)g_t \<br>v_t = \beta_2 v_{t-1} + (1-\beta_2)g_t^2 \<br>\hat{m}_t = \frac {m_t} {1-\beta_1^t} \<br>\hat{v}_t = \frac {v_t} {1-\beta_2^t} \<br>\theta_{t+1} = \theta_t - \frac {\eta} {\sqrt{\hat{v}_t} + \epsilon} \cdot \hat{m}_t$$</p>
+<p>$m_t = \beta_1 m_{t-1} + (1-\beta_1)g_t $</p>
+<p>$v_t = \beta_2 v_{t-1} + (1-\beta_2)g_t^2 $</p>
+<p>$\hat{m}_t = \frac {m_t} {1-\beta_1^t} $</p>
+<p>$\hat{v}_t = \frac {v_t} {1-\beta_2^t}$</p>
+<p>$\theta_{t+1} = \theta_t - \frac {\eta} {\sqrt{\hat{v}_t} + \epsilon} \cdot \hat{m}_t $</p>
 <p>where $\beta_1, \beta_2$ is exponential decay rates of moment estimates.<br>[7]中推荐参数设置为$\eta = 0.001, \beta_1 = 0.9, \beta_2 = 0.999 \<br> and \ \epsilon = 1e-8$</p>
 <blockquote>
 <p>Actually, Adam algorithm works well in practice, not only in acedemia but industry. Empirical results show that Adam consistantly outperforms other methods for a variety of models and datasets, and it’s a versatile algorithm that scales to large-scale high-dimensional machine learning problems.</p>
@@ -286,6 +314,14 @@ Notations$\theta$ : parameters$J$ : objective function$\nabla J(\theta) = J’$ 
 	
 <nav class="article-nav clearfix">
  
+ <div class="prev" >
+ <a href="/2018/03/15/ray-paper.html" title="Ray 论文解读">
+  <strong>上一篇：</strong><br/>
+  <span>
+  Ray 论文解读</span>
+</a>
+</div>
+
 
 <div class="next">
 <a href="/2018/03/07/deeplearningbook-06.html"  title="Deep Learning读书笔记（6）--【卷积神经网络】">
@@ -345,7 +381,7 @@ Notations$\theta$ : parameters$J$ : objective function$\nabla J(\theta) = J’$ 
 		<ul>
 		
 		  
-			<li><a href="/categories/大数据系统与技术-Big-Data/" title="大数据系统与技术 | Big Data">大数据系统与技术 | Big Data<sup>8</sup></a></li>
+			<li><a href="/categories/大数据系统与技术-Big-Data/" title="大数据系统与技术 | Big Data">大数据系统与技术 | Big Data<sup>9</sup></a></li>
 		  
 		
 		  
@@ -385,7 +421,11 @@ Notations$\theta$ : parameters$J$ : objective function$\nabla J(\theta) = J’$ 
 		  
 		
 		  
-			<li><a href="/categories/错误解决与优化-Err-n-Opt/" title="错误解决与优化 | Err_n_Opt">错误解决与优化 | Err_n_Opt<sup>10</sup></a></li>
+			<li><a href="/categories/错误解决与优化-Err-Opt/" title="错误解决与优化 | Err&amp;Opt">错误解决与优化 | Err&amp;Opt<sup>12</sup></a></li>
+		  
+		
+		  
+		
 		  
 		
 		  
@@ -399,7 +439,7 @@ Notations$\theta$ : parameters$J$ : objective function$\nabla J(\theta) = J’$ 
   
   <div class="archiveslist">
     <p class="asidetitle"><a href="/archives">归档</a></p>
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">23</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">23</span></li></ul>
   </div>
 
 
@@ -407,7 +447,7 @@ Notations$\theta$ : parameters$J$ : objective function$\nabla J(\theta) = J’$ 
   <div class="tagcloudlist">
     <p class="asidetitle">标签云</p>
     <div class="tagcloudlist clearfix">
-       <a href="/tags/CS/" style="font-size: 16.67px;">CS</a> <a href="/tags/Deep-Learning/" style="font-size: 13.33px;">Deep Learning</a> <a href="/tags/Git/" style="font-size: 11.11px;">Git</a> <a href="/tags/Hadoop/" style="font-size: 13.33px;">Hadoop</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/Latex/" style="font-size: 10px;">Latex</a> <a href="/tags/Linux/" style="font-size: 12.22px;">Linux</a> <a href="/tags/Python/" style="font-size: 18.89px;">Python</a> <a href="/tags/Spark/" style="font-size: 12.22px;">Spark</a> <a href="/tags/Summary/" style="font-size: 14.44px;">Summary</a> <a href="/tags/TensorFlow/" style="font-size: 10px;">TensorFlow</a> <a href="/tags/Web/" style="font-size: 12.22px;">Web</a> <a href="/tags/hexo/" style="font-size: 14.44px;">hexo</a> <a href="/tags/三国/" style="font-size: 10px;">三国</a> <a href="/tags/人文社科/" style="font-size: 10px;">人文社科</a> <a href="/tags/优化/" style="font-size: 10px;">优化</a> <a href="/tags/吃喝玩乐/" style="font-size: 10px;">吃喝玩乐</a> <a href="/tags/大数据/" style="font-size: 14.44px;">大数据</a> <a href="/tags/影视/" style="font-size: 11.11px;">影视</a> <a href="/tags/数据分析/" style="font-size: 15.56px;">数据分析</a> <a href="/tags/机器学习/" style="font-size: 20px;">机器学习</a> <a href="/tags/深度学习/" style="font-size: 15.56px;">深度学习</a> <a href="/tags/算法/" style="font-size: 12.22px;">算法</a> <a href="/tags/论文阅读/" style="font-size: 11.11px;">论文阅读</a> <a href="/tags/译文/" style="font-size: 12.22px;">译文</a> <a href="/tags/读书/" style="font-size: 17.78px;">读书</a> <a href="/tags/错误解决/" style="font-size: 12.22px;">错误解决</a> <a href="/tags/随笔/" style="font-size: 14.44px;">随笔</a>
+       <a href="/tags/CS/" style="font-size: 17px;">CS</a> <a href="/tags/Deep-Learning/" style="font-size: 17px;">Deep Learning</a> <a href="/tags/GPU/" style="font-size: 10px;">GPU</a> <a href="/tags/Git/" style="font-size: 11px;">Git</a> <a href="/tags/Hadoop/" style="font-size: 14px;">Hadoop</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/Latex/" style="font-size: 10px;">Latex</a> <a href="/tags/Linux/" style="font-size: 13px;">Linux</a> <a href="/tags/Python/" style="font-size: 19px;">Python</a> <a href="/tags/Spark/" style="font-size: 12px;">Spark</a> <a href="/tags/Summary/" style="font-size: 15px;">Summary</a> <a href="/tags/TensorFlow/" style="font-size: 11px;">TensorFlow</a> <a href="/tags/Web/" style="font-size: 12px;">Web</a> <a href="/tags/hexo/" style="font-size: 15px;">hexo</a> <a href="/tags/三国/" style="font-size: 10px;">三国</a> <a href="/tags/人文社科/" style="font-size: 10px;">人文社科</a> <a href="/tags/优化/" style="font-size: 10px;">优化</a> <a href="/tags/吃喝玩乐/" style="font-size: 10px;">吃喝玩乐</a> <a href="/tags/大数据/" style="font-size: 15px;">大数据</a> <a href="/tags/影视/" style="font-size: 11px;">影视</a> <a href="/tags/数据分析/" style="font-size: 16px;">数据分析</a> <a href="/tags/机器学习/" style="font-size: 20px;">机器学习</a> <a href="/tags/深度学习/" style="font-size: 17px;">深度学习</a> <a href="/tags/算法/" style="font-size: 12px;">算法</a> <a href="/tags/系统/" style="font-size: 10px;">系统</a> <a href="/tags/论文阅读/" style="font-size: 12px;">论文阅读</a> <a href="/tags/译文/" style="font-size: 12px;">译文</a> <a href="/tags/读书/" style="font-size: 18px;">读书</a> <a href="/tags/错误解决/" style="font-size: 12px;">错误解决</a> <a href="/tags/随笔/" style="font-size: 15px;">随笔</a>
     </div>
   </div>
 
@@ -520,7 +560,7 @@ Notations$\theta$ : parameters$J$ : objective function$\nabla J(\theta) = J’$ 
 		<a href="/about" target="_blank" title="whatbeg">whatbeg</a>
 		
 		<br>
-		<span class="post-count">Total words: <span style="color:orange">287.9k</span></span>
+		<span class="post-count">Total words: <span style="color:orange">304.1k</span></span>
         <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
         <span id="busuanzi_container_site_pv">
         &nbsp;&nbsp;Total visits:&nbsp;<span style="color:orange" id="busuanzi_value_site_pv"></span>

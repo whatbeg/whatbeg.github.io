@@ -122,12 +122,14 @@
 <li>将深度学习与增强学习结合的系统正处于萌芽期，不过他们已经在分类任务中表现出了令人印象深刻的效果</li>
 <li>人工智能的巨大进步考表示学习与复杂推理的结合来推动</li>
 </ul>
-<p>文章讲述了深度学习中的一些关键性主题，包括监督学习，后向传播，卷积神经网络及其在图像理解上的应用，分布式表示和语言处理，以及循环神经网络，最后对深度学习的未来进行了探讨。<br>文章提交于2015年2月，距今约2年了，深度学习的江湖又发生了巨大的变化，单看这篇综述还不能够了解深度学习的方方面面，还需要更多的资料。</p>
+<p>文章讲述了深度学习中的一些关键性主题，包括监督学习，后向传播，卷积神经网络及其在图像理解上的应用，分布式表示和语言处理，以及循环神经网络，最后对深度学习的未来进行了探讨。
+文章提交于2015年2月，距今约2年了，深度学习的江湖又发生了巨大的变化，单看这篇综述还不能够了解深度学习的方方面面，还需要更多的资料。</p>
 <h2 id="Large-Scale-Distributed-Deep-Networks"><a href="#Large-Scale-Distributed-Deep-Networks" class="headerlink" title="Large Scale Distributed Deep Networks"></a>Large Scale Distributed Deep Networks</h2><p>Large Scale Distributed Deep Networks. Jeffrey Dean et al. <a href="http://www.cs.toronto.edu/~ranzato/publications/DistBeliefNIPS2012_withAppendix.pdf" target="_blank" rel="external">PDF</a> <a href="http://wxwidget.github.io/blog/2014/08/17/large-scale-deep-network/" target="_blank" rel="external">中文译版</a></p>
 <ul>
 <li>分布式训练或者优化的一个难点在于各机器处理时间各异，有时候需要等最慢的机器运行完成</li>
 <li>SGD是训练深度神经网络最常用的优化过程了，但是在非凸的情况下就略显颓势了</li>
-<li>一种深度学习规模扩展的方法使，用一些GPU来训练许多小模型，将这些模型应用在数据是，将它们的预测结果平均<br>这篇文章对大规模分布式深度网络的训练框架内，提出了两个算法： Downpour SGD，一个支持大量模型副本的异步随机梯度下降过程，和Sandblaster L-BFGS，一个支持各种分布式批优化过程的框架，但是后者好像没什么大用，后面提到，“Sandblaster L-BFGS或许在30000个处理器的时候能够最后胜出”，暂时都用不到那么多的核，所以后面性能也没有测试结果，所以就不知道了，重点在于前面一个算法。</li>
+<li>一种深度学习规模扩展的方法使，用一些GPU来训练许多小模型，将这些模型应用在数据是，将它们的预测结果平均
+这篇文章对大规模分布式深度网络的训练框架内，提出了两个算法： Downpour SGD，一个支持大量模型副本的异步随机梯度下降过程，和Sandblaster L-BFGS，一个支持各种分布式批优化过程的框架，但是后者好像没什么大用，后面提到，“Sandblaster L-BFGS或许在30000个处理器的时候能够最后胜出”，暂时都用不到那么多的核，所以后面性能也没有测试结果，所以就不知道了，重点在于前面一个算法。</li>
 </ul>
 <p>Downpour SGD的主要思想是，将训练集划分若干子集，并对每个子集运行一个单独的模型副本。模型副本之间的通信均通过中心参数服务器(parameter server, ps)组，该参数服务器组维护了模型参数的当前状态，并分割到多台机器上（例如，如果我们参数服务器组有10个节点，那么每个节点将负责存储和更新模型参数的1/10，如图1所示）。</p>
 <center> <img src="http://7xsl28.com1.z0.glb.clouddn.com/downpoursgd.png" alt="图1"> </center>
@@ -137,7 +139,13 @@
 <li>模型副本之间运行独立，在各自负责的数据集（子集）上独立运行</li>
 <li>参数服务器(parameter server)组各节点之间同样是独立的，PS片独立运行</li>
 </ol>
-<p>考虑Downpour SGD的一个最简单的实现，在处理每个mini-batch（译者注：小型批量）之前，模型副本都会向参数服务器请求最新的模型参数。因为DistBelief框架也是分布在多台机器上，所以其框架的每个节点只需和参数服务器组中包含和该节点有关的模型参数的那部分节点进行通信。在DistBelief副本获得更新后的模型参数后，运行一次mini-batch样本来计算参数的梯度，并推送到参数服务器，以用于更新当前的模型参数值。更新的频度也可以设置，在处理机器失效方面，Downpour SGD比标准（同步）SGD要鲁棒。对于同步SGD来讲，如果一台机器失效，整个训练过程将会延时；但是对于异步SGD来讲，如果某个模型副本的一台机器失效，其他模型副本仍然继续处理样本并更新参数服务器中的模型参数。<br>但是由于每个参数服务器只更新互斥的一部分参数，副本之间不会进行通信，因此可能会导致参数发散而不利于收敛。<br>另外一项能极大提高Downpour SGD鲁棒性的技术是使用Adagrad自适应学习速率方法。<br>通过这种结合，达到了最好的效果（最短的时间内达到了规定的准确率）。<br>Adagrad方法参见:<br>J. C. Duchi, E. Hazan, and Y. Singer. Adaptive subgradient methods for online learning and stochastic optimization. Journal of Machine Learning Research, 12:2121–2159, 2011.<br>中文版的论文翻译中有更详细的内容。</p>
+<p>考虑Downpour SGD的一个最简单的实现，在处理每个mini-batch（译者注：小型批量）之前，模型副本都会向参数服务器请求最新的模型参数。因为DistBelief框架也是分布在多台机器上，所以其框架的每个节点只需和参数服务器组中包含和该节点有关的模型参数的那部分节点进行通信。在DistBelief副本获得更新后的模型参数后，运行一次mini-batch样本来计算参数的梯度，并推送到参数服务器，以用于更新当前的模型参数值。更新的频度也可以设置，在处理机器失效方面，Downpour SGD比标准（同步）SGD要鲁棒。对于同步SGD来讲，如果一台机器失效，整个训练过程将会延时；但是对于异步SGD来讲，如果某个模型副本的一台机器失效，其他模型副本仍然继续处理样本并更新参数服务器中的模型参数。
+但是由于每个参数服务器只更新互斥的一部分参数，副本之间不会进行通信，因此可能会导致参数发散而不利于收敛。
+另外一项能极大提高Downpour SGD鲁棒性的技术是使用Adagrad自适应学习速率方法。
+通过这种结合，达到了最好的效果（最短的时间内达到了规定的准确率）。
+Adagrad方法参见: 
+J. C. Duchi, E. Hazan, and Y. Singer. Adaptive subgradient methods for online learning and stochastic optimization. Journal of Machine Learning Research, 12:2121–2159, 2011.
+中文版的论文翻译中有更详细的内容。</p>
 <h2 id="A-Brief-Overview-of-Deep-Learning"><a href="#A-Brief-Overview-of-Deep-Learning" class="headerlink" title="A Brief Overview of Deep Learning"></a>A Brief Overview of Deep Learning</h2><p><a href="http://yyue.blogspot.jp/2015/01/a-brief-overview-of-deep-learning.html" target="_blank" rel="external">WEB</a> by Ilya Sutskever. Jan 13, 2015</p>
 <p>文章论述了为什么深度学习是有效的并且强力的，以及深度学习模型的学习和泛化，然后给出了13条实践中训练深度学习模型的建议，摘其要点如下，作者用LDNN这个词来代替Deep Learning</p>
 <ul>
@@ -171,9 +179,13 @@
 <li>Tip12: dropout有效提升性能，且训练越久变得越来越好</li>
 <li>Tip13: 训练多个模型，将它们的预测取平均</li>
 </ul>
-<p>这些Tips还期待日后在实践过程中的运用检验，希望能够对深度模型的训练起到一些指导的作用。<br>最后，作者总结，LDNNs是强力的，切实可训练的，如果我们有高质量的大量数据，我们可以找到最好的LDNNs来解决问题。对未来做出预测很难，不过，通常来说，通过大量计算得出的模型更好的可能性更大，神经图灵机是这个方向上的重要进步，无监督学习也是未来的一大方向，期待进一步的突破。</p>
+<p>这些Tips还期待日后在实践过程中的运用检验，希望能够对深度模型的训练起到一些指导的作用。
+最后，作者总结，LDNNs是强力的，切实可训练的，如果我们有高质量的大量数据，我们可以找到最好的LDNNs来解决问题。对未来做出预测很难，不过，通常来说，通过大量计算得出的模型更好的可能性更大，神经图灵机是这个方向上的重要进步，无监督学习也是未来的一大方向，期待进一步的突破。</p>
 <h2 id="小小总结"><a href="#小小总结" class="headerlink" title="小小总结"></a>小小总结</h2><p>综合这几篇文章，看到他们都对深度学习的整个脉络，现在的发展和未来的预测进行了梳理。结合自己的看法，我把他们总结成以下几点，</p>
-<p>第一，深度模型在现今许多复杂任务中取得了良好的效果，在图像，视频，音频，语音，自然语言处理方面都取得了start-of-art的效果，这些也是深度学习拿手的几个方向<br>第二，深度学习模型只是一种有别于传统机器学习方法的模型，它大大简化了特征工程的部分，但本质上是神经网络，也即一种机器学习的方法，我们不知道深度学习的未来如何，但是机器学习的未来一定是明朗的<br>第三，未来的大方向在于无监督学习，增强学习，迁移学习等领域，因为无标记的样本比有标记的高质量数据来的多得多，如何有效利用这些无标签样本是需要重点研究的课题<br>第四，在计算能力得到根本性突破之前（比如量子计算机投入使用并且发挥所谓的强大计算能力之前），多机并行以增加计算能力，来训练更加复杂的模型是不可阻挡的趋势，分布式机器学习，分布式深度学习模型训练也是可以做的方向</p>
+<p>第一，深度模型在现今许多复杂任务中取得了良好的效果，在图像，视频，音频，语音，自然语言处理方面都取得了start-of-art的效果，这些也是深度学习拿手的几个方向
+第二，深度学习模型只是一种有别于传统机器学习方法的模型，它大大简化了特征工程的部分，但本质上是神经网络，也即一种机器学习的方法，我们不知道深度学习的未来如何，但是机器学习的未来一定是明朗的
+第三，未来的大方向在于无监督学习，增强学习，迁移学习等领域，因为无标记的样本比有标记的高质量数据来的多得多，如何有效利用这些无标签样本是需要重点研究的课题
+第四，在计算能力得到根本性突破之前（比如量子计算机投入使用并且发挥所谓的强大计算能力之前），多机并行以增加计算能力，来训练更加复杂的模型是不可阻挡的趋势，分布式机器学习，分布式深度学习模型训练也是可以做的方向</p>
   
 	</div>
 
@@ -407,7 +419,7 @@
 		<ul>
 		
 		  
-			<li><a href="/categories/大数据系统与技术-Big-Data/" title="大数据系统与技术 | Big Data">大数据系统与技术 | Big Data<sup>8</sup></a></li>
+			<li><a href="/categories/大数据系统与技术-Big-Data/" title="大数据系统与技术 | Big Data">大数据系统与技术 | Big Data<sup>9</sup></a></li>
 		  
 		
 		  
@@ -447,7 +459,11 @@
 		  
 		
 		  
-			<li><a href="/categories/错误解决与优化-Err-n-Opt/" title="错误解决与优化 | Err_n_Opt">错误解决与优化 | Err_n_Opt<sup>10</sup></a></li>
+			<li><a href="/categories/错误解决与优化-Err-Opt/" title="错误解决与优化 | Err&amp;Opt">错误解决与优化 | Err&amp;Opt<sup>12</sup></a></li>
+		  
+		
+		  
+		
 		  
 		
 		  
@@ -461,7 +477,7 @@
   
   <div class="archiveslist">
     <p class="asidetitle"><a href="/archives">归档</a></p>
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">23</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">23</span></li></ul>
   </div>
 
 
@@ -469,7 +485,7 @@
   <div class="tagcloudlist">
     <p class="asidetitle">标签云</p>
     <div class="tagcloudlist clearfix">
-       <a href="/tags/CS/" style="font-size: 16.67px;">CS</a> <a href="/tags/Deep-Learning/" style="font-size: 13.33px;">Deep Learning</a> <a href="/tags/Git/" style="font-size: 11.11px;">Git</a> <a href="/tags/Hadoop/" style="font-size: 13.33px;">Hadoop</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/Latex/" style="font-size: 10px;">Latex</a> <a href="/tags/Linux/" style="font-size: 12.22px;">Linux</a> <a href="/tags/Python/" style="font-size: 18.89px;">Python</a> <a href="/tags/Spark/" style="font-size: 12.22px;">Spark</a> <a href="/tags/Summary/" style="font-size: 14.44px;">Summary</a> <a href="/tags/TensorFlow/" style="font-size: 10px;">TensorFlow</a> <a href="/tags/Web/" style="font-size: 12.22px;">Web</a> <a href="/tags/hexo/" style="font-size: 14.44px;">hexo</a> <a href="/tags/三国/" style="font-size: 10px;">三国</a> <a href="/tags/人文社科/" style="font-size: 10px;">人文社科</a> <a href="/tags/优化/" style="font-size: 10px;">优化</a> <a href="/tags/吃喝玩乐/" style="font-size: 10px;">吃喝玩乐</a> <a href="/tags/大数据/" style="font-size: 14.44px;">大数据</a> <a href="/tags/影视/" style="font-size: 11.11px;">影视</a> <a href="/tags/数据分析/" style="font-size: 15.56px;">数据分析</a> <a href="/tags/机器学习/" style="font-size: 20px;">机器学习</a> <a href="/tags/深度学习/" style="font-size: 15.56px;">深度学习</a> <a href="/tags/算法/" style="font-size: 12.22px;">算法</a> <a href="/tags/论文阅读/" style="font-size: 11.11px;">论文阅读</a> <a href="/tags/译文/" style="font-size: 12.22px;">译文</a> <a href="/tags/读书/" style="font-size: 17.78px;">读书</a> <a href="/tags/错误解决/" style="font-size: 12.22px;">错误解决</a> <a href="/tags/随笔/" style="font-size: 14.44px;">随笔</a>
+       <a href="/tags/CS/" style="font-size: 17px;">CS</a> <a href="/tags/Deep-Learning/" style="font-size: 17px;">Deep Learning</a> <a href="/tags/GPU/" style="font-size: 10px;">GPU</a> <a href="/tags/Git/" style="font-size: 11px;">Git</a> <a href="/tags/Hadoop/" style="font-size: 14px;">Hadoop</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/Latex/" style="font-size: 10px;">Latex</a> <a href="/tags/Linux/" style="font-size: 13px;">Linux</a> <a href="/tags/Python/" style="font-size: 19px;">Python</a> <a href="/tags/Spark/" style="font-size: 12px;">Spark</a> <a href="/tags/Summary/" style="font-size: 15px;">Summary</a> <a href="/tags/TensorFlow/" style="font-size: 11px;">TensorFlow</a> <a href="/tags/Web/" style="font-size: 12px;">Web</a> <a href="/tags/hexo/" style="font-size: 15px;">hexo</a> <a href="/tags/三国/" style="font-size: 10px;">三国</a> <a href="/tags/人文社科/" style="font-size: 10px;">人文社科</a> <a href="/tags/优化/" style="font-size: 10px;">优化</a> <a href="/tags/吃喝玩乐/" style="font-size: 10px;">吃喝玩乐</a> <a href="/tags/大数据/" style="font-size: 15px;">大数据</a> <a href="/tags/影视/" style="font-size: 11px;">影视</a> <a href="/tags/数据分析/" style="font-size: 16px;">数据分析</a> <a href="/tags/机器学习/" style="font-size: 20px;">机器学习</a> <a href="/tags/深度学习/" style="font-size: 17px;">深度学习</a> <a href="/tags/算法/" style="font-size: 12px;">算法</a> <a href="/tags/系统/" style="font-size: 10px;">系统</a> <a href="/tags/论文阅读/" style="font-size: 12px;">论文阅读</a> <a href="/tags/译文/" style="font-size: 12px;">译文</a> <a href="/tags/读书/" style="font-size: 18px;">读书</a> <a href="/tags/错误解决/" style="font-size: 12px;">错误解决</a> <a href="/tags/随笔/" style="font-size: 15px;">随笔</a>
     </div>
   </div>
 
@@ -582,7 +598,7 @@
 		<a href="/about" target="_blank" title="whatbeg">whatbeg</a>
 		
 		<br>
-		<span class="post-count">Total words: <span style="color:orange">287.9k</span></span>
+		<span class="post-count">Total words: <span style="color:orange">304.1k</span></span>
         <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
         <span id="busuanzi_container_site_pv">
         &nbsp;&nbsp;Total visits:&nbsp;<span style="color:orange" id="busuanzi_value_site_pv"></span>
