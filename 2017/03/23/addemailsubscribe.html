@@ -108,23 +108,12 @@
 </ul>
 <h3 id="注册账号"><a href="#注册账号" class="headerlink" title="注册账号"></a>注册账号</h3><p>首先注册MailChimp账号，在<a href="https://login.mailchimp.com/signup/" target="_blank" rel="external">这里</a>注册。一般每个月2000个订阅者以下免费。要注意的是，邮件地址（住址/公司地址，非email）后面会出现在订阅者订阅的时候的信息里，以及默认的邮件模板里，所以好好填为好，不要乱填。</p>
 <h3 id="创建一个邮件列表"><a href="#创建一个邮件列表" class="headerlink" title="创建一个邮件列表"></a>创建一个邮件列表</h3><p>我们是最终需要向邮件列表中所有用户发送订阅邮件，所以需要新建邮件列表，点面板上的List，然后Create List，然后填入一些必要信息，保存。填写发送邮箱的时候需要认证一下邮箱，点击Verify即可。</p>
-<h3 id="设定订阅点击栏"><a href="#设定订阅点击栏" class="headerlink" title="设定订阅点击栏"></a>设定订阅点击栏</h3><p>然后我们需要确定在你的网站/博客上做一个什么样的订阅入口，有直接显式的表单，也可以是重定向到一个专门填写信息表单的网址，我采用的是后者。
-到刚刚创建的List的主界面，点击工具栏的”Signup forms”，选择一种表单形式，
-如果是重定向的表单的话，选择”General forms”
-如果是嵌入形式的直接填写提交的表单，选择”Embedded forms”
-其他两种不太了解。</p>
+<h3 id="设定订阅点击栏"><a href="#设定订阅点击栏" class="headerlink" title="设定订阅点击栏"></a>设定订阅点击栏</h3><p>然后我们需要确定在你的网站/博客上做一个什么样的订阅入口，有直接显式的表单，也可以是重定向到一个专门填写信息表单的网址，我采用的是后者。<br>到刚刚创建的List的主界面，点击工具栏的”Signup forms”，选择一种表单形式，<br>如果是重定向的表单的话，选择”General forms”<br>如果是嵌入形式的直接填写提交的表单，选择”Embedded forms”<br>其他两种不太了解。</p>
 <p>然后就是修改相应你想显示的信息，保存完成。</p>
-<h3 id="创建邮件订阅活动Campaign及制定邮件格式"><a href="#创建邮件订阅活动Campaign及制定邮件格式" class="headerlink" title="创建邮件订阅活动Campaign及制定邮件格式"></a>创建邮件订阅活动Campaign及制定邮件格式</h3><p>设定了邮件列表之后，我们需要创建邮件订阅服务了，即创建自动发送邮件的服务。点击主面板Campaigns，创建活动，填写相应信息，期间要填写发送邮件的邮箱，建议注册一个新的邮箱，比如说<code>xx_noreply@some.com</code>格式的。
-MailChimp提供了集中Campaign类型，由于博客的话一般是RSS订阅，我们可以直接利用RSS的内容来发送给Subscribers，所以我们选择RSS-Driven Campaign，填入博客RSS地址，然后设置频率，发送时间，接收者，一直点右下角的Next，然后选一个邮件模板，我选的是1 Column - Full Width。然后做一番设计，由于我们是发送RSS信息，所以需拖入一个RSS Items模块，然后可以做一些修改，比如修改对齐，字体等。期间有些信息是不能预览的，可以点击Preview and Test发送测试邮件看看效果。
-最后Next到Confirm，确认后点击Start RSS，跳到Done And Done界面，表示一切完成，你的订阅List中的订阅者就会按时收到邮件了。
-<img src="http://7xsl28.com1.z0.glb.clouddn.com/mailchimp.png" alt=""></p>
-<h3 id="添加到hexo博客组件"><a href="#添加到hexo博客组件" class="headerlink" title="添加到hexo博客组件"></a>添加到hexo博客组件</h3><p>这里演示如何添加到你的hexo博客的侧边栏。
-到hexo主目录的<code>\themes\YOUR_THEMES\layout\_widget</code>下添加emailist.ejs文件，写入
-<figure class="highlight erb"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"rsspart"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"http://eepurl.com/cHO5An"</span> <span class="attr">target</span>=<span class="string">"_blank"</span> <span class="attr">title</span>=<span class="string">"email"</span>&gt;</span><span class="tag">&lt;<span class="name">%=</span></span></span><span class="ruby"> _<span class="number">_</span>(<span class="string">'Email 订阅'</span>) </span><span class="xml"><span class="tag">%&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br></pre></td></tr></table></figure></p>
+<h3 id="创建邮件订阅活动Campaign及制定邮件格式"><a href="#创建邮件订阅活动Campaign及制定邮件格式" class="headerlink" title="创建邮件订阅活动Campaign及制定邮件格式"></a>创建邮件订阅活动Campaign及制定邮件格式</h3><p>设定了邮件列表之后，我们需要创建邮件订阅服务了，即创建自动发送邮件的服务。点击主面板Campaigns，创建活动，填写相应信息，期间要填写发送邮件的邮箱，建议注册一个新的邮箱，比如说<code>xx_noreply@some.com</code>格式的。<br>MailChimp提供了集中Campaign类型，由于博客的话一般是RSS订阅，我们可以直接利用RSS的内容来发送给Subscribers，所以我们选择RSS-Driven Campaign，填入博客RSS地址，然后设置频率，发送时间，接收者，一直点右下角的Next，然后选一个邮件模板，我选的是1 Column - Full Width。然后做一番设计，由于我们是发送RSS信息，所以需拖入一个RSS Items模块，然后可以做一些修改，比如修改对齐，字体等。期间有些信息是不能预览的，可以点击Preview and Test发送测试邮件看看效果。<br>最后Next到Confirm，确认后点击Start RSS，跳到Done And Done界面，表示一切完成，你的订阅List中的订阅者就会按时收到邮件了。<br><img src="http://7xsl28.com1.z0.glb.clouddn.com/mailchimp.png" alt=""></p>
+<h3 id="添加到hexo博客组件"><a href="#添加到hexo博客组件" class="headerlink" title="添加到hexo博客组件"></a>添加到hexo博客组件</h3><p>这里演示如何添加到你的hexo博客的侧边栏。<br>到hexo主目录的<code>\themes\YOUR_THEMES\layout\_widget</code>下添加emailist.ejs文件，写入<br><figure class="highlight erb"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"rsspart"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"http://eepurl.com/cHO5An"</span> <span class="attr">target</span>=<span class="string">"_blank"</span> <span class="attr">title</span>=<span class="string">"email"</span>&gt;</span><span class="tag">&lt;<span class="name">%=</span></span></span><span class="ruby"> _<span class="number">_</span>(<span class="string">'Email 订阅'</span>) </span><span class="xml"><span class="tag">%&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br></pre></td></tr></table></figure></p>
 <p>这里我直接做成了和RSS订阅相同的形式，所以直接利用class=”rsspart”，具体可以根据自己的主题设置自己想要的格式。</p>
-<p>最后，欢迎订阅本博客，由于更新并不是太频繁，只做了月报，订阅地址：
-<a href="http://eepurl.com/cHO5An" target="_blank" rel="external">http://eepurl.com/cHO5An</a>
-或点击侧边栏订阅。</p>
+<p>最后，欢迎订阅本博客，由于更新并不是太频繁，只做了月报，订阅地址：<br><a href="http://eepurl.com/cHO5An" target="_blank" rel="external">http://eepurl.com/cHO5An</a><br>或点击侧边栏订阅。</p>
   
 	</div>
 
@@ -402,10 +391,6 @@ MailChimp提供了集中Campaign类型，由于博客的话一般是RSS订阅，
 		  
 		
 		  
-		
-		  
-		
-		  
 			<li><a href="/categories/随笔-Essays/" title="随笔 | Essays">随笔 | Essays<sup>7</sup></a></li>
 		  
 		
@@ -537,7 +522,7 @@ MailChimp提供了集中Campaign类型，由于博客的话一般是RSS订阅，
 		<a href="/about" target="_blank" title="whatbeg">whatbeg</a>
 		
 		<br>
-		<span class="post-count">Total words: <span style="color:orange">304.1k</span></span>
+		<span class="post-count">Total words: <span style="color:orange">307.1k</span></span>
         <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
         <span id="busuanzi_container_site_pv">
         &nbsp;&nbsp;Total visits:&nbsp;<span style="color:orange" id="busuanzi_value_site_pv"></span>

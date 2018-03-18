@@ -115,50 +115,27 @@
 <p>3.在Git bash中输入</p>
 <figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo</span><br><span class="line">hexo -<span class="built_in">version</span>   <span class="comment"># 测试hexo是否安装成功</span></span><br></pre></td></tr></table></figure>
 <p><img src="http://7xsl28.com1.z0.glb.clouddn.com/hexo-1.png" alt=""></p>
-<p>4.选一个hexo主目录（如D:\hexo），在该目录输入
-<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">hexo</span> init</span><br></pre></td></tr></table></figure></p>
-<p>5.配置ssh key，首先
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ls</span> -<span class="keyword">al</span> ~/.ssh</span><br></pre></td></tr></table></figure></p>
-<p>6.如果啥都没有，那么可以新建，有了也可以新生成ssh key
-<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C <span class="string">"youremail@example.com"</span>  <span class="comment"># 输入邮箱</span></span><br></pre></td></tr></table></figure></p>
+<p>4.选一个hexo主目录（如D:\hexo），在该目录输入<br><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">hexo</span> init</span><br></pre></td></tr></table></figure></p>
+<p>5.配置ssh key，首先<br><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ls</span> -<span class="keyword">al</span> ~/.ssh</span><br></pre></td></tr></table></figure></p>
+<p>6.如果啥都没有，那么可以新建，有了也可以新生成ssh key<br><figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C <span class="string">"youremail@example.com"</span>  <span class="comment"># 输入邮箱</span></span><br></pre></td></tr></table></figure></p>
 <p><img src="http://7xsl28.com1.z0.glb.clouddn.com/hexo-2.png" alt=""></p>
 <p>7.登入自己的github，在settings下新建SSH KEY，将用户目录下的<code>id_rsa.pub</code>（公钥）的内容复制填入新建的SSH KEY，保存。</p>
-<p>8.在Git bash中输入
-<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">ssh</span> -T git<span class="variable">@github</span>.com</span><br></pre></td></tr></table></figure></p>
+<p>8.在Git bash中输入<br><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">ssh</span> -T git<span class="variable">@github</span>.com</span><br></pre></td></tr></table></figure></p>
 <p><img src="http://7xsl28.com1.z0.glb.clouddn.com/hexo-3.png" alt=""></p>
-<p>9.用U盘拷贝原来电脑的hexo文件夹，除了<code>.deploygit</code>和<code>node_modules</code>不用拷以外，其他都拷过来，替换现在的hexo除上两个文件夹的内容。
-<img src="http://7xsl28.com1.z0.glb.clouddn.com/hexo-5.png" alt=""></p>
-<p>10.生成，部署
-<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo <span class="keyword">g</span></span><br><span class="line">hexo <span class="built_in">d</span></span><br></pre></td></tr></table></figure></p>
-<p>11.如果<code>hexo d</code>失败，并提示deployer未安装，那么安装：
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm <span class="keyword">install</span> hexo-deployer-git <span class="comment">--save</span></span><br></pre></td></tr></table></figure></p>
-<p>12.再生成，部署即可。如果遇到
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">bash:</span> <span class="regexp">/dev/</span><span class="string">tty:</span> No such device or address</span><br></pre></td></tr></table></figure></p>
-<p>错误，那么重新生成，部署一下应可解决问题。
-<img src="http://7xsl28.com1.z0.glb.clouddn.com/hexo-4.png" alt=""></p>
-<p>13.当然如果原来有wordcount模块，这会遇到一个wordcount不存在的问题，原因是新机没有安装wordcount字符计数模块，用下面的命令安装：
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm <span class="keyword">install</span> hexo-wordcount <span class="comment">--save</span></span><br></pre></td></tr></table></figure></p>
-<p>14.如果你是同时部署到github和coding.net的话，还要记得在coding.net中新建一个SSH KEY并将id_rsa.pub内容复制进去，并运行：
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -T git@git<span class="selector-class">.coding</span><span class="selector-class">.net</span></span><br></pre></td></tr></table></figure></p>
-<p>成功的话会显示：
-<figure class="highlight erlang-repl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Hello xxx! You've connected to Coding.net via SSH successfully!</span><br></pre></td></tr></table></figure></p>
+<p>9.用U盘拷贝原来电脑的hexo文件夹，除了<code>.deploygit</code>和<code>node_modules</code>不用拷以外，其他都拷过来，替换现在的hexo除上两个文件夹的内容。<br><img src="http://7xsl28.com1.z0.glb.clouddn.com/hexo-5.png" alt=""></p>
+<p>10.生成，部署<br><figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo <span class="keyword">g</span></span><br><span class="line">hexo <span class="built_in">d</span></span><br></pre></td></tr></table></figure></p>
+<p>11.如果<code>hexo d</code>失败，并提示deployer未安装，那么安装：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm <span class="keyword">install</span> hexo-deployer-git <span class="comment">--save</span></span><br></pre></td></tr></table></figure></p>
+<p>12.再生成，部署即可。如果遇到<br><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">bash:</span> <span class="regexp">/dev/</span><span class="string">tty:</span> No such device or address</span><br></pre></td></tr></table></figure></p>
+<p>错误，那么重新生成，部署一下应可解决问题。<br><img src="http://7xsl28.com1.z0.glb.clouddn.com/hexo-4.png" alt=""></p>
+<p>13.当然如果原来有wordcount模块，这会遇到一个wordcount不存在的问题，原因是新机没有安装wordcount字符计数模块，用下面的命令安装：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm <span class="keyword">install</span> hexo-wordcount <span class="comment">--save</span></span><br></pre></td></tr></table></figure></p>
+<p>14.如果你是同时部署到github和coding.net的话，还要记得在coding.net中新建一个SSH KEY并将id_rsa.pub内容复制进去，并运行：<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -T git@git<span class="selector-class">.coding</span><span class="selector-class">.net</span></span><br></pre></td></tr></table></figure></p>
+<p>成功的话会显示：<br><figure class="highlight erlang-repl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Hello xxx! You've connected to Coding.net via SSH successfully!</span><br></pre></td></tr></table></figure></p>
 <p>这样的话，基本就迁移成功了，以后直接在这台机器上生成，部署即可。</p>
 <p>15.如果是采用Git来同步的话，Git上传项目的基本流程如下：</p>
 <blockquote>
-<p>1、在github上创建项目（尽量为空，即不要有README.txt, LISENCE等）
-2、使用<code>git clone https://github.com/xxxxxxx/xxxxx.git</code>克隆到本地
-3、编辑项目
-4、<code>git add .</code> （将改动添加到暂存区）
-5、<code>git commit -m &quot;提交说明&quot;</code>
-6、<code>git push origin master</code> 将本地更改推送到远程master分支。
-这样你就完成了向远程仓库的推送。
-如果在github的remote上已经有了文件，会出现错误。此时应当先pull一下，即：
-<code>git pull origin master</code>
-然后再进行：
-<code>git push origin master</code></p>
+<p>1、在github上创建项目（尽量为空，即不要有README.txt, LISENCE等）<br>2、使用<code>git clone https://github.com/xxxxxxx/xxxxx.git</code>克隆到本地<br>3、编辑项目<br>4、<code>git add .</code> （将改动添加到暂存区）<br>5、<code>git commit -m &quot;提交说明&quot;</code><br>6、<code>git push origin master</code> 将本地更改推送到远程master分支。<br>这样你就完成了向远程仓库的推送。<br>如果在github的remote上已经有了文件，会出现错误。此时应当先pull一下，即：<br><code>git pull origin master</code><br>然后再进行：<br><code>git push origin master</code></p>
 </blockquote>
-<p>16.如果在<code>hexo d</code>时出现很多<code>warning: LF will be replaced by CRLF</code>的警告的话，那是由于windows中的换行符为CRLF，而linux中换行符为LF导致的，运行下面语句：
-<figure class="highlight fsharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git config --<span class="keyword">global</span> core.autocrlf <span class="keyword">false</span>  <span class="comment">//禁用自动转换</span></span><br></pre></td></tr></table></figure></p>
+<p>16.如果在<code>hexo d</code>时出现很多<code>warning: LF will be replaced by CRLF</code>的警告的话，那是由于windows中的换行符为CRLF，而linux中换行符为LF导致的，运行下面语句：<br><figure class="highlight fsharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git config --<span class="keyword">global</span> core.autocrlf <span class="keyword">false</span>  <span class="comment">//禁用自动转换</span></span><br></pre></td></tr></table></figure></p>
 <p>即可。</p>
   
 	</div>
@@ -437,10 +414,6 @@
 		  
 		
 		  
-		
-		  
-		
-		  
 			<li><a href="/categories/随笔-Essays/" title="随笔 | Essays">随笔 | Essays<sup>7</sup></a></li>
 		  
 		
@@ -572,7 +545,7 @@
 		<a href="/about" target="_blank" title="whatbeg">whatbeg</a>
 		
 		<br>
-		<span class="post-count">Total words: <span style="color:orange">304.1k</span></span>
+		<span class="post-count">Total words: <span style="color:orange">307.1k</span></span>
         <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
         <span id="busuanzi_container_site_pv">
         &nbsp;&nbsp;Total visits:&nbsp;<span style="color:orange" id="busuanzi_value_site_pv"></span>

@@ -12,21 +12,18 @@
 
     
     <meta name="description" content="改动mllib中的org.apache.spark.ml.tree.impl.DTStatsAggregator源码，加了一个原来没有的allStats(): Array[Double] = ..的方法，然后打成MLlib包，替换maven库中的mllib包。
-报IllegalAccessError：
-1Caused by: java.lang.IllegalAccessError: tried">
+报IllegalAccessError：1Caused by: java.lang.IllegalAccessError: tried t">
 <meta property="og:type" content="article">
 <meta property="og:title" content="一次MAVEN事故">
 <meta property="og:url" content="http://whatbeg.com/2017/12/24/mavenaccident.html">
 <meta property="og:site_name" content="Whatbeg's blog">
 <meta property="og:description" content="改动mllib中的org.apache.spark.ml.tree.impl.DTStatsAggregator源码，加了一个原来没有的allStats(): Array[Double] = ..的方法，然后打成MLlib包，替换maven库中的mllib包。
-报IllegalAccessError：
-1Caused by: java.lang.IllegalAccessError: tried">
+报IllegalAccessError：1Caused by: java.lang.IllegalAccessError: tried t">
 <meta property="og:updated_time" content="2018-03-17T09:08:56.100Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="一次MAVEN事故">
 <meta name="twitter:description" content="改动mllib中的org.apache.spark.ml.tree.impl.DTStatsAggregator源码，加了一个原来没有的allStats(): Array[Double] = ..的方法，然后打成MLlib包，替换maven库中的mllib包。
-报IllegalAccessError：
-1Caused by: java.lang.IllegalAccessError: tried">
+报IllegalAccessError：1Caused by: java.lang.IllegalAccessError: tried t">
 
     
     <link rel="alternative" href="/atom.xml" title="Whatbeg&#39;s blog" type="application/atom+xml">
@@ -99,28 +96,20 @@
 		</div>
 		
 		<p>改动mllib中的<code>org.apache.spark.ml.tree.impl.DTStatsAggregator</code>源码，加了一个原来没有的<code>allStats(): Array[Double] = ..</code>的方法，然后打成MLlib包，替换maven库中的mllib包。</p>
-<p>报<code>IllegalAccessError</code>：
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Caused by: java<span class="selector-class">.lang</span><span class="selector-class">.IllegalAccessError</span>: tried to access method org<span class="selector-class">.apache</span><span class="selector-class">.spark</span><span class="selector-class">.ml</span><span class="selector-class">.tree</span><span class="selector-class">.impl</span><span class="selector-class">.DTStatsAggregator</span><span class="selector-class">.allStats</span>()[D from class org<span class="selector-class">.apache</span><span class="selector-class">.spark</span><span class="selector-class">.ml</span><span class="selector-class">.tree</span><span class="selector-class">.impl</span><span class="selector-class">.RandomForestImpl</span>$</span><br></pre></td></tr></table></figure></p>
+<p>报<code>IllegalAccessError</code>：<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Caused by: java<span class="selector-class">.lang</span><span class="selector-class">.IllegalAccessError</span>: tried to access method org<span class="selector-class">.apache</span><span class="selector-class">.spark</span><span class="selector-class">.ml</span><span class="selector-class">.tree</span><span class="selector-class">.impl</span><span class="selector-class">.DTStatsAggregator</span><span class="selector-class">.allStats</span>()[D from class org<span class="selector-class">.apache</span><span class="selector-class">.spark</span><span class="selector-class">.ml</span><span class="selector-class">.tree</span><span class="selector-class">.impl</span><span class="selector-class">.RandomForestImpl</span>$</span><br></pre></td></tr></table></figure></p>
 <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">private[ml] val allStatSize</span><br><span class="line">val allStats = new Array[<span class="string">Double</span>](<span class="link">allStatSize</span>)</span><br></pre></td></tr></table></figure>
 <p>应该要能访问到</p>
 <p>是不是用的不是我的jar，或者用的不是我的jar中的class？</p>
-<p>运行jar包时设置
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">--<span class="keyword">conf</span> <span class="comment">"spark.driver.extraJavaOptions=-XX:+TraceClassLoading -XX:+TraceClassUnloading</span></span><br></pre></td></tr></table></figure></p>
-<p>监测类的加载情况，果然发现有一条
-<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[Loaded xxx <span class="keyword">from</span> <span class="keyword">file</span>:<span class="regexp">/home/</span>huqiu<span class="regexp">/programs/</span>spark<span class="regexp">/jars/</span>spark-mllib_2.<span class="number">11</span>-<span class="number">2.1</span>.<span class="number">0</span>.jar</span><br></pre></td></tr></table></figure></p>
+<p>运行jar包时设置<br><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">--<span class="keyword">conf</span> <span class="comment">"spark.driver.extraJavaOptions=-XX:+TraceClassLoading -XX:+TraceClassUnloading</span></span><br></pre></td></tr></table></figure></p>
+<p>监测类的加载情况，果然发现有一条<br><figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[Loaded xxx <span class="keyword">from</span> <span class="keyword">file</span>:<span class="regexp">/home/</span>huqiu<span class="regexp">/programs/</span>spark<span class="regexp">/jars/</span>spark-mllib_2.<span class="number">11</span>-<span class="number">2.1</span>.<span class="number">0</span>.jar</span><br></pre></td></tr></table></figure></p>
 <p>这说明程序不从我打好的jar包中加载class，而从spark安装目录中的jars目录中读取了。</p>
 <p>为什么从spark本地读而不从打好的jar包中读？</p>
 <p>为了先解决问题，我把mllib包复制到SPARK_HOME的jars目录中，这下总能读到我的jar了吧。</p>
-<p>但是又出现一个问题：
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">java<span class="selector-class">.lang</span><span class="selector-class">.NoClassDefFoundError</span>: Could not initialize class org<span class="selector-class">.apache</span><span class="selector-class">.spark</span><span class="selector-class">.ml</span><span class="selector-class">.core</span><span class="selector-class">.JNAScala</span>$</span><br><span class="line"></span><br><span class="line">Caused by: java<span class="selector-class">.lang</span><span class="selector-class">.ClassNotFoundException</span>: com<span class="selector-class">.sun</span><span class="selector-class">.jna</span><span class="selector-class">.Native</span></span><br></pre></td></tr></table></figure></p>
-<p>原来是没找到jna的Native class，一看，确实没有打入mllib包中，那是什么原因呢？难道是谁把它exclude掉了？
-重新编译一下，发现这么一条：
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-attr">[INFO]</span> <span class="selector-tag">Excluding</span> <span class="selector-tag">net</span><span class="selector-class">.java</span><span class="selector-class">.dev</span><span class="selector-class">.jna</span><span class="selector-pseudo">:jna</span><span class="selector-pseudo">:jar</span><span class="selector-pseudo">:4.2.2</span> <span class="selector-tag">from</span> <span class="selector-tag">the</span> <span class="selector-tag">shared</span> <span class="selector-tag">jar</span>.</span><br></pre></td></tr></table></figure></p>
-<p>说白了就是排除了net.java.dev.jna:jna:jar，所以写的代码中用到Native的都会找不到类。
-后来发现是spark-parent排除的，且删掉spark-parent的exclude的语句也没用，根本原因在于mllib的打包方式不会把其依赖打入mllib的jar包中。</p>
+<p>但是又出现一个问题：<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">java<span class="selector-class">.lang</span><span class="selector-class">.NoClassDefFoundError</span>: Could not initialize class org<span class="selector-class">.apache</span><span class="selector-class">.spark</span><span class="selector-class">.ml</span><span class="selector-class">.core</span><span class="selector-class">.JNAScala</span>$</span><br><span class="line"></span><br><span class="line">Caused by: java<span class="selector-class">.lang</span><span class="selector-class">.ClassNotFoundException</span>: com<span class="selector-class">.sun</span><span class="selector-class">.jna</span><span class="selector-class">.Native</span></span><br></pre></td></tr></table></figure></p>
+<p>原来是没找到jna的Native class，一看，确实没有打入mllib包中，那是什么原因呢？难道是谁把它exclude掉了？<br>重新编译一下，发现这么一条：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-attr">[INFO]</span> <span class="selector-tag">Excluding</span> <span class="selector-tag">net</span><span class="selector-class">.java</span><span class="selector-class">.dev</span><span class="selector-class">.jna</span><span class="selector-pseudo">:jna</span><span class="selector-pseudo">:jar</span><span class="selector-pseudo">:4.2.2</span> <span class="selector-tag">from</span> <span class="selector-tag">the</span> <span class="selector-tag">shared</span> <span class="selector-tag">jar</span>.</span><br></pre></td></tr></table></figure></p>
+<p>说白了就是排除了net.java.dev.jna:jna:jar，所以写的代码中用到Native的都会找不到类。<br>后来发现是spark-parent排除的，且删掉spark-parent的exclude的语句也没用，根本原因在于mllib的打包方式不会把其依赖打入mllib的jar包中。</p>
 <p>解决的方法就是将此依赖打入mllib中，但是这样就会变成mllib-jar-with-dependencies，肯定不是我们想要的结果。</p>
-<p>这就涉及到了代码设计的层面了，一般情况下，不建议直接修改Mllib源码，更不要说在Mllib源码中还加入外部包了，这样太紧耦合了，比较建议的方法是自己建立一个project，建立于spark mllib同样的包路径即可，然后修改需要修改的文件，但缺点是改动文件需要改名字，不然系统会读取底层Mllib的同名文件而不会读取你项目中的。但是这样确是松耦合的。
-目前还没有找到好的方法，最小程度上改动代码，增加或删除一些东西。</p>
+<p>这就涉及到了代码设计的层面了，一般情况下，不建议直接修改Mllib源码，更不要说在Mllib源码中还加入外部包了，这样太紧耦合了，比较建议的方法是自己建立一个project，建立于spark mllib同样的包路径即可，然后修改需要修改的文件，但缺点是改动文件需要改名字，不然系统会读取底层Mllib的同名文件而不会读取你项目中的。但是这样确是松耦合的。<br>目前还没有找到好的方法，最小程度上改动代码，增加或删除一些东西。</p>
   
 	</div>
 
@@ -243,7 +232,7 @@
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/Spark/">Spark</a><a href="/tags/错误解决/">错误解决</a>
+  <span></span> <a href="/tags/错误解决/">错误解决</a><a href="/tags/Spark/">Spark</a>
   </div>
 
 </div>
@@ -398,10 +387,6 @@
 		  
 		
 		  
-		
-		  
-		
-		  
 			<li><a href="/categories/随笔-Essays/" title="随笔 | Essays">随笔 | Essays<sup>7</sup></a></li>
 		  
 		
@@ -533,7 +518,7 @@
 		<a href="/about" target="_blank" title="whatbeg">whatbeg</a>
 		
 		<br>
-		<span class="post-count">Total words: <span style="color:orange">304.1k</span></span>
+		<span class="post-count">Total words: <span style="color:orange">307.1k</span></span>
         <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
         <span id="busuanzi_container_site_pv">
         &nbsp;&nbsp;Total visits:&nbsp;<span style="color:orange" id="busuanzi_value_site_pv"></span>

@@ -11,22 +11,16 @@
     
 
     
-    <meta name="description" content="合并多个Commits我们提交Pull Request的时候有时候并不是一个Commit就完成的，往往会做一些修改，然后再提交Commit，通常会走多轮，到最后就可能会有多个Commit，这时候往往需要合并这些Commits为一个，然后Manager帮你Merge。
-这时候我们就需要使用git rebase了。
-这里我并不打算详解rebase，这是Git book做的事，这里只是记录一下自己做的一">
+    <meta name="description" content="合并多个Commits我们提交Pull Request的时候有时候并不是一个Commit就完成的，往往会做一些修改，然后再提交Commit，通常会走多轮，到最后就可能会有多个Commit，这时候往往需要合并这些Commits为一个，然后Manager帮你Merge。这时候我们就需要使用git rebase了。这里我并不打算详解rebase，这是Git book做的事，这里只是记录一下自己做的一个过">
 <meta property="og:type" content="article">
 <meta property="og:title" content="合并多个Commits，请注意！">
 <meta property="og:url" content="http://whatbeg.com/2017/04/01/combinecommits.html">
 <meta property="og:site_name" content="Whatbeg's blog">
-<meta property="og:description" content="合并多个Commits我们提交Pull Request的时候有时候并不是一个Commit就完成的，往往会做一些修改，然后再提交Commit，通常会走多轮，到最后就可能会有多个Commit，这时候往往需要合并这些Commits为一个，然后Manager帮你Merge。
-这时候我们就需要使用git rebase了。
-这里我并不打算详解rebase，这是Git book做的事，这里只是记录一下自己做的一">
+<meta property="og:description" content="合并多个Commits我们提交Pull Request的时候有时候并不是一个Commit就完成的，往往会做一些修改，然后再提交Commit，通常会走多轮，到最后就可能会有多个Commit，这时候往往需要合并这些Commits为一个，然后Manager帮你Merge。这时候我们就需要使用git rebase了。这里我并不打算详解rebase，这是Git book做的事，这里只是记录一下自己做的一个过">
 <meta property="og:updated_time" content="2017-04-01T11:48:28.282Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="合并多个Commits，请注意！">
-<meta name="twitter:description" content="合并多个Commits我们提交Pull Request的时候有时候并不是一个Commit就完成的，往往会做一些修改，然后再提交Commit，通常会走多轮，到最后就可能会有多个Commit，这时候往往需要合并这些Commits为一个，然后Manager帮你Merge。
-这时候我们就需要使用git rebase了。
-这里我并不打算详解rebase，这是Git book做的事，这里只是记录一下自己做的一">
+<meta name="twitter:description" content="合并多个Commits我们提交Pull Request的时候有时候并不是一个Commit就完成的，往往会做一些修改，然后再提交Commit，通常会走多轮，到最后就可能会有多个Commit，这时候往往需要合并这些Commits为一个，然后Manager帮你Merge。这时候我们就需要使用git rebase了。这里我并不打算详解rebase，这是Git book做的事，这里只是记录一下自己做的一个过">
 
     
     <link rel="alternative" href="/atom.xml" title="Whatbeg&#39;s blog" type="application/atom+xml">
@@ -98,9 +92,7 @@
 		
 		</div>
 		
-		<h2 id="合并多个Commits"><a href="#合并多个Commits" class="headerlink" title="合并多个Commits"></a>合并多个Commits</h2><p>我们提交Pull Request的时候有时候并不是一个Commit就完成的，往往会做一些修改，然后再提交Commit，通常会走多轮，到最后就可能会有多个Commit，这时候往往需要合并这些Commits为一个，然后Manager帮你Merge。
-这时候我们就需要使用git rebase了。
-这里我并不打算详解rebase，这是Git book做的事，这里只是记录一下自己做的一个过程。</p>
+		<h2 id="合并多个Commits"><a href="#合并多个Commits" class="headerlink" title="合并多个Commits"></a>合并多个Commits</h2><p>我们提交Pull Request的时候有时候并不是一个Commit就完成的，往往会做一些修改，然后再提交Commit，通常会走多轮，到最后就可能会有多个Commit，这时候往往需要合并这些Commits为一个，然后Manager帮你Merge。<br>这时候我们就需要使用git rebase了。<br>这里我并不打算详解rebase，这是Git book做的事，这里只是记录一下自己做的一个过程。</p>
 <p>关于rebase可以参看这几篇文章：</p>
 <ul>
 <li><a href="https://git-scm.com/book/zh/v2/Git-%E5%88%86%E6%94%AF-%E5%8F%98%E5%9F%BA" target="_blank" rel="external">3.6 Git 分支 - 变基</a></li>
@@ -109,26 +101,19 @@
 </ul>
 <p>首先<code>git log</code>查看需要合并的Commits，比如如下形式：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">commit</span> <span class="number">3</span>ade56efc466c093d7e8e25c520293cesedc96cc</span><br><span class="line">Author: xxx</span><br><span class="line"><span class="built_in">Date</span>:   Wed Mar <span class="number">1</span> <span class="number">12</span>:<span class="number">31</span>:<span class="number">10</span> <span class="number">2017</span> +<span class="number">0800</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">Commit</span> Message <span class="number">4</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">commit</span> <span class="number">546</span>ffc32692d3f935feb9b04d6ecb66feda9560b</span><br><span class="line">Author: xxx</span><br><span class="line"><span class="built_in">Date</span>:   Mon Feb <span class="number">20</span> <span class="number">15</span>:<span class="number">28</span>:<span class="number">40</span> <span class="number">2017</span> +<span class="number">0800</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">Commit</span> Message <span class="number">3</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">commit</span> f48b8644013c23f132c3fe72f8cc38ea288e6f3d</span><br><span class="line">Author: xxx</span><br><span class="line"><span class="built_in">Date</span>:   Thu Feb <span class="number">9</span> <span class="number">13</span>:<span class="number">52</span>:<span class="number">39</span> <span class="number">2017</span> +<span class="number">0800</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">Commit</span> Message <span class="number">2</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">commit</span> fe72f8cc38ea288e6c3fe72f8cc38ea288e6f3de</span><br><span class="line">Author: xxx</span><br><span class="line"><span class="built_in">Date</span>:   Thu Feb <span class="number">9</span> <span class="number">10</span>:<span class="number">12</span>:<span class="number">39</span> <span class="number">2017</span> +<span class="number">0800</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">Commit</span> Message <span class="number">1</span></span><br></pre></td></tr></table></figure>
-<p>比如说我们需要合并Commit 2-4这三个提交，我们运行
-<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rebase -i &lt;SHA<span class="number">-1</span> <span class="keyword">of</span> Commit <span class="number">1</span>&gt;  <span class="comment"># -i后面的参数为最后一个不需要合并的Commit，这里为Commit 1</span></span><br></pre></td></tr></table></figure></p>
-<p>然后出现交互框，出现三个pick
-<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pick ... Commit <span class="keyword">Message</span> <span class="number">2</span></span><br><span class="line">pick ... Commit <span class="keyword">Message</span> <span class="number">3</span></span><br><span class="line">pick ... Commit <span class="keyword">Message</span> <span class="number">4</span></span><br></pre></td></tr></table></figure></p>
-<p>我们将后两个pick改成squash，即：
-<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pick ... Commit <span class="keyword">Message</span> <span class="number">2</span></span><br><span class="line">squash ... Commit <span class="keyword">Message</span> <span class="number">3</span></span><br><span class="line">squash ... Commit <span class="keyword">Message</span> <span class="number">4</span></span><br></pre></td></tr></table></figure></p>
+<p>比如说我们需要合并Commit 2-4这三个提交，我们运行<br><figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rebase -i &lt;SHA<span class="number">-1</span> <span class="keyword">of</span> Commit <span class="number">1</span>&gt;  <span class="comment"># -i后面的参数为最后一个不需要合并的Commit，这里为Commit 1</span></span><br></pre></td></tr></table></figure></p>
+<p>然后出现交互框，出现三个pick<br><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pick ... Commit <span class="keyword">Message</span> <span class="number">2</span></span><br><span class="line">pick ... Commit <span class="keyword">Message</span> <span class="number">3</span></span><br><span class="line">pick ... Commit <span class="keyword">Message</span> <span class="number">4</span></span><br></pre></td></tr></table></figure></p>
+<p>我们将后两个pick改成squash，即：<br><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pick ... Commit <span class="keyword">Message</span> <span class="number">2</span></span><br><span class="line">squash ... Commit <span class="keyword">Message</span> <span class="number">3</span></span><br><span class="line">squash ... Commit <span class="keyword">Message</span> <span class="number">4</span></span><br></pre></td></tr></table></figure></p>
 <p>这里两个操作的区别是：</p>
 <ul>
 <li>pick的意思是要会选择合并到这个commit</li>
 <li>squash(挤压)的意思是这个commit会被合并到前一个commit</li>
 </ul>
-<p>然后输入新的Commit Message，保存，即合并成功，最后看只剩一个Commit了。
-最后Push到remote，这时会提示版本不合，因为本地这个进行了合并后，已经比remote老了，这时只需强推即可：
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push -f <span class="tag">&lt;<span class="name">upstream</span>&gt;</span> <span class="tag">&lt;<span class="name">localbranch</span>&gt;</span>:<span class="tag">&lt;<span class="name">remotebranch</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>然后输入新的Commit Message，保存，即合并成功，最后看只剩一个Commit了。<br>最后Push到remote，这时会提示版本不合，因为本地这个进行了合并后，已经比remote老了，这时只需强推即可：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push -f <span class="tag">&lt;<span class="name">upstream</span>&gt;</span> <span class="tag">&lt;<span class="name">localbranch</span>&gt;</span>:<span class="tag">&lt;<span class="name">remotebranch</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
 <p>最后，多个提交就变成了一个提交，可以被merge了。</p>
-<h2 id="后悔药"><a href="#后悔药" class="headerlink" title="后悔药"></a>后悔药</h2><p>注意，如果出现了什么不想看到的结果或者操作错误，可以使用
-<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rebase <span class="comment">--abort</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="后悔药"><a href="#后悔药" class="headerlink" title="后悔药"></a>后悔药</h2><p>注意，如果出现了什么不想看到的结果或者操作错误，可以使用<br><figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rebase <span class="comment">--abort</span></span><br></pre></td></tr></table></figure></p>
 <p>进行挽救，即可恢复到rebase之前的状态。</p>
-<h2 id="简易方法"><a href="#简易方法" class="headerlink" title="简易方法"></a>简易方法</h2><p>如果只需合并两个Commit，且又是最近的两个Commit，其实可以更简单地使用：
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git <span class="keyword">reset</span> <span class="comment">--soft HEAD^1</span></span><br><span class="line">git <span class="keyword">commit</span> <span class="comment">--amend</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="简易方法"><a href="#简易方法" class="headerlink" title="简易方法"></a>简易方法</h2><p>如果只需合并两个Commit，且又是最近的两个Commit，其实可以更简单地使用：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git <span class="keyword">reset</span> <span class="comment">--soft HEAD^1</span></span><br><span class="line">git <span class="keyword">commit</span> <span class="comment">--amend</span></span><br></pre></td></tr></table></figure></p>
 <p>来解决。</p>
   
 	</div>
@@ -407,10 +392,6 @@
 		  
 		
 		  
-		
-		  
-		
-		  
 			<li><a href="/categories/随笔-Essays/" title="随笔 | Essays">随笔 | Essays<sup>7</sup></a></li>
 		  
 		
@@ -542,7 +523,7 @@
 		<a href="/about" target="_blank" title="whatbeg">whatbeg</a>
 		
 		<br>
-		<span class="post-count">Total words: <span style="color:orange">304.1k</span></span>
+		<span class="post-count">Total words: <span style="color:orange">307.1k</span></span>
         <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
         <span id="busuanzi_container_site_pv">
         &nbsp;&nbsp;Total visits:&nbsp;<span style="color:orange" id="busuanzi_value_site_pv"></span>

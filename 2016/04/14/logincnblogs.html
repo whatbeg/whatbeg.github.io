@@ -11,24 +11,20 @@
     
 
     
-    <meta name="description" content="Python模拟登录第一弹见：【Python数据分析】Python模拟登录(一) requests.Session应用
-上次的登录是最基本的，全部是明文，而且在浏览器中就可以看到POST的数据。接下来我们来个稍微难一点的–模拟登录博客园(http://www.cnblogs.com)
+    <meta name="description" content="Python模拟登录第一弹见：【Python数据分析】Python模拟登录(一) requests.Session应用上次的登录是最基本的，全部是明文，而且在浏览器中就可以看到POST的数据。接下来我们来个稍微难一点的–模拟登录博客园(http://www.cnblogs.com)
 登录特点
 用户名密码都进行了RSA加密，且在浏览器中无法看到POST数据
 
-
-如上图，在post数据中不能显式看到">
+如上图，在post数据中不能显式看到PO">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【模拟登录】(二) 加密与重放方式登录 -以模拟登录博客园为例">
 <meta property="og:url" content="http://whatbeg.com/2016/04/14/logincnblogs.html">
 <meta property="og:site_name" content="Whatbeg's blog">
-<meta property="og:description" content="Python模拟登录第一弹见：【Python数据分析】Python模拟登录(一) requests.Session应用
-上次的登录是最基本的，全部是明文，而且在浏览器中就可以看到POST的数据。接下来我们来个稍微难一点的–模拟登录博客园(http://www.cnblogs.com)
+<meta property="og:description" content="Python模拟登录第一弹见：【Python数据分析】Python模拟登录(一) requests.Session应用上次的登录是最基本的，全部是明文，而且在浏览器中就可以看到POST的数据。接下来我们来个稍微难一点的–模拟登录博客园(http://www.cnblogs.com)
 登录特点
 用户名密码都进行了RSA加密，且在浏览器中无法看到POST数据
 
-
-如上图，在post数据中不能显式看到">
+如上图，在post数据中不能显式看到PO">
 <meta property="og:image" content="http://7xsl28.com2.z0.glb.clouddn.com/browsercant.png">
 <meta property="og:image" content="http://7xsl28.com2.z0.glb.clouddn.com/filder.png">
 <meta property="og:image" content="http://7xsl28.com2.z0.glb.clouddn.com/htmlinput1.png">
@@ -39,13 +35,11 @@
 <meta property="og:updated_time" content="2016-05-21T07:19:59.220Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【模拟登录】(二) 加密与重放方式登录 -以模拟登录博客园为例">
-<meta name="twitter:description" content="Python模拟登录第一弹见：【Python数据分析】Python模拟登录(一) requests.Session应用
-上次的登录是最基本的，全部是明文，而且在浏览器中就可以看到POST的数据。接下来我们来个稍微难一点的–模拟登录博客园(http://www.cnblogs.com)
+<meta name="twitter:description" content="Python模拟登录第一弹见：【Python数据分析】Python模拟登录(一) requests.Session应用上次的登录是最基本的，全部是明文，而且在浏览器中就可以看到POST的数据。接下来我们来个稍微难一点的–模拟登录博客园(http://www.cnblogs.com)
 登录特点
 用户名密码都进行了RSA加密，且在浏览器中无法看到POST数据
 
-
-如上图，在post数据中不能显式看到">
+如上图，在post数据中不能显式看到PO">
 <meta name="twitter:image" content="http://7xsl28.com2.z0.glb.clouddn.com/browsercant.png">
 
     
@@ -118,32 +112,14 @@
 		
 		</div>
 		
-		<p>Python模拟登录第一弹见：<a href="http://www.cnblogs.com/whatbeg/p/5320666.html" target="_blank" rel="external">【Python数据分析】Python模拟登录(一) requests.Session应用</a>
-上次的登录是最基本的，全部是明文，而且在浏览器中就可以看到POST的数据。接下来我们来个稍微难一点的–模拟登录博客园(<a href="http://www.cnblogs.com" target="_blank" rel="external">http://www.cnblogs.com</a>)</p>
+		<p>Python模拟登录第一弹见：<a href="http://www.cnblogs.com/whatbeg/p/5320666.html" target="_blank" rel="external">【Python数据分析】Python模拟登录(一) requests.Session应用</a><br>上次的登录是最基本的，全部是明文，而且在浏览器中就可以看到POST的数据。接下来我们来个稍微难一点的–模拟登录博客园(<a href="http://www.cnblogs.com" target="_blank" rel="external">http://www.cnblogs.com</a>)</p>
 <h4 id="登录特点"><a href="#登录特点" class="headerlink" title="登录特点"></a>登录特点</h4><blockquote>
 <p>用户名密码都进行了RSA加密，且在浏览器中无法看到POST数据</p>
 </blockquote>
-<p><img src="http://7xsl28.com2.z0.glb.clouddn.com/browsercant.png" alt="图1">
-如上图，在post数据中不能显式看到POST内容。</p>
-<h4 id="模拟登录步骤"><a href="#模拟登录步骤" class="headerlink" title="模拟登录步骤"></a>模拟登录步骤</h4><p>既然浏览器调试功能无法探测到POST数据，那么采用Fiddler试试看，这是一款网络抓包工具，很好用。登录后看到
-<img src="http://7xsl28.com2.z0.glb.clouddn.com/filder.png" alt="图2">
-POST的数据是input1,input2和remember，这和分析signin页面的源代码所得结果一致。
-<img src="http://7xsl28.com2.z0.glb.clouddn.com/htmlinput1.png" alt="图3">
-其中input1是加过密的用户名，input2是加过密的密码，remember表示记住还是不记住用户名。由于RSA的原理，加过密后的内容可以不一样，但是解密后的数据是一样的，那么我们就可以采用重放方式登录，即复制这些内容到我们的POST data中。
-还要注意一个cookies的问题，cookies一定要选择正确，不要选下面的：
-<img src="http://7xsl28.com2.z0.glb.clouddn.com/cookie1.png" alt="图4">
-因为这是登录页面的cookies，我们要用下面的cookies：
-<img src="http://7xsl28.com2.z0.glb.clouddn.com/cookie2.png" alt="图5">，即包含.CNBlogCookies的cookie，这也是主页的cookies。
-为了验证登录是否成功，我们登录后打开followers页面，因为未登录前是无法看到任何用户的粉丝页面的。
-还是利用requests.Session，写出如下代码：
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"></span><br><span class="line">s = requests.Session()</span><br><span class="line"></span><br><span class="line">headers = &#123;</span><br><span class="line">    <span class="string">'Accept'</span>: <span class="string">'application/json, text/javascript, */*; q=0.01'</span>,</span><br><span class="line">    <span class="string">'Referer'</span>: <span class="string">'http://passport.cnblogs.com/user/signin'</span>,</span><br><span class="line">    <span class="string">'User-Agent'</span>: <span class="string">'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36'</span>,</span><br><span class="line">    <span class="string">'Cookie'</span>: <span class="string">'__gads=ID=fc58354935efbd89:T=1458638388:S=ALNI_MYEtsucyem4nWeL9mdxvQmfAZlTgQ; _ga=GA1.2.111229817.1458781632; .CNBlogsCookie=39EB7C846FF5A6CA5D762D210B954E55CE77A24D11C5203F6055DCAC93DFFF8EA7E405568F2D8CC9F00AFE43A859E71DE55AE6E79A030F7E74C231CECF7DA2DD88B734EA2ECA22DFED8C2ECAB85717B45434AABFE1202DA8266C7440562114D99D9C6767'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">login_data = &#123;<span class="string">'input1'</span>: <span class="string">'你的用户名加密后内容'</span>,</span><br><span class="line">              <span class="string">'input2'</span>: <span class="string">'你的密码加密后内容'</span>,</span><br><span class="line">              <span class="string">'remember'</span>: <span class="string">'false'</span></span><br><span class="line">              &#125;</span><br><span class="line"></span><br><span class="line">url = <span class="string">'http://passport.cnblogs.com/user/signin'</span></span><br><span class="line">req = s.post(url, data = login_data, headers=headers)</span><br><span class="line">print(req.status_code)           <span class="comment">#200</span></span><br><span class="line">print(req.content.decode())      <span class="comment">#&#123;"success":false,"message":"您已处于登录状态"&#125;</span></span><br><span class="line"></span><br><span class="line">f = s.get(<span class="string">'http://home.cnblogs.com/u/whatbeg/followers/1'</span>, headers=headers)</span><br><span class="line">print(f.status_code)</span><br><span class="line">print(f.text)</span><br></pre></td></tr></table></figure></p>
-<p>然后运行有：
-<img src="http://7xsl28.com2.z0.glb.clouddn.com/alreadysigned.png" alt="图6">
-<img src="http://7xsl28.com2.z0.glb.clouddn.com/signed.png" alt="图7">
-显示成功登录。
-这样，就可以登录这种用RSA加密的用户名密码的非https且不需要验证码的网站了。希望对需要的人有所帮助。</p>
-<p><font size="1">本文工作仅供交流学习用，请勿利用做出任何不遵守网络公德的行为。</font>
-原文地址：<a href="http://whatbeg.com/2016/04/14/logincnblogs.html">http://whatbeg.com/2016/04/14/logincnblogs.html</a></p>
+<p><img src="http://7xsl28.com2.z0.glb.clouddn.com/browsercant.png" alt="图1"><br>如上图，在post数据中不能显式看到POST内容。</p>
+<h4 id="模拟登录步骤"><a href="#模拟登录步骤" class="headerlink" title="模拟登录步骤"></a>模拟登录步骤</h4><p>既然浏览器调试功能无法探测到POST数据，那么采用Fiddler试试看，这是一款网络抓包工具，很好用。登录后看到<br><img src="http://7xsl28.com2.z0.glb.clouddn.com/filder.png" alt="图2"><br>POST的数据是input1,input2和remember，这和分析signin页面的源代码所得结果一致。<br><img src="http://7xsl28.com2.z0.glb.clouddn.com/htmlinput1.png" alt="图3"><br>其中input1是加过密的用户名，input2是加过密的密码，remember表示记住还是不记住用户名。由于RSA的原理，加过密后的内容可以不一样，但是解密后的数据是一样的，那么我们就可以采用重放方式登录，即复制这些内容到我们的POST data中。<br>还要注意一个cookies的问题，cookies一定要选择正确，不要选下面的：<br><img src="http://7xsl28.com2.z0.glb.clouddn.com/cookie1.png" alt="图4"><br>因为这是登录页面的cookies，我们要用下面的cookies：<br><img src="http://7xsl28.com2.z0.glb.clouddn.com/cookie2.png" alt="图5">，即包含.CNBlogCookies的cookie，这也是主页的cookies。<br>为了验证登录是否成功，我们登录后打开followers页面，因为未登录前是无法看到任何用户的粉丝页面的。<br>还是利用requests.Session，写出如下代码：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"></span><br><span class="line">s = requests.Session()</span><br><span class="line"></span><br><span class="line">headers = &#123;</span><br><span class="line">    <span class="string">'Accept'</span>: <span class="string">'application/json, text/javascript, */*; q=0.01'</span>,</span><br><span class="line">    <span class="string">'Referer'</span>: <span class="string">'http://passport.cnblogs.com/user/signin'</span>,</span><br><span class="line">    <span class="string">'User-Agent'</span>: <span class="string">'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36'</span>,</span><br><span class="line">    <span class="string">'Cookie'</span>: <span class="string">'__gads=ID=fc58354935efbd89:T=1458638388:S=ALNI_MYEtsucyem4nWeL9mdxvQmfAZlTgQ; _ga=GA1.2.111229817.1458781632; .CNBlogsCookie=39EB7C846FF5A6CA5D762D210B954E55CE77A24D11C5203F6055DCAC93DFFF8EA7E405568F2D8CC9F00AFE43A859E71DE55AE6E79A030F7E74C231CECF7DA2DD88B734EA2ECA22DFED8C2ECAB85717B45434AABFE1202DA8266C7440562114D99D9C6767'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">login_data = &#123;<span class="string">'input1'</span>: <span class="string">'你的用户名加密后内容'</span>,</span><br><span class="line">              <span class="string">'input2'</span>: <span class="string">'你的密码加密后内容'</span>,</span><br><span class="line">              <span class="string">'remember'</span>: <span class="string">'false'</span></span><br><span class="line">              &#125;</span><br><span class="line"></span><br><span class="line">url = <span class="string">'http://passport.cnblogs.com/user/signin'</span></span><br><span class="line">req = s.post(url, data = login_data, headers=headers)</span><br><span class="line">print(req.status_code)           <span class="comment">#200</span></span><br><span class="line">print(req.content.decode())      <span class="comment">#&#123;"success":false,"message":"您已处于登录状态"&#125;</span></span><br><span class="line"></span><br><span class="line">f = s.get(<span class="string">'http://home.cnblogs.com/u/whatbeg/followers/1'</span>, headers=headers)</span><br><span class="line">print(f.status_code)</span><br><span class="line">print(f.text)</span><br></pre></td></tr></table></figure></p>
+<p>然后运行有：<br><img src="http://7xsl28.com2.z0.glb.clouddn.com/alreadysigned.png" alt="图6"><br><img src="http://7xsl28.com2.z0.glb.clouddn.com/signed.png" alt="图7"><br>显示成功登录。<br>这样，就可以登录这种用RSA加密的用户名密码的非https且不需要验证码的网站了。希望对需要的人有所帮助。</p>
+<p><font size="1">本文工作仅供交流学习用，请勿利用做出任何不遵守网络公德的行为。</font><br>原文地址：<a href="http://whatbeg.com/2016/04/14/logincnblogs.html">http://whatbeg.com/2016/04/14/logincnblogs.html</a></p>
   
 	</div>
 
@@ -421,10 +397,6 @@ POST的数据是input1,input2和remember，这和分析signin页面的源代码�
 		  
 		
 		  
-		
-		  
-		
-		  
 			<li><a href="/categories/随笔-Essays/" title="随笔 | Essays">随笔 | Essays<sup>7</sup></a></li>
 		  
 		
@@ -556,7 +528,7 @@ POST的数据是input1,input2和remember，这和分析signin页面的源代码�
 		<a href="/about" target="_blank" title="whatbeg">whatbeg</a>
 		
 		<br>
-		<span class="post-count">Total words: <span style="color:orange">304.1k</span></span>
+		<span class="post-count">Total words: <span style="color:orange">307.1k</span></span>
         <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
         <span id="busuanzi_container_site_pv">
         &nbsp;&nbsp;Total visits:&nbsp;<span style="color:orange" id="busuanzi_value_site_pv"></span>

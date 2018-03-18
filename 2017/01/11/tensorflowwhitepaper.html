@@ -97,8 +97,7 @@
 		
 		</div>
 		
-		<p>Martín Abadi, Ashish Agarwal, Paul Barham, Eugene Brevdo, Zhifeng Chen, Craig Citro, Gregory S. Corrado, Andy Davis,Jeffrey Dean, Matthieu Devin, Sanjay Ghemawat, Ian J. Goodfellow, Andrew Harp, Geoffrey Irving, Michael Isard,Yangqing Jia, Rafal Józefowicz, Lukasz Kaiser, Manjunath Kudlur, Josh Levenberg, Dan Mané, Rajat Monga, Sherry Moore,Derek Gordon Murray, Chris Olah, Mike Schuster, Jonathon Shlens, Benoit Steiner, Ilya Sutskever, Kunal Talwar, Paul A. Tucker, Vincent Vanhoucke, Vijay Vasudevan, Fernanda B. Viégas, Oriol Vinyals, Pete Warden, Martin Wattenberg, Martin Wicke, Yuan Yu, Xiaoqiang Zheng:
-<a href="https://arxiv.org/abs/1603.04467" target="_blank" rel="external">TensorFlow: Large-Scale Machine Learning on Heterogeneous Distributed Systems</a>. (2015.11)</p>
+		<p>Martín Abadi, Ashish Agarwal, Paul Barham, Eugene Brevdo, Zhifeng Chen, Craig Citro, Gregory S. Corrado, Andy Davis,Jeffrey Dean, Matthieu Devin, Sanjay Ghemawat, Ian J. Goodfellow, Andrew Harp, Geoffrey Irving, Michael Isard,Yangqing Jia, Rafal Józefowicz, Lukasz Kaiser, Manjunath Kudlur, Josh Levenberg, Dan Mané, Rajat Monga, Sherry Moore,Derek Gordon Murray, Chris Olah, Mike Schuster, Jonathon Shlens, Benoit Steiner, Ilya Sutskever, Kunal Talwar, Paul A. Tucker, Vincent Vanhoucke, Vijay Vasudevan, Fernanda B. Viégas, Oriol Vinyals, Pete Warden, Martin Wattenberg, Martin Wicke, Yuan Yu, Xiaoqiang Zheng:<br><a href="https://arxiv.org/abs/1603.04467" target="_blank" rel="external">TensorFlow: Large-Scale Machine Learning on Heterogeneous Distributed Systems</a>. (2015.11)</p>
 <h2 id="编程模型与基本概念"><a href="#编程模型与基本概念" class="headerlink" title="编程模型与基本概念"></a>编程模型与基本概念</h2><p>TensorFlow的计算过程采用一张有向图（DAG）来描述，有向图由许多节点（nodes）构成，图代表了一个数据流（dataflow）计算过程，用户通常用某种前端语言(C++/Python)建立一个计算图，来执行某个过程。</p>
 <p>在TensorFlow图中，每个节点（node）可以有任意个输入，任意个输出，代表了一个操作的实例化，流过图中正常的边（edge）（从输出到输入）的值（Values）称为张量（Tensor），可以理解为任意维的array。有一些特殊的边，称为控制依赖（control dependencies），没有数据流过，表示节点与节点之间一种序关系，也即happens-before关系。</p>
 <ul>
@@ -128,9 +127,7 @@
 <li>Send/Recv的通信错误</li>
 <li>周期性的保活检查(keep-alive)时</li>
 </ul>
-<p>如果发生了错误，那么整个图会终止执行，并重启。如果简单地这样处理的话，那些正确计算好的节点就得重新计算，不高效，所以TensorFlow支持在重启过程中一致的检查点和状态恢复。
-怎么实现的呢？
-每个节点有一个到Save节点的连接，也被一个Restore节点所连接，周期性地执行Save，持久化变量到比如分布式文件系统等存储上。类似的，Restore节点负责在重启后的第一个迭代中恢复变量的值(或状态?)</p>
+<p>如果发生了错误，那么整个图会终止执行，并重启。如果简单地这样处理的话，那些正确计算好的节点就得重新计算，不高效，所以TensorFlow支持在重启过程中一致的检查点和状态恢复。<br>怎么实现的呢？<br>每个节点有一个到Save节点的连接，也被一个Restore节点所连接，周期性地执行Save，持久化变量到比如分布式文件系统等存储上。类似的，Restore节点负责在重启后的第一个迭代中恢复变量的值(或状态?)</p>
 <h2 id="扩展"><a href="#扩展" class="headerlink" title="扩展"></a>扩展</h2><p>TensorFlow内嵌地支持自动梯度计算。</p>
 <p>在存储管理(memory management)，TensorFlow的作者们也在寻求提升的方法。一些可能的选项包括：</p>
 <ul>
@@ -141,8 +138,7 @@
 <p>TensorFlow支持图的部分计算，如图：</p>
 <center> <img src="http://7xsl28.com1.z0.glb.clouddn.com/tensorflow2.png" alt=""> </center>
 
-<p>显然，支持条件与循环会导致更加精确和高效地表示机器学习算法，TensorFlow提供了一些控制流操作原语包括Switch，Merge，Enter，Leave，NextIteration等。
-每轮迭代由一个唯一的tag标识，执行状态由一个frame来表示，一个输入只要可用就可以进入一个迭代过程，因此，多个迭代可以并发地执行。</p>
+<p>显然，支持条件与循环会导致更加精确和高效地表示机器学习算法，TensorFlow提供了一些控制流操作原语包括Switch，Merge，Enter，Leave，NextIteration等。<br>每轮迭代由一个唯一的tag标识，执行状态由一个frame来表示，一个输入只要可用就可以进入一个迭代过程，因此，多个迭代可以并发地执行。</p>
 <p>尽管输入数据可以通过feed节点提供，另一个典型的训练大规模机器学习模型的机制是在图中采用特殊的输入操作节点(input operation nodes)，节点通过文件名配置，这使得工作节点可以直接从存储系统中将数据拿到内存。</p>
 <p>队列是很有用的一个特性，允许图的不同部分亦不知悉，按照不同的节奏通过Enqueue和Dequeue来处理数据。队列的一个用途是允许输入数据提前从文件中取出，此时并不耽误前一批数据的处理，更有效率。TensorFlow不仅实现了基本的FIFO队列，还实现了一个shuffling队列，可以随机shuffle一个大型内存buffer中的元素。</p>
 <p>容器是用来管理长期存在的可变状态的机制。默认的话，容器一直保持到进程结束。</p>
@@ -463,10 +459,6 @@
 		  
 		
 		  
-		
-		  
-		
-		  
 			<li><a href="/categories/随笔-Essays/" title="随笔 | Essays">随笔 | Essays<sup>7</sup></a></li>
 		  
 		
@@ -598,7 +590,7 @@
 		<a href="/about" target="_blank" title="whatbeg">whatbeg</a>
 		
 		<br>
-		<span class="post-count">Total words: <span style="color:orange">304.1k</span></span>
+		<span class="post-count">Total words: <span style="color:orange">307.1k</span></span>
         <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
         <span id="busuanzi_container_site_pv">
         &nbsp;&nbsp;Total visits:&nbsp;<span style="color:orange" id="busuanzi_value_site_pv"></span>

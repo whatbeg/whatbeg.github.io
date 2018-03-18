@@ -124,9 +124,7 @@
 </ul>
 <p>【什么是actor抽象？】actor可以理解为一个第三方服务的代理，或者一个类，类中包含了成员变量和方法，成员方法可以调用某些第三方服务，故而actor相当于对第三方服务的一个封装和一个抽象，真正的实现可以是各种第三方服务。在编程语言中的实现就是像类一样实现，只不过在类定义前加一个<code>@ray.remote</code>而已。</p>
 <ul>
-<li>条件2：高性能 =&gt; 采用一种新的分布式架构，可以实现良好的水平扩展。主要基于两个idea：
-1）中央控制板，系统的所有控制状态都属中央控制，各个组件可以实现无状态，从而实现良好的水平扩展和容错。
-2）自底向上的分布式调度器。即有一个全局调度器(global scheduler)，每个节点有本地调度器(local scheduler)，本地调度器可以选择本地调度，也可以将任务转发给global scheduler，让global scheduler来进行调度。</li>
+<li>条件2：高性能 =&gt; 采用一种新的分布式架构，可以实现良好的水平扩展。主要基于两个idea：<br>1）中央控制板，系统的所有控制状态都属中央控制，各个组件可以实现无状态，从而实现良好的水平扩展和容错。<br>2）自底向上的分布式调度器。即有一个全局调度器(global scheduler)，每个节点有本地调度器(local scheduler)，本地调度器可以选择本地调度，也可以将任务转发给global scheduler，让global scheduler来进行调度。</li>
 </ul>
 <p>【问题一】看到这里，读者可能会问，何时决定选择本地调度还是往上层转发呢？采何种标准决定到底是本地调度还是往上层转发呢？这是后续需要回答的问题。</p>
 <p>可以看到，介绍部分的基本逻辑清晰，我们采用SCQA/SQCA分析法来分析，首先介绍现在的处境(Situation)，然后提出问题（我们需要xxx）(Question)，然后是冲突(Conflict)，即现在没有满足这些条件的框架，最后是答案(Answer)，即我们提出Ray…。这种写法可以叫SQCA法，也可以调一下顺序，按SCQA的顺序来写。</p>
@@ -138,28 +136,16 @@
 </ul>
 <p>【问题二】水平扩展的方式，能否支撑大数据？</p>
 <p>Ray的架构：</p>
-<table>
-    <tr>
-        <th colspan="3"><center>Application Layer</center></th>
-    </tr>
-    <tr>
-        <td><center>global control state</center></td>
-        <td><center>distributed scheduler</center></td>
-        <td><center>distributed object store</center></td>
-    </tr>
-</table>
+<table><br>    <tr><br>        <th colspan="3"><center>Application Layer</center></th><br>    </tr><br>    <tr><br>        <td><center>global control state</center></td><br>        <td><center>distributed scheduler</center></td><br>        <td><center>distributed object store</center></td><br>    </tr><br></table>
 
-<h2 id="Motivation-and-Requirements"><a href="#Motivation-and-Requirements" class="headerlink" title="Motivation and Requirements"></a>Motivation and Requirements</h2><p>强化学习工作流是Ray设计的主要动机，也是本文重点。
-以强化学习为例，本文将新型系统的要求分为三大类：</p>
+<h2 id="Motivation-and-Requirements"><a href="#Motivation-and-Requirements" class="headerlink" title="Motivation and Requirements"></a>Motivation and Requirements</h2><p>强化学习工作流是Ray设计的主要动机，也是本文重点。<br>以强化学习为例，本文将新型系统的要求分为三大类：</p>
 <ul>
 <li>Flexibility</li>
 </ul>
-<p>Flexibility又分为几个方面：
-一个是并发任务的异构性，有以下三种，功能不同，时长不同以及资源类型不同。如视频的处理和文本的处理就不是同一个功能，在一个时长，执行的计算也不一样。资源类型指的是GPU或者CPU等。</p>
+<p>Flexibility又分为几个方面：<br>一个是并发任务的异构性，有以下三种，功能不同，时长不同以及资源类型不同。如视频的处理和文本的处理就不是同一个功能，在一个时长，执行的计算也不一样。资源类型指的是GPU或者CPU等。</p>
 <p><img src="https://blog-image-1256228880.cos.ap-beijing.myqcloud.com/ray-01.jpg" alt=""></p>
 <p>另一个是执行图的通用性和动态性。</p>
-<p>上面这些要求，BSP的模型（如Hadoop MapReduce, Apache Spark）是无法满足的。
-在BSP模型中，每个Stage执行的计算通常是相同的，故而计算所需的时间也相似。</p>
+<p>上面这些要求，BSP的模型（如Hadoop MapReduce, Apache Spark）是无法满足的。<br>在BSP模型中，每个Stage执行的计算通常是相同的，故而计算所需的时间也相似。</p>
 <ul>
 <li>Performance</li>
 </ul>
@@ -168,17 +154,14 @@
 <ul>
 <li>Ease of Deployment</li>
 </ul>
-<p>写并行程序本来就不容易。简化开发对于一个系统的成功来说是至关重要的。
-易用性包括几个方面：</p>
+<p>写并行程序本来就不容易。简化开发对于一个系统的成功来说是至关重要的。<br>易用性包括几个方面：</p>
 <ul>
 <li>确定型的重放以及容错机制。</li>
 <li>已有算法易并行。包括对Python语言的支持，以及提供第三方服务的紧密集成，这方面采用actor抽象来封装第三方服务。</li>
 </ul>
-<h2 id="编程模型和计算模型（Programming-and-Computation-Model）"><a href="#编程模型和计算模型（Programming-and-Computation-Model）" class="headerlink" title="编程模型和计算模型（Programming and Computation Model）"></a>编程模型和计算模型（Programming and Computation Model）</h2><p>不同于其他系统，Ray提供了actor和task-parallel两重编程抽象。
-不像CIEL，只提供任务并行抽象，或Orleans，只提供actor抽象。</p>
+<h2 id="编程模型和计算模型（Programming-and-Computation-Model）"><a href="#编程模型和计算模型（Programming-and-Computation-Model）" class="headerlink" title="编程模型和计算模型（Programming and Computation Model）"></a>编程模型和计算模型（Programming and Computation Model）</h2><p>不同于其他系统，Ray提供了actor和task-parallel两重编程抽象。<br>不像CIEL，只提供任务并行抽象，或Orleans，只提供actor抽象。</p>
 <h3 id="编程模型"><a href="#编程模型" class="headerlink" title="编程模型"></a>编程模型</h3><p>当一个带有<code>@remote</code>注解的remote函数被调用，会立即返回一个<code>future</code>对象，然后调用<code>ray.get</code>即可得到结果。</p>
-<p>比如说
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> ray</span><br><span class="line"></span><br><span class="line">ray.init()</span><br><span class="line"></span><br><span class="line"><span class="meta">@ray.remote</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">f</span><span class="params">()</span>:</span></span><br><span class="line">    time.sleep(<span class="number">1</span>)</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Execute f in parallel.</span></span><br><span class="line">object_ids = [f.remote() <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">4</span>)]</span><br><span class="line">results = ray.get(object_ids)</span><br></pre></td></tr></table></figure></p>
+<p>比如说<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> ray</span><br><span class="line"></span><br><span class="line">ray.init()</span><br><span class="line"></span><br><span class="line"><span class="meta">@ray.remote</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">f</span><span class="params">()</span>:</span></span><br><span class="line">    time.sleep(<span class="number">1</span>)</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Execute f in parallel.</span></span><br><span class="line">object_ids = [f.remote() <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">4</span>)]</span><br><span class="line">results = ray.get(object_ids)</span><br></pre></td></tr></table></figure></p>
 <p><code>f.remote()</code>调用运行时，将返回一个<code>future</code>对象，存储在<code>object_ids</code>中，调用<code>ray.get(object_ids)</code>可以得到返回值的列表。</p>
 <p>remote函数操作的数据是不可变的对象，remote函数是无状态，无副作用的，使得幂等性得以保证，从而简化了容错的处理。</p>
 <p>为了满足一些条件，Ray所提出了的编程模型如下：</p>
@@ -196,56 +179,33 @@
 <p>那么Ray是如何将一个用户程序转换成计算图的呢？</p>
 <p>不考虑actor的情况下，整个计算图的节点只包含两种类型的对象，数据对象和remote函数调用，或者称为task。</p>
 <p>计算图有两种类型的边，数据边(data edge)和控制边(control edge)。</p>
-<p>具体如下：
-数据对象用D表示，task用T表示。
-如果任务T产生输出D，那么T-&gt;D建一条边
-如果D是T的输入，那么D-&gt;T有一条边
-如果T1中调用了T2，那么T1-&gt;T2有一条边</p>
-<p>考虑actor的情况下，增加一种数据对象即actor的方法(Method)，增加一种边，叫做有状态边(stateful edge)，表示一种执行的先后顺序。
-因为同一个actor中，方法的执行是顺序的，无法并行，Mi-&gt;Mj的边即表示先执行方法Mi，再执行方法Mj。</p>
+<p>具体如下：<br>数据对象用D表示，task用T表示。<br>如果任务T产生输出D，那么T-&gt;D建一条边<br>如果D是T的输入，那么D-&gt;T有一条边<br>如果T1中调用了T2，那么T1-&gt;T2有一条边</p>
+<p>考虑actor的情况下，增加一种数据对象即actor的方法(Method)，增加一种边，叫做有状态边(stateful edge)，表示一种执行的先后顺序。<br>因为同一个actor中，方法的执行是顺序的，无法并行，Mi-&gt;Mj的边即表示先执行方法Mi，再执行方法Mj。</p>
 <p>有状态边有两种好处，一是使得我们可以把actor嵌入到无状态的任务图中，因为actor维护着自己的一个调用链和状态。二是，有状态边可以用来维护世系(lineage)信息，世系可以帮助Ray重建数据对象，包括remote function创建的或是actor method创建的。</p>
 <h2 id="架构（Architecture）"><a href="#架构（Architecture）" class="headerlink" title="架构（Architecture）"></a>架构（Architecture）</h2><p>架构包括两层，应用层(Application Layer)和系统层(System Layer)。</p>
-<h3 id="应用层"><a href="#应用层" class="headerlink" title="应用层"></a>应用层</h3><p><img src="https://blog-image-1256228880.cos.ap-beijing.myqcloud.com/ray-02.jpg" alt="">
-应用层包含三种进程，Driver，Worker，Actor。</p>
+<h3 id="应用层"><a href="#应用层" class="headerlink" title="应用层"></a>应用层</h3><p><img src="https://blog-image-1256228880.cos.ap-beijing.myqcloud.com/ray-02.jpg" alt=""><br>应用层包含三种进程，Driver，Worker，Actor。</p>
 <p>Driver用来执行用户程序，即<code>python xx.py</code>产生的进程。</p>
-<p>Worker用来执行task，task（remote function）可以由driver或者是其他worker调用，每个机器上运行<code>ray start</code>后会启动0个或多个Worker【待详述】。Worker是无状态的，由系统层指配task。
-当一个remote函数声明的时候，函数会自动发布到所有worker。【待详述】</p>
-<p>Actor是一个有状态的进程，当其方法被调用时执行，Actor一经启动在某个节点上，则负责执行所有该actor的方法调用。
-Actor是有driver或者worker显式地初始化得到的，即采用<code>actor_name.remote()</code>的方式。</p>
+<p>Worker用来执行task，task（remote function）可以由driver或者是其他worker调用，每个机器上运行<code>ray start</code>后会启动0个或多个Worker【待详述】。Worker是无状态的，由系统层指配task。<br>当一个remote函数声明的时候，函数会自动发布到所有worker。【待详述】</p>
+<p>Actor是一个有状态的进程，当其方法被调用时执行，Actor一经启动在某个节点上，则负责执行所有该actor的方法调用。<br>Actor是有driver或者worker显式地初始化得到的，即采用<code>actor_name.remote()</code>的方式。</p>
 <p><img src="https://blog-image-1256228880.cos.ap-beijing.myqcloud.com/ray-03.jpg" alt="Ray架构与自底向上调度器示意图"></p>
 <p>系统层而言，提供了三个组件，每个组件都具有水平可扩展性以及容错机制，来保证前述性能目标和容错目标。</p>
 <p>三个组件分别是：全局控制状态(global control state)，分布式自底向上调度器(distributed bottom-up scheduler)，分布式对象存储(distributed object store)。</p>
-<h3 id="系统层-Global-Control-State"><a href="#系统层-Global-Control-State" class="headerlink" title="系统层-Global Control State"></a>系统层-Global Control State</h3><p>全局控制状态（GCS）是一个中心化的存储，使用Redis实现，负责存储task描述，remote方法代码，计算图，对象的位置，以及每个调度事件。
-将所用控制状态集中存储，有这么几个好处：
-1）使得集群中其他组件、节点可以无状态。这样的话可以大大提升水平扩展的能力。
-2）简化了容错。
-3）方便对程序debug，profile。</p>
-<p>当然，集中式存储带来的隐忧就是瓶颈问题，基于Redis，可以做分片(sharding)来缓解单点瓶颈。并且为每个分片提供热副本(hot replica)【是什么？】来容错。
-鉴于在Ray中，每个task, object, method等都有一个唯一的伪随机ID与其一一对应，使得分片间能够更好地负载均衡。</p>
-<h3 id="系统层-Distributed-Bottom-Up-Scheduler"><a href="#系统层-Distributed-Bottom-Up-Scheduler" class="headerlink" title="系统层-Distributed Bottom-Up Scheduler"></a>系统层-Distributed Bottom-Up Scheduler</h3><p>分布式自底向上调度器（distributed bottom-up scheduler），负责任务的调度。Ray启动时，会启动一个全局的调度器global scheduler，实现上是一个redis server，会在每个从节点上启动一个local scheduler，每个节点上提交的task率先提交给各自的local scheduler进行调度，如果local scheduler调度不了，则上推给global scheduler，进行集群全局范围的调度。
-Ray这样设计的目标是调度可扩展性以及快速，低延迟的调度。这样设计带来的好处就是Ray调度任务非常之快。</p>
+<h3 id="系统层-Global-Control-State"><a href="#系统层-Global-Control-State" class="headerlink" title="系统层-Global Control State"></a>系统层-Global Control State</h3><p>全局控制状态（GCS）是一个中心化的存储，使用Redis实现，负责存储task描述，remote方法代码，计算图，对象的位置，以及每个调度事件。<br>将所用控制状态集中存储，有这么几个好处：<br>1）使得集群中其他组件、节点可以无状态。这样的话可以大大提升水平扩展的能力。<br>2）简化了容错。<br>3）方便对程序debug，profile。</p>
+<p>当然，集中式存储带来的隐忧就是瓶颈问题，基于Redis，可以做分片(sharding)来缓解单点瓶颈。并且为每个分片提供热副本(hot replica)【是什么？】来容错。<br>鉴于在Ray中，每个task, object, method等都有一个唯一的伪随机ID与其一一对应，使得分片间能够更好地负载均衡。</p>
+<h3 id="系统层-Distributed-Bottom-Up-Scheduler"><a href="#系统层-Distributed-Bottom-Up-Scheduler" class="headerlink" title="系统层-Distributed Bottom-Up Scheduler"></a>系统层-Distributed Bottom-Up Scheduler</h3><p>分布式自底向上调度器（distributed bottom-up scheduler），负责任务的调度。Ray启动时，会启动一个全局的调度器global scheduler，实现上是一个redis server，会在每个从节点上启动一个local scheduler，每个节点上提交的task率先提交给各自的local scheduler进行调度，如果local scheduler调度不了，则上推给global scheduler，进行集群全局范围的调度。<br>Ray这样设计的目标是调度可扩展性以及快速，低延迟的调度。这样设计带来的好处就是Ray调度任务非常之快。</p>
 <p>那么Ray这样设计的灵感来自于哪里呢？</p>
 <p>通常的分布式集群计算框架实现的都是中心化，集中式的调度，如Hadoop, Spark, CIEL, Dryad等。这种方式虽然简化了设计，但是扩展性不好。</p>
-<p>提升调度扩展性有几种方式：
-1）批量调度。调度器批量提交任务给worker节点，以摊销提交任务带来的固定开销。Drizzle框架实现的就是这种。
-2）层次调度。即全局调度器(global scheduler)将任务图划分到各个节点的本地调度器(local scheduler)。Canary框架实现了这种调度。
-3）并行调度。多个全局调度器同时进行任务调度。这是Sparrow框架所做的。</p>
-<p>但是他们都有各自的缺陷。
-批量调度仍然需要一个全局调度器来处理所有任务。
-层次调度假设任务图是已知的，即假设任务图是静态的。
-并行调度假设每个全局调度器调度独立的作业。</p>
+<p>提升调度扩展性有几种方式：<br>1）批量调度。调度器批量提交任务给worker节点，以摊销提交任务带来的固定开销。Drizzle框架实现的就是这种。<br>2）层次调度。即全局调度器(global scheduler)将任务图划分到各个节点的本地调度器(local scheduler)。Canary框架实现了这种调度。<br>3）并行调度。多个全局调度器同时进行任务调度。这是Sparrow框架所做的。</p>
+<p>但是他们都有各自的缺陷。<br>批量调度仍然需要一个全局调度器来处理所有任务。<br>层次调度假设任务图是已知的，即假设任务图是静态的。<br>并行调度假设每个全局调度器调度独立的作业。</p>
 <p>Ray希望做到的是高可扩展性，处理动态任务图，并且可能处理来自同一个作业的任务。</p>
 <p>Ray的自底向上调度器类似层次调度，不同的是，一个节点生成的task首先提交到各自的local scheduler，由local scheduler进行调度。除非本地节点过载了，或者本地节点不能满足task的资源需求，或者task的输入不在本地节点等因素出现，否则本地节点可以完成调度。</p>
 <p>其实最后一条，task的输入不再本地，仍有方式在本地调度，因为object store可以实现快速的数据对象转运。</p>
 <p>看到这里，读者可能想问，Ray的local scheduler是怎样判断是否该调度到本地节点还是上推到global scheduler呢？</p>
 <p>Ray是这样处理的，local scheduler会维护一个任务队列（task queue），每次调度任务时它会检查当前任务队列的长度，如果超过一定的阈值，那么认为本机过载了，不在调度当前任务而是将其转给上层全局调度器。</p>
-<p>这个阈值为0，则调度为集中式的调度，全靠global scheduler负责。
-这个阈值为无穷大，则调度为去中心化的分布式调度，所有任务都有本地节点负责。</p>
-<p>在框架设计上，local scheduler每隔一段时间会发送心跳包给GCS，注意不是直接发送给global scheduler，心跳包中会包含local scheduler的负载信息，GCS收到以后记录此信息，转发给global scheduler。
-当收到local scheduler转发来的任务时，global scheduler使用最新的负载信息，以及人物的输入数据对象的位置和大小，来决定将task分发到哪个节点去运行。</p>
+<p>这个阈值为0，则调度为集中式的调度，全靠global scheduler负责。<br>这个阈值为无穷大，则调度为去中心化的分布式调度，所有任务都有本地节点负责。</p>
+<p>在框架设计上，local scheduler每隔一段时间会发送心跳包给GCS，注意不是直接发送给global scheduler，心跳包中会包含local scheduler的负载信息，GCS收到以后记录此信息，转发给global scheduler。<br>当收到local scheduler转发来的任务时，global scheduler使用最新的负载信息，以及人物的输入数据对象的位置和大小，来决定将task分发到哪个节点去运行。</p>
 <p>如果global scheduler成为了瓶颈，那么采用多个副本，local scheduler随机选择一个global scheduler去转发任务。</p>
-<h3 id="系统层-Distributed-Object-Store"><a href="#系统层-Distributed-Object-Store" class="headerlink" title="系统层-Distributed Object Store"></a>系统层-Distributed Object Store</h3><p>remote函数（task）的输入和输出数据都存储在Distributed Object Store中。
-调用一个函数时，其输入首先被隐式执行<code>ray.put</code>，存储object store中，其输出也会被放入object store中，函数返回一个object id为该输出数据的唯一id，调用<code>ray.get(object_id)</code>才可获得任务返回的实际数据。</p>
+<h3 id="系统层-Distributed-Object-Store"><a href="#系统层-Distributed-Object-Store" class="headerlink" title="系统层-Distributed Object Store"></a>系统层-Distributed Object Store</h3><p>remote函数（task）的输入和输出数据都存储在Distributed Object Store中。<br>调用一个函数时，其输入首先被隐式执行<code>ray.put</code>，存储object store中，其输出也会被放入object store中，函数返回一个object id为该输出数据的唯一id，调用<code>ray.get(object_id)</code>才可获得任务返回的实际数据。</p>
 <p>同一个节点上使用共享内存(shared memory)来实现object store，这使得两个不同的worker进程或者driver和worker之间能够零拷贝(zero copy)地访问共同的数据。具体实现采用了Apache Arrow中的plasma store。<a href="http://arrow.apache.org/" target="_blank" rel="external">Apache Arrow</a>是一种跨平台的内存数据交换格式。可参看介绍<a href="https://www.cnblogs.com/smartloli/p/6367719.html" target="_blank" rel="external"></a>，<a href="http://www.infoq.com/cn/articles/apache-arrow/" target="_blank" rel="external"></a>等。</p>
 <p>如果一个task，其输入不在本地，那么object store会把数据从所在地拷贝到本地，这样可以避免热数据带来的瓶颈，同时可以加快程序执行速度，因为直接在本地内存中操作。当然，数据的传送开销也是免不了的。这也将提升计算受限工作流的吞吐量，计算受限是许多AI应用共有的特征。</p>
 <p>为了简化系统设计，简化容错，Ray像其它内存计算系统如Spark, Dryad一样，其操作的数据是不可变的(immutable)，即存储在object store中的数据不能改变，如RDD一般。</p>
@@ -253,122 +213,13 @@ Ray这样设计的目标是调度可扩展性以及快速，低延迟的调度�
 <p><strong>对象重建</strong></p>
 <p>像Spark，CIEL一样，Ray根据世系来重建对象。除此之外，Ray还支持有状态操作算子(Actor)的重建。</p>
 <p>要注意的是，如果世系中包含有状态边，则可能涉及到Actor的重新初始化，并且可能涉及到很长一条世系链的重放。对于某些应用，Ray为了减少Actor的重建时间，加入了checkpoint机制，从checkpoint进行恢复。</p>
-<p>为了保证低延迟，如果plasma store满了以后，会通过LRU机制剔除陈旧的对象到磁盘。【到磁盘哪里？】
-在Ray中，plasma store即object store挂载在Linux属于tmpfs文件系统的<code>/dev/shm</code>目录上，该目录不在磁盘上，而在内存里。已经存入<code>/dev/shm</code>中的对象不能被其他应用程序使用，但是<code>/dev/shm</code>没被使用的部分可被其他应用程序使用。
-<code>/dev/shm</code>区域的大小一般是总内存的1/2。即如果你的机器是64G内存，那么此区域只有32G可用，Ray会再保留一点余量，大概用于object store的空间只有26-27GB左右，也就是说，如果Ray处理的数据过大，大到object store都装不下或者在运行时需要频繁evict甚至evict掉其他必要数据的时候，往往程序就会崩溃。</p>
-<center> <img src="https://blog-image-1256228880.cos.ap-beijing.myqcloud.com/ray-04.jpg" alt="Ray执行任务示意简图1">
-<img src="https://blog-image-1256228880.cos.ap-beijing.myqcloud.com/ray-05.jpg" alt="Ray执行任务示意简图2">
-</center>
+<p>为了保证低延迟，如果plasma store满了以后，会通过LRU机制剔除陈旧的对象到磁盘。【到磁盘哪里？】<br>在Ray中，plasma store即object store挂载在Linux属于tmpfs文件系统的<code>/dev/shm</code>目录上，该目录不在磁盘上，而在内存里。已经存入<code>/dev/shm</code>中的对象不能被其他应用程序使用，但是<code>/dev/shm</code>没被使用的部分可被其他应用程序使用。<br><code>/dev/shm</code>区域的大小一般是总内存的1/2。即如果你的机器是64G内存，那么此区域只有32G可用，Ray会再保留一点余量，大概用于object store的空间只有26-27GB左右，也就是说，如果Ray处理的数据过大，大到object store都装不下或者在运行时需要频繁evict甚至evict掉其他必要数据的时候，往往程序就会崩溃。</p>
+<center> <img src="https://blog-image-1256228880.cos.ap-beijing.myqcloud.com/ray-04.jpg" alt="Ray执行任务示意简图1"><br><img src="https://blog-image-1256228880.cos.ap-beijing.myqcloud.com/ray-05.jpg" alt="Ray执行任务示意简图2"><br></center>
 
 <h2 id="相关工作"><a href="#相关工作" class="headerlink" title="相关工作"></a>相关工作</h2><p>下表对相关工作与Ray的相似点与不同点做一总结。</p>
-<table>
-    <tr>
-        <th></th>
-        <th>比较的系统框架</th>
-        <th>相似点</th>
-        <th>不同点</th>
-    </tr>
-    <tr>
-        <th rowspan="2">动态任务图</th>
-        <td>CIEL</td>
-        <td>动态任务图机制，futures抽象，通过世系容错</td>
-        <td>Ray还提供Actor抽象，并实现了全局控制面板，自底向上调度器和采用了内存对象存储而不是文件存储，扩展到Python语言</td>
-    </tr>
-    <tr>
-        <td>Dask</td>
-        <td>支持动态任务图，wait原语，futures抽象，Python语言</td>
-        <td>Dask是中心化调度方式，不提供actor抽象，不提供容错</td>
-    </tr>
-    <tr>
-        <th rowspan="3">数据流系统</th>
-        <td>Hadoop/Spark</td>
-        <td></td>
-        <td>Hadoop/Spark计算模型更加限定，实现了BSP执行模型，假设同一阶段的task执行同样的计算，并有着相似的执行时间。Ray还提供Actor抽象，并实现了全局控制面板和调度器。</td>
-    </tr>
-    <tr>
-        <td>Dryad</td>
-        <td></td>
-        <td>Dryad放松了Spark的假设，但是也没有实现动态计算图。Ray还提供Actor抽象，并实现了全局控制面板和调度器。</td>
-    </tr>
-    <tr>
-        <td>Naiad</td>
-        <td>对于一些工作流提升了可扩展性。</td>
-        <td>只支持静态计算图。</td>
-    </tr>
-    <tr>
-        <th rowspan="3">Actor系统</th>
-        <td>Orleans</td>
-        <td>提供虚拟actor-based抽象。</td>
-        <td>Orleans可以使actor的多个实例同时运行。需要显式checkpoint，提供at-least-once语义。而Ray提供exactly-once语义。[注]</td>
-    </tr>
-    <tr>
-        <td>Erlang</td>
-        <td>Actor抽象。</td>
-        <td>需显式处理容错。Erlang的全局状态存储不适合共享大对象。</td>
-    </tr>
-    <tr>
-        <td>C++ Actor Framework</td>
-        <td>Actor抽象。</td>
-        <td>需显式处理容错。不支持数据共享。</td>
-    </tr>
-    <tr>
-        <th rowspan="7">全局控制状态和调度</th>
-        <td>SDN</td>
-        <td>全局控制状态</td>
-        <td>Ray解耦了状态信息存储和逻辑实现（调度器），存储与计算可以独立扩展</td>
-    </tr>
-    <tr>
-        <td>Distributed File System，如GFS</td>
-        <td>全局控制状态</td>
-        <td>Ray解耦了状态信息存储和逻辑实现（调度器），存储与计算可以独立扩展</td>
-    </tr>
-    <tr>
-        <td>Distributed Frameworks (如MapReduce, BOOM)</td>
-        <td>全局控制状态</td>
-        <td>与BOOM相比，Ray解耦了状态信息存储和逻辑实现（调度器），存储与计算可以独立扩展</td>
-    </tr>
-    <tr>
-        <td>Resource Management (Omega)</td>
-        <td>全局共享状态</td>
-        <td>Ray增加了两层调度器来均衡负载，面向毫秒级别的任务调度</td>
-    </tr>
-    <tr>
-        <td>Sparrow</td>
-        <td>去中心化调度</td>
-        <td>各调度器自行其是，独立决策</td>
-    </tr>
-    <tr>
-        <td>Mesos</td>
-        <td>两级层次调度</td>
-        <td>顶层调度器可能成为瓶颈</td>
-    </tr>
-    <tr>
-        <td>Canary</td>
-        <td>去中心化调度</td>
-        <td>Canary每个调度器负责计算图的一部分，但不支持动态计算图</td>
-    </tr>
-    <tr>
-        <th rowspan="3">机器学习框架</th>
-        <td>Tensorflow</td>
-        <td></td>
-        <td>面向深度学习，对CPU、GPU资源利用很好，不支持更通用的计算工作流，Tensorflow Fold提供对动态计算图的一些支持，但仍无法全部支持执行时对任务执行进度，任务完成时间和错误的响应而编辑DAG图。支持底层消息传输和同步原语，但是过于底层使得用起来有点像MPI。</td>
-    </tr>
-    <tr>
-        <td>MXNet</td>
-        <td></td>
-        <td>同Tensorflow</td>
-    </tr>
-    <tr>
-        <td>OpenMPI</td>
-        <td>高性能</td>
-        <td>很难编程，需要显式处理异构和动态任务图，需要程序员显式处理容错</td>
-    </tr>
-</table>
+<table><br>    <tr><br>        <th></th><br>        <th>比较的系统框架</th><br>        <th>相似点</th><br>        <th>不同点</th><br>    </tr><br>    <tr><br>        <th rowspan="2">动态任务图</th><br>        <td>CIEL</td><br>        <td>动态任务图机制，futures抽象，通过世系容错</td><br>        <td>Ray还提供Actor抽象，并实现了全局控制面板，自底向上调度器和采用了内存对象存储而不是文件存储，扩展到Python语言</td><br>    </tr><br>    <tr><br>        <td>Dask</td><br>        <td>支持动态任务图，wait原语，futures抽象，Python语言</td><br>        <td>Dask是中心化调度方式，不提供actor抽象，不提供容错</td><br>    </tr><br>    <tr><br>        <th rowspan="3">数据流系统</th><br>        <td>Hadoop/Spark</td><br>        <td></td><br>        <td>Hadoop/Spark计算模型更加限定，实现了BSP执行模型，假设同一阶段的task执行同样的计算，并有着相似的执行时间。Ray还提供Actor抽象，并实现了全局控制面板和调度器。</td><br>    </tr><br>    <tr><br>        <td>Dryad</td><br>        <td></td><br>        <td>Dryad放松了Spark的假设，但是也没有实现动态计算图。Ray还提供Actor抽象，并实现了全局控制面板和调度器。</td><br>    </tr><br>    <tr><br>        <td>Naiad</td><br>        <td>对于一些工作流提升了可扩展性。</td><br>        <td>只支持静态计算图。</td><br>    </tr><br>    <tr><br>        <th rowspan="3">Actor系统</th><br>        <td>Orleans</td><br>        <td>提供虚拟actor-based抽象。</td><br>        <td>Orleans可以使actor的多个实例同时运行。需要显式checkpoint，提供at-least-once语义。而Ray提供exactly-once语义。[注]</td><br>    </tr><br>    <tr><br>        <td>Erlang</td><br>        <td>Actor抽象。</td><br>        <td>需显式处理容错。Erlang的全局状态存储不适合共享大对象。</td><br>    </tr><br>    <tr><br>        <td>C++ Actor Framework</td><br>        <td>Actor抽象。</td><br>        <td>需显式处理容错。不支持数据共享。</td><br>    </tr><br>    <tr><br>        <th rowspan="7">全局控制状态和调度</th><br>        <td>SDN</td><br>        <td>全局控制状态</td><br>        <td>Ray解耦了状态信息存储和逻辑实现（调度器），存储与计算可以独立扩展</td><br>    </tr><br>    <tr><br>        <td>Distributed File System，如GFS</td><br>        <td>全局控制状态</td><br>        <td>Ray解耦了状态信息存储和逻辑实现（调度器），存储与计算可以独立扩展</td><br>    </tr><br>    <tr><br>        <td>Distributed Frameworks (如MapReduce, BOOM)</td><br>        <td>全局控制状态</td><br>        <td>与BOOM相比，Ray解耦了状态信息存储和逻辑实现（调度器），存储与计算可以独立扩展</td><br>    </tr><br>    <tr><br>        <td>Resource Management (Omega)</td><br>        <td>全局共享状态</td><br>        <td>Ray增加了两层调度器来均衡负载，面向毫秒级别的任务调度</td><br>    </tr><br>    <tr><br>        <td>Sparrow</td><br>        <td>去中心化调度</td><br>        <td>各调度器自行其是，独立决策</td><br>    </tr><br>    <tr><br>        <td>Mesos</td><br>        <td>两级层次调度</td><br>        <td>顶层调度器可能成为瓶颈</td><br>    </tr><br>    <tr><br>        <td>Canary</td><br>        <td>去中心化调度</td><br>        <td>Canary每个调度器负责计算图的一部分，但不支持动态计算图</td><br>    </tr><br>    <tr><br>        <th rowspan="3">机器学习框架</th><br>        <td>Tensorflow</td><br>        <td></td><br>        <td>面向深度学习，对CPU、GPU资源利用很好，不支持更通用的计算工作流，Tensorflow Fold提供对动态计算图的一些支持，但仍无法全部支持执行时对任务执行进度，任务完成时间和错误的响应而编辑DAG图。支持底层消息传输和同步原语，但是过于底层使得用起来有点像MPI。</td><br>    </tr><br>    <tr><br>        <td>MXNet</td><br>        <td></td><br>        <td>同Tensorflow</td><br>    </tr><br>    <tr><br>        <td>OpenMPI</td><br>        <td>高性能</td><br>        <td>很难编程，需要显式处理异构和动态任务图，需要程序员显式处理容错</td><br>    </tr><br></table>
 
-<p>[注] 实时计算/流式计算的三种语义：
-At-most-once：每条记录最多只能被处理一次
-At-least-once：每条记录最少要被处理一次
-Exactly-once：每条记录有且仅被处理一次</p>
+<p>[注] 实时计算/流式计算的三种语义：<br>At-most-once：每条记录最多只能被处理一次<br>At-least-once：每条记录最少要被处理一次<br>Exactly-once：每条记录有且仅被处理一次</p>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>蓬勃发展的AI应用对计算框架提出了一些挑战性的需求，为了应对这些需求，本文提出了Ray，实现了全局控制存储和自底向上的调度器，且实现了动态任务图。支持Actor编程和任务并行。这种编程灵活性对于强化学习RL应用尤其重要，因其具有诸多方面的异构性，如执行时间，资源等。Ray提供了一个灵活高性能且易于使用的框架来应对未来的AI应用。</p>
   
 	</div>
@@ -647,10 +498,6 @@ Exactly-once：每条记录有且仅被处理一次</p>
 		  
 		
 		  
-		
-		  
-		
-		  
 			<li><a href="/categories/随笔-Essays/" title="随笔 | Essays">随笔 | Essays<sup>7</sup></a></li>
 		  
 		
@@ -782,7 +629,7 @@ Exactly-once：每条记录有且仅被处理一次</p>
 		<a href="/about" target="_blank" title="whatbeg">whatbeg</a>
 		
 		<br>
-		<span class="post-count">Total words: <span style="color:orange">304.1k</span></span>
+		<span class="post-count">Total words: <span style="color:orange">307.1k</span></span>
         <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
         <span id="busuanzi_container_site_pv">
         &nbsp;&nbsp;Total visits:&nbsp;<span style="color:orange" id="busuanzi_value_site_pv"></span>

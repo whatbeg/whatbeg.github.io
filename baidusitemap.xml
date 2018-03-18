@@ -4,21 +4,23 @@
 
     
   <url>
-    <loc>http://whatbeg.com/2018/03/11/optimizationAlgos.html</loc>
-    <lastmod>2018-03-18T06:21:21.212Z</lastmod>
+    <loc>http://whatbeg.com/2018/03/15/caffeinstall.html</loc>
+    <lastmod>2018-03-18T07:16:56.914Z</lastmod>
     <data>
         <display>
-        <title>神经网络一阶优化算法手记</title>
-        <pubTime>2018-03-11T09:03:38.000Z</pubTime>
+        <title>CentOS 7.x 安装Caffe GPU版本全过程</title>
+        <pubTime>2018-03-15T14:09:46.000Z</pubTime>
         
         <tag>Deep Learning</tag>
          
-        <tag>优化</tag>
+        <tag>深度学习</tag>
+         
+        <tag>Linux</tag>
          
          
            
              
-              <breadCrumb title="机器学习 | Mac.Learning" url="http://whatbeg.com/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-Mac-Learning/"/>
+              <breadCrumb title="错误解决与优化 | Err&amp;Opt" url="http://whatbeg.com/categories/%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3%E4%B8%8E%E4%BC%98%E5%8C%96-Err-Opt/"/>
           
         </display>
     </data>
@@ -27,7 +29,7 @@
     
   <url>
     <loc>http://whatbeg.com/2018/03/17/cudainstall.html</loc>
-    <lastmod>2018-03-18T05:45:50.910Z</lastmod>
+    <lastmod>2018-03-18T06:31:26.936Z</lastmod>
     <data>
         <display>
         <title>CentOS 7 卸载CUDA 9.1 安装CUDA8.0 并安装Tensorflow GPU版</title>
@@ -50,23 +52,21 @@
 
     
   <url>
-    <loc>http://whatbeg.com/2018/03/15/caffeinstall.html</loc>
-    <lastmod>2018-03-18T05:45:49.596Z</lastmod>
+    <loc>http://whatbeg.com/2018/03/11/optimizationAlgos.html</loc>
+    <lastmod>2018-03-18T06:21:21.212Z</lastmod>
     <data>
         <display>
-        <title>CentOS 7.x 安装Caffe GPU版本全过程</title>
-        <pubTime>2018-03-15T14:09:46.000Z</pubTime>
+        <title>神经网络一阶优化算法手记</title>
+        <pubTime>2018-03-11T09:03:38.000Z</pubTime>
         
         <tag>Deep Learning</tag>
          
-        <tag>深度学习</tag>
-         
-        <tag>Linux</tag>
+        <tag>优化</tag>
          
          
            
              
-              <breadCrumb title="错误解决与优化 | Err&amp;Opt" url="http://whatbeg.com/categories/%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3%E4%B8%8E%E4%BC%98%E5%8C%96-Err-Opt/"/>
+              <breadCrumb title="机器学习 | Mac.Learning" url="http://whatbeg.com/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-Mac-Learning/"/>
           
         </display>
     </data>
@@ -209,9 +209,9 @@
         
         <tag>大数据</tag>
          
-        <tag>Spark</tag>
-         
         <tag>错误解决</tag>
+         
+        <tag>Spark</tag>
          
          
            
@@ -231,9 +231,9 @@
         <title>一次MAVEN事故</title>
         <pubTime>2017-12-24T07:49:59.000Z</pubTime>
         
-        <tag>Spark</tag>
-         
         <tag>错误解决</tag>
+         
+        <tag>Spark</tag>
          
          
            
@@ -489,9 +489,9 @@
         <title>快速学会Git基本操作</title>
         <pubTime>2016-04-07T15:35:15.000Z</pubTime>
         
-        <tag>Git</tag>
-         
         <tag>CS</tag>
+         
+        <tag>Git</tag>
          
          
            

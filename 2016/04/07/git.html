@@ -96,15 +96,10 @@
 		</div>
 		
 		<h3 id="什么是Git"><a href="#什么是Git" class="headerlink" title="什么是Git?"></a>什么是Git?</h3><p>Git应该是现在最受欢迎的版本控制系统了，而且免费开源，可以直接连到github上进行合作开发，分布式的，安全性高。按我的理解，git就是帮你管理代码，你写好了它帮你添加为软件的一部分，你写错了它帮你退回来在写，代码逐渐地添加到软件中去，直到这个软件完成。</p>
-<h3 id="为什么要学习Git？"><a href="#为什么要学习Git？" class="headerlink" title="为什么要学习Git？"></a>为什么要学习Git？</h3><p>自从学习利用hexo部署静态博客以来，经常需要接触到Git Bash，虽然更新博客时用到的只是hexo g,hexo s,hexo d等指令，但是其中仍是依靠git来完成的。
-可以说git的使用是一个开发人员必备的技能，因为现在大部分的项目都是以合作形式来开发的，所以学会用工具与他人合作至关重要。
-所以今天中午去学习了下Git，发现学习基本的git操作其实很简单，尤其是当你有了一些版本库的基本知识之后。</p>
+<h3 id="为什么要学习Git？"><a href="#为什么要学习Git？" class="headerlink" title="为什么要学习Git？"></a>为什么要学习Git？</h3><p>自从学习利用hexo部署静态博客以来，经常需要接触到Git Bash，虽然更新博客时用到的只是hexo g,hexo s,hexo d等指令，但是其中仍是依靠git来完成的。<br>可以说git的使用是一个开发人员必备的技能，因为现在大部分的项目都是以合作形式来开发的，所以学会用工具与他人合作至关重要。<br>所以今天中午去学习了下Git，发现学习基本的git操作其实很简单，尤其是当你有了一些版本库的基本知识之后。</p>
 <h3 id="一些收获"><a href="#一些收获" class="headerlink" title="一些收获"></a>一些收获</h3><p>下面我就git学习过程写下一些收获，一来总结，二来可以备忘。</p>
 <p>Git安装就不说了，网上一搜大把。</p>
-<p><strong>创建版本库</strong>
-先建立一个目录以便存放版本库以及代码等信息。可以直接新建文件夹或者在git bash中mkdir建立。
-建立目录以后在文件夹中右键在此位置启动git bash，或者在git bash中用cd命令切换到此目录，输入git init，这样一个版本库就创建好了。
-<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>mkdir mygit</span><br><span class="line"><span class="variable">$ </span>cd mygit</span><br><span class="line"><span class="variable">$ </span>git init</span><br></pre></td></tr></table></figure></p>
+<p><strong>创建版本库</strong><br>先建立一个目录以便存放版本库以及代码等信息。可以直接新建文件夹或者在git bash中mkdir建立。<br>建立目录以后在文件夹中右键在此位置启动git bash，或者在git bash中用cd命令切换到此目录，输入git init，这样一个版本库就创建好了。<br><figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>mkdir mygit</span><br><span class="line"><span class="variable">$ </span>cd mygit</span><br><span class="line"><span class="variable">$ </span>git init</span><br></pre></td></tr></table></figure></p>
 <p>这时目录中会生成一个.git文件夹（默认是隐藏的，Windows下可以修改查看让其显示，Linux下ls指令即可显示），此即所谓的版本库。</p>
 <p><strong>分清几个概念</strong></p>
 <blockquote>
@@ -116,39 +111,22 @@
 </blockquote>
 <p>git往版本库添加文件是分两步的,暂存区起一个缓冲作用：</p>
 <blockquote>
-<p>1.git add命令将文件存入暂存区
-2.git commit命令将暂存区中的<strong>所有</strong>修改提交到版本库当前分支</p>
+<p>1.git add命令将文件存入暂存区<br>2.git commit命令将暂存区中的<strong>所有</strong>修改提交到版本库当前分支</p>
 </blockquote>
-<p>所以下面就好办了：
-<strong>添加文件到版本库以及提交到版本库</strong>
-<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>git add readme.md            </span><br><span class="line"><span class="variable">$ </span>git commit -m <span class="string">"description"</span>  <span class="comment">#description是本次提交的说明</span></span><br></pre></td></tr></table></figure></p>
-<p><strong>常用的git命令</strong>
-<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>git status            <span class="comment">#查看版本库当前状态，哪些文件改变了</span></span><br><span class="line"><span class="variable">$ </span>git diff readme.md    <span class="comment">#查看readme.md文件的变化</span></span><br><span class="line"><span class="variable">$ </span>git log               <span class="comment">#查看提交历史</span></span><br><span class="line"><span class="variable">$ </span>git log -p filename   <span class="comment"># 查看某文件提交记录</span></span><br><span class="line"><span class="variable">$ </span>git reflog            <span class="comment">#查看命令历史</span></span><br><span class="line"><span class="variable">$ </span>cat readme.md         <span class="comment">#查看readme文件内容</span></span><br></pre></td></tr></table></figure></p>
-<p><strong>版本回退</strong>
-<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>git reset --hard HEAD^  <span class="comment">#退回到上一版本，两个^表示退回到上上个版本</span></span><br><span class="line"><span class="variable">$ </span>git reset --hard [command-id] <span class="comment">#直接退回到某一条命令，命令id可以在reflog中查看</span></span><br></pre></td></tr></table></figure></p>
-<p><strong>管理和撤销修改，删除文件</strong>
-<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>git diff HEAD -- readme.md  <span class="comment">#查看版本库和工作区中readme.md文件的区别</span></span><br><span class="line"><span class="variable">$ </span>git checkout -- readme.md  <span class="comment">#撤销readme.md文件在工作区（整个文件夹）的修改，即退回到最近一次git add 或 git commit之前的状态</span></span><br><span class="line"><span class="variable">$ </span>git reset HEAD readme.md  <span class="comment">#撤销暂存区的修改，就是最近一次git add失效</span></span><br><span class="line"><span class="variable">$ </span>git rm readme.md  <span class="comment">#删除一个文件，如果误删，只要版本库中有这个文件，那么可以checkout恢复</span></span><br></pre></td></tr></table></figure></p>
-<p><strong>连接Github远程仓库</strong>
-如果没有本地与Github的SSH-key，那么需要生成一个，随便在哪打开git bash:
-<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>ssh-keygen -t rsa -C <span class="string">"youremail@example.com"</span></span><br></pre></td></tr></table></figure></p>
-<p>然后一路回车即可，在系统盘找到.ssh文件夹（默认隐藏），复制id_rsa.pub(公钥)文件中的内容，到你的Github网站上的SSH-keys，随便取个名字，复制上去就行了。(id_rsa文件是密钥文件，不要泄露）
-为了判断连接是否成功，可以输入：
-<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">ssh</span> -T git<span class="variable">@github</span>.com</span><br></pre></td></tr></table></figure></p>
-<p>如果是下面的反馈：
-<figure class="highlight vbnet"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">The authenticity <span class="keyword">of</span> host <span class="comment">'github.com (207.97.227.239)' can't be established.</span></span><br><span class="line">RSA <span class="keyword">key</span> fingerprint <span class="keyword">is</span> <span class="number">16</span>:<span class="number">27</span>:ac:a5:<span class="number">76</span>:<span class="number">28</span>:<span class="number">2</span>d:<span class="number">36</span>:<span class="number">63</span>:<span class="number">1</span>b:<span class="number">56</span>:<span class="number">4</span>d:eb:df:a6:<span class="number">48.</span></span><br><span class="line">Are you sure you want <span class="keyword">to</span> <span class="keyword">continue</span> connecting (yes/no)?</span><br></pre></td></tr></table></figure></p>
+<p>所以下面就好办了：<br><strong>添加文件到版本库以及提交到版本库</strong><br><figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>git add readme.md            </span><br><span class="line"><span class="variable">$ </span>git commit -m <span class="string">"description"</span>  <span class="comment">#description是本次提交的说明</span></span><br></pre></td></tr></table></figure></p>
+<p><strong>常用的git命令</strong><br><figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>git status            <span class="comment">#查看版本库当前状态，哪些文件改变了</span></span><br><span class="line"><span class="variable">$ </span>git diff readme.md    <span class="comment">#查看readme.md文件的变化</span></span><br><span class="line"><span class="variable">$ </span>git log               <span class="comment">#查看提交历史</span></span><br><span class="line"><span class="variable">$ </span>git log -p filename   <span class="comment"># 查看某文件提交记录</span></span><br><span class="line"><span class="variable">$ </span>git reflog            <span class="comment">#查看命令历史</span></span><br><span class="line"><span class="variable">$ </span>cat readme.md         <span class="comment">#查看readme文件内容</span></span><br></pre></td></tr></table></figure></p>
+<p><strong>版本回退</strong><br><figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>git reset --hard HEAD^  <span class="comment">#退回到上一版本，两个^表示退回到上上个版本</span></span><br><span class="line"><span class="variable">$ </span>git reset --hard [command-id] <span class="comment">#直接退回到某一条命令，命令id可以在reflog中查看</span></span><br></pre></td></tr></table></figure></p>
+<p><strong>管理和撤销修改，删除文件</strong><br><figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>git diff HEAD -- readme.md  <span class="comment">#查看版本库和工作区中readme.md文件的区别</span></span><br><span class="line"><span class="variable">$ </span>git checkout -- readme.md  <span class="comment">#撤销readme.md文件在工作区（整个文件夹）的修改，即退回到最近一次git add 或 git commit之前的状态</span></span><br><span class="line"><span class="variable">$ </span>git reset HEAD readme.md  <span class="comment">#撤销暂存区的修改，就是最近一次git add失效</span></span><br><span class="line"><span class="variable">$ </span>git rm readme.md  <span class="comment">#删除一个文件，如果误删，只要版本库中有这个文件，那么可以checkout恢复</span></span><br></pre></td></tr></table></figure></p>
+<p><strong>连接Github远程仓库</strong><br>如果没有本地与Github的SSH-key，那么需要生成一个，随便在哪打开git bash:<br><figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>ssh-keygen -t rsa -C <span class="string">"youremail@example.com"</span></span><br></pre></td></tr></table></figure></p>
+<p>然后一路回车即可，在系统盘找到.ssh文件夹（默认隐藏），复制id_rsa.pub(公钥)文件中的内容，到你的Github网站上的SSH-keys，随便取个名字，复制上去就行了。(id_rsa文件是密钥文件，不要泄露）<br>为了判断连接是否成功，可以输入：<br><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">ssh</span> -T git<span class="variable">@github</span>.com</span><br></pre></td></tr></table></figure></p>
+<p>如果是下面的反馈：<br><figure class="highlight vbnet"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">The authenticity <span class="keyword">of</span> host <span class="comment">'github.com (207.97.227.239)' can't be established.</span></span><br><span class="line">RSA <span class="keyword">key</span> fingerprint <span class="keyword">is</span> <span class="number">16</span>:<span class="number">27</span>:ac:a5:<span class="number">76</span>:<span class="number">28</span>:<span class="number">2</span>d:<span class="number">36</span>:<span class="number">63</span>:<span class="number">1</span>b:<span class="number">56</span>:<span class="number">4</span>d:eb:df:a6:<span class="number">48.</span></span><br><span class="line">Are you sure you want <span class="keyword">to</span> <span class="keyword">continue</span> connecting (yes/no)?</span><br></pre></td></tr></table></figure></p>
 <p>输入yes就好了。</p>
-<p><strong>添加远程库，推送&amp;克隆</strong>
-首先在Github上新建一个repository，然后在工作区git bash中输入：
-<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>git remote add origin git<span class="variable">@github</span>.<span class="symbol">com:</span>whatbeg/mygit.git</span><br></pre></td></tr></table></figure></p>
-<p>注意替换账户名和Repo名。
-然后可以推送到远程库或者从远程库克隆：
-<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git push -u origin <span class="keyword">master</span>   <span class="title">#第一次加-u</span>，而后则不用加了，-u起到一个关联作用，显然关联一次就可以了</span><br><span class="line">$ git <span class="keyword">clone</span> <span class="title">git</span>@github.com:whatbeg/mygit.git</span><br></pre></td></tr></table></figure></p>
+<p><strong>添加远程库，推送&amp;克隆</strong><br>首先在Github上新建一个repository，然后在工作区git bash中输入：<br><figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>git remote add origin git<span class="variable">@github</span>.<span class="symbol">com:</span>whatbeg/mygit.git</span><br></pre></td></tr></table></figure></p>
+<p>注意替换账户名和Repo名。<br>然后可以推送到远程库或者从远程库克隆：<br><figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git push -u origin <span class="keyword">master</span>   <span class="title">#第一次加-u</span>，而后则不用加了，-u起到一个关联作用，显然关联一次就可以了</span><br><span class="line">$ git <span class="keyword">clone</span> <span class="title">git</span>@github.com:whatbeg/mygit.git</span><br></pre></td></tr></table></figure></p>
 <p><strong>分支管理</strong></p>
-<p>git 克隆分支到本地
-<figure class="highlight q"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b <span class="built_in">dev</span> origin/<span class="built_in">dev</span></span><br></pre></td></tr></table></figure></p>
+<p>git 克隆分支到本地<br><figure class="highlight q"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b <span class="built_in">dev</span> origin/<span class="built_in">dev</span></span><br></pre></td></tr></table></figure></p>
 <p>由于标签管理等暂时还没用到，所以后面在写吧。</p>
-<p>参考文章：
-<a href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000" target="_blank" rel="external">廖雪峰Git教程</a></p>
+<p>参考文章：<br><a href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000" target="_blank" rel="external">廖雪峰Git教程</a></p>
   
 	</div>
 
@@ -271,7 +249,7 @@
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/Git/">Git</a><a href="/tags/CS/">CS</a>
+  <span></span> <a href="/tags/CS/">CS</a><a href="/tags/Git/">Git</a>
   </div>
 
 </div>
@@ -426,10 +404,6 @@
 		  
 		
 		  
-		
-		  
-		
-		  
 			<li><a href="/categories/随笔-Essays/" title="随笔 | Essays">随笔 | Essays<sup>7</sup></a></li>
 		  
 		
@@ -561,7 +535,7 @@
 		<a href="/about" target="_blank" title="whatbeg">whatbeg</a>
 		
 		<br>
-		<span class="post-count">Total words: <span style="color:orange">304.1k</span></span>
+		<span class="post-count">Total words: <span style="color:orange">307.1k</span></span>
         <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
         <span id="busuanzi_container_site_pv">
         &nbsp;&nbsp;Total visits:&nbsp;<span style="color:orange" id="busuanzi_value_site_pv"></span>

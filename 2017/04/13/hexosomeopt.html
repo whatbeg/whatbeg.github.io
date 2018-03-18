@@ -11,31 +11,19 @@
     
 
     
-    <meta name="description" content="Hexo Mathjax下划线_的渲染问题以前Hexo渲染数学公式的时候有时候下划线会渲染成&amp;lt;em&amp;gt;，导致渲染不出公式的情况。
-比如下面这种情况：
-
-但是在其他markdown中又能够正确显示，这时候其实是Hexo的锅，它渲染的时候把_渲染成&amp;lt;em&amp;gt;    ，可以修改渲染规则来使之渲染正常。
-打开：hexo\node_modules\marked\lib\marked.js">
+    <meta name="description" content="Hexo Mathjax下划线_的渲染问题以前Hexo渲染数学公式的时候有时候下划线会渲染成&amp;lt;em&amp;gt;，导致渲染不出公式的情况。比如下面这种情况：但是在其他markdown中又能够正确显示，这时候其实是Hexo的锅，它渲染的时候把_渲染成&amp;lt;em&amp;gt;    ，可以修改渲染规则来使之渲染正常。打开：hexo\node_modules\marked\lib\marked.js找到：删">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hexo新的一些优化">
 <meta property="og:url" content="http://whatbeg.com/2017/04/13/hexosomeopt.html">
 <meta property="og:site_name" content="Whatbeg's blog">
-<meta property="og:description" content="Hexo Mathjax下划线_的渲染问题以前Hexo渲染数学公式的时候有时候下划线会渲染成&amp;lt;em&amp;gt;，导致渲染不出公式的情况。
-比如下面这种情况：
-
-但是在其他markdown中又能够正确显示，这时候其实是Hexo的锅，它渲染的时候把_渲染成&amp;lt;em&amp;gt;    ，可以修改渲染规则来使之渲染正常。
-打开：hexo\node_modules\marked\lib\marked.js">
+<meta property="og:description" content="Hexo Mathjax下划线_的渲染问题以前Hexo渲染数学公式的时候有时候下划线会渲染成&amp;lt;em&amp;gt;，导致渲染不出公式的情况。比如下面这种情况：但是在其他markdown中又能够正确显示，这时候其实是Hexo的锅，它渲染的时候把_渲染成&amp;lt;em&amp;gt;    ，可以修改渲染规则来使之渲染正常。打开：hexo\node_modules\marked\lib\marked.js找到：删">
 <meta property="og:image" content="http://7xsl28.com1.z0.glb.clouddn.com/hexosomeopt1.jpg">
 <meta property="og:image" content="http://7xsl28.com1.z0.glb.clouddn.com/hexosomeopt3.jpg">
 <meta property="og:image" content="http://7xsl28.com1.z0.glb.clouddn.com/hexosomeopt2.jpg">
 <meta property="og:updated_time" content="2018-03-17T09:01:23.650Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo新的一些优化">
-<meta name="twitter:description" content="Hexo Mathjax下划线_的渲染问题以前Hexo渲染数学公式的时候有时候下划线会渲染成&amp;lt;em&amp;gt;，导致渲染不出公式的情况。
-比如下面这种情况：
-
-但是在其他markdown中又能够正确显示，这时候其实是Hexo的锅，它渲染的时候把_渲染成&amp;lt;em&amp;gt;    ，可以修改渲染规则来使之渲染正常。
-打开：hexo\node_modules\marked\lib\marked.js">
+<meta name="twitter:description" content="Hexo Mathjax下划线_的渲染问题以前Hexo渲染数学公式的时候有时候下划线会渲染成&amp;lt;em&amp;gt;，导致渲染不出公式的情况。比如下面这种情况：但是在其他markdown中又能够正确显示，这时候其实是Hexo的锅，它渲染的时候把_渲染成&amp;lt;em&amp;gt;    ，可以修改渲染规则来使之渲染正常。打开：hexo\node_modules\marked\lib\marked.js找到：删">
 <meta name="twitter:image" content="http://7xsl28.com1.z0.glb.clouddn.com/hexosomeopt1.jpg">
 
     
@@ -108,16 +96,7 @@
 		
 		</div>
 		
-		<h2 id="Hexo-Mathjax下划线-的渲染问题"><a href="#Hexo-Mathjax下划线-的渲染问题" class="headerlink" title="Hexo Mathjax下划线_的渲染问题"></a>Hexo Mathjax下划线<code>_</code>的渲染问题</h2><p>以前Hexo渲染数学公式的时候有时候下划线会渲染成<code>&lt;em&gt;</code>，导致渲染不出公式的情况。
-比如下面这种情况：
-<img src="http://7xsl28.com1.z0.glb.clouddn.com/hexosomeopt1.jpg" alt="">
-但是在其他markdown中又能够正确显示，这时候其实是Hexo的锅，它渲染的时候把<code>_</code>渲染成<code>&lt;em&gt;</code>    ，可以修改渲染规则来使之渲染正常。
-打开：<code>hexo\node_modules\marked\lib\marked.js</code>
-找到：
-<img src="http://7xsl28.com1.z0.glb.clouddn.com/hexosomeopt3.jpg" alt="">
-<img src="http://7xsl28.com1.z0.glb.clouddn.com/hexosomeopt2.jpg" alt="">
-删去选中的部分，即删除对<code>_</code>的渲染转换，重新生成即可。
-当然还有其它方式，不过这种比较简便有效。</p>
+		<h2 id="Hexo-Mathjax下划线-的渲染问题"><a href="#Hexo-Mathjax下划线-的渲染问题" class="headerlink" title="Hexo Mathjax下划线_的渲染问题"></a>Hexo Mathjax下划线<code>_</code>的渲染问题</h2><p>以前Hexo渲染数学公式的时候有时候下划线会渲染成<code>&lt;em&gt;</code>，导致渲染不出公式的情况。<br>比如下面这种情况：<br><img src="http://7xsl28.com1.z0.glb.clouddn.com/hexosomeopt1.jpg" alt=""><br>但是在其他markdown中又能够正确显示，这时候其实是Hexo的锅，它渲染的时候把<code>_</code>渲染成<code>&lt;em&gt;</code>    ，可以修改渲染规则来使之渲染正常。<br>打开：<code>hexo\node_modules\marked\lib\marked.js</code><br>找到：<br><img src="http://7xsl28.com1.z0.glb.clouddn.com/hexosomeopt3.jpg" alt=""><br><img src="http://7xsl28.com1.z0.glb.clouddn.com/hexosomeopt2.jpg" alt=""><br>删去选中的部分，即删除对<code>_</code>的渲染转换，重新生成即可。<br>当然还有其它方式，不过这种比较简便有效。</p>
 <h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ul>
 <li><a href="http://kubicode.me/2016/03/16/Hexo/Fix-Hexo-Bug-In-Mathjax/" target="_blank" rel="external">修复Hexo写Mathjax公式多个下标失效的问题</a></li>
 <li><a href="http://2wildkids.com/2016/10/06/%E5%A6%82%E4%BD%95%E5%A4%84%E7%90%86Hexo%E5%92%8CMathJax%E7%9A%84%E5%85%BC%E5%AE%B9%E9%97%AE%E9%A2%98/" target="_blank" rel="external">如何处理Hexo和MathJax的兼容问题</a></li>
@@ -399,10 +378,6 @@
 		  
 		
 		  
-		
-		  
-		
-		  
 			<li><a href="/categories/随笔-Essays/" title="随笔 | Essays">随笔 | Essays<sup>7</sup></a></li>
 		  
 		
@@ -534,7 +509,7 @@
 		<a href="/about" target="_blank" title="whatbeg">whatbeg</a>
 		
 		<br>
-		<span class="post-count">Total words: <span style="color:orange">304.1k</span></span>
+		<span class="post-count">Total words: <span style="color:orange">307.1k</span></span>
         <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
         <span id="busuanzi_container_site_pv">
         &nbsp;&nbsp;Total visits:&nbsp;<span style="color:orange" id="busuanzi_value_site_pv"></span>

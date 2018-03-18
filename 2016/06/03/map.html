@@ -11,8 +11,7 @@
     
 
     
-    <meta name="description" content="最近找到一个网站，http://www.pm25x.com/，发现上面有全国基本所有市的实时空气质量指数（AQI），就将它们爬了下来，存入了xlsx文件和CSV文件。又想着要利用一下才好，于是想到了描绘全国城市AQI分布图。这时就需要画包括省市的中国地图。
-最终找到了如下几种方式来根据数据描绘地图：
+    <meta name="description" content="最近找到一个网站，http://www.pm25x.com/，发现上面有全国基本所有市的实时空气质量指数（AQI），就将它们爬了下来，存入了xlsx文件和CSV文件。又想着要利用一下才好，于是想到了描绘全国城市AQI分布图。这时就需要画包括省市的中国地图。最终找到了如下几种方式来根据数据描绘地图：
 
 SVG格式处理来画图，参照《鲜活的数据》
 R语言
@@ -24,8 +23,7 @@ Excel
 <meta property="og:title" content="处理地图数据的6种方法">
 <meta property="og:url" content="http://whatbeg.com/2016/06/03/map.html">
 <meta property="og:site_name" content="Whatbeg's blog">
-<meta property="og:description" content="最近找到一个网站，http://www.pm25x.com/，发现上面有全国基本所有市的实时空气质量指数（AQI），就将它们爬了下来，存入了xlsx文件和CSV文件。又想着要利用一下才好，于是想到了描绘全国城市AQI分布图。这时就需要画包括省市的中国地图。
-最终找到了如下几种方式来根据数据描绘地图：
+<meta property="og:description" content="最近找到一个网站，http://www.pm25x.com/，发现上面有全国基本所有市的实时空气质量指数（AQI），就将它们爬了下来，存入了xlsx文件和CSV文件。又想着要利用一下才好，于是想到了描绘全国城市AQI分布图。这时就需要画包括省市的中国地图。最终找到了如下几种方式来根据数据描绘地图：
 
 SVG格式处理来画图，参照《鲜活的数据》
 R语言
@@ -37,8 +35,7 @@ Excel
 <meta property="og:updated_time" content="2016-06-03T06:56:51.593Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="处理地图数据的6种方法">
-<meta name="twitter:description" content="最近找到一个网站，http://www.pm25x.com/，发现上面有全国基本所有市的实时空气质量指数（AQI），就将它们爬了下来，存入了xlsx文件和CSV文件。又想着要利用一下才好，于是想到了描绘全国城市AQI分布图。这时就需要画包括省市的中国地图。
-最终找到了如下几种方式来根据数据描绘地图：
+<meta name="twitter:description" content="最近找到一个网站，http://www.pm25x.com/，发现上面有全国基本所有市的实时空气质量指数（AQI），就将它们爬了下来，存入了xlsx文件和CSV文件。又想着要利用一下才好，于是想到了描绘全国城市AQI分布图。这时就需要画包括省市的中国地图。最终找到了如下几种方式来根据数据描绘地图：
 
 SVG格式处理来画图，参照《鲜活的数据》
 R语言
@@ -118,8 +115,7 @@ Excel
 		
 		</div>
 		
-		<p>最近找到一个网站，<a href="http://www.pm25x.com/" target="_blank" rel="external">http://www.pm25x.com/</a>，发现上面有全国基本所有市的实时空气质量指数（AQI），就将它们爬了下来，存入了xlsx文件和CSV文件。又想着要利用一下才好，于是想到了描绘全国城市AQI分布图。这时就需要画包括省市的中国地图。
-最终找到了如下几种方式来根据数据描绘地图：</p>
+		<p>最近找到一个网站，<a href="http://www.pm25x.com/" target="_blank" rel="external">http://www.pm25x.com/</a>，发现上面有全国基本所有市的实时空气质量指数（AQI），就将它们爬了下来，存入了xlsx文件和CSV文件。又想着要利用一下才好，于是想到了描绘全国城市AQI分布图。这时就需要画包括省市的中国地图。<br>最终找到了如下几种方式来根据数据描绘地图：</p>
 <ul>
 <li>SVG格式处理来画图，参照《鲜活的数据》</li>
 <li>R语言</li>
@@ -129,20 +125,15 @@ Excel
 <li>其他画图工具</li>
 </ul>
 <h3 id="SVG"><a href="#SVG" class="headerlink" title="SVG"></a>SVG</h3><p>SVG方法在Wiki Creative Commons上没有找到市一级的svg格式的中国地图，并且他那个id我看不懂，不知道代表什么，查了一下中国行政区划编码，没有40开头的，而我下的某一个svg中国地图中有个id是’_40…’，所以排除是行政区划编码，那我就不知道是什么意思了，排除此方法。</p>
-<h3 id="R语言"><a href="#R语言" class="headerlink" title="R语言"></a>R语言</h3><p>R语言有一定的地图处理能力，相信应该可以搞定，但是此前并未接触过R语言，重新学来解决一个简单的问题似乎有点杀鸡用牛刀的感觉，划不来。排除。
-关于R语言画地图我倒是看到这几篇文章[1],[2],[3]，收藏下。</p>
-<h3 id="地图慧"><a href="#地图慧" class="headerlink" title="地图慧"></a>地图慧</h3><p>地图慧[4]提供在线地图制作，可以精确到市县一级，提供上传xlsx和CSV格式的数据，利用收集的AQI数据做的一副全国城市AQI分布图如下：
-<img src="http://7xsl28.com1.z0.glb.clouddn.com/aqi.png" alt="全国城市AQI指数分布-5月20日晚"></p>
+<h3 id="R语言"><a href="#R语言" class="headerlink" title="R语言"></a>R语言</h3><p>R语言有一定的地图处理能力，相信应该可以搞定，但是此前并未接触过R语言，重新学来解决一个简单的问题似乎有点杀鸡用牛刀的感觉，划不来。排除。<br>关于R语言画地图我倒是看到这几篇文章[1],[2],[3]，收藏下。</p>
+<h3 id="地图慧"><a href="#地图慧" class="headerlink" title="地图慧"></a>地图慧</h3><p>地图慧[4]提供在线地图制作，可以精确到市县一级，提供上传xlsx和CSV格式的数据，利用收集的AQI数据做的一副全国城市AQI分布图如下：<br><img src="http://7xsl28.com1.z0.glb.clouddn.com/aqi.png" alt="全国城市AQI指数分布-5月20日晚"></p>
 <h3 id="Excel"><a href="#Excel" class="headerlink" title="Excel"></a>Excel</h3><p>采用</p>
 <ul>
 <li>OfficeMapFree_setup(2.2007.0.2.1)</li>
-<li>Microsoft Office Excel 2007
-可以画，没试过，见[5]，[6]
-WPS好像不得行，在线的有Google Sheet.</li>
+<li>Microsoft Office Excel 2007<br>可以画，没试过，见[5]，[6]<br>WPS好像不得行，在线的有Google Sheet.</li>
 </ul>
 <h3 id="地图API"><a href="#地图API" class="headerlink" title="地图API"></a>地图API</h3><p>谷歌地图，百度地图，雅虎地图，Bing地图都有API可供调用，只是需要去了解它们的API，并具有一定的编程技能。</p>
-<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><p>其他制作软件大部分都是英文的，而且有些只能画美国地图，对中国地图来说不是很适合，可以考虑用他们分析美国数据或者世界地图数据，对此问题时间成本太高，排除。
-不过仍然值得把它们列一下，它们基本来自《鲜活的数据》这本书。</p>
+<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><p>其他制作软件大部分都是英文的，而且有些只能画美国地图，对中国地图来说不是很适合，可以考虑用他们分析美国数据或者世界地图数据，对此问题时间成本太高，排除。<br>不过仍然值得把它们列一下，它们基本来自《鲜活的数据》这本书。</p>
 <ul>
 <li>Modest Maps</li>
 <li><a href="http://www.polymaps.org/" target="_blank" rel="external">Polymaps</a></li>
@@ -150,13 +141,7 @@ WPS好像不得行，在线的有Google Sheet.</li>
 <li>Many Eyes</li>
 <li>GeoCommons</li>
 </ul>
-<h3 id="资料"><a href="#资料" class="headerlink" title="资料"></a>资料</h3><p>[1] <a href="http://cos.name/2013/01/drawing-map-in-r-era/" target="_blank" rel="external">http://cos.name/2013/01/drawing-map-in-r-era/</a>
-[2] <a href="http://cos.name/2009/07/drawing-china-map-using-r/" target="_blank" rel="external">http://cos.name/2009/07/drawing-china-map-using-r/</a>
-[3] <a href="http://xccds1977.blogspot.com/2012/07/blog-post_26.html" target="_blank" rel="external">http://xccds1977.blogspot.com/2012/07/blog-post_26.html</a>
-[4] <a href="http://www.dituhui.com/" target="_blank" rel="external">地图慧</a>
-[5] <a href="http://jingyan.baidu.com/article/91f5db1bee10e91c7f05e39d.html" target="_blank" rel="external">Excel 地图</a>
-[6] <a href="http://www.36dsj.com/archives/12053" target="_blank" rel="external">Excel 百度迁徙地图</a>
-[7] <a href="http://flowingdata.com/" target="_blank" rel="external">Flowing Data</a></p>
+<h3 id="资料"><a href="#资料" class="headerlink" title="资料"></a>资料</h3><p>[1] <a href="http://cos.name/2013/01/drawing-map-in-r-era/" target="_blank" rel="external">http://cos.name/2013/01/drawing-map-in-r-era/</a><br>[2] <a href="http://cos.name/2009/07/drawing-china-map-using-r/" target="_blank" rel="external">http://cos.name/2009/07/drawing-china-map-using-r/</a><br>[3] <a href="http://xccds1977.blogspot.com/2012/07/blog-post_26.html" target="_blank" rel="external">http://xccds1977.blogspot.com/2012/07/blog-post_26.html</a><br>[4] <a href="http://www.dituhui.com/" target="_blank" rel="external">地图慧</a><br>[5] <a href="http://jingyan.baidu.com/article/91f5db1bee10e91c7f05e39d.html" target="_blank" rel="external">Excel 地图</a><br>[6] <a href="http://www.36dsj.com/archives/12053" target="_blank" rel="external">Excel 百度迁徙地图</a><br>[7] <a href="http://flowingdata.com/" target="_blank" rel="external">Flowing Data</a></p>
   
 	</div>
 
@@ -434,10 +419,6 @@ WPS好像不得行，在线的有Google Sheet.</li>
 		  
 		
 		  
-		
-		  
-		
-		  
 			<li><a href="/categories/随笔-Essays/" title="随笔 | Essays">随笔 | Essays<sup>7</sup></a></li>
 		  
 		
@@ -569,7 +550,7 @@ WPS好像不得行，在线的有Google Sheet.</li>
 		<a href="/about" target="_blank" title="whatbeg">whatbeg</a>
 		
 		<br>
-		<span class="post-count">Total words: <span style="color:orange">304.1k</span></span>
+		<span class="post-count">Total words: <span style="color:orange">307.1k</span></span>
         <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
         <span id="busuanzi_container_site_pv">
         &nbsp;&nbsp;Total visits:&nbsp;<span style="color:orange" id="busuanzi_value_site_pv"></span>
