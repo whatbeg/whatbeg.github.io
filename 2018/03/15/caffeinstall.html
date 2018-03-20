@@ -23,7 +23,7 @@ CUDA 8.0的安装也可见《CentOS 7 卸载CUDA 9.1 安装CUDA8.0》
 CUDA 8.0的安装也可见《CentOS 7 卸载CUDA 9.1 安装CUDA8.0》
 建议先通读本文再决定安装步骤，直接按照本文一步一步来并不是最佳实践，因为本文踩过一些坑。
 安装一些通用的依赖：1sudo yum install protobuf-devel leveldb-devel">
-<meta property="og:updated_time" content="2018-03-18T07:16:56.914Z">
+<meta property="og:updated_time" content="2018-03-20T13:33:28.955Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CentOS 7.x 安装Caffe GPU版本全过程">
 <meta name="twitter:description" content="本文假设已经安装好了CUDA 8.0，NVIDIA GPU驱动以及cuDNN且读者主机可以连接互联网。
@@ -154,6 +154,9 @@ CUDA 8.0的安装也可见《CentOS 7 卸载CUDA 9.1 安装CUDA8.0》
 <p>到此，Caffe的安装告完结。</p>
 <h2 id="编译pycaffe"><a href="#编译pycaffe" class="headerlink" title="编译pycaffe"></a>编译pycaffe</h2><p>编译python的caffe接口需要安装boost依赖：<br><figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">yum</span> install <span class="keyword">boost-devel</span><br><span class="line"></span>或者</span><br><span class="line"><span class="symbol">wget</span> http://dl.<span class="keyword">bintray.com/boostorg/release/1.65.0/source/boost_1_65_0.tar.gz</span><br><span class="line"></span><span class="symbol">tar</span> -zxvf <span class="keyword">boost_1_65_0.tar.gz</span><br><span class="line"></span><span class="symbol">cd</span> <span class="keyword">boost_1_65_0/</span><br><span class="line"></span>./<span class="keyword">bootstrap.sh</span><br><span class="line"></span>./<span class="keyword">b2 </span>cxxflags=<span class="string">"-I /home/hadoop/anaconda3/include/python3.6m/"</span>                              # python3如此编译</span><br><span class="line"><span class="symbol">sudo</span> ./<span class="keyword">b2 </span>install --prefix=/usr cxxflags=<span class="string">"-I /home/hadoop/anaconda3/include/python3.6m/"</span>   # python3如此安装</span><br></pre></td></tr></table></figure></p>
 <p>因为我们想在python中直接<code>import caffe</code>，在环境变量中加上：<br><figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export PYTHONPATH=<span class="variable">$PYTHONPATH</span><span class="symbol">:/home/hadoop/caffe-</span><span class="number">1.0</span>/python</span><br></pre></td></tr></table></figure></p>
+<p>后来发现编译pycaffe还需要安装protobuf依赖，原来anaconda装的不行。</p>
+<p>安装protobuf，<a href="https://github.com/google/protobuf/releases" target="_blank" rel="external">下载地址</a></p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf protobuf-cpp-<span class="number">3.2</span>.<span class="number">0</span>.tar.gz</span><br><span class="line"><span class="keyword">cd</span> protobuf-<span class="number">3.2</span>.<span class="number">0</span></span><br><span class="line">./configure</span><br><span class="line"><span class="keyword">make</span></span><br><span class="line"><span class="keyword">make</span> check</span><br><span class="line"><span class="keyword">make</span> install</span><br><span class="line">ldconfig</span><br><span class="line"></span><br><span class="line">tar -zxvf protobuf-<span class="keyword">python</span>-<span class="number">3.2</span>.<span class="number">0</span>.tar.gz</span><br><span class="line"><span class="keyword">cd</span> <span class="keyword">python</span></span><br><span class="line"><span class="keyword">python</span> setup.<span class="keyword">py</span> build</span><br><span class="line"><span class="keyword">python</span> setup.<span class="keyword">py</span> test</span><br><span class="line"><span class="keyword">python</span> setup.<span class="keyword">py</span> install</span><br></pre></td></tr></table></figure>
 <h2 id="Matlab安装及Caffe编译。"><a href="#Matlab安装及Caffe编译。" class="headerlink" title="Matlab安装及Caffe编译。"></a>Matlab安装及Caffe编译。</h2><p>安装默认读者具有三个文件：<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">R2017a_glnxa64_dvd1<span class="selector-class">.iso</span></span><br><span class="line">R2017a_glnxa64_dvd2<span class="selector-class">.iso</span></span><br><span class="line">Matlab+<span class="number">2017</span>a+Linux64+Crack目录，由rar解压而来</span><br></pre></td></tr></table></figure></p>
 <p>安装步骤：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p /data/matlab/<span class="keyword">install</span>       # 新建目录以供挂载</span><br><span class="line">sudo <span class="keyword">mount</span> -o <span class="keyword">loop</span> R2017a_glnxa64_dvd1.iso /<span class="keyword">data</span>/matlab/<span class="keyword">install</span>  # 挂载DVD1</span><br><span class="line">/<span class="keyword">data</span>/matlab/<span class="keyword">install</span>/<span class="keyword">install</span> -destinationFolder /<span class="keyword">data</span>/matlab/Matlab2017a/ -fileInstallationKey <span class="number">09806</span><span class="number">-07443</span><span class="number">-53955</span><span class="number">-64350</span><span class="number">-21751</span><span class="number">-41297</span> -agreeToLicense yes -outputFile /<span class="keyword">data</span>/matlab/Matlab2017a/matworks.<span class="keyword">log</span> -<span class="keyword">mode</span> silent -activationPropertiesFile /home/hadoop/Matlab+<span class="number">2017</span>a+Linux64+Crack/license_standalone.lic  # 正式安装</span><br><span class="line">DVD1安装完成后会一直提示 eject dvd1 <span class="keyword">and</span> <span class="keyword">insert</span> dvd2 <span class="keyword">to</span> continue</span><br><span class="line"></span><br><span class="line">开另一个Shell：</span><br><span class="line">sudo umount -l /<span class="keyword">data</span>/matlab/<span class="keyword">install</span>  # 取消之前的挂载</span><br><span class="line">sudo <span class="keyword">mount</span> -o <span class="keyword">loop</span> R2017a_glnxa64_dvd2.iso /<span class="keyword">data</span>/matlab/<span class="keyword">install</span>  # 挂载DVD2</span><br><span class="line">第一台shell会自动开始安装</span><br><span class="line">等待安装完成</span><br><span class="line">sudo cp Matlab+<span class="number">2017</span>a+Linux64+Crack/R2017a/<span class="keyword">bin</span>/glnxa64<span class="comment">/* /data/matlab/Matlab2017a/bin/glnxa64/  # 拷贝</span><br><span class="line">sudo cp Matlab+2017a+Linux64+Crack/license_standalone.lic /data/matlab/Matlab2017a/licenses/   # 拷贝</span><br><span class="line">sudo umount -l /data/matlab/install  # 解挂</span><br><span class="line">cd /data/matlab/Matlab2017a/bin</span><br><span class="line">./matlab                             # 运行</span></span><br></pre></td></tr></table></figure>
@@ -172,22 +175,16 @@ CUDA 8.0的安装也可见《CentOS 7 卸载CUDA 9.1 安装CUDA8.0》
 <p>涉及的命令本文以上部分都有。</p>
 <p>感谢网上众多资料的作者提供经验，特列出参考文献如下聊表感激：</p>
 <ul>
-<li><p><a href="http://caffe.berkeleyvision.org/install_yum.html" target="_blank" rel="external">Caffe. RHEL / Fedora / CentOS Installation</a></p>
-</li>
-<li><p><a href="http://www.nvidia.cn/object/caffe-installation-cn.html" target="_blank" rel="external">如何在 NVIDIA GPU 上下载并安装Caffe</a></p>
-</li>
-<li><p><a href="http://blog.csdn.net/sinat_35188997/article/details/73530434" target="_blank" rel="external">呕心沥血一个月之caffe安装与配置</a></p>
-</li>
-<li><p><a href="https://www.cnblogs.com/denny402/p/5075490.html" target="_blank" rel="external">Caffe学习系列(9)：运行caffe自带的两个简单例子</a></p>
-</li>
-<li><p><a href="https://www.zybuluo.com/hanxiaoyang/note/364680" target="_blank" rel="external">linux(CentOS)下的caffe编译安装简易手册</a></p>
-</li>
-<li><p><a href="http://blog.csdn.net/u011713358/article/details/69659265" target="_blank" rel="external">在Ubuntu 16.04下安装Matlab 2017a</a></p>
-</li>
-<li><p><a href="https://www.jianshu.com/p/1d338f1c6bce" target="_blank" rel="external">Ubuntu16.04配置caffe（with cuda8.0）</a></p>
-</li>
-<li><p><a href="http://blog.csdn.net/zziahgf/article/details/72900948" target="_blank" rel="external">Caffe - Ubuntu 安装及问题解决</a></p>
-</li>
+<li><a href="http://caffe.berkeleyvision.org/install_yum.html" target="_blank" rel="external">Caffe. RHEL / Fedora / CentOS Installation</a></li>
+<li><a href="http://www.nvidia.cn/object/caffe-installation-cn.html" target="_blank" rel="external">如何在 NVIDIA GPU 上下载并安装Caffe</a></li>
+<li><a href="http://blog.csdn.net/sinat_35188997/article/details/73530434" target="_blank" rel="external">呕心沥血一个月之caffe安装与配置</a></li>
+<li><a href="https://www.cnblogs.com/denny402/p/5075490.html" target="_blank" rel="external">Caffe学习系列(9)：运行caffe自带的两个简单例子</a></li>
+<li><a href="https://www.zybuluo.com/hanxiaoyang/note/364680" target="_blank" rel="external">linux(CentOS)下的caffe编译安装简易手册</a></li>
+<li><a href="http://blog.csdn.net/u011713358/article/details/69659265" target="_blank" rel="external">在Ubuntu 16.04下安装Matlab 2017a</a></li>
+<li><a href="https://www.jianshu.com/p/1d338f1c6bce" target="_blank" rel="external">Ubuntu16.04配置caffe（with cuda8.0）</a></li>
+<li><a href="http://blog.csdn.net/zziahgf/article/details/72900948" target="_blank" rel="external">Caffe - Ubuntu 安装及问题解决</a></li>
+<li><a href="https://segmentfault.com/a/1190000011147642" target="_blank" rel="external">Elam的caffe笔记之配置篇（六）：Centos6.5下编译caffe及caffe的python3.6接口</a></li>
+<li><a href="https://www.cnblogs.com/fariver/p/7455433.html" target="_blank" rel="external">Linux下的GPU版Caffe安装方法</a></li>
 </ul>
 <p>等等。</p>
   
@@ -598,7 +595,7 @@ CUDA 8.0的安装也可见《CentOS 7 卸载CUDA 9.1 安装CUDA8.0》
 		<a href="/about" target="_blank" title="whatbeg">whatbeg</a>
 		
 		<br>
-		<span class="post-count">Total words: <span style="color:orange">307.0k</span></span>
+		<span class="post-count">Total words: <span style="color:orange">307.4k</span></span>
         <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
         <span id="busuanzi_container_site_pv">
         &nbsp;&nbsp;Total visits:&nbsp;<span style="color:orange" id="busuanzi_value_site_pv"></span>
