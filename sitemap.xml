@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://whatbeg.com/about/index.html</loc>
+    
+    <lastmod>2018-05-24T13:10:27.580Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://whatbeg.com/2017/03/11/linuxmemo.html</loc>
     
     <lastmod>2018-04-24T05:17:58.231Z</lastmod>
@@ -173,13 +180,6 @@
     <loc>http://whatbeg.com/2016/11/18/trainclassifiersviaSGD.html</loc>
     
     <lastmod>2017-12-27T13:11:04.232Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://whatbeg.com/about/index.html</loc>
-    
-    <lastmod>2017-12-27T13:10:13.858Z</lastmod>
     
   </url>
   
