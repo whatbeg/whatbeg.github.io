@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://whatbeg.com/"/>
-  <updated>2018-12-08T15:11:17.843Z</updated>
+  <updated>2018-12-17T14:25:32.163Z</updated>
   <id>http://whatbeg.com/</id>
   
   <author>
@@ -14,6 +14,151 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Latex 错误集锦及使用技巧</title>
+    <link href="http://whatbeg.com/2018/12/17/latexerror.html"/>
+    <id>http://whatbeg.com/2018/12/17/latexerror.html</id>
+    <published>2018-12-17T14:24:28.000Z</published>
+    <updated>2018-12-17T14:25:32.163Z</updated>
+    
+    <content type="html">&lt;p&gt;本文记录LaTeX编译，使用过程中的一些错误及其解决方案。&lt;/p&gt;
+&lt;p&gt;另外，还包括一些使用技巧，常见的元素使用方法等等。&lt;/p&gt;
+&lt;p&gt;便于自己以及后来人查阅解决。&lt;/p&gt;
+&lt;p&gt;我是留白。&lt;/p&gt;
+&lt;p&gt;我是留白。&lt;/p&gt;
+&lt;h3 id=&quot;Latex-“Error-Extra-alignment-tab-has-been-changed-to-cr-“&quot;&gt;&lt;a href=&quot;#Latex-“Error-Extra-alignment-tab-has-been-changed-to-cr-“&quot; class=&quot;headerlink&quot; title=&quot;Latex “Error: Extra alignment tab has been changed to \cr. “&quot;&gt;&lt;/a&gt;Latex “Error: Extra alignment tab has been changed to \cr. “&lt;/h3&gt;&lt;p&gt;是因为&lt;code&gt;\begin{tabular}&lt;/code&gt;后面的参数指定为 A 列，而实际排列了 B 列数据。（A!=B）&lt;/p&gt;
+&lt;p&gt;解决方案：检查&lt;code&gt;\begin{tabular}&lt;/code&gt;后面的&lt;code&gt;r|c|l&lt;/code&gt;数量够不够实际列数。&lt;/p&gt;
+&lt;h3 id=&quot;File-ended-while-scanning-use-of-writefile&quot;&gt;&lt;a href=&quot;#File-ended-while-scanning-use-of-writefile&quot; class=&quot;headerlink&quot; title=&quot;File ended while scanning use of \@writefile&quot;&gt;&lt;/a&gt;File ended while scanning use of \@writefile&lt;/h3&gt;&lt;p&gt;&lt;code&gt;.aux&lt;/code&gt;不完整，可能是上次编译没通过。&lt;/p&gt;
+&lt;p&gt;解决方案：删除掉.aux文件，重新编译；如果依然不行，将.tex和其他图像文件、参考文献保留外，由系统编译生成的文件通通删掉，重新编译。&lt;/p&gt;
+&lt;p&gt;使用技巧&lt;/p&gt;
+&lt;h3 id=&quot;批量注释、取消注释&quot;&gt;&lt;a href=&quot;#批量注释、取消注释&quot; class=&quot;headerlink&quot; title=&quot;批量注释、取消注释&quot;&gt;&lt;/a&gt;批量注释、取消注释&lt;/h3&gt;&lt;p&gt;Ctrl+Shift+Alt+Right：批量注释&lt;/p&gt;
+&lt;p&gt;Ctrl+Shift+Alt+Left：取消注释&lt;/p&gt;
+&lt;h3 id=&quot;表格注释&quot;&gt;&lt;a href=&quot;#表格注释&quot; class=&quot;headerlink&quot; title=&quot;表格注释&quot;&gt;&lt;/a&gt;表格注释&lt;/h3&gt;&lt;figure class=&quot;highlight tex&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;\&lt;span class=&quot;name&quot;&gt;begin&lt;/span&gt;&lt;span class=&quot;string&quot;&gt;&amp;#123;table*&amp;#125;&lt;/span&gt;&lt;span class=&quot;string&quot;&gt;[htbp]&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;tag&quot;&gt;\&lt;span class=&quot;name&quot;&gt;caption&lt;/span&gt;&lt;span class=&quot;string&quot;&gt;&amp;#123;xx&amp;#125;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;tag&quot;&gt;\&lt;span class=&quot;name&quot;&gt;begin&lt;/span&gt;&lt;span class=&quot;string&quot;&gt;&amp;#123;center&amp;#125;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;tag&quot;&gt;\&lt;span class=&quot;name&quot;&gt;scalebox&lt;/span&gt;&lt;span class=&quot;string&quot;&gt;&amp;#123;0.6&amp;#125;&lt;/span&gt;&lt;span class=&quot;string&quot;&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		\begin&amp;#123;tabular&amp;#125;&lt;/span&gt;&lt;span class=&quot;string&quot;&gt;&amp;#123;rccccccccccc&amp;#125;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			&lt;span class=&quot;comment&quot;&gt;%\toprule&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			&lt;span class=&quot;tag&quot;&gt;\&lt;span class=&quot;name&quot;&gt;hline&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			&lt;span class=&quot;tag&quot;&gt;\&lt;span class=&quot;name&quot;&gt;multirow&lt;/span&gt;&lt;span class=&quot;string&quot;&gt;&amp;#123;2&amp;#125;&lt;/span&gt;&lt;span class=&quot;string&quot;&gt;&amp;#123;*&amp;#125;&lt;/span&gt;&lt;span class=&quot;string&quot;&gt;&amp;#123;xx&amp;#125;&lt;/span&gt;&lt;/span&gt;  &amp;amp; xx &amp;amp;...  &lt;span class=&quot;tag&quot;&gt;\&lt;span class=&quot;name&quot;&gt;\&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			... &lt;span class=&quot;tag&quot;&gt;\&lt;span class=&quot;name&quot;&gt;tnote&lt;/span&gt;&lt;span class=&quot;string&quot;&gt;&amp;#123;*&amp;#125;&lt;/span&gt;&lt;/span&gt;   &lt;span class=&quot;tag&quot;&gt;\&lt;span class=&quot;name&quot;&gt;\&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			&lt;span class=&quot;comment&quot;&gt;%\midrule&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &lt;span class=&quot;tag&quot;&gt;\&lt;span class=&quot;name&quot;&gt;hline&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			xxx&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			&lt;span class=&quot;tag&quot;&gt;\&lt;span class=&quot;name&quot;&gt;hline&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			&lt;span class=&quot;comment&quot;&gt;%\bottomrule&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		&lt;span class=&quot;tag&quot;&gt;\&lt;span class=&quot;name&quot;&gt;end&lt;/span&gt;&lt;span class=&quot;string&quot;&gt;&amp;#123;tabular&amp;#125;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;tag&quot;&gt;\&lt;span class=&quot;name&quot;&gt;begin&lt;/span&gt;&lt;span class=&quot;string&quot;&gt;&amp;#123;tablenotes&amp;#125;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;tag&quot;&gt;\&lt;span class=&quot;name&quot;&gt;footnotesize&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;tag&quot;&gt;\&lt;span class=&quot;name&quot;&gt;item&lt;/span&gt;&lt;span class=&quot;string&quot;&gt;[*]&lt;/span&gt;&lt;/span&gt; * the note you wanna add&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;tag&quot;&gt;\&lt;span class=&quot;name&quot;&gt;end&lt;/span&gt;&lt;span class=&quot;string&quot;&gt;&amp;#123;tablenotes&amp;#125;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;tag&quot;&gt;\&lt;span class=&quot;name&quot;&gt;label&lt;/span&gt;&lt;span class=&quot;string&quot;&gt;&amp;#123;xx&amp;#125;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;tag&quot;&gt;\&lt;span class=&quot;name&quot;&gt;end&lt;/span&gt;&lt;span class=&quot;string&quot;&gt;&amp;#123;center&amp;#125;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;\&lt;span class=&quot;name&quot;&gt;end&lt;/span&gt;&lt;span class=&quot;string&quot;&gt;&amp;#123;table*&amp;#125;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;本文记录LaTeX编译，使用过程中的一些错误及其解决方案。&lt;/p&gt;
+&lt;p&gt;另外，还包括一些使用技巧，常见的元素使用方法等等。&lt;/p&gt;
+&lt;p&gt;便于自己以及后来人查阅解决。&lt;/p&gt;
+&lt;p&gt;我是留白。&lt;/p&gt;
+&lt;p&gt;我是留白。&lt;/p&gt;
+&lt;h3 id=&quot;Latex-“Error-E
+    
+    </summary>
+    
+      <category term="错误解决与优化 | Err&Opt" scheme="http://whatbeg.com/categories/%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3%E4%B8%8E%E4%BC%98%E5%8C%96-Err-Opt/"/>
+    
+    
+      <category term="Latex" scheme="http://whatbeg.com/tags/Latex/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Scala语法简摘</title>
+    <link href="http://whatbeg.com/2018/12/17/scalagrammar.html"/>
+    <id>http://whatbeg.com/2018/12/17/scalagrammar.html</id>
+    <published>2018-12-17T12:42:02.000Z</published>
+    <updated>2018-12-17T12:47:09.674Z</updated>
+    
+    <content type="html">&lt;p&gt;本文摘录Scala语言的一些语法和关键概念，不成系统，可看做学习笔记罢。&lt;/p&gt;
+&lt;h2 id=&quot;类型推断&quot;&gt;&lt;a href=&quot;#类型推断&quot; class=&quot;headerlink&quot; title=&quot;类型推断&quot;&gt;&lt;/a&gt;类型推断&lt;/h2&gt;&lt;p&gt;&lt;code&gt;for (arg &amp;lt;- args)&lt;/code&gt;中&lt;code&gt;arg&lt;/code&gt;一定是val类型，循环中不能改变其值。&lt;/p&gt;
+&lt;p&gt;Scala程序员的平衡感：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;崇尚val，不可变对象和没有副作用的方法&lt;/li&gt;
+&lt;li&gt;首先想到他们，只有在特定需要或权衡后才选择var，可变对象或者带副作用方法。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Scala 伴生对象，是一个单例对象，可以看做Java中可能用到的静态方法工具类&lt;/p&gt;
+&lt;h2 id=&quot;基本类型&quot;&gt;&lt;a href=&quot;#基本类型&quot; class=&quot;headerlink&quot; title=&quot;基本类型&quot;&gt;&lt;/a&gt;基本类型&lt;/h2&gt;&lt;p&gt;任何方法都可以是操作符，任何操作符都是方法。&lt;/p&gt;
+&lt;h2 id=&quot;函数式对象&quot;&gt;&lt;a href=&quot;#函数式对象&quot; class=&quot;headerlink&quot; title=&quot;函数式对象&quot;&gt;&lt;/a&gt;函数式对象&lt;/h2&gt;&lt;p&gt;辅助构造器，关键词this指向当前执行方法被调用的对象实例&lt;br&gt;如果使用在构造器里的话，就是指正在构建的实例&lt;/p&gt;
+&lt;p&gt;辅助构造器使用&lt;code&gt;def this(..)&lt;/code&gt;定义，每个Scala构造器调用终将结束于对主构造器的调用。因为主构造器是类的唯一入口点。&lt;/p&gt;
+&lt;p&gt;重载操作符，重载后仍然按照原来的优先级，比如* &amp;gt; +&lt;/p&gt;
+&lt;p&gt;字面量标识符 &lt;code&gt;yield&lt;/code&gt;可以作为一个变量/常量名&lt;/p&gt;
+&lt;h2 id=&quot;函数和闭包&quot;&gt;&lt;a href=&quot;#函数和闭包&quot; class=&quot;headerlink&quot; title=&quot;函数和闭包&quot;&gt;&lt;/a&gt;函数和闭包&lt;/h2&gt;&lt;p&gt;本地函数：函数定义在函数中，本地函数可以随意访问包含它的函数的参数&lt;/p&gt;
+&lt;p&gt;函数字面量&lt;br&gt;例子： &lt;code&gt;(x: Int) =&amp;gt; x + 1&lt;/code&gt;&lt;br&gt;在&lt;code&gt;foreach&lt;/code&gt;，&lt;code&gt;filter&lt;/code&gt;等许多函数中会使用到，x的类型往往可以被推断，所以通常也可写成： &lt;code&gt;x =&amp;gt; x + 1&lt;/code&gt;&lt;br&gt;函数字面量存在于源代码，而函数值作为对象存在于运行期。&lt;/p&gt;
+&lt;p&gt;更简单的，可以使用占位符语法，用下划线当做一个或者多个参数的占位符，只要每个参数在函数字面量内只出现一次即可，第n个下划线代表第n个参数&lt;br&gt;如&lt;code&gt;filter(_ &amp;gt; 0)&lt;/code&gt;，调用时，用参数来填补下划线，也即&lt;code&gt;filter(x &amp;gt; 0)&lt;/code&gt;&lt;br&gt;如&lt;code&gt;reduce(_ + _)&lt;/code&gt;，调用时，分别填补，也即&lt;code&gt;reduce(l+r)&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;偏函数（部分应用函数），一个下划线代替所有参数&lt;/p&gt;
+&lt;p&gt;闭包：函数字面量中包含了自由变量的绑定，运行时必须捕获其绑定。&lt;br&gt;如&lt;code&gt;val addMore = (x: Int) =&amp;gt; x + more&lt;/code&gt;，&lt;code&gt;more&lt;/code&gt;是自由变量&lt;br&gt;注意，闭包是一个非常重要的概念，我们时常会想要在循环体，比如foreach,map中加入一些对外部变量的修改，这是我们在其他语言养成的习惯。&lt;br&gt;直觉上，Scala在运行时会捕获自由变量本身，而不是变量指向的值。&lt;br&gt;比如&lt;br&gt;&lt;code&gt;(x: Int) =&amp;gt; x + more&lt;/code&gt;&lt;br&gt;此时创建的闭包可以看到闭包外部对more的改变，同样，闭包对捕获变量做出的修改在闭包外部也可见，比如：&lt;br&gt;&lt;figure class=&quot;highlight stata&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;val someNumber = &lt;span class=&quot;keyword&quot;&gt;List&lt;/span&gt;(-11, -10, 0, 10)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;sum&lt;/span&gt; = 0&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;someNumber.&lt;span class=&quot;keyword&quot;&gt;foreach&lt;/span&gt;(x =&amp;gt; &lt;span class=&quot;keyword&quot;&gt;sum&lt;/span&gt; += x)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;scala&lt;/span&gt;&amp;gt; &lt;span class=&quot;built_in&quot;&gt;sum&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;res: Int = -11&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;但是如果读者用过Spark的话，一定会了解到Spark的闭包和Scala的闭包是不一样的，原因就在于Spark是分布式环境下运行的。&lt;br&gt;&lt;a href=&quot;http://spark.apache.org/docs/latest/rdd-programming-guide.html#understanding-closures-a-nameclosureslinka&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;这里&lt;/a&gt;有Spark官方对closure的描述。&lt;/p&gt;
+&lt;p&gt;还是上面那个例子&lt;br&gt;&lt;figure class=&quot;highlight stylus&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;selector-tag&quot;&gt;var&lt;/span&gt; sum = &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;selector-tag&quot;&gt;var&lt;/span&gt; rdd = sc.parallelize(someNumbers)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// Wrong: Don&#39;t do this!!&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;rdd.foreach(x =&amp;gt; sum += x)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;title&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(&lt;span class=&quot;string&quot;&gt;&quot;Counter value: &quot;&lt;/span&gt; + counter)&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// counter = 0, because driver cannot feel the change of counter&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;众所周知，在分布式环境下，rdd的操作形成一个闭包，闭包会先序列化，然后被调度到各个executor执行，且每个executor拿到的其实是序列化后的sum，相当于driver端的一个copy，executor对sum的操作对driver来说不可见，driver的sum对各个executor来说也不可见，所以在driver端，counter始终是0。这就是scala闭包和spark闭包概念的一个最大不同。&lt;/p&gt;
+&lt;p&gt;重复参数，即可变参数，尾部加&lt;code&gt;*&lt;/code&gt;号即可，如：&lt;br&gt;&lt;code&gt;def echo(args: String*)&lt;/code&gt;&lt;br&gt;&lt;code&gt;args&lt;/code&gt;其实是&lt;code&gt;Array[String]&lt;/code&gt;类型，但是仍然不能真的传入一个&lt;code&gt;Array[String]&lt;/code&gt;类型的参数，比如要传入&lt;code&gt;arr&lt;/code&gt;，你需要&lt;code&gt;echo(arr: _*)&lt;/code&gt;这么写，意思是告诉编译器把每个元素当参数而不是把arr当做单一参数。&lt;/p&gt;
+&lt;p&gt;尾递归：在最后一个动作调用自己的函数。注意只能是单纯的调用自己，不能有多余的表达式，也不能通过其它函数中转&lt;/p&gt;
+&lt;p&gt;Scala的核心：简洁，简洁，简洁！&lt;/p&gt;
+&lt;h2 id=&quot;控制抽象&quot;&gt;&lt;a href=&quot;#控制抽象&quot; class=&quot;headerlink&quot; title=&quot;控制抽象&quot;&gt;&lt;/a&gt;控制抽象&lt;/h2&gt;&lt;p&gt;柯里化，传名参数&lt;/p&gt;
+&lt;h2 id=&quot;组合与继承&quot;&gt;&lt;a href=&quot;#组合与继承&quot; class=&quot;headerlink&quot; title=&quot;组合与继承&quot;&gt;&lt;/a&gt;组合与继承&lt;/h2&gt;&lt;p&gt;组合指一个类持有另一个的引用，借助被引用的类完成任务。&lt;/p&gt;
+&lt;p&gt;不带参数，且没有副作用的方法可以不写括号&lt;/p&gt;
+&lt;p&gt;“脆基类”问题：意外的方法重写&lt;/p&gt;
+&lt;p&gt;多态的重新理解：父类型引用可以指向子类型对象 =&amp;gt; 父类对象可有多种形式 =&amp;gt; 多态&lt;/p&gt;
+&lt;p&gt;动态绑定：被调用的实际方法取决于运行期对象基于的类型&lt;/p&gt;
+&lt;h2 id=&quot;Scala-层级&quot;&gt;&lt;a href=&quot;#Scala-层级&quot; class=&quot;headerlink&quot; title=&quot;Scala 层级&quot;&gt;&lt;/a&gt;Scala 层级&lt;/h2&gt;&lt;p&gt;所有类的父类是Any类，下辖两个子类，AnyRef（所有引用类的父类）和AnyVal（所有值类的父类）&lt;br&gt;底层有Nothing类和Null类，Null类是所有引用类的子类，不兼容子类型，而Nothing是所有类的子类。&lt;br&gt;scala的==对值类型为自然相等，对引用类型来说被视为equals方法的别名，equals初始定义为引用相等，但许多子类都会重写它以实现自然意义上的相等。&lt;br&gt;要比较引用相等，可以使用eq方法（反面是ne方法）&lt;/p&gt;
+&lt;h2 id=&quot;特质-trait&quot;&gt;&lt;a href=&quot;#特质-trait&quot; class=&quot;headerlink&quot; title=&quot;特质(trait)&quot;&gt;&lt;/a&gt;特质(trait)&lt;/h2&gt;&lt;p&gt;特质类似Java中的接口，混入特质可以使用extends或者with&lt;/p&gt;
+&lt;p&gt;特质像是带有具体方法的Java接口，并且可以声明字段和维持状态值，特质可以做类定义所能做的事&lt;br&gt;但与类定义有两点不同：&lt;br&gt;1） 特质不能有参数（传递给主构造器）&lt;br&gt;2）super调用时动态绑定的&lt;/p&gt;
+&lt;p&gt;胖接口：拥有更多方法的接口&lt;br&gt;特质的一个用法就是把瘦接口变成胖接口&lt;/p&gt;
+&lt;p&gt;需要排序比较时，可以混入（mixin）Ordered特质&lt;br&gt;步骤：混入Ordered特质，实现compare方法，可以自动拥有大多数比较方法，但是不会有equals方法  =&amp;gt; 类型擦除&lt;/p&gt;
+&lt;p&gt;特质的第二个用法：为类提供可堆叠的改变&lt;/p&gt;
+&lt;p&gt;混入多个特质，最右边的特质最先起作用&lt;/p&gt;
+&lt;p&gt;不同的组合，不同的次序混入特质，可以依靠少量的特质得到多个不同的类&lt;/p&gt;
+&lt;p&gt;特质线性化地解释super&lt;/p&gt;
+&lt;p&gt;特质，用还是不用？&lt;br&gt;1） 如果行为不会被重用，那做成具体类&lt;br&gt;2）如果要在多个不相关的类中重用，那就做成特质&lt;br&gt;3）如果希望从Java代码继承，那就是用抽象类 （只含有抽象成员的scala特质会被直接翻译成Java接口）&lt;br&gt;4）如果计划以编译后的方式发布，或者希望外部组织继承它，更倾向使用抽象类&lt;br&gt;5）如果效率很重要，倾向于使用类&lt;/p&gt;
+&lt;h2 id=&quot;包和引用&quot;&gt;&lt;a href=&quot;#包和引用&quot; class=&quot;headerlink&quot; title=&quot;包和引用&quot;&gt;&lt;/a&gt;包和引用&lt;/h2&gt;&lt;p&gt;&lt;code&gt;_root_&lt;/code&gt;顶层包：所有你能写出来的顶层包都是&lt;code&gt;_root_&lt;/code&gt;的成员，可以用&lt;code&gt;_root_.yourpack&lt;/code&gt;来访问&lt;/p&gt;
+&lt;p&gt;scala应用灵活在于：&lt;br&gt;1）可以随处import&lt;br&gt;2）可以指对象或包&lt;br&gt;3）可以重命名或者隐藏&lt;/p&gt;
+&lt;p&gt;每个scala源文件都隐含引用java.lang包，scala包以及单例对象Predef&lt;/p&gt;
+&lt;p&gt;访问修饰符：protected比Java中的更加严格：仅限子类访问，同一包中的类不能访问&lt;/p&gt;
+&lt;p&gt;访问修饰符限定规则：&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;private[X] method/class&lt;/code&gt; 此类或方法对X下所有类和对象可见&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;protected[X] method/class&lt;/code&gt; 对此类或子类或修饰符所在的包，类或对象X可见  （？）&lt;/p&gt;
+&lt;h2 id=&quot;断言和单元测试&quot;&gt;&lt;a href=&quot;#断言和单元测试&quot; class=&quot;headerlink&quot; title=&quot;断言和单元测试&quot;&gt;&lt;/a&gt;断言和单元测试&lt;/h2&gt;&lt;p&gt;&lt;code&gt;assert&lt;/code&gt;:&lt;br&gt;&lt;code&gt;assert(ele.width === 2)&lt;/code&gt; 三等号，如果不等，会报告&lt;code&gt;“3 dit not equal to 2”&lt;/code&gt;&lt;br&gt;或&lt;br&gt;&lt;figure class=&quot;highlight stylus&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;expect (&lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  ele&lt;span class=&quot;selector-class&quot;&gt;.width&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;intercept检查是否抛出了期待的异常&lt;br&gt;&lt;figure class=&quot;highlight stylus&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;title&quot;&gt;intercept&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(class[IllegalArgumentException])&lt;/span&gt;&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  elem(&lt;span class=&quot;string&quot;&gt;&#39;x&#39;&lt;/span&gt;, -&lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;scala中的一些测试方法：&lt;br&gt;1)  ScalaTest&lt;br&gt;2)  Suite:&lt;br&gt;3)  JUnit&lt;br&gt;4)  TestNG&lt;br&gt;5)  Specs 规格测试， a should be … 具有描述部分和规格部分&lt;br&gt;ScalaCheck 属性测试，测试代码具有属性&lt;/p&gt;
+&lt;h2 id=&quot;样例类和模式匹配&quot;&gt;&lt;a href=&quot;#样例类和模式匹配&quot; class=&quot;headerlink&quot; title=&quot;样例类和模式匹配&quot;&gt;&lt;/a&gt;样例类和模式匹配&lt;/h2&gt;&lt;p&gt;样例类 &lt;code&gt;case class CLSNAME(argA: argAType, ...)&lt;/code&gt;&lt;br&gt;最大的好处是他们可以支持模式匹配&lt;/p&gt;
+&lt;p&gt;模式有很多种，包括通配，常量模式，变量模式，构造器模式，序列模式，元组模式，类型模式，更高级的还有变量绑定&lt;br&gt;使用类型模式应注意类型擦除，擦除规则不适用于数组&lt;/p&gt;
+&lt;p&gt;编译器会为&lt;code&gt;case class&lt;/code&gt;自动生成伴生对象&lt;br&gt;编译器也会为该伴生对象自动生成&lt;code&gt;apply&lt;/code&gt;,&lt;code&gt;unapply&lt;/code&gt;方法&lt;/p&gt;
+&lt;p&gt;模式守卫&lt;/p&gt;
+&lt;h2 id=&quot;列表：List&quot;&gt;&lt;a href=&quot;#列表：List&quot; class=&quot;headerlink&quot; title=&quot;列表：List&quot;&gt;&lt;/a&gt;列表：List&lt;/h2&gt;&lt;p&gt;List是协变的，意味着，如果S是T的子类，List[S]就是List[T]的子类，故而 &lt;code&gt;List[Nothing]&lt;/code&gt; 是 &lt;code&gt;List[String]&lt;/code&gt; 的子类，故可以&lt;code&gt;val List[String] = List()&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;::&lt;/code&gt; 元素与List连接，元素与元素连接&lt;br&gt;&lt;code&gt;:::&lt;/code&gt; List与List连接&lt;/p&gt;
+&lt;p&gt;计算长度&lt;code&gt;.length&lt;/code&gt;方法需要遍历整个列表，所以如果判断长度为0的话最好使用&lt;code&gt;.isEmpty&lt;/code&gt;方法&lt;br&gt;访问头部：&lt;code&gt;init&lt;/code&gt;方法，访问除了最后一个元素外的子列表， &lt;code&gt;head&lt;/code&gt;方法：访问第一个元素&lt;br&gt;访问尾部：&lt;code&gt;last&lt;/code&gt;方法，访问最后一个元素， &lt;code&gt;tail&lt;/code&gt;方法：访问除第一个元素外的列表&lt;br&gt;更一般的，&lt;code&gt;drop&lt;/code&gt;, &lt;code&gt;take&lt;/code&gt;方法&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;copyToArray&lt;/code&gt;: 把列表元素复制到目标数组的一段连续空间&lt;br&gt;&lt;code&gt;elements&lt;/code&gt;方法：返回迭代器&lt;/p&gt;
+&lt;p&gt;其他的List高阶方法：&lt;br&gt;&lt;figure class=&quot;highlight swift&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;map&lt;/span&gt;,flatMap,foreach&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;过滤：&lt;span class=&quot;built_in&quot;&gt;filter&lt;/span&gt;,&lt;span class=&quot;built_in&quot;&gt;partition&lt;/span&gt;,&lt;span class=&quot;built_in&quot;&gt;find&lt;/span&gt;,takeWhile,dropWhile,span&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;论断：forall,exists&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;折叠：/: 和 :\&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;翻转&lt;span class=&quot;built_in&quot;&gt;reverse&lt;/span&gt;，排序sortWith&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;List对象的方法:&lt;br&gt;&lt;figure class=&quot;highlight stylus&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;List&lt;span class=&quot;selector-class&quot;&gt;.apply&lt;/span&gt;,List&lt;span class=&quot;selector-class&quot;&gt;.range&lt;/span&gt;,List.make(&lt;span class=&quot;number&quot;&gt;4&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&#39;a&#39;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;List&lt;span class=&quot;selector-class&quot;&gt;.unzip&lt;/span&gt; 解除啮合&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;连接： List&lt;span class=&quot;selector-class&quot;&gt;.flatten&lt;/span&gt;, List.concat&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;区别在于前者用列表的列表做参数，后者可以直接用多个列表作为参数（以可变参数的方式）&lt;/p&gt;
+&lt;p&gt;Scala类型推断&lt;br&gt;Scala采用局部的，基于流的类型推断算法&lt;/p&gt;
+&lt;p&gt;通常，一旦有需要推断多态方法类型参数的任务时，类型推断器只会参考第一个参数列表中所有的值参数类型，而不会参考之后的参数。&lt;br&gt;库方法设计原则：&lt;br&gt;如果需要把参数设计为若干非函数值即一个函数值的某种多态方法，需要把函数参数独自放在柯里化参数列表的最后面。&lt;br&gt;即，在柯里化方法中，方法类型仅取决于第一段参数。&lt;br&gt;同样的，一种快速解决类型错误问题的方法：&lt;br&gt;添加明确的类型标注&lt;/p&gt;
+&lt;h2 id=&quot;集合与映射&quot;&gt;&lt;a href=&quot;#集合与映射&quot; class=&quot;headerlink&quot; title=&quot;集合与映射&quot;&gt;&lt;/a&gt;集合与映射&lt;/h2&gt;&lt;figure class=&quot;highlight dart&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;Set&lt;/span&gt;, Seq, &lt;span class=&quot;built_in&quot;&gt;Map&lt;/span&gt; -&amp;gt; &lt;span class=&quot;built_in&quot;&gt;Iterable&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;SortedSet&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;SynchronizedMap&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;如果元素数量不多，不可变集合比可变集合存储更紧凑，空间更加节省。&lt;/p&gt;
+&lt;p&gt;可变状态的对象&lt;/p&gt;
+&lt;p&gt;状态与var变量常常一起出现，但并不具有严格的关系。&lt;br&gt;类即使没有定义或继承var变量，也可以由于把方法调用传递给其他具有可变状态的对象而带有状态，（有点拗口）&lt;br&gt;类即使包含了var变量也可以仍是纯函数的&lt;/p&gt;
+&lt;p&gt;Scala中，对象的每个非私有的var类型成员变量都隐含定义了&lt;code&gt;getter&lt;/code&gt;和&lt;code&gt;setter&lt;/code&gt;方法。&lt;br&gt;&lt;code&gt;getter&lt;/code&gt;方法为&lt;code&gt;x&lt;/code&gt;&lt;br&gt;&lt;code&gt;setter&lt;/code&gt;方法为&lt;code&gt;x_&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;类中字段初始化为0/false/null，&lt;br&gt;&lt;code&gt;var x = _&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;不可以省略 “= _”，否则var x: Float 为抽象变量，而不是未初始化的变量&lt;/p&gt;
+&lt;h2 id=&quot;类型参数化（重头戏）&quot;&gt;&lt;a href=&quot;#类型参数化（重头戏）&quot; class=&quot;headerlink&quot; title=&quot;类型参数化（重头戏）&quot;&gt;&lt;/a&gt;类型参数化（重头戏）&lt;/h2&gt;&lt;p&gt;类型参数化让我们能够编写泛型和特质&lt;br&gt;信息隐藏：&lt;br&gt;隐藏主构造器： private加载类名的后面，类参数列表的前面：&lt;br&gt;&lt;figure class=&quot;highlight kotlin&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Queue&lt;/span&gt;[&lt;span class=&quot;title&quot;&gt;T&lt;/span&gt;] &lt;span class=&quot;title&quot;&gt;private&lt;/span&gt; &lt;/span&gt;(&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;variable&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;val&lt;/span&gt; leading&lt;/span&gt;: List[T],&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;variable&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;val&lt;/span&gt; tailing&lt;/span&gt;: List[T]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;那么如何构造对象呢？&lt;/p&gt;
+&lt;p&gt;方法1：定义辅助构造器&lt;br&gt;&lt;figure class=&quot;highlight gradle&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;() = &lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;(Nil, Nil)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;(elem: T*) = &lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;(elem.&lt;span class=&quot;keyword&quot;&gt;toList&lt;/span&gt;, Nil)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;方法2：在伴生对象中编写apply工厂方法&lt;br&gt;&lt;figure class=&quot;highlight markdown&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;object Queue &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  def apply[&lt;span class=&quot;string&quot;&gt;T&lt;/span&gt;](&lt;span class=&quot;link&quot;&gt;xs: T*&lt;/span&gt;) = new Queue[&lt;span class=&quot;string&quot;&gt;T&lt;/span&gt;](&lt;span class=&quot;link&quot;&gt;xs.toList, Nil&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;（注意，scala没有全局方法，方法必须包含在类或对象中）&lt;/p&gt;
+&lt;p&gt;另一种信息隐藏的方法，直接把类本身通过暴露特质(trait)而隐藏掉&lt;/p&gt;
+&lt;p&gt;如果类或者特质声明时带类型参数，那么创建变量时也要制定具体的参数化的类型&lt;br&gt;如&lt;br&gt;&lt;figure class=&quot;highlight lasso&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;trait&lt;/span&gt; &lt;span class=&quot;built_in&quot;&gt;Queue&lt;/span&gt;&lt;span class=&quot;meta&quot;&gt;[&lt;/span&gt;T&lt;span class=&quot;meta&quot;&gt;]&lt;/span&gt; &amp;#123; .. &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Queue是特质， Queue&lt;span class=&quot;meta&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;built_in&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;meta&quot;&gt;]&lt;/span&gt;是类型&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;泛型：通过一个能够广泛适用的类或特质，定义了许多特定的类型&lt;/p&gt;
+&lt;p&gt;在scala中，泛型类默认是非协变的子类型化&lt;br&gt;如果要表明参数的子类型化是协变的，需要变成如下形式：&lt;br&gt;&lt;code&gt;trait Queue[+T] { .. }&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;加上-号表示需要逆变的子类型化&lt;/p&gt;
+&lt;p&gt;只要泛型的参数类型被当做方法参数的类型，那么包含它的类或特质就有可能不能与这个类型参数一起协变&lt;br&gt;&lt;figure class=&quot;highlight ruby&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Queue&lt;/span&gt;[+&lt;span class=&quot;title&quot;&gt;T&lt;/span&gt;] &amp;#123;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(&lt;span class=&quot;symbol&quot;&gt;x:&lt;/span&gt; T)&lt;/span&gt;&lt;/span&gt; = ...&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;下界和上界&lt;br&gt;&lt;code&gt;def append[U&amp;gt;: T](x: U) = new Queue[U](leading, x :: tailing)&lt;/code&gt;&lt;br&gt;语法&lt;code&gt;U &amp;gt;: T&lt;/code&gt;定义了T为U的下界，结果U必须是T的超类型，append的参数现在为U而不是T，返回类型也变成了&lt;code&gt;Queue[U]&lt;/code&gt;，不过，自身即是自身的超类型又是自身的子类型，所以是类似小于等于的关系。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;def orderedMergeSort[T &amp;lt;: Ordered[T]](xs: List[T]): List[T] = ...&lt;/code&gt;&lt;br&gt;语法&lt;code&gt;T &amp;lt;: Ordered[T]&lt;/code&gt;定义了类型参数T具有上界&lt;code&gt;Ordered[T]&lt;/code&gt;，即传递给&lt;code&gt;orderedMergeSort&lt;/code&gt;的参数必须是&lt;code&gt;Ordered[T]&lt;/code&gt;的子类型。&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;本文摘录Scala语言的一些语法和关键概念，不成系统，可看做学习笔记罢。&lt;/p&gt;
+&lt;h2 id=&quot;类型推断&quot;&gt;&lt;a href=&quot;#类型推断&quot; class=&quot;headerlink&quot; title=&quot;类型推断&quot;&gt;&lt;/a&gt;类型推断&lt;/h2&gt;&lt;p&gt;&lt;code&gt;for (arg &amp;lt
+    
+    </summary>
+    
+      <category term="编程语言 | Program Lang." scheme="http://whatbeg.com/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80-Program-Lang/"/>
+    
+    
+      <category term="Scala" scheme="http://whatbeg.com/tags/Scala/"/>
+    
+  </entry>
   
   <entry>
     <title>Tensorflow 错误集锦</title>
@@ -59,9 +204,9 @@
       <category term="大数据系统与技术 | Big Data" scheme="http://whatbeg.com/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE%E7%B3%BB%E7%BB%9F%E4%B8%8E%E6%8A%80%E6%9C%AF-Big-Data/"/>
     
     
-      <category term="大数据" scheme="http://whatbeg.com/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
-    
       <category term="深度学习" scheme="http://whatbeg.com/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="大数据" scheme="http://whatbeg.com/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
     
       <category term="TensorFlow" scheme="http://whatbeg.com/tags/TensorFlow/"/>
     
@@ -435,9 +580,9 @@
       <category term="大数据系统与技术 | Big Data" scheme="http://whatbeg.com/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE%E7%B3%BB%E7%BB%9F%E4%B8%8E%E6%8A%80%E6%9C%AF-Big-Data/"/>
     
     
-      <category term="机器学习" scheme="http://whatbeg.com/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
-    
       <category term="Deep Learning" scheme="http://whatbeg.com/tags/Deep-Learning/"/>
+    
+      <category term="机器学习" scheme="http://whatbeg.com/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
     
       <category term="论文阅读" scheme="http://whatbeg.com/tags/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/"/>
     
@@ -557,9 +702,9 @@
       <category term="深度学习 | Deep Learning" scheme="http://whatbeg.com/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0-Deep-Learning/"/>
     
     
-      <category term="机器学习" scheme="http://whatbeg.com/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
-    
       <category term="深度学习" scheme="http://whatbeg.com/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="机器学习" scheme="http://whatbeg.com/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
     
   </entry>
   
@@ -753,9 +898,9 @@
       <category term="大数据系统与技术 | Big Data" scheme="http://whatbeg.com/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE%E7%B3%BB%E7%BB%9F%E4%B8%8E%E6%8A%80%E6%9C%AF-Big-Data/"/>
     
     
-      <category term="大数据" scheme="http://whatbeg.com/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
-    
       <category term="Spark" scheme="http://whatbeg.com/tags/Spark/"/>
+    
+      <category term="大数据" scheme="http://whatbeg.com/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
     
   </entry>
   
@@ -874,9 +1019,9 @@
       <category term="错误解决与优化 | Err&Opt" scheme="http://whatbeg.com/categories/%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3%E4%B8%8E%E4%BC%98%E5%8C%96-Err-Opt/"/>
     
     
-      <category term="错误解决" scheme="http://whatbeg.com/tags/%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3/"/>
-    
       <category term="Spark" scheme="http://whatbeg.com/tags/Spark/"/>
+    
+      <category term="错误解决" scheme="http://whatbeg.com/tags/%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3/"/>
     
   </entry>
   
@@ -1792,134 +1937,6 @@ table th:first-of-type {
     
     
       <category term="三国" scheme="http://whatbeg.com/tags/%E4%B8%89%E5%9B%BD/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Linux vim技巧大观</title>
-    <link href="http://whatbeg.com/2017/07/08/vim.html"/>
-    <id>http://whatbeg.com/2017/07/08/vim.html</id>
-    <published>2017-07-08T06:38:15.000Z</published>
-    <updated>2018-01-30T05:51:40.649Z</updated>
-    
-    <content type="html">&lt;h5 id=&quot;批量注释-多行注释&quot;&gt;&lt;a href=&quot;#批量注释-多行注释&quot; class=&quot;headerlink&quot; title=&quot;批量注释 / 多行注释&quot;&gt;&lt;/a&gt;批量注释 / 多行注释&lt;/h5&gt;&lt;p&gt;多行注释：&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;code&gt;vim&lt;/code&gt;打开文件，按&lt;code&gt;Ctrl + v&lt;/code&gt;进入可视块模式visual block，然后按&lt;code&gt;j&lt;/code&gt;往下选取（或&lt;code&gt;k&lt;/code&gt;往上选取）需要注释的行，做一个标记。（&lt;code&gt;h&lt;/code&gt;,&lt;code&gt;j&lt;/code&gt;,&lt;code&gt;k&lt;/code&gt;,&lt;code&gt;l&lt;/code&gt;在此模式中分别为左，下，上，右的功能，也可用上下左右箭头键代替）&lt;/li&gt;
-&lt;li&gt;按 &lt;code&gt;I&lt;/code&gt; 进入编辑模式，插入注释符，如&lt;code&gt;#&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;按&lt;code&gt;esc&lt;/code&gt;键即可全部注释。（有些环境需两次按键）&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;取消多行注释：&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;code&gt;vim&lt;/code&gt;打开文件，按&lt;code&gt;Ctrl + v&lt;/code&gt;进入可视块模式visual block，然后按&lt;code&gt;L&lt;/code&gt;往右选取注释符所占的列，如&lt;code&gt;//&lt;/code&gt;占两列，则选中两列。&lt;/li&gt;
-&lt;li&gt;按&lt;code&gt;j&lt;/code&gt;或&lt;code&gt;k&lt;/code&gt;选中需要取消的行。&lt;/li&gt;
-&lt;li&gt;按&lt;code&gt;d&lt;/code&gt;即可全部取消注释。&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/blockquote&gt;
-&lt;h5 id=&quot;查找字符串出现的次数&quot;&gt;&lt;a href=&quot;#查找字符串出现的次数&quot; class=&quot;headerlink&quot; title=&quot;查找字符串出现的次数&quot;&gt;&lt;/a&gt;查找字符串出现的次数&lt;/h5&gt;&lt;p&gt;在所有行中查找 字符串 出现的次数&lt;br&gt;&lt;figure class=&quot;highlight elixir&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;symbol&quot;&gt;:%s/&lt;/span&gt;字符串/&amp;amp;&lt;span class=&quot;regexp&quot;&gt;/gn&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;在m和n行之间查找 字符串 出现的次数&lt;br&gt;&lt;figure class=&quot;highlight coffeescript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;:m,ns&lt;span class=&quot;regexp&quot;&gt;/字符串/&lt;/span&gt;&amp;amp;/gn&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;h5 id=&quot;vim字符串查找与替换&quot;&gt;&lt;a href=&quot;#vim字符串查找与替换&quot; class=&quot;headerlink&quot; title=&quot;vim字符串查找与替换&quot;&gt;&lt;/a&gt;vim字符串查找与替换&lt;/h5&gt;&lt;figure class=&quot;highlight elixir&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;/A          &lt;span class=&quot;comment&quot;&gt;# 查找A （从上往下）&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;?A          &lt;span class=&quot;comment&quot;&gt;# 查找A （从下往上）  &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;symbol&quot;&gt;:%s/A/B/g&lt;/span&gt;   &lt;span class=&quot;comment&quot;&gt;# 将所有行的A替换为B&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;symbol&quot;&gt;:%s/A/B/&lt;/span&gt;    &lt;span class=&quot;comment&quot;&gt;# 将所有行的第一个A替换为B&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;symbol&quot;&gt;:s/A/B/g&lt;/span&gt;    &lt;span class=&quot;comment&quot;&gt;# 替换当前行所有A为B&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;h5 id=&quot;批量注释-多行注释&quot;&gt;&lt;a href=&quot;#批量注释-多行注释&quot; class=&quot;headerlink&quot; title=&quot;批量注释 / 多行注释&quot;&gt;&lt;/a&gt;批量注释 / 多行注释&lt;/h5&gt;&lt;p&gt;多行注释：&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;code&gt;
-    
-    </summary>
-    
-      <category term="计算机相关 | CS.Related" scheme="http://whatbeg.com/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9B%B8%E5%85%B3-CS-Related/"/>
-    
-    
-      <category term="Linux" scheme="http://whatbeg.com/tags/Linux/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>读《科学研究的艺术》</title>
-    <link href="http://whatbeg.com/2017/06/07/artofresearch.html"/>
-    <id>http://whatbeg.com/2017/06/07/artofresearch.html</id>
-    <published>2017-06-07T08:39:44.000Z</published>
-    <updated>2017-12-11T13:31:11.701Z</updated>
-    
-    <content type="html">&lt;p&gt;陈校长的悦读经典计划开出了一个非常不错的书单，包括了各个学科的经典书籍，经史子集，诸咸皆备，感觉可以看上两三年的了。这次抓到一本《科学研究的艺术》，看名字挺6的，于是借来看了看，有一些启发，可以与读者分享。&lt;/p&gt;
-&lt;p&gt;本书的作者是剑桥大学的一个动物病理学教授，名叫贝弗里奇，所以说本书几乎所有的具体例子和一些论述都是关于生物学，病理学的，作为非此专业的我们来说，只需要理解其基本思想即可。&lt;/p&gt;
-&lt;p&gt;书中论述的几章包括，准备工作，实验，机遇，假说，想象力，直觉，推理，观察，困难，战略战术，以及科学家本身。&lt;/p&gt;
-&lt;p&gt;下面将扼要描述下每章的重要思想。&lt;/p&gt;
-&lt;h2 id=&quot;准备工作&quot;&gt;&lt;a href=&quot;#准备工作&quot; class=&quot;headerlink&quot; title=&quot;准备工作&quot;&gt;&lt;/a&gt;准备工作&lt;/h2&gt;&lt;p&gt;过多的阅读可能会损害创造力，旧的成见对于新的见解的产生可能有妨碍作用。原因可能如下，当满载丰富知识的头脑思考问题时，会不自觉的偏向于相应的知识，如果这些知识能够解决问题，那么很好，如果无法解决，那么可能会这些知识可能会使得头脑很难想象出一条新颖独创的路。拜伦写道，“要有独到之间必须多思少读，但这是不可能的，因为在学会思考之前势必先已阅读.”。（窃以为，完全不阅读也是不可能的，否则无法产生思考的方向，也不知道问题的进展，缺乏一些必要的基础知识等都会使得问题的解决走一些弯路，甚至无法开展。）&lt;br&gt;解决这个问题的一个办法即为批判式阅读，用阅读来启发思想，而不是填满思想。尽信书不如无书。&lt;br&gt;成功的科学家往往兴趣广泛，因为他们更容易将有关联的观点联系起来。&lt;br&gt;对于普遍规律具有清晰的概念，而不是把它们当成一成不变的法则，对于创造性思维来说，见森林比见树木来得更为重要。&lt;br&gt;略读。文章的索引卡片。&lt;br&gt;阅读一些科学伟人的生平著作，参加科学会议是很有帮助的。&lt;/p&gt;
-&lt;p&gt;着手研究问题：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;决定研究的题目。最好在实验室的研究范围内选择题目，就能够得益于老师同学的指导和关注。初学研究工作的人最好选择一个很可能出成果的题目，而又不超出其技术能力。&lt;/li&gt;
-&lt;li&gt;明确这方面已经做过哪些研究。表现为对有关文献的充分研究，即所谓的“调研”阶段。（这里有作者在书中反复提到的一句话：“把人们观察到的现象同人们对这些现象的解释分开”。）&lt;br&gt;整理资料，弄清资料之间的相互关系并试图规定课题等做法在这一阶段都是有益的。&lt;/li&gt;
-&lt;li&gt;形式化。这一阶段，研究人员可以将课题分割成若干公式化的问题，即所谓的形式化，并开始从实验入手。准备工作阶段，应注意寻找现有知识上的空档，不同作者报告中的差别，一些矛盾和线索等。&lt;/li&gt;
-&lt;li&gt;实验。实验的成功与否主要取决于准备工作的细致程度。一流科学家一般实现对课题加以周密思考，并将课题分成若干关键问题，然后精心设计为这些问题提供答案的实验。（我对这点深有同感，以前跑实验经常会过于随意，想着反正有机器，有时间，一旦实验结果不满意，变换一下实验设置又会马上重新跑一下，直到遇到比较好的结果，这种毫无头绪的搞法无形中浪费了许多时间，实际上实验应该是用来验证某些猜想，回答某些问题的，过多盲目的跑实验那是数据竞赛做的事。在一定程度上，设计实验也是一门艺术。）&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&quot;实验&quot;&gt;&lt;a href=&quot;#实验&quot; class=&quot;headerlink&quot; title=&quot;实验&quot;&gt;&lt;/a&gt;实验&lt;/h2&gt;&lt;p&gt;应该尽可能地在研究工作的开头做一项简单的关键性试验，以判断所考虑的主要假说是否成立。&lt;br&gt;一次成功的实验，最基本的条件就是能够重现。&lt;br&gt;做实验时，在技术要点上采取极其审慎的态度是非常值得的。&lt;br&gt;对实验工作的全部细节进行详尽的记录是一条基本而重要的原则。&lt;br&gt;实验有时也会给人以十分错误的印象，最常见的原因是因为技术上的错误，所以实验人员应该对自己的技术规程掌握透彻并极端熟练，才能够真正信赖实验结果。&lt;/p&gt;
-&lt;h2 id=&quot;机遇&quot;&gt;&lt;a href=&quot;#机遇&quot; class=&quot;headerlink&quot; title=&quot;机遇&quot;&gt;&lt;/a&gt;机遇&lt;/h2&gt;&lt;p&gt;这一章主要论述机遇在科学发现中的作用，并且举了许多机遇导致重大科学发现的例子（主要是生物学），具体例子不再细说，只是我们可以提取的信息是，在实验出现异常情况的时候，不要让异常结果从我们的眼皮底下溜过去，因为有时候异常情况往往催生了新的发现。由于以重要线索为形式的机会并不多见，所以需要做好准备，保持敏锐的观察力，保持警觉。如何解释线索也很重要。&lt;/p&gt;
-&lt;p&gt;光有上面这些还不够，很有可能对于某个发现，我们不能对其做深入研究，比如弗莱明早在1929年就发现了青霉素的粗制剂，但是没有能够制成一种治疗用的药物，知道后来弗洛里才将青霉素发展成药物，从而挽救了众多的生命。&lt;br&gt;缺乏应用，遭到冷淡和反对，这些都是一个新发现可能会遇到的阻碍。&lt;br&gt;总的来说，保持想象力，鉴赏力和对一切未经解释的观察和现象进行思考的习惯裨益甚多。&lt;/p&gt;
-&lt;h2 id=&quot;假说&quot;&gt;&lt;a href=&quot;#假说&quot; class=&quot;headerlink&quot; title=&quot;假说&quot;&gt;&lt;/a&gt;假说&lt;/h2&gt;&lt;p&gt;假说是研究工作者最关键的一种思想方法，许许多多的实验与观测都是针对验证假设来的。&lt;br&gt;当第一次实验或观测的结果符合预期的结果时，实验人员还需进一步地确认，从实验中搜寻证明，方能够确信自己的设想。（这可能是因为，实验的步骤中，可能会出现各种各样大的或者小的错误，还有可能假说只在特定的实验条件下才会成立的缘故。）&lt;br&gt;当第一次实验或观测的结果不符合预期结果时，有时可以用一种起澄清作用的补充性假说来适应矛盾，即增加条件。&lt;br&gt;须知：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;不要抱住已证明无用的设想不放。&lt;/li&gt;
-&lt;li&gt;在实验或者观察时，需要保持客观态度，保持使自己的意见和愿望服从客观事实，客观证据的习惯。&lt;/li&gt;
-&lt;li&gt;对设想进行批判的审查。&lt;/li&gt;
-&lt;li&gt;对错误的观念应避之三舍，因为一旦相信了某种错误的设想之后，即使观察到了矛盾的事实，你也不会放弃它，知道提出了更符合新事实的假说才会被丢弃。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&quot;想象力&quot;&gt;&lt;a href=&quot;#想象力&quot; class=&quot;headerlink&quot; title=&quot;想象力&quot;&gt;&lt;/a&gt;想象力&lt;/h2&gt;&lt;p&gt;也许，一个训练有素的思想家的主要特点在于，他不在佐证不足的情况下轻易做出结论。&lt;br&gt;反复思考某一个问题，给予有步骤的和连贯的考虑，这可能比让其任意在脑海中自由运行更有效率，当然，自由地运行也有其作用，也是必不可少的。&lt;br&gt;如果具有有关学科甚至远缘学科的广博学识，那么产生独创见解的可能性就越大，这是因为，独创性常常在于发现两个或以上研究对象或者设想之间的联系或者相似之处，而原来以为这些对象或设想彼此没有联系。（学科的交叉常常能有意想不到的收获，比如统计物理学与优化理论的结合，产生了模拟退火算法，生物学与优化理论的结合，产生了遗传算法等等，相应的，在同一学科中也常常可以实现这种交叉，比如，常常首先出现两种解决方法，双方的优劣都很明显并且互补，这时，将二者统合，取长补短，又能够形成一种新的解决办法，从而使得效果提升或者效率提升，从而领域又得以推进）&lt;br&gt;其实，不管其起源如何，绝大多数的假说都被证明是错误的。但是不能因为怕犯错误就不去发现，谨小慎微的科学家既不犯错误，也不会又发现。&lt;br&gt;科学家的好奇心，通常表现为探索对他所注意到的，但尚无令人满意解释的事物或其相互关系的认识。科学家有一种强烈的愿望，就是寻求其间并无明显联系的大量资料背后的那些原理。&lt;br&gt;认识到困难或难题的存在，能够激励设想的产生。&lt;br&gt;学术讨论在以下三个方面对创造性思维活动有着促进作用：&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;别人可能提出有益的建议&lt;/li&gt;
-&lt;li&gt;一个新设想可能有两三个人集中他们的知识或设想而产生&lt;/li&gt;
-&lt;li&gt;讨论也是揭露谬误的有效方法&lt;/li&gt;
-&lt;li&gt;给人激励与鼓舞，是认真做&lt;/li&gt;
-&lt;li&gt;帮助人们摆脱已经形成的，事实证明无成效的思想习惯，即摆脱条件限制的思考&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;与实验室同仁们三五成群共进午餐能够获得大量机会进行一些非正式的讨论，也可以交流各自的兴趣与问题，热情是富有感染力的。&lt;/p&gt;
-&lt;p&gt;有时对一个问题思考过久，有可能重复同样的思路，或者钻入牛角尖。这时，我们可以采用两种方法：&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;把问题暂时搁置 （有时候对一个问题百思不得其解，可以适当地先放一放，等到过一段时间再来接触时，往往有新的进展或发现）&lt;/li&gt;
-&lt;li&gt;同别人讨论，或是向领域外的人讲述你的工作&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h2 id=&quot;直觉&quot;&gt;&lt;a href=&quot;#直觉&quot; class=&quot;headerlink&quot; title=&quot;直觉&quot;&gt;&lt;/a&gt;直觉&lt;/h2&gt;&lt;p&gt;作者列出了一些有利于产生直觉的条件：&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;对问题持续自觉思考以作思想上的准备&lt;/li&gt;
-&lt;li&gt;防止注意力分散，多数人必须不受中断与干扰&lt;/li&gt;
-&lt;li&gt;直觉经常出现在不研究问题的时候&lt;/li&gt;
-&lt;li&gt;通过诸如讨论，批判阅读和写作等与他人的思想接触，对直觉有所促进&lt;/li&gt;
-&lt;li&gt;直觉来去无踪，最好用笔记记下来&lt;/li&gt;
-&lt;li&gt;不利影响还有：脑力和体力的疲劳，对问题工作过度，琐事刺激和噪音&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;在科学研究中，我们的思维和行动常常受限于我们的科学鉴赏力，即常常不得不受以鉴赏力为依据的个人判断的指导。&lt;/p&gt;
-&lt;h2 id=&quot;推理&quot;&gt;&lt;a href=&quot;#推理&quot; class=&quot;headerlink&quot; title=&quot;推理&quot;&gt;&lt;/a&gt;推理&lt;/h2&gt;&lt;p&gt;作者认为，推理不能产生新发现，但是作者应该指的是纯粹的推理不能产生新的发现，而在事实或者实验，观测基础上做一定的推理则有可能产生新的发现。而且推理在科学研究中也起到了巨大的作用，为此，作者在后面单独叙述了一节。&lt;br&gt;少使用未经证实的假定。&lt;br&gt;人们很容易抗拒那些不符合自己看法的观点。科学家绝不能容许自己的思想固定不变，不仅见解不能固定不变，而且对待当时流行观点的态度也不能一成不变。&lt;br&gt;任何公认的观念或“确立的原则”，一旦不符合观察到的现象，都不能视为毋庸置疑。&lt;br&gt;类比法很多时候作用很大， 但是也常使人误入迷途。&lt;/p&gt;
-&lt;h2 id=&quot;观察&quot;&gt;&lt;a href=&quot;#观察&quot; class=&quot;headerlink&quot; title=&quot;观察&quot;&gt;&lt;/a&gt;观察&lt;/h2&gt;&lt;p&gt;“知识来源于对周围事件中相似处和重现情况的注意” – 特罗特&lt;br&gt;观察者往往不自觉地产生谬误。&lt;br&gt;有效的观察是指注意到某个事物，并通过将它和某个注意到的或已知的事物联系起来，赋予其意义。&lt;br&gt;观察到一切是不可能的，所以选定范围很重要，但是不代表我们需要忽略其他现象，尤其是特殊现象。&lt;/p&gt;
-&lt;h2 id=&quot;困难&quot;&gt;&lt;a href=&quot;#困难&quot; class=&quot;headerlink&quot; title=&quot;困难&quot;&gt;&lt;/a&gt;困难&lt;/h2&gt;&lt;p&gt;批判的思想方法和怀疑态度之间是泾渭分明的。我们所追求的是正直，客观的判断佐证，尽可能摆脱成见，尤其是没有事实支撑的成见，佐证不足时不宜轻易下结论。&lt;br&gt;研究的愉快比在于研究本身，因为其它方面的利益收获都是靠不住的。&lt;br&gt;人们对新设想有抗拒心理。&lt;/p&gt;
-&lt;h2 id=&quot;战略与战术&quot;&gt;&lt;a href=&quot;#战略与战术&quot; class=&quot;headerlink&quot; title=&quot;战略与战术&quot;&gt;&lt;/a&gt;战略与战术&lt;/h2&gt;&lt;p&gt;关于应用研究和纯理论研究各有什么价值，引起了一些争论。&lt;br&gt;战略与战术针对的是研究计划而言，第一种是研究工作的实际处理，比如跑一两个实验，这相当于战争中的战术，第二种是时间较长，规模较大的计划，称之为战略。第三种则是研究方针的计划，主要由一些委员会来管。&lt;br&gt;在决定了研究方向以后，也不应埋头苦干像一匹拉车的马，只见脚下的路而不见路旁的景色。也不应只见树木，而要常常见见森林，在全局上有一些把握。&lt;/p&gt;
-&lt;p&gt;关于纯理论研究和应用研究，作者认为这种分类较主观，不太严谨。通常所谓应用研究指的是，对具有实际意义的问题进行有目的的研究，而纯理论研究则完全是为了取得知识而取得知识。&lt;br&gt;在应用研究上，人们支持的是项目，而纯理论研究中，人们支持的是人。&lt;br&gt;许多新发现自应用研究而来。通常应用研究比纯理论研究更难出成果，因为研究人员必须坚持解决既定任务而不能随意追踪可能出现的、有希望的线索。并且，在应用研究方面，大多数的领域已被人探索过，很多简单的，显而易见的问题已被解决。&lt;br&gt;要解决实际问题，仅仅应用现有知识是不够的，我们经常会发现知识中需要填补的空白点。在应用研究中如果只限于解决现有问题而不去努力理解其内部原理，那么这种解决方法可能缺乏普遍意义，只能解决局部问题。&lt;br&gt;总的来说，我们既需要纯理论研究，又需要应用研究，二者是相辅相成的，互相促进的。&lt;br&gt;科学研究又分为探索性研究和发展性研究，相信我不说读者也能理解它们的意思。前者比较自由，富于冒险，有时重大发现，有时一无所得。而后者通常由按部就班，一丝不苟的科学家来做，他们安于巩固已有进展，在已开辟的领域取得小的进展，并通过付诸应用来充分利用已取得的成果，又称为“安全第一”的研究。不过，据我观察，大多数的研究应该算是后者，真正有成本，有人力去发展基础研究的机构相比于广大的发展性研究者来说显得有些小。&lt;/p&gt;
-&lt;p&gt;“边缘”研究指的是在两门学科交接领域内进行的研究，科学家如果有广泛的科学基础，能够运用并联系两种学科中的知识，则很容易出成果。甲学科中一项普通的事实，原理或技术应用到乙学科时，可能非常新奇而有效。&lt;/p&gt;
-&lt;p&gt;一切科学上的进展都是以先前的知识为基础的。&lt;br&gt;有的时候，决定一项研究的基本思想是来自应用或移植其它领域发现的新原理或新技术，这种取得进展的方法称为“移植法”。其有效，简便，在应用研究中用的最多。利用其他学科中采用的新技术是移植法的一种重要形式，所以说我们不应该对研究领域之外的至少是重大发展的技术毫无了解。&lt;br&gt;对于一个复杂过程，有时把这个过程分解成若干组成部分，分别加以考虑，这种方法常常很有帮助。&lt;br&gt;进行科学研究并无一定规律可循，研究人员应发挥自己的聪明才智，创新精神和判断能力，利用一切有用的方法。&lt;br&gt;经验给我们证明，充分理解了问题，就几乎一定能发现有用的事实。&lt;br&gt;当人们处于绝境时，另一个可以尝试的方法是：从头开始，从不同的角度看问题，找出新的途径。或者是与人讨论。&lt;br&gt;一般说来，研究一经开始，研究人员就应竭尽全力去完成，不宜频繁改变自己的任务，那样往往一事无成。&lt;br&gt;对研究的问题最好能定期回顾。但是，未获重要成果的研究工作则不宜发表，也不宜发表未得明确结论的研究工作，它使得科学期刊质量降低，并影响作者在有识之士心目中的声誉。&lt;br&gt;科学研究的一般战略是，研究时具有明确的目标，但同时保持警觉，注意发现并捕捉意外的时机。&lt;/p&gt;
-&lt;h2 id=&quot;科学家&quot;&gt;&lt;a href=&quot;#科学家&quot; class=&quot;headerlink&quot; title=&quot;科学家&quot;&gt;&lt;/a&gt;科学家&lt;/h2&gt;&lt;p&gt;对于科学家来说，两条最基本的品格是对科学的热爱和难以满足的好奇心，但是光有这些还不够，聪明的资质，内在的干劲，勤奋的工作态度和坚韧不拔的精神都是必不可少的要素。&lt;br&gt;普通的考试并不足以判断研究能力的强弱。&lt;br&gt;人大体分为两类，一类人惯于对外界的影响起强烈的反应，不轻易接受现成的思想，习惯对别人教给自己的一切提出疑问；第二类人则习惯接受正规教育所传授的知识，更容易适应生活，他们头脑里充满了公认的观点和固定的看法，凡接收知识首先默认他们是对的，作者认为，这类人或者接近这种被动型的人不适于从事研究工作。&lt;br&gt;并不是所有人都能从事研究工作而有所成就的，在科研上没有成就不代表在其他方面的智力与能力上有所缺陷，科研仅仅是职业的一种而已。&lt;br&gt;米斯认为，实用的科学发现和技术有三种不同的研究方法，（1）理论的综合 （2）观察和实验 （3）发明。&lt;br&gt;根据科学家的思想方法，可以分为两类，一种是推测型，他们利用想象和直觉来得到解决方法，然后凭借实验与观察，对自己的假说加以检验。另一种是条理型的，他们一步步谨慎推理，进展缓慢，收集了大部分资料后才得出解决方法。&lt;br&gt;巴甫洛夫对有志于科学的青年的忠告：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;循序渐进&lt;/li&gt;
-&lt;li&gt;谦虚&lt;/li&gt;
-&lt;li&gt;热情&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;和年轻人接触有助于保持观点的敏锐新鲜。&lt;/p&gt;
-&lt;h2 id=&quot;总结&quot;&gt;&lt;a href=&quot;#总结&quot; class=&quot;headerlink&quot; title=&quot;总结&quot;&gt;&lt;/a&gt;总结&lt;/h2&gt;&lt;p&gt;这本13万字的作品用5000多字简要总结了一下，之所以摘下这么多书中的句子，是因为本书提供了整个科学研究的方法论上的一些启发，相信对研究工作者和整个献身于科学工作或者工程工作的人们有所裨益。但是，书中只是给了一些要点和建议，并非对研究工作者提的要求，所以我们需要根据自己的情况来选择性的吸收，甚至完全撇开本书，仍然不妨碍研究工作者做出出色的成绩。所以，各取所需即可，希望能对迷惑的科研工作者或科研新手甚至广大工程人员有一定的启发，若如此，也不负本文了。&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;陈校长的悦读经典计划开出了一个非常不错的书单，包括了各个学科的经典书籍，经史子集，诸咸皆备，感觉可以看上两三年的了。这次抓到一本《科学研究的艺术》，看名字挺6的，于是借来看了看，有一些启发，可以与读者分享。&lt;/p&gt;
-&lt;p&gt;本书的作者是剑桥大学的一个动物病理学教授，名叫贝弗里
-    
-    </summary>
-    
-      <category term="读书 | Reading" scheme="http://whatbeg.com/categories/%E8%AF%BB%E4%B9%A6-Reading/"/>
-    
-    
-      <category term="读书" scheme="http://whatbeg.com/tags/%E8%AF%BB%E4%B9%A6/"/>
     
   </entry>
   

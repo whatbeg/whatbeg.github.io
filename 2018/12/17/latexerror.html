@@ -4,22 +4,41 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>Whatbeg&#39;s blog</title>
+    <title>Latex 错误集锦及使用技巧 | Whatbeg&#39;s blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="whatbeg">
     
 
     
-    <meta name="description" content="Stay hungry Stay foolish">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Whatbeg's blog">
-<meta property="og:url" content="http://whatbeg.com/page/8/index.html">
+    <meta name="description" content="本文记录LaTeX编译，使用过程中的一些错误及其解决方案。
+另外，还包括一些使用技巧，常见的元素使用方法等等。
+便于自己以及后来人查阅解决。
+我是留白。
+我是留白。
+Latex “Error: Extra alignment tab has been changed to \cr. “是因为\begin{tabular}后面的参数指定为 A 列，而实际排列了 B 列数据。（A!=B）
+解决方案：检">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Latex 错误集锦及使用技巧">
+<meta property="og:url" content="http://whatbeg.com/2018/12/17/latexerror.html">
 <meta property="og:site_name" content="Whatbeg's blog">
-<meta property="og:description" content="Stay hungry Stay foolish">
+<meta property="og:description" content="本文记录LaTeX编译，使用过程中的一些错误及其解决方案。
+另外，还包括一些使用技巧，常见的元素使用方法等等。
+便于自己以及后来人查阅解决。
+我是留白。
+我是留白。
+Latex “Error: Extra alignment tab has been changed to \cr. “是因为\begin{tabular}后面的参数指定为 A 列，而实际排列了 B 列数据。（A!=B）
+解决方案：检">
+<meta property="og:updated_time" content="2018-12-17T14:25:32.163Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Whatbeg's blog">
-<meta name="twitter:description" content="Stay hungry Stay foolish">
+<meta name="twitter:title" content="Latex 错误集锦及使用技巧">
+<meta name="twitter:description" content="本文记录LaTeX编译，使用过程中的一些错误及其解决方案。
+另外，还包括一些使用技巧，常见的元素使用方法等等。
+便于自己以及后来人查阅解决。
+我是留白。
+我是留白。
+Latex “Error: Extra alignment tab has been changed to \cr. “是因为\begin{tabular}后面的参数指定为 A 列，而实际排列了 B 列数据。（A!=B）
+解决方案：检">
 
     
     <link rel="alternative" href="/atom.xml" title="Whatbeg&#39;s blog" type="application/atom+xml">
@@ -62,255 +81,243 @@
 </div>
     </header>
     <div id="container">
-      <div id="main">
-
+      <div id="main" class="post" itemscope itemprop="blogPost">
   
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/2016/04/25/numpy.html" title="Numpy模块的一些方法收集" itemprop="url">
-  
-    <h1 itemprop="name">Numpy模块的一些方法收集</h1>
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
     
-     
-           <p itemprop="description" >最近经常需要用到Python矩阵计算处理模块Numpy，有些方法不是很熟悉，这里手机记录一下，备查备忘。
-矩阵对象的属性
-matrix.T transpose：返回矩阵的转置矩阵
-matrix.H hermitian (conjugate) 
-transpose：返回复数矩阵的共</p>
+      <a href="/2018/12/17/latexerror.html" title="Latex 错误集锦及使用技巧" itemprop="url">Latex 错误集锦及使用技巧</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="whatbeg" target="_blank" itemprop="author">whatbeg</a>
+		
+  <p class="article-time">
+    <time datetime="2018-12-17T14:24:28.000Z" itemprop="datePublished"> 发表于 2018-12-17</time>
+    <span id="busuanzi_container_page_pv">
+    总阅读<span id="busuanzi_value_page_pv"></span>次
+    </span>
+  </p>
+
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Latex-“Error-Extra-alignment-tab-has-been-changed-to-cr-“"><span class="toc-number">1.</span> <span class="toc-text">Latex “Error: Extra alignment tab has been changed to \cr. “</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#File-ended-while-scanning-use-of-writefile"><span class="toc-number">2.</span> <span class="toc-text">File ended while scanning use of \@writefile</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#批量注释、取消注释"><span class="toc-number">3.</span> <span class="toc-text">批量注释、取消注释</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#表格注释"><span class="toc-number">4.</span> <span class="toc-text">表格注释</span></a></li></ol>
+		
+		</div>
+		
+		<p>本文记录LaTeX编译，使用过程中的一些错误及其解决方案。</p>
+<p>另外，还包括一些使用技巧，常见的元素使用方法等等。</p>
+<p>便于自己以及后来人查阅解决。</p>
+<p>我是留白。</p>
+<p>我是留白。</p>
+<h3 id="Latex-“Error-Extra-alignment-tab-has-been-changed-to-cr-“"><a href="#Latex-“Error-Extra-alignment-tab-has-been-changed-to-cr-“" class="headerlink" title="Latex “Error: Extra alignment tab has been changed to \cr. “"></a>Latex “Error: Extra alignment tab has been changed to \cr. “</h3><p>是因为<code>\begin{tabular}</code>后面的参数指定为 A 列，而实际排列了 B 列数据。（A!=B）</p>
+<p>解决方案：检查<code>\begin{tabular}</code>后面的<code>r|c|l</code>数量够不够实际列数。</p>
+<h3 id="File-ended-while-scanning-use-of-writefile"><a href="#File-ended-while-scanning-use-of-writefile" class="headerlink" title="File ended while scanning use of \@writefile"></a>File ended while scanning use of \@writefile</h3><p><code>.aux</code>不完整，可能是上次编译没通过。</p>
+<p>解决方案：删除掉.aux文件，重新编译；如果依然不行，将.tex和其他图像文件、参考文献保留外，由系统编译生成的文件通通删掉，重新编译。</p>
+<p>使用技巧</p>
+<h3 id="批量注释、取消注释"><a href="#批量注释、取消注释" class="headerlink" title="批量注释、取消注释"></a>批量注释、取消注释</h3><p>Ctrl+Shift+Alt+Right：批量注释</p>
+<p>Ctrl+Shift+Alt+Left：取消注释</p>
+<h3 id="表格注释"><a href="#表格注释" class="headerlink" title="表格注释"></a>表格注释</h3><figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">\<span class="name">begin</span><span class="string">&#123;table*&#125;</span><span class="string">[htbp]</span></span></span><br><span class="line">	<span class="tag">\<span class="name">caption</span><span class="string">&#123;xx&#125;</span></span></span><br><span class="line">	<span class="tag">\<span class="name">begin</span><span class="string">&#123;center&#125;</span></span></span><br><span class="line">    <span class="tag">\<span class="name">scalebox</span><span class="string">&#123;0.6&#125;</span><span class="string">&#123;</span><br><span class="line">		\begin&#123;tabular&#125;</span><span class="string">&#123;rccccccccccc&#125;</span></span></span><br><span class="line">			<span class="comment">%\toprule</span></span><br><span class="line">			<span class="tag">\<span class="name">hline</span></span></span><br><span class="line">			<span class="tag">\<span class="name">multirow</span><span class="string">&#123;2&#125;</span><span class="string">&#123;*&#125;</span><span class="string">&#123;xx&#125;</span></span>  &amp; xx &amp;...  <span class="tag">\<span class="name">\</span></span></span><br><span class="line">			... <span class="tag">\<span class="name">tnote</span><span class="string">&#123;*&#125;</span></span>   <span class="tag">\<span class="name">\</span></span></span><br><span class="line">			<span class="comment">%\midrule</span></span><br><span class="line">            <span class="tag">\<span class="name">hline</span></span></span><br><span class="line">			xxx</span><br><span class="line">			<span class="tag">\<span class="name">hline</span></span></span><br><span class="line">			<span class="comment">%\bottomrule</span></span><br><span class="line">		<span class="tag">\<span class="name">end</span><span class="string">&#123;tabular&#125;</span></span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="tag">\<span class="name">begin</span><span class="string">&#123;tablenotes&#125;</span></span></span><br><span class="line">        <span class="tag">\<span class="name">footnotesize</span></span></span><br><span class="line">        <span class="tag">\<span class="name">item</span><span class="string">[*]</span></span> * the note you wanna add</span><br><span class="line">    <span class="tag">\<span class="name">end</span><span class="string">&#123;tablenotes&#125;</span></span></span><br><span class="line">    <span class="tag">\<span class="name">label</span><span class="string">&#123;xx&#125;</span></span></span><br><span class="line">	<span class="tag">\<span class="name">end</span><span class="string">&#123;center&#125;</span></span></span><br><span class="line"><span class="tag">\<span class="name">end</span><span class="string">&#123;table*&#125;</span></span></span><br></pre></td></tr></table></figure>  
+	</div>
+
+
+    
+	<!-- css -->
+	<style type="text/css">
+	    .center {
+	        text-align: center;
+	    }
+	    .hidden {
+	        display: none;
+	    }
+		.donate_bar a.btn_donate{
+			display: inline-block;
+			width: 82px;
+			height: 82px;
+			background: url("http://7xsl28.com1.z0.glb.clouddn.com/btn_reward.gif") no-repeat;
+			_background: url("http://7xsl28.com1.z0.glb.clouddn.com/btn_reward.gif") no-repeat;
+
+			<!-- http://img.t.sinajs.cn/t5/style/images/apps_PRF/e_media/btn_reward.gif
+			     因为本 hexo 生成的博客所用的 theme 的 a:hover 带动画效果，
+				 为了在让打赏按钮显示效果正常 而 添加了以下几行 css，
+				 嵌入其它博客时不一定要它们。 -->
+			-webkit-transition: background 0s;
+			-moz-transition: background 0s;
+			-o-transition: background 0s;
+			-ms-transition: background 0s;
+			transition: background 0s;
+			<!-- /让打赏按钮的效果显示正常 而 添加的几行 css 到此结束 -->
+		}
+
+		.donate_bar a.btn_donate:hover{ background-position: 0px -82px;}
+		.donate_bar .donate_txt {
+			display: block;
+			color: #9d9d9d;
+			font: 14px/2 "Microsoft Yahei";
+		}
+		.bold{ font-weight: bold; }
+	</style>
+	<!-- /css -->
+
+    <!-- Donate Module -->
+    <div id="donate_module">
+
+	<!-- btn_donate & tips -->
+	<div id="donate_board" class="donate_bar center">
+	    <br>
+	    ------------------------------------------------------------------------------------------------------------------------------
+	    <br>
+		<a id="btn_donate" class="btn_donate" target="_self" href="javascript:;" title="Donate 打赏"></a>
+		<span class="donate_txt">
+			我要小额赞助，助作者写出更好的文章！
+		</span>
+			
+		
+	</div>
+	<!-- /btn_donate & tips -->
+
+	<!-- donate guide -->
+    
+	<div id="donate_guide" class="donate_bar center hidden">
+        <br>
+	    ------------------------------------------------------------------------------------------------------------------------------
+	    <br>
+	    
+	    <div width="100%" align="center"><div name="dashmain" id="dash-main-id-87895f" class="dash-main-3 87895f-0.99"></div></div>
+		<script type="text/javascript" charset="utf-8" src="http://www.dashangcloud.com/static/ds.js"></script>
+		
+
+		<a href="http://7xsl28.com1.z0.glb.clouddn.com/wechatpay.png" title="用微信扫一扫哦~" class="fancybox" rel="article0">
+			<img src="http://7xsl28.com1.z0.glb.clouddn.com/wechatpay.png" title="微信打赏 Donate" height="190px" width="auto"/>
+		</a>
         
-    
-    <time datetime="2016-04-25T12:36:55.000Z" itemprop="datePublished">2016-04-25</time>
-    <span class="post-count">1,183</span>
-  </a>
-</section>
+        &nbsp;&nbsp;
 
+		<a href="http://7xsl28.com1.z0.glb.clouddn.com/alipay.jpg" title="用支付宝扫一扫即可~" class="fancybox" rel="article0">
+			<img src="http://7xsl28.com1.z0.glb.clouddn.com/alipay.jpg" title="支付宝打赏 Donate" height="190px" width="auto"/>
+		</a>
 
+		<span class="donate_txt">
+			我要小额赞助，助作者写出更好的文章！
+		</span>
 
+	</div>
+	<!-- /donate guide -->
 
+	<!-- donate script -->
+	<script type="text/javascript">
+		document.getElementById('btn_donate').onclick = function() {
+			$('#donate_board').addClass('hidden');
+			$('#donate_guide').removeClass('hidden');
+		}
 
+		function donate_on_web(){
+			$('#donate').submit();
+        }
 
+		var original_window_onload = window.onload;
+        window.onload = function () {
+            if (original_window_onload) {
+                original_window_onload();
+            }
+            document.getElementById('donate_board_wdg').className = 'hidden';
+		}
+	</script>
+	<!-- /donate script -->
+</div>
+<!-- /Donate Module -->
+   
+
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
   
-<section class="post" itemscope itemprop="blogitem">
+  <span></span> <a href="/categories/错误解决与优化-Err-Opt/">错误解决与优化 | Err&Opt</a>
+  </div>
+
+
+  <div class="article-tags">
   
-    <a href="/2016/04/25/latexsyntax.html" title="Latex/MathJax公式的一些语法" itemprop="url">
-  
-    <h1 itemprop="name">Latex/MathJax公式的一些语法</h1>
-    
-     
-           <p itemprop="description" >Latex的一些公式，列一下方便查阅。图来自《一份不太简短的LATEX2介绍》
-数学模式重音符号(带帽符)
-希腊字母
-二元关系
-二元运算符
-大运算符
-箭头
-定界符
-大定界符
-其他符号
-非数学符号
-AMS定界符
-AMS希腊和希伯来字母
-AMS二元关系
-AMS箭头
-AMS二元否定关系</p>
-        
-    
-    <time datetime="2016-04-25T04:53:28.000Z" itemprop="datePublished">2016-04-25</time>
-    <span class="post-count">3,869</span>
-  </a>
-</section>
-
-
-
-
-
-
-  
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/2016/04/23/decisiontree.html" title="如何实现并应用决策树算法？" itemprop="url">
-  
-    <h1 itemprop="name">如何实现并应用决策树算法？</h1>
-    
-     
-           <p itemprop="description" >本文对决策树算法进行简单的总结和梳理，并对著名的决策树算法ID3(Iterative Dichotomiser 迭代二分器)进行实现，实现采用Python语言，一句老梗，“人生苦短，我用Python”，Python确实能够省很多语言方面的事，从而可以让我们专注于问题和解决问题的逻</p>
-        
-    
-    <time datetime="2016-04-23T12:35:01.000Z" itemprop="datePublished">2016-04-23</time>
-    <span class="post-count">12,532</span>
-  </a>
-</section>
-
-
-
-
-
-
-  
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/2016/04/23/matplotlib-desiciontree.html" title="利用matplotlib画决策树" itemprop="url">
-  
-    <h1 itemprop="name">利用matplotlib画决策树</h1>
-    
-     
-           <p itemprop="description" >利用matplotlib进行决策树可视化代码来源于《机器学习实战》，具体讲解可参见这本书。部分代码解释可见这里讲的比较清楚。
-treePlot.py
-12345678910111213141516171819202122232425262728293031323334353637</p>
-        
-    
-    <time datetime="2016-04-23T12:05:51.000Z" itemprop="datePublished">2016-04-23</time>
-    <span class="post-count">1,618</span>
-  </a>
-</section>
-
-
-
-
-
-
-  
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/2016/04/22/xiguadataset.html" title="《机器学习》西瓜数据集汇总" itemprop="url">
-  
-    <h1 itemprop="name">《机器学习》西瓜数据集汇总</h1>
-    
-     
-           <p itemprop="description" >1.西瓜数据集2.0123456789101112131415161718编号,色泽,根蒂,敲声,纹理,脐部,触感,好瓜1,青绿,蜷缩,浊响,清晰,凹陷,硬滑,是2,乌黑,蜷缩,沉闷,清晰,凹陷,硬滑,是3,乌黑,蜷缩,浊响,清晰,凹陷,硬滑,是4,青绿,蜷缩,沉闷,清晰,凹陷,</p>
-        
-    
-    <time datetime="2016-04-22T08:47:11.000Z" itemprop="datePublished">2016-04-22</time>
-    <span class="post-count">2,323</span>
-  </a>
-</section>
-
-
-
-
-
-
-  
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/2016/04/20/blogopt420.html" title="Hexo博客Jacman主题优化(一)--访问计数等" itemprop="url">
-  
-    <h1 itemprop="name">Hexo博客Jacman主题优化(一)--访问计数等</h1>
-    
-     
-           <p itemprop="description" >1.新增博客访问量统计和文章访问量统计采用 不蒜子 极简计数器在 
-
-themes/你的主题/layout/_partial/footer.ejs
-
-中最后面添加脚本：12&amp;lt;script async src=&quot;https://dn-lbstatics.qbox.me/bus</p>
-        
-    
-    <time datetime="2016-04-20T05:37:17.000Z" itemprop="datePublished">2016-04-20</time>
-    <span class="post-count">1,981</span>
-  </a>
-</section>
-
-
-
-
-
-
-  
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/2016/04/19/knn1.html" title="kNN分类器在西瓜数据集3.0$\alpha$上的结果" itemprop="url">
-  
-    <h1 itemprop="name">kNN分类器在西瓜数据集3.0$\alpha$上的结果</h1>
-    
-     
-           <p itemprop="description" >kNN分类算法一种常用的监督学习算法，k-Nearest Neighbor，k-近邻算法。算法思想如下：
-
-选定参数k，对于样本X，选取距离X最近的k个样本，取这k个样本出现最多的类别作为预测的此类类别。
-
-它没有显式的训练过程，有数据就可以开始进行测试或者预测了，是一种“懒惰学</p>
-        
-    
-    <time datetime="2016-04-19T12:45:57.000Z" itemprop="datePublished">2016-04-19</time>
-    <span class="post-count">2,216</span>
-  </a>
-</section>
-
-
-
-
-
-
-  
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/2016/04/14/logincnblogs.html" title="【模拟登录】(二) 加密与重放方式登录 -以模拟登录博客园为例" itemprop="url">
-  
-    <h1 itemprop="name">【模拟登录】(二) 加密与重放方式登录 -以模拟登录博客园为例</h1>
-    
-     
-           <p itemprop="description" >Python模拟登录第一弹见：【Python数据分析】Python模拟登录(一) requests.Session应用上次的登录是最基本的，全部是明文，而且在浏览器中就可以看到POST的数据。接下来我们来个稍微难一点的–模拟登录博客园(http://www.cnblogs.com</p>
-        
-    
-    <time datetime="2016-04-14T07:37:53.000Z" itemprop="datePublished">2016-04-14</time>
-    <span class="post-count">1,249</span>
-  </a>
-</section>
-
-
-
-
-
-
-  
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/2016/04/14/cet4.html" title="【数据分析】四级成绩分布 -matplotlib,xlrd模块使用" itemprop="url">
-  
-    <h1 itemprop="name">【数据分析】四级成绩分布 -matplotlib,xlrd模块使用</h1>
-    
-     
-           <p itemprop="description" >最近获得了一些四级成绩数据，大概500多个，于是突发奇想是否能够看看这些成绩数据是否满足所谓的正态分布呢？说干就干，于是有了这篇文章。文章顺带介绍了xlrd模块的一些用法和matplotlib画自定义数据的条形图和随机的条形图的一些方法，并且提供了一些相关链接，可作为学习matp</p>
-        
-    
-    <time datetime="2016-04-14T03:20:49.000Z" itemprop="datePublished">2016-04-14</time>
-    <span class="post-count">3,036</span>
-  </a>
-</section>
-
-
-
-
-
-
-  
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/2016/04/12/prisonbreak.html" title="看《越狱》" itemprop="url">
-  
-    <h1 itemprop="name">看《越狱》</h1>
-    
-     
-           <p itemprop="description" >最近在看《越狱》这部美剧，鉴于有几个朋友谈论到这部剧都是一副恨不得看他十遍八遍的表情，并且极力推荐，再加上最近没什么剧看，《太阳的后裔》也还可以，但是更新太慢了，于是就点开了这部剧。到现在已经看到第二季一半了，闲扯几句感受。
-人物我觉得这部剧的亮点就是两个，人物，还有后面的剧情。</p>
-        
-    
-    <time datetime="2016-04-12T11:39:33.000Z" itemprop="datePublished">2016-04-12</time>
-    <span class="post-count">1,201</span>
-  </a>
-</section>
-
-
-
-
-
-
-
-  <nav id="page-nav" class="clearfix unexpand">
-    <a class="extend prev" rel="prev" href="/page/7/"><span></span>Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/9/">Next<span></span></a>
-  </nav>
+  <span></span> <a href="/tags/Latex/">Latex</a>
+  </div>
 
 </div>
+
+
+
+	<div class="article-share" id="share">
+	
+	<div class="share-jiathis">
+	  
+<div class="jiathis_style_24x24">
+	<a class="jiathis_button_tsina"></a>
+	<a class="jiathis_button_weixin"></a>
+	<a class="jiathis_button_tqq"></a>
+	<a class="jiathis_button_qzone"></a>
+	<a class="jiathis_button_douban"></a>
+	<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+    var jiathis_config={
+    data_track_clickback:true,
+    sm:"copy,renren,cqq",
+    pic:"",
+    summary:"",
+     ralateuid:{"tsina":"husuche## e.g. 2176287895 Your weibo id,It will be used in share button."},hideMore:false}
+    
+  </script> 
+<script type="text/javascript" src="//v3.jiathis.com/code/jia.js?uid=2094149
+2094149" charset="utf-8"></script>      
+
+	 </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/2018/12/17/scalagrammar.html"  title="Scala语法简摘">
+ <strong>下一篇：</strong><br/> 
+ <span>Scala语法简摘
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+<section id="comments" class="comment">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+
+</div>  
       <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <aside class="clearfix">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Latex-“Error-Extra-alignment-tab-has-been-changed-to-cr-“"><span class="toc-number">1.</span> <span class="toc-text">Latex “Error: Extra alignment tab has been changed to \cr. “</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#File-ended-while-scanning-use-of-writefile"><span class="toc-number">2.</span> <span class="toc-text">File ended while scanning use of \@writefile</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#批量注释、取消注释"><span class="toc-number">3.</span> <span class="toc-text">批量注释、取消注释</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#表格注释"><span class="toc-number">4.</span> <span class="toc-text">表格注释</span></a></li></ol>
+ 
+ </aside>
+  </div>
 
 <div id="asidepart">
 <div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
@@ -569,6 +576,11 @@ $(document).ready(function(){
     o.css("top",Math.max(80,260-$(this).scrollTop()));
   });
   
+        getSize();
+        if (myWidth >= 1024) {
+          c.click();
+        }
+  
   $(window).resize(function(){
     getSize(); 
     if (myWidth >= 1024) {
@@ -577,8 +589,36 @@ $(document).ready(function(){
       m.removeClass('moveMain');
       a.css('display', 'block').removeClass('fadeOut');
       o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
         
     }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
   });
 });
 </script>
@@ -586,6 +626,26 @@ $(document).ready(function(){
 
 
 
+
+<script type="text/javascript">
+
+var disqus_shortname = 'whatbeg';
+
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+</script>
 
 
 
@@ -692,8 +752,7 @@ var _hmt = _hmt || [];
     s.parentNode.insertBefore(bp, s);
 })();
 </script>
-  
   </body>
- </html>
+</html>
 
 
