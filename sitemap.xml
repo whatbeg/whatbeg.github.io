@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://whatbeg.com/about/index.html</loc>
+    
+    <lastmod>2019-01-04T06:49:04.869Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://whatbeg.com/2019/01/04/algorithmpearls.html</loc>
     
     <lastmod>2019-01-04T04:16:25.124Z</lastmod>
@@ -19,13 +26,6 @@
     <loc>http://whatbeg.com/2019/01/04/softskills.html</loc>
     
     <lastmod>2019-01-04T03:55:38.854Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://whatbeg.com/about/index.html</loc>
-    
-    <lastmod>2018-12-23T07:06:47.029Z</lastmod>
     
   </url>
   
