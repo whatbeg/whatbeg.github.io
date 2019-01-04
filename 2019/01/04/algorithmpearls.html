@@ -1,0 +1,822 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>算法拾珠（二） | Whatbeg&#39;s blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="whatbeg">
+    
+
+    
+    <meta name="description" content="不知怎么的把算法拾珠（一）发到公众号上去了，底稿也删了，所以算法拾珠（一）只能见公众号文章了。
+本文记录了三种算法问题的基本问题和一系列扩展问题（followup），可供深入理解这几类问题的解法。
+这三类问题包括：
+
+X sum问题：一个序列中取X个数字，使它们的和凑成定值。股票买卖问题：一段连续天数，股票有价格可以买卖，问最大获利。链表环问题：链表有环的条件，检测和分析。
+
+X sum 问题1)">
+<meta property="og:type" content="article">
+<meta property="og:title" content="算法拾珠（二）">
+<meta property="og:url" content="http://whatbeg.com/2019/01/04/algorithmpearls.html">
+<meta property="og:site_name" content="Whatbeg's blog">
+<meta property="og:description" content="不知怎么的把算法拾珠（一）发到公众号上去了，底稿也删了，所以算法拾珠（一）只能见公众号文章了。
+本文记录了三种算法问题的基本问题和一系列扩展问题（followup），可供深入理解这几类问题的解法。
+这三类问题包括：
+
+X sum问题：一个序列中取X个数字，使它们的和凑成定值。股票买卖问题：一段连续天数，股票有价格可以买卖，问最大获利。链表环问题：链表有环的条件，检测和分析。
+
+X sum 问题1)">
+<meta property="og:updated_time" content="2019-01-04T04:16:25.124Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="算法拾珠（二）">
+<meta name="twitter:description" content="不知怎么的把算法拾珠（一）发到公众号上去了，底稿也删了，所以算法拾珠（一）只能见公众号文章了。
+本文记录了三种算法问题的基本问题和一系列扩展问题（followup），可供深入理解这几类问题的解法。
+这三类问题包括：
+
+X sum问题：一个序列中取X个数字，使它们的和凑成定值。股票买卖问题：一段连续天数，股票有价格可以买卖，问最大获利。链表环问题：链表有环的条件，检测和分析。
+
+X sum 问题1)">
+
+    
+    <link rel="alternative" href="/atom.xml" title="Whatbeg&#39;s blog" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/w.ico">
+    
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Whatbeg&#39;s blog">Whatbeg&#39;s blog</a></h1>
+				<h2 class="blog-motto">当你的才华撑不起你的野心时，就应该静下心来好好学习。</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">首页(Home)</a></li>
+					
+						<li><a href="/archives">归档(Archives)</a></li>
+					
+						<li><a href="/tags">标签(Tags)</a></li>
+					
+						<li><a href="/categories">分类(Categories)</a></li>
+					
+						<li><a href="/about">关于(About)</a></li>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2019/01/04/algorithmpearls.html" title="算法拾珠（二）" itemprop="url">算法拾珠（二）</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="whatbeg" target="_blank" itemprop="author">whatbeg</a>
+		
+  <p class="article-time">
+    <time datetime="2019-01-04T03:54:06.000Z" itemprop="datePublished"> 发表于 2019-01-04</time>
+    <span id="busuanzi_container_page_pv">
+    总阅读<span id="busuanzi_value_page_pv"></span>次
+    </span>
+  </p>
+
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#X-sum-问题"><span class="toc-number">1.</span> <span class="toc-text">X sum 问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#股票买卖问题"><span class="toc-number">2.</span> <span class="toc-text">股票买卖问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#链表环问题"><span class="toc-number">3.</span> <span class="toc-text">链表环问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考资料"><span class="toc-number">4.</span> <span class="toc-text">参考资料</span></a></li></ol>
+		
+		</div>
+		
+		<p>不知怎么的把算法拾珠（一）发到公众号上去了，底稿也删了，所以算法拾珠（一）只能见公众号文章了。</p>
+<p>本文记录了三种算法问题的基本问题和一系列扩展问题（followup），可供深入理解这几类问题的解法。</p>
+<p>这三类问题包括：</p>
+<blockquote>
+<p>X sum问题：一个序列中取X个数字，使它们的和凑成定值。<br>股票买卖问题：一段连续天数，股票有价格可以买卖，问最大获利。<br>链表环问题：链表有环的条件，检测和分析。</p>
+</blockquote>
+<h2 id="X-sum-问题"><a href="#X-sum-问题" class="headerlink" title="X sum 问题"></a>X sum 问题</h2><p>1) Two Sum, LeetCode #1</p>
+<p>我当初的解法：排序，二分法<br>最优解法：一边遍历，一边插入、查询hashmap，O(n)复杂度，O(n)空间</p>
+<p>2) 3Sum, LeetCode #15</p>
+<p>我的解法：排序，从左到右枚举，然后用双指针往中间移动<br>最优解法：目前看到的最优解法如上，O(n^2logn)时间，O(1)空间</p>
+<p>3) 3Sum Cloest, LeetCode #16</p>
+<p>解法：类似3Sum那样去找，只是每次记录一下与target的差距，最后取一个最小值。O(n2logn)时间，O(1)空间</p>
+<p>4) 4Sum, LeetCode #18</p>
+<p>解法: 还是双指针的思想，只不过比3Sum多一层而已。O(n^3)时间，O(1)空间</p>
+<p>*5) 4Sum II, LeetCode #454</p>
+<p>解法：首先A,B,C,D都排序，枚举A，B的元素，然后还是双指针的思想，一个指针在C从左往右，一个指针在D从右往左。<br>这题比较偏了，不属于常规kSum，不做重点考虑。</p>
+<blockquote>
+<p>由此可得，k-Sum问题当k==2时可以用hashmap的额外空间以O(n)的复杂度解决。而当k&gt;2时可以用递归以及双指针法来解决。</p>
+</blockquote>
+<figure class="highlight nimrod"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">// kSum通用代码</span><br><span class="line"><span class="built_in">void</span> kSum(<span class="keyword">const</span> vector&lt;<span class="built_in">int</span>&gt;&amp; nums, <span class="built_in">int</span> k, <span class="built_in">int</span> target, <span class="built_in">int</span> <span class="keyword">from</span>, <span class="built_in">int</span> <span class="keyword">end</span>, vector&lt;<span class="built_in">int</span>&gt;&amp; cur, vector&lt;vector&lt;<span class="built_in">int</span>&gt; &gt;&amp; <span class="literal">result</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (k &lt; <span class="number">2</span>) <span class="keyword">return</span>;</span><br><span class="line">        <span class="keyword">if</span> (k == <span class="number">2</span>) &#123;</span><br><span class="line">            <span class="built_in">int</span> l = <span class="keyword">from</span>, r = <span class="keyword">end</span>;</span><br><span class="line">            <span class="keyword">while</span> (l &lt; r) &#123;</span><br><span class="line">                <span class="keyword">if</span> (nums[l] + nums[r] == target) &#123;</span><br><span class="line">                    vector&lt;<span class="built_in">int</span>&gt; tmp(cur);</span><br><span class="line">                    tmp.push_back(nums[l]);</span><br><span class="line">                    tmp.push_back(nums[r]);</span><br><span class="line">                    <span class="literal">result</span>.push_back(tmp);</span><br><span class="line">                    <span class="keyword">while</span> (l &lt; r &amp;&amp; nums[l] == nums[l+<span class="number">1</span>]) l++;</span><br><span class="line">                    <span class="keyword">while</span> (l &lt; r &amp;&amp; nums[r] == nums[r-<span class="number">1</span>]) r--;</span><br><span class="line">                    l++, r--;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span> <span class="keyword">if</span> (nums[l] + nums[r] &gt; target)</span><br><span class="line">                    r--;</span><br><span class="line">                <span class="keyword">else</span></span><br><span class="line">                    l++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="built_in">int</span> i=<span class="keyword">from</span>;i&lt;=<span class="keyword">end</span>-k+<span class="number">1</span>;i++) &#123;</span><br><span class="line">                <span class="keyword">if</span> (i &gt; <span class="keyword">from</span> &amp;&amp; nums[i] == nums[i-<span class="number">1</span>]) <span class="keyword">continue</span>;</span><br><span class="line">                cur.push_back(nums[i]);</span><br><span class="line">                kSum(nums, k-<span class="number">1</span>, target-nums[i], i+<span class="number">1</span>, <span class="keyword">end</span>, cur, <span class="literal">result</span>);</span><br><span class="line">                cur.pop_back();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="股票买卖问题"><a href="#股票买卖问题" class="headerlink" title="股票买卖问题"></a>股票买卖问题</h2><p>给定n天的股票价格数据，n天内，买卖股票一次或多次，获得最大收益。</p>
+<p>1) Best Time to Buy and Sell Stock, LeetCode #121</p>
+<p>要求买卖一次股票，获得最大收益。<br>解法：贪心，即可，可以把股价看做折线图，只能买卖一次，所以我们只需找最低的波谷和最高的波峰，相减即得。当然要保证波峰在波谷之后。<br>具体的，从左往右扫描，维护当前最小值，每次用当天的股价减去目前最小股价（保证波峰在波谷之后），求得一个max值，即为答案。<br>复杂度O(n), O(1)，已经最优了。</p>
+<p>2) Best Time to Buy and Sell Stock II, LeetCode #122</p>
+<p>可以买卖任意次，获得最大收益。<br>解法：还是把股价波动看成折线图，既然可以无线买，那么我们肯定是贪心地，每个上升斜坡的钱都要挣到。<br>所以，具体的，只要price[i] &gt; price[i+1]，一定可以挣这份钱。最大收益就是这样的钱的累加。<br>复杂度O(n), O(1)，也是最优。</p>
+<p>3) Best Time to Buy and Sell Stock III, LeetCode #123</p>
+<p>至多买卖两次。<br>我的解法：类似前面的思路，无非是要找最多两个不重叠的波谷-波峰对，我们枚举分界点，求出分界点左边的最优波谷-波峰和右边的最优波谷-波峰，相加为答案。<br>具体的，用O(n)的空间存储前缀的最优波谷-波峰，同样用O(n)的空间存储后缀的最优波谷-波峰，最后枚举分界点，两个利润一相加为答案。<br>此解法复杂度为O(n), O(n)，需要一定空间来存储。</p>
+<p>更优解法：<br>动态规划的思想。<br>每天只可能是种状态之一：持有第一支，卖出第一支，持有第二支，卖出第二支。<br>dp[i][state]表示到第i天，状态为state所获的最大收益。<br>则<br><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">dp[<span class="string">i</span>][<span class="symbol">sell2</span>] = max(dp[<span class="string">i-1</span>][<span class="symbol">sell2</span>], dp[<span class="string">i-1</span>][<span class="symbol">hold2</span>]+i)</span><br><span class="line">dp[<span class="string">i</span>][<span class="symbol">hold2</span>] = max(dp[<span class="string">i-1</span>][<span class="symbol">hold2</span>], dp[<span class="string">i-1</span>][<span class="symbol">sell1</span>]-i)</span><br><span class="line">dp[<span class="string">i</span>][<span class="symbol">sell1</span>] = max(dp[<span class="string">i-1</span>][<span class="symbol">sell1</span>], dp[<span class="string">i-1</span>][<span class="symbol">hold1</span>]+i)</span><br><span class="line">dp[<span class="string">i</span>][<span class="symbol">hold1</span>] = max(dp[<span class="string">i-1</span>][<span class="symbol">hold1</span>], 0-i)</span><br><span class="line"></span><br><span class="line">return dp[<span class="string">n</span>][<span class="symbol">sell2</span>]</span><br></pre></td></tr></table></figure></p>
+<p>由于dp[i][states]只与dp[i-1][states]有关，所以可以直接用一个变量表示每种状态，所以可以做到O(n), O(1)。</p>
+<p>4) Best Time to Buy and Sell Stock IV, LeetCode #188</p>
+<p>至多买卖k次。<br>类似上题的思想，动态规划法，只是4种状态变成2k种状态而已。<br>dp[i][k][h]表示到第i天，目前操作股票（持有/卖出）是第k支，操作状态为h（h=0:持有，h=1:卖出）。<br>则有如下转移方程：<br><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">dp[<span class="string">i</span>][<span class="symbol">k</span>][<span class="string">1</span>] = max(dp[<span class="string">i-1</span>][<span class="symbol">k</span>][<span class="string">1</span>], dp[<span class="string">i-1</span>][<span class="symbol">k</span>][<span class="string">0</span>]+prices[i]);</span><br><span class="line">dp[<span class="string">i</span>][<span class="symbol">k</span>][<span class="string">0</span>] = max(dp[<span class="string">i-1</span>][<span class="symbol">k</span>][<span class="string">0</span>], dp[<span class="string">i-1</span>][<span class="symbol">k-1</span>][<span class="string">1</span>]-prices[i]);</span><br></pre></td></tr></table></figure></p>
+<p>同样，由于第一维(i)只与i-1有关，所以该存储也可省去。<br>复杂度O(kn)，空间O(k)。<br>这题要注意的是，当k&gt;=n/2时，实际上等价于没有次数限制的情况。对应题(2)。</p>
+<p>3) Best Time to Buy and Sell Stock with Cooldown, LeetCode #309</p>
+<p>可以无限次买卖，但是每次卖出后都需要隔一天才能再次买入。</p>
+<p>解法：<br>动态规划求解，由于不限买卖次数，只是需要隔一天。<br>我们令每天只有两种状态：持有(hold)，套现(cash)，其中持有包括不买卖和买入。<br>cash[i]表示第i天，最大现金流，有两个子问题：一是之前就已经套现，而是之前持有，今天套现。去这两者的最大值为今天最大现金流。持有类似。<br>那么有如下方程：<br><figure class="highlight gcode"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 套现取 |之前套现| 与 |之前持有，今天套现| 二者的最大值，后者要减去一定的手续费。</span></span><br><span class="line">cash[i] = max<span class="comment">(cash[i-1], hold[i-1]+prices[i]-fee)</span></span><br><span class="line"><span class="comment">// 持有取 |之前持有| 与 |前天及之前套现，今天买入| 二者的最大值。</span></span><br><span class="line">hold[i] = max<span class="comment">(hold[i-1], cash[i-2]-prices[i])</span></span><br></pre></td></tr></table></figure></p>
+<p>4) Best Time to Buy and Sell Stock with Transaction Fee, LeetCode #714</p>
+<p>可以无限次买卖，但是每次卖出操作都有手续费fee，求最大收益。</p>
+<p>解法：<br>动态规划求解，由于不像限制买卖次数的题，我们不能去照样维护一个dp[k][2]，因为不知道k是多少，我们也无需考虑这次买卖是第几支，因为不限制随便买。<br>当然，也可以令k为n/2，但此时我们用另一种方法求解。<br>我们令每天只有两种状态：持有(hold)，套现(cash)，其中持有包括不买卖和买入。<br>那么有如下方程：<br><figure class="highlight gcode"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 套现取 |之前套现| 与 |之前持有，今天套现| 二者的最大值，后者要减去一定的手续费。</span></span><br><span class="line">cash[i] = max<span class="comment">(cash[i-1], hold[i-1]+prices[i]-fee)</span></span><br><span class="line"><span class="comment">// 持有取 |之前持有| 与 |之前套现，今天买入| 二者的最大值。</span></span><br><span class="line">hold[i] = max<span class="comment">(hold[i-1], cash[i-1]-prices[i])</span></span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>总而言之，解决股票类问题，如果简单的话，可以直接贪心思想来做，当然该贪心方法也是动态规划的特例。 如果稍微复杂一点，那么可以用动态规划来做。 只要把握好每天的状态，就好定制状态转移方程了。</p>
+</blockquote>
+<h2 id="链表环问题"><a href="#链表环问题" class="headerlink" title="链表环问题"></a>链表环问题</h2><p>链表环问题是比较常问的一类问题。我们系统梳理一下。</p>
+<p>1) 判断单链表是否有环</p>
+<p>解法：解法已经烂大街了，设置两个指针p1, p2，一个每次走一步，一个每次走两步，最后如果 p1 == p2，说明有环，如果其中一个为NULL，则没有环。</p>
+<p>2) 证明这样做的正确性</p>
+<ul>
+<li>如果没有环，走得快的那个一定会率先走到NULL，结束。</li>
+<li>如果有环，那么需证明，p1, p2 一定会相遇，从而得出有环的结论。<br>考虑 p1, p2 的距离，因为如果有环，最后 p1, p2 都会进入环，如果进入环的时候他们的距离为d，由于 p2 比 p1 快一步，所以他们的距离每次都会缩短1，所以他们的距离会呈现 d,d-1,d-2,…1,0 这样的趋势，最终距离为 0，相等判环。<br>且由于d &lt; r（环长），所以，相遇的时候，p1绝对还没有绕环一圈。</li>
+</ul>
+<p>3) 求有环单链表的环长</p>
+<p>解法：我们走到相遇点以后，从相遇点出发，一直走，总会走回到相遇点，这时走的步数就是环长。<br>另一种比较绕的思路：从相遇点开始 p1 和 p2 继续按照原来的方式向前走，直到二者再次相遇，此时经过的步数就是环上节点的个数。<br>因为 p1 == p2，可以看成他们初始距离为r（环长），此后每步初始距离减1，减到0，走的步数就是环长。</p>
+<p>4) 如果存在环，找出环的入口点</p>
+<p>假设链表总长为 L，head 到入口节点距离为 a，入口节点到相遇点距离为x，则环长 $r = L - a$<br>假设当 p1, p2 第一次相遇时，p1 走了 s 步，则 p2 走了 2s 步。即 $s = a+x$。<br>由于此时相遇，则有 $s + nr = 2s, n \ge 1$。<br>则有 $nr = a+x$，$a = nr - x = (n-1)r + r - x = (n-1)r + L - a - x$。<br>也就是说，我们从起点 head 走到入口节点，和从相遇点走 0 圈或多圈到达入口节点的距离是一样的。<br>所以，一个指针 p3 从 head 出发，一个 p4 从相遇点出发，p3==p4 时，到达入口节点。</p>
+<p>5) 求有环单链表的链表长</p>
+<p>入口节点知道了，则距离 a 知道了，环长 r 也知道了，所以 a + r = L。</p>
+<p>6) 如果存在环，求出环上距离任意一个节点最远的点（对面节点）</p>
+<p>其实这题相当于求链表的中间点，仍可以用一快一慢双指针解决。一个走一步，一个走两步。</p>
+<p>7) 为什么快慢指针步长为2，为3, 4, 5…行不行？</p>
+<p>可以。下面证明在有环链表中，步长$k=3,4,5…$的时候依然存在一个相遇点，检测出环。<br>即要证明存在 s, $X_s == X_{2s}$。<br>设 s 是第一个大于 a 的且是 r 的倍数的数。且 $X_{2s}$ 可被看做 s 多走了 $(k-1)s$ 步到达的地点。<br>即 $X_{2s} = X_s + ((k-1)s \% r)$，又 s 是 r 的倍数，所以后项等于 0。所以有 $X_s == X_{2s}$。<br>所以无论对于多大的 k (k &gt; 1)，都存在一个 s，使得两指针相遇，判断出环。</p>
+<p>8) 步长改成3会不会变快？不能，为什么？相遇所经过的步数与环和步长有什么关系？</p>
+<p>仍然设 head 到相遇点距离为 s，设步长为 k，则有 $s + nr = ks$。<br>即有：$nr = (k-1)s \to s = nr / (k-1)$。<br>这就是相遇所经过的步数与环和步长的关系。<br>那么 $s = nr / (k-1)$，最好的情况是，$s = r$ 即 $n / (k-1) = 1 \to k = n+1$。<br>又因为，$n \ge 1$，因为快指针至少比慢指针多走一圈（不绕一圈无法相遇）。<br>所以 $k &gt;= 2$，由于快指针走得复杂度是 $O(nk)$，所以 k 越小越好，为 2 最佳。慢指针复杂度是 $O(n)$。</p>
+<p>9) 会不会在多点相遇？</p>
+<p>会，但是考虑这个无意义了，因为只要相遇，环已经检测出来了。</p>
+<blockquote>
+<p>总的来说，遇到链表环问题，基本上用双指针来做，快的指针步长为2是有道理的，能够使得相遇前快指针走的步数最少，也即时间复杂度最小。当然，任意的k&gt;1都能够作为快指针的步长。</p>
+</blockquote>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a href="https://stackoverflow.com/questions/5130246/why-increase-pointer-by-two-while-finding-loop-in-linked-list-why-not-3-4-5" target="_blank" rel="external">Why increase pointer by two while finding loop in linked list, why not 3,4,5?
+</a></p>
+  
+	</div>
+
+
+    
+	<!-- css -->
+	<style type="text/css">
+	    .center {
+	        text-align: center;
+	    }
+	    .hidden {
+	        display: none;
+	    }
+		.donate_bar a.btn_donate{
+			display: inline-block;
+			width: 82px;
+			height: 82px;
+			background: url("http://7xsl28.com1.z0.glb.clouddn.com/btn_reward.gif") no-repeat;
+			_background: url("http://7xsl28.com1.z0.glb.clouddn.com/btn_reward.gif") no-repeat;
+
+			<!-- http://img.t.sinajs.cn/t5/style/images/apps_PRF/e_media/btn_reward.gif
+			     因为本 hexo 生成的博客所用的 theme 的 a:hover 带动画效果，
+				 为了在让打赏按钮显示效果正常 而 添加了以下几行 css，
+				 嵌入其它博客时不一定要它们。 -->
+			-webkit-transition: background 0s;
+			-moz-transition: background 0s;
+			-o-transition: background 0s;
+			-ms-transition: background 0s;
+			transition: background 0s;
+			<!-- /让打赏按钮的效果显示正常 而 添加的几行 css 到此结束 -->
+		}
+
+		.donate_bar a.btn_donate:hover{ background-position: 0px -82px;}
+		.donate_bar .donate_txt {
+			display: block;
+			color: #9d9d9d;
+			font: 14px/2 "Microsoft Yahei";
+		}
+		.bold{ font-weight: bold; }
+	</style>
+	<!-- /css -->
+
+    <!-- Donate Module -->
+    <div id="donate_module">
+
+	<!-- btn_donate & tips -->
+	<div id="donate_board" class="donate_bar center">
+	    <br>
+	    ------------------------------------------------------------------------------------------------------------------------------
+	    <br>
+		<a id="btn_donate" class="btn_donate" target="_self" href="javascript:;" title="Donate 打赏"></a>
+		<span class="donate_txt">
+			我要小额赞助，助作者写出更好的文章！
+		</span>
+			
+		
+	</div>
+	<!-- /btn_donate & tips -->
+
+	<!-- donate guide -->
+    
+	<div id="donate_guide" class="donate_bar center hidden">
+        <br>
+	    ------------------------------------------------------------------------------------------------------------------------------
+	    <br>
+	    
+	    <div width="100%" align="center"><div name="dashmain" id="dash-main-id-87895f" class="dash-main-3 87895f-0.99"></div></div>
+		<script type="text/javascript" charset="utf-8" src="http://www.dashangcloud.com/static/ds.js"></script>
+		
+
+		<a href="http://7xsl28.com1.z0.glb.clouddn.com/wechatpay.png" title="用微信扫一扫哦~" class="fancybox" rel="article0">
+			<img src="http://7xsl28.com1.z0.glb.clouddn.com/wechatpay.png" title="微信打赏 Donate" height="190px" width="auto"/>
+		</a>
+        
+        &nbsp;&nbsp;
+
+		<a href="http://7xsl28.com1.z0.glb.clouddn.com/alipay.jpg" title="用支付宝扫一扫即可~" class="fancybox" rel="article0">
+			<img src="http://7xsl28.com1.z0.glb.clouddn.com/alipay.jpg" title="支付宝打赏 Donate" height="190px" width="auto"/>
+		</a>
+
+		<span class="donate_txt">
+			我要小额赞助，助作者写出更好的文章！
+		</span>
+
+	</div>
+	<!-- /donate guide -->
+
+	<!-- donate script -->
+	<script type="text/javascript">
+		document.getElementById('btn_donate').onclick = function() {
+			$('#donate_board').addClass('hidden');
+			$('#donate_guide').removeClass('hidden');
+		}
+
+		function donate_on_web(){
+			$('#donate').submit();
+        }
+
+		var original_window_onload = window.onload;
+        window.onload = function () {
+            if (original_window_onload) {
+                original_window_onload();
+            }
+            document.getElementById('donate_board_wdg').className = 'hidden';
+		}
+	</script>
+	<!-- /donate script -->
+</div>
+<!-- /Donate Module -->
+   
+
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  
+  <span></span> <a href="/categories/算法-Algorithm/">算法 | Algorithm</a>
+  </div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/算法/">算法</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	<div class="share-jiathis">
+	  
+<div class="jiathis_style_24x24">
+	<a class="jiathis_button_tsina"></a>
+	<a class="jiathis_button_weixin"></a>
+	<a class="jiathis_button_tqq"></a>
+	<a class="jiathis_button_qzone"></a>
+	<a class="jiathis_button_douban"></a>
+	<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+    var jiathis_config={
+    data_track_clickback:true,
+    sm:"copy,renren,cqq",
+    pic:"",
+    summary:"",
+     ralateuid:{"tsina":"husuche## e.g. 2176287895 Your weibo id,It will be used in share button."},hideMore:false}
+    
+  </script> 
+<script type="text/javascript" src="//v3.jiathis.com/code/jia.js?uid=2094149
+2094149" charset="utf-8"></script>      
+
+	 </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2019/01/04/softskills.html" title="《软技能》读书笔记">
+  <strong>上一篇：</strong><br/>
+  <span>
+  《软技能》读书笔记</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2019/01/04/annualsummary2018.html"  title="2019，再出发">
+ <strong>下一篇：</strong><br/> 
+ <span>2019，再出发
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+<section id="comments" class="comment">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <aside class="clearfix">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#X-sum-问题"><span class="toc-number">1.</span> <span class="toc-text">X sum 问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#股票买卖问题"><span class="toc-number">2.</span> <span class="toc-text">股票买卖问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#链表环问题"><span class="toc-number">3.</span> <span class="toc-text">链表环问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考资料"><span class="toc-number">4.</span> <span class="toc-text">参考资料</span></a></li></ol>
+ 
+ </aside>
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+<div class="about">
+    <p class="asidetitle">Short bio</p>
+    <div class="clearfix">
+        <!-- <img src="http://7xsl28.com1.z0.glb.clouddn.com/niuzai.jpg" height="74px" width="74px" id="about-image" alt> -->
+        <span style="font-size: medium; font-family: Calibri Light, Open Sans, Microsoft YaHei Light">
+        whatbeg.com is written by Qiu Hu. He is living in Nanjing, P.R. China.
+        <br>
+        You can contact Qiu Hu with email.
+        <br>
+        Just enjoy your reading here!
+        <br>
+        Comments are always welcome:)
+        <br>
+        Some interesting non-technical articles can be seen in his WeChat official account: 
+        </span>
+        <br>
+        <img src="https://gitee.com/whyseek/blogimages/raw/master/qrcode.jpg" height="124px" width="124px" id="qrcode" alt>
+    </div>
+</div>
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/大数据系统与技术-Big-Data/" title="大数据系统与技术 | Big Data">大数据系统与技术 | Big Data<sup>11</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/成长之路-Biography/" title="成长之路 | Biography">成长之路 | Biography<sup>10</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/数据科学-Data-Science/" title="数据科学 | Data Science">数据科学 | Data Science<sup>8</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/机器学习-Mac-Learning/" title="机器学习 | Mac.Learning">机器学习 | Mac.Learning<sup>9</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/深度学习-Deep-Learning/" title="深度学习 | Deep Learning">深度学习 | Deep Learning<sup>7</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/算法-Algorithm/" title="算法 | Algorithm">算法 | Algorithm<sup>4</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/编程语言-Program-Lang/" title="编程语言 | Program Lang.">编程语言 | Program Lang.<sup>4</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/计算机相关-CS-Related/" title="计算机相关 | CS.Related">计算机相关 | CS.Related<sup>8</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/译文-Translation/" title="译文 | Translation">译文 | Translation<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/读书-Reading/" title="读书 | Reading">读书 | Reading<sup>9</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/错误解决与优化-Err-Opt/" title="错误解决与优化 | Err&amp;Opt">错误解决与优化 | Err&amp;Opt<sup>13</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/随笔-Essays/" title="随笔 | Essays">随笔 | Essays<sup>7</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+  <div class="archiveslist">
+    <p class="asidetitle"><a href="/archives">归档</a></p>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">一月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">23</span></li></ul>
+  </div>
+
+
+  
+  <div class="tagcloudlist">
+    <p class="asidetitle">标签云</p>
+    <div class="tagcloudlist clearfix">
+       <a href="/tags/CS/" style="font-size: 17px;">CS</a> <a href="/tags/Deep-Learning/" style="font-size: 17px;">Deep Learning</a> <a href="/tags/GPU/" style="font-size: 10px;">GPU</a> <a href="/tags/Git/" style="font-size: 11px;">Git</a> <a href="/tags/Hadoop/" style="font-size: 14px;">Hadoop</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/Latex/" style="font-size: 11px;">Latex</a> <a href="/tags/Linux/" style="font-size: 13px;">Linux</a> <a href="/tags/Python/" style="font-size: 19px;">Python</a> <a href="/tags/Scala/" style="font-size: 10px;">Scala</a> <a href="/tags/Spark/" style="font-size: 12px;">Spark</a> <a href="/tags/Summary/" style="font-size: 16px;">Summary</a> <a href="/tags/TensorFlow/" style="font-size: 12px;">TensorFlow</a> <a href="/tags/Web/" style="font-size: 12px;">Web</a> <a href="/tags/hexo/" style="font-size: 15px;">hexo</a> <a href="/tags/三国/" style="font-size: 10px;">三国</a> <a href="/tags/人文社科/" style="font-size: 10px;">人文社科</a> <a href="/tags/优化/" style="font-size: 10px;">优化</a> <a href="/tags/吃喝玩乐/" style="font-size: 10px;">吃喝玩乐</a> <a href="/tags/大数据/" style="font-size: 16px;">大数据</a> <a href="/tags/工具使用/" style="font-size: 10px;">工具使用</a> <a href="/tags/影视/" style="font-size: 11px;">影视</a> <a href="/tags/数据分析/" style="font-size: 16px;">数据分析</a> <a href="/tags/机器学习/" style="font-size: 20px;">机器学习</a> <a href="/tags/深度学习/" style="font-size: 18px;">深度学习</a> <a href="/tags/算法/" style="font-size: 13px;">算法</a> <a href="/tags/系统/" style="font-size: 10px;">系统</a> <a href="/tags/论文阅读/" style="font-size: 12px;">论文阅读</a> <a href="/tags/译文/" style="font-size: 12px;">译文</a> <a href="/tags/读书/" style="font-size: 19px;">读书</a> <a href="/tags/错误解决/" style="font-size: 12px;">错误解决</a> <a href="/tags/随笔/" style="font-size: 15px;">随笔</a>
+    </div>
+  </div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="http://www.cnblogs.com/whatbeg/" target="_blank" title="Old Blog">Old Blog</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://github.com/whatbeg" target="_blank" title="My Github">My Github</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.matrix67.com/blog/" target="_blank" title="Matrix67">Matrix67</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.liaoxuefeng.com/" target="_blank" title="廖雪峰">廖雪峰</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.ruanyifeng.com/blog/" target="_blank" title="阮一峰">阮一峰</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://mindhacks.cn/" target="_blank" title="刘未鹏">刘未鹏</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://machinelearningmastery.com/blog/" target="_blank" title="ML MYSTERY">ML MYSTERY</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://freemind.pluskid.org/" target="_blank" title="Free Mind">Free Mind</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://blog.csdn.net/zouxy09/" target="_blank" title="zouxy机器学习">zouxy机器学习</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://coolshell.cn" target="_blank" title="酷壳">酷壳</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  <table height=30 cellSpacing=0 cellPadding=0 width=180 border=0>
+<form action="http://www.sogou.com/web" target="_blank">
+<tr style='font-size:12px;color:#000000'>
+<td align="center" width=100><input type="text" name="query" size=14 style='BORDER-RIGHT: #999 1px solid; BORDER-TOP: #999 1px solid; BORDER-LEFT: #999	1px	solid; BORDER-BOTTOM: #999 1px solid; HEIGHT: 19px; BACKGROUND-COLOR: #fff'>
+<input type="hidden" name="insite" value="whatbeg.com">
+<input type="hidden" name="insite2" value="whatbeg.com"></td>
+<td align="left" width=45><input type="submit" name="sogou_submit" value="搜索">
+</td></tr></form>
+</table>
+
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+  <div class="rsspart">
+	<a href="http://eepurl.com/cHO5An" target="_blank" title="email">Email 订阅</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+        
+
+	    
+		
+				<div class="cc-license">
+          <a href="http://creativecommons.org/licenses/by-nc-nd/4.0" class="cc-opacity" target="_blank">
+            <img src="/img/cc-by-nc-nd.svg" alt="Creative Commons" />
+          </a>
+        </div>
+    
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2016-2019 
+		
+		<a href="/about" target="_blank" title="whatbeg">whatbeg</a>
+		
+		<br>
+		<span class="post-count">Total words: <span style="color:orange">329.1k</span></span>
+        <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+        <span id="busuanzi_container_site_pv">
+        &nbsp;&nbsp;Total visits:&nbsp;<span style="color:orange" id="busuanzi_value_site_pv"></span>
+        </span>
+        <span id="busuanzi_container_site_uv">
+        &nbsp;&nbsp;You are Visitor No.<span style="color:orange" id="busuanzi_value_site_uv"></span>
+        </span>
+        </br>
+		</p>
+		
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    $('#toc.toc-aside').css('display', 'block').addClass('fadeIn');  //侧边栏显示文章目录
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');   //侧边栏显示widget
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+        getSize();
+        if (myWidth >= 1024) {
+          c.click();
+        }
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+
+
+
+<script type="text/javascript">
+
+var disqus_shortname = 'whatbeg';
+
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+</script>
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1258390595'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s95.cnzz.com/z_stat.php%3Fid%3D1258390595%26online%3D1%26show%3Dline' type='text/javascript'%3E%3C/script%3E"));</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    bp.src = '//push.zhanzhang.baidu.com/push.js';
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+  </body>
+</html>
+
+
