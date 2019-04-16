@@ -1,0 +1,810 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>漫谈C++内存分配与管理 | Whatbeg&#39;s blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="whatbeg">
+    
+
+    
+    <meta name="description" content="本文谈谈C++的内存分配与管理，主要包括内存布局，分配，管理，解配，以及内存错误和防范措施。漫谈漫谈，想到什么谈什么，不要在意前后衔接。
+首先要了解程序占用的内存布局，顺便可以了解下对应的操作系统上的真实存储布局。
+通常一个由 C/C++ 编译的程序占用的内存分为以下 5 个部分:
+1) 栈区（stack）: 由编译器自动分配释放，存放函数的参数值，局部变量的值等。其操作方式类似于数据结构中的栈。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="漫谈C++内存分配与管理">
+<meta property="og:url" content="http://whatbeg.com/2019/04/16/cppmemory.html">
+<meta property="og:site_name" content="Whatbeg's blog">
+<meta property="og:description" content="本文谈谈C++的内存分配与管理，主要包括内存布局，分配，管理，解配，以及内存错误和防范措施。漫谈漫谈，想到什么谈什么，不要在意前后衔接。
+首先要了解程序占用的内存布局，顺便可以了解下对应的操作系统上的真实存储布局。
+通常一个由 C/C++ 编译的程序占用的内存分为以下 5 个部分:
+1) 栈区（stack）: 由编译器自动分配释放，存放函数的参数值，局部变量的值等。其操作方式类似于数据结构中的栈。">
+<meta property="og:updated_time" content="2019-04-16T12:34:28.465Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="漫谈C++内存分配与管理">
+<meta name="twitter:description" content="本文谈谈C++的内存分配与管理，主要包括内存布局，分配，管理，解配，以及内存错误和防范措施。漫谈漫谈，想到什么谈什么，不要在意前后衔接。
+首先要了解程序占用的内存布局，顺便可以了解下对应的操作系统上的真实存储布局。
+通常一个由 C/C++ 编译的程序占用的内存分为以下 5 个部分:
+1) 栈区（stack）: 由编译器自动分配释放，存放函数的参数值，局部变量的值等。其操作方式类似于数据结构中的栈。">
+
+    
+    <link rel="alternative" href="/atom.xml" title="Whatbeg&#39;s blog" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/w.ico">
+    
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Whatbeg&#39;s blog">Whatbeg&#39;s blog</a></h1>
+				<h2 class="blog-motto">当你的才华撑不起你的野心时，就应该静下心来好好学习。</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">首页(Home)</a></li>
+					
+						<li><a href="/archives">归档(Archives)</a></li>
+					
+						<li><a href="/tags">标签(Tags)</a></li>
+					
+						<li><a href="/categories">分类(Categories)</a></li>
+					
+						<li><a href="/about">关于(About)</a></li>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2019/04/16/cppmemory.html" title="漫谈C++内存分配与管理" itemprop="url">漫谈C++内存分配与管理</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="whatbeg" target="_blank" itemprop="author">whatbeg</a>
+		
+  <p class="article-time">
+    <time datetime="2019-04-16T12:32:13.000Z" itemprop="datePublished"> 发表于 2019-04-16</time>
+    <span id="busuanzi_container_page_pv">
+    总阅读<span id="busuanzi_value_page_pv"></span>次
+    </span>
+  </p>
+
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			
+		
+		</div>
+		
+		<p>本文谈谈C++的内存分配与管理，主要包括内存布局，分配，管理，解配，以及内存错误和防范措施。<br>漫谈漫谈，想到什么谈什么，不要在意前后衔接。</p>
+<p>首先要了解程序占用的内存布局，顺便可以了解下对应的操作系统上的真实存储布局。</p>
+<p>通常一个由 C/C++ 编译的程序占用的内存分为以下 5 个部分:</p>
+<p>1) 栈区（stack）: 由编译器自动分配释放，存放函数的参数值，局部变量的值等。其操作方式类似于数据结构中的栈。<br>2) 堆区（heap）: 一般由程序员分配释放，若程序员不释放，程序结束时可能由OS回收。注意它与数据结构中的堆是两回事，分配方式倒是类似于链表。<br>3) 全局区（静态区）（static）: 全局变量和静态变量的存储是放在一块的，初始化的全局变量和静态变量在一块区域，未初始化的全局变量和未初始化的静态变量在相邻的另一块区域。程序结束后由系统释放。<br>4) 文字常量区: 常量字符串等只读数据放在这里的。程序结束后由系统释放。<br>5) 程序代码区: 存放函数体的二进制代码。</p>
+<p>同时，一个linux进程的虚拟存储器结构如下：（从高地址到低地址）</p>
+<p>1) 内核虚拟存储器，包括与进程相关的数据结构（页表，task_struct, mm_struct, 内核栈等），物理存储器，内核代码和数据<br>2) 用户栈                       —对应程序栈区<br>3) 共享库的存储器映射区域       —从系统中加载共享库的存储区<br>4) 运行时堆                     —对应程序堆区<br>5) 未初始化数据和已初始化数据   —从可执行文件中加载，对应静态区<br>6) 程序文件（代码）             —从可执行文件中加载，对应程序代码区</p>
+<p>其中这些区域中，最重要的，最常用到的就是堆区和栈区了，他们的区别如下：</p>
+<p>C++中堆和栈的区别：</p>
+<p>管理方面，需要自己分配/清除<br>空间大小方面，堆最大可达4G（32位），而栈大小有限制，一般8M<br>碎片方面：堆分配和回收一段时间后可能产生碎片，栈一定不会<br>生长方向：栈往低地址生长，堆往高地址生长<br>分配方式：栈可动态分配也可静态分配，堆只能动态分配<br>分配效率：栈是机器系统提供的数据结构，而堆是语言层提供的数据结构，效率不一样</p>
+<p>栈其实要比堆快，原因在于：</p>
+<p>1) 栈是本着LIFO原则的存储机制, 对栈数据的定位相对比较快速, 而堆则是随机分配的空间, 处理的数据比较多, 无论如何, 至少要两次定位.<br>2) 栈是由CPU提供指令支持的, 在指令的处理速度上, 对栈数据进行处理的速度自然要优于由操作系统支持的堆数据.<br>3) 栈是在一级缓存中做缓存的, 而堆则是在二级缓存中, 两者在硬件性能上差异巨大.<br>4) 各语言对栈的优化支持要优于对堆的支持, 比如swift语言中, 三个字及以内的struct结构, 可以在栈中内联, 从而达到更快的处理速度.</p>
+<p>内存的布局有了，那么怎么分配内存来存储程序中的数据结构呢？这就涉及到了 malloc/free 库函数和 new/delete 操作符。</p>
+<p>malloc/free 和 new/delete 区别如下：</p>
+<p>a) malloc/free是库函数，new/delete是操作符<br>b) malloc/free只分配内存，new/delete还负责构造/析构对象<br>c) malloc/free分配失败会返回NULL，new/delete分配失败会返回bad_alloc<br>d) new/delete分配可以自动计算需要的字节数，malloc/free需要人为指定</p>
+<p>另外一个比较重要的区域是静态区，C++的对象有三种：栈区对象，堆区对象和静态区对象，他们有什么异同呢？</p>
+<p>三种内存对象的比较：</p>
+<p>栈对象：<br>1.栈对象的优势是在适当的时候自动生成，又在适当的时候自动销毁，不需要程序员操心；<br>2.栈对象的创建速度一般较堆对象快。因为分配堆对象时，会调用operator new操作，operator new会采用某种内存空间搜索算法，而该搜索过程可能是很费时间的，产生栈对象则没有这么麻烦，它仅仅需要移动栈顶指针就可以了。<br>3.通常栈空间容量比较小，一般是1MB～2MB，所以体积比较大的对象不适合在栈中分配。<br>4.特别要注意递归函数中最好不要使用栈对象，因为随着递归调用深度的增加，所需的栈空间也会线性增加，当所需栈空间不够时，便会导致栈溢出，这样就会产生运行时错误。</p>
+<p>堆对象：<br>1.其产生时刻和销毁时刻都要程序员精确定义<br>2.相比于栈空间，堆的容量要大得多</p>
+<p>静态对象：<br>1.全局对象：全局对象为类间通信和函数间通信提供了一种最简单的方式<br>2.类的static成员：属于类，为所有类对象所共享<br>3.局部静态对象：主要可用于保存该对象所在函数被屡次调用期间的中间状态</p>
+<p>内存分配的时候，C/C++ 会注重内存对齐，比如说要求 struct, union, enum 等数据结构都要内存对齐。</p>
+<p>那么为什么要内存对齐呢？</p>
+<p>《Windows核心编程》里这样说：当CPU访问正确对齐的数据时，它的运行效率最高，当数据大小的数据模数的内存地址是0时，数据是对齐的。例如：WORD值应该是总是从被2除尽的地址开始，而DWORD值应该总是从被4除尽的地址开始，数据对齐不是内存结构的一部分，而是CPU结构的一部分。当CPU试图读取的数值没有正确的对齐时，CPU可以执行两种操作之一：产生一个异常条件；执行多次对齐的内存访问，以便读取完整的未对齐数据，若多次执行内存访问，应用程序的运行速度就会慢。</p>
+<p>内存对齐的原则：</p>
+<p>结构体的总大小，也就是sizeof的结果，必须是其内部最大成员的”最宽基本类型成员”的整数倍。不足的要补齐。(基本类型不包括struct/class/uinon)。<br>对于union：sizeof(union)，以结构里面size最大元素为union的size，因为在某一时刻，union只有一个成员真正存储于该地址。</p>
+<p>C++ 内存分配和解配中，很容易发生错误，常见的内存错误有：</p>
+<p>1、返回局部变量地址将引起内存错误</p>
+<p>2、临时空间过大：操作系统在加载某个应用程序时，都将为其分配一定大小的栈空间，若申请过大的局部变量，可能会引起栈溢出问题。（PC机上Windows和Linux系统一般不必担心这个，因为有虚拟内存机制，但嵌入式开发就要特别注意这个了——资源有限，一旦栈溢出造成程序错误又是很难查的~~~）</p>
+<p>3、src 和 dst 内存覆盖：在进行字节内存复制时，常会出现这一问题。因为部分系统库函数并没有提供内存覆盖的检测功能，从而导致错误。</p>
+<p>4、动态内存管理错误<br>动态申请的堆内存空间需要自己管理，这可能会导致：<br>a) 申请和释放不一致：由于C++兼容C，而C与C++的内存申请和释放方式不一样，因此在C++程序中，就有两套动态内存管理函数。正常应该是采用C方式申请就用C方式释放，用C++申请的就要用C++方式释放<br>b) 申请和释放量不匹配：申请了多少内存，在使用完成后就要释放多少。若果没有释放或者少释放了就是内存泄露，多释放了也会产生问题。(虽然程序退出后系统会回收堆空间，但严格的应该申请的堆空间要在程序中释放掉。</p>
+<p>5、内存泄漏<br>广义的说，内存泄漏不仅仅包含堆内存的泄漏，还包含系统资源的泄漏(resource leak)，比如核心态HANDLE，GDI Object，SOCKET， Interface等，这些由操作系统分配的对象也消耗内存，如果这些对象发生泄漏最终也会导致内存的泄漏。而且，某些对象消耗的是核心态内存，这些对象严重泄漏时会导致整个操作系统不稳定。所以相比之下，系统资源的泄漏比堆内存的泄漏更为严重。</p>
+<p>其中，最常见的应该属内存泄漏了吧，那么内存泄漏如何检测呢？</p>
+<p>检测内存泄漏的关键是要能截获住对分配内存和释放内存的函数的调用。截获住这两个函数，就能跟踪每一块内存的生命周期。比如，每当成功的分配一块内存后，就把它的指针加入一个全局的list中；每当释放一块内存，再把它的指针从list中删除。这样，当程序结束的时候，list中剩余的指针就是指向那些没有被释放的内存。</p>
+<p>常见内存泄漏的检测工具有：</p>
+<p>Linux下的检测工具：Mtrace、Memwatch、LeakTracer、Valgrind、tcmalloc<br>Windows下的检测工具：windbg工具、MS C-Runtime Library、BoundsChecker、Performance Monitor</p>
+<p>为了最大可能的降低内存泄漏的几率，C++提出了智能指针的解决方案。</p>
+<p>如何理解智能指针？</p>
+<p>裸指针容易造成内存泄漏（忘记释放）、二次释放、程序异常时的处理（参见问题20构造函数能够抛出异常）等问题，使用智能指针能更好的管理堆内存，智能指针也是RAII的一种应用，用于动态管理资源。利用对象离开作用域自动析构的特性，将释放内存的操作托管给一个对象。</p>
+<p>有几种常用的智能指针，shared_ptr, unique_ptr, weak_ptr。</p>
+<p>顾名思义，shared_ptr指向的对象是可以被共享的，只有再也不被指向的对象会被销毁，而unique_ptr指针不能被共享，只能改变指向，一旦改变，原对象会被销毁。</p>
+<p>而weak_ptr具有如下特征：<br>a) weak_ptr不能独立存在，只能从一个shared_ptr产生，其指向shared_ptr指向的内存，但并不拥有该内存，不改变引用计数。<br>b) weak_ptr通过lock()成员可以返回指向该内存的shared_ptr对象，如果已经无效则返回空<br>c) 使用weak_ptr是为了解决循环引用的问题，如果两个对象中都分别包含对对方的引用，则会产生循环引用，计数无法降为0，使用weak_ptr可以解决这个问题，因为其不会增加引用计数。</p>
+<p>智能指针内部会维护一个引用计数，即使用指向资源的智能指针个数，如果降到0，即不再有指针指向该对象，那么自动销毁该对象。</p>
+<p>引用计数基本思想：对被管理的资源进行引用计数，当一个shared_ptr对象要共享这个资源的时候，该资源的引用计数加1，当这个对象生命期结束的时候，再把该引用计数减少1。这样当最后一个引用它的对象被释放的时候，资源的引用计数减少到0，此时释放该资源。</p>
+<p>引用计数改变的情况：<br>作为函数参数：传值则引用计数加1，传引用则引用计数不变 3 作为函数返回值：如果返回值作为右值进行拷贝，则引用计数加1，否则不变</p>
+<p>还有一个有趣的问题：C++ 为什么不支持垃圾回收？</p>
+<p>C和C++中的垃圾收集都是困难的主题，原因如下：</p>
+<p>-2) C and C++ are languages that are created to support all possible use cases. 通用性</p>
+<p>-1）C++ 的哲学是”close to the metal”，不愿意加上一些性价比不高的features</p>
+<p>0）GC Stop-the-World 带来的性能延迟，有时是不可忍受的，尤其在实时应用中</p>
+<p>1）指针可以被转换为整数，反之亦然。 这意味着我可以有一个内存块只能通过一个整数，类型转换为指针，然后解除引用。 一个垃圾收集器必须小心，不要认为块是无法到达的，当它仍然可以达到。<br>GC 必须能够准确识别指针和非指针。</p>
+<p>2）指针不是不透明的。 许多垃圾收集器，如停止和复制收集器，喜欢移动内存块或压缩它们以节省空间。 由于您可以明确地查看C和C++中的指针值，因此难以正确实现。 您必须确定，如果某人正在使用类似于整数的方式进行一些棘手的操作，那么如果您移动了一块内存，则正确更新了整数。</p>
+<p>3）内存管理可以明确完成。任何垃圾收集器都需要考虑到用户可以随时显式释放内存块。</p>
+<p>4）在C++中，分配/取消分配和对象构造/销毁是分开的。 一块内存可以分配足够的空间来容纳一个对象，而不需要在那里实际构造任何对象。 一个好的垃圾回收器在回收内存时需要知道是否调用可能在那里分配的任何对象的析构函数。 对于标准库容器尤其如此，因为出于效率原因，通常使用std::allocator来使用这个技巧。</p>
+<p>5）内存可以从不同的地方分配。 C和C++可以通过内置的freestore（malloc / free或new / delete），也可以通过mmap或其他系统调用从OS获得内存，对于C++，可以从<code>get_temporary_buffer</code>或<code>return_temporary_buffer</code>获得内存。 程序也可能从一些第三方库中获取内存。 一个好的垃圾收集器需要能够跟踪对这些其他池中的内存的引用，并且（可能）必须负责清理它们。</p>
+<p>6）指针可以指向对象或数组的中间。 在像Java这样的垃圾收集语言中，对象引用总是指向对象的开始。 在C和C++中，指针可以指向数组的中间，而在C++中指向对象的中间（如果使用多重继承的话）。 这可能会使检测仍然可达的逻辑复杂化。</p>
+<p>所以，简而言之，为C或C++构建一个垃圾收集器是非常困难的。 大多数使用C和C++进行垃圾回收的库在方法上都非常保守，在技术上是不健全的 - 例如，他们认为你不会拿一个指针，把它转换为一个整数，写入磁盘，然后加载它稍后再回来。 他们还假定内存中任何一个指针大小的值都可能是一个指针，所以有时候会拒绝释放无法访问的内存，因为有一个指向它的非零的机会。</p>
+<p>正如其他人所指出的那样， Boehm GC确实为C和C++做垃圾回收，但受上述限制。</p>
+<p>有趣的是，C++ 11包含了一些新的库函数，允许程序员在未来的垃圾收集工作中将内存区域标记为可达和不可达。 将来有可能用这种信息构建一个非常好的C++ 11垃圾收集器。 与此同时，你需要非常小心，不要违反上述规定。</p>
+  
+	</div>
+
+
+    
+	<!-- css -->
+	<style type="text/css">
+	    .center {
+	        text-align: center;
+	    }
+	    .hidden {
+	        display: none;
+	    }
+		.donate_bar a.btn_donate{
+			display: inline-block;
+			width: 82px;
+			height: 82px;
+			background: url("http://7xsl28.com1.z0.glb.clouddn.com/btn_reward.gif") no-repeat;
+			_background: url("http://7xsl28.com1.z0.glb.clouddn.com/btn_reward.gif") no-repeat;
+
+			<!-- http://img.t.sinajs.cn/t5/style/images/apps_PRF/e_media/btn_reward.gif
+			     因为本 hexo 生成的博客所用的 theme 的 a:hover 带动画效果，
+				 为了在让打赏按钮显示效果正常 而 添加了以下几行 css，
+				 嵌入其它博客时不一定要它们。 -->
+			-webkit-transition: background 0s;
+			-moz-transition: background 0s;
+			-o-transition: background 0s;
+			-ms-transition: background 0s;
+			transition: background 0s;
+			<!-- /让打赏按钮的效果显示正常 而 添加的几行 css 到此结束 -->
+		}
+
+		.donate_bar a.btn_donate:hover{ background-position: 0px -82px;}
+		.donate_bar .donate_txt {
+			display: block;
+			color: #9d9d9d;
+			font: 14px/2 "Microsoft Yahei";
+		}
+		.bold{ font-weight: bold; }
+	</style>
+	<!-- /css -->
+
+    <!-- Donate Module -->
+    <div id="donate_module">
+
+	<!-- btn_donate & tips -->
+	<div id="donate_board" class="donate_bar center">
+	    <br>
+	    ------------------------------------------------------------------------------------------------------------------------------
+	    <br>
+		<a id="btn_donate" class="btn_donate" target="_self" href="javascript:;" title="Donate 打赏"></a>
+		<span class="donate_txt">
+			我要小额赞助，助作者写出更好的文章！
+		</span>
+			
+		
+	</div>
+	<!-- /btn_donate & tips -->
+
+	<!-- donate guide -->
+    
+	<div id="donate_guide" class="donate_bar center hidden">
+        <br>
+	    ------------------------------------------------------------------------------------------------------------------------------
+	    <br>
+	    
+	    <div width="100%" align="center"><div name="dashmain" id="dash-main-id-87895f" class="dash-main-3 87895f-0.99"></div></div>
+		<script type="text/javascript" charset="utf-8" src="http://www.dashangcloud.com/static/ds.js"></script>
+		
+
+		<a href="http://7xsl28.com1.z0.glb.clouddn.com/wechatpay.png" title="用微信扫一扫哦~" class="fancybox" rel="article0">
+			<img src="http://7xsl28.com1.z0.glb.clouddn.com/wechatpay.png" title="微信打赏 Donate" height="190px" width="auto"/>
+		</a>
+        
+        &nbsp;&nbsp;
+
+		<a href="http://7xsl28.com1.z0.glb.clouddn.com/alipay.jpg" title="用支付宝扫一扫即可~" class="fancybox" rel="article0">
+			<img src="http://7xsl28.com1.z0.glb.clouddn.com/alipay.jpg" title="支付宝打赏 Donate" height="190px" width="auto"/>
+		</a>
+
+		<span class="donate_txt">
+			我要小额赞助，助作者写出更好的文章！
+		</span>
+
+	</div>
+	<!-- /donate guide -->
+
+	<!-- donate script -->
+	<script type="text/javascript">
+		document.getElementById('btn_donate').onclick = function() {
+			$('#donate_board').addClass('hidden');
+			$('#donate_guide').removeClass('hidden');
+		}
+
+		function donate_on_web(){
+			$('#donate').submit();
+        }
+
+		var original_window_onload = window.onload;
+        window.onload = function () {
+            if (original_window_onload) {
+                original_window_onload();
+            }
+            document.getElementById('donate_board_wdg').className = 'hidden';
+		}
+	</script>
+	<!-- /donate script -->
+</div>
+<!-- /Donate Module -->
+   
+
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  
+  <span></span> <a href="/categories/编程语言-Program-Lang/">编程语言 | Program Lang.</a>
+  </div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/C/">C++</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	<div class="share-jiathis">
+	  
+<div class="jiathis_style_24x24">
+	<a class="jiathis_button_tsina"></a>
+	<a class="jiathis_button_weixin"></a>
+	<a class="jiathis_button_tqq"></a>
+	<a class="jiathis_button_qzone"></a>
+	<a class="jiathis_button_douban"></a>
+	<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+    var jiathis_config={
+    data_track_clickback:true,
+    sm:"copy,renren,cqq",
+    pic:"",
+    summary:"",
+     ralateuid:{"tsina":"husuche## e.g. 2176287895 Your weibo id,It will be used in share button."},hideMore:false}
+    
+  </script> 
+<script type="text/javascript" src="//v3.jiathis.com/code/jia.js?uid=2094149
+2094149" charset="utf-8"></script>      
+
+	 </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2019/04/16/cppfqa.html" title="C++面向对象FQA">
+  <strong>上一篇：</strong><br/>
+  <span>
+  C++面向对象FQA</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2019/01/04/softskills.html"  title="《软技能》读书笔记">
+ <strong>下一篇：</strong><br/> 
+ <span>《软技能》读书笔记
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+<section id="comments" class="comment">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <aside class="clearfix">
+  <strong class="toc-title">文章目录</strong>
+ 
+ 
+ 
+ </aside>
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+<div class="about">
+    <p class="asidetitle">Short bio</p>
+    <div class="clearfix">
+        <!-- <img src="http://7xsl28.com1.z0.glb.clouddn.com/niuzai.jpg" height="74px" width="74px" id="about-image" alt> -->
+        <span style="font-size: medium; font-family: Calibri Light, Open Sans, Microsoft YaHei Light">
+        whatbeg.com is written by Qiu Hu. He is living in Nanjing, P.R. China.
+        <br>
+        You can contact Qiu Hu with email.
+        <br>
+        Just enjoy your reading here!
+        <br>
+        Comments are always welcome:)
+        <br>
+        Some interesting non-technical articles can be seen in his WeChat official account: 
+        </span>
+        <br>
+        <img src="https://gitee.com/whyseek/blogimages/raw/master/qrcode.jpg" height="124px" width="124px" id="qrcode" alt>
+    </div>
+</div>
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/大数据-Big-Data/" title="大数据 | Big Data">大数据 | Big Data<sup>6</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/大数据系统与技术-Big-Data/" title="大数据系统与技术 | Big Data">大数据系统与技术 | Big Data<sup>6</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/成长之路-Biography/" title="成长之路 | Biography">成长之路 | Biography<sup>10</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/数据科学-Data-Science/" title="数据科学 | Data Science">数据科学 | Data Science<sup>8</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/机器学习-Mac-Learning/" title="机器学习 | Mac.Learning">机器学习 | Mac.Learning<sup>9</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/深度学习-Deep-Learning/" title="深度学习 | Deep Learning">深度学习 | Deep Learning<sup>7</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/源码阅读-Source/" title="源码阅读 | Source">源码阅读 | Source<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/算法-Algorithm/" title="算法 | Algorithm">算法 | Algorithm<sup>4</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/编程语言-Program-Lang/" title="编程语言 | Program Lang.">编程语言 | Program Lang.<sup>6</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/计算机相关-CS-Related/" title="计算机相关 | CS.Related">计算机相关 | CS.Related<sup>9</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/译文-Translation/" title="译文 | Translation">译文 | Translation<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/读书-Reading/" title="读书 | Reading">读书 | Reading<sup>10</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/错误解决与优化-Err-Opt/" title="错误解决与优化 | Err&amp;Opt">错误解决与优化 | Err&amp;Opt<sup>13</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/随笔-Essays/" title="随笔 | Essays">随笔 | Essays<sup>7</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+  <div class="archiveslist">
+    <p class="asidetitle"><a href="/archives">归档</a></p>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">一月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">23</span></li></ul>
+  </div>
+
+
+  
+  <div class="tagcloudlist">
+    <p class="asidetitle">标签云</p>
+    <div class="tagcloudlist clearfix">
+       <a href="/tags/C/" style="font-size: 11px;">C++</a> <a href="/tags/CS/" style="font-size: 17px;">CS</a> <a href="/tags/Deep-Learning/" style="font-size: 17px;">Deep Learning</a> <a href="/tags/GPU/" style="font-size: 10px;">GPU</a> <a href="/tags/Git/" style="font-size: 11px;">Git</a> <a href="/tags/Hadoop/" style="font-size: 15px;">Hadoop</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/Latex/" style="font-size: 11px;">Latex</a> <a href="/tags/Linux/" style="font-size: 14px;">Linux</a> <a href="/tags/Python/" style="font-size: 19px;">Python</a> <a href="/tags/Scala/" style="font-size: 10px;">Scala</a> <a href="/tags/Spark/" style="font-size: 12px;">Spark</a> <a href="/tags/Summary/" style="font-size: 16px;">Summary</a> <a href="/tags/TensorFlow/" style="font-size: 12px;">TensorFlow</a> <a href="/tags/Web/" style="font-size: 12px;">Web</a> <a href="/tags/hexo/" style="font-size: 15px;">hexo</a> <a href="/tags/人文社科/" style="font-size: 10px;">人文社科</a> <a href="/tags/优化/" style="font-size: 10px;">优化</a> <a href="/tags/历史/" style="font-size: 11px;">历史</a> <a href="/tags/吃喝玩乐/" style="font-size: 10px;">吃喝玩乐</a> <a href="/tags/大数据/" style="font-size: 17px;">大数据</a> <a href="/tags/工具使用/" style="font-size: 10px;">工具使用</a> <a href="/tags/影视/" style="font-size: 11px;">影视</a> <a href="/tags/数据分析/" style="font-size: 16px;">数据分析</a> <a href="/tags/机器学习/" style="font-size: 20px;">机器学习</a> <a href="/tags/深度学习/" style="font-size: 18px;">深度学习</a> <a href="/tags/源码阅读/" style="font-size: 12px;">源码阅读</a> <a href="/tags/算法/" style="font-size: 13px;">算法</a> <a href="/tags/系统/" style="font-size: 10px;">系统</a> <a href="/tags/论文阅读/" style="font-size: 12px;">论文阅读</a> <a href="/tags/译文/" style="font-size: 12px;">译文</a> <a href="/tags/读书/" style="font-size: 19px;">读书</a> <a href="/tags/错误解决/" style="font-size: 12px;">错误解决</a> <a href="/tags/随笔/" style="font-size: 15px;">随笔</a>
+    </div>
+  </div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="http://www.cnblogs.com/whatbeg/" target="_blank" title="Old Blog">Old Blog</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://github.com/whatbeg" target="_blank" title="My Github">My Github</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.matrix67.com/blog/" target="_blank" title="Matrix67">Matrix67</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.liaoxuefeng.com/" target="_blank" title="廖雪峰">廖雪峰</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.ruanyifeng.com/blog/" target="_blank" title="阮一峰">阮一峰</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://mindhacks.cn/" target="_blank" title="刘未鹏">刘未鹏</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://machinelearningmastery.com/blog/" target="_blank" title="ML MYSTERY">ML MYSTERY</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://freemind.pluskid.org/" target="_blank" title="Free Mind">Free Mind</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://blog.csdn.net/zouxy09/" target="_blank" title="zouxy机器学习">zouxy机器学习</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://coolshell.cn" target="_blank" title="酷壳">酷壳</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  <table height=30 cellSpacing=0 cellPadding=0 width=180 border=0>
+<form action="http://www.sogou.com/web" target="_blank">
+<tr style='font-size:12px;color:#000000'>
+<td align="center" width=100><input type="text" name="query" size=14 style='BORDER-RIGHT: #999 1px solid; BORDER-TOP: #999 1px solid; BORDER-LEFT: #999	1px	solid; BORDER-BOTTOM: #999 1px solid; HEIGHT: 19px; BACKGROUND-COLOR: #fff'>
+<input type="hidden" name="insite" value="whatbeg.com">
+<input type="hidden" name="insite2" value="whatbeg.com"></td>
+<td align="left" width=45><input type="submit" name="sogou_submit" value="搜索">
+</td></tr></form>
+</table>
+
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+  <div class="rsspart">
+	<a href="http://eepurl.com/cHO5An" target="_blank" title="email">Email 订阅</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+        
+
+	    
+		
+				<div class="cc-license">
+          <a href="http://creativecommons.org/licenses/by-nc-nd/4.0" class="cc-opacity" target="_blank">
+            <img src="/img/cc-by-nc-nd.svg" alt="Creative Commons" />
+          </a>
+        </div>
+    
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2016-2019 
+		
+		<a href="/about" target="_blank" title="whatbeg">whatbeg</a>
+		
+		<br>
+		<span class="post-count">Total words: <span style="color:orange">358.8k</span></span>
+        <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+        <span id="busuanzi_container_site_pv">
+        &nbsp;&nbsp;Total visits:&nbsp;<span style="color:orange" id="busuanzi_value_site_pv"></span>
+        </span>
+        <span id="busuanzi_container_site_uv">
+        &nbsp;&nbsp;You are Visitor No.<span style="color:orange" id="busuanzi_value_site_uv"></span>
+        </span>
+        </br>
+		</p>
+		
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    $('#toc.toc-aside').css('display', 'block').addClass('fadeIn');  //侧边栏显示文章目录
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');   //侧边栏显示widget
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+        getSize();
+        if (myWidth >= 1024) {
+          c.click();
+        }
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+
+
+
+<script type="text/javascript">
+
+var disqus_shortname = 'whatbeg';
+
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+</script>
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1258390595'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s95.cnzz.com/z_stat.php%3Fid%3D1258390595%26online%3D1%26show%3Dline' type='text/javascript'%3E%3C/script%3E"));</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    bp.src = '//push.zhanzhang.baidu.com/push.js';
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+  </body>
+</html>
+
+

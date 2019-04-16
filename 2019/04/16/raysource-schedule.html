@@ -1,0 +1,783 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>Ray源码解析之调度部分 | Whatbeg&#39;s blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="whatbeg">
+    
+
+    
+    <meta name="description" content="Ray Version 0.4.0
+调度部分包括六个文件：
+
+调度策略：头文件scheduling_policy.h（定义SchedulingPolicy）和cpp文件scheduling_policy.cc（为SchedulingPolicy实现调度策略）。
+调度队列：头文件scheduling_queue.h（）和cpp文件scheduling_queue.cc（）。
+调度资源：头文件sche">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Ray源码解析之调度部分">
+<meta property="og:url" content="http://whatbeg.com/2019/04/16/raysource-schedule.html">
+<meta property="og:site_name" content="Whatbeg's blog">
+<meta property="og:description" content="Ray Version 0.4.0
+调度部分包括六个文件：
+
+调度策略：头文件scheduling_policy.h（定义SchedulingPolicy）和cpp文件scheduling_policy.cc（为SchedulingPolicy实现调度策略）。
+调度队列：头文件scheduling_queue.h（）和cpp文件scheduling_queue.cc（）。
+调度资源：头文件sche">
+<meta property="og:updated_time" content="2019-04-16T13:12:35.333Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Ray源码解析之调度部分">
+<meta name="twitter:description" content="Ray Version 0.4.0
+调度部分包括六个文件：
+
+调度策略：头文件scheduling_policy.h（定义SchedulingPolicy）和cpp文件scheduling_policy.cc（为SchedulingPolicy实现调度策略）。
+调度队列：头文件scheduling_queue.h（）和cpp文件scheduling_queue.cc（）。
+调度资源：头文件sche">
+
+    
+    <link rel="alternative" href="/atom.xml" title="Whatbeg&#39;s blog" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/w.ico">
+    
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Whatbeg&#39;s blog">Whatbeg&#39;s blog</a></h1>
+				<h2 class="blog-motto">当你的才华撑不起你的野心时，就应该静下心来好好学习。</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">首页(Home)</a></li>
+					
+						<li><a href="/archives">归档(Archives)</a></li>
+					
+						<li><a href="/tags">标签(Tags)</a></li>
+					
+						<li><a href="/categories">分类(Categories)</a></li>
+					
+						<li><a href="/about">关于(About)</a></li>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2019/04/16/raysource-schedule.html" title="Ray源码解析之调度部分" itemprop="url">Ray源码解析之调度部分</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="whatbeg" target="_blank" itemprop="author">whatbeg</a>
+		
+  <p class="article-time">
+    <time datetime="2019-04-16T13:00:07.000Z" itemprop="datePublished"> 发表于 2019-04-16</time>
+    <span id="busuanzi_container_page_pv">
+    总阅读<span id="busuanzi_value_page_pv"></span>次
+    </span>
+  </p>
+
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			
+		
+		</div>
+		
+		<p>Ray Version 0.4.0</p>
+<p>调度部分包括六个文件：</p>
+<ul>
+<li>调度策略：头文件<code>scheduling_policy.h</code>（定义SchedulingPolicy）和cpp文件<code>scheduling_policy.cc</code>（为SchedulingPolicy实现调度策略）。</li>
+<li>调度队列：头文件<code>scheduling_queue.h</code>（）和cpp文件<code>scheduling_queue.cc</code>（）。</li>
+<li>调度资源：头文件<code>scheduling_resources.h</code>（）和cpp文件<code>scheduling_resources.cc</code>（）。</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">src/ray/raylet/scheduling_policy.h</span><br><span class="line">---------------------------------------------</span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> ray &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/// \brief Implements a scheduling policy for the node manager.</span></span><br><span class="line">    <span class="keyword">class</span> SchedulingPolicy &#123;</span><br><span class="line">     <span class="keyword">public</span>:</span><br><span class="line">      <span class="comment">/// \param scheduling_queue: reference to a scheduler queues object for access to</span></span><br><span class="line">      <span class="comment">///        tasks.</span></span><br><span class="line">      SchedulingPolicy(<span class="keyword">const</span> SchedulingQueue &amp;scheduling_queue);</span><br><span class="line">    </span><br><span class="line">      <span class="comment">/// Perform a scheduling operation, given a set of cluster resources and</span></span><br><span class="line">      <span class="comment">/// producing a mapping of tasks to node managers.</span></span><br><span class="line">      <span class="comment">///</span></span><br><span class="line">      <span class="comment">///  \param cluster_resources: a set of cluster resources representing</span></span><br><span class="line">      <span class="comment">///         configured and current resource capacity on each node.</span></span><br><span class="line">      <span class="comment">/// \return Scheduling decision, mapping tasks to node managers for placement.</span></span><br><span class="line">      <span class="built_in">std</span>::<span class="built_in">unordered_map</span>&lt;TaskID, ClientID, UniqueIDHasher&gt; Schedule(</span><br><span class="line">          <span class="keyword">const</span> <span class="built_in">std</span>::<span class="built_in">unordered_map</span>&lt;ClientID, SchedulingResources, UniqueIDHasher&gt;</span><br><span class="line">              &amp;cluster_resources);</span><br><span class="line">    </span><br><span class="line">      <span class="keyword">virtual</span> ~SchedulingPolicy();</span><br><span class="line">    </span><br><span class="line">     <span class="keyword">private</span>:</span><br><span class="line">      <span class="comment">/// An immutable reference to the scheduling task queues.</span></span><br><span class="line">      <span class="keyword">const</span> SchedulingQueue &amp;scheduling_queue_;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>调度策略的头文件，描述了SchedulingPolicy类的结构，包括构造函数，析构函数，Schedule函数（关键调度决策）。<br>构造函数传入需要调度的任务队列，Schedule函数接受集群资源的一个<code>unordered_map</code>作为输入，输出为调度决策，也是一个<code>unordered_map</code>。<code>unordered_map</code>是C++ 11的新特性，其内部元素是无序的。<br>Schedule接受的输入map是以ClientID即本节点id为key，SchedulingResources调度资源为value，即一个<code>节点-&gt;资源</code>的映射。<br>Schedule输出map则是以TaskID为键，ClientID为值，即表示TaskID表示的Task调度到ClientID代表的节点上。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">scheduling_policy.cc</span><br><span class="line">----------------------------------</span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> ray &#123;</span><br><span class="line">....</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">unordered_map</span>&lt;TaskID, ClientID, UniqueIDHasher&gt; SchedulingPolicy::Schedule(</span><br><span class="line">        <span class="keyword">const</span> <span class="built_in">std</span>::<span class="built_in">unordered_map</span>&lt;ClientID, SchedulingResources, UniqueIDHasher&gt;</span><br><span class="line">            &amp;cluster_resources) &#123;</span><br><span class="line">      <span class="keyword">static</span> ClientID local_node_id = ClientID::nil();</span><br><span class="line">      <span class="built_in">std</span>::<span class="built_in">unordered_map</span>&lt;TaskID, ClientID, UniqueIDHasher&gt; decision;</span><br><span class="line">      <span class="comment">// TODO(atumanov): consider all cluster resources.</span></span><br><span class="line">      SchedulingResources resource_supply = cluster_resources.at(local_node_id);</span><br><span class="line">      <span class="keyword">const</span> <span class="keyword">auto</span> &amp;resource_supply_set = resource_supply.GetAvailableResources();</span><br><span class="line">    </span><br><span class="line">      <span class="comment">// Iterate over running tasks, get their resource demand and try to schedule.</span></span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;t : scheduling_queue_.GetReadyTasks()) &#123;</span><br><span class="line">        <span class="comment">// Get task's resource demand</span></span><br><span class="line">        <span class="keyword">const</span> <span class="keyword">auto</span> &amp;resource_demand = t.GetTaskSpecification().GetRequiredResources();</span><br><span class="line">        <span class="keyword">bool</span> task_feasible = resource_demand.IsSubset(resource_supply_set);</span><br><span class="line">        <span class="keyword">if</span> (task_feasible) &#123;</span><br><span class="line">          <span class="keyword">const</span> TaskID &amp;task_id = t.GetTaskSpecification().TaskId();</span><br><span class="line">          decision[task_id] = local_node_id;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">return</span> decision;</span><br><span class="line">    &#125;</span><br><span class="line">....</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>为简洁起见，这里之贴出了Schedule函数的实现。<br>从上述代码可以看到，ray的调度包括这么几个过程：<br>1）得到本地节点id<br>2）得到本地节点可提供的资源<br>3）对于每个准备好的任务，判断本地资源是否能满足该任务(task_feasible)，能满足则调度到本地节点。</p>
+<p>【问】那么不能满足的任务呢？这些任务没有对应的<code>local_node_id</code>，在decision中也就没有key，这部分任务该怎么办，有待后面分析。</p>
+<p>【问】还有一个问题就是，程序中本地节点能满足资源要求就调度到本地节点，调度后并不会减少<code>resource_supply</code>即资源的供给，那么如果本地节点能满足所有任务的要求，岂不是所有任务都调度到此节点？</p>
+<p>这里<code>resource_demand.IsSubset(resource_supply_set)</code>中的<code>IsSubset</code>表示资源需求是否是资源供给集的子集，如果是，表示满足条件。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">scheduling_queue.h</span><br><span class="line">--------------------------------</span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> ray &#123;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> SchedulingQueue &#123;</span><br><span class="line"> <span class="keyword">public</span>:</span><br><span class="line">  SchedulingQueue() &#123;&#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">virtual</span> ~SchedulingQueue() &#123;&#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> <span class="built_in">std</span>::<span class="built_in">list</span>&lt;Task&gt; &amp;GetWaitingTasks() <span class="keyword">const</span>;</span><br><span class="line">  <span class="keyword">const</span> <span class="built_in">std</span>::<span class="built_in">list</span>&lt;Task&gt; &amp;GetReadyTasks() <span class="keyword">const</span>;</span><br><span class="line">  <span class="keyword">const</span> <span class="built_in">std</span>::<span class="built_in">list</span>&lt;Task&gt; &amp;GetReadyMethods() <span class="keyword">const</span>;</span><br><span class="line">  <span class="keyword">const</span> <span class="built_in">std</span>::<span class="built_in">list</span>&lt;Task&gt; &amp;GetScheduledTasks() <span class="keyword">const</span>;</span><br><span class="line">  <span class="keyword">const</span> <span class="built_in">std</span>::<span class="built_in">list</span>&lt;Task&gt; &amp;GetRunningTasks() <span class="keyword">const</span>;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">std</span>::<span class="built_in">vector</span>&lt;Task&gt; RemoveTasks(<span class="built_in">std</span>::<span class="built_in">unordered_set</span>&lt;TaskID, UniqueIDHasher&gt; tasks);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">QueueWaitingTasks</span><span class="params">(<span class="keyword">const</span> <span class="built_in">std</span>::<span class="built_in">vector</span>&lt;Task&gt; &amp;tasks)</span></span>;</span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">QueueReadyTasks</span><span class="params">(<span class="keyword">const</span> <span class="built_in">std</span>::<span class="built_in">vector</span>&lt;Task&gt; &amp;tasks)</span></span>;</span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">QueueScheduledTasks</span><span class="params">(<span class="keyword">const</span> <span class="built_in">std</span>::<span class="built_in">vector</span>&lt;Task&gt; &amp;tasks)</span></span>;</span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">QueueRunningTasks</span><span class="params">(<span class="keyword">const</span> <span class="built_in">std</span>::<span class="built_in">vector</span>&lt;Task&gt; &amp;tasks)</span></span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/// Register an actor.</span></span><br><span class="line">  <span class="comment">///</span></span><br><span class="line">  <span class="comment">/// \param actor_id The ID of the actor to register.</span></span><br><span class="line">  <span class="comment">/// \param actor_information Information about the actor.</span></span><br><span class="line">  <span class="function"><span class="keyword">bool</span> <span class="title">RegisterActor</span><span class="params">(ActorID actor_id, <span class="keyword">const</span> ActorInformation &amp;actor_information)</span></span>;</span><br><span class="line"></span><br><span class="line"> <span class="keyword">private</span>:</span><br><span class="line">  <span class="built_in">std</span>::<span class="built_in">list</span>&lt;Task&gt; waiting_tasks_;</span><br><span class="line">  <span class="built_in">std</span>::<span class="built_in">list</span>&lt;Task&gt; ready_tasks_;</span><br><span class="line">  <span class="built_in">std</span>::<span class="built_in">list</span>&lt;Task&gt; scheduled_tasks_;</span><br><span class="line">  <span class="built_in">std</span>::<span class="built_in">list</span>&lt;Task&gt; running_tasks_;</span><br><span class="line">  <span class="comment">/// The registry of known actors.</span></span><br><span class="line">  <span class="built_in">std</span>::<span class="built_in">unordered_map</span>&lt;ActorID, ActorInformation, UniqueIDHasher&gt; actor_registry_;</span><br><span class="line">&#125;;</span><br><span class="line">&#125;  <span class="comment">// namespace ray</span></span><br></pre></td></tr></table></figure>
+<p>调度队列定义头文件，封装了调度队列，每个队列包含着各自类型的任务。</p>
+<p>(1) waiting: for object dependencies to become available,<br>(2) ready: object dependencies are available and the task is ready to be scheduled<br>(3) scheduled: the task has been scheduled but is waiting for a worker<br>(4) running: the task has been scheduled and is running on a worker.</p>
+<p><code>scheduling_queue.cc</code>文件中则实现了这些队列的getter方法，以及进队列方法，移除方法。<br>比如说移除方法：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Helper function to remove tasks in the given set of task_ids from a</span></span><br><span class="line"><span class="comment">// queue, and append them to the given vector removed_tasks.</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">removeTasksFromQueue</span><span class="params">(<span class="built_in">std</span>::<span class="built_in">list</span>&lt;Task&gt; &amp;<span class="built_in">queue</span>,</span><br><span class="line">                          <span class="built_in">std</span>::<span class="built_in">unordered_set</span>&lt;TaskID, UniqueIDHasher&gt; &amp;task_ids,</span><br><span class="line">                          <span class="built_in">std</span>::<span class="built_in">vector</span>&lt;Task&gt; &amp;removed_tasks)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">auto</span> it = <span class="built_in">queue</span>.begin(); it != <span class="built_in">queue</span>.end();) &#123;</span><br><span class="line">    <span class="keyword">auto</span> task_id = task_ids.find(it-&gt;GetTaskSpecification().TaskId());</span><br><span class="line">    <span class="keyword">if</span> (task_id != task_ids.end()) &#123;</span><br><span class="line">      task_ids.erase(task_id);</span><br><span class="line">      removed_tasks.push_back(<span class="built_in">std</span>::move(*it));</span><br><span class="line">      it = <span class="built_in">queue</span>.erase(it);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      it++;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>从queue中移除task_ids中包含的所有taskID代表的task。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line">scheduling_resources.h</span><br><span class="line">------------------------------------</span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> ray &#123;</span><br><span class="line"></span><br><span class="line"><span class="comment">/// Resource availability status reports whether the resource requirement is</span></span><br><span class="line"><span class="comment">/// (1) infeasible, (2) feasible but currently unavailable, or (3) available.</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">enum</span> &#123;</span><br><span class="line">  kInfeasible,            <span class="comment">///&lt; Cannot ever satisfy resource requirements.</span></span><br><span class="line">  kResourcesUnavailable,  <span class="comment">///&lt; Feasible, but not currently available.</span></span><br><span class="line">  kFeasible               <span class="comment">///&lt; Feasible and currently available.</span></span><br><span class="line">&#125; ResourceAvailabilityStatus;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> ResourceSet &#123;</span><br><span class="line"> <span class="keyword">public</span>:</span><br><span class="line">  ResourceSet();</span><br><span class="line">  ResourceSet(<span class="keyword">const</span> <span class="built_in">std</span>::<span class="built_in">unordered_map</span>&lt;<span class="built_in">std</span>::<span class="built_in">string</span>, <span class="keyword">double</span>&gt; &amp;resource_map);</span><br><span class="line">  ~ResourceSet();</span><br><span class="line"></span><br><span class="line">  <span class="keyword">bool</span> <span class="keyword">operator</span>==(<span class="keyword">const</span> ResourceSet &amp;rhs) <span class="keyword">const</span>;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">bool</span> <span class="title">IsEqual</span><span class="params">(<span class="keyword">const</span> ResourceSet &amp;other)</span> <span class="keyword">const</span></span>;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">bool</span> <span class="title">IsSubset</span><span class="params">(<span class="keyword">const</span> ResourceSet &amp;other)</span> <span class="keyword">const</span></span>;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">bool</span> <span class="title">IsSuperset</span><span class="params">(<span class="keyword">const</span> ResourceSet &amp;other)</span> <span class="keyword">const</span></span>;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">bool</span> <span class="title">AddResource</span><span class="params">(<span class="keyword">const</span> <span class="built_in">std</span>::<span class="built_in">string</span> &amp;resource_name, <span class="keyword">double</span> capacity)</span></span>;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">bool</span> <span class="title">RemoveResource</span><span class="params">(<span class="keyword">const</span> <span class="built_in">std</span>::<span class="built_in">string</span> &amp;resource_name)</span></span>;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">bool</span> <span class="title">AddResources</span><span class="params">(<span class="keyword">const</span> ResourceSet &amp;other)</span></span>;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">bool</span> <span class="title">SubtractResources</span><span class="params">(<span class="keyword">const</span> ResourceSet &amp;other)</span></span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 返回指定资源的容量值（赋给value指向的值），如果资源有大于0的数量，且value不为空指针，则返回true</span></span><br><span class="line">  <span class="function"><span class="keyword">bool</span> <span class="title">GetResource</span><span class="params">(<span class="keyword">const</span> <span class="built_in">std</span>::<span class="built_in">string</span> &amp;resource_name, <span class="keyword">double</span> *value)</span> <span class="keyword">const</span></span>;</span><br><span class="line"></span><br><span class="line"> <span class="keyword">private</span>:</span><br><span class="line">  <span class="comment">// 资源容量map</span></span><br><span class="line">  <span class="built_in">std</span>::<span class="built_in">unordered_map</span>&lt;<span class="built_in">std</span>::<span class="built_in">string</span>, <span class="keyword">double</span>&gt; resource_capacity_;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">/// \class SchedulingResources</span></span><br><span class="line"><span class="comment">/// SchedulingResources 封装资源的状态和资源的计数。资源包括配置资源束容量和GPU分配图。</span></span><br><span class="line"><span class="keyword">class</span> SchedulingResources &#123;</span><br><span class="line"> <span class="keyword">public</span>:</span><br><span class="line">  SchedulingResources();</span><br><span class="line">  SchedulingResources(<span class="keyword">const</span> ResourceSet &amp;total);</span><br><span class="line">  ~SchedulingResources();</span><br><span class="line">  <span class="comment">// 检查一个资源集是否能被满足，有几种状态，(1) infeasible, (2) feasible but currently unavailable, or (3) available.</span></span><br><span class="line">  <span class="function">ResourceAvailabilityStatus <span class="title">CheckResourcesSatisfied</span><span class="params">(ResourceSet &amp;<span class="built_in">set</span>)</span> <span class="keyword">const</span></span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 请求现在可用的资源集，返回一个不可变的资源集合</span></span><br><span class="line">  <span class="function"><span class="keyword">const</span> ResourceSet &amp;<span class="title">GetAvailableResources</span><span class="params">()</span> <span class="keyword">const</span></span>;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">bool</span> <span class="title">Release</span><span class="params">(<span class="keyword">const</span> ResourceSet &amp;resources)</span></span>;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">bool</span> <span class="title">Acquire</span><span class="params">(<span class="keyword">const</span> ResourceSet &amp;resources)</span></span>;</span><br><span class="line"></span><br><span class="line"> <span class="keyword">private</span>:</span><br><span class="line">  <span class="comment">/// 静态资源配置</span></span><br><span class="line">  ResourceSet resources_total_;</span><br><span class="line">  <span class="comment">/// 动态资源容量</span></span><br><span class="line">  ResourceSet resources_available_;</span><br><span class="line">  <span class="comment">/// gpu_map - replace with ResourceMap (for generality).</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">&#125;  <span class="comment">// namespace ray</span></span><br></pre></td></tr></table></figure>
+<p>调度资源定义中包含两个类，一个是资源集(ResourceSet)，资源集维护了一个<code>资源名-&gt;容量</code>的map映射<code>resource_capacity_</code>，并实现了相等，资源子集和超集，添加和删除资源等接口。<br>另一个是调度资源类(SchedulingResources)，维护了两个资源集，一个是<code>resources_total_</code>总的静态资源配置，描述集群总共有哪些资源，以及一个<code>resources_available_</code>可用资源集，每个时刻的可用资源量是动态变化的，所以也叫动态资源集。实现了检查资源能够满足，请求现在可用的资源，申请(Acquire)和释放(Release)等接口。<br>申请(Acquire)和释放(Release)接口会分别调用资源集的AddResources，RemoveResources接口。</p>
+<p>在<code>scheduling_resources.cc</code>中，资源集的相等是通过判断是否互为子集来实现的：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">bool</span> ResourceSet::<span class="keyword">operator</span>==(<span class="keyword">const</span> ResourceSet &amp;rhs) <span class="keyword">const</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> (<span class="keyword">this</span>-&gt;IsSubset(rhs) &amp;&amp; rhs.IsSubset(*<span class="keyword">this</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>资源集是否为另一资源集的子集的判断函数如下实现：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">bool</span> ResourceSet::IsSubset(<span class="keyword">const</span> ResourceSet &amp;other) <span class="keyword">const</span> &#123;</span><br><span class="line">  <span class="comment">// Check to make sure all keys of this are in other.</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;resource_pair : resource_capacity_) &#123;</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">auto</span> &amp;resource_name = resource_pair.first;</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">double</span> lhs_quantity = resource_pair.second;</span><br><span class="line">    <span class="keyword">double</span> rhs_quantity = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">if</span> (!other.GetResource(resource_name, &amp;rhs_quantity)) &#123;</span><br><span class="line">      <span class="comment">// Resource not found in rhs, therefore lhs is not a subset of rhs.</span></span><br><span class="line">      <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (lhs_quantity &gt; rhs_quantity) &#123;</span><br><span class="line">      <span class="comment">// Resource found in rhs, but lhs capacity exceeds rhs capacity.</span></span><br><span class="line">      <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>看完后面4个文件再回过头去看调度策略的实现就明了多了。</p>
+  
+	</div>
+
+
+    
+	<!-- css -->
+	<style type="text/css">
+	    .center {
+	        text-align: center;
+	    }
+	    .hidden {
+	        display: none;
+	    }
+		.donate_bar a.btn_donate{
+			display: inline-block;
+			width: 82px;
+			height: 82px;
+			background: url("http://7xsl28.com1.z0.glb.clouddn.com/btn_reward.gif") no-repeat;
+			_background: url("http://7xsl28.com1.z0.glb.clouddn.com/btn_reward.gif") no-repeat;
+
+			<!-- http://img.t.sinajs.cn/t5/style/images/apps_PRF/e_media/btn_reward.gif
+			     因为本 hexo 生成的博客所用的 theme 的 a:hover 带动画效果，
+				 为了在让打赏按钮显示效果正常 而 添加了以下几行 css，
+				 嵌入其它博客时不一定要它们。 -->
+			-webkit-transition: background 0s;
+			-moz-transition: background 0s;
+			-o-transition: background 0s;
+			-ms-transition: background 0s;
+			transition: background 0s;
+			<!-- /让打赏按钮的效果显示正常 而 添加的几行 css 到此结束 -->
+		}
+
+		.donate_bar a.btn_donate:hover{ background-position: 0px -82px;}
+		.donate_bar .donate_txt {
+			display: block;
+			color: #9d9d9d;
+			font: 14px/2 "Microsoft Yahei";
+		}
+		.bold{ font-weight: bold; }
+	</style>
+	<!-- /css -->
+
+    <!-- Donate Module -->
+    <div id="donate_module">
+
+	<!-- btn_donate & tips -->
+	<div id="donate_board" class="donate_bar center">
+	    <br>
+	    ------------------------------------------------------------------------------------------------------------------------------
+	    <br>
+		<a id="btn_donate" class="btn_donate" target="_self" href="javascript:;" title="Donate 打赏"></a>
+		<span class="donate_txt">
+			我要小额赞助，助作者写出更好的文章！
+		</span>
+			
+		
+	</div>
+	<!-- /btn_donate & tips -->
+
+	<!-- donate guide -->
+    
+	<div id="donate_guide" class="donate_bar center hidden">
+        <br>
+	    ------------------------------------------------------------------------------------------------------------------------------
+	    <br>
+	    
+	    <div width="100%" align="center"><div name="dashmain" id="dash-main-id-87895f" class="dash-main-3 87895f-0.99"></div></div>
+		<script type="text/javascript" charset="utf-8" src="http://www.dashangcloud.com/static/ds.js"></script>
+		
+
+		<a href="http://7xsl28.com1.z0.glb.clouddn.com/wechatpay.png" title="用微信扫一扫哦~" class="fancybox" rel="article0">
+			<img src="http://7xsl28.com1.z0.glb.clouddn.com/wechatpay.png" title="微信打赏 Donate" height="190px" width="auto"/>
+		</a>
+        
+        &nbsp;&nbsp;
+
+		<a href="http://7xsl28.com1.z0.glb.clouddn.com/alipay.jpg" title="用支付宝扫一扫即可~" class="fancybox" rel="article0">
+			<img src="http://7xsl28.com1.z0.glb.clouddn.com/alipay.jpg" title="支付宝打赏 Donate" height="190px" width="auto"/>
+		</a>
+
+		<span class="donate_txt">
+			我要小额赞助，助作者写出更好的文章！
+		</span>
+
+	</div>
+	<!-- /donate guide -->
+
+	<!-- donate script -->
+	<script type="text/javascript">
+		document.getElementById('btn_donate').onclick = function() {
+			$('#donate_board').addClass('hidden');
+			$('#donate_guide').removeClass('hidden');
+		}
+
+		function donate_on_web(){
+			$('#donate').submit();
+        }
+
+		var original_window_onload = window.onload;
+        window.onload = function () {
+            if (original_window_onload) {
+                original_window_onload();
+            }
+            document.getElementById('donate_board_wdg').className = 'hidden';
+		}
+	</script>
+	<!-- /donate script -->
+</div>
+<!-- /Donate Module -->
+   
+
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  
+  <span></span> <a href="/categories/源码阅读-Source/">源码阅读 | Source</a>
+  </div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/源码阅读/">源码阅读</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	<div class="share-jiathis">
+	  
+<div class="jiathis_style_24x24">
+	<a class="jiathis_button_tsina"></a>
+	<a class="jiathis_button_weixin"></a>
+	<a class="jiathis_button_tqq"></a>
+	<a class="jiathis_button_qzone"></a>
+	<a class="jiathis_button_douban"></a>
+	<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+    var jiathis_config={
+    data_track_clickback:true,
+    sm:"copy,renren,cqq",
+    pic:"",
+    summary:"",
+     ralateuid:{"tsina":"husuche## e.g. 2176287895 Your weibo id,It will be used in share button."},hideMore:false}
+    
+  </script> 
+<script type="text/javascript" src="//v3.jiathis.com/code/jia.js?uid=2094149
+2094149" charset="utf-8"></script>      
+
+	 </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2019/04/16/hadoopmustknow.html" title="Hadoop必知必会（HDFS+MapReduce部分）">
+  <strong>上一篇：</strong><br/>
+  <span>
+  Hadoop必知必会（HDFS+MapReduce部分）</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2019/04/16/raysource-task.html"  title="Ray源码解析之Task部分">
+ <strong>下一篇：</strong><br/> 
+ <span>Ray源码解析之Task部分
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+<section id="comments" class="comment">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <aside class="clearfix">
+  <strong class="toc-title">文章目录</strong>
+ 
+ 
+ 
+ </aside>
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+<div class="about">
+    <p class="asidetitle">Short bio</p>
+    <div class="clearfix">
+        <!-- <img src="http://7xsl28.com1.z0.glb.clouddn.com/niuzai.jpg" height="74px" width="74px" id="about-image" alt> -->
+        <span style="font-size: medium; font-family: Calibri Light, Open Sans, Microsoft YaHei Light">
+        whatbeg.com is written by Qiu Hu. He is living in Nanjing, P.R. China.
+        <br>
+        You can contact Qiu Hu with email.
+        <br>
+        Just enjoy your reading here!
+        <br>
+        Comments are always welcome:)
+        <br>
+        Some interesting non-technical articles can be seen in his WeChat official account: 
+        </span>
+        <br>
+        <img src="https://gitee.com/whyseek/blogimages/raw/master/qrcode.jpg" height="124px" width="124px" id="qrcode" alt>
+    </div>
+</div>
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/大数据-Big-Data/" title="大数据 | Big Data">大数据 | Big Data<sup>6</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/大数据系统与技术-Big-Data/" title="大数据系统与技术 | Big Data">大数据系统与技术 | Big Data<sup>6</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/成长之路-Biography/" title="成长之路 | Biography">成长之路 | Biography<sup>10</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/数据科学-Data-Science/" title="数据科学 | Data Science">数据科学 | Data Science<sup>8</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/机器学习-Mac-Learning/" title="机器学习 | Mac.Learning">机器学习 | Mac.Learning<sup>9</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/深度学习-Deep-Learning/" title="深度学习 | Deep Learning">深度学习 | Deep Learning<sup>7</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/源码阅读-Source/" title="源码阅读 | Source">源码阅读 | Source<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/算法-Algorithm/" title="算法 | Algorithm">算法 | Algorithm<sup>4</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/编程语言-Program-Lang/" title="编程语言 | Program Lang.">编程语言 | Program Lang.<sup>6</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/计算机相关-CS-Related/" title="计算机相关 | CS.Related">计算机相关 | CS.Related<sup>9</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/译文-Translation/" title="译文 | Translation">译文 | Translation<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/读书-Reading/" title="读书 | Reading">读书 | Reading<sup>10</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/错误解决与优化-Err-Opt/" title="错误解决与优化 | Err&amp;Opt">错误解决与优化 | Err&amp;Opt<sup>13</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/随笔-Essays/" title="随笔 | Essays">随笔 | Essays<sup>7</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+  <div class="archiveslist">
+    <p class="asidetitle"><a href="/archives">归档</a></p>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">一月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">23</span></li></ul>
+  </div>
+
+
+  
+  <div class="tagcloudlist">
+    <p class="asidetitle">标签云</p>
+    <div class="tagcloudlist clearfix">
+       <a href="/tags/C/" style="font-size: 11px;">C++</a> <a href="/tags/CS/" style="font-size: 17px;">CS</a> <a href="/tags/Deep-Learning/" style="font-size: 17px;">Deep Learning</a> <a href="/tags/GPU/" style="font-size: 10px;">GPU</a> <a href="/tags/Git/" style="font-size: 11px;">Git</a> <a href="/tags/Hadoop/" style="font-size: 15px;">Hadoop</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/Latex/" style="font-size: 11px;">Latex</a> <a href="/tags/Linux/" style="font-size: 14px;">Linux</a> <a href="/tags/Python/" style="font-size: 19px;">Python</a> <a href="/tags/Scala/" style="font-size: 10px;">Scala</a> <a href="/tags/Spark/" style="font-size: 12px;">Spark</a> <a href="/tags/Summary/" style="font-size: 16px;">Summary</a> <a href="/tags/TensorFlow/" style="font-size: 12px;">TensorFlow</a> <a href="/tags/Web/" style="font-size: 12px;">Web</a> <a href="/tags/hexo/" style="font-size: 15px;">hexo</a> <a href="/tags/人文社科/" style="font-size: 10px;">人文社科</a> <a href="/tags/优化/" style="font-size: 10px;">优化</a> <a href="/tags/历史/" style="font-size: 11px;">历史</a> <a href="/tags/吃喝玩乐/" style="font-size: 10px;">吃喝玩乐</a> <a href="/tags/大数据/" style="font-size: 17px;">大数据</a> <a href="/tags/工具使用/" style="font-size: 10px;">工具使用</a> <a href="/tags/影视/" style="font-size: 11px;">影视</a> <a href="/tags/数据分析/" style="font-size: 16px;">数据分析</a> <a href="/tags/机器学习/" style="font-size: 20px;">机器学习</a> <a href="/tags/深度学习/" style="font-size: 18px;">深度学习</a> <a href="/tags/源码阅读/" style="font-size: 12px;">源码阅读</a> <a href="/tags/算法/" style="font-size: 13px;">算法</a> <a href="/tags/系统/" style="font-size: 10px;">系统</a> <a href="/tags/论文阅读/" style="font-size: 12px;">论文阅读</a> <a href="/tags/译文/" style="font-size: 12px;">译文</a> <a href="/tags/读书/" style="font-size: 19px;">读书</a> <a href="/tags/错误解决/" style="font-size: 12px;">错误解决</a> <a href="/tags/随笔/" style="font-size: 15px;">随笔</a>
+    </div>
+  </div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="http://www.cnblogs.com/whatbeg/" target="_blank" title="Old Blog">Old Blog</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://github.com/whatbeg" target="_blank" title="My Github">My Github</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.matrix67.com/blog/" target="_blank" title="Matrix67">Matrix67</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.liaoxuefeng.com/" target="_blank" title="廖雪峰">廖雪峰</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.ruanyifeng.com/blog/" target="_blank" title="阮一峰">阮一峰</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://mindhacks.cn/" target="_blank" title="刘未鹏">刘未鹏</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://machinelearningmastery.com/blog/" target="_blank" title="ML MYSTERY">ML MYSTERY</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://freemind.pluskid.org/" target="_blank" title="Free Mind">Free Mind</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://blog.csdn.net/zouxy09/" target="_blank" title="zouxy机器学习">zouxy机器学习</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://coolshell.cn" target="_blank" title="酷壳">酷壳</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  <table height=30 cellSpacing=0 cellPadding=0 width=180 border=0>
+<form action="http://www.sogou.com/web" target="_blank">
+<tr style='font-size:12px;color:#000000'>
+<td align="center" width=100><input type="text" name="query" size=14 style='BORDER-RIGHT: #999 1px solid; BORDER-TOP: #999 1px solid; BORDER-LEFT: #999	1px	solid; BORDER-BOTTOM: #999 1px solid; HEIGHT: 19px; BACKGROUND-COLOR: #fff'>
+<input type="hidden" name="insite" value="whatbeg.com">
+<input type="hidden" name="insite2" value="whatbeg.com"></td>
+<td align="left" width=45><input type="submit" name="sogou_submit" value="搜索">
+</td></tr></form>
+</table>
+
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+  <div class="rsspart">
+	<a href="http://eepurl.com/cHO5An" target="_blank" title="email">Email 订阅</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+        
+
+	    
+		
+				<div class="cc-license">
+          <a href="http://creativecommons.org/licenses/by-nc-nd/4.0" class="cc-opacity" target="_blank">
+            <img src="/img/cc-by-nc-nd.svg" alt="Creative Commons" />
+          </a>
+        </div>
+    
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2016-2019 
+		
+		<a href="/about" target="_blank" title="whatbeg">whatbeg</a>
+		
+		<br>
+		<span class="post-count">Total words: <span style="color:orange">358.8k</span></span>
+        <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+        <span id="busuanzi_container_site_pv">
+        &nbsp;&nbsp;Total visits:&nbsp;<span style="color:orange" id="busuanzi_value_site_pv"></span>
+        </span>
+        <span id="busuanzi_container_site_uv">
+        &nbsp;&nbsp;You are Visitor No.<span style="color:orange" id="busuanzi_value_site_uv"></span>
+        </span>
+        </br>
+		</p>
+		
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    $('#toc.toc-aside').css('display', 'block').addClass('fadeIn');  //侧边栏显示文章目录
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');   //侧边栏显示widget
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+        getSize();
+        if (myWidth >= 1024) {
+          c.click();
+        }
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+
+
+
+<script type="text/javascript">
+
+var disqus_shortname = 'whatbeg';
+
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+</script>
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1258390595'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s95.cnzz.com/z_stat.php%3Fid%3D1258390595%26online%3D1%26show%3Dline' type='text/javascript'%3E%3C/script%3E"));</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    bp.src = '//push.zhanzhang.baidu.com/push.js';
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+  </body>
+</html>
+
+

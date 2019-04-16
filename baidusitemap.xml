@@ -4,6 +4,354 @@
 
     
   <url>
+    <loc>http://whatbeg.com/2019/04/16/raysource-schedule.html</loc>
+    <lastmod>2019-04-16T13:12:35.333Z</lastmod>
+    <data>
+        <display>
+        <title>Ray源码解析之调度部分</title>
+        <pubTime>2019-04-16T13:00:07.000Z</pubTime>
+        
+        <tag>源码阅读</tag>
+         
+         
+           
+             
+              <breadCrumb title="源码阅读 | Source" url="http://whatbeg.com/categories/%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB-Source/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://whatbeg.com/2016/09/10/hadoop-go-1.html</loc>
+    <lastmod>2019-04-16T13:12:29.632Z</lastmod>
+    <data>
+        <display>
+        <title>Hadoop MapReduce进行WordCount自主编译运行</title>
+        <pubTime>2016-09-10T12:28:29.000Z</pubTime>
+        
+        <tag>Hadoop</tag>
+         
+         
+           
+             
+              <breadCrumb title="大数据 | Big Data" url="http://whatbeg.com/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-Big-Data/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://whatbeg.com/2016/08/31/hadoop-install.html</loc>
+    <lastmod>2019-04-16T13:12:23.604Z</lastmod>
+    <data>
+        <display>
+        <title>Linux Ubuntu 16.04安装Hadoop全过程（一）</title>
+        <pubTime>2016-08-31T08:57:42.000Z</pubTime>
+        
+        <tag>Hadoop</tag>
+         
+         
+           
+             
+              <breadCrumb title="大数据 | Big Data" url="http://whatbeg.com/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-Big-Data/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://whatbeg.com/2016/09/02/hadoop-install-2.html</loc>
+    <lastmod>2019-04-16T13:12:04.008Z</lastmod>
+    <data>
+        <display>
+        <title>Linux Ubuntu 16.04安装Hadoop全过程（二） --伪分布式</title>
+        <pubTime>2016-09-02T09:00:24.000Z</pubTime>
+        
+        <tag>Hadoop</tag>
+         
+         
+           
+             
+              <breadCrumb title="大数据 | Big Data" url="http://whatbeg.com/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-Big-Data/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://whatbeg.com/2017/04/17/bigdlclusterbuild.html</loc>
+    <lastmod>2019-04-16T13:11:34.632Z</lastmod>
+    <data>
+        <display>
+        <title>在服务器集群上搭建BigDL环境</title>
+        <pubTime>2017-04-17T14:42:38.000Z</pubTime>
+        
+        <tag>大数据</tag>
+         
+        <tag>Deep Learning</tag>
+         
+        <tag>深度学习</tag>
+         
+         
+           
+             
+              <breadCrumb title="大数据 | Big Data" url="http://whatbeg.com/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-Big-Data/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://whatbeg.com/2016/10/06/bigdatapapers.html</loc>
+    <lastmod>2019-04-16T13:10:58.889Z</lastmod>
+    <data>
+        <display>
+        <title>大数据系统方面的经典论文</title>
+        <pubTime>2016-10-06T12:57:12.000Z</pubTime>
+        
+        <tag>大数据</tag>
+         
+         
+           
+             
+              <breadCrumb title="大数据 | Big Data" url="http://whatbeg.com/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-Big-Data/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://whatbeg.com/2017/03/11/linuxmemo.html</loc>
+    <lastmod>2019-04-16T13:10:43.462Z</lastmod>
+    <data>
+        <display>
+        <title>Linux备忘命令</title>
+        <pubTime>2017-03-11T04:42:52.000Z</pubTime>
+        
+        <tag>Linux</tag>
+         
+         
+           
+             
+              <breadCrumb title="计算机相关 | CS.Related" url="http://whatbeg.com/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9B%B8%E5%85%B3-CS-Related/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://whatbeg.com/2019/04/16/hadoopmustknow.html</loc>
+    <lastmod>2019-04-16T13:10:36.433Z</lastmod>
+    <data>
+        <display>
+        <title>Hadoop必知必会（HDFS+MapReduce部分）</title>
+        <pubTime>2019-04-16T13:08:37.000Z</pubTime>
+        
+        <tag>大数据</tag>
+         
+        <tag>Hadoop</tag>
+         
+         
+           
+             
+              <breadCrumb title="大数据 | Big Data" url="http://whatbeg.com/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-Big-Data/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://whatbeg.com/2019/04/16/raysource-task.html</loc>
+    <lastmod>2019-04-16T12:59:49.870Z</lastmod>
+    <data>
+        <display>
+        <title>Ray源码解析之Task部分</title>
+        <pubTime>2019-04-16T12:58:11.000Z</pubTime>
+        
+        <tag>源码阅读</tag>
+         
+         
+           
+             
+              <breadCrumb title="源码阅读 | Source" url="http://whatbeg.com/categories/%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB-Source/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://whatbeg.com/2019/04/16/raysource-overall.html</loc>
+    <lastmod>2019-04-16T12:59:37.689Z</lastmod>
+    <data>
+        <display>
+        <title>Ray源码解析之整体逻辑结构</title>
+        <pubTime>2019-04-16T12:56:27.000Z</pubTime>
+        
+        <tag>源码阅读</tag>
+         
+         
+           
+             
+              <breadCrumb title="源码阅读 | Source" url="http://whatbeg.com/categories/%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB-Source/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://whatbeg.com/2019/04/16/linuxexceptions.html</loc>
+    <lastmod>2019-04-16T12:52:34.135Z</lastmod>
+    <data>
+        <display>
+        <title>Linux异常集锦</title>
+        <pubTime>2019-04-16T12:50:04.000Z</pubTime>
+        
+        <tag>Linux</tag>
+         
+         
+           
+             
+              <breadCrumb title="计算机相关 | CS.Related" url="http://whatbeg.com/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9B%B8%E5%85%B3-CS-Related/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://whatbeg.com/2017/04/01/ubuntuproblems.html</loc>
+    <lastmod>2019-04-16T12:49:00.539Z</lastmod>
+    <data>
+        <display>
+        <title>Ubuntu 使用中的问题集锦</title>
+        <pubTime>2017-04-01T12:38:53.000Z</pubTime>
+        
+        <tag>Linux</tag>
+         
+         
+           
+             
+              <breadCrumb title="错误解决与优化 | Err&amp;Opt" url="http://whatbeg.com/categories/%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3%E4%B8%8E%E4%BC%98%E5%8C%96-Err-Opt/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://whatbeg.com/2016/04/07/git.html</loc>
+    <lastmod>2019-04-16T12:48:58.436Z</lastmod>
+    <data>
+        <display>
+        <title>快速学会Git基本操作</title>
+        <pubTime>2016-04-07T15:35:15.000Z</pubTime>
+        
+        <tag>CS</tag>
+         
+        <tag>Git</tag>
+         
+         
+           
+             
+              <breadCrumb title="计算机相关 | CS.Related" url="http://whatbeg.com/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9B%B8%E5%85%B3-CS-Related/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://whatbeg.com/2017/08/01/threekingdomlist.html</loc>
+    <lastmod>2019-04-16T12:42:34.543Z</lastmod>
+    <data>
+        <display>
+        <title>三国大事年表</title>
+        <pubTime>2017-08-01T07:03:57.000Z</pubTime>
+        
+        <tag>历史</tag>
+         
+         
+           
+             
+              <breadCrumb title="读书 | Reading" url="http://whatbeg.com/categories/%E8%AF%BB%E4%B9%A6-Reading/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://whatbeg.com/2019/04/16/modernhistorylist.html</loc>
+    <lastmod>2019-04-16T12:42:33.255Z</lastmod>
+    <data>
+        <display>
+        <title>近代史年表（1839-1911）</title>
+        <pubTime>2019-04-16T12:38:28.000Z</pubTime>
+        
+        <tag>历史</tag>
+         
+         
+           
+             
+              <breadCrumb title="读书 | Reading" url="http://whatbeg.com/categories/%E8%AF%BB%E4%B9%A6-Reading/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://whatbeg.com/2019/04/16/cppfqa.html</loc>
+    <lastmod>2019-04-16T12:36:45.504Z</lastmod>
+    <data>
+        <display>
+        <title>C++面向对象FQA</title>
+        <pubTime>2019-04-16T12:35:43.000Z</pubTime>
+        
+        <tag>C++</tag>
+         
+         
+           
+             
+              <breadCrumb title="编程语言 | Program Lang." url="http://whatbeg.com/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80-Program-Lang/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://whatbeg.com/2019/04/16/cppmemory.html</loc>
+    <lastmod>2019-04-16T12:34:28.465Z</lastmod>
+    <data>
+        <display>
+        <title>漫谈C++内存分配与管理</title>
+        <pubTime>2019-04-16T12:32:13.000Z</pubTime>
+        
+        <tag>C++</tag>
+         
+         
+           
+             
+              <breadCrumb title="编程语言 | Program Lang." url="http://whatbeg.com/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80-Program-Lang/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://whatbeg.com/2019/01/04/annualsummary2018.html</loc>
     <lastmod>2019-01-05T05:15:02.811Z</lastmod>
     <data>
@@ -112,9 +460,9 @@
         <title>Tensorflow 错误集锦</title>
         <pubTime>2018-12-05T15:19:18.000Z</pubTime>
         
-        <tag>深度学习</tag>
-         
         <tag>大数据</tag>
+         
+        <tag>深度学习</tag>
          
         <tag>TensorFlow</tag>
          
@@ -156,34 +504,14 @@
         <title>用Jupyter Notebook编写、运行集群程序</title>
         <pubTime>2018-01-02T14:21:49.000Z</pubTime>
         
-        <tag>Spark</tag>
-         
         <tag>大数据</tag>
+         
+        <tag>Spark</tag>
          
          
            
              
               <breadCrumb title="大数据系统与技术 | Big Data" url="http://whatbeg.com/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE%E7%B3%BB%E7%BB%9F%E4%B8%8E%E6%8A%80%E6%9C%AF-Big-Data/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://whatbeg.com/2017/03/11/linuxmemo.html</loc>
-    <lastmod>2018-04-24T05:17:58.231Z</lastmod>
-    <data>
-        <display>
-        <title>Linux备忘命令</title>
-        <pubTime>2017-03-11T04:42:52.000Z</pubTime>
-        
-        <tag>Linux</tag>
-         
-         
-           
-             
-              <breadCrumb title="计算机相关 | CS.Related" url="http://whatbeg.com/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9B%B8%E5%85%B3-CS-Related/"/>
           
         </display>
     </data>
@@ -393,26 +721,6 @@
 
     
   <url>
-    <loc>http://whatbeg.com/2017/04/01/ubuntuproblems.html</loc>
-    <lastmod>2018-03-17T09:09:09.929Z</lastmod>
-    <data>
-        <display>
-        <title>Ubuntu 使用中的问题集锦</title>
-        <pubTime>2017-04-01T12:38:53.000Z</pubTime>
-        
-        <tag>Linux</tag>
-         
-         
-           
-             
-              <breadCrumb title="错误解决与优化 | Err&amp;Opt" url="http://whatbeg.com/categories/%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3%E4%B8%8E%E4%BC%98%E5%8C%96-Err-Opt/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://whatbeg.com/2017/05/28/sparkerror.html</loc>
     <lastmod>2018-03-17T09:09:00.379Z</lastmod>
     <data>
@@ -420,11 +728,11 @@
         <title>Spark一些问题集锦【持续更新】</title>
         <pubTime>2017-05-28T02:04:35.000Z</pubTime>
         
-        <tag>Spark</tag>
-         
         <tag>大数据</tag>
          
         <tag>错误解决</tag>
+         
+        <tag>Spark</tag>
          
          
            
@@ -444,9 +752,9 @@
         <title>一次MAVEN事故</title>
         <pubTime>2017-12-24T07:49:59.000Z</pubTime>
         
-        <tag>Spark</tag>
-         
         <tag>错误解决</tag>
+         
+        <tag>Spark</tag>
          
          
            
@@ -615,28 +923,6 @@
         <pubTime>2017-07-08T06:38:15.000Z</pubTime>
         
         <tag>Linux</tag>
-         
-         
-           
-             
-              <breadCrumb title="计算机相关 | CS.Related" url="http://whatbeg.com/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9B%B8%E5%85%B3-CS-Related/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://whatbeg.com/2016/04/07/git.html</loc>
-    <lastmod>2018-01-02T14:21:06.174Z</lastmod>
-    <data>
-        <display>
-        <title>快速学会Git基本操作</title>
-        <pubTime>2016-04-07T15:35:15.000Z</pubTime>
-        
-        <tag>CS</tag>
-         
-        <tag>Git</tag>
          
          
            
@@ -826,50 +1112,6 @@
            
              
               <breadCrumb title="计算机相关 | CS.Related" url="http://whatbeg.com/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9B%B8%E5%85%B3-CS-Related/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://whatbeg.com/2017/08/01/threekingdomlist.html</loc>
-    <lastmod>2017-08-01T07:20:55.724Z</lastmod>
-    <data>
-        <display>
-        <title>三国大事年表</title>
-        <pubTime>2017-08-01T07:03:57.000Z</pubTime>
-        
-        <tag>三国</tag>
-         
-         
-           
-             
-              <breadCrumb title="读书 | Reading" url="http://whatbeg.com/categories/%E8%AF%BB%E4%B9%A6-Reading/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://whatbeg.com/2017/04/17/bigdlclusterbuild.html</loc>
-    <lastmod>2017-04-17T14:50:07.562Z</lastmod>
-    <data>
-        <display>
-        <title>在服务器集群上搭建BigDL环境</title>
-        <pubTime>2017-04-17T14:42:38.000Z</pubTime>
-        
-        <tag>Deep Learning</tag>
-         
-        <tag>深度学习</tag>
-         
-        <tag>大数据</tag>
-         
-         
-           
-             
-              <breadCrumb title="大数据系统与技术 | Big Data" url="http://whatbeg.com/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE%E7%B3%BB%E7%BB%9F%E4%B8%8E%E6%8A%80%E6%9C%AF-Big-Data/"/>
           
         </display>
     </data>
@@ -1068,91 +1310,11 @@
         <title>TensorFlow白皮书阅读笔记</title>
         <pubTime>2017-01-11T06:48:19.000Z</pubTime>
         
+        <tag>大数据</tag>
+         
         <tag>深度学习</tag>
          
-        <tag>大数据</tag>
-         
         <tag>TensorFlow</tag>
-         
-         
-           
-             
-              <breadCrumb title="大数据系统与技术 | Big Data" url="http://whatbeg.com/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE%E7%B3%BB%E7%BB%9F%E4%B8%8E%E6%8A%80%E6%9C%AF-Big-Data/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://whatbeg.com/2016/10/06/bigdatapapers.html</loc>
-    <lastmod>2017-01-11T06:52:15.457Z</lastmod>
-    <data>
-        <display>
-        <title>大数据系统方面的经典论文</title>
-        <pubTime>2016-10-06T12:57:12.000Z</pubTime>
-        
-        <tag>大数据</tag>
-         
-         
-           
-             
-              <breadCrumb title="大数据系统与技术 | Big Data" url="http://whatbeg.com/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE%E7%B3%BB%E7%BB%9F%E4%B8%8E%E6%8A%80%E6%9C%AF-Big-Data/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://whatbeg.com/2016/08/31/hadoop-install.html</loc>
-    <lastmod>2017-01-11T06:52:12.854Z</lastmod>
-    <data>
-        <display>
-        <title>Linux Ubuntu 16.04安装Hadoop全过程（一）</title>
-        <pubTime>2016-08-31T08:57:42.000Z</pubTime>
-        
-        <tag>Hadoop</tag>
-         
-         
-           
-             
-              <breadCrumb title="大数据系统与技术 | Big Data" url="http://whatbeg.com/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE%E7%B3%BB%E7%BB%9F%E4%B8%8E%E6%8A%80%E6%9C%AF-Big-Data/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://whatbeg.com/2016/09/02/hadoop-install-2.html</loc>
-    <lastmod>2017-01-11T06:52:12.003Z</lastmod>
-    <data>
-        <display>
-        <title>Linux Ubuntu 16.04安装Hadoop全过程（二） --伪分布式</title>
-        <pubTime>2016-09-02T09:00:24.000Z</pubTime>
-        
-        <tag>Hadoop</tag>
-         
-         
-           
-             
-              <breadCrumb title="大数据系统与技术 | Big Data" url="http://whatbeg.com/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE%E7%B3%BB%E7%BB%9F%E4%B8%8E%E6%8A%80%E6%9C%AF-Big-Data/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://whatbeg.com/2016/09/10/hadoop-go-1.html</loc>
-    <lastmod>2017-01-11T06:52:10.959Z</lastmod>
-    <data>
-        <display>
-        <title>Hadoop MapReduce进行WordCount自主编译运行</title>
-        <pubTime>2016-09-10T12:28:29.000Z</pubTime>
-        
-        <tag>Hadoop</tag>
          
          
            
