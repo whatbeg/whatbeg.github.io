@@ -1,0 +1,980 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>进程线程常见基础问题 | Whatbeg&#39;s blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="whatbeg">
+    
+
+    
+    <meta name="description" content="计算机程序的运行离不开进程和线程，进程和线程也是面试中常常要抠的部分。本文梳理一下进程和线程的一些常见问题，包括其基本概念，区别于联系，高级主题包括线程安全，多线程编程等等。
+[TOC]
+基本概念进程和线程的基本概念，这篇文章已经梳理的比较好了。不再详述。
+简单来说，进程是一个程序（代码，编译过后的二进制文件）在系统中的一次执行过程，包含了地址空间（堆，栈，代码区，数据区，共享库加载区，内核区），">
+<meta property="og:type" content="article">
+<meta property="og:title" content="进程线程常见基础问题">
+<meta property="og:url" content="http://whatbeg.com/2019/06/05/processthread.html">
+<meta property="og:site_name" content="Whatbeg's blog">
+<meta property="og:description" content="计算机程序的运行离不开进程和线程，进程和线程也是面试中常常要抠的部分。本文梳理一下进程和线程的一些常见问题，包括其基本概念，区别于联系，高级主题包括线程安全，多线程编程等等。
+[TOC]
+基本概念进程和线程的基本概念，这篇文章已经梳理的比较好了。不再详述。
+简单来说，进程是一个程序（代码，编译过后的二进制文件）在系统中的一次执行过程，包含了地址空间（堆，栈，代码区，数据区，共享库加载区，内核区），">
+<meta property="og:image" content="https://blog-image-1256228880.cos.ap-beijing.myqcloud.com/processstate.png">
+<meta property="og:image" content="https://blog-image-1256228880.cos.ap-beijing.myqcloud.com/daemonize.jpg">
+<meta property="og:image" content="https://blog-image-1256228880.cos.ap-beijing.myqcloud.com/processaddress.jpg">
+<meta property="og:image" content="https://img-blog.csdn.net/20171121130628916">
+<meta property="og:updated_time" content="2019-06-05T03:41:46.507Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="进程线程常见基础问题">
+<meta name="twitter:description" content="计算机程序的运行离不开进程和线程，进程和线程也是面试中常常要抠的部分。本文梳理一下进程和线程的一些常见问题，包括其基本概念，区别于联系，高级主题包括线程安全，多线程编程等等。
+[TOC]
+基本概念进程和线程的基本概念，这篇文章已经梳理的比较好了。不再详述。
+简单来说，进程是一个程序（代码，编译过后的二进制文件）在系统中的一次执行过程，包含了地址空间（堆，栈，代码区，数据区，共享库加载区，内核区），">
+<meta name="twitter:image" content="https://blog-image-1256228880.cos.ap-beijing.myqcloud.com/processstate.png">
+
+    
+    <link rel="alternative" href="/atom.xml" title="Whatbeg&#39;s blog" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/w.ico">
+    
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Whatbeg&#39;s blog">Whatbeg&#39;s blog</a></h1>
+				<h2 class="blog-motto">当你的才华撑不起你的野心时，就应该静下心来好好学习。</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">首页(Home)</a></li>
+					
+						<li><a href="/archives">归档(Archives)</a></li>
+					
+						<li><a href="/tags">标签(Tags)</a></li>
+					
+						<li><a href="/categories">分类(Categories)</a></li>
+					
+						<li><a href="/about">关于(About)</a></li>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2019/06/05/processthread.html" title="进程线程常见基础问题" itemprop="url">进程线程常见基础问题</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="whatbeg" target="_blank" itemprop="author">whatbeg</a>
+		
+  <p class="article-time">
+    <time datetime="2019-06-05T03:25:24.000Z" itemprop="datePublished"> 发表于 2019-06-05</time>
+    <span id="busuanzi_container_page_pv">
+    总阅读<span id="busuanzi_value_page_pv"></span>次
+    </span>
+  </p>
+
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#基本概念"><span class="toc-number">1.</span> <span class="toc-text">基本概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#进程的创建，销毁，守护进程和僵尸进程"><span class="toc-number">2.</span> <span class="toc-text">进程的创建，销毁，守护进程和僵尸进程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#进程内存管理"><span class="toc-number">3.</span> <span class="toc-text">进程内存管理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#进程间通信-IPC"><span class="toc-number">4.</span> <span class="toc-text">进程间通信(IPC)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#进程、线程同步"><span class="toc-number">5.</span> <span class="toc-text">进程、线程同步</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#内核进程和用户进程"><span class="toc-number">6.</span> <span class="toc-text">内核进程和用户进程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#线程"><span class="toc-number">7.</span> <span class="toc-text">线程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#进程线程区别"><span class="toc-number">8.</span> <span class="toc-text">进程线程区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#线程高级特性"><span class="toc-number">9.</span> <span class="toc-text">线程高级特性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#多线程编程"><span class="toc-number">10.</span> <span class="toc-text">多线程编程</span></a></li></ol>
+		
+		</div>
+		
+		<p>计算机程序的运行离不开进程和线程，进程和线程也是面试中常常要抠的部分。本文梳理一下进程和线程的一些常见问题，包括其基本概念，区别于联系，高级主题包括线程安全，多线程编程等等。</p>
+<p>[TOC]</p>
+<h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><p>进程和线程的基本概念，<a href="https://www.cnblogs.com/fuchongjundream/p/3829508.html" target="_blank" rel="external">这篇文章</a>已经梳理的比较好了。不再详述。</p>
+<p>简单来说，进程是一个程序（代码，编译过后的二进制文件）在系统中的一次执行过程，包含了地址空间（堆，栈，代码区，数据区，共享库加载区，内核区），各种资源描述符等等。我们常说，进程是资源分配的基本单位。</p>
+<p>一个进程包含一个或多个线程，线程拥有进程的所有资源，所有线程共享地址空间，被系统调度去执行。所以常说，线程是调度的基本单位。</p>
+<p>进程有三个状态，就绪、运行和阻塞。</p>
+<p><img src="https://blog-image-1256228880.cos.ap-beijing.myqcloud.com/processstate.png" alt=""></p>
+<p><strong>操作系统中进程调度策略有哪几种？</strong></p>
+<p>FIFO，时间片轮转，优先级</p>
+<h2 id="进程的创建，销毁，守护进程和僵尸进程"><a href="#进程的创建，销毁，守护进程和僵尸进程" class="headerlink" title="进程的创建，销毁，守护进程和僵尸进程"></a>进程的创建，销毁，守护进程和僵尸进程</h2><p><strong>fork与vfork区别？</strong></p>
+<blockquote>
+<p>1）fork ()：子进程拷贝父进程的数据段，代码段<br>vfork ()：子进程与父进程共享数据段<br>2）fork() 父子进程的执行次序不确定<br>vfork() 保证子进程先运行，在调用 exec 或exit 之前与父进程数据是共享的,在它调用exec或exit之后父进程才可能被调度运行。<br>3）vfork() 保证子进程先运行，如果在调用这两个函数之前子进程依赖于父进程的进一步动作，则会导致死锁。<br>由vfork创造出来的子进程还会导致父进程挂起，除非子进程exit或者execve才会唤起父进程<br>由vfok创建出来的子进程共享了父进程的所有内存，包括栈地址，直至子进程使用execve启动新的应用程序为止<br>由vfork创建出来得子进程不应该使用return返回调用者，得使用exit()者_exit()函数来退出</p>
+<p>fock创建进程的步骤：简化的copy_process()流程</p>
+<p>1）dup_task_struct()。分配一个新的进程控制块，包括新进程在kernel中的堆栈。新的进程控制块会复制父进程的进程控制块，但是因为每个进程都有一个kernel堆栈，新进程的堆栈将被设置成新分配的堆栈。<br>2）初始化一些新进程的统计信息，如此进程的运行时间<br>3）copy_semundo()复制父进程的semaphore undo_list到子进程。<br>4）copy_files()、copy_fs()。复制父进程文件系统相关的环境到子进程<br>5）copy_sighand()、copy_signal()。复制父进程信号处理相关的环境到子进程。<br>6）copy_mm()。复制父进程内存管理相关的环境到子进程，包括页表、地址空间和代码数据。<br>7）copy_thread()/copy_thread_tls。设置子进程的执行环境，如子进程运行时各CPU寄存器的值、子进程的kernel栈的起始地址。<br>8）sched_fork()。设置子进程调度相关的参数，即子进程的运行CPU、初始时间片长度和静态优先级等。<br>9）将子进程加入到全局的进程队列中<br>10）设置子进程的进程组ID和对话期ID等。</p>
+<p>内核线程拥有 进程描述符、PID、进程正文段、核心堆栈<br>用户进程拥有 进程描述符、PID、进程正文段、核心堆栈 、用户空间的数据段和堆栈<br>用户线程拥有 进程描述符、PID、进程正文段、核心堆栈，同父进程共享用户空间的数据段和堆栈</p>
+</blockquote>
+<p><strong>插播：fork(), vfork(), clone()的区别</strong></p>
+<blockquote>
+<p>fork,vfork,clone都是linux的系统调用，这三个函数分别调用了sys_fork、sys_vfork、sys_clone，最终都调用了do_fork函数，差别在于参数的传递和一些基本的准备工作不同，主要用来linux创建新的子进程或线程（vfork创造出来的是线程）。</p>
+<p>进程的四要素：<br>（1）有一段程序供其执行（不一定是一个进程所专有的），就像一场戏必须有自己的剧本。<br>（2）有自己的专用系统堆栈空间（私有财产）<br>（3）有进程控制块（task_struct）（“有身份证，PID”）<br>（4）有独立的存储空间。<br>缺少第四条的称为线程，如果完全没有用户空间称为内核线程，共享用户空间的称为用户线程。</p>
+<p><strong>fork()</strong> 创造的子进程复制了父亲进程的资源（写时复制技术），包括内存的内容task_struct内容（2个进程的pid不同）。这里是资源的复制不是指针的复制。<br><strong>vfork()</strong> 是一个过时的应用，vfork也是创建一个子进程，但是子进程共享父进程的空间。在vfork创建子进程之后，父进程阻塞，直到子进程执行了exec()或者exit()。vfork最初是因为fork没有实现COW机制，而很多情况下fork之后会紧接着exec，而exec的执行相当于之前fork复制的空间全部变成了无用功，所以设计了vfork。而现在fork使用了COW机制，唯一的代价仅仅是复制父进程页表的代价，所以vfork不应该出现在新的代码之中。<br>vfork创建出来的不是真正意义上的进程，而是一个线程，因为它缺少经常要素（4），独立的内存资源，<br><strong>clone()</strong> 是Linux为创建线程设计的（虽然也可以用clone创建进程）。所以可以说clone是fork的升级版本，不仅可以创建进程或者线程，还可以指定创建新的命名空间（namespace）、有选择的继承父进程的内存、甚至可以将创建出来的进程变成父进程的兄弟进程等等。<br>clone函数功能强大，带了众多参数，它提供了一个非常灵活自由的常见进程的方法。因此由他创建的进程要比前面2种方法要复杂。clone可以让你有选择性的继承父进程的资源，你可以选择想vfork一样和父进程共享一个虚存空间，从而使创造的是线程，你也可以不和父进程共享，你甚至可以选择创造出来的进程和父进程不再是父子关系，而是兄弟关系。先有必要说下这个函数的结构：<br>int clone(int (<em>fn)(void </em>), void <em>child_stack, int flags, void </em>arg);</p>
+<p>clone 和 fork 的区别<br>1）clone和fork的调用方式很不相同，clone调用需要传入一个函数，该函数在子进程中执行。<br>2）clone和fork最大不同在于clone不再复制父进程的栈空间，而是自己创建一个新的。 （void *child_stack,）也就是第二个参数，需要分配栈指针的空间大小，所以它不再是继承或者复制，而是全新的创造。</p>
+</blockquote>
+<p><strong>exit()与_exit()区别？</strong></p>
+<blockquote>
+<p>exit在结束进程之前要做以下的事情：</p>
+<p>1）调用atexit()注册的函数（出口函数）<br>我们可以使用atexit()函数在main函数结束时对整个进程的内存空间进行销毁，作用相当于C++中的析构函数.<br>2）调用cleanup()关闭所有的流<br>这一步操作导致所有的缓冲被输出<br>3）最后调用_exit()函数终止进程<br>_exit()函数主要做了清理内存空间，结束进程调用等工作。</p>
+</blockquote>
+<p><strong>僵尸进程和孤儿进程有什么区别、如何处理？</strong></p>
+<blockquote>
+<p>区别：僵尸进程占用一个进程ID号，占用资源，危害系统。但孤儿进程与僵尸进程不同的是，由于父进程已经死亡，子系统会帮助父进程回收处理孤儿进程。所以孤儿进程实际上是不占用资源的，因为它最终是被系统回收了，不会像僵尸进程那样占用ID，损害运行系统。<br>1）僵尸进程：一个进程使用fork创建子进程，如果子进程退出，而父进程没有调用wait或者waitpid获取子进程的状态，那么子进程的进程描述符仍然保存在系统中，这种进程称为僵尸进程。<br>2）孤儿进程：一个父进程退出，而他的一个或者多个子进程还在运行，那么那些子进程称为孤儿进程。孤儿进程将被init（进程号为1）收养，并由init进程对它们完成状态收集的工作。子进程的死亡需要父进程来处理，所以正常的进程应该是子进程先于父进程死亡，当父进程先于子进程死亡时，子进程死亡没有父进程处理，这个死亡的子进程就是孤儿进程。</p>
+<p>简单来说。<br>僵尸进程：父进程没死，子进程死了，但是父进程不帮他收尸（通过wait,waitpid获取其状态），所以变成僵尸。<br>孤儿进程：父进程死了，子进程没死，子进程成了孤儿，只能被孤儿院(init)收养。</p>
+</blockquote>
+<p><strong>怎样避免僵尸进程呢？</strong></p>
+<blockquote>
+<p>单独一个线程wait子进程，或者，有两个信号，一个SIGCHLD、一个SIGCLD，设置这两个信号的处理方式为忽略，它们告诉内核，不关心子进程结束的状态所以当子进程终止的时候直接释放所有资源就行。它们的区别是SIGCLD在安装完信号处理函数的时候还会检查是否已经存在结束的子进程，如果有就调用信号处理函数，而SIGCHLD不会，也就是可能会丢掉已经有子进程已经结束这个事实</p>
+</blockquote>
+<p><strong>如何实现守护进程？</strong></p>
+<blockquote>
+<p>守护进程（Daemon）是运行在后台的一种特殊进程。它独立于控制终端并且周期性地执行某种任务或等待处理某些发生的事件。守护进程是一种很有用的进程。<br>1、守护进程最重要的特性是后台运行。<br>2、守护进程必须与其运行前的环境隔离开来。这些环境包括未关闭的文件描述符，控制终端，会话和进程组，工作目录以及文件创建掩模等。这些环境通常是守护进程从执行它的父进程（特别是shell）中继承下来的。<br>3、守护进程的启动方式有其特殊之处。它可以在Linux系统启动时从启动脚本/etc/rc.d中启动，可以由作业规划进程crond启动，还可以由用户终端（shell）执行。</p>
+<p>守护进程之编程规则<br>（1）首先要做的是调用umask将文件模式创建屏蔽字设置为0。<br>文件权限掩码：是指屏蔽掉文件权限中的对应位。例如，有个文件权限掩码是050，它就屏蔽了文件组拥有者的可读与可执行权限（对应二进制为，rwx, 101）。由于fork函数创建的子进程继承了父进程的文件权限掩码，这就给子进程使用文件带来了诸多的麻烦。因此，把文件权限掩码设置为0（即，不屏蔽任何权限），可以增强该守护进程的灵活性。设置文件权限掩码的函数是umask。通常的使用方法为umask(0)。<br>（2）调用fork，然后使父进程退出（exit）。if(pid=fork()) exit(0);<br>（3）调用setsid以创建一个新会话，脱离控制终端和进程组。setsid函数作用：用于创建一个新的会话，并担任该会话组的组长。<br>调用setsid有3个作用：(a) 让进程摆脱原会话的控制；(b) 让进程摆脱原进程组的控制；(c) 让进程摆脱原控制终端的控制； setsid()<br>使用setsid函数的目的：由于创建守护进程的第一步调用了fork函数来创建子进程再将父进程退出。由于在调用fork函数时，子进程拷贝了父进程的会话期、进程组、控制终端等，虽然父进程退出了，但会话期、进程组、控制终端等并没有改变，因此，这还不是真正意义上的独立开了。使用setsid函数后，能够使进程完全独立出来，从而摆脱其他进程的控制。<br>（4）将当前工作目录更改为根目录。<br>（5）关闭不再需要的文件描述符。这使守护进程不再持有从其父进程继承来的某些文件描述符（父进程可能是shell进程，或某个其他进程）。<br>（6）某些守护进程打开/dev/null使其具有文件描述符0、1和2，</p>
+</blockquote>
+<p><img src="https://blog-image-1256228880.cos.ap-beijing.myqcloud.com/daemonize.jpg" alt=""></p>
+<h2 id="进程内存管理"><a href="#进程内存管理" class="headerlink" title="进程内存管理"></a>进程内存管理</h2><p><strong>进程的内存空间布局？</strong></p>
+<blockquote>
+<p>进程寻址空间0~4G<br>进程在用户态只能访问0~3G，只有进入内核态才能访问3G~4G<br>进程通过系统调用进入内核态<br>每个进程虚拟空间的3G~4G部分是相同的<br>进程从用户态进入内核态不会引起CR3的改变但会引起堆栈的改变</p>
+</blockquote>
+<p><img src="https://blog-image-1256228880.cos.ap-beijing.myqcloud.com/processaddress.jpg" alt=""></p>
+<p><strong>32位系统一个进程最多有多少堆内存？</strong></p>
+<blockquote>
+<p>理论上是4G. Linux实现的是 虚拟地址的前3G供给用户态的进程. 后1G是内核的部分. 也就是用户态的进程不能访问0xc0000000以上的虚拟地址.</p>
+</blockquote>
+<p><strong>进程空间和内核空间对内存的管理不同</strong></p>
+<blockquote>
+<p>进程内存管理的对象是进程线性地址空间上的内存镜像(虚拟内存)，这些内存镜像其实就是进程使用的虚拟内存区域（memory region）。进程虚拟空间是个32或64位的“平坦”（独立的连续区间）地址空间（空间的具体大小取决于体系结构）。要统一管理这么大的平坦空间可绝非易事，为了方便管理，虚拟空间被划分为许多大小可变的(但必须是4096的倍数)内存区域，这些区域在进程线性地址中像停车位一样有序排列。这些区域的划分原则是“将访问属性一致的地址空间存放在一起”，所谓访问属性在这里无非指的是“可读、可写、可执行等”。<br>Linux内核管理物理内存是通过分页机制实现的，它将整个内存划分成无数个4k（在i386体系结构中）大小的页，从而分配和回收内存的基本单位便是内存页了。利用分页管理有助于灵活分配内存地址，因为分配时不必要求必须有大块的连续内存，系统可以东一页、西一页的凑出所需要的内存供进程使用。虽然如此，但是实际上系统使用内存时还是倾向于分配连续的内存块，因为分配连续内存时，页表不需要更改，因此能降低TLB的刷新率（频繁刷新会在很大程度上降低访问速度）。</p>
+</blockquote>
+<p><strong>虚拟内存的作用？</strong></p>
+<blockquote>
+<p>1）内存访问保护<br>我们就可以通过设置段界限或页表项来设定软件运行时的访问空间，确保软件运行不越界，完成内存访问保护的功能。<br>2）按需分页（lazy load 技术）<br>通过内存地址虚拟化，可以使得软件在没有访问某虚拟内存地址时不分配具体的物理内存，而只有在实际访问某虚拟内存地址时，操作系统再动态地分配物理内存，建立虚拟内存到物理内存的页映射关系<br>3）页换入换出（page swap in/out）<br>把不经常访问的数据所占的内存空间临时写到硬盘上，这样可以腾出更多的空闲内存空间给经常访问的数据；当CPU访问到不经常访问的数据时，再把这些数据从硬盘读入到内存中<br>4）写时复制（copy on write）<br>两个虚拟页的数据内容相同时，可只分配一个物理页框，这样如果对两个虚拟页的访问方式是只读方式，这这两个虚拟页可共享页框，节省内存空间；如果CPU对其中之一的虚拟页进行写操作，则这两个虚拟页的数据内容会不同，需要分配一个新的物理页框，并将物理页框标记为可写，这样两个虚拟页面将映射到不同的物理页帧，确保整个内存空间的正确访问。</p>
+</blockquote>
+<p><strong>虚拟内存的实现？</strong></p>
+<blockquote>
+<p>虚拟内存中，允许将一个作业分多次调入内存。釆用连续分配方式时，会使相当一部分内存空间都处于暂时或“永久”的空闲状态，造成内存资源的严重浪费，而且也无法从逻辑上扩大内存容量。因此，虚拟内存的实现需要建立在离散分配的内存管理方式的基础上。虚拟内存的实现有以下三种方式：<br>请求分页存储管理。<br>请求分段存储管理。<br>请求段页式存储管理。<br>不管哪种方式，都需要有一定的硬件支持。一般需要的支持有以下几个方面：<br>一定容量的内存和外存。<br>页表机制（或段表机制），作为主要的数据结构。<br>中断机构，当用户程序要访问的部分尚未调入内存，则产生中断。<br>地址变换机构，逻辑地址到物理地址的变换。</p>
+</blockquote>
+<p><strong>Linux是如何避免内存碎片的？内存分配原理？</strong></p>
+<blockquote>
+<p>频繁地请求和释放不同大小的内存，必然导致内存碎片问题的产生，结果就是当再次要求分配连续的内存时，即使整体内存是足够的，也无法满足连续内存的需求。该问题也称之为外碎片(external fragmentation)。<br>解决方案：<br>避免外碎片的方法有两种:<br>1）利用分页单元把一组非连续的空闲页框映射到连续的线性地址<br>2）开发一种适当的技术来记录现存的空闲的连续页框块的情况，以尽量避免为满足对小块的请求而分割大的空闲快<br>第一种方案的意思是，我们使用地址转换技术，把非连续的物理地址转换成连续的线性地址。<br>第二种方案的意思是，开发一种特有的分配技术来记录下来空闲内存的情况，从而解决内存碎片问题。<br>Linux采用了第二种方案，因为在某些情况下，系统的确需要连续的物理地址（DMA处理器可以直接访问总线）。</p>
+</blockquote>
+<p><strong>伙伴系统？</strong></p>
+<blockquote>
+<p>我们通过一个例子来说明伙伴算法的工作原理，假设现在要请求一个256个页框的块（1MB），算法步骤如下：<br>• 在256个页框的链表中检查是否有一个空闲快，如果没有，查找下一个更大的块，如果有，请求满足。<br>• 在512个页框的链表中检查是否有一个空闲块，如果有，把512个页框的空闲块分为两份，第一份用于满足请求，第二份链接到256个页框的链表中。如果没有空闲块，继续寻找下一个更大的块。<br>页的请求<br>以上过程的逆过程，就是页框块的释放过程，也是该算法名字的由来，内核试图把大小为B的一对空闲伙伴块合并为一个2B的单独块，满足以下条件的两个块称之为伙伴：<br>• 两个块具有相同的大小<br>• 他们的物理地址是连续的<br>第一块的第一个页框的物理地址是2 <em> B </em> 2^12<br>该算法是递归的，如果它成功合并了B，就会试图去合并2B，以再次试图形成更大的块。</p>
+</blockquote>
+<p><strong>高速缓存Slab层？分类管理对象</strong></p>
+<blockquote>
+<p>slab是Linux操作系统的一种内存分配机制。其工作是针对一些经常分配并释放的对象，如进程描述符等，这些对象的大小一般比较小，如果直接采用伙伴系统来进行分配和释放，不仅会造成大量的内存碎片，而且处理速度也太慢。<br>而slab分配器是基于对象进行管理的，<strong>相同类型的对象归为一类</strong> (如进程描述符就是一类)，每当要申请这样一个对象，slab分配器就从一个slab列表中分配一个这样大小的单元出去，而当要释放时，将其重新保存在该列表中，而不是直接返回给伙伴系统，从而避免这些内碎片。slab分配器并不丢弃已分配的对象，而是释放并把它们保存在内存中。当以后又要请求新的对象时，就可以从内存直接获取而不用重复初始化。</p>
+</blockquote>
+<p><strong>共享内存的实现原理？</strong></p>
+<blockquote>
+<p>共享内存可以说是最有用的进程间通信方式，也是最快的IPC形式。两个不同进程A、B共享内存的意思是，同一块物理内存被映射到进程A、B各自的进程地址空间。进程A可以即时看到进程B对共享内存中数据的更新，反之亦然。由于多个进程共享同一块内存区域，必然需要某种同步机制，互斥锁和信号量都可以。</p>
+<p>采用共享内存通信的一个显而易见的好处是效率高，因为进程可以直接读写内存，而不需要任何数据的拷贝。对于像管道和消息队列等通信方式，则需要在内核和用户空间进行四次的数据拷贝，而共享内存则只拷贝两次数据[1]：一次从输入文件到共享内存区，另一次从共享内存区到输出文件。实际上，进程之间在共享内存时，并不总是读写少量数据后就解除映射，有新的通信时，再重新建立共享内存区域。而是保持共享区域，直到通信完毕为止，这样，数据内容一直保存在共享内存中，并没有写回文件。共享内存中的内容往往是在解除映射时才写回文件的。因此，采用共享内存的通信方式效率是非常高的。</p>
+<p>Linux的2.2.x内核支持多种共享内存方式，如mmap()系统调用，Posix共享内存，以及系统V共享内存。linux发行版本如Redhat 8.0支持mmap()系统调用及系统V共享内存，但还没实现Posix共享内存，本文将主要介绍mmap()系统调用及系统V共享内存API的原理及应用。</p>
+</blockquote>
+<h2 id="进程间通信-IPC"><a href="#进程间通信-IPC" class="headerlink" title="进程间通信(IPC)"></a>进程间通信(IPC)</h2><p><strong>进程间通信（IPC）方式？</strong></p>
+<blockquote>
+<p>IPC: 管道、FIFO、信号、信号量、消息队列、共享内存、套接字</p>
+<ol>
+<li>管道：速度慢，容量有限，无名管道只有父子进程能通讯<br>有名管道 (named pipe) ： 有名管道也是半双工的通信方式，但是它允许无亲缘关系进程间的通信。<br>2 消息队列通信<br>消息队列( message queue ) ： 消息队列是由消息的链表，存放在内核中并由消息队列标识符标识。消息队列克服了信号传递信息少、管道只能承载无格式字节流以及缓冲区大小受限等缺点。<br>3 信号量通信<br>信号量( semophore ) ： 信号量是一个计数器，可以用来控制多个进程对共享资源的访问。它常作为一种锁机制，防止某进程正在访问共享资源时，其他进程也访问该资源。因此，主要作为<strong>进程间</strong>以及<strong>同一进程内不同线程之间</strong>的同步手段。<br>4 信号<br>信号 ( sinal ) ： 信号是一种比较复杂的通信方式，用于通知接收进程某个事件已经发生。<br>5 共享内存通信<br>共享内存( shared memory ) ：共享内存就是映射一段能被其他进程所访问的内存，这段共享内存由一个进程创建，但多个进程都可以访问。共享内存是最快的 IPC 方式，它是针对其他进程间通信方式运行效率低而专门设计的。它往往与其他通信机制，如信号量，配合使用，来实现进程间的同步和通信。<br>6 套接字通信<br>套接字( socket ) ： 套接口也是一种进程间通信机制，与其他通信机制不同的是，它可用于不同机器间的进程通信.</li>
+</ol>
+</blockquote>
+<h2 id="进程、线程同步"><a href="#进程、线程同步" class="headerlink" title="进程、线程同步"></a>进程、线程同步</h2><blockquote>
+<p>线程同步的方式主要有:  临界区（Critical Section）、互斥量（Mutex）、信号量（Semaphore）、事件（Event）。<br>他们的主要区别和特点如下：<br>1）临界区：通过对多线程的串行化来访问公共资源或一段代码，速度快，适合控制数据访问。在任意时刻只允许一个线程对共享资源进行访问，<br>如果有多个线程试图访问公共资源，那么在有一个线程进入后，其他试图访问公共资源的线程将被挂起，并一直等到进入临界区的线程离开，临界区在被释放后，其他线程才可以抢占。<br>2）互斥量：采用互斥对象机制。 只有拥有互斥对象的线程才有访问公共资源的权限，因为互斥对象只有一个，所以能保证公共资源不会同时被多个线程访问。<br>互斥不仅能实现同一应用程序的公共资源安全共享，还能实现不同应用程序的公共资源安全共享。<br>3）信号量：它允许多个线程在同一时刻访问同一资源，但是需要限制在同一时刻访问此资源的最大线程数目。<br>4）事 件： 通过通知操作的方式来保持线程的同步，还可以方便实现对多个线程的优先级比较的操作。</p>
+</blockquote>
+<p><img src="https://img-blog.csdn.net/20171121130628916" alt=""></p>
+<h2 id="内核进程和用户进程"><a href="#内核进程和用户进程" class="headerlink" title="内核进程和用户进程"></a>内核进程和用户进程</h2><p><strong>内核级调度和用户级调度？</strong></p>
+<blockquote>
+<p>内核线程：由操作系统内核创建和撤销，内核空间实现还为每个内核支持线程设置了一个线程控制块，内核是根据该控制块而感知某个线程是否存在，并加以控制。线程切换也由内核控制，切换的时候，要从用户态进入内核态，切换完毕要从内核态返回用户态。可以很好的利用多CPU<br>用户级线程：仅存在于用户空间中。线程的创建、撤销、线程之间的同步和通信等功能，都无需系统调用来实现。对于同一进程的线程之间切换仍然是不需要内核支持的。因此，内核也不知道用户级线程的存在，少了进出内核态的消耗，但不能很好的利用多CPU。</p>
+<p>1）用户线程：库调度器从进程的多个线程中选择一个线程，然后该线程和该进程允许的一个内核线程关联起来。内核线程将被操作系统调度器指派到处理器内核。用户级线程是一种”多对一”的线程映射。<br>2）内核级线程：内核线程建立和销毁都是由操作系统负责、通过系统调用完成的。在内核的支持下运行，无论是用户进程的线程，或者是系统进程的线程，他们的创建、撤销、切换都是依靠内核实现的。线程管理的所有工作由内核完成，应用程序没有进行线程管理的代码，只有一个到内核级线程的编程接口。内核为进程及其内部的每个线程维护上下文信息，调度也是在内核基于线程架构的基础上完成。<br>内核线程驻留在内核空间，它们是内核对象。有了内核线程，每个用户线程被映射或绑定到一个内核线程。用户线程在其生命期内都会绑定到该内核线程。一旦用户线程终止，两个线程都将离开系统。这被称作一对一线程映射，线程的创建、撤销和切换等，都需要内核直接实现，即内核了解每一个作为可调度实体的线程。<br>这些线程可以在全系统内进行资源的竞争内核空间内为每一个内核支持线程设置了一个线程控制块（TCB），内核根据该控制块，感知线程的存在，并进行控制。<br>如图所示，即内核级线程的实现方式,每个用户线程都直接与一个内核线程相关联。操作系统调度器管理、调度并分派这些线程。运行时库为每个用户级线程请求一个内核级线程。操作系统的内存管理和调度子系统必须要考虑到数量巨大的用户级线程。您必须了解每个进程允许的线程的最大数目是多少。操作系统为每个线程创建上下文。进程的每个线程在资源可用时都可以被指派到处理器内核。</p>
+<p>内核线程的优点:<br>1）多处理器系统中，内核能够并行执行同一进程内的多个线程。<br>2）如果进程中的一个线程被阻塞，能够切换同一进程内的其他线程继续执行（用户级线程的一个缺点）。<br>3）所有能够阻塞线程的调用都以系统调用的形式实现，代价可观。<br>4）当一个线程阻塞时，内核根据选择可以运行另一个进程的线程，而用户空间实现的线程中，运行时系统始终运行自己进程中的线程。<br>5）信号是发给进程而不是线程的，当一个信号到达时，应该由哪一个线程处理它？线程可以“注册”它们感兴趣的信号。</p>
+<p>组合型：在一些系统中，使用组合方式的多线程实现，线程创建完全在用户空间中完成，线程的调度和同步也在应用程序中进行。一个应用程序中的多个用户级线程被映射到一些（小于或等于用户级线程的数目）内核级线程上。下图说明了用户级与内核级的组合实现方式，在这种模型中，每个内核级线程有一个可以轮流使用的用户级线程集合。</p>
+</blockquote>
+<p><strong>Linux用户级进程跟内核线程（进程）有什么差别？</strong></p>
+<blockquote>
+<p>区别：<br>1）内核级线程是OS内核可感知的，而用户级线程是OS内核不可感知的。<br>2）用户级线程的创建、撤消和调度不需要OS内核的支持，是在语言（如Java）这一级处理的；而内核支持线程的创建、撤消和调度都需OS内核提供支持，而且与进程的创建、撤消和调度大体是相同的。<br>3）用户级线程执行系统调用指令时将导致其所属进程被中断，而内核支持线程执行系统调用指令时，只导致该线程被中断。<br>4）在只有用户级线程的系统内，CPU调度还是以进程为单位，处于运行状态的进程中的多个线程，由用户程序控制线程的轮换运行；在有内核支持线程的系统内，CPU调度则以线程为单位，由OS的线程调度程序负责线程的调度。<br>5）用户级线程的程序实体是运行在用户态下的程序，而内核支持线程的程序实体则是可以运行在任何状态下的程序。</p>
+</blockquote>
+<p><strong>为什么要区分用户态和内核态？</strong></p>
+<blockquote>
+<p>在CPU的所有指令中，有些指令是非常危险的，如果错用，将导致系统崩溃，比如清内存、设置时钟等。<br>如果所有的程序都能使用这些指令，那么系统死机的概率将大大增加。<br>所以，CPU将指令分为特权指令和非特权指令，对于那些危险的指令，只允许操作系统及其相关模块使用，普通应用程序只能使用那些不会造成灾难的指令。<br>Intel的CPU将特权等级分为4个级别：Ring0~Ring3<br>Linux使用Ring3级别运行用户态，Ring0作为内核态。<br>Linux的内核是一个有机整体，每个用户进程运行时都好像有一份内核的拷贝。每当用户进程使用系统调用时，都自动地将运行模式从用户级转为内核级（成为陷入内核），此时，进程在内核的地址空间中运行。</p>
+</blockquote>
+<p><strong>从用户空间到内核空间有以下触发手段？</strong></p>
+<blockquote>
+<p>1）系统调用：用户进程通过系统调用申请使用操作系统提供的服务程序来完成工作，比如read()、fork()等。系统调用的机制其核心还是使用了操作系统为用户特别开放的一个中断来实现的。<br>2）中断：当外围设备完成用户请求的操作后，会向CPU发送中断信号。这时CPU会暂停执行下一条指令（用户态）转而执行与该中断信号对应的中断处理程序（内核态）<br>3）异常：当CPU在执行运行在用户态下的程序时，发生了某些事先不可知的异常，这时会触发由当前运行进程切换到处理此异常的内核相关程序中，也就转到了内核态，比如缺页异常。</p>
+</blockquote>
+<h2 id="线程"><a href="#线程" class="headerlink" title="线程"></a>线程</h2><p><strong>Linux线程是如何进行切换的？</strong></p>
+<blockquote>
+<p>（1）一般的进程切换分为两步 ：<br>1）切换页目录使用新的地址空间<br>2）切换内核栈和硬件上下文<br>对于Linux来讲，地址空间是线程和进程的最大区别，如果是线程切换的话，不需要做第一步，也就是切换页目录使用新的地址空间。但是切换内核栈和硬件上下文则是线程切换和进程切换都需要做的。<br>（2）切换进程上下文：<br>进程上下文可以分为三个部分:<br>用户级上下文:  正文、数据、用户堆栈以及共享存储区；<br>寄存器上下文:  通用寄存器、程序寄存器(IP)、处理器状态寄存器(EFLAGS)、栈指针(ESP)；<br>系统级上下文:  进程控制块task_struct、内存管理信息(mm_struct、vm_area_struct、pgd、pte)、内核栈。<br>    系统中的每一个进程都有自己的上下文。一个正在使用处理器运行的进程称为当前进程(current)。当前进程因时间片用完或者因等待某个事件而阻塞时，进程调度需要把处理器的使用权从当前进程交给另一个进程，这个过程叫做进程切换。此时，被调用进程成为当前进程。在进程切换时系统要把当前进程的上下文保存在指定的内存区域（该进程的任务状态段TSS中），然后把下一个使用处理器运行的进程的上下文设置成当前进程的上下文。当一个进程经过调度再次使用CPU运行时，系统要恢复该进程保存的上下文。所以，进程的切换也就是上下文切换。<br>（3）线程切换：<br>    Linux下的线程实质上是轻量级进程(light weighted process),线程生成时会生成对应的进程控制结构，只是该结构与父线程的进程控制结构共享了同一个进程内存空间。同时新线程的进程控制结构将从父线程（进程）处复制得到同样的进程信息，如打开文件列表和信号阻塞掩码等。创建线程比创建新进程成本低，因为新创建的线程使用的是当前进程的地址空间。相对于在进程之间切换，在线程之间进行切换所需的时间更少，因为后者不包括地址空间之间的切换。<br>线程切换上下文切换的原理与此类似，只是线程在同一地址空间中，不需要MMU等切换，只需要切换必要的CPU寄存器，因此，线程切换比进程切换快的多。</p>
+</blockquote>
+<p><strong>异步，多线程和并行的区别？</strong></p>
+<blockquote>
+<p>（1）并发：在操作系统中，是指一个时间段中有几个程序都处于已启动运行到运行完毕之间，且这几个程序都是在同一个处理机上运行。其中两种并发关系分别是同步和互斥<br>其中并发又有伪并发和真并发，伪并发是指单核处理器的并发，真并发是指多核处理器的并发。<br>（2）并行：在单处理器中多道程序设计系统中，进程被交替执行，表现出一种并发的外部特种；在多处理器系统中，进程不仅可以交替执行，而且可以重叠执行。在多处理器上的程序才可实现并行处理。从而可知，并行是针对多处理器而言的。并行是同时发生的多个并发事件，具有并发的含义，但并发不一定并行，也亦是说并发事件之间不一定要同一时刻发生。<br>（3）互斥：进程间相互排斥的使用临界资源的现象，就叫互斥。<br>（4）同步：进程之间的关系不是相互排斥临界资源的关系，而是相互依赖的关系。进一步的说明：就是前一个进程的输出作为后一个进程的输入，当第一个进程没有输出时第二个进程必须等待。具有同步关系的一组并发进程相互发送的信息称为消息或事件。<br>（5）异步：异步和同步是相对的，同步就是顺序执行，执行完一个再执行下一个，需要等待、协调运行。异步就是彼此独立,在等待某事件的过程中继续做自己的事，不需要等待这一事件完成后再工作。线程就是实现异步的一个方式。异步是让调用方法的主线程不需要同步等待另一线程的完成，从而可以让主线程干其它的事情。<br>（6）多线程：多线程是程序设计的逻辑层概念，它是进程中并发运行的一段代码。多线程可以实现线程间的切换执行。</p>
+</blockquote>
+<p><strong>ThreadLocal？</strong></p>
+<blockquote>
+<p>ThreadLocal 是线程的局部变量， 是每一个线程所单独持有的。<br>我们知道有时候一个对象的变量会被多个线程所访问，这时就会有线程安全问题，当然我们可以使用synchorinized 关键字来为此变量加锁，进行同步处理，从而限制只能有一个线程来使用此变量，但是加锁会大大影响程序执行效率，此外我们还可以使用ThreadLocal来解决对某一个变量的访问冲突问题。<br>当使用ThreadLocal维护变量的时候 为每一个使用该变量的线程提供一个独立的变量副本，即每个线程内部都会有一个该变量，这样同时多个线程访问该变量并不会彼此相互影响，因此他们使用的都是自己从内存中拷贝过来的变量的副本， 这样就不存在线程安全问题，也不会影响程序的执行性能。<br>但是要注意，虽然ThreadLocal能够解决上面说的问题，但是由于在每个线程中都创建了副本，所以要考虑它对资源的消耗，比如内存的占用会比不使用ThreadLocal要大。</p>
+<p>总结：<br>1/ 每个ThreadLocal只能保存一个变量副本，如果想要上线一个线程能够保存多个副本以上，就需要创建多个ThreadLocal。<br>2/ ThreadLocal内部的ThreadLocalMap键为弱引用，会有内存泄漏的风险。<br>3/ 适用于无状态，副本变量独立后不影响业务逻辑的高并发场景。如果如果业务逻辑强依赖于副本变量，则不适合用ThreadLocal解决，需要另寻解决方案。比如：每个线程访问数据库都应当是一个独立的Session会话，如果多个线程共享同一个Session会话，有可能其他线程关闭连接了，当前线程再执行提交时就会出现会话已关闭的异常，导致系统异常。此方式能避免线程争抢Session，提高并发下的安全性。<br>使用ThreadLocal的典型场景正如上面的数据库连接管理，线程会话管理等场景，只适用于独立变量副本的情况，如果变量为全局共享的，则不适用在高并发下使用。</p>
+</blockquote>
+<h2 id="进程线程区别"><a href="#进程线程区别" class="headerlink" title="进程线程区别"></a>进程线程区别</h2><p>进程和线程的主要差别在于它们是不同的操作系统资源管理方式。<br>1）进程有独立的地址空间，一个进程崩溃后，在保护模式下不会对其它进程产生影响.<br>而线程只是一个进程中的不同执行路径。线程有自己的堆栈和局部变量，但线程之间没有单独的地址空间，一个线程死掉就等于整个进程死掉，所以多进程的程序要比多线程的程序健壮.<br>2）在进程切换时，耗费资源较大，效率要差一些。</p>
+<p><strong>Linux系统中 进程 、线程 、时间片的关系？</strong></p>
+<blockquote>
+<p>在Linux系统中，对于用户创建的进程（线程）来说，CPU分配时间片的单位是线程，线程是实际工作的单元，进程只是一个容器，用来管理一个或多个线程。<br>所以在理论上应该尽量使用多线程并发，这样可以抢到更多的时间片，但是实际问题是当线程数过多时，操作系统必须进行调度，也就是分配时间片。线程被调度的时候需要进行上下文的切换，这种操作是一种额外的开销。线程数量过多时，上下文切换会产生额外的开销，对系统效率造成负面的影响。<br>线程和进程有优先级，在抢占式的调度中，优先级高的线程可以从优先级低的线程那里抢占CPU。另外，在多CPU平台上，调度算法还要考虑缓存的关联性。</p>
+</blockquote>
+<p><strong>在Linux系统中，对于用户创建的进程(线程)来说，CPU分配时间片的单位是线程还是进程？</strong></p>
+<blockquote>
+<p>是线程。线程是实际工作的单元，进程只是一个容器，用来管理一个或多个线程。<br>拓展1：这是不是就意味着尽量使用多线程并发，这样可以抢到更多的时间片。<br>理论上是的，多线程的一种用途就是能同时做好几件事情，以提高效率。但实际问题是，CPU的数量（核心数）是有限的，而且并不多。如果你的CPU有8个CPU，并且整个系统中有8个线程的话，不考虑中断等因素，每个线程理论上能一直执行下去。然而多于8个线程以后，操作系统就必须进行调度，也就是分配时间片。具体的调度算法有很多种。如果一个进程创建了很多线程的话，最多也只有8个能够处于执行的状态，其余的线程必须等待调度。线程被调度的时候需要进行上下文切换，这个操作是一种额外的开销。线程数量过多的时候，上下文切换产生的额外开销会对系统的效率造成负面影响。<br>拓展2：操作系统对于拥有多线程的进程，是否会减少其每个线程的时间片，或做其他处理来保证公平性？<br>这就是调度算法需要考虑和优化的问题。比如线程和进程有优先级，在抢占式的调度中，优先级高的线程可以从优先级低的线程那里抢占CPU，同样优先级的线程才会轮转CPU。另外，在多CPU平台上，调度算法还要考虑缓存的关联性等。在一个进程中的多个线程要注意在可能的情况下将本线程阻塞，将剩余的时间片让给兄弟线程。<br>在主流的操作系统实现里，一般进程是不能直接控制自己的线程的执行顺序的。也就是说，把一个线程挂起并不能保证另一个线程一定能够被执行。<br>Ps：Linux内核其实不区分进程和线程，内核把执行单元叫做任务(task)。操作系统实际上调度的是进程，进程通过fork()来创建同样的另一个进程。每个进程有一个PID，同一组进程中最先启动的那个进程还有一个TGID。严格来说前者应该叫线程ID，后者应该叫进程ID。Linux里的线程实际上是共享一些资源的一系列进程而已。</p>
+</blockquote>
+<p><strong>Linux 下多线程和多进程程序的优缺点，各自适合什么样的业务场景？</strong></p>
+<blockquote>
+<p>（1）多线程优点：<br>1）多线程更快捷：每个线程共享一个虚拟地址空间，因此从调度开销方面考虑多线程占优。<br>2）数据共享方便：由于同一进程下的线程之间共享数据空间，所以一个线程的数据可以直接为其它线程所用，快捷而且方便；<br>3）使多CPU系统更加有效。操作系统会保证当线程数不大于CPU数目时，不同的线程运行于不同的CPU上；<br>4）调度开销更小，不用切换地址空间。<br>（2）多线程缺点：<br>1）稳定性差：一个线程挂掉整个程序挂。<br>2）数据脏：线程间由于共享内存空间而导致数据脏，需要加锁实现数据同步，导致性能低下。<br>3）线程数量收到限制：每个线程与主程序共用地址空间，受限于4GB地址空间，此时再增加CPU也不能提高性能。</p>
+<p>（3）多进程优点：<br>1）多进程更稳定：一个进程挂掉不会影响其它进程。<br>2）数据干净：进程之间的内存空间相对独立，各个进程之间的变量不会相互影响。<br>3）更好的多核可伸缩性：每个子进程都有4GB地址空间和相关资源，因此通过增加CPU，就可以容易扩充性能；<br>（4）多进程缺点：<br>1）开销更大：每个进程都维护专属的虚拟地址空间，需要额外的开销<br>2）数据共享困难：各进程间的数据相对独立，不易共享。<br>3）调度开销大：每次调度都需要切换地址空间，切换进程上下文</p>
+<p>（5）适用场景：<br>1）不同任务间需要大量共享数据或频繁通信时，采用多线程。<br>2）需要提供非均质的服务（有优先级任务处理）事件响应有优先级，采用多线程<br>3）与人有IO交互的应用，良好的用户体验（键盘鼠标的输入，立刻响应）<br>4）如果工作集较大，就用多线程，避免cpu cache频繁的换入换出；比如memcached缓存系统；<br>5）需要频繁创建销毁的优先用线程<br>6）需要进行大量计算的优先使用线程<br>7）强相关的处理用线程，弱相关的处理用进程<br>8）可能要扩展到多机分布的用进程，多核分布的用线程<br>注：RCU的发明者，Paul McKenny说过：能用多进程方便的解决问题的时候不要使用多线程。</p>
+</blockquote>
+<h2 id="线程高级特性"><a href="#线程高级特性" class="headerlink" title="线程高级特性"></a>线程高级特性</h2><p><strong>Linux有内核级线程么？</strong></p>
+<blockquote>
+<p>1）内核线程，只是一个称呼，实际上就是一个进程，有自己独立的TCB，参与内核调度，也参与内核抢占。这个进程的特别之处有两点，第一、该进程没有前台。第二、永远在内核态中运行<br>2）创建内核线程有两种方法，一种是 kthread_create() ，一种是 kernel_thread() </p>
+</blockquote>
+<p><strong>可重入函数与线程安全的区别与联系？</strong></p>
+<blockquote>
+<p>1）线程安全是在多个线程情况下引发的，而可重入函数可以在只有一个线程的情况下来说；<br>2）线程安全不一定是可重入的，而可重入函数则一定是线程安全的；<br>3）如果一个函数中有全局变量，那么这个函数既不是线程安全也不是可重入的；<br>4）如果将对临界资源的访问加上锁，则这个函数线程安全的；但如果这个重入函数若加锁未释放则会产生死锁，因此是不可重入的；<br>5）线程安全函数能够是不同的线程访问同一块地址空间，而可重入函数要求不同的执行流对数据的操作互不影响，使结果是相同的；<br>6）如果一个函数当中全是自身占栈空间的，那么既是线程安全又是可重入的</p>
+</blockquote>
+<p><strong>内存屏障详解？</strong></p>
+<blockquote>
+<p>内存屏障，在x86 上是”sfence”指令，强迫所有的、在屏障指令之前的 存储指令在屏障以前发生，并且让 store buffers 刷新到发布这个指令的 CPU cache。这将使程序状态对其他 CPU 可见，这样，如果需要它们可以对它做出响应。</p>
+</blockquote>
+<p><strong>原子操作原理？</strong></p>
+<blockquote>
+<p>32位IA-32处理器使用基于对缓存加锁或总线加锁的方式来实现多处理器之间的原子操作。首先处理器会自动保证基本的内存操作的原子性。处理器保证从系统内存中读取或者写入一个字节是原子的，意思是当一个处理器读取一个字节时，其他处理器不能访问这个字节的内存地址。Pentium 6和最新的处理器能自动保证单处理器对同一个缓存行里进行16/32/64位的操作是原子的，但是复杂的内存操作处理器是不能自动保证其原子性的，比如跨总线宽度、跨多个缓存行和跨页表的访问。但是，处理器提供总线锁定和缓存锁定两个机制来保证复杂内存操作的原子性。</p>
+</blockquote>
+<p><strong>malloc和free是线程安全的吗，在多线程开发时用这两个函数应该注意什么？</strong></p>
+<blockquote>
+<p>是线程安全的，但是不可重入的。<br>如果并发量高，分配频繁，可以考虑使用tcmalloc。tcmalloc是用于优化C++写的多线程应用。可以使得程序在高并发下内存占用更加稳定。<br>在多线程高并发时候最好使用线程池，或者是直接一次性分配好内存，后面复用。<br>malloc/free会导致系统用户态/核心态切换，消耗大。<br>malloc/free线程安全意味着它们要加锁，可以看到任务管理器的锯齿形状<br>不断的malloc/free运行久了会有内存碎片。</p>
+<p>malloc函数线程安全但是不可重入的，因为malloc函数在用户空间要自己管理各进程共享的内存链表，由于有共享资源访问，本身会造成线程不安全。为了做到线程安全，需要加锁进行保护。同时这个锁必须是递归锁，因为如果当程序调用malloc函数时收到信号，在信号处理函数里再调用malloc函数，如果使用一般的锁就会造成死锁（信号处理函数中断了原程序的执行），所以要使用递归锁。</p>
+<p>虽然使用递归锁能够保证malloc函数的线程安全性，但是不能保证它的可重入性。按上面的场景，程序调用malloc函数时收到信号，在信号处理函数里再调用malloc函数就可能破坏共享的内存链表等资源，因而是不可重入的。</p>
+<p>至于malloc函数访问内核的共享数据结构可以正常的加锁保护，因为一个进程程调用malloc函数进入内核时，必须等到返回用户空间前夕才能执行信号处理函数，这时内核数据结构已经访问完成，内核锁已释放，所以不会有问题。</p>
+<p>概念<br>1）线程安全：在拥有共享数据的多条线程并行执行的程序中，线程安全的代码会通过同步机制保证各个线程都可以正常并且正确的执行，不会出现数据污染等情况。如果每次运行的结果和单线程运行的结果是一样的，而且其他变量的值和预期也是一样的，就是线程安全的。<br>2）可重入函数：可重入函数可以有多于一个任务并发使用，而不必担心数据错误。不可充数函数不能超过一个数据共享，除非能确保函数的互斥，或者使用信号量，或者在代码的关键部分禁用中断。可重入函数可以在任何时候被中断，稍后继续运行，不会丢失数据。可重入函数要么使用本地，要么使用全局变量保护数据。</p>
+</blockquote>
+<p><strong>如何理解互斥锁，条件锁，读写锁以及自旋锁？线程中锁有哪几种。互斥锁和自旋锁底层实现机制讲一下，分别运用在什么场合，有什么优缺点？</strong></p>
+<blockquote>
+<p>读写锁特点：<br>1）多个读者可以同时进行读<br>2）写者必须互斥（只允许一个写者写，也不能读者写者同时进行）<br>3）写者优先于读者（一旦有写者，则后续读者必须等待，唤醒时优先考虑写者）</p>
+<p>互斥锁特点：<br>一次只能一个线程拥有互斥锁，其他线程只有等待<br>互斥锁是在抢锁失败的情况下主动放弃CPU进入睡眠状态直到锁的状态改变时再唤醒，而操作系统负责线程调度，为了实现锁的状态发生改变时唤醒阻塞的线程或者进程，需要把锁交给操作系统管理，所以互斥锁在加锁操作时涉及上下文的切换。互斥锁实际的效率还是可以让人接受的，加锁的时间大概100ns左右，而实际上互斥锁的一种可能的实现是先自旋一段时间，当自旋的时间超过阀值之后再将线程投入睡眠中，因此在并发运算中使用互斥锁（每次占用锁的时间很短）的效果可能不亚于使用自旋锁。</p>
+<p>条件变量的特点：</p>
+<p>互斥锁一个明显的缺点是他只有两种状态：锁定和非锁定。而条件变量通过允许线程阻塞和等待另一个线程发送信号的方法弥补了互斥锁的不足，他常和互斥锁一起使用，以免出现竞态条件。当条件不满足时，线程往往解开相应的互斥锁并阻塞线程然后等待条件发生变化。一旦其他的某个线程改变了条件变量，他将通知相应的条件变量唤醒一个或多个正被此条件变量阻塞的线程。总的来说互斥锁是线程间互斥的机制，条件变量则是同步机制。</p>
+<p>自旋锁的特点：</p>
+<p>如果进线程无法取得锁，进线程不会立刻放弃CPU时间片，而是一直循环尝试获取锁，直到获取为止。如果别的线程长时期占有锁那么自旋就是在浪费CPU做无用功，但是自旋锁一般应用于加锁时间很短的场景，这个时候效率比较高。</p>
+</blockquote>
+<p><strong>互斥锁，同步锁，临界区，互斥量，信号量，自旋锁之间联系是什么？</strong></p>
+<blockquote>
+<p>1、临界区：通过对多线程的串行化来访问公共资源或一段代码，速度快，适合控制数据访问。<br>2、互斥量：为协调共同对一个共享资源的单独访问而设计的，互斥对象只有一个。<br>3、信号量：为控制一个具有有限数量用户资源而设计，只能在进程上下文中使用，适合长时间访问共享资源的情况<br>4、自旋锁：适合短时间访问共享资源的情况，如果锁被长时间持有，等待线程会消耗大量资源<br>5、事件：用来通知线程有一些事件已发生，从而启动后继任务的开始。</p>
+</blockquote>
+<p><strong>pthread_cond_wait 为什么需要传递 mutex 参数？</strong></p>
+<blockquote>
+<p>pthread_cond_wait 函数用于等待目标条件变量。mutex参数用于保护条件变量的互斥锁，以确保pthread_cond_wait 操作的原子性，在调用pthread_cond_wait前，必须确保互斥锁mutex已经加锁，否则将导致不可预期的结果。pthread_cond_wait函数执行时，首先把调用线程放入条件变量的等待队列中，然后将互斥锁mutex解锁。可见，从ptread_cond_wait开始执行到其调用线程被放入条件变量的等待队列之间的这段时间内，ptread_cond_signal 和pthread_cond_broadcast 函数不会修改条件变量，换言之，pthread_cond_wait 函数不会错过目标条件变量的任何变化，当pthread_cond_wait 函数成功返回时，互斥锁mutex将被再次锁上。</p>
+</blockquote>
+<p><strong>死锁的原因和避免？</strong></p>
+<blockquote>
+<p>一、死锁的概念<br>所谓死锁，是指多个进程在运行过程中因争夺资源而照成的一种僵局。当进程处于这种僵持状态时，若无外力作用，它们都将无法再向前推进。<br>二、产生死锁的原因<br>（1）竞争资源。当系统中供多个进程共享的资源如打印机、公用队列等，其数目不足以满足诸进程的需要时，会引起诸进程对资源的竞争而产生死锁。<br>（2）进程间推进顺序非法。进程在运行过程中，请求和释放资源的顺序不当，也同样会产生进程死锁。<br>三、产生死锁的必要条件<br>（1）互斥条件：指进程对所分配到的资源进行排它性使用，即在一段时间内某资源只由一个进程占用。如果此时还有其它进程请求该资源，则请求者只能等待，直至占有该资源的进程用毕释放。<br>（2）请求和保持条件：指进程已经保持了至少一个资源，但又提出了新的资源请求，而该资源又被其它进程占有，此时请求进程阻塞，但又对自己获得的其它资源保持不放。<br>（3）不剥夺条件：指进程已获得资源，在使用完之前，不能被剥夺，只能在使用完时由自己释放。<br>（4）环路等待条件：指在发生死锁时，必然存在一个进程—资源的环形链，即进程集合（P0，P1,P2,…,Pn）中的P0正在等待一个P1占用的资源；P1正在等待一个P2占用的资源，……,Pn正在等待已被P0占用的资源。<br>处理死锁的策略<br>1、忽略该问题。例如鸵鸟算法。<br>2、检测死锁并且恢复。<br>3、仔细地对资源进行动态分配，以避免死锁。<br>4、通过破除死锁四个必要条件之一，来防止死锁产生。<br>鸵鸟算法：<br>该算法可以应用在极少发生死锁的的情况下。为什么叫鸵鸟算法呢，因为传说中鸵鸟看到危险就把头埋在地底下，可能鸵鸟觉得看不到危险也就没危险了吧。跟掩耳盗铃有点像。<br>银行家算法：<br>        所谓银行家算法，是指在分配资源之前先看清楚，资源分配后是否会导致系统死锁。如果会死锁，则不分配，否则就分配。<br>按照银行家算法的思想，当进程请求资源时，系统将按如下原则分配系统资源：<br>(1) 当一个进程对资源的最大需求量不超过系统中的资源数时可以接纳该进程。<br>(2) 进程可以分期请求资源，当请求的总数不能超过最大需求量。<br>(3) 当系统现有的资源不能满足进程尚需资源数时，对进程的请求可以推迟分配，但总能使进程在有限的时间里得到资源。<br>(4) 当系统现有的资源能满足进程尚需资源数时，必须测试系统现存的资源能否满足该进程尚需的最大资源数，若能满足则按当前的申请量分配资源，否则也要推迟分配。<br>解决死锁的策略<br>对待死锁的策略主要有：<br>(1) 死锁预防：破坏导致死锁必要条件中的任意一个就可以预防死锁。例如，要求用户申请资源时一次性申请所需要的全部资源，这就破坏了保持和等待条件；将资源分层，得到上一层资源后，才能够申请下一层资源，它破坏了环路等待条件。预防通常会降低系统的效率。<br>(2) 死锁避免：避免是指进程在每次申请资源时判断这些操作是否安全，例如，使用银行家算法。死锁避免算法的执行会增加系统的开销。<br>(3) 死锁检测：死锁预防和避免都是事前措施，而死锁的检测则是判断系统是否处于死锁状态，如果是，则执行死锁解除策略。<br>(4) 死锁解除：这是与死锁检测结合使用的，它使用的方式就是剥夺。即将某进程所拥有的资源强行收回，分配给其他的进程。</p>
+<p>死锁的避免：<br>死锁的预防是通过破坏产生条件来阻止死锁的产生，但这种方法破坏了系统的并行性和并发性。<br>死锁产生的前三个条件是死锁产生的必要条件，也就是说要产生死锁必须具备的条件，而不是存在这3个条件就一定产生死锁，那么只要在逻辑上回避了第四个条件就可以避免死锁。<br>避免死锁采用的是允许前三个条件存在，但通过合理的资源分配算法来确保永远不会形成环形等待的封闭进程链，从而避免死锁。该方法支持多个进程的并行执行，为了避免死锁，系统动态的确定是否分配一个资源给请求的进程。方法如下：<br>1.如果一个进程的当前请求的资源会导致死锁，系统拒绝启动该进程；<br>2.如果一个资源的分配会导致下一步的死锁，系统就拒绝本次的分配；<br>显然要避免死锁，必须事先知道系统拥有的资源数量及其属性</p>
+</blockquote>
+<p><strong>多线程编程的时候，使用无锁结构会不会比有锁结构更加快？</strong></p>
+<blockquote>
+<p>无论有锁（mutex）还是无锁（lock-free）总是只有一个线程在执行任务，只不过对于lock-free所有线程都可以进临界区。所以从这点上看其实有锁和无锁在性能上应该是一样的。<br>但是从另一点上是有区别的，他们的不同体现在拿不到锁的态度：有锁的情况就是睡觉，无锁的情况就不断spin。<br>睡觉这个动作会陷入内核，发生context switch，这个是有开销的，但是这个开销能有多大呢，当你的临界区很小的时候，这个开销的比重就非常大。这也是为什么临界区很小的时候，换成lockfree性能通常会提高很多的原因。<br>再来看lockfree的spin，一般都遵循一个固定的格式：先把一个不变的值X存到某个局部变量A里，然后做一些计算，计算/生成一个新的对象，然后做一个CAS操作，判断A和X还是不是相等的，如果是，那么这次CAS就算成功了，否则再来一遍。如果上面这个loop里面“计算/生成一个新的对象”非常耗时并且contention很严重，那么lockfree性能有时会比mutex差。另外lockfree不断地spin引起的CPU同步cacheline的开销也比mutex版本的大。<br>lockfree的意义不在于绝对的高性能，它比mutex的优点是使用lockfree可以避免死锁/活锁，优先级翻转等问题。但是因为ABA problem、memory order等问题，使得lockfree比mutex难实现得多。</p>
+</blockquote>
+<p><strong>lock-free的实现方式？</strong></p>
+<blockquote>
+<p>（1）lock-free定义：多线程中不会导致线程间相互阻塞，称之为lock-free。不使用锁结构，可以降低线程间互相阻塞的机会。<br>（2）所谓lock-free的实现，实际上就是在不使用锁结构的条件下，实现线程安全。实现方式可以采用C++11中的Atomic，。<br>（3）Atomic：<br>Atomic一系列原子操作类，它们提供的方法能保证具有原子性。这些方法是不可再分的，获取这些变量的值时，永远获得修改前的值或修改后的值，不会获得修改过程中的中间数值。<br>   这些类都禁用了拷贝构造函数，原因是原子读和原子写是2个独立原子操作，无法保证2个独立的操作加在一起仍然保证原子性。<br>atomic<t>提供了常见且容易理解的方法：<br>1）store： store是原子写操作<br>2）load： load则是对应的原子读操作<br>3）exchange：允许2个数值进行交换，并保证整个过程是原子的。<br>4）compare_exchange_weak<br>5）compare_exchange_strong<br>compare_exchange_weak和compare_exchange_strong要求在参数中传入期待的数值和新的数值。它们对比变量的值和期待的值是否一致，如果是，则替换为用户指定的一个新的数值。如果不是，则将变量的值和期待的值交换。<br>weak版本允许偶然出乎意料的返回（比如在字段值和期待值一样的时候却返回了false），不过在一些循环算法中，这是可以接受的。通常它比起strong有更高的性能。<br>（4）Atomic的简单使用：<br>定义一个具有原子性操作的链表并在头节点前面插入一个节点：<br>std::atomic<node*> head;<br>node* const new_node=new node(data);<br>new_node-&gt;next=head.load();<br>（5）利用Atomic实现一个lock-free的栈：<br>参考博文：<a href="https://blog.csdn.net/alien_taiji/article/details/53404176" target="_blank" rel="external">https://blog.csdn.net/alien_taiji/article/details/53404176</a>                            <a href="https://www.cnblogs.com/dengzz/p/5686866.html" target="_blank" rel="external">https://www.cnblogs.com/dengzz/p/5686866.html</a></node*></t></p>
+</blockquote>
+<p><strong>如何证明一个数据结构是线程安全的？</strong></p>
+<blockquote>
+<p>一个不论运行时（Runtime）如何调度线程都不需要调用方提供额外的同步和协调机制还能正确地运行的类是线程安全的。多线程的场景很多很复杂，难以穷尽地说那些条件下是或者不是线程安全的，但是有一些常用的肯定线程安全的场景：<br>1) 无状态的一定是线程安全的。这个很好理解，因为所谓线程不安全也就是一个线程修改了状态，而另一个线程的操作依赖于这个被修改的状态。<br>2) 只有一个状态，而且这个状态是由一个线程安全的对象维护的，那这个类也是线程安全的。比如你在数据结构里只用一个AtomicLong来作为计数器，那递增计数的操作都是线程安全的，不会漏掉任何一次计数，而如果你用普通的long做++操作则不一样，因为++操作本身涉及到取数、递增、赋值 三个操作，某个线程可能取到了另外一个线程还没来得及写回的数就会导致上一次写入丢失。<br>3) 有多个状态的情况下，维持不变性（invariant）的所有可变（mutable）状态都用同一个锁来守护的类是线程安全的。这一段有些拗口，首先类不变性的意思是指这个类在多线程状态下能正确运行的状态，其次用锁守护的意思是所有对该状态的操作都需要获取这个锁，而用同一个锁守护的作用就是所有对这些状态的修改实际最后都是串行的，不会存在某个操作中间状态被其他操作可见，继而导致线程不安全。所以这里的关键在于如何确定不变性，可能你的类的某些状态对于类的正确运行是无关紧要的，那就不需要用和其他状态一样的锁来守护。因此我们常可以看到有的类里面会创建一个新的对象作为锁来守护某些和原类本身不变性无关的状态。</p>
+</blockquote>
+<p><strong>C++线程安全的单例类？</strong></p>
+<p>利用pthread_once的线程安全单例：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;pthread.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">class</span> T&gt;</span><br><span class="line"><span class="keyword">class</span> Singleton &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">static</span> T&amp; <span class="title">instance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        pthread_once(&amp;once, Init);</span><br><span class="line">        <span class="keyword">return</span> *value_;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    Singleton();</span><br><span class="line">    ~Singleton();</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Destory</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">typedef</span> <span class="keyword">char</span> COMPELETE_TYPE[(<span class="keyword">sizeof</span>(T) == <span class="number">0</span>)? <span class="number">-1</span> : <span class="number">1</span>]</span><br><span class="line">        COMPELETE_TYPE dommy;  <span class="comment">//不是完整类型 sizeof(T) 为-1 ，那么这里定义的时候 [-1]会触发报错</span></span><br><span class="line">        (<span class="keyword">void</span>) dommy;          <span class="comment">//查看是否是完整类型，如果不是完整类型，不能实例化它</span></span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;<span class="string">"Destory"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">        <span class="keyword">delete</span> value_;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Init</span><span class="params">(<span class="keyword">void</span>)</span> </span>&#123;</span><br><span class="line">        value_ = <span class="keyword">new</span> T();</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; <span class="string">"Init "</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">        atexit(Destory);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">static</span> T * value_;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">pthread_once_t</span> once;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">class</span> T&gt;</span><br><span class="line">T * Singleton&lt;T&gt;::value_ = <span class="literal">NULL</span>;</span><br><span class="line"><span class="keyword">template</span>&lt;classT&gt;</span><br><span class="line">Singleton&lt;T&gt;:: once == PTHREAD_ONCE_INIT;</span><br></pre></td></tr></table></figure></p>
+<p>饿汉模式：<br><figure class="highlight autoit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">class <span class="built_in">Singleton</span> &#123;</span><br><span class="line">private:</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">const</span> <span class="built_in">Singleton</span>* m_instance<span class="comment">;</span></span><br><span class="line">    <span class="built_in">Singleton</span>()&#123;&#125;</span><br><span class="line">public:</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">const</span> <span class="built_in">Singleton</span>* getInstance() &#123;</span><br><span class="line">        <span class="keyword">return</span> m_instance<span class="comment">;</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="built_in">Singleton</span>* <span class="built_in">Singleton</span>::m_instance = new <span class="built_in">Singleton</span><span class="comment">;</span></span><br></pre></td></tr></table></figure></p>
+<p><strong>多线程环境带有状态的对象的讨论？</strong></p>
+<blockquote>
+<p>如果你的代码所在的进程中有多个线程在同时运行，而这些线程可能会同时运行这段代码。如果每次运行结果和单线程运行的结果是一样的，而且其他的变量的值也和预期的是一样的，那么就是线程安全的。<br>或者说，一个类或者程序所提供的接口对于线程来说是原子操作或者多个线程之间的切换不会导致该接口的执行结果存在二义性，也就是说我们不用考虑同步的问题。<br>线程安全问题都是由全局变量及静态变量引起的。 若每个线程中对全局变量、静态变量只有读操作，而无写操作，一般来说，这个全局变量是线程安全的；若有多个线程同时执行写操作，一般都需要考虑线程同步，否则就可能影响线程安全。<br>2)关于线程安全<br>常量始终是线程安全的，因为只存在读操作。<br>每次调用方法前都新建一个实例是线程安全的，因为不会访问共享的资源（共享堆内存）。<br>局部变量是线程安全的。因为每执行一个方法，都会在独立的空间创建局部变量，它不是共享的资源。局部变量包括方法的参数变量和方法内变量。<br>3)有状态和无状态对象<br>有状态就是有数据存储功能。有状态对象(Stateful Bean)，就是有实例变量的对象 ，可以保存数据，是非线程安全的。其实就是有可写数据成员的对象。<br>无状态就是一次操作，不能保存数据。无状态对象(Stateless Bean)，就是没有实例变量的对象。不能保存数据，是不变类，是线程安全的。具体来说就是只有方法没有数据成员的对象，或者有数据成员但是数据成员是可读的对象。</p>
+</blockquote>
+<p><strong>程序什么时候应该使用线程，什么时候单线程效率高？</strong></p>
+<blockquote>
+<p>使用线程可以把占据长时间的程序中的任务放到后台去处理，如用户在界面点击，让一个线程取处理该项操作，在一些等待的任务实现上如用户输入、文件读写和网络收发数据等的情况下，使用线程可以释放掉一些资源如内存占用等等。<br>单线程效率高的情况：对于频繁创建和切换线程可能会造成大的时间开销，这样多线程带来的时间代价将会拖慢整个程序，由此不如单线程来的方便。<br>对于处理时间短的服务或者启动频率高的要用单线程，相反用多线程！ </p>
+</blockquote>
+<p><strong>惊群现象？</strong></p>
+<blockquote>
+<p>举一个很简单的例子，当你往一群鸽子中间扔一块食物，虽然最终只有一个鸽子抢到食物，但所有鸽子都会被惊动来争夺，没有抢到食物的鸽子只好回去继续睡觉， 等待下一块食物到来。这样，每扔一块食物，都会惊动所有的鸽子，即为惊群。对于操作系统来说，多个进程/线程在等待同一资源时，也会产生类似的效果，其结果就是每当资源可用，所有的进程/线程都来竞争资源，造成的后果：<br>1）系统对用户进程/线程频繁的做无效的调度、上下文切换，系统性能大打折扣。<br>2）为了确保只有一个线程得到资源，用户必须对资源操作进行加锁保护，进一步加大了系统开销。<br>关于“线程池中惊群问题”：<br>在任务队列加入新的任务后，使用pthread_cond_signal而不是使用pthread_cond_broadcast()函数来通知等待的线程队列，这样可靠的保证了，每次只通知到一个等待线程，避免了多个线程同时抢占资源的问题。</p>
+</blockquote>
+<h2 id="多线程编程"><a href="#多线程编程" class="headerlink" title="多线程编程"></a>多线程编程</h2><p><strong>Linux 开发，使用多线程还是用 IO 复用 select/epoll？</strong></p>
+<blockquote>
+<p>多线程模型适用于处理短连接，且连接的打开关闭非常频繁的情形，但不适合处理长连接。多线程模型默认情况下，（在Linux）每个线程会开8M的栈空间，假定有10000个连接，开这么多个线程需要80G的内存空间！即使调整每个线程的栈空间，也很难满足更多的需求。攻击者可以利用这一点发动DDoS，只要一个连接连上服务器什么也不做，就能吃掉服务器几M的内存，这不同于多进程模型，线程间内存无法共享，因为所有线程处在同一个地址空间中。内存是多线程模型的软肋。<br>在UNIX平台下多进程模型擅长处理并发长连接，但却不适用于连接频繁产生和关闭的情形。Windows平台忽略此项。 同样的连接需要的内存数量并不比多线程模型少，但是得益于操作系统虚拟内存的Copy on Write机制，fork产生的进程和父进程共享了很大一部分物理内存。但是多进程模型在执行效率上太低，接受一个连接需要几百个时钟周期，产生一个进程 可能消耗几万个CPU时钟周期，两者的开销不成比例。而且由于每个进程的地址空间是独立的，如果需要进行进程间通信的话，只能使用IPC进行进程间通 信，而不能直接对内存进行访问。在CPU能力不足的情况下同样容易遭受DDos，攻击者只需要连上服务器，然后立刻关闭连接，服务端则需要打开一个进程再关闭。<br>同时需要保持很多的长连接，而且连接的开关很频繁，最高效的模型是非阻塞、异步IO模型。而且不要用select/poll，这两个API的有着O(N)的时间复杂度。在Linux用epoll，BSD用kqueue，Windows用IOCP，或者用libevent封装的统一接口（对于不同平台libevent实现时采用各个平台特有的API），这些平台特有的API时间复杂度为O(1)。然而在非阻塞，异步I/O模型下的编程是非常痛苦的。由于I/O操作不再阻塞，报文的解析需要小心翼翼，并且需要亲自管理维护每个链接的状态。并且为了充分利用CPU，还应结合线程池，避免在轮询线程中处理业务逻辑。<br>参考知乎：<a href="http://www.zhihu.com/question/20114168/answer/14024115" target="_blank" rel="external">http://www.zhihu.com/question/20114168/answer/14024115</a></p>
+</blockquote>
+<p><strong>开发多线程的程序应该注意哪些问题？</strong></p>
+<blockquote>
+<p>多线程的主要是需要处理大量的IO操作或者处理的情况需要花大量的时间等等，比如读写文件，网络数据接收，视频图像的采集，处理显示保存等操作缓慢的情形和需大幅度的提高性能的程序中使用。<br>但也不是都使用多线程，因为多线程过多的线程一般会导致数据共享问题，太多多线程切换也是会影响性能的，所以一般不须采用多线程的不用多线程效果更好。<br>1 线程间通信<br>线程间通信主要涉及在线程间传递数据，或相互通知某些事件的完成。可采用的方法包括：<br>方法1：全局变量<br>方法2：发送消息<br>2 线程间的同步与互斥<br>多线程会涉及对共享资源或独占资源的访问，也就引入了同步与互斥的问题。<br>假设多个线程都要修改同一个全局变量：<br>互斥——同一时刻只能有一个线程修改该变量，但谁先处理谁后处理无所谓。<br>同步——同一时刻只能有一个线程修改该变量，但其中一个线程要等待另一个线程处理完之后才能处理。<br>即，同步是有先后顺序要求的互斥。<br>3 线程使用中要注意，如何控制线程的调度和阻塞，例如利用事件的触发来控制线程的调度和阻塞，也有用消息来控制的。<br>4 线程中如果用到公共资源，一定要考虑公共资源的线程安全性。一般用LOCK锁机制来控制线程安全性。一定要保证不要有死锁机制。<br>5 线程的终止一般要使线程体在完成一件工作的情况下终止，一般不要直接使用抛出线程异常的方式终止线程。<br>6 线程的优先级一定根据程序的需要要有个整体的规划。<br>7 注意条件返回时互斥锁的解锁问题<br>8 正确处理 Linux 平台下的线程结束问题<br>在 Linux 平台下，当处理线程结束时需要注意的一个问题就是如何让一个线程善始善终，让其所占资源得到正确释放。在 Linux 平台默认情况下，虽然各个线程之间是相互独立的，一个线程的终止不会去通知或影响其他的线程。但是已经终止的线程的资源并不会随着线程的终止而得到释放，我们需要调用 pthread_join() 来获得另一个线程的终止状态并且释放该线程所占的资源<br>9 等待的绝对时间问题<br>超时是多线程编程中一个常见的概念。例如，当你在 Linux 平台下使用 pthread_cond_timedwait() 时就需要指定超时这个参数，以便这个 API 的调用者最多只被阻塞指定的时间间隔。</p>
+</blockquote>
+<p><strong>多线程网络编程中如何合理地选择线程数？</strong></p>
+<blockquote>
+<p>首先确定应用是CPU密集型 （例如分词，加密等），还是耗时io（ 网络，文件操作等）<br>CPU密集型：最佳线程数等于cpu核心数或稍微小于cpu核心数。<br>耗时io型：最佳线程数一般会大于cpu核心数很多倍。一般是io设备延时除以cpu处理延时，得到一个倍数，我的经验数值是20–50倍*cpu核心数,保证线程空闲可以衔接上。<br>最佳线程数量也与机器配置（内存，磁盘速度）有关，如果cpu，内存，磁盘任何一个达到顶点，就需要适当减少线程数。</p>
+</blockquote>
+<p>如有误，欢迎批评指正！</p>
+  
+	</div>
+
+
+    
+	<!-- css -->
+	<style type="text/css">
+	    .center {
+	        text-align: center;
+	    }
+	    .hidden {
+	        display: none;
+	    }
+		.donate_bar a.btn_donate{
+			display: inline-block;
+			width: 82px;
+			height: 82px;
+			background: url("http://7xsl28.com1.z0.glb.clouddn.com/btn_reward.gif") no-repeat;
+			_background: url("http://7xsl28.com1.z0.glb.clouddn.com/btn_reward.gif") no-repeat;
+
+			<!-- http://img.t.sinajs.cn/t5/style/images/apps_PRF/e_media/btn_reward.gif
+			     因为本 hexo 生成的博客所用的 theme 的 a:hover 带动画效果，
+				 为了在让打赏按钮显示效果正常 而 添加了以下几行 css，
+				 嵌入其它博客时不一定要它们。 -->
+			-webkit-transition: background 0s;
+			-moz-transition: background 0s;
+			-o-transition: background 0s;
+			-ms-transition: background 0s;
+			transition: background 0s;
+			<!-- /让打赏按钮的效果显示正常 而 添加的几行 css 到此结束 -->
+		}
+
+		.donate_bar a.btn_donate:hover{ background-position: 0px -82px;}
+		.donate_bar .donate_txt {
+			display: block;
+			color: #9d9d9d;
+			font: 14px/2 "Microsoft Yahei";
+		}
+		.bold{ font-weight: bold; }
+	</style>
+	<!-- /css -->
+
+    <!-- Donate Module -->
+    <div id="donate_module">
+
+	<!-- btn_donate & tips -->
+	<div id="donate_board" class="donate_bar center">
+	    <br>
+	    ------------------------------------------------------------------------------------------------------------------------------
+	    <br>
+		<a id="btn_donate" class="btn_donate" target="_self" href="javascript:;" title="Donate 打赏"></a>
+		<span class="donate_txt">
+			我要小额赞助，助作者写出更好的文章！
+		</span>
+			
+		
+	</div>
+	<!-- /btn_donate & tips -->
+
+	<!-- donate guide -->
+    
+	<div id="donate_guide" class="donate_bar center hidden">
+        <br>
+	    ------------------------------------------------------------------------------------------------------------------------------
+	    <br>
+	    
+	    <div width="100%" align="center"><div name="dashmain" id="dash-main-id-87895f" class="dash-main-3 87895f-0.99"></div></div>
+		<script type="text/javascript" charset="utf-8" src="http://www.dashangcloud.com/static/ds.js"></script>
+		
+
+		<a href="http://7xsl28.com1.z0.glb.clouddn.com/wechatpay.png" title="用微信扫一扫哦~" class="fancybox" rel="article0">
+			<img src="http://7xsl28.com1.z0.glb.clouddn.com/wechatpay.png" title="微信打赏 Donate" height="190px" width="auto"/>
+		</a>
+        
+        &nbsp;&nbsp;
+
+		<a href="http://7xsl28.com1.z0.glb.clouddn.com/alipay.jpg" title="用支付宝扫一扫即可~" class="fancybox" rel="article0">
+			<img src="http://7xsl28.com1.z0.glb.clouddn.com/alipay.jpg" title="支付宝打赏 Donate" height="190px" width="auto"/>
+		</a>
+
+		<span class="donate_txt">
+			我要小额赞助，助作者写出更好的文章！
+		</span>
+
+	</div>
+	<!-- /donate guide -->
+
+	<!-- donate script -->
+	<script type="text/javascript">
+		document.getElementById('btn_donate').onclick = function() {
+			$('#donate_board').addClass('hidden');
+			$('#donate_guide').removeClass('hidden');
+		}
+
+		function donate_on_web(){
+			$('#donate').submit();
+        }
+
+		var original_window_onload = window.onload;
+        window.onload = function () {
+            if (original_window_onload) {
+                original_window_onload();
+            }
+            document.getElementById('donate_board_wdg').className = 'hidden';
+		}
+	</script>
+	<!-- /donate script -->
+</div>
+<!-- /Donate Module -->
+   
+
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  
+  <span></span> <a href="/categories/计算机相关-CS-Related/">计算机相关 | CS.Related</a>
+  </div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/操作系统/">操作系统</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	<div class="share-jiathis">
+	  
+<div class="jiathis_style_24x24">
+	<a class="jiathis_button_tsina"></a>
+	<a class="jiathis_button_weixin"></a>
+	<a class="jiathis_button_tqq"></a>
+	<a class="jiathis_button_qzone"></a>
+	<a class="jiathis_button_douban"></a>
+	<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+    var jiathis_config={
+    data_track_clickback:true,
+    sm:"copy,renren,cqq",
+    pic:"",
+    summary:"",
+     ralateuid:{"tsina":"husuche## e.g. 2176287895 Your weibo id,It will be used in share button."},hideMore:false}
+    
+  </script> 
+<script type="text/javascript" src="//v3.jiathis.com/code/jia.js?uid=2094149
+2094149" charset="utf-8"></script>      
+
+	 </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/2019/06/05/computernetwork.html"  title="计算机网络常见基础问题">
+ <strong>下一篇：</strong><br/> 
+ <span>计算机网络常见基础问题
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+<section id="comments" class="comment">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <aside class="clearfix">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#基本概念"><span class="toc-number">1.</span> <span class="toc-text">基本概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#进程的创建，销毁，守护进程和僵尸进程"><span class="toc-number">2.</span> <span class="toc-text">进程的创建，销毁，守护进程和僵尸进程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#进程内存管理"><span class="toc-number">3.</span> <span class="toc-text">进程内存管理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#进程间通信-IPC"><span class="toc-number">4.</span> <span class="toc-text">进程间通信(IPC)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#进程、线程同步"><span class="toc-number">5.</span> <span class="toc-text">进程、线程同步</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#内核进程和用户进程"><span class="toc-number">6.</span> <span class="toc-text">内核进程和用户进程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#线程"><span class="toc-number">7.</span> <span class="toc-text">线程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#进程线程区别"><span class="toc-number">8.</span> <span class="toc-text">进程线程区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#线程高级特性"><span class="toc-number">9.</span> <span class="toc-text">线程高级特性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#多线程编程"><span class="toc-number">10.</span> <span class="toc-text">多线程编程</span></a></li></ol>
+ 
+ </aside>
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+<div class="about">
+    <p class="asidetitle">Short bio</p>
+    <div class="clearfix">
+        <!-- <img src="http://7xsl28.com1.z0.glb.clouddn.com/niuzai.jpg" height="74px" width="74px" id="about-image" alt> -->
+        <span style="font-size: medium; font-family: Calibri Light, Open Sans, Microsoft YaHei Light">
+        whatbeg.com is written by Qiu Hu. He is living in Nanjing, P.R. China.
+        <br>
+        You can contact Qiu Hu with email.
+        <br>
+        Just enjoy your reading here!
+        <br>
+        Comments are always welcome:)
+        <br>
+        Some interesting non-technical articles can be seen in his WeChat official account: 
+        </span>
+        <br>
+        <img src="https://gitee.com/whyseek/blogimages/raw/master/qrcode.jpg" height="124px" width="124px" id="qrcode" alt>
+    </div>
+</div>
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/大数据-Big-Data/" title="大数据 | Big Data">大数据 | Big Data<sup>8</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/大数据系统与技术-Big-Data/" title="大数据系统与技术 | Big Data">大数据系统与技术 | Big Data<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/成长之路-Biography/" title="成长之路 | Biography">成长之路 | Biography<sup>10</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/数据科学-Data-Science/" title="数据科学 | Data Science">数据科学 | Data Science<sup>8</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/机器学习-Mac-Learning/" title="机器学习 | Mac.Learning">机器学习 | Mac.Learning<sup>9</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/机器学习系统-ML-Sys/" title="机器学习系统 | ML Sys.">机器学习系统 | ML Sys.<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/深度学习-Deep-Learning/" title="深度学习 | Deep Learning">深度学习 | Deep Learning<sup>7</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/源码阅读-Source/" title="源码阅读 | Source">源码阅读 | Source<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/算法-Algorithm/" title="算法 | Algorithm">算法 | Algorithm<sup>4</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/编程语言-Program-Lang/" title="编程语言 | Program Lang.">编程语言 | Program Lang.<sup>6</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/计算机相关-CS-Related/" title="计算机相关 | CS.Related">计算机相关 | CS.Related<sup>12</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/译文-Translation/" title="译文 | Translation">译文 | Translation<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/读书-Reading/" title="读书 | Reading">读书 | Reading<sup>10</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/错误解决与优化-Err-Opt/" title="错误解决与优化 | Err&amp;Opt">错误解决与优化 | Err&amp;Opt<sup>14</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/随笔-Essays/" title="随笔 | Essays">随笔 | Essays<sup>7</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+  <div class="archiveslist">
+    <p class="asidetitle"><a href="/archives">归档</a></p>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">六月 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">一月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">23</span></li></ul>
+  </div>
+
+
+  
+  <div class="tagcloudlist">
+    <p class="asidetitle">标签云</p>
+    <div class="tagcloudlist clearfix">
+       <a href="/tags/C/" style="font-size: 11px;">C++</a> <a href="/tags/CS/" style="font-size: 17px;">CS</a> <a href="/tags/Deep-Learning/" style="font-size: 17px;">Deep Learning</a> <a href="/tags/GPU/" style="font-size: 11px;">GPU</a> <a href="/tags/Git/" style="font-size: 11px;">Git</a> <a href="/tags/Hadoop/" style="font-size: 15px;">Hadoop</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/Latex/" style="font-size: 11px;">Latex</a> <a href="/tags/Linux/" style="font-size: 14px;">Linux</a> <a href="/tags/Python/" style="font-size: 19px;">Python</a> <a href="/tags/Scala/" style="font-size: 10px;">Scala</a> <a href="/tags/Spark/" style="font-size: 12px;">Spark</a> <a href="/tags/Summary/" style="font-size: 16px;">Summary</a> <a href="/tags/TensorFlow/" style="font-size: 12px;">TensorFlow</a> <a href="/tags/Web/" style="font-size: 12px;">Web</a> <a href="/tags/hexo/" style="font-size: 15px;">hexo</a> <a href="/tags/人文社科/" style="font-size: 10px;">人文社科</a> <a href="/tags/优化/" style="font-size: 10px;">优化</a> <a href="/tags/历史/" style="font-size: 11px;">历史</a> <a href="/tags/吃喝玩乐/" style="font-size: 10px;">吃喝玩乐</a> <a href="/tags/大数据/" style="font-size: 17px;">大数据</a> <a href="/tags/工具使用/" style="font-size: 10px;">工具使用</a> <a href="/tags/影视/" style="font-size: 11px;">影视</a> <a href="/tags/操作系统/" style="font-size: 10px;">操作系统</a> <a href="/tags/数据分析/" style="font-size: 16px;">数据分析</a> <a href="/tags/机器学习/" style="font-size: 20px;">机器学习</a> <a href="/tags/深度学习/" style="font-size: 18px;">深度学习</a> <a href="/tags/源码阅读/" style="font-size: 12px;">源码阅读</a> <a href="/tags/算法/" style="font-size: 13px;">算法</a> <a href="/tags/系统/" style="font-size: 10px;">系统</a> <a href="/tags/计算机网络/" style="font-size: 10px;">计算机网络</a> <a href="/tags/论文阅读/" style="font-size: 12px;">论文阅读</a> <a href="/tags/译文/" style="font-size: 12px;">译文</a> <a href="/tags/读书/" style="font-size: 19px;">读书</a> <a href="/tags/错误解决/" style="font-size: 13px;">错误解决</a> <a href="/tags/随笔/" style="font-size: 15px;">随笔</a>
+    </div>
+  </div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="http://www.cnblogs.com/whatbeg/" target="_blank" title="Old Blog">Old Blog</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://github.com/whatbeg" target="_blank" title="My Github">My Github</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.matrix67.com/blog/" target="_blank" title="Matrix67">Matrix67</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.liaoxuefeng.com/" target="_blank" title="廖雪峰">廖雪峰</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.ruanyifeng.com/blog/" target="_blank" title="阮一峰">阮一峰</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://mindhacks.cn/" target="_blank" title="刘未鹏">刘未鹏</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://machinelearningmastery.com/blog/" target="_blank" title="ML MYSTERY">ML MYSTERY</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://freemind.pluskid.org/" target="_blank" title="Free Mind">Free Mind</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://blog.csdn.net/zouxy09/" target="_blank" title="zouxy机器学习">zouxy机器学习</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://coolshell.cn" target="_blank" title="酷壳">酷壳</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  <table height=30 cellSpacing=0 cellPadding=0 width=180 border=0>
+<form action="http://www.sogou.com/web" target="_blank">
+<tr style='font-size:12px;color:#000000'>
+<td align="center" width=100><input type="text" name="query" size=14 style='BORDER-RIGHT: #999 1px solid; BORDER-TOP: #999 1px solid; BORDER-LEFT: #999	1px	solid; BORDER-BOTTOM: #999 1px solid; HEIGHT: 19px; BACKGROUND-COLOR: #fff'>
+<input type="hidden" name="insite" value="whatbeg.com">
+<input type="hidden" name="insite2" value="whatbeg.com"></td>
+<td align="left" width=45><input type="submit" name="sogou_submit" value="搜索">
+</td></tr></form>
+</table>
+
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+  <div class="rsspart">
+	<a href="http://eepurl.com/cHO5An" target="_blank" title="email">Email 订阅</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+        
+
+	    
+		
+				<div class="cc-license">
+          <a href="http://creativecommons.org/licenses/by-nc-nd/4.0" class="cc-opacity" target="_blank">
+            <img src="/img/cc-by-nc-nd.svg" alt="Creative Commons" />
+          </a>
+        </div>
+    
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2016-2019 
+		
+		<a href="/about" target="_blank" title="whatbeg">whatbeg</a>
+		
+		<br>
+		<span class="post-count">Total words: <span style="color:orange">409.4k</span></span>
+        <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+        <span id="busuanzi_container_site_pv">
+        &nbsp;&nbsp;Total visits:&nbsp;<span style="color:orange" id="busuanzi_value_site_pv"></span>
+        </span>
+        <span id="busuanzi_container_site_uv">
+        &nbsp;&nbsp;You are Visitor No.<span style="color:orange" id="busuanzi_value_site_uv"></span>
+        </span>
+        </br>
+		</p>
+		
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    $('#toc.toc-aside').css('display', 'block').addClass('fadeIn');  //侧边栏显示文章目录
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');   //侧边栏显示widget
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+        getSize();
+        if (myWidth >= 1024) {
+          c.click();
+        }
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+
+
+
+<script type="text/javascript">
+
+var disqus_shortname = 'whatbeg';
+
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+</script>
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1258390595'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s95.cnzz.com/z_stat.php%3Fid%3D1258390595%26online%3D1%26show%3Dline' type='text/javascript'%3E%3C/script%3E"));</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    bp.src = '//push.zhanzhang.baidu.com/push.js';
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+  </body>
+</html>
+
+

@@ -2,6 +2,55 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://whatbeg.com/2019/06/05/sqlserverexception.html</loc>
+    
+    <lastmod>2019-06-05T03:47:18.123Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://whatbeg.com/2019/06/05/gpudriverupdate.html</loc>
+    
+    <lastmod>2019-06-05T03:46:59.586Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://whatbeg.com/2019/06/05/processthread.html</loc>
+    
+    <lastmod>2019-06-05T03:41:46.507Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://whatbeg.com/2019/06/05/computernetwork.html</loc>
+    
+    <lastmod>2019-06-05T03:41:45.976Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://whatbeg.com/2017/05/28/sparkerror.html</loc>
+    
+    <lastmod>2019-06-05T03:41:45.076Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://whatbeg.com/2017/03/11/linuxmemo.html</loc>
+    
+    <lastmod>2019-06-05T03:41:42.932Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://whatbeg.com/2019/04/16/cppmemory.html</loc>
+    
+    <lastmod>2019-06-05T03:41:41.326Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://whatbeg.com/2019/04/16/raysource-task.html</loc>
     
     <lastmod>2019-04-16T13:26:45.173Z</lastmod>
@@ -93,13 +142,6 @@
   </url>
   
   <url>
-    <loc>http://whatbeg.com/2017/03/11/linuxmemo.html</loc>
-    
-    <lastmod>2019-04-16T13:10:43.462Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://whatbeg.com/2019/04/16/hadoopmustknow.html</loc>
     
     <lastmod>2019-04-16T13:10:36.433Z</lastmod>
@@ -145,13 +187,6 @@
     <loc>http://whatbeg.com/2019/04/16/cppfqa.html</loc>
     
     <lastmod>2019-04-16T12:36:45.504Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://whatbeg.com/2019/04/16/cppmemory.html</loc>
-    
-    <lastmod>2019-04-16T12:34:28.465Z</lastmod>
     
   </url>
   
@@ -257,13 +292,6 @@
     <loc>http://whatbeg.com/2017/10/23/hadooperror.html</loc>
     
     <lastmod>2018-03-17T09:09:14.878Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://whatbeg.com/2017/05/28/sparkerror.html</loc>
-    
-    <lastmod>2018-03-17T09:09:00.379Z</lastmod>
     
   </url>
   

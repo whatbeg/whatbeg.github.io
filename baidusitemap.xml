@@ -4,6 +4,150 @@
 
     
   <url>
+    <loc>http://whatbeg.com/2019/06/05/sqlserverexception.html</loc>
+    <lastmod>2019-06-05T03:47:18.123Z</lastmod>
+    <data>
+        <display>
+        <title>SQL Server 异常集锦</title>
+        <pubTime>2019-06-05T03:13:19.000Z</pubTime>
+        
+        <tag>错误解决</tag>
+         
+         
+           
+             
+              <breadCrumb title="错误解决与优化 | Err&amp;Opt" url="http://whatbeg.com/categories/%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3%E4%B8%8E%E4%BC%98%E5%8C%96-Err-Opt/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://whatbeg.com/2019/06/05/gpudriverupdate.html</loc>
+    <lastmod>2019-06-05T03:46:59.586Z</lastmod>
+    <data>
+        <display>
+        <title>GPU之更新CUDA及驱动版本</title>
+        <pubTime>2019-06-05T03:14:08.000Z</pubTime>
+        
+        <tag>GPU</tag>
+         
+         
+           
+             
+              <breadCrumb title="计算机相关 | CS.Related" url="http://whatbeg.com/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9B%B8%E5%85%B3-CS-Related/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://whatbeg.com/2019/06/05/processthread.html</loc>
+    <lastmod>2019-06-05T03:41:46.507Z</lastmod>
+    <data>
+        <display>
+        <title>进程线程常见基础问题</title>
+        <pubTime>2019-06-05T03:25:24.000Z</pubTime>
+        
+        <tag>操作系统</tag>
+         
+         
+           
+             
+              <breadCrumb title="计算机相关 | CS.Related" url="http://whatbeg.com/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9B%B8%E5%85%B3-CS-Related/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://whatbeg.com/2019/06/05/computernetwork.html</loc>
+    <lastmod>2019-06-05T03:41:45.976Z</lastmod>
+    <data>
+        <display>
+        <title>计算机网络常见基础问题</title>
+        <pubTime>2019-06-05T03:25:13.000Z</pubTime>
+        
+        <tag>计算机网络</tag>
+         
+         
+           
+             
+              <breadCrumb title="计算机相关 | CS.Related" url="http://whatbeg.com/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9B%B8%E5%85%B3-CS-Related/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://whatbeg.com/2017/05/28/sparkerror.html</loc>
+    <lastmod>2019-06-05T03:41:45.076Z</lastmod>
+    <data>
+        <display>
+        <title>Spark一些问题集锦【持续更新】</title>
+        <pubTime>2017-05-28T02:04:35.000Z</pubTime>
+        
+        <tag>大数据</tag>
+         
+        <tag>错误解决</tag>
+         
+        <tag>Spark</tag>
+         
+         
+           
+             
+              <breadCrumb title="错误解决与优化 | Err&amp;Opt" url="http://whatbeg.com/categories/%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3%E4%B8%8E%E4%BC%98%E5%8C%96-Err-Opt/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://whatbeg.com/2017/03/11/linuxmemo.html</loc>
+    <lastmod>2019-06-05T03:41:42.932Z</lastmod>
+    <data>
+        <display>
+        <title>Linux备忘命令</title>
+        <pubTime>2017-03-11T04:42:52.000Z</pubTime>
+        
+        <tag>Linux</tag>
+         
+         
+           
+             
+              <breadCrumb title="计算机相关 | CS.Related" url="http://whatbeg.com/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9B%B8%E5%85%B3-CS-Related/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://whatbeg.com/2019/04/16/cppmemory.html</loc>
+    <lastmod>2019-06-05T03:41:41.326Z</lastmod>
+    <data>
+        <display>
+        <title>漫谈C++内存分配与管理</title>
+        <pubTime>2019-04-16T12:32:13.000Z</pubTime>
+        
+        <tag>C++</tag>
+         
+         
+           
+             
+              <breadCrumb title="编程语言 | Program Lang." url="http://whatbeg.com/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80-Program-Lang/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://whatbeg.com/2019/04/16/raysource-task.html</loc>
     <lastmod>2019-04-16T13:26:45.173Z</lastmod>
     <data>
@@ -284,26 +428,6 @@
 
     
   <url>
-    <loc>http://whatbeg.com/2017/03/11/linuxmemo.html</loc>
-    <lastmod>2019-04-16T13:10:43.462Z</lastmod>
-    <data>
-        <display>
-        <title>Linux备忘命令</title>
-        <pubTime>2017-03-11T04:42:52.000Z</pubTime>
-        
-        <tag>Linux</tag>
-         
-         
-           
-             
-              <breadCrumb title="计算机相关 | CS.Related" url="http://whatbeg.com/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9B%B8%E5%85%B3-CS-Related/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://whatbeg.com/2019/04/16/hadoopmustknow.html</loc>
     <lastmod>2019-04-16T13:10:36.433Z</lastmod>
     <data>
@@ -434,26 +558,6 @@
         <display>
         <title>C++面向对象FQA</title>
         <pubTime>2019-04-16T12:35:43.000Z</pubTime>
-        
-        <tag>C++</tag>
-         
-         
-           
-             
-              <breadCrumb title="编程语言 | Program Lang." url="http://whatbeg.com/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80-Program-Lang/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://whatbeg.com/2019/04/16/cppmemory.html</loc>
-    <lastmod>2019-04-16T12:34:28.465Z</lastmod>
-    <data>
-        <display>
-        <title>漫谈C++内存分配与管理</title>
-        <pubTime>2019-04-16T12:32:13.000Z</pubTime>
         
         <tag>C++</tag>
          
@@ -753,30 +857,6 @@
         <tag>Hadoop</tag>
          
         <tag>错误解决</tag>
-         
-         
-           
-             
-              <breadCrumb title="错误解决与优化 | Err&amp;Opt" url="http://whatbeg.com/categories/%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3%E4%B8%8E%E4%BC%98%E5%8C%96-Err-Opt/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://whatbeg.com/2017/05/28/sparkerror.html</loc>
-    <lastmod>2018-03-17T09:09:00.379Z</lastmod>
-    <data>
-        <display>
-        <title>Spark一些问题集锦【持续更新】</title>
-        <pubTime>2017-05-28T02:04:35.000Z</pubTime>
-        
-        <tag>大数据</tag>
-         
-        <tag>错误解决</tag>
-         
-        <tag>Spark</tag>
          
          
            
